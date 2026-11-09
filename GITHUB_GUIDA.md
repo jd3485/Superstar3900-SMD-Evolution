@@ -1,25 +1,20 @@
-# Superstar 3900 SMD Evolution — origine Git V7.0
+# Superstar 3900 SMD Evolution — guida GitHub (V7.0)
 
-**Repository remoto previsto:** `https://github.com/jd3485/Superstar3900-SMD-Evolution` (PRIVATO; non ancora creato da ChatGPT).
+**Repository creato e popolato:** https://github.com/jd3485/Superstar3900-SMD-Evolution (**PRIVATO**, verificato il 9 novembre 2026).
 
-Questa è una **importazione Git locale**, non una conferma che i file siano già su GitHub. Il commit iniziale include gli **1.281 file originali V7.0**, invariati. Gli altri file (`.gitattributes`, `.gitignore`, `GITHUB_GUIDA.md`, `ci/`, `.github/workflows/verifica_v70.yml`) sono aggiunte di infrastruttura, senza modificare il contenuto del progetto storico.
+## Importazione completata
+- Il branch `main` è stato importato dal kit Git locale e il tag annotato `v7.0` è presente.
+- Commit originale della baseline: `b4242f58b75ecaea7093fe960e63c96c5a43d87a`.
+- Il commit iniziale conteneva **1.286 file Git**, inclusi gli **1.281 file originali V7.0** e 5 file di infrastruttura. Manifest originale: `MANIFEST_SHA256_V7.0.csv` (1.280 record/hash dei file del pacchetto, escluso il manifest stesso).
+- Il workflow `.github/workflows/verifica_v70.yml` è stato eseguito con successo dopo l'importazione. Per permettere l'evoluzione del branch `main`, la verifica hash immutabile della V7.0 opera sulla **copia di lavoro del tag v7.0**; i test di regressione verificano il branch corrente.
+- README e istruzioni di ripresa hanno una sezione corrente V7.0 in testa; il testo storico precedente è stato conservato integralmente. I file originali sono sempre recuperabili dal tag `v7.0`.
 
-## Importazione
+## Come lavorare alle revisioni successive
+1. Sviluppare nuove specifiche, BOM, schemi, netlist, codice e test in percorsi per versione (es. `V7.1`).
+2. Salvare tramite commit GitHub i soli file nuovi o cambiati, verificare `main` e i risultati CI; registrare quanto NON è stato eseguito.
+3. Creare un tag `v7.1`, `v7.2` ecc. per la relativa versione completa.
+4. Da ogni tag GitHub rende disponibile uno **ZIP sorgente cumulativo** dell'intero albero versionato, senza dover inserire dentro Git lo ZIP personalizzato dell'intero progetto per ogni revisione. Gli ZIP storici personalizzati, se richiesti, vanno prodotti separatamente e identificati con SHA256; per caricarli come allegati di Release occorre un'azione apposita di upload.
+5. Mantenere un documento di ripresa aggiornato nella radice e aprire le nuove chat leggendo prima la sezione corrente del file.
 
-1. Su GitHub crea **un repository privato** chiamato `Superstar3900-SMD-Evolution`, sotto l'account `jd3485`, **vuoto** (nessun README, .gitignore o licenza iniziali).
-2. Scarica `Superstar3900_Kit_GitHub_V7.0.zip`, estrai e avvia `IMPORTA_GITHUB_WINDOWS.bat` (con Git for Windows) oppure lo script per macOS/Linux. Lo script clona il `*.bundle`, assegna il repository remoto e invia il branch `main` e il tag `v7.0`. L'accesso GitHub avviene tramite il normale sistema di autenticazione Git: non salvare password o token nei file del progetto.
-3. Controlla il repository privato e il workflow **Verifica archivio e test RX**. Il workflow viene eseguito al push su `main` e può essere eseguito manualmente.
-
-**Nota sullo ZIP storico:** `09_Archivi_Precedenti/Superstar3900_SMD_Evolution_V1.1.zip` pesa ~38 MiB e viene tracciato solo per preservare tutti i file del progetto V7.0. Da V7.1 in poi, pubblicare gli archivi cumulativi come allegati di Release (o usare Git LFS) invece di inserirli in ogni nuovo commit.
-
-## Workflow delle revisioni
-
-- Sviluppo in un branch `sviluppo/v7.x` (dopo l'importazione).
-- Ad ogni modifica: aggiornare netlist, BOM, specifiche e report; registrare test reali e limiti aperti.
-- Commit con descrizione della variazione e tag al rilascio (`v7.1`, ecc.).
-- Nessuna approvazione automatica di PCB, TX, DRC/ ERC o SPICE; le relative prove richiedono esecuzione e registrazione separate.
-- `python -B ci/verifica_manifest.py MANIFEST_SHA256_V7.0.csv` controlla l'integrità di V7.0 (può non riuscire se file storici vengono modificati senza creare una revisione/snapshot conforme).
-
-### V7.0 non implica radio collaudata
-
-Gli schemi KiCad integrali, le verifiche elettromagnetiche e le misure di laboratorio non sono completati. La trasmissione RF resta fisicamente disabilitata e la fabbricazione non è autorizzata.
+## Restrizioni tecniche
+**NO FAB, NO TX**: il progetto è ancora candidato; non sono stati effettuati collaudi fisici, PCB native completi, ERC/DRC, simulazioni EM/RF misurate o autorizzazioni a trasmettere. La TX RF resta fisicamente disabilitata.

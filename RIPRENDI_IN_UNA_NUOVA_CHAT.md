@@ -1,3 +1,22 @@
+# RIPRENDERE SUPERSTAR 3900 SMD EVOLUTION — STATO CORRENTE V7.0
+
+**Aggiornamento 9 novembre 2026: il repository GitHub privato è stato popolato con la baseline V7.0 e il tag `v7.0`.** Tutte le sezioni storiche V6.x che seguono sono soltanto archivio; non usarle per determinare la prossima revisione.
+
+## Procedura per una NUOVA CHAT
+1. Collega GitHub se necessario e apri **`jd3485/Superstar3900-SMD-Evolution`** (repository PRIVATO). Verifica il tag più recente e il branch `main`. L'ultima versione tecnica nota a questa nota è **V7.0**; se esistono commit/tag successivi, controlla prima i loro rapporti.
+2. Leggi `README.md`, `Superstar3900_Rapporto_Tecnico_V7.0.md`, `03_Verifiche/V7.0/RAPPORTO_TECNICO_COMPLETO_V7.0.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.0.md`.
+3. Prossimo modulo da sviluppare **V7.1: TX modulatore e FI/upconversion candidati**, con PTT/RF sempre interbloccati e finale RF scollegato. Prosegui poi sugli altri moduli, senza affermare che la radio sia completa.
+4. Ogni revisione: specifiche, BOM, netlist pin-to-net, MCU/firmware se pertinente, verifiche numeriche riproducibili, regressioni e rapporto che distingua PASS, NON ESEGUITO e criticità. Sorgenti storici intatti; snapshot o commit tracciati per i cambiamenti ai documenti gestionali.
+5. **NON dichiarare fabbricazione pronta, KiCad ERC/DRC o collaudo hardware eseguiti. NON abilitare TX RF.** Sono ancora aperti: immagine RX, termica/PLL, filtro 455k, livelli LO2, schema nativo, alimentazioni e sicurezza.
+6. `MANIFEST_SHA256_V7.0.csv` rappresenta il contenuto del **tag v7.0**: verificare quello; il branch `main` evolve e non deve essere confrontato contro il manifest immutabile del vecchio tag.
+
+## Messaggio sintetico da incollare
+> Riprendi Superstar 3900 SMD Evolution dal repository GitHub privato `jd3485/Superstar3900-SMD-Evolution`. Leggi `README.md` e `RIPRENDI_IN_UNA_NUOVA_CHAT.md` nelle loro prime sezioni aggiornate, verifica l'ultimo tag disponibile, consulta il rapporto tecnico più recente e continua con la revisione successiva. Preserva lo storico, esegui verifiche reali e mantieni TX RF fisicamente disabilitata fino a validazione.
+
+---
+
+## ARCHIVIO STORICO — istruzioni precedenti V6.8 e precedenti, conservate integralmente
+
 # Riprendere il progetto dalla V6.8
 
 1. Leggere `Superstar3900_Rapporto_Tecnico_V6.8.md` e `01_Specifiche/V6.8/CIRCUITO_FI_AGC_V6.8.md`.

@@ -1,3 +1,27 @@
+# Superstar 3900 SMD Evolution — STATO ATTUALE V7.0
+
+**Aggiornato il 9 novembre 2026. Questa sezione prevale sulle istruzioni storiche sottostanti.**
+**Ultima versione tecnica completata e importata: V7.0. Prossima revisione pianificata: V7.1 (TX modulatore/FI candidato, TX fisicamente disabilitata).**
+
+## Ripresa sicura in nuove chat
+1. Aprire il repository **privato** `jd3485/Superstar3900-SMD-Evolution`; leggere prima questo file e `RIPRENDI_IN_UNA_NUOVA_CHAT.md`.
+2. Leggere `Superstar3900_Rapporto_Tecnico_V7.0.md`, `03_Verifiche/V7.0/RAPPORTO_TECNICO_COMPLETO_V7.0.md` e `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.0.md`.
+3. Confrontare sempre `main` e i tag per individuare eventuali versioni successive; non interpretare le intestazioni V6.x nella cronologia sottostante come stato attuale.
+4. Preservare tutti i file storici e registrare modifiche, report e test. Il tag `v7.0` conserva in modo immutato la baseline importata.
+
+## Avanzamento tecnico verificato V7.0
+- RX: candidati IF2 455 kHz, demodulazione AM AD8307 e FM HC4046, amplificazione LO2 10,24 MHz e filtri audio FIR Q15 SSB/CW. Il livello LO2 +7 dBm **non è stato misurato**; filtri 455 kHz SSB/CW restano DNP.
+- Test registrati nella revisione: **75/75 nuovi** e **616/616** selezionati V5.9–V7.0, su modelli numerici e verifiche statiche, **non** su prototipo fisico.
+- Gate aperti: selettività/immagine RF, PLL e programmazione registri, alimentazione/termica, filtri analogici, interblocchi, schemi KiCad nativi, ERC/DRC, PCB e collaudi.
+- **NO FAB / NO TX:** trasmissione RF fisicamente inibita; nessun hardware qualificato o autorizzazione di trasmissione dichiarati.
+
+## Versioni e archivi cumulativi
+Ogni commit Git rappresenta un'intera istantanea dei file tracciati; il tag `v7.0` identifica la baseline originaria. GitHub consente di scaricare lo **ZIP cumulativo del codice sorgente** relativo a un tag dalla pagina dei tag/release: non occorre committare un nuovo ZIP da 50 MB per ogni revisione. Questo ZIP contiene i file versionati, ma non la directory `.git` né è necessariamente identico byte-per-byte allo ZIP storico `Superstar3900_SMD_Evolution_V7.0.zip`. Gli eventuali ZIP cumulativi nel formato storico saranno preparati separatamente e identificati con SHA-256; il caricamento come asset di Release richiede una funzione di upload apposita. Il manifest `MANIFEST_SHA256_V7.0.csv` appartiene alla **baseline tag v7.0**, non allo stato mutabile di `main`.
+
+---
+
+## ARCHIVIO STORICO — testo precedente V6.8 e precedenti, conservato integralmente
+
 # Superstar 3900 SMD Evolution — V6.8
 
 **Studio candidato FI1 10,695MHz, AGC AD8338, FI2 455kHz, filtri e piano LO2/BFO. NO FAB/NO TX.**
