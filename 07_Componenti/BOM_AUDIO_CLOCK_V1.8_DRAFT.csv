@@ -1,0 +1,9 @@
+ref,candidate,type,footprint,status,note
+X201,SiT8008AI-22-33E-12.288000,oscillator 12.288MHz 3.3V,SMD 3.2x2.5 mm NOT assigned,CANDIDATE,pin1 OE pin2 GND pin3 OUT pin4 VDD
+U203,TPS7A2033PDBVR,LDO 3.3V,SOT-23-5 NOT assigned,CANDIDATE,"5V to audio clock rail, check load, dissipation"
+C215,1uF,capacitor,SMD TBD,PROVISIONAL,"LDO input, min required to verify"
+C216,1uF,capacitor,SMD TBD,PROVISIONAL,"LDO output, min required to verify"
+C217,100nF,capacitor,SMD TBD,PROVISIONAL,local oscillator supply bypass
+C218,1uF,capacitor,SMD TBD,PROVISIONAL,local oscillator supply bulk
+R204,4.7k,resistor,SMD TBD,PROVISIONAL,OE pullup under 10k
+R205,33R,resistor,SMD TBD,PROVISIONAL,"series damp, candidate only"

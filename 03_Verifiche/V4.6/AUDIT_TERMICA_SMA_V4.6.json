@@ -1,0 +1,122 @@
+{
+  "version": "4.6",
+  "scope": "STATIC_GEOMETRIC_RISK_INVENTORY_ONLY",
+  "pcb_sha256": "a49a4fa9370573192dfa4f3da0b16f9936cf580491280621a4ea30d24349848f",
+  "amplifier": "ADL5535",
+  "ref": "U101",
+  "paddle_net": "GND_RF",
+  "paddle_rect_mm": [
+    67.1,
+    31.900000000000002,
+    68.9,
+    35.38
+  ],
+  "paddle_size_mm": [
+    1.8,
+    3.48
+  ],
+  "paddle_copper_area_mm2": 6.264,
+  "ground_vias_count": 64,
+  "vias_centered_inside_paddle": 0,
+  "closest_ground_via": {
+    "x_mm": 68.0,
+    "y_mm": 31.05,
+    "drill_mm": 0.3,
+    "diameter_mm": 0.7,
+    "copper_edge_gap_mm": 0.5,
+    "center_inside_paddle": false
+  },
+  "closest_five_ground_vias": [
+    {
+      "x_mm": 68.0,
+      "y_mm": 31.05,
+      "drill_mm": 0.3,
+      "diameter_mm": 0.7,
+      "copper_edge_gap_mm": 0.5,
+      "center_inside_paddle": false
+    },
+    {
+      "x_mm": 68.0,
+      "y_mm": 39.0,
+      "drill_mm": 0.3,
+      "diameter_mm": 0.7,
+      "copper_edge_gap_mm": 3.27,
+      "center_inside_paddle": false
+    },
+    {
+      "x_mm": 75.0,
+      "y_mm": 31.5,
+      "drill_mm": 0.3,
+      "diameter_mm": 0.7,
+      "copper_edge_gap_mm": 5.7631,
+      "center_inside_paddle": false
+    },
+    {
+      "x_mm": 60.0,
+      "y_mm": 31.5,
+      "drill_mm": 0.3,
+      "diameter_mm": 0.7,
+      "copper_edge_gap_mm": 6.76126,
+      "center_inside_paddle": false
+    },
+    {
+      "x_mm": 75.0,
+      "y_mm": 40.0,
+      "drill_mm": 0.3,
+      "diameter_mm": 0.7,
+      "copper_edge_gap_mm": 7.30208,
+      "center_inside_paddle": false
+    }
+  ],
+  "local_copper_gap_not_thermal_resistance": true,
+  "ground_zones_layers": [
+    "B.Cu",
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu"
+  ],
+  "ground_zone_count": 4,
+  "ground_zone_refill": "NOT_RUN_NATIVE_KICAD",
+  "sma": [
+    {
+      "ref": "J101",
+      "position_mm": [
+        28.0,
+        36.0
+      ],
+      "custom_ground_pad_count": 4,
+      "status": "UNVERIFIED_AGAINST_TE_CAD"
+    },
+    {
+      "ref": "J102",
+      "position_mm": [
+        122.0,
+        36.0
+      ],
+      "custom_ground_pad_count": 4,
+      "status": "UNVERIFIED_AGAINST_TE_CAD"
+    },
+    {
+      "ref": "J103",
+      "position_mm": [
+        28.0,
+        65.0
+      ],
+      "custom_ground_pad_count": 4,
+      "status": "UNVERIFIED_AGAINST_TE_CAD"
+    },
+    {
+      "ref": "J104",
+      "position_mm": [
+        122.0,
+        65.0
+      ],
+      "custom_ground_pad_count": 4,
+      "status": "UNVERIFIED_AGAINST_TE_CAD"
+    }
+  ],
+  "manufacturer_cad_te": "LINK_VERIFIED_DOWNLOAD_NOT_AVAILABLE_NO_FULL_APPROVAL",
+  "board_copper_modified": false,
+  "kicad_erc_drc": "NOT_RUN",
+  "decision": "NO_FAB_NO_PCBWAY_NO_TX"
+}

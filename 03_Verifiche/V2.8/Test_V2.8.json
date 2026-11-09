@@ -1,0 +1,46 @@
+[
+  {
+    "test": "Verifica riproducibilita contro m.network V2.4 per LP7",
+    "passed": true
+  },
+  {
+    "test": "Conservazione passivita in 1001 frequenze per le due reti",
+    "passed": true
+  },
+  {
+    "test": "Due risonatori su frequenze immagine",
+    "passed": true
+  },
+  {
+    "test": "Confronto Q20 Q30 Q60 coerente",
+    "passed": true
+  },
+  {
+    "test": "HP3 maggior reiezione 10 MHz rispetto LP7-only",
+    "passed": true
+  },
+  {
+    "test": "Stress riproducibile - 2400 casi totali",
+    "passed": true
+  },
+  {
+    "test": "S11 S21 passivo e tutte misure finite",
+    "passed": true
+  },
+  {
+    "test": "Due netlist sperimentali create",
+    "passed": true
+  },
+  {
+    "test": "Schema blocchi di studio creato",
+    "passed": true
+  },
+  {
+    "test": "BOM candidata 12 componenti elettrici - 10 sezioni",
+    "passed": true
+  },
+  {
+    "test": "Nessuna valutazione di fabbricabilita approvata",
+    "passed": true
+  }
+]

@@ -1,0 +1,27 @@
+test_anomalous_pad_parse_fails_closed (__main__.CopperScreen.test_anomalous_pad_parse_fails_closed) ... ok
+test_counts (__main__.CopperScreen.test_counts) ... ok
+test_exact_minimum (__main__.CopperScreen.test_exact_minimum) ... ok
+test_limited_to_one_layer (__main__.CopperScreen.test_limited_to_one_layer) ... ok
+test_native_board_statically_clean (__main__.CopperScreen.test_native_board_statically_clean) ... ok
+test_net_pins_through_vias_count (__main__.CopperScreen.test_net_pins_through_vias_count) ... ok
+test_no_native_claim (__main__.CopperScreen.test_no_native_claim) ... ok
+test_same_board_deterministic (__main__.CopperScreen.test_same_board_deterministic) ... ok
+test_short_mutation_detected (__main__.CopperScreen.test_short_mutation_detected) ... ok
+test_threshold_is_effective (__main__.CopperScreen.test_threshold_is_effective) ... ok
+test_drc_normal_violations_detected (__main__.NativeSemantic.test_drc_normal_violations_detected) ... ok
+test_drc_parity_detected (__main__.NativeSemantic.test_drc_parity_detected) ... ok
+test_drc_schema (__main__.NativeSemantic.test_drc_schema) ... ok
+test_drc_unconnected_detected (__main__.NativeSemantic.test_drc_unconnected_detected) ... ok
+test_erc_detects_violations (__main__.NativeSemantic.test_erc_detects_violations) ... ok
+test_erc_schema (__main__.NativeSemantic.test_erc_schema) ... ok
+test_fake_clean_structural_only (__main__.NativeSemantic.test_fake_clean_structural_only) ... ok
+test_inconsistent_status_blocked (__main__.NativeSemantic.test_inconsistent_status_blocked) ... ok
+test_rejects_fake_v54_stub (__main__.NativeSemantic.test_rejects_fake_v54_stub) ... ok
+test_rejects_missing_array (__main__.NativeSemantic.test_rejects_missing_array) ... ok
+test_rejects_old_version (__main__.NativeSemantic.test_rejects_old_version) ... ok
+test_unavailable_folder_blocked (__main__.NativeSemantic.test_unavailable_folder_blocked) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 1.249s
+
+OK

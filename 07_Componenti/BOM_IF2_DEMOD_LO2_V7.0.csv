@@ -1,0 +1,66 @@
+ref,type,mpn_or_value,status,blocker_or_note
+J7101,interfaccia demod IF2 + segnali controllo,9 pins,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+U7101,demodulatore di ampiezza logaritmico,Analog Devices AD8307ARZ SOIC8,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+C7101,passivo,10 nF X7R,VALORE_CANDIDATO,
+R7101,passivo,910 ohm 1%,VALORE_CANDIDATO,"2k termination approx: 910R + 1.1k input diff, from actual AD8307 input"
+C7102,passivo,10 nF X7R,VALORE_CANDIDATO,DC common-mode from device internal bias preserved
+C7103,passivo,100 nF X7R,VALORE_CANDIDATO,
+C7104,passivo,1 µF X7R,VALORE_CANDIDATO,
+R7102,passivo,100 kOhm,VALORE_CANDIDATO,"default detector OFF, enable requires RX consent"
+Q7101,N-channel transistor fail-off AM gate,2N7002 SOT23,DNP_OPZIONALE_NON_CABLATO,Needs gate logic stage: do not fit as a direct active-high enable generator
+J7102,ENABLE AM detector hardware input,2-pin,INTERFACCIA_NON_POPOLATA,Link only after independent HW RX consent; default R7102 holds LOW
+R7103,passivo,1.0 kOhm 1%,VALORE_CANDIDATO,
+C7105,passivo,10 nF C0G,VALORE_CANDIDATO,
+U7102,limitatore FM comparator,TI TLV3201AIDBVR SOT23-5,PINOUT_FABBRICANTE,"40ns propagation not zero, receiver filter must support input swing"
+R7104,passivo,1.5 kOhm 1%,DNP_FINCHÉ_MATCHING_NON_VERIFICATO,ONLY if Murata candidate specifies 1.5k termination: avoid double terminations in V6.8
+C7106,passivo,10 nF C0G,VALORE_CANDIDATO,
+R7105,passivo,47 kOhm,VALORE_CANDIDATO,
+C7107,passivo,100 nF X7R,VALORE_CANDIDATO,
+U7103,PLL demodulatore FM 455 kHz,TI CD74HC4046APWR TSSOP16,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+C7108,passivo,100 pF C0G trimmable topology,VALORE_DA_TARARE,R1/C1 455k center NOT QUALIFIED; test with scope required
+R7106,passivo,10 kOhm 1%,VALORE_DA_TARARE,VCO f=455k cannot be claimed from this value alone
+R7107,passivo,10 kOhm 1%,VALORE_CANDIDATO,
+C7109,passivo,10 nF C0G,VALORE_CANDIDATO,
+R7108,passivo,100 kOhm 1%,VALORE_CANDIDATO,Per datasheet DEMOUT output add load resistor
+R7109,passivo,10 kOhm 1%,VALORE_CANDIDATO,PLL default OFF; INH high inhibits VCO
+Q7102,inhibit pull-down only if HW_RX_SAFE,2N7002 SOT23,PIN_FUNZIONALE_CANDIDATO,HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off
+R7110,passivo,100 kOhm,VALORE_CANDIDATO,
+C7110,passivo,100 nF X7R,VALORE_CANDIDATO,
+U7104,dual audio amplifier gain / buffer,TI TLV9062IDR SOIC8,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+C7111,passivo,1 µF X7R 10V,VALORE_CANDIDATO,
+R7111,passivo,100 kOhm,VALORE_CANDIDATO,
+R7112,passivo,10 kOhm 1%,VALORE_CANDIDATO,
+R7113,passivo,10 kOhm 1%,VALORE_CANDIDATO,
+C7112,AC coupling film/X7R,1 µF X7R 10V,VALORE_CANDIDATO,
+R7114,passivo,100 kOhm,VALORE_CANDIDATO,
+R7115,passivo,10 kOhm 1%,VALORE_CANDIDATO,
+R7116,passivo,39 kOhm 1%,VALORE_CANDIDATO,
+C7113,passivo,100 nF X7R,VALORE_CANDIDATO,
+J7103,AM/FM audio outputs to V6.0 J605,3-pin,INTERFACCIA,"V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+C7114,passivo,1 µF X7R,VALORE_CANDIDATO,
+R7117,passivo,100 kOhm,VALORE_CANDIDATO,
+C7115,passivo,1 µF X7R,VALORE_CANDIDATO,
+R7118,passivo,100 kOhm,VALORE_CANDIDATO,
+J7104,"Reference 1.65V external, optional local filter",2pin,INTERFACCIA,"External reference must be buffered if loaded, avoid backfeeding; DNP local divider"
+U7121,LO2 MMIC output amplifier,Mini-Circuits GALI-3+ DF782 SOT89,PINOUT_FABBRICANTE,Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point
+J7121,LO2 CMOS in from Si5351C CLK0,2pin,INTERFACCIA,U971 CLK0 through 33ohm from V6.9; CMOS driver swing unknown
+R7121,passivo,1.5 kOhm 1%,VALORE_CANDIDATO,
+C7121,passivo,100 nF C0G 16V,VALORE_CANDIDATO,
+R7122,passivo,"47 Ohm 1%, 0.125 W",VALORE_CANDIDATO,"5V supply assumed, 35mA typ, thermal worstcase simulated"
+L7121,passivo,RFC nominal 4.7µH >=40MHz SRF TO VERIFY,INDUTTORE_NON_QUALIFICATO,Specific choke part + S-param/SRF required before fabrication
+C7122,passivo,1 µF X7R,VALORE_CANDIDATO,
+C7123,passivo,100 nF X7R,VALORE_CANDIDATO,
+C7124,passivo,100 nF C0G,VALORE_CANDIDATO,
+L7122,passivo,330 nH RF high-Q,INDUTTORE_DA_QUALIFICARE,Needs Q/SRF at >30.72 MHz
+C7125,passivo,360 pF C0G 2%,VALORE_CANDIDATO,
+L7123,passivo,1.1 µH RF high-Q,INDUTTORE_DA_QUALIFICARE,"Needs SRF>70MHz, ESR/Q verification"
+C7126,passivo,360 pF C0G 2%,VALORE_CANDIDATO,
+L7124,passivo,330 nH RF high-Q,INDUTTORE_DA_QUALIFICARE,LPF no HF PCB validated
+R7123,passivo,430 Ohm 1%,VALORE_CANDIDATO,
+R7124,passivo,11.5 Ohm 1%,VALORE_CANDIDATO,
+R7125,passivo,430 Ohm 1%,VALORE_CANDIDATO,
+C7127,passivo,100 nF C0G,VALORE_CANDIDATO,
+J7122,LO2 output to mixer U802 LO pin 6,2pin,INTERFACCIA_CANDIDATA,No assembler permit until +7dBm and spurs measured on 50ohm load
+J7131,codec DSP interface demod audio,5pin,INTERFACCIA,DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected.
+R7131,passivo,100k,VALORE_CANDIDATO,
+R7132,passivo,100k,VALORE_CANDIDATO,

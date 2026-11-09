@@ -1,0 +1,100 @@
+{
+  "revision": "V6.8",
+  "status": "NUMERIC_STUDY_NOT_SPICE_NOT_HARDWARE",
+  "rx_channels": 270,
+  "modes": 5,
+  "channel_mode_rows": 1350,
+  "if1_hz": 10695000,
+  "if2_hz": 455000,
+  "sideband_inversion_first_high_side_lo": true,
+  "lo2_mode_hz": {
+    "AM": 10240000,
+    "FM": 10240000,
+    "USB": 10238500,
+    "LSB": 10241500,
+    "CW": 10240000
+  },
+  "bfo_mode_hz": {
+    "AM": null,
+    "FM": null,
+    "USB": 456500,
+    "LSB": 453500,
+    "CW": 455700
+  },
+  "usb_if2_edges_hz": [
+    453800,
+    456200
+  ],
+  "lsb_if2_edges_hz": [
+    453800,
+    456200
+  ],
+  "roofing_lc": {
+    "L_h": 1e-06,
+    "C_total_f": 2.21451530160043e-10,
+    "C_fixed_f": 1.8e-10,
+    "Ctrim_needed_pf": 41.451530160043,
+    "loaded_Q_assumed": 30.429143073297407,
+    "nominal_bandwidth_hz": 351472.2703244713,
+    "pass_at_if1_plus_12khz_db": -0.04036067048363224,
+    "stop_if2_image_9p785mhz_db_ideal": -29.647637666634203,
+    "approximate_assumptions": "two independent isolated unloaded-Q=80 parallel tanks; buffer and leakage ignored"
+  },
+  "agc": {
+    "vref_v": 1.5,
+    "r_top_ohm": 100000,
+    "r_bot_ohm": 680000,
+    "setpoint_v": 1.3076923076923077,
+    "target_diff_rms_v": 0.1923076923076923,
+    "c_deto_f": 1e-06,
+    "tau_nominal_s": 0.01745497325,
+    "tau_0p1uF_s": 0.00174997325,
+    "gain_50uVrms_db": 71.70053304058364,
+    "gain_5mVrms_db": 31.70053304058364,
+    "step_40db_settle_1db_s": 0.06438929219403336,
+    "estimated_sr_differential_v_per_us": 18.27562808600143,
+    "nominal_output_vpp_differential": 0.5439282932204211,
+    "note": "first-order gain response and datasheet timing only; no real AGC envelope waveform simulation"
+  },
+  "ideal_455_filter": {
+    "order": 4,
+    "am_bw3_hz": 6000,
+    "fm_bw3_hz": 12000,
+    "ssb_bw3_hz": 2700,
+    "cw_bw3_hz": 500,
+    "usb_edge_1200hz_att_db": -1.4293491494453623,
+    "lsb_edge_1200hz_att_db": -1.4293491494453623,
+    "am_adjacent_10khz_att_db": -41.83058455368951,
+    "fm_adjacent_10khz_att_db": -17.82023894337189,
+    "note": "Butterworth envelopes NOT Murata or real SSB/CW response"
+  },
+  "mc_12000": {
+    "random_seed": 680112,
+    "sample_count": 12000,
+    "worst_inband_12000_db_min": -0.08846892854236668,
+    "if2_image_rejection_db_range": [
+      23.584643538616533,
+      35.134039021207485
+    ],
+    "q_loaded_range": [
+      20.174276520104645,
+      43.5992233118685
+    ],
+    "note": "arbitrary independent uniforms on Q0/Rload/L/trimming offset; no correlated production or EM parasitics"
+  },
+  "corrections_or_open": [
+    "No LO2 generator nor BFO built, no MCU pin allocated",
+    "Murata catalog from 2011; procurement not verified",
+    "F823/F824 no manufacturer part, SW821/SW822 unselected",
+    "B811/B812 buffers unselected and impedance transformation not solved",
+    "3V3_A_IF_SW current and real hardware gating not yet allocated",
+    "bandwidth/linearity/saturation at 10.695 not validated",
+    "passband/image attenuation theoretical only",
+    "No connection to TX; no release to fab"
+  ],
+  "native_ngspice": "NOT_RUN",
+  "native_KiCad": "NOT_RUN",
+  "hardware": "NOT_TESTED",
+  "tx_permission": false,
+  "fab_permission": false
+}

@@ -1,0 +1,36 @@
+test_8192_boolean_truth_table (__main__.TestInterlock.test_8192_boolean_truth_table) ... ok
+test_PA_veto_even_NC_stuck_closed (__main__.TestInterlock.test_PA_veto_even_NC_stuck_closed) ... ok
+test_all_controls_default_to_safety_off (__main__.TestInterlock.test_all_controls_default_to_safety_off) ... ok
+test_amp_mute_if_voltage_fault (__main__.TestInterlock.test_amp_mute_if_voltage_fault) ... ok
+test_bom_csv_counts (__main__.TestInterlock.test_bom_csv_counts) ... ok
+test_default_jumper_dni (__main__.TestInterlock.test_default_jumper_dni) ... ok
+test_fault_bridge_high_with_key_open (__main__.TestInterlock.test_fault_bridge_high_with_key_open) ... ok
+test_fault_loop_break (__main__.TestInterlock.test_fault_loop_break) ... ok
+test_gate_tamper_detected_by_expected (__main__.TestInterlock.test_gate_tamper_detected_by_expected) ... ok
+test_interface_conns_unique (__main__.TestInterlock.test_interface_conns_unique) ... ok
+test_inverter_missing_net_detected (__main__.TestInterlock.test_inverter_missing_net_detected) ... ok
+test_logical_pinouts_and_ncs (__main__.TestInterlock.test_logical_pinouts_and_ncs) ... ok
+test_no_crossvoltage_on_gates (__main__.TestInterlock.test_no_crossvoltage_on_gates) ... ok
+test_no_ptt (__main__.TestInterlock.test_no_ptt) ... ok
+test_no_tx_enabled_in_contract (__main__.TestInterlock.test_no_tx_enabled_in_contract) ... ok
+test_pa_mechanical_eco_logged (__main__.TestInterlock.test_pa_mechanical_eco_logged) ... ok
+test_parts_unique (__main__.TestInterlock.test_parts_unique) ... ok
+test_pin_correspondence_with_v61 (__main__.TestInterlock.test_pin_correspondence_with_v61) ... ok
+test_pinout_tps3700 (__main__.TestInterlock.test_pinout_tps3700) ... ok
+test_pinout_tps3823 (__main__.TestInterlock.test_pinout_tps3823) ... ok
+test_power_good_independent_of_firmware (__main__.TestInterlock.test_power_good_independent_of_firmware) ... ok
+test_power_sense_filter_approx (__main__.TestInterlock.test_power_sense_filter_approx) ... ok
+test_reachable_true_only_for_bench_test (__main__.TestInterlock.test_reachable_true_only_for_bench_test) ... ok
+test_reject_undefined_input (__main__.TestInterlock.test_reject_undefined_input) ... ok
+test_single_faults_in_required_healthy_paths (__main__.TestInterlock.test_single_faults_in_required_healthy_paths) ... ok
+test_structure (__main__.TestInterlock.test_structure) ... ok
+test_threshold_montecarlo_50000 (__main__.TestInterlock.test_threshold_montecarlo_50000) ... ok
+test_thresholds_analytic (__main__.TestInterlock.test_thresholds_analytic) ... ok
+test_tps3700_open_drain_pullups (__main__.TestInterlock.test_tps3700_open_drain_pullups) ... ok
+test_tx_false_when_pa_relay_energized (__main__.TestInterlock.test_tx_false_when_pa_relay_energized) ... ok
+test_unique_component_pins (__main__.TestInterlock.test_unique_component_pins) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.087s
+
+OK

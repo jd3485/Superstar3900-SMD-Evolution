@@ -1,0 +1,157 @@
+ref,descrizione,mpn,categoria,stato,nota
+U201,STM32G474RET6 LQFP64,"STM32G474RET6 (ST), 3.3 V",MCU,CANDIDATO,"Mapping from DS12288 Rev6 Fig7, all 64 pins"
+U701,16-bit I2C GPIO expander,"MCP23017-E/SS, SSOP28",GPIO,CANDIDATO,DS20001952D: GPA7/GPB7 SOLO OUTPUT
+C701,"100 nF, 6.3V","MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,Bypass U701
+R701,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,RESET default HIGH; disable safety independent
+U702,16-bit I2C GPIO expander,"MCP23017-E/SS, SSOP28",GPIO,CANDIDATO,DS20001952D: GPA7/GPB7 SOLO OUTPUT
+C702,"100 nF, 6.3V","MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,Bypass U702
+R710,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R740,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C710,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R711,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R741,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C711,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R712,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R742,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C712,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R713,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R743,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C713,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R714,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R744,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C714,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R715,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R745,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C715,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R716,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R746,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C716,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R717,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R747,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C717,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R718,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R748,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C718,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R719,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R749,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C719,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R720,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R750,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C720,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R721,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R751,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C721,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R722,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R752,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C722,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R723,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R753,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C723,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R810,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R840,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C810,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R811,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R841,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C811,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R812,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R842,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C812,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R813,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R843,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C813,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R814,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R844,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C814,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R815,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R845,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C815,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R816,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R846,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C816,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R817,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R847,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C817,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R818,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R848,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C818,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R819,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R849,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C819,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R820,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R850,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C820,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R821,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R851,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C821,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R822,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R852,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C822,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+R823,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,pullup 3.3V; INPUT default HIGH
+R853,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series mechanical switch; no 13.8V
+C823,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,tau open = 1ms nominal; 20ms software debounce
+S701,"6-way 1P6T band selector, break-before-make","rotary 6 position, footprint TBD",CONTROL,TBD,One-hot; all-off during change => receive mute
+S702,5-way 1P5T Rx mode selector,"rotary 5 position, footprint TBD",CONTROL,TBD,One-hot AM/FM/USB/LSB/CW
+S703,ALFA_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S704,RIT_UP_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S705,RIT_DN_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S706,VOX_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S707,DUAL_WATCH_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S708,ROGER_BEEP_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S709,ECHO_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S710,CTCSS_DCS_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S711,DSP_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S712,ATU_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S713,SCAN_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S714,MEMORY_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S715,LOCK_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S716,NB_ANL_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S717,METER_SEL_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S718,MIC_GAIN_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+S719,SERVICE_N switch,"SPST mechanical, footprint TBD",CONTROL,TBD,
+R760,1 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,LED current approximately 1.3mA for red LED Vf 2.0V
+D760,red/green indicator LED,"LED 0603 3.3V, optical properties TBD",DISPLAY,TBD,
+R761,1 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,LED current approximately 1.3mA for red LED Vf 2.0V
+D761,red/green indicator LED,"LED 0603 3.3V, optical properties TBD",DISPLAY,TBD,
+R762,1 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,LED current approximately 1.3mA for red LED Vf 2.0V
+D762,red/green indicator LED,"LED 0603 3.3V, optical properties TBD",DISPLAY,TBD,
+R763,1 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,LED current approximately 1.3mA for red LED Vf 2.0V
+D763,red/green indicator LED,"LED 0603 3.3V, optical properties TBD",DISPLAY,TBD,
+R790,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,"3.3V direct input, default HIGH"
+R800,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series; active LOW -> ~0.071V
+C790,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,RC step; debounce firmware
+S740,SPST to DGND,"physical switch 3.3V logic, footprint TBD",SAFETY,TBD,
+R791,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,"3.3V direct input, default HIGH"
+R801,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series; active LOW -> ~0.071V
+C791,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,RC step; debounce firmware
+S741,SPST to DGND,"physical switch 3.3V logic, footprint TBD",SAFETY,TBD,
+R792,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,"3.3V direct input, default HIGH"
+R802,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,series; active LOW -> ~0.071V
+C792,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,RC step; debounce firmware
+S742,DPST two insulated contacts,"physical switch 3.3V logic, footprint TBD",SAFETY,TBD,
+ENC701,incremental quadrature encoder with push optional,"EC11-like, mechanical footprint TBD",CONTROL,TBD,
+R900,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,encoder pullup
+R910,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,quadrature 3.3V interface
+C900,10 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,nominal RC open 0.1ms; filter 2ms digital
+R901,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,encoder pullup
+R911,220 ohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,quadrature 3.3V interface
+C901,10 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,nominal RC open 0.1ms; filter 2ms digital
+R830,4.7 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,single global bus pullup; REMOVE DUPLICATES from other modules
+R831,4.7 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,single global bus pullup; single 3.3V domain
+C840,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,"near each U201 VDD pin 16,32,48,64"
+C841,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,"near each U201 VDD pin 16,32,48,64"
+C842,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,"near each U201 VDD pin 16,32,48,64"
+C843,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,"near each U201 VDD pin 16,32,48,64"
+C844,4.7 uF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,bulk digital
+C845,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,analog 3.3 decoupling
+C846,1 uF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,ADC ref decoupling; source selection TBD
+R870,10 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,external reset default HIGH; verify ST reset pin application
+R871,100 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,"PB8 boot strap default low, verify option bytes"
+RV701,10 kohm linear squelch pot,pot physical panel TBD,CONTROL,TBD,
+R860,1 kohm,"resistore 0603, tolleranza da chiudere",PASSIVO,CANDIDATO,ADC input protection; verify sampling impedance
+C860,100 nF,"MLCC 0603/0805, tensione da chiudere",PASSIVO,CANDIDATO,single-pole RC nominal 1.59kHz max; verify ADC SAR drive
+J701,12 contatti,connettore e footprint DA SCEGLIERE,CONNETTORE,TBD,"Controller/remote panel harness, connector footprint TBD"
+J702,16 contatti,connettore e footprint DA SCEGLIERE,CONNETTORE,TBD,"V6.0 J604 interface: symbolic bridging, do not short 13.8 V into MCU"
+J703,5 contatti,connettore e footprint DA SCEGLIERE,CONNETTORE,TBD,"I2C display candidate with 3.3V-compatible interface, no selected module"
+J704,5 contatti,connettore e footprint DA SCEGLIERE,CONNETTORE,TBD,SWD service/debug header
+J705,6 contatti,connettore e footprint DA SCEGLIERE,CONNETTORE,TBD,"Safety contract, TX NEVER enabled in V6.1"
+J706,5 contatti,connettore e footprint DA SCEGLIERE,CONNETTORE,TBD,"Power domains, filtering/regulation TBD"

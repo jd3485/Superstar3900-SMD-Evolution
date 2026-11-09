@@ -1,0 +1,275 @@
+{
+  "release": "V2.6",
+  "date": "2026-11-07",
+  "subject": "Induttori SMD + confronto RF a Q uniforme",
+  "checked_vendor_family": "Coilcraft 0805CS",
+  "manufacturer_datasheet_url": "https://www.coilcraft.com/en-us/products/rf/ceramic-core-chip-inductors/0805-%282012%29/0805cs/",
+  "qualified_Q_27MHz": false,
+  "vendor_Q_measured_frequency_MHz": 250,
+  "candidate_L_nH": [
+    180,
+    220,
+    240,
+    270
+  ],
+  "min_SRF_typ_MHz": 730,
+  "srf_to_highest_image_frequency_ratio": 14.69,
+  "same_Q_model_results": [
+    {
+      "Q_assumed": 20,
+      "one_filter_loss_max_dB": 4.218,
+      "bank_ideal_loss_max_dB": 3.63,
+      "bank_relay_pair_illustrative_loss_max_dB": 4.03,
+      "bank_cmos_pair_illustrative_loss_max_dB": 5.03,
+      "one_filter_min_image_rej_dB": 59.855,
+      "bank_only_min_image_rej_dB": 26.736
+    },
+    {
+      "Q_assumed": 30,
+      "one_filter_loss_max_dB": 2.92,
+      "bank_ideal_loss_max_dB": 2.46,
+      "bank_relay_pair_illustrative_loss_max_dB": 2.86,
+      "bank_cmos_pair_illustrative_loss_max_dB": 3.86,
+      "one_filter_min_image_rej_dB": 59.57,
+      "bank_only_min_image_rej_dB": 26.665
+    },
+    {
+      "Q_assumed": 45,
+      "one_filter_loss_max_dB": 2.05,
+      "bank_ideal_loss_max_dB": 1.669,
+      "bank_relay_pair_illustrative_loss_max_dB": 2.069,
+      "bank_cmos_pair_illustrative_loss_max_dB": 3.069,
+      "one_filter_min_image_rej_dB": 59.39,
+      "bank_only_min_image_rej_dB": 26.623
+    },
+    {
+      "Q_assumed": 60,
+      "one_filter_loss_max_dB": 1.614,
+      "bank_ideal_loss_max_dB": 1.272,
+      "bank_relay_pair_illustrative_loss_max_dB": 1.672,
+      "bank_cmos_pair_illustrative_loss_max_dB": 2.672,
+      "one_filter_min_image_rej_dB": 59.302,
+      "bank_only_min_image_rej_dB": 26.603
+    },
+    {
+      "Q_assumed": 90,
+      "one_filter_loss_max_dB": 1.178,
+      "bank_ideal_loss_max_dB": 0.873,
+      "bank_relay_pair_illustrative_loss_max_dB": 1.273,
+      "bank_cmos_pair_illustrative_loss_max_dB": 2.273,
+      "one_filter_min_image_rej_dB": 59.217,
+      "bank_only_min_image_rej_dB": 26.584
+    }
+  ],
+  "unoptimized_stock_L_sensitivity": [
+    {
+      "L_stock_nH": 180,
+      "band": "A",
+      "L_ideal_nH": 208.709,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 2.4106,
+      "loss_ideal_L_dB": 1.6692,
+      "delta_loss_dB": 0.7414,
+      "image_rej_stock_only_dB": 25.499
+    },
+    {
+      "L_stock_nH": 180,
+      "band": "B",
+      "L_ideal_nH": 205.136,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 2.252,
+      "loss_ideal_L_dB": 1.6689,
+      "delta_loss_dB": 0.5831,
+      "image_rej_stock_only_dB": 25.56
+    },
+    {
+      "L_stock_nH": 180,
+      "band": "C",
+      "L_ideal_nH": 201.683,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 2.1019,
+      "loss_ideal_L_dB": 1.6687,
+      "delta_loss_dB": 0.4332,
+      "image_rej_stock_only_dB": 25.622
+    },
+    {
+      "L_stock_nH": 180,
+      "band": "D",
+      "L_ideal_nH": 198.345,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 1.9696,
+      "loss_ideal_L_dB": 1.6684,
+      "delta_loss_dB": 0.3012,
+      "image_rej_stock_only_dB": 25.684
+    },
+    {
+      "L_stock_nH": 180,
+      "band": "E",
+      "L_ideal_nH": 195.115,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 1.861,
+      "loss_ideal_L_dB": 1.6681,
+      "delta_loss_dB": 0.1929,
+      "image_rej_stock_only_dB": 25.747
+    },
+    {
+      "L_stock_nH": 180,
+      "band": "F",
+      "L_ideal_nH": 191.989,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 1.778,
+      "loss_ideal_L_dB": 1.6679,
+      "delta_loss_dB": 0.1101,
+      "image_rej_stock_only_dB": 25.811
+    },
+    {
+      "L_stock_nH": 220,
+      "band": "A",
+      "L_ideal_nH": 208.709,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 1.8276,
+      "loss_ideal_L_dB": 1.6692,
+      "delta_loss_dB": 0.1584,
+      "image_rej_stock_only_dB": 27.849
+    },
+    {
+      "L_stock_nH": 220,
+      "band": "B",
+      "L_ideal_nH": 205.136,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 1.951,
+      "loss_ideal_L_dB": 1.6689,
+      "delta_loss_dB": 0.2821,
+      "image_rej_stock_only_dB": 27.9
+    },
+    {
+      "L_stock_nH": 220,
+      "band": "C",
+      "L_ideal_nH": 201.683,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 2.133,
+      "loss_ideal_L_dB": 1.6687,
+      "delta_loss_dB": 0.4643,
+      "image_rej_stock_only_dB": 27.952
+    },
+    {
+      "L_stock_nH": 220,
+      "band": "D",
+      "L_ideal_nH": 198.345,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 2.3872,
+      "loss_ideal_L_dB": 1.6684,
+      "delta_loss_dB": 0.7188,
+      "image_rej_stock_only_dB": 28.004
+    },
+    {
+      "L_stock_nH": 220,
+      "band": "E",
+      "L_ideal_nH": 195.115,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 2.7237,
+      "loss_ideal_L_dB": 1.6681,
+      "delta_loss_dB": 1.0556,
+      "image_rej_stock_only_dB": 28.057
+    },
+    {
+      "L_stock_nH": 220,
+      "band": "F",
+      "L_ideal_nH": 191.989,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 3.1459,
+      "loss_ideal_L_dB": 1.6679,
+      "delta_loss_dB": 1.4781,
+      "image_rej_stock_only_dB": 28.11
+    },
+    {
+      "L_stock_nH": 240,
+      "band": "A",
+      "L_ideal_nH": 208.709,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 3.2918,
+      "loss_ideal_L_dB": 1.6692,
+      "delta_loss_dB": 1.6226,
+      "image_rej_stock_only_dB": 28.679
+    },
+    {
+      "L_stock_nH": 240,
+      "band": "B",
+      "L_ideal_nH": 205.136,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 3.871,
+      "loss_ideal_L_dB": 1.6689,
+      "delta_loss_dB": 2.202,
+      "image_rej_stock_only_dB": 28.727
+    },
+    {
+      "L_stock_nH": 240,
+      "band": "C",
+      "L_ideal_nH": 201.683,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 4.5295,
+      "loss_ideal_L_dB": 1.6687,
+      "delta_loss_dB": 2.8609,
+      "image_rej_stock_only_dB": 28.776
+    },
+    {
+      "L_stock_nH": 240,
+      "band": "D",
+      "L_ideal_nH": 198.345,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 5.2477,
+      "loss_ideal_L_dB": 1.6684,
+      "delta_loss_dB": 3.5793,
+      "image_rej_stock_only_dB": 28.825
+    },
+    {
+      "L_stock_nH": 240,
+      "band": "E",
+      "L_ideal_nH": 195.115,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 6.0049,
+      "loss_ideal_L_dB": 1.6681,
+      "delta_loss_dB": 4.3367,
+      "image_rej_stock_only_dB": 28.874
+    },
+    {
+      "L_stock_nH": 240,
+      "band": "F",
+      "L_ideal_nH": 191.989,
+      "cap_reoptimized": "NO",
+      "Q_assumed": 45,
+      "loss_stock_L_dB": 6.7823,
+      "loss_ideal_L_dB": 1.6679,
+      "delta_loss_dB": 5.1144,
+      "image_rej_stock_only_dB": 28.924
+    }
+  ],
+  "model_limits": [
+    "Q@27MHz missing: Qmin@250MHz cannot be transferred",
+    "model is ideal 50-ohm stages with constant Q and loss tan(delta)",
+    "switch loss at 27MHz assumed, not measured",
+    "different architectures still do not have matched filtering/isolation after LNA",
+    "stock L replacement test changes only inductors; C is not retuned, not a final BOM",
+    "vendor S-param/Touchstone source identified but numeric files not imported; full model unavailable",
+    "no RF board layout, no coupling or leakage, no VNA or NF measurement"
+  ],
+  "decision": "NO-GO FOR PCB; require measured or vendor Q/S-parameters @25-50MHz, E-series caps optimized, calibrated RF simulations, isolation tests, consistent topologies and native KiCad checks",
+  "progress_estimate_pct": 33
+}

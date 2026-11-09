@@ -1,0 +1,175 @@
+ref,pin_or_terminal,net,qualifier,note
+J7101,1,IF2_AM_OUT,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,2,IF2_FM_OUT,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,3,IF2_SSB_CW_FILTERED,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,4,GND_IF2,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,5,3V3_A_IF,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,6,5V_A_RF,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,7,HW_RX_SAFE,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,8,AUDIO_1V65_REF,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+J7101,9,SHIELD_CHASSIS,INTERFACCIA_CONTRATTO,"V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+U7101,1,AM_INM_BIAS,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,2,GND_IF2,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,3,NC_OFS_AD8307,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,4,AM_LOG_RAW,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,5,NC_INT_AD8307,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,6,AM_DETECT_EN,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,7,3V3_A_IF_FILTERED,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+U7101,8,AM_INP_BIAS,PINOUT_FABBRICANTE,"La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+C7101,1,AM_IF_SERIES,VALORE_CANDIDATO,
+C7101,2,AM_INP_BIAS,VALORE_CANDIDATO,
+R7101,1,IF2_AM_OUT,VALORE_CANDIDATO,"2k termination approx: 910R + 1.1k input diff, from actual AD8307 input"
+R7101,2,AM_IF_SERIES,VALORE_CANDIDATO,"2k termination approx: 910R + 1.1k input diff, from actual AD8307 input"
+C7102,1,AM_INM_BIAS,VALORE_CANDIDATO,DC common-mode from device internal bias preserved
+C7102,2,GND_IF2,VALORE_CANDIDATO,DC common-mode from device internal bias preserved
+C7103,1,3V3_A_IF_FILTERED,VALORE_CANDIDATO,
+C7103,2,GND_IF2,VALORE_CANDIDATO,
+C7104,1,3V3_A_IF_FILTERED,VALORE_CANDIDATO,
+C7104,2,GND_IF2,VALORE_CANDIDATO,
+R7102,1,AM_DETECT_EN,VALORE_CANDIDATO,"default detector OFF, enable requires RX consent"
+R7102,2,GND_IF2,VALORE_CANDIDATO,"default detector OFF, enable requires RX consent"
+Q7101,G,HW_RX_SAFE,DNP_OPZIONALE_NON_CABLATO,Needs gate logic stage: do not fit as a direct active-high enable generator
+Q7101,S,GND_IF2,DNP_OPZIONALE_NON_CABLATO,Needs gate logic stage: do not fit as a direct active-high enable generator
+Q7101,D,AM_EN_GATE_INV,DNP_OPZIONALE_NON_CABLATO,Needs gate logic stage: do not fit as a direct active-high enable generator
+J7102,1,HW_RX_AM_EN_3V3,INTERFACCIA_NON_POPOLATA,Link only after independent HW RX consent; default R7102 holds LOW
+J7102,2,AM_DETECT_EN,INTERFACCIA_NON_POPOLATA,Link only after independent HW RX consent; default R7102 holds LOW
+R7103,1,AM_LOG_RAW,VALORE_CANDIDATO,
+R7103,2,AM_LOG_RC,VALORE_CANDIDATO,
+C7105,1,AM_LOG_RC,VALORE_CANDIDATO,
+C7105,2,GND_IF2,VALORE_CANDIDATO,
+U7102,1,FM_SQUARE_455K,PINOUT_FABBRICANTE,"40ns propagation not zero, receiver filter must support input swing"
+U7102,2,GND_IF2,PINOUT_FABBRICANTE,"40ns propagation not zero, receiver filter must support input swing"
+U7102,3,FM_IF_BIASED,PINOUT_FABBRICANTE,"40ns propagation not zero, receiver filter must support input swing"
+U7102,4,AUDIO_1V65_REF,PINOUT_FABBRICANTE,"40ns propagation not zero, receiver filter must support input swing"
+U7102,5,3V3_A_IF_FILTERED,PINOUT_FABBRICANTE,"40ns propagation not zero, receiver filter must support input swing"
+R7104,1,IF2_FM_OUT,DNP_FINCHÉ_MATCHING_NON_VERIFICATO,ONLY if Murata candidate specifies 1.5k termination: avoid double terminations in V6.8
+R7104,2,GND_IF2,DNP_FINCHÉ_MATCHING_NON_VERIFICATO,ONLY if Murata candidate specifies 1.5k termination: avoid double terminations in V6.8
+C7106,1,IF2_FM_OUT,VALORE_CANDIDATO,
+C7106,2,FM_IF_BIASED,VALORE_CANDIDATO,
+R7105,1,FM_IF_BIASED,VALORE_CANDIDATO,
+R7105,2,AUDIO_1V65_REF,VALORE_CANDIDATO,
+C7107,1,3V3_A_IF_FILTERED,VALORE_CANDIDATO,
+C7107,2,GND_IF2,VALORE_CANDIDATO,
+U7103,1,NC_PCPOUT,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,2,FM_PC1_OUT,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,3,FM_VCO_OUT,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,4,FM_VCO_OUT,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,5,FM_PLL_INH,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,6,FM_C1_A,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,7,FM_C1_B,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,8,GND_IF2,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,9,FM_VCOIN_CTRL,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,10,FM_DEMOUT_RAW,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,11,FM_R1,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,12,NC_R2_UNUSED,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,13,NC_PC2OUT,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,14,FM_SQUARE_455K,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,15,NC_PC3OUT,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+U7103,16,3V3_A_IF_FILTERED,PINOUT_FABBRICANTE,R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware
+C7108,1,FM_C1_A,VALORE_DA_TARARE,R1/C1 455k center NOT QUALIFIED; test with scope required
+C7108,2,FM_C1_B,VALORE_DA_TARARE,R1/C1 455k center NOT QUALIFIED; test with scope required
+R7106,1,FM_R1,VALORE_DA_TARARE,VCO f=455k cannot be claimed from this value alone
+R7106,2,GND_IF2,VALORE_DA_TARARE,VCO f=455k cannot be claimed from this value alone
+R7107,1,FM_PC1_OUT,VALORE_CANDIDATO,
+R7107,2,FM_VCOIN_CTRL,VALORE_CANDIDATO,
+C7109,1,FM_VCOIN_CTRL,VALORE_CANDIDATO,
+C7109,2,GND_IF2,VALORE_CANDIDATO,
+R7108,1,FM_DEMOUT_RAW,VALORE_CANDIDATO,Per datasheet DEMOUT output add load resistor
+R7108,2,GND_IF2,VALORE_CANDIDATO,Per datasheet DEMOUT output add load resistor
+R7109,1,3V3_A_IF_FILTERED,VALORE_CANDIDATO,PLL default OFF; INH high inhibits VCO
+R7109,2,FM_PLL_INH,VALORE_CANDIDATO,PLL default OFF; INH high inhibits VCO
+Q7102,G,HW_RX_SAFE,PIN_FUNZIONALE_CANDIDATO,HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off
+Q7102,S,GND_IF2,PIN_FUNZIONALE_CANDIDATO,HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off
+Q7102,D,FM_PLL_INH,PIN_FUNZIONALE_CANDIDATO,HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off
+R7110,1,HW_RX_SAFE,VALORE_CANDIDATO,
+R7110,2,GND_IF2,VALORE_CANDIDATO,
+C7110,1,3V3_A_IF_FILTERED,VALORE_CANDIDATO,
+C7110,2,GND_IF2,VALORE_CANDIDATO,
+U7104,1,AM_BUFFER_OUT,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,2,AM_AMP_INN,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,3,AM_AC_BIASED,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,4,GND_IF2,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,5,FM_AC_BIASED,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,6,FM_AMP_INN,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,7,FM_BUFFER_OUT,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+U7104,8,3V3_A_IF_FILTERED,PINOUT_FABBRICANTE,Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model
+C7111,1,AM_LOG_RC,VALORE_CANDIDATO,
+C7111,2,AM_AC_BIASED,VALORE_CANDIDATO,
+R7111,1,AM_AC_BIASED,VALORE_CANDIDATO,
+R7111,2,AUDIO_1V65_REF,VALORE_CANDIDATO,
+R7112,1,AM_AMP_INN,VALORE_CANDIDATO,
+R7112,2,AUDIO_1V65_REF,VALORE_CANDIDATO,
+R7113,1,AM_BUFFER_OUT,VALORE_CANDIDATO,
+R7113,2,AM_AMP_INN,VALORE_CANDIDATO,
+C7112,1,FM_DEMOUT_RAW,VALORE_CANDIDATO,
+C7112,2,FM_AC_BIASED,VALORE_CANDIDATO,
+R7114,1,FM_AC_BIASED,VALORE_CANDIDATO,
+R7114,2,AUDIO_1V65_REF,VALORE_CANDIDATO,
+R7115,1,FM_AMP_INN,VALORE_CANDIDATO,
+R7115,2,AUDIO_1V65_REF,VALORE_CANDIDATO,
+R7116,1,FM_BUFFER_OUT,VALORE_CANDIDATO,
+R7116,2,FM_AMP_INN,VALORE_CANDIDATO,
+C7113,1,3V3_A_IF_FILTERED,VALORE_CANDIDATO,
+C7113,2,GND_IF2,VALORE_CANDIDATO,
+J7103,1,DEMOD_AM_AUDIO_AC,INTERFACCIA,"V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+J7103,2,DEMOD_FM_AUDIO_AC,INTERFACCIA,"V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+J7103,3,AGND_IF2,INTERFACCIA,"V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+C7114,1,AM_BUFFER_OUT,VALORE_CANDIDATO,
+C7114,2,DEMOD_AM_AUDIO_AC,VALORE_CANDIDATO,
+R7117,1,DEMOD_AM_AUDIO_AC,VALORE_CANDIDATO,
+R7117,2,AGND_IF2,VALORE_CANDIDATO,
+C7115,1,FM_BUFFER_OUT,VALORE_CANDIDATO,
+C7115,2,DEMOD_FM_AUDIO_AC,VALORE_CANDIDATO,
+R7118,1,DEMOD_FM_AUDIO_AC,VALORE_CANDIDATO,
+R7118,2,AGND_IF2,VALORE_CANDIDATO,
+J7104,1,3V3_A_IF_FILTERED,INTERFACCIA,"External reference must be buffered if loaded, avoid backfeeding; DNP local divider"
+J7104,2,AUDIO_1V65_REF,INTERFACCIA,"External reference must be buffered if loaded, avoid backfeeding; DNP local divider"
+U7121,1,LO2_AMP_IN,PINOUT_FABBRICANTE,Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point
+U7121,2,GND_LO2,PINOUT_FABBRICANTE,Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point
+U7121,3,LO2_AMP_OUT_BIASED,PINOUT_FABBRICANTE,Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point
+U7121,4,GND_LO2,PINOUT_FABBRICANTE,Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point
+J7121,1,LO2_DRIVER_INPUT,INTERFACCIA,U971 CLK0 through 33ohm from V6.9; CMOS driver swing unknown
+J7121,2,GND_LO2,INTERFACCIA,U971 CLK0 through 33ohm from V6.9; CMOS driver swing unknown
+R7121,1,LO2_DRIVER_INPUT,VALORE_CANDIDATO,
+R7121,2,LO2_SERIES_SOURCE,VALORE_CANDIDATO,
+C7121,1,LO2_SERIES_SOURCE,VALORE_CANDIDATO,
+C7121,2,LO2_AMP_IN,VALORE_CANDIDATO,
+R7122,1,5V_A_RF,VALORE_CANDIDATO,"5V supply assumed, 35mA typ, thermal worstcase simulated"
+R7122,2,LO2_BIAS_FEED,VALORE_CANDIDATO,"5V supply assumed, 35mA typ, thermal worstcase simulated"
+L7121,1,LO2_BIAS_FEED,INDUTTORE_NON_QUALIFICATO,Specific choke part + S-param/SRF required before fabrication
+L7121,2,LO2_AMP_OUT_BIASED,INDUTTORE_NON_QUALIFICATO,Specific choke part + S-param/SRF required before fabrication
+C7122,1,LO2_BIAS_FEED,VALORE_CANDIDATO,
+C7122,2,GND_LO2,VALORE_CANDIDATO,
+C7123,1,LO2_BIAS_FEED,VALORE_CANDIDATO,
+C7123,2,GND_LO2,VALORE_CANDIDATO,
+C7124,1,LO2_AMP_OUT_BIASED,VALORE_CANDIDATO,
+C7124,2,LO2_FILTER_IN,VALORE_CANDIDATO,
+L7122,1,LO2_FILTER_IN,INDUTTORE_DA_QUALIFICARE,Needs Q/SRF at >30.72 MHz
+L7122,2,LO2_LPF_A,INDUTTORE_DA_QUALIFICARE,Needs Q/SRF at >30.72 MHz
+C7125,1,LO2_LPF_A,VALORE_CANDIDATO,
+C7125,2,GND_LO2,VALORE_CANDIDATO,
+L7123,1,LO2_LPF_A,INDUTTORE_DA_QUALIFICARE,"Needs SRF>70MHz, ESR/Q verification"
+L7123,2,LO2_LPF_B,INDUTTORE_DA_QUALIFICARE,"Needs SRF>70MHz, ESR/Q verification"
+C7126,1,LO2_LPF_B,VALORE_CANDIDATO,
+C7126,2,GND_LO2,VALORE_CANDIDATO,
+L7124,1,LO2_LPF_B,INDUTTORE_DA_QUALIFICARE,LPF no HF PCB validated
+L7124,2,LO2_PAD_IN,INDUTTORE_DA_QUALIFICARE,LPF no HF PCB validated
+R7123,1,LO2_PAD_IN,VALORE_CANDIDATO,
+R7123,2,GND_LO2,VALORE_CANDIDATO,
+R7124,1,LO2_PAD_IN,VALORE_CANDIDATO,
+R7124,2,LO2_PAD_OUT,VALORE_CANDIDATO,
+R7125,1,LO2_PAD_OUT,VALORE_CANDIDATO,
+R7125,2,GND_LO2,VALORE_CANDIDATO,
+C7127,1,LO2_PAD_OUT,VALORE_CANDIDATO,
+C7127,2,LO2_RF_AC_TO_MIXER,VALORE_CANDIDATO,
+J7122,1,LO2_RF_AC_TO_MIXER,INTERFACCIA_CANDIDATA,No assembler permit until +7dBm and spurs measured on 50ohm load
+J7122,2,GND_LO2,INTERFACCIA_CANDIDATA,No assembler permit until +7dBm and spurs measured on 50ohm load
+J7131,1,USB_LSB_PRODUCT_AUDIO,INTERFACCIA,DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected.
+J7131,2,CW_PRODUCT_AUDIO,INTERFACCIA,DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected.
+J7131,3,DEMOD_AM_AUDIO_AC,INTERFACCIA,DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected.
+J7131,4,DEMOD_FM_AUDIO_AC,INTERFACCIA,DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected.
+J7131,5,AGND_IF2,INTERFACCIA,DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected.
+R7131,1,USB_LSB_PRODUCT_AUDIO,VALORE_CANDIDATO,
+R7131,2,AGND_IF2,VALORE_CANDIDATO,
+R7132,1,CW_PRODUCT_AUDIO,VALORE_CANDIDATO,
+R7132,2,AGND_IF2,VALORE_CANDIDATO,

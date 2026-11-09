@@ -1,0 +1,23 @@
+* V6.8 study only. Two high-Z buffered parallel tuned tanks, passive Q model
+* WARNING! B811/B812 REAL COMPONENTS UNSPECIFIED; ideal E voltage followers here.
+* Use ngspice .ac (NOT RUN in this environment).
+Vin sig 0 AC 1
+Rsource sig tn1 1k
+L811 tn1 lseries1 1u
+Rloss1 lseries1 0 0.84
+C811 tn1 0 221.44p
+R811 tn1 0 3.3k
+Ebuf1 tn2 0 tn1 0 1
+Rsep tn2 t2 1k
+L812 t2 lseries2 1u
+Rloss2 lseries2 0 0.84
+C812 t2 0 221.44p
+R812 t2 0 3.3k
+Ebuf2 out 0 t2 0 1
+.ac dec 150 9Meg 12Meg
+.control
+run
+let gain_db = db(v(out))
+print gain_db
+.endc
+.end

@@ -1,0 +1,82 @@
+{
+  "revision": "V3.7",
+  "project": "S3900E module RX 50ohm",
+  "manufacturing_release": "BLOCKED — NOT FABRICABLE; NO GERBERS",
+  "checks_performed": [
+    "balanced sexpr parse",
+    "pad-net comparison with schematic pin table",
+    "conservative 2D F.Cu inter-net clearance",
+    "trace topology for seven signal/power nets",
+    "ground pad to local via reachability",
+    "ground region layer declarations"
+  ],
+  "native_kicad_erc_drc": "NOT RUN - kicad-cli absent",
+  "footprints": 15,
+  "nets": 8,
+  "segments": 43,
+  "vias": 64,
+  "zones_declared_unfilled": [
+    "F.Cu",
+    "In1.Cu",
+    "B.Cu",
+    "In2.Cu"
+  ],
+  "min_2d_inter_net_copper_clearance_mm": 0.45,
+  "closest_copper_pair": [
+    "pad",
+    "C101",
+    2,
+    "pad",
+    "C101",
+    3
+  ],
+  "minimum_review_clearance_mm": 0.2,
+  "2d_clash_count": 0,
+  "2d_clashes": [],
+  "unconnected_nonground_nets": {},
+  "ground_pad_count": 24,
+  "ground_via_count": 64,
+  "ground_pads_without_explicit_local_via": [],
+  "schematic_pin_assignments_ok": 31,
+  "schematic_pin_mismatches": [],
+  "sma_center_2_05mm": "manufacturer drawing shows diameter 2.05 feature; in-board circle is a copper PLACEHOLDER and mechanical function unresolved",
+  "copper_zones_filled": "NO",
+  "model_limitations": [
+    "not a KiCad ERC/DRC",
+    "no soldermask/solderpaste/silkscreen conflicts",
+    "no 3D mechanical fit / exact SMA launch",
+    "no thermal simulation",
+    "no RF EM/impedance simulation",
+    "L1-L2 stack-up NOT confirmed by PCBWay",
+    "cannot prove GND plane connectivity without zone refill",
+    "pad shape roundrect treated as rect (conservative)",
+    "does not verify formal KiCad file load"
+  ],
+  "release_blockers": [
+    "exact TE SMA footprint, center feature and edge-overhang",
+    "confirm ADL5535 Fig17 paste/thermals",
+    "native KiCad DRC and zone refill",
+    "controlled impedance manufacturing stackup",
+    "VNA/S11/S21 and powered tests",
+    "TX disconnected: dedicated RX-only bench circuit"
+  ],
+  "footprint_2p05_land_interpretation": "SMD circular COPPER LAND from TE recommended footprint, NO DRILL (source page 2). The 4 GND geometry pads remain REVIEW ONLY.",
+  "connector_orientation": {
+    "J101": "0 left-facing (ASSUMED local axis)",
+    "J102": "180 right-facing (ASSUMED local axis)",
+    "J103": "0 left-facing",
+    "J104": "180 right-facing"
+  },
+  "kicad_cli_present": false,
+  "repeated_sma_center_copper_smd_count": 4,
+  "negative_test_unwanted_center_hole": true,
+  "negative_test_reversed_port": true,
+  "adl5535_paddle": "Pad 2 exposed: 1.80x3.48mm model; solder paste via strategy OPEN.",
+  "explicitly_unverified": [
+    "manufacturer-recommended curved TE grounds vs square pads",
+    "right angle mechanical overhang / 3D collision",
+    "native DRC & zone refill",
+    "SMD stencil and pad-in-via treatment",
+    "RF S11/S21 and controlled impedance"
+  ]
+}

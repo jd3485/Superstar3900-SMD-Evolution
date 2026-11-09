@@ -1,0 +1,122 @@
+{
+  "version": "V5.5",
+  "method": "independent Shapely top-copper shape-based distance screen",
+  "board_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "layer": "F.Cu",
+  "geometry_counts": {
+    "pads": 44,
+    "segments": 44,
+    "vias": 70,
+    "zones": 4,
+    "filled_zone_polygons": 0
+  },
+  "nets": 8,
+  "cross_net_pairs": 5267,
+  "screen_threshold_mm": 0.3,
+  "minimum_cross_net_clearance": {
+    "first": "R202:1:35",
+    "second": "R202:2:36",
+    "net1": "RF_ATTEN_OUT",
+    "net2": "GND_RF",
+    "clearance_mm": 0.45
+  },
+  "closest_12_cross_net_pairs": [
+    {
+      "first": "C101:1:5",
+      "second": "C101:2:6",
+      "net1": "RF_LNA_INPUT",
+      "net2": "RF_LNA_IC_IN",
+      "clearance_mm": 0.45
+    },
+    {
+      "first": "C102:1:19",
+      "second": "C102:2:20",
+      "net1": "RF_BIAS_OUT",
+      "net2": "RF_LNA_OUT",
+      "clearance_mm": 0.45
+    },
+    {
+      "first": "R201:1:31",
+      "second": "R201:2:32",
+      "net1": "RF_ATTEN_IN",
+      "net2": "GND_RF",
+      "clearance_mm": 0.45
+    },
+    {
+      "first": "R203:1:33",
+      "second": "R203:2:34",
+      "net1": "RF_ATTEN_IN",
+      "net2": "RF_ATTEN_OUT",
+      "clearance_mm": 0.45
+    },
+    {
+      "first": "R202:1:35",
+      "second": "R202:2:36",
+      "net1": "RF_ATTEN_OUT",
+      "net2": "GND_RF",
+      "clearance_mm": 0.45
+    },
+    {
+      "first": "C101:1:5",
+      "second": "track:2",
+      "net1": "RF_LNA_INPUT",
+      "net2": "RF_LNA_IC_IN",
+      "clearance_mm": 0.635
+    },
+    {
+      "first": "C101:2:6",
+      "second": "track:1",
+      "net1": "RF_LNA_IC_IN",
+      "net2": "RF_LNA_INPUT",
+      "clearance_mm": 0.635
+    },
+    {
+      "first": "C102:1:19",
+      "second": "track:9",
+      "net1": "RF_BIAS_OUT",
+      "net2": "RF_LNA_OUT",
+      "clearance_mm": 0.635
+    },
+    {
+      "first": "C102:2:20",
+      "second": "track:6",
+      "net1": "RF_LNA_OUT",
+      "net2": "RF_BIAS_OUT",
+      "clearance_mm": 0.635
+    },
+    {
+      "first": "R201:2:32",
+      "second": "track:17",
+      "net1": "GND_RF",
+      "net2": "RF_ATTEN_IN",
+      "clearance_mm": 0.635
+    },
+    {
+      "first": "R203:1:33",
+      "second": "track:18",
+      "net1": "RF_ATTEN_IN",
+      "net2": "RF_ATTEN_OUT",
+      "clearance_mm": 0.635
+    },
+    {
+      "first": "R203:2:34",
+      "second": "track:16",
+      "net1": "RF_ATTEN_OUT",
+      "net2": "RF_ATTEN_IN",
+      "clearance_mm": 0.635
+    }
+  ],
+  "pairs_below_0_50mm": 5,
+  "clearance_screen_violations": [],
+  "status": "STATIC_SCREEN_PASS",
+  "zone_refill": "NOT_RUN",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "notes": [
+    "Covers F.Cu pads (including custom), tracks and through-via copper only.",
+    "Does not cover filled copper zones, exact KiCad polygon approximations, buried layers, masked solder, silk, drill/courtyard rules or full connectivity.",
+    "Screen threshold is an analytical parameter, NOT a verified KiCad design-rule setting.",
+    "Must not be treated as KiCad DRC or fabrication approval."
+  ],
+  "fabrication_allowed": false
+}

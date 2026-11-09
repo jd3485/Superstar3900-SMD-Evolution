@@ -1,0 +1,39 @@
+{
+  "CORE9": {
+    "loss_max_dB": 2.002659802338693,
+    "image_rejection_min_dB": 62.95278189679522,
+    "s11_worst_dB": -15.341633287054554
+  },
+  "HP3_CORE12": {
+    "loss_max_dB": 2.4463874890398865,
+    "image_rejection_min_dB": 63.30459627057525,
+    "s11_worst_dB": -11.455734755087212
+  },
+  "baseline_v28_Q30": {
+    "loss_max_dB": 1.0562600482602442,
+    "image_rejection_min_dB": 65.3658826805351,
+    "s11_worst_dB": -17.254027149302495
+  },
+  "commercial_v28_Q30": {
+    "loss_max_dB": 1.1361082937065727,
+    "image_rejection_min_dB": 66.40811072018505,
+    "s11_worst_dB": -14.426588506128045
+  },
+  "coil_Q27_180nH": 14.592767734664847,
+  "coil_Q27_330nH": 14.04954255086039,
+  "coil_Q27_470nH": 15.9685814520139,
+  "CORE9_stress": {
+    "cases": 1200,
+    "gate_illustrative_frac": 0.9375,
+    "loss_p95_dB": 2.3493633017593254,
+    "rejection_p05_dB": 54.64594364363327,
+    "s11_p95_dB": -13.983764903265541
+  },
+  "HP3_CORE12_stress": {
+    "cases": 1200,
+    "gate_illustrative_frac": 0.5291666666666667,
+    "loss_p95_dB": 2.834950628734518,
+    "rejection_p05_dB": 54.60871523694148,
+    "s11_p95_dB": -10.753976599326421
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "revision": "V3.3",
+  "percentuale_stimata_complessiva": 37,
+  "precedente": 36,
+  "nota": "Studio PCB non instradato creato; nessun collaudo hardware o DRC KiCad",
+  "pronto_per_PCBWay": false
+}

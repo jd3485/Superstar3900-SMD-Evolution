@@ -1,0 +1,4176 @@
+{
+  "revision": "V6.1",
+  "status": "SCHEMA_A_COMPONENTI_CANDIDATO_NON_KICAD",
+  "hardware_tested": false,
+  "native_erc_drc": false,
+  "production_release": false,
+  "mcu": "STM32G474RET6 LQFP64",
+  "expanders": [
+    {
+      "ref": "U701",
+      "i2c_address": "0x20",
+      "inputs": {
+        "GPA0": "BAND_A_N",
+        "GPA1": "BAND_B_N",
+        "GPA2": "BAND_C_N",
+        "GPA3": "BAND_D_N",
+        "GPA4": "BAND_E_N",
+        "GPA5": "BAND_F_N",
+        "GPA6": "ALFA_N",
+        "GPB0": "MODE_AM_N",
+        "GPB1": "MODE_FM_N",
+        "GPB2": "MODE_USB_N",
+        "GPB3": "MODE_LSB_N",
+        "GPB4": "MODE_CW_N",
+        "GPB5": "RIT_UP_N",
+        "GPB6": "RIT_DN_N"
+      },
+      "outputs": {
+        "GPA7": "LED_ALFA_N",
+        "GPB7": "LED_CH9_N"
+      }
+    },
+    {
+      "ref": "U702",
+      "i2c_address": "0x21",
+      "inputs": {
+        "GPA0": "VOX_N",
+        "GPA1": "DUAL_WATCH_N",
+        "GPA2": "ROGER_BEEP_N",
+        "GPA3": "ECHO_N",
+        "GPA4": "CTCSS_DCS_N",
+        "GPA5": "DSP_N",
+        "GPA6": "ATU_N",
+        "GPB0": "SCAN_N",
+        "GPB1": "MEMORY_N",
+        "GPB2": "LOCK_N",
+        "GPB3": "NB_ANL_N",
+        "GPB4": "METER_SEL_N",
+        "GPB5": "MIC_GAIN_N",
+        "GPB6": "SERVICE_N"
+      },
+      "outputs": {
+        "GPA7": "LED_PA_N",
+        "GPB7": "LED_FAULT_N"
+      }
+    }
+  ],
+  "i2c_pullup_ohm": 4700,
+  "i2c_assumed_bus_pf": 150,
+  "i2c_max_bus_cap_pf_standard_mode": 251110.5,
+  "input_pullup_ohm": 10000,
+  "input_series_ohm": 220,
+  "input_capacitance_nf": 100,
+  "parts": [
+    {
+      "ref": "U201",
+      "description": "STM32G474RET6 LQFP64",
+      "mpn": "STM32G474RET6 (ST), 3.3 V",
+      "category": "MCU",
+      "status": "CANDIDATO",
+      "note": "Mapping from DS12288 Rev6 Fig7, all 64 pins"
+    },
+    {
+      "ref": "U701",
+      "description": "16-bit I2C GPIO expander",
+      "mpn": "MCP23017-E/SS, SSOP28",
+      "category": "GPIO",
+      "status": "CANDIDATO",
+      "note": "DS20001952D: GPA7/GPB7 SOLO OUTPUT"
+    },
+    {
+      "ref": "C701",
+      "description": "100 nF, 6.3V",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "Bypass U701"
+    },
+    {
+      "ref": "R701",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "RESET default HIGH; disable safety independent"
+    },
+    {
+      "ref": "U702",
+      "description": "16-bit I2C GPIO expander",
+      "mpn": "MCP23017-E/SS, SSOP28",
+      "category": "GPIO",
+      "status": "CANDIDATO",
+      "note": "DS20001952D: GPA7/GPB7 SOLO OUTPUT"
+    },
+    {
+      "ref": "C702",
+      "description": "100 nF, 6.3V",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "Bypass U702"
+    },
+    {
+      "ref": "R710",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R740",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C710",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R711",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R741",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C711",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R712",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R742",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C712",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R713",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R743",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C713",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R714",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R744",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C714",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R715",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R745",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C715",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R716",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R746",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C716",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R717",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R747",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C717",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R718",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R748",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C718",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R719",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R749",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C719",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R720",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R750",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C720",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R721",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R751",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C721",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R722",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R752",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C722",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R723",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R753",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C723",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R810",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R840",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C810",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R811",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R841",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C811",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R812",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R842",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C812",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R813",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R843",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C813",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R814",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R844",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C814",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R815",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R845",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C815",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R816",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R846",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C816",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R817",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R847",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C817",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R818",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R848",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C818",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R819",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R849",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C819",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R820",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R850",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C820",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R821",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R851",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C821",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R822",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R852",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C822",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "R823",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "pullup 3.3V; INPUT default HIGH"
+    },
+    {
+      "ref": "R853",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series mechanical switch; no 13.8V"
+    },
+    {
+      "ref": "C823",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "tau open = 1ms nominal; 20ms software debounce"
+    },
+    {
+      "ref": "S701",
+      "description": "6-way 1P6T band selector, break-before-make",
+      "mpn": "rotary 6 position, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": "One-hot; all-off during change => receive mute"
+    },
+    {
+      "ref": "S702",
+      "description": "5-way 1P5T Rx mode selector",
+      "mpn": "rotary 5 position, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": "One-hot AM/FM/USB/LSB/CW"
+    },
+    {
+      "ref": "S703",
+      "description": "ALFA_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S704",
+      "description": "RIT_UP_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S705",
+      "description": "RIT_DN_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S706",
+      "description": "VOX_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S707",
+      "description": "DUAL_WATCH_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S708",
+      "description": "ROGER_BEEP_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S709",
+      "description": "ECHO_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S710",
+      "description": "CTCSS_DCS_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S711",
+      "description": "DSP_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S712",
+      "description": "ATU_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S713",
+      "description": "SCAN_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S714",
+      "description": "MEMORY_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S715",
+      "description": "LOCK_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S716",
+      "description": "NB_ANL_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S717",
+      "description": "METER_SEL_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S718",
+      "description": "MIC_GAIN_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "S719",
+      "description": "SERVICE_N switch",
+      "mpn": "SPST mechanical, footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R760",
+      "description": "1 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "LED current approximately 1.3mA for red LED Vf 2.0V"
+    },
+    {
+      "ref": "D760",
+      "description": "red/green indicator LED",
+      "mpn": "LED 0603 3.3V, optical properties TBD",
+      "category": "DISPLAY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R761",
+      "description": "1 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "LED current approximately 1.3mA for red LED Vf 2.0V"
+    },
+    {
+      "ref": "D761",
+      "description": "red/green indicator LED",
+      "mpn": "LED 0603 3.3V, optical properties TBD",
+      "category": "DISPLAY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R762",
+      "description": "1 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "LED current approximately 1.3mA for red LED Vf 2.0V"
+    },
+    {
+      "ref": "D762",
+      "description": "red/green indicator LED",
+      "mpn": "LED 0603 3.3V, optical properties TBD",
+      "category": "DISPLAY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R763",
+      "description": "1 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "LED current approximately 1.3mA for red LED Vf 2.0V"
+    },
+    {
+      "ref": "D763",
+      "description": "red/green indicator LED",
+      "mpn": "LED 0603 3.3V, optical properties TBD",
+      "category": "DISPLAY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R790",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "3.3V direct input, default HIGH"
+    },
+    {
+      "ref": "R800",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series; active LOW -> ~0.071V"
+    },
+    {
+      "ref": "C790",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "RC step; debounce firmware"
+    },
+    {
+      "ref": "S740",
+      "description": "SPST to DGND",
+      "mpn": "physical switch 3.3V logic, footprint TBD",
+      "category": "SAFETY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R791",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "3.3V direct input, default HIGH"
+    },
+    {
+      "ref": "R801",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series; active LOW -> ~0.071V"
+    },
+    {
+      "ref": "C791",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "RC step; debounce firmware"
+    },
+    {
+      "ref": "S741",
+      "description": "SPST to DGND",
+      "mpn": "physical switch 3.3V logic, footprint TBD",
+      "category": "SAFETY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R792",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "3.3V direct input, default HIGH"
+    },
+    {
+      "ref": "R802",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "series; active LOW -> ~0.071V"
+    },
+    {
+      "ref": "C792",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "RC step; debounce firmware"
+    },
+    {
+      "ref": "S742",
+      "description": "DPST two insulated contacts",
+      "mpn": "physical switch 3.3V logic, footprint TBD",
+      "category": "SAFETY",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "ENC701",
+      "description": "incremental quadrature encoder with push optional",
+      "mpn": "EC11-like, mechanical footprint TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R900",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "encoder pullup"
+    },
+    {
+      "ref": "R910",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "quadrature 3.3V interface"
+    },
+    {
+      "ref": "C900",
+      "description": "10 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "nominal RC open 0.1ms; filter 2ms digital"
+    },
+    {
+      "ref": "R901",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "encoder pullup"
+    },
+    {
+      "ref": "R911",
+      "description": "220 ohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "quadrature 3.3V interface"
+    },
+    {
+      "ref": "C901",
+      "description": "10 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "nominal RC open 0.1ms; filter 2ms digital"
+    },
+    {
+      "ref": "R830",
+      "description": "4.7 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "single global bus pullup; REMOVE DUPLICATES from other modules"
+    },
+    {
+      "ref": "R831",
+      "description": "4.7 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "single global bus pullup; single 3.3V domain"
+    },
+    {
+      "ref": "C840",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "near each U201 VDD pin 16,32,48,64"
+    },
+    {
+      "ref": "C841",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "near each U201 VDD pin 16,32,48,64"
+    },
+    {
+      "ref": "C842",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "near each U201 VDD pin 16,32,48,64"
+    },
+    {
+      "ref": "C843",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "near each U201 VDD pin 16,32,48,64"
+    },
+    {
+      "ref": "C844",
+      "description": "4.7 uF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "bulk digital"
+    },
+    {
+      "ref": "C845",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "analog 3.3 decoupling"
+    },
+    {
+      "ref": "C846",
+      "description": "1 uF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "ADC ref decoupling; source selection TBD"
+    },
+    {
+      "ref": "R870",
+      "description": "10 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "external reset default HIGH; verify ST reset pin application"
+    },
+    {
+      "ref": "R871",
+      "description": "100 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "PB8 boot strap default low, verify option bytes"
+    },
+    {
+      "ref": "RV701",
+      "description": "10 kohm linear squelch pot",
+      "mpn": "pot physical panel TBD",
+      "category": "CONTROL",
+      "status": "TBD",
+      "note": ""
+    },
+    {
+      "ref": "R860",
+      "description": "1 kohm",
+      "mpn": "resistore 0603, tolleranza da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "ADC input protection; verify sampling impedance"
+    },
+    {
+      "ref": "C860",
+      "description": "100 nF",
+      "mpn": "MLCC 0603/0805, tensione da chiudere",
+      "category": "PASSIVO",
+      "status": "CANDIDATO",
+      "note": "single-pole RC nominal 1.59kHz max; verify ADC SAR drive"
+    },
+    {
+      "ref": "J701",
+      "description": "12 contatti",
+      "mpn": "connettore e footprint DA SCEGLIERE",
+      "category": "CONNETTORE",
+      "status": "TBD",
+      "note": "Controller/remote panel harness, connector footprint TBD"
+    },
+    {
+      "ref": "J702",
+      "description": "16 contatti",
+      "mpn": "connettore e footprint DA SCEGLIERE",
+      "category": "CONNETTORE",
+      "status": "TBD",
+      "note": "V6.0 J604 interface: symbolic bridging, do not short 13.8 V into MCU"
+    },
+    {
+      "ref": "J703",
+      "description": "5 contatti",
+      "mpn": "connettore e footprint DA SCEGLIERE",
+      "category": "CONNETTORE",
+      "status": "TBD",
+      "note": "I2C display candidate with 3.3V-compatible interface, no selected module"
+    },
+    {
+      "ref": "J704",
+      "description": "5 contatti",
+      "mpn": "connettore e footprint DA SCEGLIERE",
+      "category": "CONNETTORE",
+      "status": "TBD",
+      "note": "SWD service/debug header"
+    },
+    {
+      "ref": "J705",
+      "description": "6 contatti",
+      "mpn": "connettore e footprint DA SCEGLIERE",
+      "category": "CONNETTORE",
+      "status": "TBD",
+      "note": "Safety contract, TX NEVER enabled in V6.1"
+    },
+    {
+      "ref": "J706",
+      "description": "5 contatti",
+      "mpn": "connettore e footprint DA SCEGLIERE",
+      "category": "CONNETTORE",
+      "status": "TBD",
+      "note": "Power domains, filtering/regulation TBD"
+    }
+  ],
+  "pins": [
+    {
+      "ref": "U201",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": "VBAT VBAT = 3V3, RTC backup deferred"
+    },
+    {
+      "ref": "U201",
+      "pin": "2",
+      "net": "CH9_SENSE_N",
+      "function": "PC13 PC13: CH9 direct active LOW; limited drive input"
+    },
+    {
+      "ref": "U201",
+      "pin": "3",
+      "net": "PC14_OSC32_SPARE",
+      "function": "PC14 LSE optional, not UI"
+    },
+    {
+      "ref": "U201",
+      "pin": "4",
+      "net": "PC15_OSC32_SPARE",
+      "function": "PC15 LSE optional, not UI"
+    },
+    {
+      "ref": "U201",
+      "pin": "5",
+      "net": "PF0_HSE_IN",
+      "function": "PF0 HSE crystal optional"
+    },
+    {
+      "ref": "U201",
+      "pin": "6",
+      "net": "PF1_HSE_OUT",
+      "function": "PF1 HSE crystal optional"
+    },
+    {
+      "ref": "U201",
+      "pin": "7",
+      "net": "NRST",
+      "function": "PG10 PG10-NRST; external reset circuit deferred"
+    },
+    {
+      "ref": "U201",
+      "pin": "8",
+      "net": "PA_SENSE_N",
+      "function": "PC0 PC0: PA physical switch direct"
+    },
+    {
+      "ref": "U201",
+      "pin": "9",
+      "net": "AUDIO_I2S_TX",
+      "function": "PC1 PC1 SAI1_SD_A, reserved V2.1"
+    },
+    {
+      "ref": "U201",
+      "pin": "10",
+      "net": "CODEC_RESET_N",
+      "function": "PC2 PC2 codec reset, old design"
+    },
+    {
+      "ref": "U201",
+      "pin": "11",
+      "net": "EXP_RESET_N",
+      "function": "PC3 PC3 expansion reset active LOW"
+    },
+    {
+      "ref": "U201",
+      "pin": "12",
+      "net": "PTT_N",
+      "function": "PA0 PA0 direct mic PTT sense"
+    },
+    {
+      "ref": "U201",
+      "pin": "13",
+      "net": "SMETER_ADC",
+      "function": "PA1 PA1 ADC analog S meter (signal conditioning TBD)"
+    },
+    {
+      "ref": "U201",
+      "pin": "14",
+      "net": "FWD_MON_ADC",
+      "function": "PA2 PA2 analog forward power (future TX; no TX)"
+    },
+    {
+      "ref": "U201",
+      "pin": "15",
+      "net": "DGND",
+      "function": "VSS VSS"
+    },
+    {
+      "ref": "U201",
+      "pin": "16",
+      "net": "3V3_D",
+      "function": "VDD VDD"
+    },
+    {
+      "ref": "U201",
+      "pin": "17",
+      "net": "SQL_POT_ADC",
+      "function": "PA3 PA3 squelch analog potentiometer"
+    },
+    {
+      "ref": "U201",
+      "pin": "18",
+      "net": "PLL_CS_N",
+      "function": "PA4 PA4 SPI1 NSS GPIO old"
+    },
+    {
+      "ref": "U201",
+      "pin": "19",
+      "net": "PLL_SCK",
+      "function": "PA5 PA5 SPI1 SCK old"
+    },
+    {
+      "ref": "U201",
+      "pin": "20",
+      "net": "PA6_SPI1_MISO_RESERVE",
+      "function": "PA6 SPI1 MISO reserved not panel"
+    },
+    {
+      "ref": "U201",
+      "pin": "21",
+      "net": "PLL_SDI",
+      "function": "PA7 PA7 SPI1 MOSI old"
+    },
+    {
+      "ref": "U201",
+      "pin": "22",
+      "net": "EXP1_INT_N",
+      "function": "PC4 PC4 expander1 INTA"
+    },
+    {
+      "ref": "U201",
+      "pin": "23",
+      "net": "EXP2_INT_N",
+      "function": "PC5 PC5 expander2 INTA"
+    },
+    {
+      "ref": "U201",
+      "pin": "24",
+      "net": "PLL_MUXOUT",
+      "function": "PB0 PB0 PLL old"
+    },
+    {
+      "ref": "U201",
+      "pin": "25",
+      "net": "PLL_CE",
+      "function": "PB1 PB1 PLL old"
+    },
+    {
+      "ref": "U201",
+      "pin": "26",
+      "net": "PB2_RESERVE",
+      "function": "PB2 Future digital"
+    },
+    {
+      "ref": "U201",
+      "pin": "27",
+      "net": "AGND",
+      "function": "VSSA VSSA"
+    },
+    {
+      "ref": "U201",
+      "pin": "28",
+      "net": "VREF_ANA",
+      "function": "VREF+ VREF+ routed per analog plan"
+    },
+    {
+      "ref": "U201",
+      "pin": "29",
+      "net": "3V3_A",
+      "function": "VDDA VDDA filtered"
+    },
+    {
+      "ref": "U201",
+      "pin": "30",
+      "net": "AUDIO_BCLK",
+      "function": "PB10 PB10 SAI1_SCK_A existing V2.1"
+    },
+    {
+      "ref": "U201",
+      "pin": "31",
+      "net": "DGND",
+      "function": "VSS VSS"
+    },
+    {
+      "ref": "U201",
+      "pin": "32",
+      "net": "3V3_D",
+      "function": "VDD VDD"
+    },
+    {
+      "ref": "U201",
+      "pin": "33",
+      "net": "PB11_RESERVE",
+      "function": "PB11 Panel reserve"
+    },
+    {
+      "ref": "U201",
+      "pin": "34",
+      "net": "PB12_LED_DIM",
+      "function": "PB12 Display/backlight low-current request (driver TBD)"
+    },
+    {
+      "ref": "U201",
+      "pin": "35",
+      "net": "PB13_SPI2_SCK_RESERVE",
+      "function": "PB13 SPI2 reserve"
+    },
+    {
+      "ref": "U201",
+      "pin": "36",
+      "net": "PB14_SPI2_MISO_RESERVE",
+      "function": "PB14 SPI2 reserve"
+    },
+    {
+      "ref": "U201",
+      "pin": "37",
+      "net": "PB15_SPI2_MOSI_RESERVE",
+      "function": "PB15 SPI2 reserve"
+    },
+    {
+      "ref": "U201",
+      "pin": "38",
+      "net": "MUX_A0",
+      "function": "PC6 PC6 audio V6.0"
+    },
+    {
+      "ref": "U201",
+      "pin": "39",
+      "net": "MUX_A1",
+      "function": "PC7 PC7 audio V6.0"
+    },
+    {
+      "ref": "U201",
+      "pin": "40",
+      "net": "MUX_A2",
+      "function": "PC8 PC8 audio V6.0"
+    },
+    {
+      "ref": "U201",
+      "pin": "41",
+      "net": "MUX_EN_N",
+      "function": "PC9 PC9 / U601 EN_N, disabled by ext pullup"
+    },
+    {
+      "ref": "U201",
+      "pin": "42",
+      "net": "AMP_SD_REQUEST",
+      "function": "PA8 PA8 logic request; HW gating MUST be inserted V6.2"
+    },
+    {
+      "ref": "U201",
+      "pin": "43",
+      "net": "AUDIO_WCLK",
+      "function": "PA9 PA9 SAI1_FS_A existing V2.1"
+    },
+    {
+      "ref": "U201",
+      "pin": "44",
+      "net": "PA_RELAY_CMD",
+      "function": "PA10 PA10 relay driver command V6.0"
+    },
+    {
+      "ref": "U201",
+      "pin": "45",
+      "net": "AMP_FAULT_N",
+      "function": "PA11 PA11 amp fault input"
+    },
+    {
+      "ref": "U201",
+      "pin": "46",
+      "net": "POWER_GOOD",
+      "function": "PA12 PA12 supply ready from future supervisor"
+    },
+    {
+      "ref": "U201",
+      "pin": "47",
+      "net": "DGND",
+      "function": "VSS VSS"
+    },
+    {
+      "ref": "U201",
+      "pin": "48",
+      "net": "3V3_D",
+      "function": "VDD VDD"
+    },
+    {
+      "ref": "U201",
+      "pin": "49",
+      "net": "SWDIO",
+      "function": "PA13 PA13 SWD pin reserve"
+    },
+    {
+      "ref": "U201",
+      "pin": "50",
+      "net": "SWCLK",
+      "function": "PA14 PA14 SWD pin reserve"
+    },
+    {
+      "ref": "U201",
+      "pin": "51",
+      "net": "PA15_RESERVE",
+      "function": "PA15 JTAG optional, SWD retained"
+    },
+    {
+      "ref": "U201",
+      "pin": "52",
+      "net": "ENC_A",
+      "function": "PC10 PC10 direct incremental encoder input"
+    },
+    {
+      "ref": "U201",
+      "pin": "53",
+      "net": "ENC_B",
+      "function": "PC11 PC11 direct incremental encoder input"
+    },
+    {
+      "ref": "U201",
+      "pin": "54",
+      "net": "PC12_RESERVE",
+      "function": "PC12 Future control"
+    },
+    {
+      "ref": "U201",
+      "pin": "55",
+      "net": "PD2_RESERVE",
+      "function": "PD2 Future control"
+    },
+    {
+      "ref": "U201",
+      "pin": "56",
+      "net": "PB3_RESERVE",
+      "function": "PB3 SWO/JTAG trace alternative; not panel"
+    },
+    {
+      "ref": "U201",
+      "pin": "57",
+      "net": "PB4_RESERVE",
+      "function": "PB4 future I/O"
+    },
+    {
+      "ref": "U201",
+      "pin": "58",
+      "net": "AUDIO_I2S_RX",
+      "function": "PB5 PB5 SAI1_SD_B existing V2.1"
+    },
+    {
+      "ref": "U201",
+      "pin": "59",
+      "net": "CODEC_I2C_SCL",
+      "function": "PB6 PB6 codec + two expanders + display I2C"
+    },
+    {
+      "ref": "U201",
+      "pin": "60",
+      "net": "CODEC_I2C_SDA",
+      "function": "PB7 PB7 codec + two expanders + display I2C"
+    },
+    {
+      "ref": "U201",
+      "pin": "61",
+      "net": "BOOT0_STRAP",
+      "function": "PB8 PB8 boot strap, NO PANEL"
+    },
+    {
+      "ref": "U201",
+      "pin": "62",
+      "net": "PB9_RESERVE",
+      "function": "PB9 MCLK NOT used, codec has external osc"
+    },
+    {
+      "ref": "U201",
+      "pin": "63",
+      "net": "DGND",
+      "function": "VSS VSS"
+    },
+    {
+      "ref": "U201",
+      "pin": "64",
+      "net": "3V3_D",
+      "function": "VDD VDD"
+    },
+    {
+      "ref": "U701",
+      "pin": "21",
+      "net": "BAND_A_N",
+      "function": "GPA0 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "22",
+      "net": "BAND_B_N",
+      "function": "GPA1 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "23",
+      "net": "BAND_C_N",
+      "function": "GPA2 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "24",
+      "net": "BAND_D_N",
+      "function": "GPA3 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "25",
+      "net": "BAND_E_N",
+      "function": "GPA4 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "26",
+      "net": "BAND_F_N",
+      "function": "GPA5 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "27",
+      "net": "ALFA_N",
+      "function": "GPA6 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "1",
+      "net": "MODE_AM_N",
+      "function": "GPB0 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "2",
+      "net": "MODE_FM_N",
+      "function": "GPB1 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "3",
+      "net": "MODE_USB_N",
+      "function": "GPB2 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "4",
+      "net": "MODE_LSB_N",
+      "function": "GPB3 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "5",
+      "net": "MODE_CW_N",
+      "function": "GPB4 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "6",
+      "net": "RIT_UP_N",
+      "function": "GPB5 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "7",
+      "net": "RIT_DN_N",
+      "function": "GPB6 INPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "28",
+      "net": "LED_ALFA_N",
+      "function": "GPA7 OUTPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "8",
+      "net": "LED_CH9_N",
+      "function": "GPB7 OUTPUT"
+    },
+    {
+      "ref": "U701",
+      "pin": "9",
+      "net": "3V3_UI",
+      "function": "VDD"
+    },
+    {
+      "ref": "U701",
+      "pin": "10",
+      "net": "DGND",
+      "function": "VSS"
+    },
+    {
+      "ref": "U701",
+      "pin": "11",
+      "net": "NC_U701_11",
+      "function": "NC"
+    },
+    {
+      "ref": "U701",
+      "pin": "12",
+      "net": "CODEC_I2C_SCL",
+      "function": "SCL"
+    },
+    {
+      "ref": "U701",
+      "pin": "13",
+      "net": "CODEC_I2C_SDA",
+      "function": "SDA"
+    },
+    {
+      "ref": "U701",
+      "pin": "14",
+      "net": "NC_U701_14",
+      "function": "NC"
+    },
+    {
+      "ref": "U701",
+      "pin": "15",
+      "net": "DGND",
+      "function": "A0"
+    },
+    {
+      "ref": "U701",
+      "pin": "16",
+      "net": "DGND",
+      "function": "A1"
+    },
+    {
+      "ref": "U701",
+      "pin": "17",
+      "net": "DGND",
+      "function": "A2"
+    },
+    {
+      "ref": "U701",
+      "pin": "18",
+      "net": "EXP_RESET_N",
+      "function": "RESET"
+    },
+    {
+      "ref": "U701",
+      "pin": "19",
+      "net": "INTB_UNCONNECTED_U701",
+      "function": "INTB not used; configure MIRROR to INTA"
+    },
+    {
+      "ref": "U701",
+      "pin": "20",
+      "net": "EXP1_INT_N",
+      "function": "INTA"
+    },
+    {
+      "ref": "C701",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "C701",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R701",
+      "pin": "1",
+      "net": "EXP_RESET_N",
+      "function": ""
+    },
+    {
+      "ref": "R701",
+      "pin": "2",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "U702",
+      "pin": "21",
+      "net": "VOX_N",
+      "function": "GPA0 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "22",
+      "net": "DUAL_WATCH_N",
+      "function": "GPA1 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "23",
+      "net": "ROGER_BEEP_N",
+      "function": "GPA2 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "24",
+      "net": "ECHO_N",
+      "function": "GPA3 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "25",
+      "net": "CTCSS_DCS_N",
+      "function": "GPA4 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "26",
+      "net": "DSP_N",
+      "function": "GPA5 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "27",
+      "net": "ATU_N",
+      "function": "GPA6 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "1",
+      "net": "SCAN_N",
+      "function": "GPB0 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "2",
+      "net": "MEMORY_N",
+      "function": "GPB1 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "3",
+      "net": "LOCK_N",
+      "function": "GPB2 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "4",
+      "net": "NB_ANL_N",
+      "function": "GPB3 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "5",
+      "net": "METER_SEL_N",
+      "function": "GPB4 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "6",
+      "net": "MIC_GAIN_N",
+      "function": "GPB5 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "7",
+      "net": "SERVICE_N",
+      "function": "GPB6 INPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "28",
+      "net": "LED_PA_N",
+      "function": "GPA7 OUTPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "8",
+      "net": "LED_FAULT_N",
+      "function": "GPB7 OUTPUT"
+    },
+    {
+      "ref": "U702",
+      "pin": "9",
+      "net": "3V3_UI",
+      "function": "VDD"
+    },
+    {
+      "ref": "U702",
+      "pin": "10",
+      "net": "DGND",
+      "function": "VSS"
+    },
+    {
+      "ref": "U702",
+      "pin": "11",
+      "net": "NC_U702_11",
+      "function": "NC"
+    },
+    {
+      "ref": "U702",
+      "pin": "12",
+      "net": "CODEC_I2C_SCL",
+      "function": "SCL"
+    },
+    {
+      "ref": "U702",
+      "pin": "13",
+      "net": "CODEC_I2C_SDA",
+      "function": "SDA"
+    },
+    {
+      "ref": "U702",
+      "pin": "14",
+      "net": "NC_U702_14",
+      "function": "NC"
+    },
+    {
+      "ref": "U702",
+      "pin": "15",
+      "net": "3V3_UI",
+      "function": "A0"
+    },
+    {
+      "ref": "U702",
+      "pin": "16",
+      "net": "DGND",
+      "function": "A1"
+    },
+    {
+      "ref": "U702",
+      "pin": "17",
+      "net": "DGND",
+      "function": "A2"
+    },
+    {
+      "ref": "U702",
+      "pin": "18",
+      "net": "EXP_RESET_N",
+      "function": "RESET"
+    },
+    {
+      "ref": "U702",
+      "pin": "19",
+      "net": "INTB_UNCONNECTED_U702",
+      "function": "INTB not used; configure MIRROR to INTA"
+    },
+    {
+      "ref": "U702",
+      "pin": "20",
+      "net": "EXP2_INT_N",
+      "function": "INTA"
+    },
+    {
+      "ref": "C702",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "C702",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R710",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R710",
+      "pin": "2",
+      "net": "BAND_A_N",
+      "function": ""
+    },
+    {
+      "ref": "R740",
+      "pin": "1",
+      "net": "BAND_A_N",
+      "function": ""
+    },
+    {
+      "ref": "R740",
+      "pin": "2",
+      "net": "SW_BAND_A_N",
+      "function": ""
+    },
+    {
+      "ref": "C710",
+      "pin": "1",
+      "net": "BAND_A_N",
+      "function": ""
+    },
+    {
+      "ref": "C710",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R711",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R711",
+      "pin": "2",
+      "net": "BAND_B_N",
+      "function": ""
+    },
+    {
+      "ref": "R741",
+      "pin": "1",
+      "net": "BAND_B_N",
+      "function": ""
+    },
+    {
+      "ref": "R741",
+      "pin": "2",
+      "net": "SW_BAND_B_N",
+      "function": ""
+    },
+    {
+      "ref": "C711",
+      "pin": "1",
+      "net": "BAND_B_N",
+      "function": ""
+    },
+    {
+      "ref": "C711",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R712",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R712",
+      "pin": "2",
+      "net": "BAND_C_N",
+      "function": ""
+    },
+    {
+      "ref": "R742",
+      "pin": "1",
+      "net": "BAND_C_N",
+      "function": ""
+    },
+    {
+      "ref": "R742",
+      "pin": "2",
+      "net": "SW_BAND_C_N",
+      "function": ""
+    },
+    {
+      "ref": "C712",
+      "pin": "1",
+      "net": "BAND_C_N",
+      "function": ""
+    },
+    {
+      "ref": "C712",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R713",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R713",
+      "pin": "2",
+      "net": "BAND_D_N",
+      "function": ""
+    },
+    {
+      "ref": "R743",
+      "pin": "1",
+      "net": "BAND_D_N",
+      "function": ""
+    },
+    {
+      "ref": "R743",
+      "pin": "2",
+      "net": "SW_BAND_D_N",
+      "function": ""
+    },
+    {
+      "ref": "C713",
+      "pin": "1",
+      "net": "BAND_D_N",
+      "function": ""
+    },
+    {
+      "ref": "C713",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R714",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R714",
+      "pin": "2",
+      "net": "BAND_E_N",
+      "function": ""
+    },
+    {
+      "ref": "R744",
+      "pin": "1",
+      "net": "BAND_E_N",
+      "function": ""
+    },
+    {
+      "ref": "R744",
+      "pin": "2",
+      "net": "SW_BAND_E_N",
+      "function": ""
+    },
+    {
+      "ref": "C714",
+      "pin": "1",
+      "net": "BAND_E_N",
+      "function": ""
+    },
+    {
+      "ref": "C714",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R715",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R715",
+      "pin": "2",
+      "net": "BAND_F_N",
+      "function": ""
+    },
+    {
+      "ref": "R745",
+      "pin": "1",
+      "net": "BAND_F_N",
+      "function": ""
+    },
+    {
+      "ref": "R745",
+      "pin": "2",
+      "net": "SW_BAND_F_N",
+      "function": ""
+    },
+    {
+      "ref": "C715",
+      "pin": "1",
+      "net": "BAND_F_N",
+      "function": ""
+    },
+    {
+      "ref": "C715",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R716",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R716",
+      "pin": "2",
+      "net": "ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "R746",
+      "pin": "1",
+      "net": "ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "R746",
+      "pin": "2",
+      "net": "SW_ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "C716",
+      "pin": "1",
+      "net": "ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "C716",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R717",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R717",
+      "pin": "2",
+      "net": "MODE_AM_N",
+      "function": ""
+    },
+    {
+      "ref": "R747",
+      "pin": "1",
+      "net": "MODE_AM_N",
+      "function": ""
+    },
+    {
+      "ref": "R747",
+      "pin": "2",
+      "net": "SW_MODE_AM_N",
+      "function": ""
+    },
+    {
+      "ref": "C717",
+      "pin": "1",
+      "net": "MODE_AM_N",
+      "function": ""
+    },
+    {
+      "ref": "C717",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R718",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R718",
+      "pin": "2",
+      "net": "MODE_FM_N",
+      "function": ""
+    },
+    {
+      "ref": "R748",
+      "pin": "1",
+      "net": "MODE_FM_N",
+      "function": ""
+    },
+    {
+      "ref": "R748",
+      "pin": "2",
+      "net": "SW_MODE_FM_N",
+      "function": ""
+    },
+    {
+      "ref": "C718",
+      "pin": "1",
+      "net": "MODE_FM_N",
+      "function": ""
+    },
+    {
+      "ref": "C718",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R719",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R719",
+      "pin": "2",
+      "net": "MODE_USB_N",
+      "function": ""
+    },
+    {
+      "ref": "R749",
+      "pin": "1",
+      "net": "MODE_USB_N",
+      "function": ""
+    },
+    {
+      "ref": "R749",
+      "pin": "2",
+      "net": "SW_MODE_USB_N",
+      "function": ""
+    },
+    {
+      "ref": "C719",
+      "pin": "1",
+      "net": "MODE_USB_N",
+      "function": ""
+    },
+    {
+      "ref": "C719",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R720",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R720",
+      "pin": "2",
+      "net": "MODE_LSB_N",
+      "function": ""
+    },
+    {
+      "ref": "R750",
+      "pin": "1",
+      "net": "MODE_LSB_N",
+      "function": ""
+    },
+    {
+      "ref": "R750",
+      "pin": "2",
+      "net": "SW_MODE_LSB_N",
+      "function": ""
+    },
+    {
+      "ref": "C720",
+      "pin": "1",
+      "net": "MODE_LSB_N",
+      "function": ""
+    },
+    {
+      "ref": "C720",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R721",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R721",
+      "pin": "2",
+      "net": "MODE_CW_N",
+      "function": ""
+    },
+    {
+      "ref": "R751",
+      "pin": "1",
+      "net": "MODE_CW_N",
+      "function": ""
+    },
+    {
+      "ref": "R751",
+      "pin": "2",
+      "net": "SW_MODE_CW_N",
+      "function": ""
+    },
+    {
+      "ref": "C721",
+      "pin": "1",
+      "net": "MODE_CW_N",
+      "function": ""
+    },
+    {
+      "ref": "C721",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R722",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R722",
+      "pin": "2",
+      "net": "RIT_UP_N",
+      "function": ""
+    },
+    {
+      "ref": "R752",
+      "pin": "1",
+      "net": "RIT_UP_N",
+      "function": ""
+    },
+    {
+      "ref": "R752",
+      "pin": "2",
+      "net": "SW_RIT_UP_N",
+      "function": ""
+    },
+    {
+      "ref": "C722",
+      "pin": "1",
+      "net": "RIT_UP_N",
+      "function": ""
+    },
+    {
+      "ref": "C722",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R723",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R723",
+      "pin": "2",
+      "net": "RIT_DN_N",
+      "function": ""
+    },
+    {
+      "ref": "R753",
+      "pin": "1",
+      "net": "RIT_DN_N",
+      "function": ""
+    },
+    {
+      "ref": "R753",
+      "pin": "2",
+      "net": "SW_RIT_DN_N",
+      "function": ""
+    },
+    {
+      "ref": "C723",
+      "pin": "1",
+      "net": "RIT_DN_N",
+      "function": ""
+    },
+    {
+      "ref": "C723",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R810",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R810",
+      "pin": "2",
+      "net": "VOX_N",
+      "function": ""
+    },
+    {
+      "ref": "R840",
+      "pin": "1",
+      "net": "VOX_N",
+      "function": ""
+    },
+    {
+      "ref": "R840",
+      "pin": "2",
+      "net": "SW_VOX_N",
+      "function": ""
+    },
+    {
+      "ref": "C810",
+      "pin": "1",
+      "net": "VOX_N",
+      "function": ""
+    },
+    {
+      "ref": "C810",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R811",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R811",
+      "pin": "2",
+      "net": "DUAL_WATCH_N",
+      "function": ""
+    },
+    {
+      "ref": "R841",
+      "pin": "1",
+      "net": "DUAL_WATCH_N",
+      "function": ""
+    },
+    {
+      "ref": "R841",
+      "pin": "2",
+      "net": "SW_DUAL_WATCH_N",
+      "function": ""
+    },
+    {
+      "ref": "C811",
+      "pin": "1",
+      "net": "DUAL_WATCH_N",
+      "function": ""
+    },
+    {
+      "ref": "C811",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R812",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R812",
+      "pin": "2",
+      "net": "ROGER_BEEP_N",
+      "function": ""
+    },
+    {
+      "ref": "R842",
+      "pin": "1",
+      "net": "ROGER_BEEP_N",
+      "function": ""
+    },
+    {
+      "ref": "R842",
+      "pin": "2",
+      "net": "SW_ROGER_BEEP_N",
+      "function": ""
+    },
+    {
+      "ref": "C812",
+      "pin": "1",
+      "net": "ROGER_BEEP_N",
+      "function": ""
+    },
+    {
+      "ref": "C812",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R813",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R813",
+      "pin": "2",
+      "net": "ECHO_N",
+      "function": ""
+    },
+    {
+      "ref": "R843",
+      "pin": "1",
+      "net": "ECHO_N",
+      "function": ""
+    },
+    {
+      "ref": "R843",
+      "pin": "2",
+      "net": "SW_ECHO_N",
+      "function": ""
+    },
+    {
+      "ref": "C813",
+      "pin": "1",
+      "net": "ECHO_N",
+      "function": ""
+    },
+    {
+      "ref": "C813",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R814",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R814",
+      "pin": "2",
+      "net": "CTCSS_DCS_N",
+      "function": ""
+    },
+    {
+      "ref": "R844",
+      "pin": "1",
+      "net": "CTCSS_DCS_N",
+      "function": ""
+    },
+    {
+      "ref": "R844",
+      "pin": "2",
+      "net": "SW_CTCSS_DCS_N",
+      "function": ""
+    },
+    {
+      "ref": "C814",
+      "pin": "1",
+      "net": "CTCSS_DCS_N",
+      "function": ""
+    },
+    {
+      "ref": "C814",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R815",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R815",
+      "pin": "2",
+      "net": "DSP_N",
+      "function": ""
+    },
+    {
+      "ref": "R845",
+      "pin": "1",
+      "net": "DSP_N",
+      "function": ""
+    },
+    {
+      "ref": "R845",
+      "pin": "2",
+      "net": "SW_DSP_N",
+      "function": ""
+    },
+    {
+      "ref": "C815",
+      "pin": "1",
+      "net": "DSP_N",
+      "function": ""
+    },
+    {
+      "ref": "C815",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R816",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R816",
+      "pin": "2",
+      "net": "ATU_N",
+      "function": ""
+    },
+    {
+      "ref": "R846",
+      "pin": "1",
+      "net": "ATU_N",
+      "function": ""
+    },
+    {
+      "ref": "R846",
+      "pin": "2",
+      "net": "SW_ATU_N",
+      "function": ""
+    },
+    {
+      "ref": "C816",
+      "pin": "1",
+      "net": "ATU_N",
+      "function": ""
+    },
+    {
+      "ref": "C816",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R817",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R817",
+      "pin": "2",
+      "net": "SCAN_N",
+      "function": ""
+    },
+    {
+      "ref": "R847",
+      "pin": "1",
+      "net": "SCAN_N",
+      "function": ""
+    },
+    {
+      "ref": "R847",
+      "pin": "2",
+      "net": "SW_SCAN_N",
+      "function": ""
+    },
+    {
+      "ref": "C817",
+      "pin": "1",
+      "net": "SCAN_N",
+      "function": ""
+    },
+    {
+      "ref": "C817",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R818",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R818",
+      "pin": "2",
+      "net": "MEMORY_N",
+      "function": ""
+    },
+    {
+      "ref": "R848",
+      "pin": "1",
+      "net": "MEMORY_N",
+      "function": ""
+    },
+    {
+      "ref": "R848",
+      "pin": "2",
+      "net": "SW_MEMORY_N",
+      "function": ""
+    },
+    {
+      "ref": "C818",
+      "pin": "1",
+      "net": "MEMORY_N",
+      "function": ""
+    },
+    {
+      "ref": "C818",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R819",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R819",
+      "pin": "2",
+      "net": "LOCK_N",
+      "function": ""
+    },
+    {
+      "ref": "R849",
+      "pin": "1",
+      "net": "LOCK_N",
+      "function": ""
+    },
+    {
+      "ref": "R849",
+      "pin": "2",
+      "net": "SW_LOCK_N",
+      "function": ""
+    },
+    {
+      "ref": "C819",
+      "pin": "1",
+      "net": "LOCK_N",
+      "function": ""
+    },
+    {
+      "ref": "C819",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R820",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R820",
+      "pin": "2",
+      "net": "NB_ANL_N",
+      "function": ""
+    },
+    {
+      "ref": "R850",
+      "pin": "1",
+      "net": "NB_ANL_N",
+      "function": ""
+    },
+    {
+      "ref": "R850",
+      "pin": "2",
+      "net": "SW_NB_ANL_N",
+      "function": ""
+    },
+    {
+      "ref": "C820",
+      "pin": "1",
+      "net": "NB_ANL_N",
+      "function": ""
+    },
+    {
+      "ref": "C820",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R821",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R821",
+      "pin": "2",
+      "net": "METER_SEL_N",
+      "function": ""
+    },
+    {
+      "ref": "R851",
+      "pin": "1",
+      "net": "METER_SEL_N",
+      "function": ""
+    },
+    {
+      "ref": "R851",
+      "pin": "2",
+      "net": "SW_METER_SEL_N",
+      "function": ""
+    },
+    {
+      "ref": "C821",
+      "pin": "1",
+      "net": "METER_SEL_N",
+      "function": ""
+    },
+    {
+      "ref": "C821",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R822",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R822",
+      "pin": "2",
+      "net": "MIC_GAIN_N",
+      "function": ""
+    },
+    {
+      "ref": "R852",
+      "pin": "1",
+      "net": "MIC_GAIN_N",
+      "function": ""
+    },
+    {
+      "ref": "R852",
+      "pin": "2",
+      "net": "SW_MIC_GAIN_N",
+      "function": ""
+    },
+    {
+      "ref": "C822",
+      "pin": "1",
+      "net": "MIC_GAIN_N",
+      "function": ""
+    },
+    {
+      "ref": "C822",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R823",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R823",
+      "pin": "2",
+      "net": "SERVICE_N",
+      "function": ""
+    },
+    {
+      "ref": "R853",
+      "pin": "1",
+      "net": "SERVICE_N",
+      "function": ""
+    },
+    {
+      "ref": "R853",
+      "pin": "2",
+      "net": "SW_SERVICE_N",
+      "function": ""
+    },
+    {
+      "ref": "C823",
+      "pin": "1",
+      "net": "SERVICE_N",
+      "function": ""
+    },
+    {
+      "ref": "C823",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S701",
+      "pin": "0",
+      "net": "DGND",
+      "function": "common"
+    },
+    {
+      "ref": "S701",
+      "pin": "1",
+      "net": "SW_BAND_A_N",
+      "function": "throw A"
+    },
+    {
+      "ref": "S701",
+      "pin": "2",
+      "net": "SW_BAND_B_N",
+      "function": "throw B"
+    },
+    {
+      "ref": "S701",
+      "pin": "3",
+      "net": "SW_BAND_C_N",
+      "function": "throw C"
+    },
+    {
+      "ref": "S701",
+      "pin": "4",
+      "net": "SW_BAND_D_N",
+      "function": "throw D"
+    },
+    {
+      "ref": "S701",
+      "pin": "5",
+      "net": "SW_BAND_E_N",
+      "function": "throw E"
+    },
+    {
+      "ref": "S701",
+      "pin": "6",
+      "net": "SW_BAND_F_N",
+      "function": "throw F"
+    },
+    {
+      "ref": "S702",
+      "pin": "0",
+      "net": "DGND",
+      "function": "common"
+    },
+    {
+      "ref": "S702",
+      "pin": "1",
+      "net": "SW_MODE_AM_N",
+      "function": "throw AM"
+    },
+    {
+      "ref": "S702",
+      "pin": "2",
+      "net": "SW_MODE_FM_N",
+      "function": "throw FM"
+    },
+    {
+      "ref": "S702",
+      "pin": "3",
+      "net": "SW_MODE_USB_N",
+      "function": "throw USB"
+    },
+    {
+      "ref": "S702",
+      "pin": "4",
+      "net": "SW_MODE_LSB_N",
+      "function": "throw LSB"
+    },
+    {
+      "ref": "S702",
+      "pin": "5",
+      "net": "SW_MODE_CW_N",
+      "function": "throw CW"
+    },
+    {
+      "ref": "S703",
+      "pin": "1",
+      "net": "SW_ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "S703",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S704",
+      "pin": "1",
+      "net": "SW_RIT_UP_N",
+      "function": ""
+    },
+    {
+      "ref": "S704",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S705",
+      "pin": "1",
+      "net": "SW_RIT_DN_N",
+      "function": ""
+    },
+    {
+      "ref": "S705",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S706",
+      "pin": "1",
+      "net": "SW_VOX_N",
+      "function": ""
+    },
+    {
+      "ref": "S706",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S707",
+      "pin": "1",
+      "net": "SW_DUAL_WATCH_N",
+      "function": ""
+    },
+    {
+      "ref": "S707",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S708",
+      "pin": "1",
+      "net": "SW_ROGER_BEEP_N",
+      "function": ""
+    },
+    {
+      "ref": "S708",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S709",
+      "pin": "1",
+      "net": "SW_ECHO_N",
+      "function": ""
+    },
+    {
+      "ref": "S709",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S710",
+      "pin": "1",
+      "net": "SW_CTCSS_DCS_N",
+      "function": ""
+    },
+    {
+      "ref": "S710",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S711",
+      "pin": "1",
+      "net": "SW_DSP_N",
+      "function": ""
+    },
+    {
+      "ref": "S711",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S712",
+      "pin": "1",
+      "net": "SW_ATU_N",
+      "function": ""
+    },
+    {
+      "ref": "S712",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S713",
+      "pin": "1",
+      "net": "SW_SCAN_N",
+      "function": ""
+    },
+    {
+      "ref": "S713",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S714",
+      "pin": "1",
+      "net": "SW_MEMORY_N",
+      "function": ""
+    },
+    {
+      "ref": "S714",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S715",
+      "pin": "1",
+      "net": "SW_LOCK_N",
+      "function": ""
+    },
+    {
+      "ref": "S715",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S716",
+      "pin": "1",
+      "net": "SW_NB_ANL_N",
+      "function": ""
+    },
+    {
+      "ref": "S716",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S717",
+      "pin": "1",
+      "net": "SW_METER_SEL_N",
+      "function": ""
+    },
+    {
+      "ref": "S717",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S718",
+      "pin": "1",
+      "net": "SW_MIC_GAIN_N",
+      "function": ""
+    },
+    {
+      "ref": "S718",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S719",
+      "pin": "1",
+      "net": "SW_SERVICE_N",
+      "function": ""
+    },
+    {
+      "ref": "S719",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R760",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R760",
+      "pin": "2",
+      "net": "LED_ANODE_LED_ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "D760",
+      "pin": "A",
+      "net": "LED_ANODE_LED_ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "D760",
+      "pin": "K",
+      "net": "LED_ALFA_N",
+      "function": ""
+    },
+    {
+      "ref": "R761",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R761",
+      "pin": "2",
+      "net": "LED_ANODE_LED_CH9_N",
+      "function": ""
+    },
+    {
+      "ref": "D761",
+      "pin": "A",
+      "net": "LED_ANODE_LED_CH9_N",
+      "function": ""
+    },
+    {
+      "ref": "D761",
+      "pin": "K",
+      "net": "LED_CH9_N",
+      "function": ""
+    },
+    {
+      "ref": "R762",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R762",
+      "pin": "2",
+      "net": "LED_ANODE_LED_PA_N",
+      "function": ""
+    },
+    {
+      "ref": "D762",
+      "pin": "A",
+      "net": "LED_ANODE_LED_PA_N",
+      "function": ""
+    },
+    {
+      "ref": "D762",
+      "pin": "K",
+      "net": "LED_PA_N",
+      "function": ""
+    },
+    {
+      "ref": "R763",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R763",
+      "pin": "2",
+      "net": "LED_ANODE_LED_FAULT_N",
+      "function": ""
+    },
+    {
+      "ref": "D763",
+      "pin": "A",
+      "net": "LED_ANODE_LED_FAULT_N",
+      "function": ""
+    },
+    {
+      "ref": "D763",
+      "pin": "K",
+      "net": "LED_FAULT_N",
+      "function": ""
+    },
+    {
+      "ref": "R790",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R790",
+      "pin": "2",
+      "net": "PTT_N",
+      "function": ""
+    },
+    {
+      "ref": "R800",
+      "pin": "1",
+      "net": "PTT_N",
+      "function": ""
+    },
+    {
+      "ref": "R800",
+      "pin": "2",
+      "net": "SW_PTT_N",
+      "function": ""
+    },
+    {
+      "ref": "C790",
+      "pin": "1",
+      "net": "PTT_N",
+      "function": ""
+    },
+    {
+      "ref": "C790",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S740",
+      "pin": "1",
+      "net": "SW_PTT_N",
+      "function": ""
+    },
+    {
+      "ref": "S740",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R791",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R791",
+      "pin": "2",
+      "net": "CH9_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "R801",
+      "pin": "1",
+      "net": "CH9_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "R801",
+      "pin": "2",
+      "net": "SW_CH9_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "C791",
+      "pin": "1",
+      "net": "CH9_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "C791",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S741",
+      "pin": "1",
+      "net": "SW_CH9_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "S741",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R792",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R792",
+      "pin": "2",
+      "net": "PA_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "R802",
+      "pin": "1",
+      "net": "PA_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "R802",
+      "pin": "2",
+      "net": "SW_PA_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "C792",
+      "pin": "1",
+      "net": "PA_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "C792",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S742",
+      "pin": "1",
+      "net": "SW_PA_SENSE_N",
+      "function": ""
+    },
+    {
+      "ref": "S742",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S742",
+      "pin": "3",
+      "net": "PA_HW_OVERRIDE_N",
+      "function": "Second physical pole -> future RF interlock V6.2"
+    },
+    {
+      "ref": "S742",
+      "pin": "4",
+      "net": "HW_SAFETY_RETURN",
+      "function": "Future safety return; not tied to DGND here"
+    },
+    {
+      "ref": "ENC701",
+      "pin": "A",
+      "net": "SW_ENC_A",
+      "function": ""
+    },
+    {
+      "ref": "ENC701",
+      "pin": "B",
+      "net": "SW_ENC_B",
+      "function": ""
+    },
+    {
+      "ref": "ENC701",
+      "pin": "COM",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R900",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R900",
+      "pin": "2",
+      "net": "ENC_A",
+      "function": ""
+    },
+    {
+      "ref": "R910",
+      "pin": "1",
+      "net": "ENC_A",
+      "function": ""
+    },
+    {
+      "ref": "R910",
+      "pin": "2",
+      "net": "SW_ENC_A",
+      "function": ""
+    },
+    {
+      "ref": "C900",
+      "pin": "1",
+      "net": "ENC_A",
+      "function": ""
+    },
+    {
+      "ref": "C900",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R901",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R901",
+      "pin": "2",
+      "net": "ENC_B",
+      "function": ""
+    },
+    {
+      "ref": "R911",
+      "pin": "1",
+      "net": "ENC_B",
+      "function": ""
+    },
+    {
+      "ref": "R911",
+      "pin": "2",
+      "net": "SW_ENC_B",
+      "function": ""
+    },
+    {
+      "ref": "C901",
+      "pin": "1",
+      "net": "ENC_B",
+      "function": ""
+    },
+    {
+      "ref": "C901",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R830",
+      "pin": "1",
+      "net": "CODEC_I2C_SCL",
+      "function": ""
+    },
+    {
+      "ref": "R830",
+      "pin": "2",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "R831",
+      "pin": "1",
+      "net": "CODEC_I2C_SDA",
+      "function": ""
+    },
+    {
+      "ref": "R831",
+      "pin": "2",
+      "net": "3V3_UI",
+      "function": ""
+    },
+    {
+      "ref": "C840",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C840",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C841",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C841",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C842",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C842",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C843",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C843",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C844",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C844",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C845",
+      "pin": "1",
+      "net": "3V3_A",
+      "function": ""
+    },
+    {
+      "ref": "C845",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C846",
+      "pin": "1",
+      "net": "VREF_ANA",
+      "function": ""
+    },
+    {
+      "ref": "C846",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R870",
+      "pin": "1",
+      "net": "NRST",
+      "function": ""
+    },
+    {
+      "ref": "R870",
+      "pin": "2",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R871",
+      "pin": "1",
+      "net": "BOOT0_STRAP",
+      "function": ""
+    },
+    {
+      "ref": "R871",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "RV701",
+      "pin": "1",
+      "net": "3V3_A",
+      "function": ""
+    },
+    {
+      "ref": "RV701",
+      "pin": "2",
+      "net": "SQL_WIPER",
+      "function": ""
+    },
+    {
+      "ref": "RV701",
+      "pin": "3",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R860",
+      "pin": "1",
+      "net": "SQL_WIPER",
+      "function": ""
+    },
+    {
+      "ref": "R860",
+      "pin": "2",
+      "net": "SQL_POT_ADC",
+      "function": ""
+    },
+    {
+      "ref": "C860",
+      "pin": "1",
+      "net": "SQL_POT_ADC",
+      "function": ""
+    },
+    {
+      "ref": "C860",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "J701",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "2",
+      "net": "DGND",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "3",
+      "net": "CODEC_I2C_SCL",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "4",
+      "net": "CODEC_I2C_SDA",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "5",
+      "net": "EXP1_INT_N",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "6",
+      "net": "EXP2_INT_N",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "7",
+      "net": "EXP_RESET_N",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "8",
+      "net": "CH9_SENSE_N",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "9",
+      "net": "PTT_N",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "10",
+      "net": "PA_SENSE_N",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "11",
+      "net": "ENC_A",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J701",
+      "pin": "12",
+      "net": "ENC_B",
+      "function": "MCU source/sense"
+    },
+    {
+      "ref": "J702",
+      "pin": "1",
+      "net": "3V3_AF",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "2",
+      "net": "13V8_AUD",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "3",
+      "net": "AGND",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "4",
+      "net": "PGND",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "5",
+      "net": "MUX_A0",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "6",
+      "net": "MUX_A1",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "7",
+      "net": "MUX_A2",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "8",
+      "net": "MUX_EN_N",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "9",
+      "net": "PA_RELAY_CMD",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "10",
+      "net": "AMP_SD",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "11",
+      "net": "AMP_FAULT_N",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "12",
+      "net": "PA_MODE_HW",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "13",
+      "net": "PTT_N",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "14",
+      "net": "CODEC_READY",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "15",
+      "net": "POWER_GOOD",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J702",
+      "pin": "16",
+      "net": "SHIELD_CHASSIS",
+      "function": "To J604 V6.0 audio/PA; pin order intentionally same"
+    },
+    {
+      "ref": "J703",
+      "pin": "1",
+      "net": "3V3_UI",
+      "function": "3.3V only display module"
+    },
+    {
+      "ref": "J703",
+      "pin": "2",
+      "net": "DGND",
+      "function": "logic return"
+    },
+    {
+      "ref": "J703",
+      "pin": "3",
+      "net": "CODEC_I2C_SCL",
+      "function": "one I2C bus with codec"
+    },
+    {
+      "ref": "J703",
+      "pin": "4",
+      "net": "CODEC_I2C_SDA",
+      "function": "one I2C bus"
+    },
+    {
+      "ref": "J703",
+      "pin": "5",
+      "net": "PB12_LED_DIM",
+      "function": "optional backlight driver, no direct LED load"
+    },
+    {
+      "ref": "J704",
+      "pin": "1",
+      "net": "SWDIO",
+      "function": "PA13"
+    },
+    {
+      "ref": "J704",
+      "pin": "2",
+      "net": "SWCLK",
+      "function": "PA14"
+    },
+    {
+      "ref": "J704",
+      "pin": "3",
+      "net": "NRST",
+      "function": "NRST"
+    },
+    {
+      "ref": "J704",
+      "pin": "4",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "J704",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VTref: 3.3V target, no power sourcing"
+    },
+    {
+      "ref": "J705",
+      "pin": "1",
+      "net": "PA_HW_OVERRIDE_N",
+      "function": "to independent RF inhibit logic V6.2"
+    },
+    {
+      "ref": "J705",
+      "pin": "2",
+      "net": "HW_SAFETY_RETURN",
+      "function": "safety return isolated until V6.2"
+    },
+    {
+      "ref": "J705",
+      "pin": "3",
+      "net": "PTT_N",
+      "function": "microphone external PTT line"
+    },
+    {
+      "ref": "J705",
+      "pin": "4",
+      "net": "CH9_SENSE_N",
+      "function": "physical emergency override"
+    },
+    {
+      "ref": "J705",
+      "pin": "5",
+      "net": "POWER_GOOD",
+      "function": "input from power supervisor"
+    },
+    {
+      "ref": "J705",
+      "pin": "6",
+      "net": "AMP_SD_REQUEST",
+      "function": "MCU request only, NOT physical AMP_SD"
+    },
+    {
+      "ref": "J706",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": "MCU VDD"
+    },
+    {
+      "ref": "J706",
+      "pin": "2",
+      "net": "3V3_A",
+      "function": "MCU analog"
+    },
+    {
+      "ref": "J706",
+      "pin": "3",
+      "net": "VREF_ANA",
+      "function": "external ref/source TBD"
+    },
+    {
+      "ref": "J706",
+      "pin": "4",
+      "net": "AGND",
+      "function": "analog return"
+    },
+    {
+      "ref": "J706",
+      "pin": "5",
+      "net": "DGND",
+      "function": "digital return"
+    }
+  ],
+  "source_files": [
+    "ST DS12288 Rev6 Figure 7 LQFP64",
+    "Microchip MCP23017 DS20001952D pinout 28pin; GPA7 GPB7 output only"
+  ]
+}

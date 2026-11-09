@@ -1,0 +1,2 @@
+V3.2: 10 controlli piano/ingombro/modello nominale SUPERATI; nessun ERC/DRC eseguito
+NOTA: verifiche geometriche di piano e formule analitiche, non validazione native KiCad.

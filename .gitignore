@@ -1,0 +1,14 @@
+# Solo per nuovi artefatti. I file storici V7.0 sono comunque tracciati.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+REPORT_NATIVE_V*/
+REPORT_AUTOMATICI/

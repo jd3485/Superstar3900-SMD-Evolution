@@ -1,0 +1,4 @@
+kicad-cli detected: False
+ERC native: NOT RUN
+Netlist export native: NOT RUN
+PCB DRC: NOT RUN

@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "S3900E_Review")(type "KiCad")(uri "${KIPRJMOD}/S3900E_Review.pretty")(options "")(descr "Footprint esperimentali V3.7 - NON APPROVATI"))
+)

@@ -1,0 +1,100 @@
+{
+  "revision": "V5.8",
+  "method": "sampled RF copper centerline vs closest GND through-via centre",
+  "pcb_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "reference_copper_identity_v48": true,
+  "rf_nets": 6,
+  "rf_tracks": 13,
+  "ground_via_centers": 70,
+  "sampling_step_mm": 0.2,
+  "nearest_via_distance_Lipschitz_sampling_upper_error_mm": 0.1,
+  "review_threshold_mm_not_a_design_rule": 5.0,
+  "by_net": [
+    {
+      "net": "RF_ATTEN_IN",
+      "rf_segment_count": 2,
+      "rf_trace_total_length_mm": 47.2,
+      "max_nearest_gnd_via_centre_mm": 9.5811,
+      "conservative_upper_bound_at_sample_step_mm": 9.6807,
+      "worst_point_mm": [
+        67.4697,
+        65.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_ATTEN_OUT",
+      "rf_segment_count": 2,
+      "rf_trace_total_length_mm": 49.2,
+      "max_nearest_gnd_via_centre_mm": 6.9385,
+      "conservative_upper_bound_at_sample_step_mm": 7.0382,
+      "worst_point_mm": [
+        85.5153,
+        65.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_BIAS_OUT",
+      "rf_segment_count": 5,
+      "rf_trace_total_length_mm": 31.6716,
+      "max_nearest_gnd_via_centre_mm": 5.7306,
+      "conservative_upper_bound_at_sample_step_mm": 5.8306,
+      "worst_point_mm": [
+        72.2,
+        45.0
+      ],
+      "segments_with_any_sample_over_5mm": 2,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_LNA_INPUT",
+      "rf_segment_count": 1,
+      "rf_trace_total_length_mm": 23.45,
+      "max_nearest_gnd_via_centre_mm": 5.7195,
+      "conservative_upper_bound_at_sample_step_mm": 5.8188,
+      "worst_point_mm": [
+        28.0,
+        36.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_LNA_OUT",
+      "rf_segment_count": 1,
+      "rf_trace_total_length_mm": 29.45,
+      "max_nearest_gnd_via_centre_mm": 5.7195,
+      "conservative_upper_bound_at_sample_step_mm": 5.819,
+      "worst_point_mm": [
+        122.0,
+        36.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_LNA_IC_IN",
+      "rf_segment_count": 2,
+      "rf_trace_total_length_mm": 14.213,
+      "max_nearest_gnd_via_centre_mm": 5.2989,
+      "conservative_upper_bound_at_sample_step_mm": 5.3983,
+      "worst_point_mm": [
+        56.5246,
+        36.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    }
+  ],
+  "errors": [],
+  "status": "STATIC_RF_VIA_PROXIMITY_AUDITED_NATIVE_PENDING",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "native_zone_refill": "NOT_RUN",
+  "fabrication_allowed": false,
+  "tx_allowed": false
+}
+

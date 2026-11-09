@@ -1,0 +1,17 @@
+Blocco;Ref;Quantita;Componente;Valore_o_MPN;Package;Stato;Nota
+SY01;U1;1;PLL con VCO;ADF4351BCPZ;LFCSP-32;DATASHEET_VERIFICATO;Non approvato per acquisto fino a validazione phase noise
+SY01;Y1;1;TCXO 12.8MHz;MPN APERTO;SMD;DA_SELEZIONARE;Frequenza 12.8MHz 3.3V rumore e ppm da validare
+SY01;U2;1;LDO RF 3.3V;ADP7156 candidato;SMD;CANDIDATO;Pinout applicativo e dissipazione da progettare
+SY01;RSET1;1;Resistore RSET;5.1kohm 1%;0603;CANDIDATO;Secondo datasheet ADF4351
+SY01;RCE1;1;Resistore pull down CE;100kohm;0603;CANDIDATO;Avvio sicuro
+SY01;RPD1;1;Resistore pull down PDBRF;100kohm;0603;CANDIDATO;Uscita RF muta all'avvio
+SY01;RB1,RB2;2;Resistore bias uscite A;49.9ohm;0603;CANDIDATO;Da rivedere con porta LO buffer
+SY01;RT1;1;Terminazione uscita complementare;49.9ohm;0603;CANDIDATO;Richiede accoppiamento AC
+SY01;CAC1,CAC2;2;Condensatori accoppiamento AC;1nF C0G;0603/0805;CANDIDATO;Self resonance e insertion loss da verificare
+SY01;CDEC1-CDEC8;8;Bypass alimentazione;100nF X7R;0402/0603;CANDIDATO;Placement vicino a ogni pin alimentato
+SY01;CBULK1-CBULK3;3;Decoupling locale;1uF X7R;0603;CANDIDATO;Valutare derating DC
+SY01;CCOMP1-CCOMP3;3;Condensatori TEMP VCOM VREF;MPN/valori aperti;0603;APERTO;Da derivare reference design
+SY01;FLPLL;1;Filtro anello CP-OUT/VTUNE;DA DIMENSIONARE;SMD;APERTO;Circuito obbligatorio non progettato
+SY01;LOBUF;1;Buffer e pad LO;DA SELEZIONARE;SMD;APERTO;Requisito +7dBm al ADE-1 dopo filtro
+SY01;L1,L3,L5,L7;4;Induttori LPF LO;80.489n/325.895n/325.895n/80.489n;SMD;NON_ACQUISTABILE;Valori ideali non standard e Q/SRF da testare
+SY01;C2,C4,C6;3;Condensatori LPF LO;90.210p/144.686p/90.210p;SMD;NON_ACQUISTABILE;Valori ideali non standard

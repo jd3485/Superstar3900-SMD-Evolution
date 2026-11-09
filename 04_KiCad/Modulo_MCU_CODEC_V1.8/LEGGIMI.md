@@ -1,0 +1,1 @@
+Schema V1.8 MCU/CODEC + clock oscillator e LDO. Bozza KiCad: pinout e label testati via Python; nessun ERC. Aprire in KiCad, verificare lib embedded, etichette e conversione ad assegnazione footprint.

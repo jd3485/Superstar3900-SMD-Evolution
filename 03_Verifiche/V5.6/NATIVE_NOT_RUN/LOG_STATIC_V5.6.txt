@@ -1,0 +1,52 @@
+{
+  "revision": "V5.6",
+  "scope": "TOP_COPPER_ONLY_UNFILLED_GEOMETRY",
+  "board_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "reference_v48_sha256": "00a65b2f738cf3e49f7a1c8d83a3f50e54beb48ca0afe722bb98ff9e9cbaa221",
+  "copper_identical_to_v48_study": true,
+  "geometry_counts": {
+    "pads": 44,
+    "segments": 44,
+    "vias": 70,
+    "zones": 4,
+    "filled_zone_polygons": 0
+  },
+  "net_count": 8,
+  "ground_zones": [
+    {
+      "layer": "F.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    },
+    {
+      "layer": "In1.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    },
+    {
+      "layer": "B.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    },
+    {
+      "layer": "In2.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    }
+  ],
+  "ground_pad_islands_count": 24,
+  "ground_via_only_islands_count": 40,
+  "ground_top_islands_count": 64,
+  "ground_connectivity": "PENDING_ZONE_REFILL_AND_NATIVE_DRC",
+  "signal_connectivity": "STATIC_PASS",
+  "errors": [],
+  "status": "STATIC_TOPOLOGY_PASS_GROUND_PENDING",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "fabrication_allowed": false
+}
+

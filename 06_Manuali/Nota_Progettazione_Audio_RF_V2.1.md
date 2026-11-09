@@ -1,0 +1,3 @@
+# Manuale di progettazione - nota incrementale V2.1
+
+Il codec presenta due ADC (left/right). Il microfono sulla via sinistra e il discriminatore FM sulla via destra permettono di richiedere al firmware l'acquisizione parallela dei due flussi, un prerequisito per usare VOX e decodifica dei codici selettivi nello stesso sistema. Questa e' una scelta di architettura, non un collaudo. Occorre programmare la matrice analogica del TLV320AIC3204 e confermare mediante segnali iniettati su entrambi i canali. Non alimentare AVDD/DVDD del codec con 3,3 V: con LDO interni quei pin servono per i condensatori di stabilizzazione. Sulle piste RF della ricevente saranno richiesti PBF, massa, schermatura e misure reali.

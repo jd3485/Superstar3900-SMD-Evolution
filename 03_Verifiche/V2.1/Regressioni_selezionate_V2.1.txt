@@ -1,0 +1,36 @@
+test_frequency_plan.py: RETURN=0
+PASS: 270 frequenze uniche; 240 normali + 30 ALFA; CH9; anomalie CH23/24; 40 posizioni TX predefinite.
+
+
+test_pll_plan.py: RETURN=0
+PASS: 270 LO e 270 INT unici; 36.310-39.000 MHz; VCO 2323.84-2496 MHz; errore 0Hz.
+
+
+test_mcu_codec_v17.py: RETURN=0
+PASS: 64 STM32 + 32 CODEC; 11 pin checks, labels shared, internal LDO rails, KiCad syntax parentheses; NO ERC performed
+
+
+test_audio_clock_v18.py: RETURN=0
+PASS V1.8: 9 new pins (X201+U203), labels, no-connect, passive refs, MCLK=12.288MHz, FS=48kHz, BCLK=3.072MHz, no A/D internal LDO tied to 3.3V
+Not performed: KiCad ERC, exported netlist, STM32CubeMX and hardware measurements.
+
+
+test_mcu_afe_power_v19.py: RETURN=0
+/mnt/data/Superstar3900_SMD_Evolution_V2.1/03_Verifiche/test_mcu_afe_power_v19.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/mnt/data/Superstar3900_SMD_Evolution_V2.1/07_Componenti/BOM_MCU_AUDIO_PWR_AFE_V1.9_PRELIMINARE.csv' mode='r' encoding='UTF-8'>
+  cls.s=SCH.read_text(); cls.b=list(csv.DictReader(CSV.open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+test_added_bom_unique (__main__.V19Tests.test_added_bom_unique) ... ok
+test_added_ref_unique (__main__.V19Tests.test_added_ref_unique) ... ok
+test_analog_rc (__main__.V19Tests.test_analog_rc) ... ok
+test_clk_math (__main__.V19Tests.test_clk_math) ... ok
+test_codec_inputs_behind_cap (__main__.V19Tests.test_codec_inputs_behind_cap) ... ok
+test_codec_ldo_pullup (__main__.V19Tests.test_codec_ldo_pullup) ... ok
+test_four_3v3_rails (__main__.V19Tests.test_four_3v3_rails) ... ok
+test_no_orphan_netname (__main__.V19Tests.test_no_orphan_netname) ... ok
+test_schematic_frame (__main__.V19Tests.test_schematic_frame) ... ok
+test_source_contract_notes (__main__.V19Tests.test_source_contract_notes) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+OK

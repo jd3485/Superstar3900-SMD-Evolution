@@ -1,0 +1,13 @@
+{
+  "revision": "V5.0",
+  "date_utc": "2026-11-08T20:01:20.030868+00:00",
+  "source_board_sha256": "00a65b2f738cf3e49f7a1c8d83a3f50e54beb48ca0afe722bb98ff9e9cbaa221",
+  "source_schematic_sha256": "bdcb4db6dae00eb2d2edb447b83ad4704170689b99fa90ab17a1270b386677b5",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "parity": "NOT_RUN",
+  "zones": "NOT_RUN",
+  "fabrication_authorized": false,
+  "release_gate": "BLOCKED",
+  "reason": "kicad-cli assente: NON ESEGUITI ERC, DRC, riempimento zone e parita"
+}

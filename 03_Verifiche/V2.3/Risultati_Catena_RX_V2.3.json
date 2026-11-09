@@ -1,0 +1,211 @@
+{
+  "revision": "V2.3",
+  "model": "Friis RF noise budget and approximate cascaded IIP3; no physical circuit simulation",
+  "data_basis": {
+    "ADL5535_20MHz": {
+      "gain_dB": 16.7,
+      "noise_figure_dB": 3.0,
+      "OIP3_dBm": 41.5
+    },
+    "ADL5536_20MHz": {
+      "gain_dB": 20.2,
+      "noise_figure_dB": 2.5,
+      "OIP3_dBm": 39.5
+    },
+    "ADE_1_plus": {
+      "conversion_loss_dB": 5.0,
+      "IIP3_dBm": 15,
+      "LO_dBm": 7
+    },
+    "ADE_1H_plus": {
+      "conversion_loss_dB": 5.3,
+      "IIP3_dBm": 23,
+      "LO_dBm": 17
+    }
+  },
+  "assumptions": [
+    "50-ohm available power gains, lossless match not verified",
+    "passive stage noise figure equals insertion loss at reference temperature",
+    "mixer SSB NF approximated by its conversion loss (not guaranteed)",
+    "IIP3 computed assuming equal-tone weak-signal third-order model",
+    "ADL amplifier typical characteristics from datasheet AT 20 MHz, not 27 MHz",
+    "preselector loss split 1.5+3.0 dB is hypothetical, not a redesigned filter",
+    "V2.2 image rejection ~69 dB CANNOT be carried over to split architecture",
+    "not a close-in blocker/spur/reciprocal-mixing/compression analysis"
+  ],
+  "results": [
+    {
+      "scenario": "A_v22_pre4p5_5536",
+      "NF_dB": 7.050140233143301,
+      "gain_dB": 10.700000000000001,
+      "IIP3_dBm": -0.7153820769794632,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "candidate LO +7dBm, not measured"
+    },
+    {
+      "scenario": "B_split_5536",
+      "NF_dB": 4.122102488647117,
+      "gain_dB": 10.700000000000001,
+      "IIP3_dBm": -0.7306373742725875,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "candidate LO +7dBm, not measured"
+    },
+    {
+      "scenario": "C_split_5535",
+      "NF_dB": 4.740310644321831,
+      "gain_dB": 7.199999999999999,
+      "IIP3_dBm": 2.7806439760567914,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "candidate LO +7dBm, not measured"
+    },
+    {
+      "scenario": "D_split_5535_pad6",
+      "NF_dB": 5.4983192300340145,
+      "gain_dB": 1.1999999999999988,
+      "IIP3_dBm": 8.723448952689912,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "candidate LO +7dBm, not measured"
+    },
+    {
+      "scenario": "E_split_5536_pad6",
+      "NF_dB": 4.528962207600119,
+      "gain_dB": 4.699999999999999,
+      "IIP3_dBm": 5.17929230750557,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "candidate LO +7dBm, not measured"
+    },
+    {
+      "scenario": "F_lna_bypass_v22",
+      "NF_dB": 9.5,
+      "gain_dB": -9.5,
+      "IIP3_dBm": 19.5,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "candidate LO +7dBm, not measured"
+    },
+    {
+      "scenario": "G_split_5535_ADE1H_UNAVAILABLE_LO",
+      "NF_dB": 4.7601343559366995,
+      "gain_dB": 6.8999999999999995,
+      "IIP3_dBm": 10.679292307505568,
+      "filter_image_rejection_db": "UNVERIFIED",
+      "lo_compatibility": "NO: requires +17dBm"
+    }
+  ],
+  "illustrative_sensitivity": [
+    {
+      "scenario": "B_split_5536",
+      "metric": "NF_dB",
+      "P05": 3.463,
+      "median": 4.122,
+      "P95": 4.766,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "B_split_5536",
+      "metric": "IIP3_dBm",
+      "P05": -3.691,
+      "median": -0.682,
+      "P95": 2.265,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "B_split_5536",
+      "metric": "gain_dB",
+      "P05": 9.268,
+      "median": 10.661,
+      "P95": 12.111,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "C_split_5535",
+      "metric": "NF_dB",
+      "P05": 4.055,
+      "median": 4.728,
+      "P95": 5.419,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "C_split_5535",
+      "metric": "IIP3_dBm",
+      "P05": -0.198,
+      "median": 2.831,
+      "P95": 5.749,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "C_split_5535",
+      "metric": "gain_dB",
+      "P05": 5.859,
+      "median": 7.192,
+      "P95": 8.524,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "D_split_5535_pad6",
+      "metric": "NF_dB",
+      "P05": 4.84,
+      "median": 5.526,
+      "P95": 6.198,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "D_split_5535_pad6",
+      "metric": "IIP3_dBm",
+      "P05": 5.877,
+      "median": 8.657,
+      "P95": 11.651,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "D_split_5535_pad6",
+      "metric": "gain_dB",
+      "P05": -0.291,
+      "median": 1.196,
+      "P95": 2.614,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "E_split_5536_pad6",
+      "metric": "NF_dB",
+      "P05": 3.898,
+      "median": 4.548,
+      "P95": 5.165,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "E_split_5536_pad6",
+      "metric": "IIP3_dBm",
+      "P05": 2.234,
+      "median": 5.044,
+      "P95": 8.11,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    },
+    {
+      "scenario": "E_split_5536_pad6",
+      "metric": "gain_dB",
+      "P05": 3.285,
+      "median": 4.704,
+      "P95": 6.036,
+      "N": 2000,
+      "comment": "ILLUSTRATIVE UNIFORM INPUT UNCERTAINTY, NOT YIELD"
+    }
+  ],
+  "next_gates": [
+    "redesign matching RF preselector, measure/simulate S11/S21 image and insertion loss",
+    "verify LNA values at 27 MHz including close-spaced IM3",
+    "establish actual LO level and phase noise into ADE-1+",
+    "complete KiCad schematic and ERC, PCB EMI model",
+    "bench NF, two-tone IMD and overload with calibrated sources"
+  ]
+}

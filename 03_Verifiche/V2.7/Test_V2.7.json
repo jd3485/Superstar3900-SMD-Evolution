@@ -1,0 +1,50 @@
+[
+  {
+    "test": "14 passivi in ciascuna variante",
+    "passed": true
+  },
+  {
+    "test": "ordine delle topologie invariato",
+    "passed": true
+  },
+  {
+    "test": "valori C E12 commerciali",
+    "passed": true
+  },
+  {
+    "test": "valori C E24 commerciali",
+    "passed": true
+  },
+  {
+    "test": "L commerciali Coilcraft",
+    "passed": true
+  },
+  {
+    "test": "tutti modelli finiti",
+    "passed": true
+  },
+  {
+    "test": "S11 fisicamente plausibile",
+    "passed": true
+  },
+  {
+    "test": "stochastic runs reproducible seed",
+    "passed": true
+  },
+  {
+    "test": "rifiuto gate Q30 E24",
+    "passed": true
+  },
+  {
+    "test": "conferma Q60 E24 risultato",
+    "passed": true
+  },
+  {
+    "test": "netlists generated",
+    "passed": true
+  },
+  {
+    "test": "fonti identificabili",
+    "passed": true
+  }
+]

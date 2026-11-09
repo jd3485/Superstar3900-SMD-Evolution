@@ -1,0 +1,51 @@
+{
+  "tests_new_v66": 50,
+  "suites": [
+    {
+      "suite": "V5.9",
+      "tests": 20,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.0",
+      "tests": 35,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.1",
+      "tests": 60,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.2",
+      "tests": 31,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.3",
+      "tests": 45,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.4",
+      "tests": 60,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.5",
+      "tests": 50,
+      "status": "PASS"
+    },
+    {
+      "suite": "V6.6",
+      "tests": 50,
+      "status": "PASS"
+    }
+  ],
+  "all_selected_pass": true,
+  "not_full_historical_suite": true,
+  "native_kicad_erc": "NOT_RUN_KICAD_UNAVAILABLE",
+  "native_kicad_drc": "NOT_RUN_KICAD_UNAVAILABLE",
+  "ngspice": "NOT_RUN_NO_EXECUTION",
+  "note": "Solo test e modelli numerici in Python, nessun prototipo fisico."
+}

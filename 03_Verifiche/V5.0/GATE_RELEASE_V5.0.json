@@ -1,0 +1,68 @@
+{
+  "version": "V5.0",
+  "policy": "FAIL_CLOSED",
+  "source_pcb_sha256": "00a65b2f738cf3e49f7a1c8d83a3f50e54beb48ca0afe722bb98ff9e9cbaa221",
+  "release_status": "BLOCKED_NOT_FOR_FAB",
+  "fabrication_allowed": false,
+  "TX_allowed": false,
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "written_manufacturer_approval": "NOT_RECEIVED",
+  "gate_items": [
+    {
+      "id": "R-01",
+      "requirement": "ERC KiCad 10 nativo e report esaminato",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-02",
+      "requirement": "DRC KiCad 10 con refill/parita e report esaminato",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-03",
+      "requirement": "DXF/STEP TE CONSMA002-SMD-G confrontati e footprint approvato",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-04",
+      "requirement": "DFM PCBWay scritto per 6 VIPPO / rifinitura / tolleranze",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-05",
+      "requirement": "Approvazione assemblatore: stencil, reflow e ispezione U101",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-06",
+      "requirement": "Analisi e misura termica ADL5535",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-07",
+      "requirement": "Stack-up 4 strati / impedenza RF dimensionata",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-08",
+      "requirement": "BOM, procedure di banco e collaudi RX",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    },
+    {
+      "id": "R-09",
+      "requirement": "Autorizzazione esplicita per qualsiasi ordine e revisione esecutiva",
+      "status": "OPEN",
+      "evidence": "NOT_PRESENT"
+    }
+  ],
+  "note": "Il superamento dei test statici e la presenza dei sorgenti non concedono autorizzazione."
+}

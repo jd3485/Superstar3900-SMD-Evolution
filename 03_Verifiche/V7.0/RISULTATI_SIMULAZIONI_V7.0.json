@@ -1,0 +1,113 @@
+{
+  "version": "V7.0",
+  "simulation_kind": "scipy/numpy ideal behavioral equations; no native SPICE silicon model",
+  "am_log_ideal": {
+    "raw_thd_percent": 9.081614613431203,
+    "linearized_thd_percent": 0.013336008496500166,
+    "tone_hz": 1000,
+    "slope_v_per_db": 0.025
+  },
+  "fm_pll_linearized": {
+    "tone_hz": 1000,
+    "deviation_peak_hz": 2000,
+    "kvo_assumed_hz_per_v": 100000,
+    "rc_sec": 0.0001,
+    "gain_peak_v": 0.020088329150254908,
+    "thd_percent": 4.7103514524051144e-07,
+    "model_only": true
+  },
+  "lo2_lpf_50ohm": {
+    "fundamental_s21_db": -0.31292211654375984,
+    "3rd_harmonic_s21_db": -32.66248452431138,
+    "5th_harmonic_s21_db": -54.67225797378971,
+    "s11_db_10p24mhz": -14.73576206700499,
+    "nominal_inductors_h": [
+      3.3e-07,
+      1.1e-06,
+      3.3e-07
+    ],
+    "nominal_capacitors_f": [
+      3.6e-10,
+      3.6e-10
+    ],
+    "assumed_q": 80,
+    "monte_carlo_4000": {
+      "fund_db_range": [
+        -0.5534219416951158,
+        -0.17388182191844248
+      ],
+      "third_db_range": [
+        -33.837107793445085,
+        -31.389053326011506
+      ],
+      "third_above_minus_25db_count": 0
+    }
+  },
+  "lo2_rf_driver": {
+    "si5351_square_assumed_vpp": 3.3,
+    "output_series_ohm": 1500,
+    "theoretical_fund_pin_dbm": -13.379352619730758,
+    "gali3_gain_db_only_at_100mhz": 22.4,
+    "predicted_out_dbm_using_100mhz_gain_NOT_VALIDATED": 6.7077252637254805,
+    "required_mixer_out_dbm": 7,
+    "output_50ohm_vrms_at_7dbm": 0.5005932648504533,
+    "bias_5v_5000": {
+      "current_range_ma": [
+        24.95476389478381,
+        40.22757927458157
+      ],
+      "r47_dissipation_mw_range": [
+        29.46419853405768,
+        75.84670174511974
+      ]
+    }
+  },
+  "dsp_48k": {
+    "SSB": {
+      "taps": 241,
+      "group_delay_ms": 2.5,
+      "mmac_per_second": 11.568,
+      "pass_gain_db": {
+        "600": -0.32489108919447107,
+        "1000": -0.00038660437163089384,
+        "2000": -0.0013326088240739327,
+        "2500": -1.1519124115064978
+      },
+      "stop_gain_db": {
+        "5500": -108.28702739003928,
+        "8500": -75.25826146200116
+      },
+      "max_coeff_error": 1.5197354425726829e-05,
+      "q15_energy": 0.09203386399894953
+    },
+    "CW": {
+      "taps": 481,
+      "group_delay_ms": 5.0,
+      "mmac_per_second": 23.088,
+      "pass_gain_db": {
+        "550": -1.1984565314369062,
+        "700": -0.0026591351935231055,
+        "850": -1.2054224298451275
+      },
+      "stop_gain_db": {
+        "1800": -76.58911244918627,
+        "3300": -85.5692731375953
+      },
+      "max_coeff_error": 1.5254012045248615e-05,
+      "q15_energy": 0.016773718409240246
+    }
+  },
+  "rf_tx_enabled": false,
+  "kicad_erc_drc_done": false,
+  "ngspice_manufacturer_models_done": false,
+  "unknowns": [
+    "FM PLL actual oscillator R1/C1 center",
+    "FM capture/THD on silicon",
+    "AM log calibration",
+    "GALI-3 gain at 10.24MHz",
+    "bias choke SRF/inductor Q",
+    "455k filter availability/matching",
+    "SSB hardware preselector blocking",
+    "codec/MCU real time benchmarks"
+  ]
+}

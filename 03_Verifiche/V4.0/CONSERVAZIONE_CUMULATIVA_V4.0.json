@@ -1,0 +1,27 @@
+{
+  "revision": "V4.0",
+  "date": "2026-11-08",
+  "old_v39_file_count": 615,
+  "original_files_byte_identical": 609,
+  "active_files_updated": [
+    "00_Gestione_Progetto/REGISTRO_DECISIONI.md",
+    "00_Gestione_Progetto/RIPRENDI_IN_UNA_NUOVA_CHAT.md",
+    "00_Gestione_Progetto/STATO_PROGETTO.md",
+    "06_Manuali/INDICE_GENERALE_MANUALI.md",
+    "README.md",
+    "RIPRENDI_IN_UNA_NUOVA_CHAT.md"
+  ],
+  "historical_files_removed": 0,
+  "manual_pdf_pages": 11,
+  "manual_rx_rows": 270,
+  "software_matrix_cases": 2400,
+  "historical_v38_checks": 44,
+  "historical_v37_checks": 17,
+  "native_kicad_drc_run": false,
+  "hardware_rf_validated_modules": 0,
+  "release_for_fabrication": false,
+  "v39_sma_gnd_footprint_height_mm": 7.4,
+  "te_recommended_height_mm": 7.76,
+  "new_manual_path": "06_Manuali/MU01_Manuale_Uso_Illustrato_Bozza_V4.0.pdf",
+  "readme": "README.md"
+}

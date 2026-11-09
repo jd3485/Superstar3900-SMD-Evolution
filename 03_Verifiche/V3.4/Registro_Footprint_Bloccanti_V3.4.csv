@@ -1,0 +1,8 @@
+Reference,Componente,Footprint_V3.3,Stato,Motivazione
+J101,CONSMA002-SMD,S3900E_v33:SMA_5pad_Placeholder,BLOCCANTE,"Impronta non conforme al disegno raccomandato; verificare elemento centrale quotato diametro 2,05 mm (pad o foro da chiarire), dimensioni/soldermask, bordo scheda e orientamento."
+J102,CONSMA002-SMD,S3900E_v33:SMA_5pad_Placeholder,BLOCCANTE,"Impronta non conforme al disegno raccomandato; verificare elemento centrale quotato diametro 2,05 mm (pad o foro da chiarire), dimensioni/soldermask, bordo scheda e orientamento."
+J103,CONSMA002-SMD,S3900E_v33:SMA_5pad_Placeholder,BLOCCANTE,"Impronta non conforme al disegno raccomandato; verificare elemento centrale quotato diametro 2,05 mm (pad o foro da chiarire), dimensioni/soldermask, bordo scheda e orientamento."
+J104,CONSMA002-SMD,S3900E_v33:SMA_5pad_Placeholder,BLOCCANTE,"Impronta non conforme al disegno raccomandato; verificare elemento centrale quotato diametro 2,05 mm (pad o foro da chiarire), dimensioni/soldermask, bordo scheda e orientamento."
+U101,ADL5535ARKZ-R7,S3900E_v33:SOT89_3,BLOCCANTE,"Pad termico, piazzola GND e aperture stagno da ridisegnare secondo figura 17 del datasheet ADI e verificare con assemblatore."
+L101,470nH 0603,S3900E_v33:L_0603,DA VERIFICARE,"Confrontare footprint con esatto PN induttore, Q e SRF; adesso riferimento 470 nH, 0603."
+J105,5V_BENCH,S3900E_v33:2_wire_solder_pads,DA VERIFICARE,Alimentazione da banco protetta con limitazione corrente; footprint provvisorio.

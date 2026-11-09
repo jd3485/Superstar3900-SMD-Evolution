@@ -1,0 +1,9 @@
+{
+  "revision": "V5.8",
+  "static_rf_audit": "PASS",
+  "kicad_cli_present": false,
+  "native_status": "NOT_RUN_KICAD_MISSING",
+  "release": "BLOCKED_NO_FAB",
+  "fabrication_allowed": false,
+  "tx_allowed": false
+}

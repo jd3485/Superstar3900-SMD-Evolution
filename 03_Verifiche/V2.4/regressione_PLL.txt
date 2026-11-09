@@ -1,0 +1,1 @@
+PASS: 270 LO e 270 INT unici; 36.310-39.000 MHz; VCO 2323.84-2496 MHz; errore 0Hz.

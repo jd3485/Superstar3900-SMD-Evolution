@@ -1,0 +1,1685 @@
+{
+  "version": "V7.0",
+  "status": "CANDIDATE_NETLIST_NOT_KICAD_ERC",
+  "parts": [
+    {
+      "ref": "J7101",
+      "type": "interfaccia demod IF2 + segnali controllo",
+      "mpn_or_value": "9 pins",
+      "status": "INTERFACCIA_CONTRATTO",
+      "blocker_or_note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "U7101",
+      "type": "demodulatore di ampiezza logaritmico",
+      "mpn_or_value": "Analog Devices AD8307ARZ SOIC8",
+      "status": "PINOUT_FABBRICANTE",
+      "blocker_or_note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "C7101",
+      "type": "passivo",
+      "mpn_or_value": "10 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7101",
+      "type": "passivo",
+      "mpn_or_value": "910 ohm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": "2k termination approx: 910R + 1.1k input diff, from actual AD8307 input"
+    },
+    {
+      "ref": "C7102",
+      "type": "passivo",
+      "mpn_or_value": "10 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": "DC common-mode from device internal bias preserved"
+    },
+    {
+      "ref": "C7103",
+      "type": "passivo",
+      "mpn_or_value": "100 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7104",
+      "type": "passivo",
+      "mpn_or_value": "1 µF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7102",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": "default detector OFF, enable requires RX consent"
+    },
+    {
+      "ref": "Q7101",
+      "type": "N-channel transistor fail-off AM gate",
+      "mpn_or_value": "2N7002 SOT23",
+      "status": "DNP_OPZIONALE_NON_CABLATO",
+      "blocker_or_note": "Needs gate logic stage: do not fit as a direct active-high enable generator"
+    },
+    {
+      "ref": "J7102",
+      "type": "ENABLE AM detector hardware input",
+      "mpn_or_value": "2-pin",
+      "status": "INTERFACCIA_NON_POPOLATA",
+      "blocker_or_note": "Link only after independent HW RX consent; default R7102 holds LOW"
+    },
+    {
+      "ref": "R7103",
+      "type": "passivo",
+      "mpn_or_value": "1.0 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7105",
+      "type": "passivo",
+      "mpn_or_value": "10 nF C0G",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "U7102",
+      "type": "limitatore FM comparator",
+      "mpn_or_value": "TI TLV3201AIDBVR SOT23-5",
+      "status": "PINOUT_FABBRICANTE",
+      "blocker_or_note": "40ns propagation not zero, receiver filter must support input swing"
+    },
+    {
+      "ref": "R7104",
+      "type": "passivo",
+      "mpn_or_value": "1.5 kOhm 1%",
+      "status": "DNP_FINCHÉ_MATCHING_NON_VERIFICATO",
+      "blocker_or_note": "ONLY if Murata candidate specifies 1.5k termination: avoid double terminations in V6.8"
+    },
+    {
+      "ref": "C7106",
+      "type": "passivo",
+      "mpn_or_value": "10 nF C0G",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7105",
+      "type": "passivo",
+      "mpn_or_value": "47 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7107",
+      "type": "passivo",
+      "mpn_or_value": "100 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "U7103",
+      "type": "PLL demodulatore FM 455 kHz",
+      "mpn_or_value": "TI CD74HC4046APWR TSSOP16",
+      "status": "PINOUT_FABBRICANTE",
+      "blocker_or_note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "C7108",
+      "type": "passivo",
+      "mpn_or_value": "100 pF C0G trimmable topology",
+      "status": "VALORE_DA_TARARE",
+      "blocker_or_note": "R1/C1 455k center NOT QUALIFIED; test with scope required"
+    },
+    {
+      "ref": "R7106",
+      "type": "passivo",
+      "mpn_or_value": "10 kOhm 1%",
+      "status": "VALORE_DA_TARARE",
+      "blocker_or_note": "VCO f=455k cannot be claimed from this value alone"
+    },
+    {
+      "ref": "R7107",
+      "type": "passivo",
+      "mpn_or_value": "10 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7109",
+      "type": "passivo",
+      "mpn_or_value": "10 nF C0G",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7108",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": "Per datasheet DEMOUT output add load resistor"
+    },
+    {
+      "ref": "R7109",
+      "type": "passivo",
+      "mpn_or_value": "10 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": "PLL default OFF; INH high inhibits VCO"
+    },
+    {
+      "ref": "Q7102",
+      "type": "inhibit pull-down only if HW_RX_SAFE",
+      "mpn_or_value": "2N7002 SOT23",
+      "status": "PIN_FUNZIONALE_CANDIDATO",
+      "blocker_or_note": "HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off"
+    },
+    {
+      "ref": "R7110",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7110",
+      "type": "passivo",
+      "mpn_or_value": "100 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "U7104",
+      "type": "dual audio amplifier gain / buffer",
+      "mpn_or_value": "TI TLV9062IDR SOIC8",
+      "status": "PINOUT_FABBRICANTE",
+      "blocker_or_note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "C7111",
+      "type": "passivo",
+      "mpn_or_value": "1 µF X7R 10V",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7111",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7112",
+      "type": "passivo",
+      "mpn_or_value": "10 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7113",
+      "type": "passivo",
+      "mpn_or_value": "10 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7112",
+      "type": "AC coupling film/X7R",
+      "mpn_or_value": "1 µF X7R 10V",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7114",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7115",
+      "type": "passivo",
+      "mpn_or_value": "10 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7116",
+      "type": "passivo",
+      "mpn_or_value": "39 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7113",
+      "type": "passivo",
+      "mpn_or_value": "100 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "J7103",
+      "type": "AM/FM audio outputs to V6.0 J605",
+      "mpn_or_value": "3-pin",
+      "status": "INTERFACCIA",
+      "blocker_or_note": "V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+    },
+    {
+      "ref": "C7114",
+      "type": "passivo",
+      "mpn_or_value": "1 µF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7117",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7115",
+      "type": "passivo",
+      "mpn_or_value": "1 µF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7118",
+      "type": "passivo",
+      "mpn_or_value": "100 kOhm",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "J7104",
+      "type": "Reference 1.65V external, optional local filter",
+      "mpn_or_value": "2pin",
+      "status": "INTERFACCIA",
+      "blocker_or_note": "External reference must be buffered if loaded, avoid backfeeding; DNP local divider"
+    },
+    {
+      "ref": "U7121",
+      "type": "LO2 MMIC output amplifier",
+      "mpn_or_value": "Mini-Circuits GALI-3+ DF782 SOT89",
+      "status": "PINOUT_FABBRICANTE",
+      "blocker_or_note": "Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point"
+    },
+    {
+      "ref": "J7121",
+      "type": "LO2 CMOS in from Si5351C CLK0",
+      "mpn_or_value": "2pin",
+      "status": "INTERFACCIA",
+      "blocker_or_note": "U971 CLK0 through 33ohm from V6.9; CMOS driver swing unknown"
+    },
+    {
+      "ref": "R7121",
+      "type": "passivo",
+      "mpn_or_value": "1.5 kOhm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7121",
+      "type": "passivo",
+      "mpn_or_value": "100 nF C0G 16V",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7122",
+      "type": "passivo",
+      "mpn_or_value": "47 Ohm 1%, 0.125 W",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": "5V supply assumed, 35mA typ, thermal worstcase simulated"
+    },
+    {
+      "ref": "L7121",
+      "type": "passivo",
+      "mpn_or_value": "RFC nominal 4.7µH >=40MHz SRF TO VERIFY",
+      "status": "INDUTTORE_NON_QUALIFICATO",
+      "blocker_or_note": "Specific choke part + S-param/SRF required before fabrication"
+    },
+    {
+      "ref": "C7122",
+      "type": "passivo",
+      "mpn_or_value": "1 µF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7123",
+      "type": "passivo",
+      "mpn_or_value": "100 nF X7R",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7124",
+      "type": "passivo",
+      "mpn_or_value": "100 nF C0G",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "L7122",
+      "type": "passivo",
+      "mpn_or_value": "330 nH RF high-Q",
+      "status": "INDUTTORE_DA_QUALIFICARE",
+      "blocker_or_note": "Needs Q/SRF at >30.72 MHz"
+    },
+    {
+      "ref": "C7125",
+      "type": "passivo",
+      "mpn_or_value": "360 pF C0G 2%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "L7123",
+      "type": "passivo",
+      "mpn_or_value": "1.1 µH RF high-Q",
+      "status": "INDUTTORE_DA_QUALIFICARE",
+      "blocker_or_note": "Needs SRF>70MHz, ESR/Q verification"
+    },
+    {
+      "ref": "C7126",
+      "type": "passivo",
+      "mpn_or_value": "360 pF C0G 2%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "L7124",
+      "type": "passivo",
+      "mpn_or_value": "330 nH RF high-Q",
+      "status": "INDUTTORE_DA_QUALIFICARE",
+      "blocker_or_note": "LPF no HF PCB validated"
+    },
+    {
+      "ref": "R7123",
+      "type": "passivo",
+      "mpn_or_value": "430 Ohm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7124",
+      "type": "passivo",
+      "mpn_or_value": "11.5 Ohm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7125",
+      "type": "passivo",
+      "mpn_or_value": "430 Ohm 1%",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "C7127",
+      "type": "passivo",
+      "mpn_or_value": "100 nF C0G",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "J7122",
+      "type": "LO2 output to mixer U802 LO pin 6",
+      "mpn_or_value": "2pin",
+      "status": "INTERFACCIA_CANDIDATA",
+      "blocker_or_note": "No assembler permit until +7dBm and spurs measured on 50ohm load"
+    },
+    {
+      "ref": "J7131",
+      "type": "codec DSP interface demod audio",
+      "mpn_or_value": "5pin",
+      "status": "INTERFACCIA",
+      "blocker_or_note": "DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected."
+    },
+    {
+      "ref": "R7131",
+      "type": "passivo",
+      "mpn_or_value": "100k",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    },
+    {
+      "ref": "R7132",
+      "type": "passivo",
+      "mpn_or_value": "100k",
+      "status": "VALORE_CANDIDATO",
+      "blocker_or_note": ""
+    }
+  ],
+  "pin_to_net": [
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "1",
+      "net": "IF2_AM_OUT",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "2",
+      "net": "IF2_FM_OUT",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "3",
+      "net": "IF2_SSB_CW_FILTERED",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "4",
+      "net": "GND_IF2",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "5",
+      "net": "3V3_A_IF",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "6",
+      "net": "5V_A_RF",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "7",
+      "net": "HW_RX_SAFE",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "8",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "J7101",
+      "pin_or_terminal": "9",
+      "net": "SHIELD_CHASSIS",
+      "qualifier": "INTERFACCIA_CONTRATTO",
+      "note": "V6.8 filtri AM/FM storici, non attribuire disponibilità o matching garantiti"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "1",
+      "net": "AM_INM_BIAS",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "3",
+      "net": "NC_OFS_AD8307",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "4",
+      "net": "AM_LOG_RAW",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "5",
+      "net": "NC_INT_AD8307",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "6",
+      "net": "AM_DETECT_EN",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "7",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "U7101",
+      "pin_or_terminal": "8",
+      "net": "AM_INP_BIAS",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "La risposta non è lineare: correzione ln/exp nel DSP, non confondere con envelope lineare"
+    },
+    {
+      "ref": "C7101",
+      "pin_or_terminal": "1",
+      "net": "AM_IF_SERIES",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7101",
+      "pin_or_terminal": "2",
+      "net": "AM_INP_BIAS",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7101",
+      "pin_or_terminal": "1",
+      "net": "IF2_AM_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "2k termination approx: 910R + 1.1k input diff, from actual AD8307 input"
+    },
+    {
+      "ref": "R7101",
+      "pin_or_terminal": "2",
+      "net": "AM_IF_SERIES",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "2k termination approx: 910R + 1.1k input diff, from actual AD8307 input"
+    },
+    {
+      "ref": "C7102",
+      "pin_or_terminal": "1",
+      "net": "AM_INM_BIAS",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "DC common-mode from device internal bias preserved"
+    },
+    {
+      "ref": "C7102",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "DC common-mode from device internal bias preserved"
+    },
+    {
+      "ref": "C7103",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7103",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7104",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7104",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7102",
+      "pin_or_terminal": "1",
+      "net": "AM_DETECT_EN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "default detector OFF, enable requires RX consent"
+    },
+    {
+      "ref": "R7102",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "default detector OFF, enable requires RX consent"
+    },
+    {
+      "ref": "Q7101",
+      "pin_or_terminal": "G",
+      "net": "HW_RX_SAFE",
+      "qualifier": "DNP_OPZIONALE_NON_CABLATO",
+      "note": "Needs gate logic stage: do not fit as a direct active-high enable generator"
+    },
+    {
+      "ref": "Q7101",
+      "pin_or_terminal": "S",
+      "net": "GND_IF2",
+      "qualifier": "DNP_OPZIONALE_NON_CABLATO",
+      "note": "Needs gate logic stage: do not fit as a direct active-high enable generator"
+    },
+    {
+      "ref": "Q7101",
+      "pin_or_terminal": "D",
+      "net": "AM_EN_GATE_INV",
+      "qualifier": "DNP_OPZIONALE_NON_CABLATO",
+      "note": "Needs gate logic stage: do not fit as a direct active-high enable generator"
+    },
+    {
+      "ref": "J7102",
+      "pin_or_terminal": "1",
+      "net": "HW_RX_AM_EN_3V3",
+      "qualifier": "INTERFACCIA_NON_POPOLATA",
+      "note": "Link only after independent HW RX consent; default R7102 holds LOW"
+    },
+    {
+      "ref": "J7102",
+      "pin_or_terminal": "2",
+      "net": "AM_DETECT_EN",
+      "qualifier": "INTERFACCIA_NON_POPOLATA",
+      "note": "Link only after independent HW RX consent; default R7102 holds LOW"
+    },
+    {
+      "ref": "R7103",
+      "pin_or_terminal": "1",
+      "net": "AM_LOG_RAW",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7103",
+      "pin_or_terminal": "2",
+      "net": "AM_LOG_RC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7105",
+      "pin_or_terminal": "1",
+      "net": "AM_LOG_RC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7105",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "U7102",
+      "pin_or_terminal": "1",
+      "net": "FM_SQUARE_455K",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "40ns propagation not zero, receiver filter must support input swing"
+    },
+    {
+      "ref": "U7102",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "40ns propagation not zero, receiver filter must support input swing"
+    },
+    {
+      "ref": "U7102",
+      "pin_or_terminal": "3",
+      "net": "FM_IF_BIASED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "40ns propagation not zero, receiver filter must support input swing"
+    },
+    {
+      "ref": "U7102",
+      "pin_or_terminal": "4",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "40ns propagation not zero, receiver filter must support input swing"
+    },
+    {
+      "ref": "U7102",
+      "pin_or_terminal": "5",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "40ns propagation not zero, receiver filter must support input swing"
+    },
+    {
+      "ref": "R7104",
+      "pin_or_terminal": "1",
+      "net": "IF2_FM_OUT",
+      "qualifier": "DNP_FINCHÉ_MATCHING_NON_VERIFICATO",
+      "note": "ONLY if Murata candidate specifies 1.5k termination: avoid double terminations in V6.8"
+    },
+    {
+      "ref": "R7104",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "DNP_FINCHÉ_MATCHING_NON_VERIFICATO",
+      "note": "ONLY if Murata candidate specifies 1.5k termination: avoid double terminations in V6.8"
+    },
+    {
+      "ref": "C7106",
+      "pin_or_terminal": "1",
+      "net": "IF2_FM_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7106",
+      "pin_or_terminal": "2",
+      "net": "FM_IF_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7105",
+      "pin_or_terminal": "1",
+      "net": "FM_IF_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7105",
+      "pin_or_terminal": "2",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7107",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7107",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "1",
+      "net": "NC_PCPOUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "2",
+      "net": "FM_PC1_OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "3",
+      "net": "FM_VCO_OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "4",
+      "net": "FM_VCO_OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "5",
+      "net": "FM_PLL_INH",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "6",
+      "net": "FM_C1_A",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "7",
+      "net": "FM_C1_B",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "8",
+      "net": "GND_IF2",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "9",
+      "net": "FM_VCOIN_CTRL",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "10",
+      "net": "FM_DEMOUT_RAW",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "11",
+      "net": "FM_R1",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "12",
+      "net": "NC_R2_UNUSED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "13",
+      "net": "NC_PC2OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "14",
+      "net": "FM_SQUARE_455K",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "15",
+      "net": "NC_PC3OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "U7103",
+      "pin_or_terminal": "16",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "R1/C1 must be tuned at 455kHz; VCO center not established from formula or hardware"
+    },
+    {
+      "ref": "C7108",
+      "pin_or_terminal": "1",
+      "net": "FM_C1_A",
+      "qualifier": "VALORE_DA_TARARE",
+      "note": "R1/C1 455k center NOT QUALIFIED; test with scope required"
+    },
+    {
+      "ref": "C7108",
+      "pin_or_terminal": "2",
+      "net": "FM_C1_B",
+      "qualifier": "VALORE_DA_TARARE",
+      "note": "R1/C1 455k center NOT QUALIFIED; test with scope required"
+    },
+    {
+      "ref": "R7106",
+      "pin_or_terminal": "1",
+      "net": "FM_R1",
+      "qualifier": "VALORE_DA_TARARE",
+      "note": "VCO f=455k cannot be claimed from this value alone"
+    },
+    {
+      "ref": "R7106",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_DA_TARARE",
+      "note": "VCO f=455k cannot be claimed from this value alone"
+    },
+    {
+      "ref": "R7107",
+      "pin_or_terminal": "1",
+      "net": "FM_PC1_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7107",
+      "pin_or_terminal": "2",
+      "net": "FM_VCOIN_CTRL",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7109",
+      "pin_or_terminal": "1",
+      "net": "FM_VCOIN_CTRL",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7109",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7108",
+      "pin_or_terminal": "1",
+      "net": "FM_DEMOUT_RAW",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "Per datasheet DEMOUT output add load resistor"
+    },
+    {
+      "ref": "R7108",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "Per datasheet DEMOUT output add load resistor"
+    },
+    {
+      "ref": "R7109",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "PLL default OFF; INH high inhibits VCO"
+    },
+    {
+      "ref": "R7109",
+      "pin_or_terminal": "2",
+      "net": "FM_PLL_INH",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "PLL default OFF; INH high inhibits VCO"
+    },
+    {
+      "ref": "Q7102",
+      "pin_or_terminal": "G",
+      "net": "HW_RX_SAFE",
+      "qualifier": "PIN_FUNZIONALE_CANDIDATO",
+      "note": "HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off"
+    },
+    {
+      "ref": "Q7102",
+      "pin_or_terminal": "S",
+      "net": "GND_IF2",
+      "qualifier": "PIN_FUNZIONALE_CANDIDATO",
+      "note": "HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off"
+    },
+    {
+      "ref": "Q7102",
+      "pin_or_terminal": "D",
+      "net": "FM_PLL_INH",
+      "qualifier": "PIN_FUNZIONALE_CANDIDATO",
+      "note": "HW_RX_SAFE hardware path from V6.2 not yet wired; logic not signed off"
+    },
+    {
+      "ref": "R7110",
+      "pin_or_terminal": "1",
+      "net": "HW_RX_SAFE",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7110",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7110",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7110",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "1",
+      "net": "AM_BUFFER_OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "2",
+      "net": "AM_AMP_INN",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "3",
+      "net": "AM_AC_BIASED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "4",
+      "net": "GND_IF2",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "5",
+      "net": "FM_AC_BIASED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "6",
+      "net": "FM_AMP_INN",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "7",
+      "net": "FM_BUFFER_OUT",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "U7104",
+      "pin_or_terminal": "8",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Gain FM=1+39k/10k ≈4.9; slew/bias/headroom must be verified with analog model"
+    },
+    {
+      "ref": "C7111",
+      "pin_or_terminal": "1",
+      "net": "AM_LOG_RC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7111",
+      "pin_or_terminal": "2",
+      "net": "AM_AC_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7111",
+      "pin_or_terminal": "1",
+      "net": "AM_AC_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7111",
+      "pin_or_terminal": "2",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7112",
+      "pin_or_terminal": "1",
+      "net": "AM_AMP_INN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7112",
+      "pin_or_terminal": "2",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7113",
+      "pin_or_terminal": "1",
+      "net": "AM_BUFFER_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7113",
+      "pin_or_terminal": "2",
+      "net": "AM_AMP_INN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7112",
+      "pin_or_terminal": "1",
+      "net": "FM_DEMOUT_RAW",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7112",
+      "pin_or_terminal": "2",
+      "net": "FM_AC_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7114",
+      "pin_or_terminal": "1",
+      "net": "FM_AC_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7114",
+      "pin_or_terminal": "2",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7115",
+      "pin_or_terminal": "1",
+      "net": "FM_AMP_INN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7115",
+      "pin_or_terminal": "2",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7116",
+      "pin_or_terminal": "1",
+      "net": "FM_BUFFER_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7116",
+      "pin_or_terminal": "2",
+      "net": "FM_AMP_INN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7113",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7113",
+      "pin_or_terminal": "2",
+      "net": "GND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "J7103",
+      "pin_or_terminal": "1",
+      "net": "DEMOD_AM_AUDIO_AC",
+      "qualifier": "INTERFACCIA",
+      "note": "V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+    },
+    {
+      "ref": "J7103",
+      "pin_or_terminal": "2",
+      "net": "DEMOD_FM_AUDIO_AC",
+      "qualifier": "INTERFACCIA",
+      "note": "V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+    },
+    {
+      "ref": "J7103",
+      "pin_or_terminal": "3",
+      "net": "AGND_IF2",
+      "qualifier": "INTERFACCIA",
+      "note": "V6.0 J605 modes AM/FM, coupling & level compatibility not yet proven"
+    },
+    {
+      "ref": "C7114",
+      "pin_or_terminal": "1",
+      "net": "AM_BUFFER_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7114",
+      "pin_or_terminal": "2",
+      "net": "DEMOD_AM_AUDIO_AC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7117",
+      "pin_or_terminal": "1",
+      "net": "DEMOD_AM_AUDIO_AC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7117",
+      "pin_or_terminal": "2",
+      "net": "AGND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7115",
+      "pin_or_terminal": "1",
+      "net": "FM_BUFFER_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7115",
+      "pin_or_terminal": "2",
+      "net": "DEMOD_FM_AUDIO_AC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7118",
+      "pin_or_terminal": "1",
+      "net": "DEMOD_FM_AUDIO_AC",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7118",
+      "pin_or_terminal": "2",
+      "net": "AGND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "J7104",
+      "pin_or_terminal": "1",
+      "net": "3V3_A_IF_FILTERED",
+      "qualifier": "INTERFACCIA",
+      "note": "External reference must be buffered if loaded, avoid backfeeding; DNP local divider"
+    },
+    {
+      "ref": "J7104",
+      "pin_or_terminal": "2",
+      "net": "AUDIO_1V65_REF",
+      "qualifier": "INTERFACCIA",
+      "note": "External reference must be buffered if loaded, avoid backfeeding; DNP local divider"
+    },
+    {
+      "ref": "U7121",
+      "pin_or_terminal": "1",
+      "net": "LO2_AMP_IN",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point"
+    },
+    {
+      "ref": "U7121",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point"
+    },
+    {
+      "ref": "U7121",
+      "pin_or_terminal": "3",
+      "net": "LO2_AMP_OUT_BIASED",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point"
+    },
+    {
+      "ref": "U7121",
+      "pin_or_terminal": "4",
+      "net": "GND_LO2",
+      "qualifier": "PINOUT_FABBRICANTE",
+      "note": "Typical 22.4dB at 100MHz; at 10.24MHz gain and P1dB NOT guaranteed by this point"
+    },
+    {
+      "ref": "J7121",
+      "pin_or_terminal": "1",
+      "net": "LO2_DRIVER_INPUT",
+      "qualifier": "INTERFACCIA",
+      "note": "U971 CLK0 through 33ohm from V6.9; CMOS driver swing unknown"
+    },
+    {
+      "ref": "J7121",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "INTERFACCIA",
+      "note": "U971 CLK0 through 33ohm from V6.9; CMOS driver swing unknown"
+    },
+    {
+      "ref": "R7121",
+      "pin_or_terminal": "1",
+      "net": "LO2_DRIVER_INPUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7121",
+      "pin_or_terminal": "2",
+      "net": "LO2_SERIES_SOURCE",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7121",
+      "pin_or_terminal": "1",
+      "net": "LO2_SERIES_SOURCE",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7121",
+      "pin_or_terminal": "2",
+      "net": "LO2_AMP_IN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7122",
+      "pin_or_terminal": "1",
+      "net": "5V_A_RF",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "5V supply assumed, 35mA typ, thermal worstcase simulated"
+    },
+    {
+      "ref": "R7122",
+      "pin_or_terminal": "2",
+      "net": "LO2_BIAS_FEED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": "5V supply assumed, 35mA typ, thermal worstcase simulated"
+    },
+    {
+      "ref": "L7121",
+      "pin_or_terminal": "1",
+      "net": "LO2_BIAS_FEED",
+      "qualifier": "INDUTTORE_NON_QUALIFICATO",
+      "note": "Specific choke part + S-param/SRF required before fabrication"
+    },
+    {
+      "ref": "L7121",
+      "pin_or_terminal": "2",
+      "net": "LO2_AMP_OUT_BIASED",
+      "qualifier": "INDUTTORE_NON_QUALIFICATO",
+      "note": "Specific choke part + S-param/SRF required before fabrication"
+    },
+    {
+      "ref": "C7122",
+      "pin_or_terminal": "1",
+      "net": "LO2_BIAS_FEED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7122",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7123",
+      "pin_or_terminal": "1",
+      "net": "LO2_BIAS_FEED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7123",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7124",
+      "pin_or_terminal": "1",
+      "net": "LO2_AMP_OUT_BIASED",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7124",
+      "pin_or_terminal": "2",
+      "net": "LO2_FILTER_IN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "L7122",
+      "pin_or_terminal": "1",
+      "net": "LO2_FILTER_IN",
+      "qualifier": "INDUTTORE_DA_QUALIFICARE",
+      "note": "Needs Q/SRF at >30.72 MHz"
+    },
+    {
+      "ref": "L7122",
+      "pin_or_terminal": "2",
+      "net": "LO2_LPF_A",
+      "qualifier": "INDUTTORE_DA_QUALIFICARE",
+      "note": "Needs Q/SRF at >30.72 MHz"
+    },
+    {
+      "ref": "C7125",
+      "pin_or_terminal": "1",
+      "net": "LO2_LPF_A",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7125",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "L7123",
+      "pin_or_terminal": "1",
+      "net": "LO2_LPF_A",
+      "qualifier": "INDUTTORE_DA_QUALIFICARE",
+      "note": "Needs SRF>70MHz, ESR/Q verification"
+    },
+    {
+      "ref": "L7123",
+      "pin_or_terminal": "2",
+      "net": "LO2_LPF_B",
+      "qualifier": "INDUTTORE_DA_QUALIFICARE",
+      "note": "Needs SRF>70MHz, ESR/Q verification"
+    },
+    {
+      "ref": "C7126",
+      "pin_or_terminal": "1",
+      "net": "LO2_LPF_B",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7126",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "L7124",
+      "pin_or_terminal": "1",
+      "net": "LO2_LPF_B",
+      "qualifier": "INDUTTORE_DA_QUALIFICARE",
+      "note": "LPF no HF PCB validated"
+    },
+    {
+      "ref": "L7124",
+      "pin_or_terminal": "2",
+      "net": "LO2_PAD_IN",
+      "qualifier": "INDUTTORE_DA_QUALIFICARE",
+      "note": "LPF no HF PCB validated"
+    },
+    {
+      "ref": "R7123",
+      "pin_or_terminal": "1",
+      "net": "LO2_PAD_IN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7123",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7124",
+      "pin_or_terminal": "1",
+      "net": "LO2_PAD_IN",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7124",
+      "pin_or_terminal": "2",
+      "net": "LO2_PAD_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7125",
+      "pin_or_terminal": "1",
+      "net": "LO2_PAD_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7125",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7127",
+      "pin_or_terminal": "1",
+      "net": "LO2_PAD_OUT",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "C7127",
+      "pin_or_terminal": "2",
+      "net": "LO2_RF_AC_TO_MIXER",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "J7122",
+      "pin_or_terminal": "1",
+      "net": "LO2_RF_AC_TO_MIXER",
+      "qualifier": "INTERFACCIA_CANDIDATA",
+      "note": "No assembler permit until +7dBm and spurs measured on 50ohm load"
+    },
+    {
+      "ref": "J7122",
+      "pin_or_terminal": "2",
+      "net": "GND_LO2",
+      "qualifier": "INTERFACCIA_CANDIDATA",
+      "note": "No assembler permit until +7dBm and spurs measured on 50ohm load"
+    },
+    {
+      "ref": "J7131",
+      "pin_or_terminal": "1",
+      "net": "USB_LSB_PRODUCT_AUDIO",
+      "qualifier": "INTERFACCIA",
+      "note": "DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected."
+    },
+    {
+      "ref": "J7131",
+      "pin_or_terminal": "2",
+      "net": "CW_PRODUCT_AUDIO",
+      "qualifier": "INTERFACCIA",
+      "note": "DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected."
+    },
+    {
+      "ref": "J7131",
+      "pin_or_terminal": "3",
+      "net": "DEMOD_AM_AUDIO_AC",
+      "qualifier": "INTERFACCIA",
+      "note": "DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected."
+    },
+    {
+      "ref": "J7131",
+      "pin_or_terminal": "4",
+      "net": "DEMOD_FM_AUDIO_AC",
+      "qualifier": "INTERFACCIA",
+      "note": "DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected."
+    },
+    {
+      "ref": "J7131",
+      "pin_or_terminal": "5",
+      "net": "AGND_IF2",
+      "qualifier": "INTERFACCIA",
+      "note": "DSP runs 48ksps post IF product detector. F823/F824 hardware remain DNP/unselected."
+    },
+    {
+      "ref": "R7131",
+      "pin_or_terminal": "1",
+      "net": "USB_LSB_PRODUCT_AUDIO",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7131",
+      "pin_or_terminal": "2",
+      "net": "AGND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7132",
+      "pin_or_terminal": "1",
+      "net": "CW_PRODUCT_AUDIO",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    },
+    {
+      "ref": "R7132",
+      "pin_or_terminal": "2",
+      "net": "AGND_IF2",
+      "qualifier": "VALORE_CANDIDATO",
+      "note": ""
+    }
+  ],
+  "mixer_v68_lo2_expected_dbm": 7,
+  "tx_rf_permission": false,
+  "previous_v69_overlay_policy": "DO_NOT_POPULATE old B991/B992/D991; daughterboard J7101/J7103 if assembly qualified",
+  "previous_v69_unchanged": true
+}

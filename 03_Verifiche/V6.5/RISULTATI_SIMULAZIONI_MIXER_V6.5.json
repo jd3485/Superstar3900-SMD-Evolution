@@ -1,0 +1,98 @@
+{
+  "revisione": "V6.5",
+  "metodo": "Butterworth BPF ideale n=3 (ordine analogico 6); FFT prodotto coseni; Monte Carlo su centro e larghezza",
+  "channels": 270,
+  "alpha": 30,
+  "rf_min_hz": 25615000,
+  "rf_max_hz": 28305000,
+  "lo_min_hz": 36310000,
+  "lo_max_hz": 39000000,
+  "image_min_hz": 47005000,
+  "image_max_hz": 49695000,
+  "image_separation_hz": 21390000,
+  "bpf_3db_low_hz": 25000000,
+  "bpf_3db_high_hz": 29000000,
+  "bpf_lowpass_prototype_order": 3,
+  "bpf_analog_pole_order": 6,
+  "min_desired_gain_db_ideal": -0.38517,
+  "max_image_gain_db_ideal": -53.84206,
+  "min_relative_image_rejection_db_ideal": 53.45888,
+  "image_rejection_db_for_0dbm_blocker_and_minus110dbm_spurious_target": 110.0,
+  "lo_drive": {
+    "target_dbm": 7.0,
+    "power_mw": 5.01187,
+    "z_ohm_assumed": 50.0,
+    "vrms": 0.500593,
+    "vpp_sinusoid": 1.415892,
+    "requires_output_stage_measurement": true
+  },
+  "mixer_ade1_typical_conversion_loss_db_datasheet": 5.0,
+  "filter_modes_theoretical_requirements": [
+    {
+      "modalita": "CW",
+      "bw_3db_hz_ipotizzata": 500,
+      "q_caricato_ideale_approssimato": 21390.0,
+      "nota": "Non implica filtro acquistabile o rispondenza alle adiacenti"
+    },
+    {
+      "modalita": "USB",
+      "bw_3db_hz_ipotizzata": 2700,
+      "q_caricato_ideale_approssimato": 3961.1,
+      "nota": "Non implica filtro acquistabile o rispondenza alle adiacenti"
+    },
+    {
+      "modalita": "LSB",
+      "bw_3db_hz_ipotizzata": 2700,
+      "q_caricato_ideale_approssimato": 3961.1,
+      "nota": "Non implica filtro acquistabile o rispondenza alle adiacenti"
+    },
+    {
+      "modalita": "AM",
+      "bw_3db_hz_ipotizzata": 6000,
+      "q_caricato_ideale_approssimato": 1782.5,
+      "nota": "Non implica filtro acquistabile o rispondenza alle adiacenti"
+    },
+    {
+      "modalita": "FM",
+      "bw_3db_hz_ipotizzata": 12000,
+      "q_caricato_ideale_approssimato": 891.2,
+      "nota": "Non implica filtro acquistabile o rispondenza alle adiacenti"
+    }
+  ],
+  "lo_and_rf_mixing_fft": {
+    "rx_desiderato": {
+      "rf_input_hz": 27005000,
+      "peak_if_hz": 10695000.0,
+      "peak_amplitude_relative": 1.0
+    },
+    "immagine": {
+      "rf_input_hz": 48395000,
+      "peak_if_hz": 10695000.0,
+      "peak_amplitude_relative": 1.0
+    },
+    "note": "Moltiplicazione sinusoidi e FFT: nessuna non-linearita/impedenza del componente ADE-1+ simulata."
+  },
+  "monte_carlo": {
+    "samples": 12000,
+    "seed": 6505,
+    "scenario_center_error_fraction": [
+      -0.005,
+      0.005
+    ],
+    "scenario_width_error_fraction": [
+      -0.05,
+      0.05
+    ],
+    "min_image_rejection_db_sample": 52.4554,
+    "p05_image_rejection_db_sample": 52.7069,
+    "worst_passband_gain_db_sample": -0.9201,
+    "warning": "Solo spostamento globale f_c e BW del trasferimento ideale. Non include ESR/Q, accoppiamenti, mismatch, layout o effetti termici reali."
+  },
+  "native_kicad_erc_drc": "NOT_RUN_KICAD_MISSING",
+  "spice": "NOT_RUN_SPICE_MODEL_MISSING",
+  "actual_filter_component_network": "NOT_SYNTHESIZED",
+  "physical_filter_characterization": "NOT_MEASURED",
+  "conversion_loss_actual": "NOT_MEASURED",
+  "rf_transmit_enabled": false,
+  "production_approved": false
+}

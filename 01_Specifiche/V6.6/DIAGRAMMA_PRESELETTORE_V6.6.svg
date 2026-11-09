@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 520" width="1280" height="520">
+<rect width="1280" height="520" fill="#0e182b"/>
+<text x="55" y="62" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#eaf2ff">F501 • Preselettore V6.6, 50 Ω</text>
+<text x="55" y="96" font-family="Arial,sans-serif" font-size="16" fill="#b1c2d9">Rete LC discreta candidata · simulata con Q e accoppiamento parassita · NO FAB / NO TX</text>
+<g fill="#162c48" stroke="#74b6ef" stroke-width="2">
+<rect x="55" y="160" width="160" height="104" rx="12"/><rect x="252" y="160" width="224" height="104" rx="12"/><rect x="506" y="160" width="239" height="104" rx="12"/><rect x="780" y="160" width="235" height="104" rx="12"/><rect x="1046" y="160" width="177" height="104" rx="12"/>
+</g><g font-family="Arial,sans-serif" fill="#eaf2ff" text-anchor="middle">
+<text x="135" y="194" font-size="20">J601</text><text x="135" y="225" font-size="16">Ingresso 50 Ω</text>
+<text x="364" y="193" font-size="20">L601 · 2 µH</text><text x="364" y="220" font-size="17">C601∥C602</text><text x="364" y="244" font-size="15">17,5 pF</text>
+<text x="626" y="193" font-size="20">Nodo centrale</text><text x="626" y="220" font-size="17">RF_PRE_MID</text><text x="626" y="244" font-size="15">Shunt risonante</text>
+<text x="897" y="193" font-size="20">L603 · 2 µH</text><text x="897" y="220" font-size="17">C605∥C606</text><text x="897" y="244" font-size="15">17,5 pF</text>
+<text x="1134" y="194" font-size="20">J602</text><text x="1134" y="225" font-size="16">Mixer RF 50 Ω</text>
+</g><g stroke="#74b6ef" stroke-width="4" fill="none"><path d="M215 212 H252 M476 212 H506 M745 212 H780 M1015 212 H1046"/><path d="M625 264 V313"/></g><g fill="#162c48" stroke="#f0ba69" stroke-width="2"><rect x="493" y="313" width="265" height="106" rx="12"/></g><g fill="#fff3d9" font-family="Arial,sans-serif" text-anchor="middle"><text x="625" y="343" font-size="20">L602 ∥ (C603+C604)</text><text x="625" y="370" font-size="17">22 nH ∥ 1591 pF</text><text x="625" y="397" font-size="16">GND_RF</text></g><path d="M625 420 V446" stroke="#f0ba69" stroke-width="4"/><path d="M605 448 H645 M613 457 H637 M620 465 H630" stroke="#f0ba69" stroke-width="3"/><g fill="#c4d3e7" font-family="Arial,sans-serif" font-size="14"><text x="58" y="500">C_FEED tra ingresso e uscita è soltanto una capacità parassita del modello: NON montare sul PCB.</text></g></svg>

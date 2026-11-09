@@ -1,0 +1,13 @@
+{
+  "model": "RANDOM_CONTACT_BOUNCE_TIMING_NOT_PHYSICAL_MEASUREMENT",
+  "seed": 20261109,
+  "trials": 2000,
+  "sample_interval_ms": 5,
+  "stable_samples": 4,
+  "max_bounce_duration_ms": 15,
+  "min_settle_ms": 15,
+  "max_settle_ms": 30,
+  "average_settle_ms": 21.5425,
+  "bounces_muted": 2256,
+  "tx_permission_observed": false
+}

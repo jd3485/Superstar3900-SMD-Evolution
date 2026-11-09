@@ -1,0 +1,17 @@
+16 / 16
+PASS V4.0/test_radio_supervisor_v40.py
+PASS V4.1/test_audit_rf_v41.py
+PASS V4.2/test_geometria_rf_v42.py
+PASS V4.3/test_candidato_sma_v43.py
+PASS V4.4/test_schema_pcb_v44.py
+PASS V4.5/test_librerie_v45.py
+PASS V4.6/test_rischi_v46.py
+PASS V4.7/test_audit_te_v47.py
+PASS V4.8/test_variante_termica_v48.py
+PASS V4.9/test_v49.py
+PASS V5.0/test_v50.py
+PASS V5.1/test_v51.py
+PASS V5.2/test_v52.py
+PASS V5.3/test_v53.py
+PASS V5.4/test_native_runner_v54.py
+PASS V5.5/test_v55.py

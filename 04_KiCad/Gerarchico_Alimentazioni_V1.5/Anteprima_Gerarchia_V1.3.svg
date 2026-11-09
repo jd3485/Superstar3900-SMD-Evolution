@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 340"><rect width="1140" height="340" fill="#f7fafc"/>
+<text x="34" y="39" font-family="DejaVu Sans" font-size="23" font-weight="bold" fill="#133145">Superstar 3900 SMD Evolution · AUX power hierarchy V1.3</text>
+<text x="34" y="64" font-family="DejaVu Sans" font-size="14" fill="#556875">Interfacce corrispondenti a hierarchical labels / hierarchical sheet pins in KiCad</text>
+<g font-family="DejaVu Sans" font-size="17" fill="#153449" text-anchor="middle">
+<rect x="70" y="108" width="257" height="102" fill="#eaf4fa" stroke="#1b6983" stroke-width="2" rx="12"/><text x="198" y="150">TPS26600</text><text x="198" y="177" font-size="15">eFuse + fusibile</text>
+<rect x="439" y="108" width="250" height="102" fill="#eaf4fa" stroke="#1b6983" stroke-width="2" rx="12"/><text x="564" y="150">TPS54202</text><text x="564" y="177" font-size="15">buck 5 V</text>
+<rect x="801" y="108" width="274" height="102" fill="#eaf4fa" stroke="#1b6983" stroke-width="2" rx="12"/><text x="939" y="149">2 LDO TPS7A2033</text><text x="939" y="176" font-size="15">PLL + TCXO · 3,3 V</text></g>
+<g stroke="#0a8980" stroke-width="3" fill="none"><path d="M327 158H439"/><path d="M689 158H801"/><path d="M90 210V271H1038V210"/><path d="M563 210V271"/></g>
+<g fill="#0a8980"><path d="M439 158l-14 -8v16z"/><path d="M801 158l-14 -8v16z"/></g>
+<g font-family="DejaVu Sans" font-size="12.5" fill="#284a5d" text-anchor="middle"><text x="383" y="144">VIN protetto</text><text x="745" y="144">5 V preregolati</text><text x="564" y="292">GND_MAIN, ritorno condiviso</text></g>
+<g font-family="DejaVu Sans" font-size="13" fill="#963a32"><text x="70" y="236">EFUSE_RTN solo locale</text><text x="70" y="319">DRAFT: pin10 TCXO, F200 footprint, EMC, ERC e misure da verificare</text></g></svg>

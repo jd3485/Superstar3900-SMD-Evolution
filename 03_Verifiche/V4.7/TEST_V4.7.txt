@@ -1,0 +1,33 @@
+test_01_reference_is_exact_part (__main__.CheckV47.test_01_reference_is_exact_part) ... ok
+test_02_reference_drawing_rev (__main__.CheckV47.test_02_reference_drawing_rev) ... ok
+test_03_reference_center (__main__.CheckV47.test_03_reference_center) ... ok
+test_04_study_center (__main__.CheckV47.test_04_study_center) ... ok
+test_05_licensing_no_cad_embedded (__main__.CheckV47.test_05_licensing_no_cad_embedded) ... ok
+test_06_four_placements (__main__.CheckV47.test_06_four_placements) ... ok
+test_07_unique_refs (__main__.CheckV47.test_07_unique_refs) ... ok
+test_08_footprint_pad_number_two (__main__.CheckV47.test_08_footprint_pad_number_two) ... ok
+test_09_vertical_dimension (__main__.CheckV47.test_09_vertical_dimension) ... ok
+test_10_vertical_reference (__main__.CheckV47.test_10_vertical_reference) ... ok
+test_11_lateral_symmetry (__main__.CheckV47.test_11_lateral_symmetry) ... ok
+test_12_full_solder_paste_declared (__main__.CheckV47.test_12_full_solder_paste_declared) ... ok
+test_13_paste_relief_not_explicit (__main__.CheckV47.test_13_paste_relief_not_explicit) ... ok
+test_14_thermal_pad (__main__.CheckV47.test_14_thermal_pad) ... ok
+test_15_thermal_paste_ratio (__main__.CheckV47.test_15_thermal_paste_ratio) ... ok
+test_16_thermal_paste_nominal_fraction (__main__.CheckV47.test_16_thermal_paste_nominal_fraction) ... ok
+test_17_thermal_paste_nominal_area (__main__.CheckV47.test_17_thermal_paste_nominal_area) ... ok
+test_18_no_claim_of_manufacturing (__main__.CheckV47.test_18_no_claim_of_manufacturing) ... ok
+test_19_no_claim_of_native_checks (__main__.CheckV47.test_19_no_claim_of_native_checks) ... ok
+test_20_no_claim_of_thermal (__main__.CheckV47.test_20_no_claim_of_thermal) ... ok
+test_21_sha_consistent (__main__.CheckV47.test_21_sha_consistent) ... ok
+test_22_schematic_sha_consistent (__main__.CheckV47.test_22_schematic_sha_consistent) ... ok
+test_23_corruption_pad_identity_detected (__main__.CheckV47.test_23_corruption_pad_identity_detected) ... ok
+test_24_corruption_polygon_detected (__main__.CheckV47.test_24_corruption_polygon_detected) ... ok
+test_25_no_fabrication_tags (__main__.CheckV47.test_25_no_fabrication_tags) ... ok
+test_26_machine_report_valid_json (__main__.CheckV47.test_26_machine_report_valid_json) ... ok
+test_27_no_mutation_of_board (__main__.CheckV47.test_27_no_mutation_of_board) ... ok
+test_28_no_mutation_of_footprint (__main__.CheckV47.test_28_no_mutation_of_footprint) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.021s
+
+OK

@@ -1,0 +1,13 @@
+{
+  "model_self_check": "PASS",
+  "scenario_count": 5,
+  "frequency_samples": 505,
+  "friis_and_iip3_modes": "PASS",
+  "post_pad_tradeoff": "PASS",
+  "front_pad_penalty": "PASS",
+  "vendor_filter_reuse": "PASS",
+  "power_budget_mW": 485,
+  "erc_native": "NOT RUN",
+  "ngspice_native": "NOT RUN",
+  "hardware_rx_and_vna": "NOT RUN"
+}

@@ -1,0 +1,11 @@
+Ref,Value or exact part,Tentative footprint,Quantity,Purpose,Manufacturer,Datasheet URL,Open validation item
+U101,ADL5535ARKZ-R7,SOT-89-3,1,LNA 20-1000 MHz; RFOUT = VCC via choke,Analog Devices,https://www.analog.com/en/products/adl5535.html,Pin3 bias via inductor; footprint RF/termico da confermare
+L101,470 nH,0603 SMD,1,DC-feed / RF choke as ADI application reference,Coilcraft candidate,https://www.analog.com/media/en/technical-documentation/data-sheets/adl5535.pdf,I_DC >= 120mA; DCR/Q/SRF da confermare codice esatto
+C101 C102,100 nF,0402,2,DC blocking RF LNA ports,TBD,https://www.analog.com/media/en/technical-documentation/data-sheets/adl5535.pdf,Valori reference ADI; SRF/layout da verificare
+C103,68 pF C0G,0603,1,VCC RF bypass,TBD,https://www.analog.com/media/en/technical-documentation/data-sheets/adl5535.pdf,Collocare vicino a L101
+C104,1.2 nF C0G,0603,1,VCC mid-frequency bypass,TBD,https://www.analog.com/media/en/technical-documentation/data-sheets/adl5535.pdf,Verificare DC bias
+C105,1 uF X7R,1206,1,VCC bulk bypass,TBD,https://www.analog.com/media/en/technical-documentation/data-sheets/adl5535.pdf,Da dimensionare tensione e derating
+R201 R202,150 ohm 1%,0402,2,Pi pad shunt resistors,TBD,,"P1/10, RF parasitics da verificare"
+R203,37.4 ohm 1%,0402,1,Pi pad series resistor,TBD,,"P1/10, RF parasitics da verificare"
+J101 J102 J103 J104,SMA 50 ohm,TBD footprint,4,LNA input/output and pad input/output,TBD,,"Connettori fisici, possibile montaggio edge-mount"
+J105,2-pin DC test input,TBD footprint,1,External 5.0 V bench supply,TBD,,Non usare direttamente 13.8 V

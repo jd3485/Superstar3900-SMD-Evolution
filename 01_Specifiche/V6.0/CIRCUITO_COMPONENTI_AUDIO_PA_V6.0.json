@@ -1,0 +1,2192 @@
+{
+  "revision": "V6.0",
+  "type": "SCHEMA_CONNESSIONI_COMPONENTI_CANDIDATO_NON_KICAD",
+  "pcb_ready": false,
+  "kicad_native": false,
+  "hardware_tested": false,
+  "project_phase": "PROGETTAZIONE RADIO COMPLETA; validazione sistematica dopo",
+  "module": "AUDIO_PA_CONNETTORI_CANDIDATI",
+  "safety": "TX INHIBITED; PA physical hard-inhibit external safety module V6.2",
+  "key_components": {
+    "U601": "TMUX1308PWR",
+    "U602": "TLV9062IDR",
+    "U604": "TPA3111D1PWP"
+  },
+  "mux_function": {
+    "0": "AM",
+    "1": "FM",
+    "2": "USB",
+    "3": "LSB",
+    "4": "CW",
+    "5": "VMID",
+    "6": "VMID",
+    "7": "VMID"
+  },
+  "power_domains": {
+    "mux_afe_v": "3.3V REGULATED",
+    "power_amp_v": "13V8_AUD nominal 13.8V protected, must stay in 8..26V",
+    "speaker_load_ohm_min_candidate": 8
+  },
+  "reference_links": {
+    "tmux": "https://www.ti.com/lit/ds/symlink/tmux1308.pdf",
+    "opamp": "https://www.ti.com/product/TLV9062",
+    "amp": "https://www.ti.com/lit/ds/symlink/tpa3111d1.pdf",
+    "codec": "https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf"
+  },
+  "parts": [
+    {
+      "ref": "U601",
+      "value": "8:1 AF analog mux",
+      "mpn": "TMUX1308PWR, TSSOP16 PW",
+      "section": "MUX",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": ""
+    },
+    {
+      "ref": "C601",
+      "value": "100 nF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "MUX",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Adiacente U601 pin16"
+    },
+    {
+      "ref": "R601",
+      "value": "47 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MUX",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Default mux DISABILITATO"
+    },
+    {
+      "ref": "R602",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MUX",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Address failsafe 000; EN HIGH prevents inadvertent signal"
+    },
+    {
+      "ref": "R603",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MUX",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Address failsafe 000; EN HIGH prevents inadvertent signal"
+    },
+    {
+      "ref": "R604",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MUX",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Address failsafe 000; EN HIGH prevents inadvertent signal"
+    },
+    {
+      "ref": "C610",
+      "value": "1 uF, 10 V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC coupling; desired nominal 0.2-0.7 Vrms; cap bias"
+    },
+    {
+      "ref": "R610",
+      "value": "1 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "R input protection/limit"
+    },
+    {
+      "ref": "R620",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bias input mux around 1.65 V"
+    },
+    {
+      "ref": "C611",
+      "value": "1 uF, 10 V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC coupling; desired nominal 0.2-0.7 Vrms; cap bias"
+    },
+    {
+      "ref": "R611",
+      "value": "1 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "R input protection/limit"
+    },
+    {
+      "ref": "R621",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bias input mux around 1.65 V"
+    },
+    {
+      "ref": "C612",
+      "value": "1 uF, 10 V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC coupling; desired nominal 0.2-0.7 Vrms; cap bias"
+    },
+    {
+      "ref": "R612",
+      "value": "1 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "R input protection/limit"
+    },
+    {
+      "ref": "R622",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bias input mux around 1.65 V"
+    },
+    {
+      "ref": "C613",
+      "value": "1 uF, 10 V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC coupling; desired nominal 0.2-0.7 Vrms; cap bias"
+    },
+    {
+      "ref": "R613",
+      "value": "1 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "R input protection/limit"
+    },
+    {
+      "ref": "R623",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bias input mux around 1.65 V"
+    },
+    {
+      "ref": "C614",
+      "value": "1 uF, 10 V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC coupling; desired nominal 0.2-0.7 Vrms; cap bias"
+    },
+    {
+      "ref": "R614",
+      "value": "1 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "R input protection/limit"
+    },
+    {
+      "ref": "R624",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bias input mux around 1.65 V"
+    },
+    {
+      "ref": "U602",
+      "value": "dual RRIO audio buffers",
+      "mpn": "TLV9062IDR, SOIC8",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": ""
+    },
+    {
+      "ref": "R630",
+      "value": "10 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "3V3 half rail"
+    },
+    {
+      "ref": "R631",
+      "value": "10 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "3V3 half rail"
+    },
+    {
+      "ref": "C630",
+      "value": "10 uF, 6.3V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "VMID reference low noise; buffer stability verify"
+    },
+    {
+      "ref": "C631",
+      "value": "100 nF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "U602 supply decoupling"
+    },
+    {
+      "ref": "R632",
+      "value": "2.2 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Anti alias 1 pole (nominal 7.23 kHz)"
+    },
+    {
+      "ref": "C632",
+      "value": "10 nF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Anti alias AC return to VMID"
+    },
+    {
+      "ref": "C633",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "AFE",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC couple IN1_R, codec biases internally"
+    },
+    {
+      "ref": "R640",
+      "value": "2.2 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MIC",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Only with supported 2-wire electret capsule / codec MICBIAS config"
+    },
+    {
+      "ref": "R641",
+      "value": "1 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MIC",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Series transient protection"
+    },
+    {
+      "ref": "C640",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "MIC",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "AC coupling to codec pin IN1_L"
+    },
+    {
+      "ref": "C641",
+      "value": "1 nF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "MIC",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "RF shunt; high-frequency path, validate mic response"
+    },
+    {
+      "ref": "U604",
+      "value": "Mono class D BTL 10 W rated",
+      "mpn": "TPA3111D1PWP, HTSSOP28",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": ""
+    },
+    {
+      "ref": "RV601",
+      "value": "10 kohm log audio",
+      "mpn": "Mono log potentiometer, footprint TBD",
+      "section": "POWER_AUDIO",
+      "status": "DA_SELEZIONARE",
+      "quantity": 1,
+      "note": "Front panel vintage volume; endpoint A signal, B AGND, wiper AMP_VOL"
+    },
+    {
+      "ref": "C650",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Line output codec ac coupled (LOL pin22)"
+    },
+    {
+      "ref": "C651",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "BTL amp input P via 1uF; internal 3V common mode"
+    },
+    {
+      "ref": "C652",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Match BTL input impedance, single-ended source proposal"
+    },
+    {
+      "ref": "R650",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "SAFETY",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Default amplifier shutdown; SD HIGH only with safety gating"
+    },
+    {
+      "ref": "R651",
+      "value": "10 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "SAFETY",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Open drain fault pull-up to 3.3V; verify AVCC compliance"
+    },
+    {
+      "ref": "C653",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bootstrap gate driver bias bypass"
+    },
+    {
+      "ref": "C654",
+      "value": "1 uF",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "PLIMIT bypass"
+    },
+    {
+      "ref": "R652",
+      "value": "51 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "PLIMIT divider study approx 1.96V; not calibrated"
+    },
+    {
+      "ref": "R653",
+      "value": "20 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "PLIMIT divider study"
+    },
+    {
+      "ref": "C655",
+      "value": "220 uF, 25V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bulk local supply"
+    },
+    {
+      "ref": "C656",
+      "value": "100 nF, 25V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Close to PVCC pins; more ceramic may be needed per layout"
+    },
+    {
+      "ref": "C657",
+      "value": "220 nF, 25V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bootstrap near U604; validate per TI EVM"
+    },
+    {
+      "ref": "C658",
+      "value": "220 nF, 25V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bootstrap near U604; validate per TI EVM"
+    },
+    {
+      "ref": "C659",
+      "value": "220 nF, 25V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bootstrap near U604; validate per TI EVM"
+    },
+    {
+      "ref": "C660",
+      "value": "220 nF, 25V",
+      "mpn": "MLCC 0805 / tensione verificare",
+      "section": "POWER_AUDIO",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Bootstrap near U604; validate per TI EVM"
+    },
+    {
+      "ref": "FB601",
+      "value": "Power ferrite bead, >2A",
+      "mpn": "Mpn EMI-dependent",
+      "section": "POWER_AUDIO",
+      "status": "DA_SELEZIONARE",
+      "quantity": "Single BTL leg ferrite; EMI qualification required",
+      "note": ""
+    },
+    {
+      "ref": "FB602",
+      "value": "Power ferrite bead, >2A",
+      "mpn": "Mpn EMI-dependent",
+      "section": "POWER_AUDIO",
+      "status": "DA_SELEZIONARE",
+      "quantity": "Single BTL leg ferrite; EMI qualification required",
+      "note": ""
+    },
+    {
+      "ref": "K601",
+      "value": "DPDT coil 12V; BBM; >=2A contact",
+      "mpn": "Relay 12 V DPDT, MPN/THT/SMD TBD",
+      "section": "SPEAKER",
+      "status": "DA_SELEZIONARE",
+      "quantity": "NC radio / NO PA; switch only with amplifier SD LOW",
+      "note": ""
+    },
+    {
+      "ref": "Q601",
+      "value": "N-ch MOSFET logic level",
+      "mpn": "AO3400A, SOT23 (gate drive to qualify)",
+      "section": "SPEAKER",
+      "status": "CANDIDATO",
+      "quantity": "Relay coil sink, 3.3V compatible assumed/verify",
+      "note": ""
+    },
+    {
+      "ref": "R660",
+      "value": "100 ohm",
+      "mpn": "Generico 1% 0603",
+      "section": "SPEAKER",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "FET gate resistor"
+    },
+    {
+      "ref": "R661",
+      "value": "100 kohm",
+      "mpn": "Generico 1% 0603",
+      "section": "SPEAKER",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Default relay OFF => internal radio"
+    },
+    {
+      "ref": "D601",
+      "value": "Flyback diode",
+      "mpn": "1N4007, package TBD",
+      "section": "SPEAKER",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": ""
+    },
+    {
+      "ref": "J601",
+      "value": "4 vie",
+      "mpn": "Connettore interfaccia da selezionare",
+      "section": "INTERFACCIA",
+      "status": "NON_SELEZIONATO",
+      "quantity": 1,
+      "note": "MIC + PTT connector, electret default"
+    },
+    {
+      "ref": "J602",
+      "value": "2 vie",
+      "mpn": "Connettore interfaccia da selezionare",
+      "section": "INTERFACCIA",
+      "status": "NON_SELEZIONATO",
+      "quantity": 1,
+      "note": "Internal radio speaker 8 ohm candidate"
+    },
+    {
+      "ref": "J603",
+      "value": "2 vie",
+      "mpn": "Connettore interfaccia da selezionare",
+      "section": "INTERFACCIA",
+      "status": "NON_SELEZIONATO",
+      "quantity": 1,
+      "note": "External PA speaker min 8 ohm candidate"
+    },
+    {
+      "ref": "J605",
+      "value": "6 vie",
+      "mpn": "Connettore interfaccia da selezionare",
+      "section": "INTERFACCIA",
+      "status": "NON_SELEZIONATO",
+      "quantity": 1,
+      "note": "Five analog receiver demodulation source inputs"
+    },
+    {
+      "ref": "J606",
+      "value": "6 vie",
+      "mpn": "Connettore interfaccia da selezionare",
+      "section": "INTERFACCIA",
+      "status": "NON_SELEZIONATO",
+      "quantity": 1,
+      "note": "To separate codec/MCU module; codec itself NOT on this daughterboard"
+    },
+    {
+      "ref": "J604",
+      "value": "16 vie",
+      "mpn": "Connettore interfaccia da selezionare",
+      "section": "INTERFACCIA",
+      "status": "NON_SELEZIONATO",
+      "quantity": 1,
+      "note": "MCU / safety / power interface 16-pin; pins preliminary"
+    },
+    {
+      "ref": "R670",
+      "value": "0 ohm",
+      "mpn": "Generico 1% 0603",
+      "section": "MIC",
+      "status": "CANDIDATO",
+      "quantity": 1,
+      "note": "Single-point analog reference strap; layout confirm"
+    }
+  ],
+  "pins": [
+    {
+      "ref": "U601",
+      "pin": "1",
+      "net": "AF_CW",
+      "function": "S4"
+    },
+    {
+      "ref": "U601",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": "S6"
+    },
+    {
+      "ref": "U601",
+      "pin": "3",
+      "net": "AF_SEL_OUT",
+      "function": "D"
+    },
+    {
+      "ref": "U601",
+      "pin": "4",
+      "net": "VMID_AUD",
+      "function": "S7"
+    },
+    {
+      "ref": "U601",
+      "pin": "5",
+      "net": "VMID_AUD",
+      "function": "S5"
+    },
+    {
+      "ref": "U601",
+      "pin": "6",
+      "net": "MUX_EN_N",
+      "function": "EN active LOW"
+    },
+    {
+      "ref": "U601",
+      "pin": "7",
+      "net": "NC_U601_7",
+      "function": "NC"
+    },
+    {
+      "ref": "U601",
+      "pin": "8",
+      "net": "AGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U601",
+      "pin": "9",
+      "net": "MUX_A2",
+      "function": "A2"
+    },
+    {
+      "ref": "U601",
+      "pin": "10",
+      "net": "MUX_A1",
+      "function": "A1"
+    },
+    {
+      "ref": "U601",
+      "pin": "11",
+      "net": "MUX_A0",
+      "function": "A0"
+    },
+    {
+      "ref": "U601",
+      "pin": "12",
+      "net": "AF_LSB",
+      "function": "S3"
+    },
+    {
+      "ref": "U601",
+      "pin": "13",
+      "net": "AF_AM",
+      "function": "S0"
+    },
+    {
+      "ref": "U601",
+      "pin": "14",
+      "net": "AF_FM",
+      "function": "S1"
+    },
+    {
+      "ref": "U601",
+      "pin": "15",
+      "net": "AF_USB",
+      "function": "S2"
+    },
+    {
+      "ref": "U601",
+      "pin": "16",
+      "net": "3V3_AF",
+      "function": "VDD"
+    },
+    {
+      "ref": "C601",
+      "pin": "1",
+      "net": "3V3_AF",
+      "function": ""
+    },
+    {
+      "ref": "C601",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R601",
+      "pin": "1",
+      "net": "MUX_EN_N",
+      "function": ""
+    },
+    {
+      "ref": "R601",
+      "pin": "2",
+      "net": "3V3_AF",
+      "function": ""
+    },
+    {
+      "ref": "R602",
+      "pin": "1",
+      "net": "MUX_A0",
+      "function": ""
+    },
+    {
+      "ref": "R602",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R603",
+      "pin": "1",
+      "net": "MUX_A1",
+      "function": ""
+    },
+    {
+      "ref": "R603",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R604",
+      "pin": "1",
+      "net": "MUX_A2",
+      "function": ""
+    },
+    {
+      "ref": "R604",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C610",
+      "pin": "1",
+      "net": "AF_AM_SER",
+      "function": ""
+    },
+    {
+      "ref": "C610",
+      "pin": "2",
+      "net": "AF_AM",
+      "function": ""
+    },
+    {
+      "ref": "R610",
+      "pin": "1",
+      "net": "DEMOD_AM",
+      "function": ""
+    },
+    {
+      "ref": "R610",
+      "pin": "2",
+      "net": "AF_AM_SER",
+      "function": ""
+    },
+    {
+      "ref": "R620",
+      "pin": "1",
+      "net": "AF_AM",
+      "function": ""
+    },
+    {
+      "ref": "R620",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C611",
+      "pin": "1",
+      "net": "AF_FM_SER",
+      "function": ""
+    },
+    {
+      "ref": "C611",
+      "pin": "2",
+      "net": "AF_FM",
+      "function": ""
+    },
+    {
+      "ref": "R611",
+      "pin": "1",
+      "net": "DEMOD_FM",
+      "function": ""
+    },
+    {
+      "ref": "R611",
+      "pin": "2",
+      "net": "AF_FM_SER",
+      "function": ""
+    },
+    {
+      "ref": "R621",
+      "pin": "1",
+      "net": "AF_FM",
+      "function": ""
+    },
+    {
+      "ref": "R621",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C612",
+      "pin": "1",
+      "net": "AF_USB_SER",
+      "function": ""
+    },
+    {
+      "ref": "C612",
+      "pin": "2",
+      "net": "AF_USB",
+      "function": ""
+    },
+    {
+      "ref": "R612",
+      "pin": "1",
+      "net": "DEMOD_USB",
+      "function": ""
+    },
+    {
+      "ref": "R612",
+      "pin": "2",
+      "net": "AF_USB_SER",
+      "function": ""
+    },
+    {
+      "ref": "R622",
+      "pin": "1",
+      "net": "AF_USB",
+      "function": ""
+    },
+    {
+      "ref": "R622",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C613",
+      "pin": "1",
+      "net": "AF_LSB_SER",
+      "function": ""
+    },
+    {
+      "ref": "C613",
+      "pin": "2",
+      "net": "AF_LSB",
+      "function": ""
+    },
+    {
+      "ref": "R613",
+      "pin": "1",
+      "net": "DEMOD_LSB",
+      "function": ""
+    },
+    {
+      "ref": "R613",
+      "pin": "2",
+      "net": "AF_LSB_SER",
+      "function": ""
+    },
+    {
+      "ref": "R623",
+      "pin": "1",
+      "net": "AF_LSB",
+      "function": ""
+    },
+    {
+      "ref": "R623",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C614",
+      "pin": "1",
+      "net": "AF_CW_SER",
+      "function": ""
+    },
+    {
+      "ref": "C614",
+      "pin": "2",
+      "net": "AF_CW",
+      "function": ""
+    },
+    {
+      "ref": "R614",
+      "pin": "1",
+      "net": "DEMOD_CW",
+      "function": ""
+    },
+    {
+      "ref": "R614",
+      "pin": "2",
+      "net": "AF_CW_SER",
+      "function": ""
+    },
+    {
+      "ref": "R624",
+      "pin": "1",
+      "net": "AF_CW",
+      "function": ""
+    },
+    {
+      "ref": "R624",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": ""
+    },
+    {
+      "ref": "U602",
+      "pin": "1",
+      "net": "VMID_AUD",
+      "function": "OUTA"
+    },
+    {
+      "ref": "U602",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": "INA-"
+    },
+    {
+      "ref": "U602",
+      "pin": "3",
+      "net": "VMID_RAW",
+      "function": "INA+"
+    },
+    {
+      "ref": "U602",
+      "pin": "4",
+      "net": "AGND",
+      "function": "V-"
+    },
+    {
+      "ref": "U602",
+      "pin": "5",
+      "net": "AF_SEL_OUT",
+      "function": "INB+"
+    },
+    {
+      "ref": "U602",
+      "pin": "6",
+      "net": "AF_BUF",
+      "function": "INB-"
+    },
+    {
+      "ref": "U602",
+      "pin": "7",
+      "net": "AF_BUF",
+      "function": "OUTB"
+    },
+    {
+      "ref": "U602",
+      "pin": "8",
+      "net": "3V3_AF",
+      "function": "V+"
+    },
+    {
+      "ref": "R630",
+      "pin": "1",
+      "net": "3V3_AF",
+      "function": ""
+    },
+    {
+      "ref": "R630",
+      "pin": "2",
+      "net": "VMID_RAW",
+      "function": ""
+    },
+    {
+      "ref": "R631",
+      "pin": "1",
+      "net": "VMID_RAW",
+      "function": ""
+    },
+    {
+      "ref": "R631",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C630",
+      "pin": "1",
+      "net": "VMID_RAW",
+      "function": ""
+    },
+    {
+      "ref": "C630",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C631",
+      "pin": "1",
+      "net": "3V3_AF",
+      "function": ""
+    },
+    {
+      "ref": "C631",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R632",
+      "pin": "1",
+      "net": "AF_BUF",
+      "function": ""
+    },
+    {
+      "ref": "R632",
+      "pin": "2",
+      "net": "AF_RC",
+      "function": ""
+    },
+    {
+      "ref": "C632",
+      "pin": "1",
+      "net": "AF_RC",
+      "function": ""
+    },
+    {
+      "ref": "C632",
+      "pin": "2",
+      "net": "VMID_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C633",
+      "pin": "1",
+      "net": "AF_RC",
+      "function": ""
+    },
+    {
+      "ref": "C633",
+      "pin": "2",
+      "net": "CODEC_ADC_R",
+      "function": ""
+    },
+    {
+      "ref": "R640",
+      "pin": "1",
+      "net": "CODEC_MICBIAS",
+      "function": ""
+    },
+    {
+      "ref": "R640",
+      "pin": "2",
+      "net": "MIC_SIGNAL",
+      "function": ""
+    },
+    {
+      "ref": "R641",
+      "pin": "1",
+      "net": "MIC_SIGNAL",
+      "function": ""
+    },
+    {
+      "ref": "R641",
+      "pin": "2",
+      "net": "MIC_AC_IN",
+      "function": ""
+    },
+    {
+      "ref": "C640",
+      "pin": "1",
+      "net": "MIC_AC_IN",
+      "function": ""
+    },
+    {
+      "ref": "C640",
+      "pin": "2",
+      "net": "CODEC_ADC_L",
+      "function": ""
+    },
+    {
+      "ref": "C641",
+      "pin": "1",
+      "net": "MIC_SIGNAL",
+      "function": ""
+    },
+    {
+      "ref": "C641",
+      "pin": "2",
+      "net": "MIC_RETURN",
+      "function": ""
+    },
+    {
+      "ref": "U604",
+      "pin": "1",
+      "net": "AMP_SD",
+      "function": "SD active HIGH: default LOW"
+    },
+    {
+      "ref": "U604",
+      "pin": "2",
+      "net": "AMP_FAULT_N",
+      "function": "FAULT open drain"
+    },
+    {
+      "ref": "U604",
+      "pin": "3",
+      "net": "PGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U604",
+      "pin": "4",
+      "net": "PGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U604",
+      "pin": "5",
+      "net": "AGND",
+      "function": "GAIN0 LOW=20dB"
+    },
+    {
+      "ref": "U604",
+      "pin": "6",
+      "net": "AGND",
+      "function": "GAIN1 LOW=20dB"
+    },
+    {
+      "ref": "U604",
+      "pin": "7",
+      "net": "13V8_AUD",
+      "function": "AVCC7: verify slew"
+    },
+    {
+      "ref": "U604",
+      "pin": "8",
+      "net": "AGND",
+      "function": "AGND"
+    },
+    {
+      "ref": "U604",
+      "pin": "9",
+      "net": "GVDD",
+      "function": "GVDD ~7V"
+    },
+    {
+      "ref": "U604",
+      "pin": "10",
+      "net": "PLIMIT",
+      "function": "PLIMIT power ceiling study"
+    },
+    {
+      "ref": "U604",
+      "pin": "11",
+      "net": "AMP_INN",
+      "function": "INN"
+    },
+    {
+      "ref": "U604",
+      "pin": "12",
+      "net": "AMP_INP",
+      "function": "INP"
+    },
+    {
+      "ref": "U604",
+      "pin": "13",
+      "net": "NC_U604_13",
+      "function": "NC"
+    },
+    {
+      "ref": "U604",
+      "pin": "14",
+      "net": "13V8_AUD",
+      "function": "AVCC14: verify slew"
+    },
+    {
+      "ref": "U604",
+      "pin": "15",
+      "net": "13V8_AUD",
+      "function": "PVCC"
+    },
+    {
+      "ref": "U604",
+      "pin": "16",
+      "net": "13V8_AUD",
+      "function": "PVCC"
+    },
+    {
+      "ref": "U604",
+      "pin": "17",
+      "net": "BSP_17",
+      "function": "Bootstrap P"
+    },
+    {
+      "ref": "U604",
+      "pin": "18",
+      "net": "OUTP_RAW",
+      "function": "OUTP"
+    },
+    {
+      "ref": "U604",
+      "pin": "19",
+      "net": "PGND",
+      "function": "PGND"
+    },
+    {
+      "ref": "U604",
+      "pin": "20",
+      "net": "OUTP_RAW",
+      "function": "OUTP"
+    },
+    {
+      "ref": "U604",
+      "pin": "21",
+      "net": "BSP_21",
+      "function": "Bootstrap P"
+    },
+    {
+      "ref": "U604",
+      "pin": "22",
+      "net": "BSN_22",
+      "function": "Bootstrap N"
+    },
+    {
+      "ref": "U604",
+      "pin": "23",
+      "net": "OUTN_RAW",
+      "function": "OUTN"
+    },
+    {
+      "ref": "U604",
+      "pin": "24",
+      "net": "PGND",
+      "function": "PGND"
+    },
+    {
+      "ref": "U604",
+      "pin": "25",
+      "net": "OUTN_RAW",
+      "function": "OUTN"
+    },
+    {
+      "ref": "U604",
+      "pin": "26",
+      "net": "BSN_26",
+      "function": "Bootstrap N"
+    },
+    {
+      "ref": "U604",
+      "pin": "27",
+      "net": "13V8_AUD",
+      "function": "PVCC"
+    },
+    {
+      "ref": "U604",
+      "pin": "28",
+      "net": "13V8_AUD",
+      "function": "PVCC"
+    },
+    {
+      "ref": "RV601",
+      "pin": "1",
+      "net": "LOL_AC",
+      "function": ""
+    },
+    {
+      "ref": "RV601",
+      "pin": "2",
+      "net": "AMP_VOL",
+      "function": ""
+    },
+    {
+      "ref": "RV601",
+      "pin": "3",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C650",
+      "pin": "1",
+      "net": "CODEC_DAC_L",
+      "function": ""
+    },
+    {
+      "ref": "C650",
+      "pin": "2",
+      "net": "LOL_AC",
+      "function": ""
+    },
+    {
+      "ref": "C651",
+      "pin": "1",
+      "net": "AMP_VOL",
+      "function": ""
+    },
+    {
+      "ref": "C651",
+      "pin": "2",
+      "net": "AMP_INP",
+      "function": ""
+    },
+    {
+      "ref": "C652",
+      "pin": "1",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C652",
+      "pin": "2",
+      "net": "AMP_INN",
+      "function": ""
+    },
+    {
+      "ref": "R650",
+      "pin": "1",
+      "net": "AMP_SD",
+      "function": ""
+    },
+    {
+      "ref": "R650",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R651",
+      "pin": "1",
+      "net": "AMP_FAULT_N",
+      "function": ""
+    },
+    {
+      "ref": "R651",
+      "pin": "2",
+      "net": "3V3_AF",
+      "function": ""
+    },
+    {
+      "ref": "C653",
+      "pin": "1",
+      "net": "GVDD",
+      "function": ""
+    },
+    {
+      "ref": "C653",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C654",
+      "pin": "1",
+      "net": "PLIMIT",
+      "function": ""
+    },
+    {
+      "ref": "C654",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "R652",
+      "pin": "1",
+      "net": "GVDD",
+      "function": ""
+    },
+    {
+      "ref": "R652",
+      "pin": "2",
+      "net": "PLIMIT",
+      "function": ""
+    },
+    {
+      "ref": "R653",
+      "pin": "1",
+      "net": "PLIMIT",
+      "function": ""
+    },
+    {
+      "ref": "R653",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    },
+    {
+      "ref": "C655",
+      "pin": "1",
+      "net": "13V8_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C655",
+      "pin": "2",
+      "net": "PGND",
+      "function": ""
+    },
+    {
+      "ref": "C656",
+      "pin": "1",
+      "net": "13V8_AUD",
+      "function": ""
+    },
+    {
+      "ref": "C656",
+      "pin": "2",
+      "net": "PGND",
+      "function": ""
+    },
+    {
+      "ref": "C657",
+      "pin": "1",
+      "net": "BSP_17",
+      "function": ""
+    },
+    {
+      "ref": "C657",
+      "pin": "2",
+      "net": "OUTP_RAW",
+      "function": ""
+    },
+    {
+      "ref": "C658",
+      "pin": "1",
+      "net": "BSP_21",
+      "function": ""
+    },
+    {
+      "ref": "C658",
+      "pin": "2",
+      "net": "OUTP_RAW",
+      "function": ""
+    },
+    {
+      "ref": "C659",
+      "pin": "1",
+      "net": "BSN_22",
+      "function": ""
+    },
+    {
+      "ref": "C659",
+      "pin": "2",
+      "net": "OUTN_RAW",
+      "function": ""
+    },
+    {
+      "ref": "C660",
+      "pin": "1",
+      "net": "BSN_26",
+      "function": ""
+    },
+    {
+      "ref": "C660",
+      "pin": "2",
+      "net": "OUTN_RAW",
+      "function": ""
+    },
+    {
+      "ref": "FB601",
+      "pin": "1",
+      "net": "OUTP_RAW",
+      "function": ""
+    },
+    {
+      "ref": "FB601",
+      "pin": "2",
+      "net": "SPK_AMP_P",
+      "function": ""
+    },
+    {
+      "ref": "FB602",
+      "pin": "1",
+      "net": "OUTN_RAW",
+      "function": ""
+    },
+    {
+      "ref": "FB602",
+      "pin": "2",
+      "net": "SPK_AMP_N",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "COM_P",
+      "net": "SPK_AMP_P",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "NC_P",
+      "net": "RADIO_SPK_P",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "NO_P",
+      "net": "PA_SPK_P",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "COM_N",
+      "net": "SPK_AMP_N",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "NC_N",
+      "net": "RADIO_SPK_N",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "NO_N",
+      "net": "PA_SPK_N",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "COIL_PLUS",
+      "net": "13V8_AUD",
+      "function": ""
+    },
+    {
+      "ref": "K601",
+      "pin": "COIL_MINUS",
+      "net": "RELAY_COIL_LO",
+      "function": ""
+    },
+    {
+      "ref": "Q601",
+      "pin": "G",
+      "net": "RELAY_GATE",
+      "function": ""
+    },
+    {
+      "ref": "Q601",
+      "pin": "D",
+      "net": "RELAY_COIL_LO",
+      "function": ""
+    },
+    {
+      "ref": "Q601",
+      "pin": "S",
+      "net": "PGND",
+      "function": ""
+    },
+    {
+      "ref": "R660",
+      "pin": "1",
+      "net": "PA_RELAY_CMD",
+      "function": ""
+    },
+    {
+      "ref": "R660",
+      "pin": "2",
+      "net": "RELAY_GATE",
+      "function": ""
+    },
+    {
+      "ref": "R661",
+      "pin": "1",
+      "net": "RELAY_GATE",
+      "function": ""
+    },
+    {
+      "ref": "R661",
+      "pin": "2",
+      "net": "PGND",
+      "function": ""
+    },
+    {
+      "ref": "D601",
+      "pin": "A",
+      "net": "RELAY_COIL_LO",
+      "function": ""
+    },
+    {
+      "ref": "D601",
+      "pin": "K",
+      "net": "13V8_AUD",
+      "function": ""
+    },
+    {
+      "ref": "J601",
+      "pin": "1",
+      "net": "MIC_SIGNAL",
+      "function": "Electret MIC+"
+    },
+    {
+      "ref": "J601",
+      "pin": "2",
+      "net": "MIC_RETURN",
+      "function": "MIC return --> AGND star"
+    },
+    {
+      "ref": "J601",
+      "pin": "3",
+      "net": "PTT_N",
+      "function": "Physical push-to-talk sense, active low"
+    },
+    {
+      "ref": "J601",
+      "pin": "4",
+      "net": "SHIELD_CHASSIS",
+      "function": "Cable shielding to chassis at connector"
+    },
+    {
+      "ref": "J602",
+      "pin": "1",
+      "net": "RADIO_SPK_P",
+      "function": "BTL NC + NOT GROUND"
+    },
+    {
+      "ref": "J602",
+      "pin": "2",
+      "net": "RADIO_SPK_N",
+      "function": "BTL NC - NOT GROUND"
+    },
+    {
+      "ref": "J603",
+      "pin": "1",
+      "net": "PA_SPK_P",
+      "function": "BTL NO + NOT GROUND"
+    },
+    {
+      "ref": "J603",
+      "pin": "2",
+      "net": "PA_SPK_N",
+      "function": "BTL NO - NOT GROUND"
+    },
+    {
+      "ref": "J605",
+      "pin": "1",
+      "net": "DEMOD_AM",
+      "function": "Receiver demod AM"
+    },
+    {
+      "ref": "J605",
+      "pin": "2",
+      "net": "DEMOD_FM",
+      "function": "Receiver demod FM"
+    },
+    {
+      "ref": "J605",
+      "pin": "3",
+      "net": "DEMOD_USB",
+      "function": "Receiver demod USB"
+    },
+    {
+      "ref": "J605",
+      "pin": "4",
+      "net": "DEMOD_LSB",
+      "function": "Receiver demod LSB"
+    },
+    {
+      "ref": "J605",
+      "pin": "5",
+      "net": "DEMOD_CW",
+      "function": "Receiver demod CW"
+    },
+    {
+      "ref": "J605",
+      "pin": "6",
+      "net": "AGND",
+      "function": "Signal analog return"
+    },
+    {
+      "ref": "J606",
+      "pin": "1",
+      "net": "CODEC_ADC_L",
+      "function": "TLV320AIC3204 pin13 IN1_L"
+    },
+    {
+      "ref": "J606",
+      "pin": "2",
+      "net": "CODEC_ADC_R",
+      "function": "TLV320AIC3204 pin14 IN1_R"
+    },
+    {
+      "ref": "J606",
+      "pin": "3",
+      "net": "CODEC_DAC_L",
+      "function": "TLV320AIC3204 pin22 LOL"
+    },
+    {
+      "ref": "J606",
+      "pin": "4",
+      "net": "CODEC_MICBIAS",
+      "function": "TLV320AIC3204 pin19 MICBIAS"
+    },
+    {
+      "ref": "J606",
+      "pin": "5",
+      "net": "AGND",
+      "function": "Codec analog ground 17 AVSS"
+    },
+    {
+      "ref": "J606",
+      "pin": "6",
+      "net": "RESERVED_NO_CONNECT",
+      "function": "No TX coupling: LOR 23 not brought onto this board"
+    },
+    {
+      "ref": "J604",
+      "pin": "1",
+      "net": "3V3_AF",
+      "function": "Protected regulated 3.3V audio"
+    },
+    {
+      "ref": "J604",
+      "pin": "2",
+      "net": "13V8_AUD",
+      "function": "Protected nominal 13.8V amp supply"
+    },
+    {
+      "ref": "J604",
+      "pin": "3",
+      "net": "AGND",
+      "function": "Analog return"
+    },
+    {
+      "ref": "J604",
+      "pin": "4",
+      "net": "PGND",
+      "function": "Amp power return"
+    },
+    {
+      "ref": "J604",
+      "pin": "5",
+      "net": "MUX_A0",
+      "function": "MCU mux select low bit"
+    },
+    {
+      "ref": "J604",
+      "pin": "6",
+      "net": "MUX_A1",
+      "function": "MCU mux select mid bit"
+    },
+    {
+      "ref": "J604",
+      "pin": "7",
+      "net": "MUX_A2",
+      "function": "MCU mux select high bit"
+    },
+    {
+      "ref": "J604",
+      "pin": "8",
+      "net": "MUX_EN_N",
+      "function": "MCU mux select enable active low, fail HIGH"
+    },
+    {
+      "ref": "J604",
+      "pin": "9",
+      "net": "PA_RELAY_CMD",
+      "function": "Speaker relay command from sequencing logic"
+    },
+    {
+      "ref": "J604",
+      "pin": "10",
+      "net": "AMP_SD",
+      "function": "Amp safe enable HIGH (externally gated)"
+    },
+    {
+      "ref": "J604",
+      "pin": "11",
+      "net": "AMP_FAULT_N",
+      "function": "Overload FAULT active low output"
+    },
+    {
+      "ref": "J604",
+      "pin": "12",
+      "net": "PA_MODE_HW",
+      "function": "Physical PA sense direct to hardware RF inhibit"
+    },
+    {
+      "ref": "J604",
+      "pin": "13",
+      "net": "PTT_N",
+      "function": "physical PTT sense --> safety/controller"
+    },
+    {
+      "ref": "J604",
+      "pin": "14",
+      "net": "CODEC_READY",
+      "function": "Handshake from codec/MCU"
+    },
+    {
+      "ref": "J604",
+      "pin": "15",
+      "net": "POWER_GOOD",
+      "function": "Power validity monitoring"
+    },
+    {
+      "ref": "J604",
+      "pin": "16",
+      "net": "SHIELD_CHASSIS",
+      "function": "Chassis/shield return"
+    },
+    {
+      "ref": "R670",
+      "pin": "1",
+      "net": "MIC_RETURN",
+      "function": ""
+    },
+    {
+      "ref": "R670",
+      "pin": "2",
+      "net": "AGND",
+      "function": ""
+    }
+  ],
+  "nets": {
+    "13V8_AUD": [
+      "U604.7",
+      "U604.14",
+      "U604.15",
+      "U604.16",
+      "U604.27",
+      "U604.28",
+      "C655.1",
+      "C656.1",
+      "K601.COIL_PLUS",
+      "D601.K",
+      "J604.2"
+    ],
+    "3V3_AF": [
+      "U601.16",
+      "C601.1",
+      "R601.2",
+      "U602.8",
+      "R630.1",
+      "C631.1",
+      "R651.2",
+      "J604.1"
+    ],
+    "AF_AM": [
+      "U601.13",
+      "C610.2",
+      "R620.1"
+    ],
+    "AF_AM_SER": [
+      "C610.1",
+      "R610.2"
+    ],
+    "AF_BUF": [
+      "U602.6",
+      "U602.7",
+      "R632.1"
+    ],
+    "AF_CW": [
+      "U601.1",
+      "C614.2",
+      "R624.1"
+    ],
+    "AF_CW_SER": [
+      "C614.1",
+      "R614.2"
+    ],
+    "AF_FM": [
+      "U601.14",
+      "C611.2",
+      "R621.1"
+    ],
+    "AF_FM_SER": [
+      "C611.1",
+      "R611.2"
+    ],
+    "AF_LSB": [
+      "U601.12",
+      "C613.2",
+      "R623.1"
+    ],
+    "AF_LSB_SER": [
+      "C613.1",
+      "R613.2"
+    ],
+    "AF_RC": [
+      "R632.2",
+      "C632.1",
+      "C633.1"
+    ],
+    "AF_SEL_OUT": [
+      "U601.3",
+      "U602.5"
+    ],
+    "AF_USB": [
+      "U601.15",
+      "C612.2",
+      "R622.1"
+    ],
+    "AF_USB_SER": [
+      "C612.1",
+      "R612.2"
+    ],
+    "AGND": [
+      "U601.8",
+      "C601.2",
+      "R602.2",
+      "R603.2",
+      "R604.2",
+      "U602.4",
+      "R631.2",
+      "C630.2",
+      "C631.2",
+      "U604.5",
+      "U604.6",
+      "U604.8",
+      "RV601.3",
+      "C652.1",
+      "R650.2",
+      "C653.2",
+      "C654.2",
+      "R653.2",
+      "J605.6",
+      "J606.5",
+      "J604.3",
+      "R670.2"
+    ],
+    "AMP_FAULT_N": [
+      "U604.2",
+      "R651.1",
+      "J604.11"
+    ],
+    "AMP_INN": [
+      "U604.11",
+      "C652.2"
+    ],
+    "AMP_INP": [
+      "U604.12",
+      "C651.2"
+    ],
+    "AMP_SD": [
+      "U604.1",
+      "R650.1",
+      "J604.10"
+    ],
+    "AMP_VOL": [
+      "RV601.2",
+      "C651.1"
+    ],
+    "BSN_22": [
+      "U604.22",
+      "C659.1"
+    ],
+    "BSN_26": [
+      "U604.26",
+      "C660.1"
+    ],
+    "BSP_17": [
+      "U604.17",
+      "C657.1"
+    ],
+    "BSP_21": [
+      "U604.21",
+      "C658.1"
+    ],
+    "CODEC_ADC_L": [
+      "C640.2",
+      "J606.1"
+    ],
+    "CODEC_ADC_R": [
+      "C633.2",
+      "J606.2"
+    ],
+    "CODEC_DAC_L": [
+      "C650.1",
+      "J606.3"
+    ],
+    "CODEC_MICBIAS": [
+      "R640.1",
+      "J606.4"
+    ],
+    "CODEC_READY": [
+      "J604.14"
+    ],
+    "DEMOD_AM": [
+      "R610.1",
+      "J605.1"
+    ],
+    "DEMOD_CW": [
+      "R614.1",
+      "J605.5"
+    ],
+    "DEMOD_FM": [
+      "R611.1",
+      "J605.2"
+    ],
+    "DEMOD_LSB": [
+      "R613.1",
+      "J605.4"
+    ],
+    "DEMOD_USB": [
+      "R612.1",
+      "J605.3"
+    ],
+    "GVDD": [
+      "U604.9",
+      "C653.1",
+      "R652.1"
+    ],
+    "LOL_AC": [
+      "RV601.1",
+      "C650.2"
+    ],
+    "MIC_AC_IN": [
+      "R641.2",
+      "C640.1"
+    ],
+    "MIC_RETURN": [
+      "C641.2",
+      "J601.2",
+      "R670.1"
+    ],
+    "MIC_SIGNAL": [
+      "R640.2",
+      "R641.1",
+      "C641.1",
+      "J601.1"
+    ],
+    "MUX_A0": [
+      "U601.11",
+      "R602.1",
+      "J604.5"
+    ],
+    "MUX_A1": [
+      "U601.10",
+      "R603.1",
+      "J604.6"
+    ],
+    "MUX_A2": [
+      "U601.9",
+      "R604.1",
+      "J604.7"
+    ],
+    "MUX_EN_N": [
+      "U601.6",
+      "R601.1",
+      "J604.8"
+    ],
+    "NC_U601_7": [
+      "U601.7"
+    ],
+    "NC_U604_13": [
+      "U604.13"
+    ],
+    "OUTN_RAW": [
+      "U604.23",
+      "U604.25",
+      "C659.2",
+      "C660.2",
+      "FB602.1"
+    ],
+    "OUTP_RAW": [
+      "U604.18",
+      "U604.20",
+      "C657.2",
+      "C658.2",
+      "FB601.1"
+    ],
+    "PA_MODE_HW": [
+      "J604.12"
+    ],
+    "PA_RELAY_CMD": [
+      "R660.1",
+      "J604.9"
+    ],
+    "PA_SPK_N": [
+      "K601.NO_N",
+      "J603.2"
+    ],
+    "PA_SPK_P": [
+      "K601.NO_P",
+      "J603.1"
+    ],
+    "PGND": [
+      "U604.3",
+      "U604.4",
+      "U604.19",
+      "U604.24",
+      "C655.2",
+      "C656.2",
+      "Q601.S",
+      "R661.2",
+      "J604.4"
+    ],
+    "PLIMIT": [
+      "U604.10",
+      "C654.1",
+      "R652.2",
+      "R653.1"
+    ],
+    "POWER_GOOD": [
+      "J604.15"
+    ],
+    "PTT_N": [
+      "J601.3",
+      "J604.13"
+    ],
+    "RADIO_SPK_N": [
+      "K601.NC_N",
+      "J602.2"
+    ],
+    "RADIO_SPK_P": [
+      "K601.NC_P",
+      "J602.1"
+    ],
+    "RELAY_COIL_LO": [
+      "K601.COIL_MINUS",
+      "Q601.D",
+      "D601.A"
+    ],
+    "RELAY_GATE": [
+      "Q601.G",
+      "R660.2",
+      "R661.1"
+    ],
+    "RESERVED_NO_CONNECT": [
+      "J606.6"
+    ],
+    "SHIELD_CHASSIS": [
+      "J601.4",
+      "J604.16"
+    ],
+    "SPK_AMP_N": [
+      "FB602.2",
+      "K601.COM_N"
+    ],
+    "SPK_AMP_P": [
+      "FB601.2",
+      "K601.COM_P"
+    ],
+    "VMID_AUD": [
+      "U601.2",
+      "U601.4",
+      "U601.5",
+      "R620.2",
+      "R621.2",
+      "R622.2",
+      "R623.2",
+      "R624.2",
+      "U602.1",
+      "U602.2",
+      "C632.2"
+    ],
+    "VMID_RAW": [
+      "U602.3",
+      "R630.2",
+      "R631.1",
+      "C630.1"
+    ]
+  }
+}

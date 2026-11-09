@@ -1,0 +1,17 @@
+test_15_components (__main__.T.test_15_components) ... ok
+test_15_instances (__main__.T.test_15_instances) ... ok
+test_15_pcb_paths (__main__.T.test_15_pcb_paths) ... ok
+test_copper_invariant (__main__.T.test_copper_invariant) ... ok
+test_corrupt_link (__main__.T.test_corrupt_link) ... ok
+test_net_invariant (__main__.T.test_net_invariant) ... ok
+test_pass (__main__.T.test_pass) ... ok
+test_remove_link (__main__.T.test_remove_link) ... ok
+test_rename_instance (__main__.T.test_rename_instance) ... ok
+test_schematic_footprint_invariant (__main__.T.test_schematic_footprint_invariant) ... ok
+test_schematic_values_invariant (__main__.T.test_schematic_values_invariant) ... ok
+test_unexpected_extra_symbol (__main__.T.test_unexpected_extra_symbol) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.027s
+
+OK

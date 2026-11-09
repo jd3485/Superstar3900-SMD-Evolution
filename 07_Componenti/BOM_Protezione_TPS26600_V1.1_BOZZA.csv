@@ -1,0 +1,11 @@
+Ref,Value,Footprint_candidate,Manufacturer,MPN_candidate,Note,State
+F200,FUSIBILE TBD,Fuse:Fuse_1206_3216Metric,,,Valore e I2t da confermare sul ramo ausiliario,BOZZA
+C200,100nF 100V X7R,Capacitor_SMD:C_1206_3216Metric,,,Bypass ingresso; qualifica di tensione da confermare,BOZZA
+D200,TVS bidir TBD / DNP,Diode_SMD:D_SMB,,,Solo piazzola futura per TVS; NON montare,DNP
+U200,TPS26600PWPT,Package_SO:TSSOP-16-1EP_4.4x5mm_P0.65mm,Texas Instruments,TPS26600PWPT,"eFuse 4.2-60V, 16-pin PWP",BOZZA
+R200,365k 1%,Resistor_SMD:R_0603_1608Metric,,,Resistore superiore divisore,BOZZA
+R201,16k2 1%,Resistor_SMD:R_0603_1608Metric,,,Resistore centrale divisore,BOZZA
+R202,30k1 1%,Resistor_SMD:R_0603_1608Metric,,,Resistore inferiore divisore,BOZZA
+R203,8k2 1%,Resistor_SMD:R_0603_1608Metric,,,"Ilim nominale circa 1,463 A; valore da validare",BOZZA
+C201,22nF 50V X7R,Capacitor_SMD:C_0603_1608Metric,,,Rampa uscita; scelta preliminare,BOZZA
+C202,1uF 35V X7R,Capacitor_SMD:C_0603_1608Metric,,,Bypass uscita; verificare DC bias e transienti,BOZZA

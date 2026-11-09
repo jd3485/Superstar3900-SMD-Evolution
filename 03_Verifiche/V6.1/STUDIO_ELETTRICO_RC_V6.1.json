@@ -1,0 +1,20 @@
+{
+  "vdd_v": 3.3,
+  "input_pullup_ohm": 10000.0,
+  "input_series_ohm": 220.0,
+  "input_cap_f": 1e-07,
+  "closed_level_v": 0.07103718199608611,
+  "closed_input_current_ma": 0.3229,
+  "max_28_closed_total_ma": 9.041,
+  "tau_release_ms": 1.0,
+  "tau_press_us": 21.526418786692755,
+  "release_threshold_80pct_ms": 1.5876764206525882,
+  "mcp23017_schmitt_vih_min_v": 2.64,
+  "mcp23017_schmitt_vil_max_v": 0.66,
+  "i2c_R_ohm": 4700,
+  "i2c_C_nominal_pf": 150,
+  "i2c_rise_30_70_us": 0.5973465000000001,
+  "i2c_C_limit_pf_standardmode_1us": 251110536.34699455,
+  "noise_and_esd": "ESD TVS, switch surge, noise and EMC still need qualification",
+  "kind": "IDEAL_RC_ANALYTIC_NOT_SPICE_NOT_MEASURED"
+}

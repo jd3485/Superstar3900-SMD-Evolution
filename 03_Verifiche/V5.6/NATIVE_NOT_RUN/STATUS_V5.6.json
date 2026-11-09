@@ -1,0 +1,9 @@
+{
+  "revision": "V5.6",
+  "static_return_code": 0,
+  "kicad_cli_available": false,
+  "native_status": "NOT_RUN_KICAD_MISSING",
+  "native_return_code": null,
+  "release": "BLOCKED_NOT_FOR_FAB",
+  "fabrication_allowed": false
+}

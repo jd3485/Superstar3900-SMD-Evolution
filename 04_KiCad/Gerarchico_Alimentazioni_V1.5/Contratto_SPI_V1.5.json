@@ -1,0 +1,65 @@
+{
+  "revision": "V1.5",
+  "status": "SCHEMATIC DRAFT - NOT FABRICABLE",
+  "connection_model": "J101 local labels -> root LMX2572 sheet pins -> child hierarchical labels -> U1 pins",
+  "logic": "3.3V CMOS only; verify input drive, ESD, control defaults, MCU I/O selection; no 5V tolerance assumed",
+  "signals": [
+    {
+      "signal": "PLL_SCK",
+      "host_J101_pin": 1,
+      "LMX2572_U1_pin": 16,
+      "LMX2572_direction": "input",
+      "sheet_pin_x_mm": 280,
+      "sheet_pin_y_mm": 100
+    },
+    {
+      "signal": "PLL_SDI",
+      "host_J101_pin": 2,
+      "LMX2572_U1_pin": 17,
+      "LMX2572_direction": "input",
+      "sheet_pin_x_mm": 280,
+      "sheet_pin_y_mm": 109
+    },
+    {
+      "signal": "PLL_CSB",
+      "host_J101_pin": 3,
+      "LMX2572_U1_pin": 24,
+      "LMX2572_direction": "input",
+      "sheet_pin_x_mm": 280,
+      "sheet_pin_y_mm": 118
+    },
+    {
+      "signal": "PLL_CE",
+      "host_J101_pin": 4,
+      "LMX2572_U1_pin": 1,
+      "LMX2572_direction": "input",
+      "sheet_pin_x_mm": 280,
+      "sheet_pin_y_mm": 127
+    },
+    {
+      "signal": "PLL_MUXOUT",
+      "host_J101_pin": 5,
+      "LMX2572_U1_pin": 20,
+      "LMX2572_direction": "output",
+      "sheet_pin_x_mm": 390,
+      "sheet_pin_y_mm": 150
+    }
+  ],
+  "ground": {
+    "signal": "GND_MAIN",
+    "host_J101_pin": 6
+  },
+  "unresolved": [
+    "Native KiCad ERC and netlist",
+    "Host MCU physical selection",
+    "J101 footprint",
+    "Signal integrity and EMC",
+    "MUXout function register config",
+    "CE reset/default state",
+    "TCXO pin10"
+  ],
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/lmx2572.pdf",
+    "https://docs.kicad.org/9.0/en/cli/cli.html"
+  ]
+}

@@ -1,0 +1,34 @@
+﻿U,Pin,Pin_name,Net,Note,Stato
+U1,1,CLK,PLL_CLK,"Da MCU, eventuale resistore serie 33ohm da tarare",PROPOSTO
+U1,2,DATA,PLL_MOSI,"Da MCU, resistore serie 33ohm candidato",PROPOSTO
+U1,3,LE,PLL_LE,"Da MCU, resistore serie 33ohm candidato",PROPOSTO
+U1,4,CE,PLL_CE,"100kohm pulldown = spento all'avvio, valore candidato",PROPOSTO
+U1,5,SW,NC,Solo se non si usa la funzione fast-lock; da confermare,PROPOSTO
+U1,6,VP,3V3_PLL,100nF+1uF vicini; VP deve avere stessa tensione AVDD,PROPOSTO
+U1,7,CPOUT,LOOP_CP,"Al filtro d'anello, **dimensioni elettriche ancora aperte**",PROPOSTO
+U1,8,CPGND,GND_RF,Piano massa continuo,PROPOSTO
+U1,9,AGND,GND_RF,Piano massa continuo,PROPOSTO
+U1,10,AVDD,3V3_PLL,"100nF vicino al pin, 1uF locale, valori candidati",PROPOSTO
+U1,11,AGNDVCO,GND_RF,Piano massa continuo,PROPOSTO
+U1,12,RFOUTA+,LO_A_P,Resistore 49.9ohm verso 3V3_PLL + condensatore AC 1nF candidato,PROPOSTO
+U1,13,RFOUTA-,LO_A_N_DUMMY,Terminazione simmetrica 49.9ohm verso 3V3 e AC 1nF + 49.9ohm a massa; da simulare/verificare,PROPOSTO
+U1,14,RFOUTB+,NC,Ausiliaria disabilitata nel firmware,PROPOSTO
+U1,15,RFOUTB-,NC,Ausiliaria disabilitata nel firmware,PROPOSTO
+U1,16,VVCO,3V3_PLL,"100nF vicino al pin, 1uF locale",PROPOSTO
+U1,17,VVCO,3V3_PLL,100nF vicino al pin,PROPOSTO
+U1,18,AGNDVCO,GND_RF,Piano massa continuo,PROPOSTO
+U1,19,TEMP,TEMP_BYPASS,Condensatore verso massa **valore da selezionare dal riferimento hardware**,PROPOSTO
+U1,20,VTUNE,LOOP_VTUNE,"Uscita filtro d'anello, senza commutazioni digitali vicine",PROPOSTO
+U1,21,AGNDVCO,GND_RF,Piano massa continuo,PROPOSTO
+U1,22,RSET,RSET_5K1,"5.1kohm a massa secondo datasheet, 1% candidato",PROPOSTO
+U1,23,VCOM,VCOM_BYPASS,"Condensatore a massa, valore da fissare",PROPOSTO
+U1,24,VREF,VREF_BYPASS,"Condensatore a massa, valore da fissare",PROPOSTO
+U1,25,LD,PLL_LOCK,Monitor GPIO con timeout; da verificare tipo uscita/necessita pull-up,PROPOSTO
+U1,26,PDBRF,PLL_RF_ENABLE,"100kohm pulldown: uscita muta all'avvio, candidato",PROPOSTO
+U1,27,DGND,GND_RF,Piano massa continuo,PROPOSTO
+U1,28,DVDD,3V3_PLL,100nF vicino al pin,PROPOSTO
+U1,29,REFIN,TCXO_REF_AC,"Accoppiamento AC 1nF candidato, segnale entro livelli datasheet",PROPOSTO
+U1,30,MUXOUT,PLL_MUX,Test point/test mode; opzionale funzione LD,PROPOSTO
+U1,31,SDGND,GND_RF,Piano massa continuo,PROPOSTO
+U1,32,SDVDD,3V3_PLL,100nF vicino al pin,PROPOSTO
+U1,EP,EXPOSED PAD,GND_RF,"Pad esposto collegato al piano GND, vincoli via/mask da datasheet",PROPOSTO

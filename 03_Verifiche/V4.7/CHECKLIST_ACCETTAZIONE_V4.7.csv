@@ -1,0 +1,12 @@
+ID,Area,Requisito,Stato_V4_7,Evidenza_mancante,Blocco_fab
+SMA-01,Componente,Part number esatto CONSMA002-SMD-G,IDENTIFICATO,Conferma disponibilita lotto,SI
+SMA-02,Quote,Diametro centro 2.05 mm,COINCIDE_STATICO,Overlay CAD,SI
+SMA-03,Quote,Inviluppo verticale GND 7.76 mm,COINCIDE_STATICO,Overlay CAD,SI
+SMA-04,Forma rame,Quote laterali e profili complessi,NON_APPROVATO,DXF 2D TE registrato,SI
+SMA-05,Maschera e stencil,F.Mask e F.Paste corretti,NON_APPROVATO,Disegno TE e piano stencil assemblatore,SI
+SMA-06,Ingombranti,Corpo connettore e bordo PCB,NON_APPROVATO,STEP 3D TE e verifica meccanica,SI
+RF-01,RF,Transizione 50 ohm,NON_APPROVATO,Stackup reale e analisi VNA,SI
+AMP-01,Termica,ADL5535 pad esposto e vias,NON_APPROVATO,Analisi termica e montaggio,SI
+AMP-02,Stencil,Area pasta ADL5535 circa 81% nominale,NON_APPROVATO,Revisione aperture stencil con assemblatore,SI
+CAD-01,KiCad,ERC e DRC nativi con refill/parity,NOT_RUN,File JSON di KiCad 10,SI
+QUAL-01,Hardware,Prototipo RF misurato,NOT_RUN,Collaudo fisico,SI

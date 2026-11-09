@@ -1,0 +1,6 @@
+mode,if2_analog_guard,demodulation,audio_dsp,f823_824,demod_to_v60
+AM,F822 legacy 455k 2kΩ,AD8307 log envelope + AC,log correction + audio 300-3000 Hz,not involved,J605 AM via J7103
+FM,F821 legacy 455k 1.5kΩ,TLV3201 limiter + HC4046A PLL,audio 300-3000 Hz,not involved,J605 FM via J7103
+USB,wider 455k legacy IF guard pending,V6.9 TS5A3157 product detector,48k FIR 300–2700Hz,F823 DNP until vendor-qualified,J605 USB
+LSB,wider 455k legacy IF guard pending,V6.9 TS5A3157 product detector,48k FIR 300–2700Hz,F823 DNP until vendor-qualified,J605 LSB
+CW_RX_ONLY,wider 455k legacy IF guard pending,V6.9 TS5A3157 + 700Hz BFO,48k FIR ~500Hz centered 700Hz,F824 DNP until vendor-qualified,J605 CW

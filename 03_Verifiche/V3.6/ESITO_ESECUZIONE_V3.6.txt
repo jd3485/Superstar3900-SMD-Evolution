@@ -1,0 +1,24 @@
+WROTE /mnt/data/_work_v36/04_KiCad/Modulo_RX_Test_50ohm_V3.6/S3900E_RX_TEST_50R_V3_6_GND_RETURN_STUDY_NOT_FOR_FAB.kicad_pcb bytes 35551 new traces 20 new vias 60 fence 40
+{
+  "footprints": 15,
+  "nets": 8,
+  "segments": 43,
+  "vias": 64,
+  "zones_declared_unfilled": [
+    "F.Cu",
+    "In1.Cu",
+    "B.Cu",
+    "In2.Cu"
+  ],
+  "min_2d_inter_net_copper_clearance_mm": 0.45,
+  "2d_clash_count": 0,
+  "unconnected_nonground_nets": {},
+  "ground_pad_count": 24,
+  "ground_pads_without_explicit_local_via": [],
+  "schematic_pin_assignments_ok": 31,
+  "schematic_pin_mismatches": []
+}
+PREVIEW /mnt/data/_work_v36/04_KiCad/Modulo_RX_Test_50ohm_V3.6/Anteprima_Ritorni_Massa_V3.6.png
+INDEPENDENT 2D/PIN STATIC REVIEW OK - NOT KICAD DRC
+V3.6: 18 core regression assertions + 3 negative controls PASS (STATIC only)
+Checks completed: only independent static geometry/net audits, NOT native KiCad DRC.

@@ -1,0 +1,11 @@
+ref,part_number,manufacturer,package,value,qty,status,notes
+U_PLL,LMX2572RHAT,Texas Instruments,VQFN-40 6x6mm,n/a,1,CANDIDATO,schematic footprint da datasheet; verifica TI EVM
+Y_REF,7N-12.800MBP-T,TXC Corporation,SMD 7x5mm 10-pad,12.8 MHz 3.3V ±280 ppb,1,CANDIDATO,pinout esatto e noise PSD da verificare prima footprint
+C_LF1,,passivo,SMD 0402 C0G,220 pF 5%,1,MODELLO,pin 12 -> GND
+C_LF2,,passivo,SMD 0603 X7R,120 nF 10%,1,MODELLO,R2 verso GND; DC bias da validare
+C_LF3,,passivo,SMD 0402 C0G,2.2 nF 5%,1,MODELLO,pin 35 -> GND vicino al pin
+R_LF2,,passivo,SMD 0402,620 ohm 1%,1,MODELLO,pin 12 -> C_LF2
+R_LF3,,passivo,SMD 0402,22 ohm 1%,1,MODELLO,pin 12 -> pin 35
+U_LDO,TBD,TBD,SMD,3.3 V low noise >=200mA,1,DA_SELEZIONARE,ripple/noise/thermal design
+U_LOBUF,TBD,TBD,SMD,"37.5MHz, LO mixer target +7dBm",1,DA_SELEZIONARE,validare livello e armoniche
+TCXO_AC_C,TBD,TBD,SMD C0G,da dimensionare,1,DA_SELEZIONARE,coupling OSCinP; no forzatura di 100pF senza verifica

@@ -1,0 +1,80 @@
+Ref,MPN_o_tipo,Valore_candidato,Dominio,Stato,Note
+J901,DC_INPUT_2P,13.8 VDC GND,RAW,CANDIDATE,"positive source/ground, keyed, industrial application not automotive certified"
+F901,FUSE_5A_TIME_DELAY_PLACEHOLDER,5 A T initial only,RAW,PLACEHOLDER,"fuse type interrupt rating I2t/wire/PA TBD, no approved MPN"
+D901,TVS_BIDIR_PLACEHOLDER,VRWM>=16 V; clamp/mounting TBD,RAW,PLACEHOLDER,"select by source, pulse energy, standoff; impossible to certify surge without waveform"
+L901,COMMON_MODE_CHOKE_PLACEHOLDER,I>=6 A common-mode entry filter,RAW,PLACEHOLDER,must verify losses/leakage under audio/RF peaks
+C901,AL_POLYMER,47 uF >=35 V,13V8_FILTERED,CANDIDATE,ESR and ripple/voltage surge pending qualification
+C902,MLCC_X7R,1 uF >=50 V,13V8_FILTERED,CANDIDATE,DC-bias derating to verify
+U901,LM74900-Q1,reverse polarity / circuit breaker / OV UV,13V8_FILTERED,CANDIDATE,"gate drive and UVOV networks follow TI vendor design, NOT final"
+Q901,NCH_MOSFET_AEC_PLACEHOLDER,">=60 V, Rdson <=5 mOhm at applicable Vgs",PWR_PATH,PLACEHOLDER,"SOA, avalanche and thermal to select, reverse input protector"
+R901,PRECISION_SHUNT,5 mOhm >=1 W Kelvin,PWR_PATH,CANDIDATE,further overcurrent threshold design needed
+Q902,NCH_MOSFET_AEC_PLACEHOLDER,">=60 V, Rdson <=5 mOhm",PWR_PATH,PLACEHOLDER,cutoff FET no physical package finalized
+R902,PULLDOWN,47 kΩ,PWR_PATH,CANDIDATE,protect enable low default
+S901,PWR_ON_SPST,latching SPST radio main power ON,PWR_PATH,CANDIDATE,"connect EN to VS only when user turns radio on, pull-down OFF"
+J902,JUMPER_DNI,NOT INSTALLED,PWR_PATH,DNI,test header parallel power switch; no TX permission
+C903,AL_POLYMER,470 uF >=25V,13V8_PROTECTED,CANDIDATE,bulk after high-side controller; soft-start critical
+C904,MLCC_X7R,4.7 uF >=25V,13V8_PROTECTED,CANDIDATE,
+R903,R_CONFIG_PLACEHOLDER,UVLO threshold network TBD,PWR_PATH,PLACEHOLDER,LM74900 function; values must be computed from latest datasheet
+R904,R_CONFIG_PLACEHOLDER,OV threshold network TBD,PWR_PATH,PLACEHOLDER,
+C905,C_CONFIG_PLACEHOLDER,CdVdT candidate 47 nF,PWR_PATH,PLACEHOLDER,"47nF analytical inrush model, pin routing to check TI"
+J903,DC_PWR_RAILS,3 protected branches,13V8_PROTECTED,CANDIDATE,audio amplifier separate switched branch; NO RF PA output
+Q903,HIGH_SIDE_AUDIO_SWITCH_PLACEHOLDER,"audio enable gate, current limit TBD",13V8_AUD,PLACEHOLDER,"controlled via safety AMP_SD, must survive class-D amp inrush"
+R905,PULLDOWN,47 kΩ,AUDIO,CANDIDATE,audio power enable defaults low
+U902,LM61460,"buck main 5.0 V, 400 kHz / 6 A part candidate",5V_MAIN,CANDIDATE,"datasheet 400k 5V ref, 4.7uH, CIN & COUT; physical pins TBD"
+L902,SHIELDED_INDUCTOR,"4.7 uH, Isat >=7 A",5V_MAIN,CANDIDATE,"check inductor 400kHz ref TI, core loss"
+R906,FEEDBACK_BOTTOM,24.9 kΩ 1%,5V_MAIN,CANDIDATE,TI LM61460 typical-curve reference RFBB; upper pair vendor design to compute
+R907,FEEDBACK_TOP,100 kΩ 1%,5V_MAIN,CANDIDATE,"TI 5V reference RFBT=100k, RFBB=24.9k, Vref=1V"
+R908,RT,33.2 kΩ 1%,5V_MAIN,CANDIDATE,datasheet 400kHz typical application
+C906,X7R,4.7 uF >=50V,5V_MAIN,CANDIDATE,
+C907,X7R,4.7 uF >=50V,5V_MAIN,CANDIDATE,
+C908,X7R,100 nF >=50V,5V_MAIN,CANDIDATE,
+C909,X7R,100 nF >=50V,5V_MAIN,CANDIDATE,
+C910,X7R,"22 uF >=10V, derated >=12 uF",5V_MAIN,CANDIDATE,
+C911,X7R,"22 uF >=10V, derated >=12 uF",5V_MAIN,CANDIDATE,
+C912,X7R,"22 uF >=10V, derated >=12 uF",5V_MAIN,CANDIDATE,
+C913,X7R,"22 uF >=10V, derated >=12 uF",5V_MAIN,CANDIDATE,
+U903,LM61460,buck 3.3 V @1MHz / 6 A part candidate,3V3_D,CANDIDATE,TI typical 3.3V @1MHz; cost/capacity to optimize
+L903,SHIELDED_INDUCTOR,2.2 uH Isat>=7 A,3V3_D,CANDIDATE,
+R909,FEEDBACK_BOTTOM,43.2 kΩ 1%,3V3_D,CANDIDATE,TI typical curve reference 3V3 @1MHz
+R910,FEEDBACK_TOP,100 kΩ 1%,3V3_D,CANDIDATE,"TI 3.3V: RFBT 100k RFBB 43.2k, Vref 1V"
+R911,RT,13 kΩ 1%,3V3_D,CANDIDATE,TI typical 1MHz
+C914,X7R,4.7 uF >=50V,3V3_D,CANDIDATE,
+C915,X7R,4.7 uF >=50V,3V3_D,CANDIDATE,
+C916,X7R,100 nF >=50V,3V3_D,CANDIDATE,
+C917,X7R,100 nF >=50V,3V3_D,CANDIDATE,
+C918,X7R,"22 uF >=10V, derated >=12 uF",3V3_D,CANDIDATE,
+C919,X7R,"22 uF >=10V, derated >=12 uF",3V3_D,CANDIDATE,
+C920,X7R,"22 uF >=10V, derated >=12 uF",3V3_D,CANDIDATE,
+FB901,FERRITE_BEAD_PLACEHOLDER,"600 Ohm@100MHz, 1A, low DC resistance",3V3_UI,PLACEHOLDER,freq impedance and current verified later
+C921,X7R,10 uF >=6.3V,3V3_UI,CANDIDATE,
+FB902,FERRITE_BEAD_PLACEHOLDER,"600 Ohm@100MHz, >=0.5A",5V_RF,PLACEHOLDER,test CB receive noise and ripple
+C922,X7R,10 uF >=10V,5V_RF,CANDIDATE,
+FB903,FERRITE_BEAD_PLACEHOLDER,"low loss, >=0.5A",5V_CODEC,PLACEHOLDER,
+C923,X7R,10 uF >=10V,5V_CODEC,CANDIDATE,
+FB904,FERRITE_BEAD_PLACEHOLDER,>=1A,5V_MISC,PLACEHOLDER,
+C924,X7R,22 uF >=10V,5V_MISC,CANDIDATE,
+U904,TPS7A20-3.3,3.3 V low-noise LDO 300mA max,3V3_A,CANDIDATE,"from 5V_MAIN; candidate budget 80mA, 0.136W typical"
+C925,X7R,1 uF >=10V,3V3_A,CANDIDATE,
+C926,X7R,1 uF >=10V,3V3_A,CANDIDATE,
+U905,TPS7A20-1.8,codec 1.8V low-noise LDO 300mA max,1V8_CODEC,CANDIDATE,from 3V3_D; candidate max 100mA
+C927,X7R,1 uF >=6.3V,1V8_CODEC,CANDIDATE,
+C928,X7R,1 uF >=6.3V,1V8_CODEC,CANDIDATE,
+U906,SN74LVC1G08,power-good logic AND,3V3_D,CANDIDATE,PG_5V AND PG_3V3; inputs pull-down to ensure defined before VCC
+R912,PULLDOWN,47 kΩ,3V3_D,CANDIDATE,
+R913,PULLDOWN,47 kΩ,3V3_D,CANDIDATE,
+R914,PULLDOWN,100 kΩ,3V3_D,CANDIDATE,
+R915,BUCK_ENABLE_SERIES,10 kΩ,3V3_D,CANDIDATE,"13V8_PROTECTED through 10k to both EN/SYNC, direct EN accepts <=36V per datasheet"
+R916,PGOOD_PULLUP,10 kΩ,3V3_D,CANDIDATE,PGOOD of 5V buck open-drain pulled to 3V3_D
+R917,PGOOD_PULLUP,10 kΩ,3V3_D,CANDIDATE,PGOOD of 3V3 buck open-drain pulled to 3V3_D
+C929,X7R,100 nF CAP-VS charge pump,PWR_PATH,CANDIDATE,"TI LM74900 requires charge pump capacitor, confirm actual pin return at native schematic"
+C930,C_CONFIG_PLACEHOLDER,fault timer TBD 68 nF candidate,PWR_PATH,PLACEHOLDER,TMR fault timeout TBD
+C931,CFF,22 pF >=50V,5V_MAIN,CANDIDATE,"across 100k feedback top, compensation and transient response TBD"
+C932,CFF,22 pF >=50V,3V3_D,CANDIDATE,"across 100k feedback top, compensation and transient response TBD"
+C933,X7R,1 uF >=10V,5V_MAIN,CANDIDATE,converter internal VCC bypass
+C934,X7R,1 uF >=10V,3V3_D,CANDIDATE,converter internal VCC bypass
+C935,CBOOT_PLACEHOLDER,100nF candidate,5V_MAIN,PLACEHOLDER,TI bootstrap and RBOOT topology vendor schematic pending
+C936,CBOOT_PLACEHOLDER,100nF candidate,3V3_D,PLACEHOLDER,TI bootstrap and RBOOT topology vendor schematic pending
+J904,HARNESS_SUPERVISOR_V62,rail and fault cross-module,INTERCONNECT,CANDIDATE,
+J905,HARNESS_AUDIO_V60,audio V13V8 and low-voltage,INTERCONNECT,CANDIDATE,
+J906,HARNESS_RX_PLL,RX RF/PLL,INTERCONNECT,CANDIDATE,
+J907,RF_PA_HARNESS_DNI,PA RF unpopulated,INTERCONNECT,DNI,"physical pin not connected, no RF PA power at V6.3"

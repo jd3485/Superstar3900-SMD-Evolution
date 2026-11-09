@@ -1,0 +1,21 @@
+Ref,Valore,Footprint,Note,Stato
+U2,TPS7A2033PDBVR,Package_TO_SOT_SMD:SOT-23-5,LDO 3.3V 300mA 5pin; 5V preregulated only,BOZZA
+C50,2u2 10V X7R,Capacitor_SMD:C_0805_2012Metric,LDO input >=1u effective,BOZZA
+C51,4u7 10V X7R,Capacitor_SMD:C_0805_2012Metric,LDO output >=1u effective,BOZZA
+C52,10u 10V X7R,Capacitor_SMD:C_0805_2012Metric,"Bulk rail capacitor, DC bias review",BOZZA
+U3,TPS7A2033PDBVR,Package_TO_SOT_SMD:SOT-23-5,LDO 3.3V 300mA 5pin; 5V preregulated only,BOZZA
+C53,2u2 10V X7R,Capacitor_SMD:C_0805_2012Metric,LDO input >=1u effective,BOZZA
+C54,4u7 10V X7R,Capacitor_SMD:C_0805_2012Metric,LDO output >=1u effective,BOZZA
+C55,10u 10V X7R,Capacitor_SMD:C_0805_2012Metric,"Bulk rail capacitor, DC bias review",BOZZA
+C41,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TI local supply high frequency bypass < pins,BOZZA
+C42,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TI local supply high frequency bypass < pins,BOZZA
+C43,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TI local supply high frequency bypass < pins,BOZZA
+C44,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TI local supply high frequency bypass < pins,BOZZA
+C45,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TI local supply high frequency bypass < pins,BOZZA
+C46,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TI local supply high frequency bypass < pins,BOZZA
+Y1,7N-12.800MBP-T,S3900E:TXC_7N_7x5_10pad_UNVALIDATED,"Footprint e pin10 TBD, TI oscillator 12.8MHz",BOZZA
+R60,10k 1pct,Resistor_SMD:R_0603_1608Metric,OE pull-up; assert logic pending exact grade,BOZZA
+C56,100n 10V X7R,Capacitor_SMD:C_0402_1005Metric,TCXO VCC local bypass,BOZZA
+C57,1u 10V X7R,Capacitor_SMD:C_0603_1608Metric,TCXO VCC local bulk,BOZZA
+R61,33R 1pct,Resistor_SMD:R_0402_1005Metric,CMOS edge damping; to validate at scope,BOZZA
+C58,100n X7R,Capacitor_SMD:C_0402_1005Metric,AC-coupling to pin8 LMX2572; ensure decoupling topology,BOZZA

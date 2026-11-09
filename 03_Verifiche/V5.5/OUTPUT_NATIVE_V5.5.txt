@@ -1,0 +1,6 @@
+{
+  "runner_exit": 3,
+  "validator_exit": 5,
+  "validation_status": "INCOMPLETE_OR_VIOLATIONS",
+  "fabrication_allowed": false
+}

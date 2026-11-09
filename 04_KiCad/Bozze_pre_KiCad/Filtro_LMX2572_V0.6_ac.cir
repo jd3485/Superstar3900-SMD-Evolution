@@ -1,0 +1,12 @@
+* Superstar 3900 V0.6 | Filtro PLL passivo - STUDIO AC (ngspice)
+* NON SIMULA l'intero PLL, non produce rumore di fase realistico.
+* CPout = nodo cp; VTUNE = nodo vt
+I_TEST 0 cp AC 1
+C1 cp 0 220p
+R2 cp c2node 620
+C2 c2node 0 120n
+R3 cp vt 22
+C3 vt 0 2.2n
+.ac dec 100 10 1Meg
+.print ac vm(vt) vp(vt)
+.end

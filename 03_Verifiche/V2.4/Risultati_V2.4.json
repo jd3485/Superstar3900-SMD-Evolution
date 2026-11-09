@@ -1,0 +1,45 @@
+{
+  "release": "V2.4",
+  "model": "ABCD cascaded LC in 50 Ohm; series L R=omega*L/Q; shunt C G=omega*C*tan_delta; series C ESR=tand/(omega*C)",
+  "topology_candidate": "HP5 Butterworth fc=18MHz + LP9 Chebyshev ripple .1dB fc=29.5MHz",
+  "f_pass_hz": [
+    25615000.0,
+    28305000.0
+  ],
+  "f_image_hz": [
+    47005000.0,
+    49695000.0
+  ],
+  "q_nominal_illustrative": 60,
+  "q_stress": 35,
+  "capacitor_tan_delta": 0.001,
+  "nominal_q60": {
+    "max_pass_loss_db": 1.613595530995172,
+    "min_image_rejection_db": 59.30233522370783,
+    "worst_s11_db": -12.498877585281761
+  },
+  "stress_q35": {
+    "max_pass_loss_db": 2.547430874760301,
+    "min_image_rejection_db": 59.491704628768275,
+    "worst_s11_db": -12.958640963136718
+  },
+  "mc_samples": 1200,
+  "mc_seed": 390024,
+  "mc_ranges": "all values uniform +/-2%; common Q uniformly between 25 and 75; these distributions are test inputs, not sourced manufacturing tolerances",
+  "mc_percentile95_loss_db": 3.100725813884805,
+  "mc_percentile5_rejection_db": 58.70648722912034,
+  "mc_success_fraction": 0.5466666666666666,
+  "gates": {
+    "objective_pass_loss_db": 1.5,
+    "objective_image_rejection_db": 60,
+    "status": "NOT APPROVED - nominal loss and conservative Q/tolerance require further optimization"
+  },
+  "limitations": [
+    "No PCB and package parasitics",
+    "Q at 27 MHz not confirmed by individual vendor S-parameters",
+    "No EM coupling or trace effects",
+    "No real filter coupling to LNA and mixer",
+    "No frequency-dependent L/C parameters",
+    "No real KiCad ERC or bench validation"
+  ]
+}

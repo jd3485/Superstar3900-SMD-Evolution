@@ -1,0 +1,83 @@
+{
+  "version": "4.5",
+  "status": "STATIC_LIBRARY_RECONSTRUCTION_ONLY_NOT_FOR_FAB",
+  "source_board_sha256": "a49a4fa9370573192dfa4f3da0b16f9936cf580491280621a4ea30d24349848f",
+  "source_schematic_sha256": "5903e3bee1c020723cd1ab9c24150ace6c6cd4c9a29a51e2f6c9872110e30d2d",
+  "footprint_libraries": [
+    "S3900E_V38_Review",
+    "S3900E_v33",
+    "S3900E_v35"
+  ],
+  "footprints": [
+    {
+      "footprint_id": "S3900E_V38_Review:ADL5535_SOT89_PASTE_REVIEW",
+      "instances": 1,
+      "pad_primitives": 4,
+      "sha256": "0f3d6ba76d0eeaef22b5aa14e6de6f4f94d83e7b048e02c86be75139384836e1"
+    },
+    {
+      "footprint_id": "S3900E_V38_Review:CONSMA002_SMD_SHAPED_REVIEW",
+      "instances": 4,
+      "pad_primitives": 5,
+      "sha256": "ea731cd32f39aa699671be4163cc505f0041ce160bd3a0386638c8a688208068"
+    },
+    {
+      "footprint_id": "S3900E_v33:2_wire_solder_pads",
+      "instances": 1,
+      "pad_primitives": 2,
+      "sha256": "498387cc0db5604cf6561d439666b8bd4c7052914d5ddb866fa747e411a79739"
+    },
+    {
+      "footprint_id": "S3900E_v33:C_0402",
+      "instances": 2,
+      "pad_primitives": 2,
+      "sha256": "0483f69e51a9e543196d05750f3e0ebe57b9c8898c9e18313affaf852a8f18c6"
+    },
+    {
+      "footprint_id": "S3900E_v33:C_0603",
+      "instances": 2,
+      "pad_primitives": 2,
+      "sha256": "d4b4d1b6af865b73e95c4f90cf03db89f7c6d79d2122fcb3713a2e35b3b5215c"
+    },
+    {
+      "footprint_id": "S3900E_v33:C_1206",
+      "instances": 1,
+      "pad_primitives": 2,
+      "sha256": "9b4e6f2528bea2be316e5779719b880e79ce94e043e7e7b5e70d8ff1c81ec085"
+    },
+    {
+      "footprint_id": "S3900E_v33:L_0603",
+      "instances": 1,
+      "pad_primitives": 2,
+      "sha256": "65724dcfcffdfeabe2ece080be4ce43a52579dd758f51b8d2593fced90401fdf"
+    },
+    {
+      "footprint_id": "S3900E_v33:R_0402",
+      "instances": 1,
+      "pad_primitives": 2,
+      "sha256": "da145c5bd6ab9dbc9f4cc3dcc52d86617000f19af80c34a052dcd0ed15f626cc"
+    },
+    {
+      "footprint_id": "S3900E_v35:R_0402_SHUNT_PERPENDICULAR",
+      "instances": 2,
+      "pad_primitives": 2,
+      "sha256": "fddfab82d8652b2f1edcf17f1f566a25cdfdce5ea3dad56a23bc9cc066c06229"
+    }
+  ],
+  "symbol_library": "S3900E.kicad_sym",
+  "symbols": [
+    "S3900E:AMP",
+    "S3900E:COAX_L",
+    "S3900E:COAX_R",
+    "S3900E:C_SER",
+    "S3900E:C_SH",
+    "S3900E:DC_2P",
+    "S3900E:L_SH",
+    "S3900E:R_SER",
+    "S3900E:R_SH"
+  ],
+  "component_count": 15,
+  "symbol_type_count": 9,
+  "native_erc_drc": "NOT_RUN",
+  "manufacturer_cad_check": "NOT_APPROVED"
+}

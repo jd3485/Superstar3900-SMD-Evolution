@@ -1,0 +1,9 @@
+{
+  "versione": "V2.7",
+  "avanzamento_pct": 34,
+  "precedente_pct": 33,
+  "delta_pct": 1,
+  "metodo": "stima gestione del progetto, non % di validazione hardware",
+  "motivazione": "due BOM commerciali preliminari, netlist per prototipo, modello con tolleranze replicabile e piano VNA; mantenere blocchi non validati",
+  "gate": "NO GO PCBWay"
+}

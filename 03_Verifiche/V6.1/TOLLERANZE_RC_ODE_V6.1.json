@@ -1,0 +1,10 @@
+{
+  "low_ratio_max": 0.02371979284419803,
+  "release_ms_max": 1.998249048035602,
+  "release_ms_min": 1.2162923974528363,
+  "trials": 10000,
+  "numeric_ode_solver": "SciPy solve_ivp (RC ideal 1 pole)",
+  "numeric_vs_analytic_max_abs_error_v": 6.016076525838798e-11,
+  "bounds": "10k ±5%, 220Ω ±5%, C100nF ±20%, 3.3 V nominal",
+  "model": "PARAMETER_SWEEP_AND_ODE_IDEAL_NOT_SPICE_NOT_HARDWARE"
+}

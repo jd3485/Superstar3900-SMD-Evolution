@@ -1,0 +1,218 @@
+{
+  "revision": "V6.3",
+  "model": "ideal electrical/math study only, not real SPICE and not native KiCad",
+  "loads_nominal_5v_output_a": 0.615,
+  "loads_nominal_3v3_output_a": 0.375,
+  "nominal_input_total_w": 10.342917,
+  "nominal_input_current_a": 0.750098,
+  "nominal_input_ohmic_loss_w": 0.00844,
+  "feedback_5v_from_100k_24k9_v": 5.016064,
+  "feedback_3v3_from_100k_43k2_v": 3.314815,
+  "feedback_abs_error_percent": {
+    "5v": 0.32129,
+    "3v3": 0.44893
+  },
+  "monte_carlo_samples": 25000,
+  "monte_carlo_efficiency_assumptions": {
+    "eta5": [
+      0.84,
+      0.94
+    ],
+    "eta3": [
+      0.8,
+      0.94
+    ],
+    "input_voltage_v": [
+      11.88,
+      15.36
+    ],
+    "load_distribution": "independent uniform 0.75*nominal to envelope, NOT actual probability/fault distribution"
+  },
+  "monte_carlo_stats": {
+    "input_a": {
+      "min": 0.618527,
+      "median": 1.367613,
+      "p99": 2.00468,
+      "max": 2.143622
+    },
+    "delivered_power_w": {
+      "min": 8.556605,
+      "median": 18.538486,
+      "p99": 28.234636,
+      "max": 30.643986
+    },
+    "buck5_out_a": {
+      "min": 0.506889,
+      "median": 0.816398,
+      "p99": 1.040729,
+      "max": 1.12546
+    },
+    "buck3v3_out_a": {
+      "min": 0.294125,
+      "median": 0.465611,
+      "p99": 0.592938,
+      "max": 0.643665
+    },
+    "ldo3v3_loss_w": {
+      "min": 0.057377,
+      "median": 0.096447,
+      "p99": 0.135259,
+      "max": 0.136
+    },
+    "ldo1v8_loss_w": {
+      "min": 0.056256,
+      "median": 0.10287,
+      "p99": 0.149084,
+      "max": 0.149995
+    },
+    "fets_and_shunt_loss_w": {
+      "min": 0.005739,
+      "median": 0.028055,
+      "p99": 0.060281,
+      "max": 0.068927
+    }
+  },
+  "ideal_inrush": {
+    "c_bulk_f": 0.00047,
+    "c_dvdt_f": 4.7e-08,
+    "i_gate_source_typ_a": 5.5e-05,
+    "current_charge_a": 0.55,
+    "ramp_time_to_13v8_ms": 11.7927,
+    "exclusions": "real gate dynamics, MOSFET SOA, buck load and inductor/cable, UVOV logic"
+  },
+  "buck_ccm_only": [
+    {
+      "rail": "5V_MAIN",
+      "vin_v": 11.88,
+      "duty_ideal": 0.420875,
+      "inductor_deltaI_pp_ideal_a": 1.540225,
+      "ccm_min_average_load_a": 0.770112,
+      "capacitive_ripple_if_ccm_mv": 10.0275,
+      "assumptions": "ideal CCM, min estimated effective MLCC cap; ignores ESR/ESL/PFM/loop/EMI"
+    },
+    {
+      "rail": "3V3_D",
+      "vin_v": 11.88,
+      "duty_ideal": 0.277778,
+      "inductor_deltaI_pp_ideal_a": 1.083333,
+      "ccm_min_average_load_a": 0.541667,
+      "capacitive_ripple_if_ccm_mv": 3.7616,
+      "assumptions": "ideal CCM, min estimated effective MLCC cap; ignores ESR/ESL/PFM/loop/EMI"
+    },
+    {
+      "rail": "5V_MAIN",
+      "vin_v": 13.8,
+      "duty_ideal": 0.362319,
+      "inductor_deltaI_pp_ideal_a": 1.695961,
+      "ccm_min_average_load_a": 0.84798,
+      "capacitive_ripple_if_ccm_mv": 11.0414,
+      "assumptions": "ideal CCM, min estimated effective MLCC cap; ignores ESR/ESL/PFM/loop/EMI"
+    },
+    {
+      "rail": "3V3_D",
+      "vin_v": 13.8,
+      "duty_ideal": 0.23913,
+      "inductor_deltaI_pp_ideal_a": 1.141304,
+      "ccm_min_average_load_a": 0.570652,
+      "capacitive_ripple_if_ccm_mv": 3.9629,
+      "assumptions": "ideal CCM, min estimated effective MLCC cap; ignores ESR/ESL/PFM/loop/EMI"
+    },
+    {
+      "rail": "5V_MAIN",
+      "vin_v": 15.36,
+      "duty_ideal": 0.325521,
+      "inductor_deltaI_pp_ideal_a": 1.793828,
+      "ccm_min_average_load_a": 0.896914,
+      "capacitive_ripple_if_ccm_mv": 11.6786,
+      "assumptions": "ideal CCM, min estimated effective MLCC cap; ignores ESR/ESL/PFM/loop/EMI"
+    },
+    {
+      "rail": "3V3_D",
+      "vin_v": 15.36,
+      "duty_ideal": 0.214844,
+      "inductor_deltaI_pp_ideal_a": 1.177734,
+      "ccm_min_average_load_a": 0.588867,
+      "capacitive_ripple_if_ccm_mv": 4.0894,
+      "assumptions": "ideal CCM, min estimated effective MLCC cap; ignores ESR/ESL/PFM/loop/EMI"
+    }
+  ],
+  "ideal_brownout_hold_time_ms": {
+    "13v8_bulk_470uf_13v8_to_11v88": 1.20304,
+    "13v8_20pct_low_cap": 0.96243,
+    "5v_local_48uf_5_to_4v5": 0.03902,
+    "3v3_local_36uf_3v3_to_3v0": 0.0288,
+    "assumptions": "capacitors only; instantaneous loss of energy supply, constant load, no buck regulation/hold-up or switching behavior"
+  },
+  "ldo_nominal_dissipation": {
+    "3v3_a_w": 0.0765,
+    "1v8_codec_w": 0.075
+  },
+  "nominal_3v3_limiter_below_rated": true,
+  "voltage_window_nominal_samples": [
+    {
+      "vbat_v": 9,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 10,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 11,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 11.5,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 11.88,
+      "v62_window_nominal": true
+    },
+    {
+      "vbat_v": 12,
+      "v62_window_nominal": true
+    },
+    {
+      "vbat_v": 13.8,
+      "v62_window_nominal": true
+    },
+    {
+      "vbat_v": 15,
+      "v62_window_nominal": true
+    },
+    {
+      "vbat_v": 15.36,
+      "v62_window_nominal": true
+    },
+    {
+      "vbat_v": 15.5,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 16,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 18,
+      "v62_window_nominal": false
+    },
+    {
+      "vbat_v": 24,
+      "v62_window_nominal": false
+    }
+  ],
+  "safety": {
+    "production_release": false,
+    "rf_pa_power_connected": false,
+    "tx_permitted": false
+  },
+  "limitations": [
+    "efficiencies assumed, not measured",
+    "load currents unverified",
+    "TVS transients and reverse pulse waveform unknown",
+    "output ripple only CCM formula, at nominal load both converters may operate in DCM/PFM",
+    "current limit, MOSFET SOA, fuse and thermal not qualified",
+    "EMI at 26–28MHz not modeled"
+  ]
+}

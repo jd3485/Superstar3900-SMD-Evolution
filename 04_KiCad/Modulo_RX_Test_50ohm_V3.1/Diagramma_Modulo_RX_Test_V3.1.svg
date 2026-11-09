@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="1080" height="540">
+<style>text{font-family:Arial,sans-serif;fill:#1b2936} .cap{font-size:16px} .label{font-size:14px} .head{font-weight:bold;font-size:24px} .wire{stroke:#176f72;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round} .node{fill:#176f72} .part{fill:white;stroke:#314f68;stroke-width:2} .bg{fill:#f5f7f8;stroke:#d3dde2;stroke-width:2}</style>
+<rect width="1080" height="540" fill="white"/><text x="40" y="42" class="head">V3.1 — Modulo sperimentale RX 50 Ω · due percorsi indipendenti</text>
+<rect class="bg" x="25" y="65" width="1030" height="270" rx="14"/><text x="45" y="94" font-size="18" font-weight="bold">A. Amplificatore ADL5535 · 5 V, 97 mA tipici</text>
+<g class="wire"><path d="M65 198 H162 M242 198 H400 M530 198 H674 M753 198 H969"/></g>
+<g class="part"><rect x="162" y="183" width="80" height="30" rx="4"/><rect x="400" y="163" width="130" height="70" rx="5"/><rect x="674" y="183" width="79" height="30" rx="4"/></g>
+<text x="45" y="187" class="label">J101</text><text x="48" y="227" class="label">SMA IN</text>
+<text x="180" y="176" class="label">C101</text><text x="173" y="234" class="label">100 nF</text>
+<text x="429" y="194" class="cap" font-weight="bold">U101</text><text x="414" y="214" class="label">ADL5535</text>
+<text x="696" y="176" class="label">C102</text><text x="679" y="234" class="label">100 nF</text>
+<text x="945" y="185" class="label">J102</text><text x="933" y="227" class="label">SMA OUT</text>
+<g class="wire"><path d="M530 198 H594 V143 H620 V123"/><path d="M620 123 V109 H935"/><path d="M935 109 V95"/></g>
+<rect class="part" x="598" y="103" width="44" height="28" rx="3"/><text x="593" y="95" class="label">L101</text><text x="586" y="153" class="label">470 nH</text>
+<text x="938" y="91" class="label">+5 V BENCH</text><text x="417" y="252" class="label">GND + pad termico</text>
+<text x="50" y="295" font-size="14">C103 68 pF · C104 1,2 nF · C105 1 μF: bypass sulla linea 5 V vicino al choke</text>
+<rect class="bg" x="25" y="352" width="1030" height="150" rx="14"/><text x="45" y="380" font-size="18" font-weight="bold">B. Attenuatore π da 6 dB · resistori SMD 1%</text>
+<g class="wire"><path d="M82 431 H462 M542 431 H979 M262 431 V473 M749 431 V473"/></g>
+<g class="part"><rect x="462" y="416" width="80" height="30" rx="4"/><rect x="244" y="455" width="36" height="35" rx="4"/><rect x="731" y="455" width="36" height="35" rx="4"/></g>
+<text x="62" y="417" class="label">J103 IN</text><text x="946" y="418" class="label">J104 OUT</text>
+<text x="470" y="409" class="label">R203 37,4 Ω</text><text x="194" y="410" class="label">R201</text><text x="220" y="449" class="label">150 Ω</text><text x="695" y="410" class="label">R202</text><text x="709" y="449" class="label">150 Ω</text>
+<text x="90" y="522" font-size="13">Schematico funzionale illustrativo: valori basati sul datasheet ADI e calcolo ideale dell'attenuatore; verifica PCB ancora aperta.</text>
+</svg>

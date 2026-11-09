@@ -1,0 +1,35 @@
+test_01_baseline (__main__.TestZoneEnvelope.test_01_baseline) ... ok
+test_02_fcu_24pads (__main__.TestZoneEnvelope.test_02_fcu_24pads) ... ok
+test_03_70_vias (__main__.TestZoneEnvelope.test_03_70_vias) ... ok
+test_04_four_unfilled (__main__.TestZoneEnvelope.test_04_four_unfilled) ... ok
+test_05_vias_each_zone (__main__.TestZoneEnvelope.test_05_vias_each_zone) ... ok
+test_06_vias_largest_region (__main__.TestZoneEnvelope.test_06_vias_largest_region) ... ok
+test_07_one_geom_region_each (__main__.TestZoneEnvelope.test_07_one_geom_region_each) ... ok
+test_08_fcu_area_regression (__main__.TestZoneEnvelope.test_08_fcu_area_regression) ... ok
+test_09_fcu_fraction (__main__.TestZoneEnvelope.test_09_fcu_fraction) ... ok
+test_10_internal_ideal_area (__main__.TestZoneEnvelope.test_10_internal_ideal_area) ... ok
+test_11_ground_pads_fcu (__main__.TestZoneEnvelope.test_11_ground_pads_fcu) ... ok
+test_12_via_edge_annulus_margin (__main__.TestZoneEnvelope.test_12_via_edge_annulus_margin) ... ok
+test_13_never_native (__main__.TestZoneEnvelope.test_13_never_native) ... ok
+test_14_thermal_not_modeled (__main__.TestZoneEnvelope.test_14_thermal_not_modeled) ... ok
+test_15_clearance_sensitivity (__main__.TestZoneEnvelope.test_15_clearance_sensitivity) ... ok
+test_16_reject_clearance_extreme (__main__.TestZoneEnvelope.test_16_reject_clearance_extreme) ... ok
+test_17_test_barrier_split (__main__.TestZoneEnvelope.test_17_test_barrier_split) ... ok
+test_18_wrong_zone_layer (__main__.TestZoneEnvelope.test_18_wrong_zone_layer) ... ok
+test_19_wrong_zone_net (__main__.TestZoneEnvelope.test_19_wrong_zone_net) ... ok
+test_20_changed_zone_clearance (__main__.TestZoneEnvelope.test_20_changed_zone_clearance) ... ok
+test_21_changed_spoke (__main__.TestZoneEnvelope.test_21_changed_spoke) ... ok
+test_22_filled_zone_unverified (__main__.TestZoneEnvelope.test_22_filled_zone_unverified) ... ok
+test_23_via_outside (__main__.TestZoneEnvelope.test_23_via_outside) ... ok
+test_24_via_wrong_net (__main__.TestZoneEnvelope.test_24_via_wrong_net) ... ok
+test_25_via_unexpected_layers (__main__.TestZoneEnvelope.test_25_via_unexpected_layers) ... ok
+test_26_unsupported_inner_track (__main__.TestZoneEnvelope.test_26_unsupported_inner_track) ... ok
+test_27_reduced_outline_margin (__main__.TestZoneEnvelope.test_27_reduced_outline_margin) ... ok
+test_28_via_reach_regression (__main__.TestZoneEnvelope.test_28_via_reach_regression) ... ok
+test_29_no_approved_pass_claim (__main__.TestZoneEnvelope.test_29_no_approved_pass_claim) ... ok
+test_30_board_sha (__main__.TestZoneEnvelope.test_30_board_sha) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.373s
+
+OK

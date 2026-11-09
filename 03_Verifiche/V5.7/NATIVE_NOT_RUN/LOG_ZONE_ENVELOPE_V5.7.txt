@@ -1,0 +1,84 @@
+{
+  "revision": "V5.7",
+  "study_type": "IDEALIZED_ZONE_ENVELOPE_UPPER_BOUND_NOT_KICAD_FILL",
+  "board_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "zone_clearance_screen_mm": 0.3,
+  "ground_pads_fcu": 24,
+  "ground_vias_fcu": 70,
+  "ground_zones_unfilled": 4,
+  "individual_grounds_before_fill": 64,
+  "layers": {
+    "F.Cu": {
+      "zone_area_mm2": 6581.16,
+      "analytical_clearance_mm": 0.3,
+      "hypothetical_region_count": 1,
+      "largest_hypothetical_area_mm2": 6323.1039,
+      "all_hypothetical_areas_mm2": [
+        6323.1039
+      ],
+      "largest_region_fraction_of_outline": 0.960789,
+      "gnd_vias_geom_in_zone": 70,
+      "gnd_vias_geom_touch_largest_hypothetical_region": 70,
+      "fcu_gnd_pads_geom_touch_largest_hypothetical_region": 24,
+      "min_via_annulus_to_zone_outline_mm": 2.05,
+      "pad_thermal_spokes": "NOT_MODELED",
+      "actual_fill": "UNFILLED"
+    },
+    "In1.Cu": {
+      "zone_area_mm2": 6581.16,
+      "analytical_clearance_mm": 0.3,
+      "hypothetical_region_count": 1,
+      "largest_hypothetical_area_mm2": 6581.16,
+      "all_hypothetical_areas_mm2": [
+        6581.16
+      ],
+      "largest_region_fraction_of_outline": 1.0,
+      "gnd_vias_geom_in_zone": 70,
+      "gnd_vias_geom_touch_largest_hypothetical_region": 70,
+      "fcu_gnd_pads_geom_touch_largest_hypothetical_region": null,
+      "min_via_annulus_to_zone_outline_mm": 2.05,
+      "pad_thermal_spokes": "NOT_MODELED",
+      "actual_fill": "UNFILLED"
+    },
+    "In2.Cu": {
+      "zone_area_mm2": 6581.16,
+      "analytical_clearance_mm": 0.3,
+      "hypothetical_region_count": 1,
+      "largest_hypothetical_area_mm2": 6581.16,
+      "all_hypothetical_areas_mm2": [
+        6581.16
+      ],
+      "largest_region_fraction_of_outline": 1.0,
+      "gnd_vias_geom_in_zone": 70,
+      "gnd_vias_geom_touch_largest_hypothetical_region": 70,
+      "fcu_gnd_pads_geom_touch_largest_hypothetical_region": null,
+      "min_via_annulus_to_zone_outline_mm": 2.05,
+      "pad_thermal_spokes": "NOT_MODELED",
+      "actual_fill": "UNFILLED"
+    },
+    "B.Cu": {
+      "zone_area_mm2": 6581.16,
+      "analytical_clearance_mm": 0.3,
+      "hypothetical_region_count": 1,
+      "largest_hypothetical_area_mm2": 6581.16,
+      "all_hypothetical_areas_mm2": [
+        6581.16
+      ],
+      "largest_region_fraction_of_outline": 1.0,
+      "gnd_vias_geom_in_zone": 70,
+      "gnd_vias_geom_touch_largest_hypothetical_region": 70,
+      "fcu_gnd_pads_geom_touch_largest_hypothetical_region": null,
+      "min_via_annulus_to_zone_outline_mm": 2.05,
+      "pad_thermal_spokes": "NOT_MODELED",
+      "actual_fill": "UNFILLED"
+    }
+  },
+  "errors": [],
+  "status": "STATIC_ENVELOPE_PASS_NATIVE_PENDING",
+  "native_zone_refill": "NOT_RUN",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "fabrication_allowed": false,
+  "tx_allowed": false
+}
+

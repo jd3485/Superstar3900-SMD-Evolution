@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+<rect width="1200" height="650" fill="#f7fafc"/>
+<text x="55" y="68" font-family="DejaVu Sans,Arial" font-weight="bold" font-size="28" fill="#152d3a">Superstar 3900 SMD Evolution - architettura audio V1.6</text>
+<text x="55" y="97" font-family="DejaVu Sans,Arial" font-size="16" fill="#647480">BOZZA FUNZIONALE • NON SCHEMA DI CIRCUITO / NON APPROVATO PER PCBWay</text>
+<g font-family="DejaVu Sans,Arial" text-anchor="middle" fill="#193442">
+<rect x="48" y="155" width="205" height="104" rx="11" fill="#dfeff5" stroke="#507e91" stroke-width="2"/>
+<text x="150" y="194" font-size="19" font-weight="bold">Ingresso microfono</text><text x="150" y="224" font-size="14">Preamp + anti-alias</text>
+<rect x="48" y="328" width="205" height="104" rx="11" fill="#dfeff5" stroke="#507e91" stroke-width="2"/>
+<text x="150" y="368" font-size="17" font-weight="bold">Discriminatore FM</text><text x="150" y="393" font-size="14">Subaudio prima HPF</text>
+<rect x="348" y="212" width="235" height="172" rx="12" fill="#f5e7ce" stroke="#b58d4d" stroke-width="2"/>
+<text x="466" y="256" font-size="21" font-weight="bold">TLV320AIC3204</text><text x="466" y="286" font-size="17">Codec stereo</text><text x="466" y="313" font-size="15">2 ADC · 2 DAC</text><text x="466" y="343" font-size="14">I²S + I²C</text>
+<rect x="680" y="187" width="258" height="214" rx="12" fill="#dbefe7" stroke="#397967" stroke-width="2"/>
+<text x="810" y="228" font-size="22" font-weight="bold">STM32G474RE</text><text x="810" y="258" font-size="15">DMA / controllo audio</text><text x="810" y="286" font-size="15">VOX · Echo · Beep</text><text x="810" y="313" font-size="15">CTCSS · futuro DCS</text><text x="810" y="343" font-size="15">DW · sicurezza TX</text><text x="810" y="374" font-size="14">SPI LMX2572</text>
+<rect x="999" y="155" width="160" height="97" rx="11" fill="#dfeff5" stroke="#507e91" stroke-width="2"/>
+<text x="1078" y="194" font-size="16" font-weight="bold">TX modulatore</text><text x="1078" y="220" font-size="14">Audio limitato</text>
+<rect x="999" y="334" width="160" height="97" rx="11" fill="#dfeff5" stroke="#507e91" stroke-width="2"/>
+<text x="1078" y="369" font-size="16" font-weight="bold">RX / PA audio</text><text x="1078" y="396" font-size="14">Finale AF esterno</text>
+</g>
+<g stroke="#34788c" stroke-width="3" fill="none" stroke-linecap="round"><path d="M253 207 L348 267"/><path d="M253 380 L348 326"/><path d="M583 260 L680 260"/><path d="M680 316 L583 316"/><path d="M583 232 L626 232 L626 165 L995 165 L995 202 L999 202"/><path d="M583 357 L628 357 L628 460 L995 460 L995 380 L999 380"/></g>
+<g fill="#34788c"><path d="M348 267 l-12 -8 v16z"/><path d="M348 326 l-12 -8 v16z"/><path d="M680 260 l-12 -8 v16z"/><path d="M583 316 l12 -8 v16z"/><path d="M999 202 l-12 -8 v16z"/><path d="M999 380 l-12 -8 v16z"/></g>
+<text x="625" y="244" font-family="DejaVu Sans,Arial" font-size="13" fill="#34788c">I²S</text>
+<text x="58" y="543" font-family="DejaVu Sans,Arial" font-size="17" font-weight="bold" fill="#173c51">Interblocchi previsti: CH9 prioritario, PA blocca RF, DW non TX sul canale B, PLL unlock impedisce TX.</text>
+<text x="58" y="581" font-family="DejaVu Sans,Arial" font-size="15" fill="#647480">Alimentazioni, clock, reset, filtri, protezioni e pin reali: ancora da progettare e verificare.</text>
+</svg>

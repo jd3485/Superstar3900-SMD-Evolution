@@ -1,0 +1,84 @@
+{
+  "suites": [
+    {
+      "rev": "V5.9",
+      "test_file": "03_Verifiche/V5.9/test_progettazione_sistema_v59.py",
+      "count": 20,
+      "pass": true,
+      "output_tail": "per_input (__main__.ContractDesign.test_single_driver_per_input) ... ok\ntest_status_blocks_fabrication (__main__.ContractDesign.test_status_blocks_fabrication) ... ok\ntest_tx_chain_has_hardware_gate (__main__.ContractDesign.test_tx_chain_has_hardware_gate) ... ok\ntest_unique_connection_ids (__main__.ContractDesign.test_unique_connection_ids) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.002s\n\nOK\n"
+    },
+    {
+      "rev": "V6.0",
+      "test_file": "03_Verifiche/V6.0/test_audio_pa_v60.py",
+      "count": 35,
+      "pass": true,
+      "output_tail": "...................................\n----------------------------------------------------------------------\nRan 35 tests in 0.029s\n\nOK\n"
+    },
+    {
+      "rev": "V6.1",
+      "test_file": "03_Verifiche/V6.1/test_mcu_pannello_v61.py",
+      "count": 55,
+      "pass": true,
+      "output_tail": ".......................................................\n----------------------------------------------------------------------\nRan 55 tests in 0.059s\n\nOK\n"
+    },
+    {
+      "rev": "V6.1",
+      "test_file": "03_Verifiche/V6.1/test_integrazione_audio_v61.py",
+      "count": 5,
+      "pass": true,
+      "output_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "rev": "V6.2",
+      "test_file": "03_Verifiche/V6.2/test_interblocchi_v62.py",
+      "count": 31,
+      "pass": true,
+      "output_tail": "tic (__main__.TestInterlock.test_thresholds_analytic) ... ok\ntest_tps3700_open_drain_pullups (__main__.TestInterlock.test_tps3700_open_drain_pullups) ... ok\ntest_tx_false_when_pa_relay_energized (__main__.TestInterlock.test_tx_false_when_pa_relay_energized) ... ok\ntest_unique_component_pins (__main__.TestInterlock.test_unique_component_pins) ... ok\n\n----------------------------------------------------------------------\nRan 31 tests in 0.099s\n\nOK\n"
+    },
+    {
+      "rev": "V6.3",
+      "test_file": "03_Verifiche/V6.3/test_alimentazioni_v63.py",
+      "count": 45,
+      "pass": true,
+      "output_tail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 0.007s\n\nOK\n"
+    },
+    {
+      "rev": "V6.4",
+      "test_file": "03_Verifiche/V6.4/test_pll_v64.py",
+      "count": 60,
+      "pass": true,
+      "output_tail": "............................................................\n----------------------------------------------------------------------\nRan 60 tests in 0.053s\n\nOK\n"
+    },
+    {
+      "rev": "V6.5",
+      "test_file": "03_Verifiche/V6.5/test_mixer_fi_v65.py",
+      "count": 50,
+      "pass": true,
+      "output_tail": "..................................................\n----------------------------------------------------------------------\nRan 50 tests in 0.545s\n\nOK\n"
+    },
+    {
+      "rev": "V6.6",
+      "test_file": "03_Verifiche/V6.6/test_preselettore_lc_v66.py",
+      "count": 50,
+      "pass": true,
+      "output_tail": "46_source_vendor (__main__.TestF501V66.test_46_source_vendor) ... ok\ntest_47_netlist_edges (__main__.TestF501V66.test_47_netlist_edges) ... ok\ntest_48_srf_guard (__main__.TestF501V66.test_48_srf_guard) ... ok\ntest_49_free_q (__main__.TestF501V66.test_49_free_q) ... ok\ntest_50_ideal_3db_corners (__main__.TestF501V66.test_50_ideal_3db_corners) ... ok\n\n----------------------------------------------------------------------\nRan 50 tests in 0.011s\n\nOK\n"
+    },
+    {
+      "rev": "V6.7",
+      "test_file": "03_Verifiche/V6.7/test_frontend_rx_v67.py",
+      "count": 60,
+      "pass": true,
+      "output_tail": "............................................................\n----------------------------------------------------------------------\nRan 60 tests in 0.003s\n\nOK\n"
+    },
+    {
+      "rev": "V6.8",
+      "test_file": "03_Verifiche/V6.8/test_fi_agc_v68.py",
+      "count": 60,
+      "pass": true,
+      "output_tail": "............................................................\n----------------------------------------------------------------------\nRan 60 tests in 0.005s\n\nOK\n"
+    }
+  ],
+  "cases_total": 471,
+  "all_pass": true,
+  "historical_scope": "V5.9-V6.8; not all V1-V5.8 suites rerun"
+}

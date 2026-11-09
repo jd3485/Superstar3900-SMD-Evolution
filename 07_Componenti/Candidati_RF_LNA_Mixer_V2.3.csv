@@ -1,0 +1,5 @@
+component,manufacturer,part_number,mount,rf_min_mhz,rf_max_mhz,gain_db_typ_at_20MHz,nf_db_typ_at_20MHz,oip3_dbm_typ_at_20MHz,lo_drive_dbm,status,source
+Amplifier,Analog Devices,ADL5535,SOT-89 SMD,20,1000,16.7,3.0,41.5,,CANDIDATE_NOT_APPROVED,https://www.analog.com/en/products/adl5535.html
+Amplifier,Analog Devices,ADL5536,SOT-89 SMD,20,1000,20.2,2.5,39.5,,CANDIDATE_NOT_APPROVED,https://www.analog.com/en/products/adl5536.html
+Mixer,Mini-Circuits,ADE-1+,SMD module,0.5,500,,, ,7,CANDIDATE_NOT_APPROVED,https://www.minicircuits.com/WebStore/dashboard.html?model=ADE-1%2B
+Mixer,Mini-Circuits,ADE-1H+,SMD module,0.5,500,,, ,17,ALTERNATIVE_LO_REDIRECT_REQUIRED,https://www.minicircuits.com/WebStore/dashboard.html?model=ADE-1H%2B

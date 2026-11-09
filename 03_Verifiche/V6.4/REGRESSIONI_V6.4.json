@@ -1,0 +1,58 @@
+[
+  {
+    "suite": "V5.9",
+    "script": "03_Verifiche/V5.9/test_progettazione_sistema_v59.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.693,
+    "tail": ".test_rx_path_complete) ... ok\ntest_single_driver_per_input (__main__.ContractDesign.test_single_driver_per_input) ... ok\ntest_status_blocks_fabrication (__main__.ContractDesign.test_status_blocks_fabrication) ... ok\ntest_tx_chain_has_hardware_gate (__main__.ContractDesign.test_tx_chain_has_hardware_gate) ... ok\ntest_unique_connection_ids (__main__.ContractDesign.test_unique_connection_ids) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.001s\n\nOK\n"
+  },
+  {
+    "suite": "V6.0",
+    "script": "03_Verifiche/V6.0/test_audio_pa_v60.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.673,
+    "tail": "...................................\n----------------------------------------------------------------------\nRan 35 tests in 0.024s\n\nOK\n"
+  },
+  {
+    "suite": "V6.1 MCU",
+    "script": "03_Verifiche/V6.1/test_mcu_pannello_v61.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.704,
+    "tail": ".......................................................\n----------------------------------------------------------------------\nRan 55 tests in 0.057s\n\nOK\n"
+  },
+  {
+    "suite": "V6.1 audio",
+    "script": "03_Verifiche/V6.1/test_integrazione_audio_v61.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.696,
+    "tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "suite": "V6.2",
+    "script": "03_Verifiche/V6.2/test_interblocchi_v62.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.752,
+    "tail": "old_montecarlo_50000) ... ok\ntest_thresholds_analytic (__main__.TestInterlock.test_thresholds_analytic) ... ok\ntest_tps3700_open_drain_pullups (__main__.TestInterlock.test_tps3700_open_drain_pullups) ... ok\ntest_tx_false_when_pa_relay_energized (__main__.TestInterlock.test_tx_false_when_pa_relay_energized) ... ok\ntest_unique_component_pins (__main__.TestInterlock.test_unique_component_pins) ... ok\n\n----------------------------------------------------------------------\nRan 31 tests in 0.088s\n\nOK\n"
+  },
+  {
+    "suite": "V6.3",
+    "script": "03_Verifiche/V6.3/test_alimentazioni_v63.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.737,
+    "tail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 0.007s\n\nOK\n"
+  },
+  {
+    "suite": "V6.4",
+    "script": "03_Verifiche/V6.4/test_pll_v64.py",
+    "status": "PASS",
+    "return_code": 0,
+    "duration_s": 0.74,
+    "tail": "............................................................\n----------------------------------------------------------------------\nRan 60 tests in 0.052s\n\nOK\n"
+  }
+]

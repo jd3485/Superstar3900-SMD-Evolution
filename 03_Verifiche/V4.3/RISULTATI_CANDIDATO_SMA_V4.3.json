@@ -1,0 +1,199 @@
+{
+  "revision": "V4.3",
+  "qualification": "HYPOTHESIS ONLY; NOT TE-APPROVED; NO DRC / NO FAB",
+  "source_sha256": "57dd24b13edb5dc987e3ad8cdae0d2d8cc7a1fa3aefb455a63ebc86559eec489",
+  "candidate_sha256": "a49a4fa9370573192dfa4f3da0b16f9936cf580491280621a4ea30d24349848f",
+  "edits_exactly_16_ground_pad_centers": true,
+  "action": "Y pos of custom GND pads +/-2.950 -> +/-3.130 (0.18 mm outward) for J101..J104; no other edits",
+  "original": {
+    "board_footprints": 15,
+    "segments": 44,
+    "vias": 64,
+    "unfilled_zones": 4,
+    "nets": 8,
+    "minimum_inter_net_gap_FCu_mm": 0.45,
+    "pairs_under_0p20mm": 0,
+    "ground_pads": 24,
+    "ground_pads_without_via_path": [],
+    "signal_nets": [
+      {
+        "net_id": 2,
+        "islands": 1
+      },
+      {
+        "net_id": 3,
+        "islands": 1
+      },
+      {
+        "net_id": 4,
+        "islands": 1
+      },
+      {
+        "net_id": 5,
+        "islands": 1
+      },
+      {
+        "net_id": 6,
+        "islands": 1
+      },
+      {
+        "net_id": 7,
+        "islands": 1
+      },
+      {
+        "net_id": 8,
+        "islands": 1
+      }
+    ],
+    "sma": {
+      "J101": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.4,
+        "pad_centers_y_mm": [
+          -2.95,
+          2.95,
+          -2.95,
+          2.95
+        ],
+        "rotation_degrees": 0,
+        "paste_layers_all": true
+      },
+      "J102": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.4,
+        "pad_centers_y_mm": [
+          -2.95,
+          2.95,
+          -2.95,
+          2.95
+        ],
+        "rotation_degrees": 180.0,
+        "paste_layers_all": true
+      },
+      "J103": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.4,
+        "pad_centers_y_mm": [
+          -2.95,
+          2.95,
+          -2.95,
+          2.95
+        ],
+        "rotation_degrees": 0,
+        "paste_layers_all": true
+      },
+      "J104": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.4,
+        "pad_centers_y_mm": [
+          -2.95,
+          2.95,
+          -2.95,
+          2.95
+        ],
+        "rotation_degrees": 180.0,
+        "paste_layers_all": true
+      }
+    },
+    "copper_items": 152
+  },
+  "candidate": {
+    "board_footprints": 15,
+    "segments": 44,
+    "vias": 64,
+    "unfilled_zones": 4,
+    "nets": 8,
+    "minimum_inter_net_gap_FCu_mm": 0.45,
+    "pairs_under_0p20mm": 0,
+    "ground_pads": 24,
+    "ground_pads_without_via_path": [],
+    "signal_nets": [
+      {
+        "net_id": 2,
+        "islands": 1
+      },
+      {
+        "net_id": 3,
+        "islands": 1
+      },
+      {
+        "net_id": 4,
+        "islands": 1
+      },
+      {
+        "net_id": 5,
+        "islands": 1
+      },
+      {
+        "net_id": 6,
+        "islands": 1
+      },
+      {
+        "net_id": 7,
+        "islands": 1
+      },
+      {
+        "net_id": 8,
+        "islands": 1
+      }
+    ],
+    "sma": {
+      "J101": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.76,
+        "pad_centers_y_mm": [
+          -3.13,
+          3.13,
+          -3.13,
+          3.13
+        ],
+        "rotation_degrees": 0,
+        "paste_layers_all": true
+      },
+      "J102": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.76,
+        "pad_centers_y_mm": [
+          -3.13,
+          3.13,
+          -3.13,
+          3.13
+        ],
+        "rotation_degrees": 180.0,
+        "paste_layers_all": true
+      },
+      "J103": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.76,
+        "pad_centers_y_mm": [
+          -3.13,
+          3.13,
+          -3.13,
+          3.13
+        ],
+        "rotation_degrees": 0,
+        "paste_layers_all": true
+      },
+      "J104": {
+        "gnd_pad_count": 4,
+        "local_ground_span_mm": 7.76,
+        "pad_centers_y_mm": [
+          -3.13,
+          3.13,
+          -3.13,
+          3.13
+        ],
+        "rotation_degrees": 180.0,
+        "paste_layers_all": true
+      }
+    },
+    "copper_items": 152
+  },
+  "native_kicad_cli_present": false,
+  "native_kicad_DRC": "NOT RUN",
+  "schematic_parity": "NOT RUN; latest RX schematic V3.1 does not match V3.8 PCB",
+  "te_cad_imported": false,
+  "te_land_pattern_approved": false,
+  "adl5535_thermal_approved": false,
+  "fabrication": "BLOCKED"
+}

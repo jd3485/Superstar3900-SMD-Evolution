@@ -1,0 +1,4 @@
+Componente o famiglia,Tecnologia,Frequenza minima di catalogo,Dato indicativo,Stato,Fonte
+pSemi PE42462,CMOS SOI SP6T QFN SMT,10 MHz,"0,7 dB tipico generale; prestazione 27MHz da verificare",CANDIDATO non approvato,https://psemi.com/products/rf-switches/high-isolation-rf-switches/pe42462/
+OMRON G6K-2F-RF,DPDT relè RF SMT,da datasheet,"<=0,2 dB a 1GHz; prestazione 27MHz e cablaggio da verificare",CANDIDATO non approvato,https://www.mouser.it/new/omron-electronics/omron-g6k-2f-rf-relays/
+Coilcraft 0805CS ~200 nH,Induttore SMT,non applicabile,Q@27MHz e SRF del singolo codice da verificare,"Solo famiglia, non codice approvato",https://www.coilcraft.com/en-us/products/rf/ceramic-core-chip-inductors/0805-%282012%29/0805cs/

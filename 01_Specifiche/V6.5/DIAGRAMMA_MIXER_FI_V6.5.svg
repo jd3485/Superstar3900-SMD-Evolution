@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190 500" width="1190" height="500">
+<rect width="1190" height="500" fill="#fafcff"/>
+<text x="60" y="52" font-size="28" font-family="Arial,sans-serif" fill="#102b46" font-weight="bold">Superstar 3900 — RF / prima FI V6.5</text>
+<text x="60" y="80" font-size="15" font-family="Arial,sans-serif" fill="#a13535">STUDIO FUNZIONALE · LO +7 dBm da verificare · BPF IDEALE · NO FAB / NO TX</text>
+<defs><marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#426c9e"/></marker></defs>
+<rect x="80" y="170" width="168" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="164.0" y="202" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">J501 ANTENNA RX</text>
+<rect x="280" y="170" width="182" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="371.0" y="202" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">F501 PRESELETTORE</text>
+<text x="371.0" y="224" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#163457">25–29 MHz ideale</text>
+<rect x="498" y="170" width="184" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="590.0" y="202" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">U501 MIXER ADE-1+</text>
+<text x="590.0" y="224" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#163457">RF3 · IF2 · LO6</text>
+<rect x="724" y="170" width="174" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="811.0" y="202" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">FI FILTER BANK</text>
+<text x="811.0" y="224" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#163457">10,695 MHz TBD</text>
+<rect x="933" y="170" width="175" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="1020.5" y="202" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">DEMOD / AUDIO</text>
+<rect x="280" y="345" width="180" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="370.0" y="377" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">PLL V6.4</text>
+<rect x="500" y="345" width="185" height="72" rx="12" fill="#e7effb" stroke="#527cae" stroke-width="2"/>
+<text x="592.5" y="377" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#163457">DRIVER LO +7dBm</text>
+<line x1="248" y1="206" x2="275" y2="206" stroke="#426c9e" stroke-width="2.4" marker-end="url(#arr)"/>
+<line x1="462" y1="206" x2="493" y2="206" stroke="#426c9e" stroke-width="2.4" marker-end="url(#arr)"/>
+<line x1="682" y1="206" x2="719" y2="206" stroke="#426c9e" stroke-width="2.4" marker-end="url(#arr)"/>
+<line x1="898" y1="206" x2="928" y2="206" stroke="#426c9e" stroke-width="2.4" marker-end="url(#arr)"/>
+<line x1="460" y1="381" x2="495" y2="381" stroke="#426c9e" stroke-width="2.4" marker-end="url(#arr)"/>
+<path d="M 593,345 L 593,252" fill="none" stroke="#426c9e" stroke-width="2.4" marker-end="url(#arr)"/>
+<text x="613" y="294" font-family="Arial,sans-serif" font-size="14" fill="#426c9e">LO: 36,31–39 MHz</text>
+<text x="282" y="268" font-family="Arial,sans-serif" font-size="13" fill="#41536b">Immagine 47,005–49,695 MHz: rigetto da qualificare</text>
+<rect x="80" y="440" width="1030" height="32" rx="6" fill="#ffeae8"/>
+<text x="596" y="462" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#8f3030">Solo ricezione: filtro fisico e interfaccia audio ancora non progettati. TX = OFF.</text>
+</svg>

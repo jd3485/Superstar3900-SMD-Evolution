@@ -1,0 +1,14 @@
+{
+  "schematic_part_count": 15,
+  "mapped_pins": 31,
+  "unique_nets": 8,
+  "all_pin_nets_match": true,
+  "footprint_ids_match": true,
+  "passive_symbol_types_not_qualified": true,
+  "source_original_sha256": "57dd24b13edb5dc987e3ad8cdae0d2d8cc7a1fa3aefb455a63ebc86559eec489",
+  "native_erc_executed": false,
+  "native_drc_executed": false,
+  "schematic_pcb_uuid_links_verified": false,
+  "cad_te_approved": false,
+  "thermal_approved": false
+}

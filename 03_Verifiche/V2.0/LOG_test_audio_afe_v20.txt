@@ -1,0 +1,11 @@
+test_bom_matches_changed_components (__main__.V20Test.test_bom_matches_changed_components) ... ok
+test_cc_binary_limitation (__main__.V20Test.test_cc_binary_limitation) ... ok
+test_fm_subaudio_not_removed_in_ideal_model (__main__.V20Test.test_fm_subaudio_not_removed_in_ideal_model) ... ok
+test_mic_hp_higher_than_fm_hp (__main__.V20Test.test_mic_hp_higher_than_fm_hp) ... ok
+test_sai_rate_math (__main__.V20Test.test_sai_rate_math) ... ok
+test_schema_changed_and_v19_unchanged (__main__.V20Test.test_schema_changed_and_v19_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

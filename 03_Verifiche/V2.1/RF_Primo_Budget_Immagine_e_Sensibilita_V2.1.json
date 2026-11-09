@@ -1,0 +1,39 @@
+{
+  "revision": "V2.1",
+  "if1_mhz_proposal": 10.695,
+  "rf_range_mhz": [
+    25.615,
+    28.305
+  ],
+  "lo_high_injection_mhz": [
+    36.31,
+    39.0
+  ],
+  "image_mhz": [
+    47.004999999999995,
+    49.695
+  ],
+  "image_spacing_from_desired_mhz": 21.39,
+  "sensitivity_model": {
+    "voltage_rms_uv": 0.2,
+    "source_ohms": 50,
+    "noise_bandwidth_hz": 2400,
+    "required_snr_db": 10,
+    "thermal_psd_assumed_dbm_per_hz": -174,
+    "received_power_dbm": -120.969,
+    "thermal_noise_dbm": -140.198,
+    "max_equiv_nf_for_10db_snr_db": 9.229,
+    "note": "Ideal model, not a demonstrated radio sensitivity. Does not include demodulator, audio distortion or measurement conventions."
+  },
+  "image_rejection_proposal": "at least 60 dB as a design target; subject to full receiver requirement trade study",
+  "noise_figure_target_db": "<= 6 dB preliminary full RX chain, not measured",
+  "not_measured": [
+    "noise figure",
+    "mixer IP3",
+    "image rejection",
+    "preselector loss",
+    "phase noise",
+    "spurs",
+    "EMC"
+  ]
+}

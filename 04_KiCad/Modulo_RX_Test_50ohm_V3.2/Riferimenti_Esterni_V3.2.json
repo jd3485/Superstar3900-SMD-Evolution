@@ -1,0 +1,8 @@
+{
+  "ADI_ADL5535": "https://www.analog.com/en/products/adl5535.html",
+  "ADI_EVAL": "https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-adl5535.html",
+  "TE_SMA_DWG": "https://www.ic-components.kr/files/17/CONSMA002-SMD.pdf",
+  "TE_SMA_PRODUCT": "https://www.mouser.com/en/ProductDetail/TE-Connectivity-Linx-Technologies/CONSMA002-SMD",
+  "PCBWAY_STACKUP": "https://www.pcbway.com/multi-layer-laminated-structure.html",
+  "PCBWAY_GROUND": "https://www.pcbway.com/pcb_prototype/What_is_layer_stack_up.html"
+}

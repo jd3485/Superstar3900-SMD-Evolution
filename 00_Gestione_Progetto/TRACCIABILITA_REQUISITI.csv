@@ -1,0 +1,11 @@
+﻿Requisito;Descrizione;File_o_fascicoli;Verifica_prevista;Stato
+RF-01;6 bande, 270 frequenze RX AM/FM/USB/LSB;"01_Specifiche/Capitolato_V0.1.md;02_Piano_Frequenze";Test software del piano frequenze (parziale);LOGICA VERIFICATA, HARDWARE ASSENTE
+UI-01;Interruttore ALFA separato;"02_Piano_Frequenze;06_Manuali/MU01";Test script + successiva misura PLL;LOGICA VERIFICATA, HARDWARE ASSENTE
+UI-02;CH9 prioritario;"02_Piano_Frequenze;06_Manuali/MU01";Test script + successiva verifica firmware/pannello;LOGICA VERIFICATA, HARDWARE ASSENTE
+RX-01;Rumore basso e alta dinamica;"01_Specifiche;06_Manuali/MP01";Budget + simulazione + banco RF;NON VERIFICATO
+RX-02;Filtri e selettività;"01_Specifiche;06_Manuali/MP01";S-parameters + VNA + banco;NON VERIFICATO
+TX-01;Blocco TX fuori 40 canali;"01_Specifiche;03_Verifiche;06_Manuali/MT01";Logica preliminare + interblocco HW e fault injection;SOLO LOGICA PRELIMINARE
+ATU-01;Accordatore LC automatico con bypass;"01_Specifiche;06_Manuali/MP01";Simulazioni e prova su carichi controllati;NON VERIFICATO
+PCB-01;Prevalenza SMD e layout fabbricabile;"04_KiCad;05_Produzione_PCBWay";ERC/DRC/DFM + convalida BOM/footprint;NON VERIFICATO
+MFG-01;File fabbricazione PCBWay;05_Produzione_PCBWay;DRC/DFM + review release dati e assembly;NON DISPONIBILI
+DOC-01;Manualistica finale approfondita;06_Manuali;Completezza, allineamento HW/FW, revisione;SOLO INDICI

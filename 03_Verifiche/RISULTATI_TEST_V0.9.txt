@@ -1,0 +1,2 @@
+PASS V0.9: component refs, named nets, reference NC and budget arithmetic. No ERC.
+

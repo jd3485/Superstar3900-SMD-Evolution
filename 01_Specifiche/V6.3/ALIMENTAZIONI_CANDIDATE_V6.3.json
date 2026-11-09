@@ -1,0 +1,2163 @@
+{
+  "revision": "V6.3",
+  "date": "2026-11-09",
+  "phase": "CANDIDATE_NON_FAB_NO_TX",
+  "type": "functional terminal contracts, not physical IC pin assignment nor native schematic",
+  "design_input": {
+    "nominal_voltage_v": 13.8,
+    "bench_analysis_range_v": [
+      11.0,
+      16.0
+    ],
+    "existing_v62_uv_nominal_v": 11.88,
+    "existing_v62_ov_nominal_v": 15.36,
+    "tx_power_branch_population": "DNI",
+    "rf_final_current": "UNKNOWN"
+  },
+  "source_refs": {
+    "lm74900": "https://www.ti.com/product/LM74900-Q1",
+    "lm61460": "https://www.ti.com/product/LM61460",
+    "tps7a20": "https://www.ti.com/product/TPS7A20",
+    "tpsm63606_alternative": "https://www.ti.com/product/TPSM63606"
+  },
+  "components": [
+    {
+      "ref": "J901",
+      "mpn": "DC_INPUT_2P",
+      "value": "13.8 VDC GND",
+      "domain": "RAW",
+      "qualification": "CANDIDATE",
+      "note": "positive source/ground, keyed, industrial application not automotive certified"
+    },
+    {
+      "ref": "F901",
+      "mpn": "FUSE_5A_TIME_DELAY_PLACEHOLDER",
+      "value": "5 A T initial only",
+      "domain": "RAW",
+      "qualification": "PLACEHOLDER",
+      "note": "fuse type interrupt rating I2t/wire/PA TBD, no approved MPN"
+    },
+    {
+      "ref": "D901",
+      "mpn": "TVS_BIDIR_PLACEHOLDER",
+      "value": "VRWM>=16 V; clamp/mounting TBD",
+      "domain": "RAW",
+      "qualification": "PLACEHOLDER",
+      "note": "select by source, pulse energy, standoff; impossible to certify surge without waveform"
+    },
+    {
+      "ref": "L901",
+      "mpn": "COMMON_MODE_CHOKE_PLACEHOLDER",
+      "value": "I>=6 A common-mode entry filter",
+      "domain": "RAW",
+      "qualification": "PLACEHOLDER",
+      "note": "must verify losses/leakage under audio/RF peaks"
+    },
+    {
+      "ref": "C901",
+      "mpn": "AL_POLYMER",
+      "value": "47 uF >=35 V",
+      "domain": "13V8_FILTERED",
+      "qualification": "CANDIDATE",
+      "note": "ESR and ripple/voltage surge pending qualification"
+    },
+    {
+      "ref": "C902",
+      "mpn": "MLCC_X7R",
+      "value": "1 uF >=50 V",
+      "domain": "13V8_FILTERED",
+      "qualification": "CANDIDATE",
+      "note": "DC-bias derating to verify"
+    },
+    {
+      "ref": "U901",
+      "mpn": "LM74900-Q1",
+      "value": "reverse polarity / circuit breaker / OV UV",
+      "domain": "13V8_FILTERED",
+      "qualification": "CANDIDATE",
+      "note": "gate drive and UVOV networks follow TI vendor design, NOT final"
+    },
+    {
+      "ref": "Q901",
+      "mpn": "NCH_MOSFET_AEC_PLACEHOLDER",
+      "value": ">=60 V, Rdson <=5 mOhm at applicable Vgs",
+      "domain": "PWR_PATH",
+      "qualification": "PLACEHOLDER",
+      "note": "SOA, avalanche and thermal to select, reverse input protector"
+    },
+    {
+      "ref": "R901",
+      "mpn": "PRECISION_SHUNT",
+      "value": "5 mOhm >=1 W Kelvin",
+      "domain": "PWR_PATH",
+      "qualification": "CANDIDATE",
+      "note": "further overcurrent threshold design needed"
+    },
+    {
+      "ref": "Q902",
+      "mpn": "NCH_MOSFET_AEC_PLACEHOLDER",
+      "value": ">=60 V, Rdson <=5 mOhm",
+      "domain": "PWR_PATH",
+      "qualification": "PLACEHOLDER",
+      "note": "cutoff FET no physical package finalized"
+    },
+    {
+      "ref": "R902",
+      "mpn": "PULLDOWN",
+      "value": "47 kΩ",
+      "domain": "PWR_PATH",
+      "qualification": "CANDIDATE",
+      "note": "protect enable low default"
+    },
+    {
+      "ref": "S901",
+      "mpn": "PWR_ON_SPST",
+      "value": "latching SPST radio main power ON",
+      "domain": "PWR_PATH",
+      "qualification": "CANDIDATE",
+      "note": "connect EN to VS only when user turns radio on, pull-down OFF"
+    },
+    {
+      "ref": "J902",
+      "mpn": "JUMPER_DNI",
+      "value": "NOT INSTALLED",
+      "domain": "PWR_PATH",
+      "qualification": "DNI",
+      "note": "test header parallel power switch; no TX permission"
+    },
+    {
+      "ref": "C903",
+      "mpn": "AL_POLYMER",
+      "value": "470 uF >=25V",
+      "domain": "13V8_PROTECTED",
+      "qualification": "CANDIDATE",
+      "note": "bulk after high-side controller; soft-start critical"
+    },
+    {
+      "ref": "C904",
+      "mpn": "MLCC_X7R",
+      "value": "4.7 uF >=25V",
+      "domain": "13V8_PROTECTED",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "R903",
+      "mpn": "R_CONFIG_PLACEHOLDER",
+      "value": "UVLO threshold network TBD",
+      "domain": "PWR_PATH",
+      "qualification": "PLACEHOLDER",
+      "note": "LM74900 function; values must be computed from latest datasheet"
+    },
+    {
+      "ref": "R904",
+      "mpn": "R_CONFIG_PLACEHOLDER",
+      "value": "OV threshold network TBD",
+      "domain": "PWR_PATH",
+      "qualification": "PLACEHOLDER",
+      "note": ""
+    },
+    {
+      "ref": "C905",
+      "mpn": "C_CONFIG_PLACEHOLDER",
+      "value": "CdVdT candidate 47 nF",
+      "domain": "PWR_PATH",
+      "qualification": "PLACEHOLDER",
+      "note": "47nF analytical inrush model, pin routing to check TI"
+    },
+    {
+      "ref": "J903",
+      "mpn": "DC_PWR_RAILS",
+      "value": "3 protected branches",
+      "domain": "13V8_PROTECTED",
+      "qualification": "CANDIDATE",
+      "note": "audio amplifier separate switched branch; NO RF PA output"
+    },
+    {
+      "ref": "Q903",
+      "mpn": "HIGH_SIDE_AUDIO_SWITCH_PLACEHOLDER",
+      "value": "audio enable gate, current limit TBD",
+      "domain": "13V8_AUD",
+      "qualification": "PLACEHOLDER",
+      "note": "controlled via safety AMP_SD, must survive class-D amp inrush"
+    },
+    {
+      "ref": "R905",
+      "mpn": "PULLDOWN",
+      "value": "47 kΩ",
+      "domain": "AUDIO",
+      "qualification": "CANDIDATE",
+      "note": "audio power enable defaults low"
+    },
+    {
+      "ref": "U902",
+      "mpn": "LM61460",
+      "value": "buck main 5.0 V, 400 kHz / 6 A part candidate",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "datasheet 400k 5V ref, 4.7uH, CIN & COUT; physical pins TBD"
+    },
+    {
+      "ref": "L902",
+      "mpn": "SHIELDED_INDUCTOR",
+      "value": "4.7 uH, Isat >=7 A",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "check inductor 400kHz ref TI, core loss"
+    },
+    {
+      "ref": "R906",
+      "mpn": "FEEDBACK_BOTTOM",
+      "value": "24.9 kΩ 1%",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "TI LM61460 typical-curve reference RFBB; upper pair vendor design to compute"
+    },
+    {
+      "ref": "R907",
+      "mpn": "FEEDBACK_TOP",
+      "value": "100 kΩ 1%",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "TI 5V reference RFBT=100k, RFBB=24.9k, Vref=1V"
+    },
+    {
+      "ref": "R908",
+      "mpn": "RT",
+      "value": "33.2 kΩ 1%",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "datasheet 400kHz typical application"
+    },
+    {
+      "ref": "C906",
+      "mpn": "X7R",
+      "value": "4.7 uF >=50V",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C907",
+      "mpn": "X7R",
+      "value": "4.7 uF >=50V",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C908",
+      "mpn": "X7R",
+      "value": "100 nF >=50V",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C909",
+      "mpn": "X7R",
+      "value": "100 nF >=50V",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C910",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C911",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C912",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C913",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "U903",
+      "mpn": "LM61460",
+      "value": "buck 3.3 V @1MHz / 6 A part candidate",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "TI typical 3.3V @1MHz; cost/capacity to optimize"
+    },
+    {
+      "ref": "L903",
+      "mpn": "SHIELDED_INDUCTOR",
+      "value": "2.2 uH Isat>=7 A",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "R909",
+      "mpn": "FEEDBACK_BOTTOM",
+      "value": "43.2 kΩ 1%",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "TI typical curve reference 3V3 @1MHz"
+    },
+    {
+      "ref": "R910",
+      "mpn": "FEEDBACK_TOP",
+      "value": "100 kΩ 1%",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "TI 3.3V: RFBT 100k RFBB 43.2k, Vref 1V"
+    },
+    {
+      "ref": "R911",
+      "mpn": "RT",
+      "value": "13 kΩ 1%",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "TI typical 1MHz"
+    },
+    {
+      "ref": "C914",
+      "mpn": "X7R",
+      "value": "4.7 uF >=50V",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C915",
+      "mpn": "X7R",
+      "value": "4.7 uF >=50V",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C916",
+      "mpn": "X7R",
+      "value": "100 nF >=50V",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C917",
+      "mpn": "X7R",
+      "value": "100 nF >=50V",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C918",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C919",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C920",
+      "mpn": "X7R",
+      "value": "22 uF >=10V, derated >=12 uF",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "FB901",
+      "mpn": "FERRITE_BEAD_PLACEHOLDER",
+      "value": "600 Ohm@100MHz, 1A, low DC resistance",
+      "domain": "3V3_UI",
+      "qualification": "PLACEHOLDER",
+      "note": "freq impedance and current verified later"
+    },
+    {
+      "ref": "C921",
+      "mpn": "X7R",
+      "value": "10 uF >=6.3V",
+      "domain": "3V3_UI",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "FB902",
+      "mpn": "FERRITE_BEAD_PLACEHOLDER",
+      "value": "600 Ohm@100MHz, >=0.5A",
+      "domain": "5V_RF",
+      "qualification": "PLACEHOLDER",
+      "note": "test CB receive noise and ripple"
+    },
+    {
+      "ref": "C922",
+      "mpn": "X7R",
+      "value": "10 uF >=10V",
+      "domain": "5V_RF",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "FB903",
+      "mpn": "FERRITE_BEAD_PLACEHOLDER",
+      "value": "low loss, >=0.5A",
+      "domain": "5V_CODEC",
+      "qualification": "PLACEHOLDER",
+      "note": ""
+    },
+    {
+      "ref": "C923",
+      "mpn": "X7R",
+      "value": "10 uF >=10V",
+      "domain": "5V_CODEC",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "FB904",
+      "mpn": "FERRITE_BEAD_PLACEHOLDER",
+      "value": ">=1A",
+      "domain": "5V_MISC",
+      "qualification": "PLACEHOLDER",
+      "note": ""
+    },
+    {
+      "ref": "C924",
+      "mpn": "X7R",
+      "value": "22 uF >=10V",
+      "domain": "5V_MISC",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "U904",
+      "mpn": "TPS7A20-3.3",
+      "value": "3.3 V low-noise LDO 300mA max",
+      "domain": "3V3_A",
+      "qualification": "CANDIDATE",
+      "note": "from 5V_MAIN; candidate budget 80mA, 0.136W typical"
+    },
+    {
+      "ref": "C925",
+      "mpn": "X7R",
+      "value": "1 uF >=10V",
+      "domain": "3V3_A",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C926",
+      "mpn": "X7R",
+      "value": "1 uF >=10V",
+      "domain": "3V3_A",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "U905",
+      "mpn": "TPS7A20-1.8",
+      "value": "codec 1.8V low-noise LDO 300mA max",
+      "domain": "1V8_CODEC",
+      "qualification": "CANDIDATE",
+      "note": "from 3V3_D; candidate max 100mA"
+    },
+    {
+      "ref": "C927",
+      "mpn": "X7R",
+      "value": "1 uF >=6.3V",
+      "domain": "1V8_CODEC",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "C928",
+      "mpn": "X7R",
+      "value": "1 uF >=6.3V",
+      "domain": "1V8_CODEC",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "U906",
+      "mpn": "SN74LVC1G08",
+      "value": "power-good logic AND",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "PG_5V AND PG_3V3; inputs pull-down to ensure defined before VCC"
+    },
+    {
+      "ref": "R912",
+      "mpn": "PULLDOWN",
+      "value": "47 kΩ",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "R913",
+      "mpn": "PULLDOWN",
+      "value": "47 kΩ",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "R914",
+      "mpn": "PULLDOWN",
+      "value": "100 kΩ",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "R915",
+      "mpn": "BUCK_ENABLE_SERIES",
+      "value": "10 kΩ",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "13V8_PROTECTED through 10k to both EN/SYNC, direct EN accepts <=36V per datasheet"
+    },
+    {
+      "ref": "R916",
+      "mpn": "PGOOD_PULLUP",
+      "value": "10 kΩ",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "PGOOD of 5V buck open-drain pulled to 3V3_D"
+    },
+    {
+      "ref": "R917",
+      "mpn": "PGOOD_PULLUP",
+      "value": "10 kΩ",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "PGOOD of 3V3 buck open-drain pulled to 3V3_D"
+    },
+    {
+      "ref": "C929",
+      "mpn": "X7R",
+      "value": "100 nF CAP-VS charge pump",
+      "domain": "PWR_PATH",
+      "qualification": "CANDIDATE",
+      "note": "TI LM74900 requires charge pump capacitor, confirm actual pin return at native schematic"
+    },
+    {
+      "ref": "C930",
+      "mpn": "C_CONFIG_PLACEHOLDER",
+      "value": "fault timer TBD 68 nF candidate",
+      "domain": "PWR_PATH",
+      "qualification": "PLACEHOLDER",
+      "note": "TMR fault timeout TBD"
+    },
+    {
+      "ref": "C931",
+      "mpn": "CFF",
+      "value": "22 pF >=50V",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "across 100k feedback top, compensation and transient response TBD"
+    },
+    {
+      "ref": "C932",
+      "mpn": "CFF",
+      "value": "22 pF >=50V",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "across 100k feedback top, compensation and transient response TBD"
+    },
+    {
+      "ref": "C933",
+      "mpn": "X7R",
+      "value": "1 uF >=10V",
+      "domain": "5V_MAIN",
+      "qualification": "CANDIDATE",
+      "note": "converter internal VCC bypass"
+    },
+    {
+      "ref": "C934",
+      "mpn": "X7R",
+      "value": "1 uF >=10V",
+      "domain": "3V3_D",
+      "qualification": "CANDIDATE",
+      "note": "converter internal VCC bypass"
+    },
+    {
+      "ref": "C935",
+      "mpn": "CBOOT_PLACEHOLDER",
+      "value": "100nF candidate",
+      "domain": "5V_MAIN",
+      "qualification": "PLACEHOLDER",
+      "note": "TI bootstrap and RBOOT topology vendor schematic pending"
+    },
+    {
+      "ref": "C936",
+      "mpn": "CBOOT_PLACEHOLDER",
+      "value": "100nF candidate",
+      "domain": "3V3_D",
+      "qualification": "PLACEHOLDER",
+      "note": "TI bootstrap and RBOOT topology vendor schematic pending"
+    },
+    {
+      "ref": "J904",
+      "mpn": "HARNESS_SUPERVISOR_V62",
+      "value": "rail and fault cross-module",
+      "domain": "INTERCONNECT",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "J905",
+      "mpn": "HARNESS_AUDIO_V60",
+      "value": "audio V13V8 and low-voltage",
+      "domain": "INTERCONNECT",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "J906",
+      "mpn": "HARNESS_RX_PLL",
+      "value": "RX RF/PLL",
+      "domain": "INTERCONNECT",
+      "qualification": "CANDIDATE",
+      "note": ""
+    },
+    {
+      "ref": "J907",
+      "mpn": "RF_PA_HARNESS_DNI",
+      "value": "PA RF unpopulated",
+      "domain": "INTERCONNECT",
+      "qualification": "DNI",
+      "note": "physical pin not connected, no RF PA power at V6.3"
+    }
+  ],
+  "functional_terminals": [
+    {
+      "ref": "J901",
+      "terminal": "VIN",
+      "net": "13V8_RAW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J901",
+      "terminal": "GND",
+      "net": "PGND_RAW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "F901",
+      "terminal": "IN",
+      "net": "13V8_RAW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "F901",
+      "terminal": "OUT",
+      "net": "13V8_FUSED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "D901",
+      "terminal": "A",
+      "net": "13V8_FUSED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "D901",
+      "terminal": "K",
+      "net": "PGND_RAW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L901",
+      "terminal": "IN_P",
+      "net": "13V8_FUSED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L901",
+      "terminal": "OUT_P",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L901",
+      "terminal": "IN_N",
+      "net": "PGND_RAW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L901",
+      "terminal": "OUT_N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C901",
+      "terminal": "P",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C901",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C902",
+      "terminal": "P",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C902",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "VS",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "A",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "SW",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "OUT",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "DGATE",
+      "net": "GATE_DIODE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "HGATE",
+      "net": "GATE_CUTOFF",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "CS_PLUS",
+      "net": "13V8_SNS_P",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "CS_MINUS",
+      "net": "13V8_SNS_M",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "GND",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "FLT",
+      "net": "PWR_FAULT_N",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "EN",
+      "net": "PROTECT_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "SLEEP",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "OV",
+      "net": "OVLO_SENSE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "UVLO",
+      "net": "UVLO_SENSE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "CAP",
+      "net": "CHARGE_CAP",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U901",
+      "terminal": "TMR",
+      "net": "TMR_PROT",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q901",
+      "terminal": "S",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q901",
+      "terminal": "D",
+      "net": "13V8_SNS_P",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q901",
+      "terminal": "G",
+      "net": "GATE_DIODE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R901",
+      "terminal": "PLUS",
+      "net": "13V8_SNS_P",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R901",
+      "terminal": "MINUS",
+      "net": "13V8_SNS_M",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q902",
+      "terminal": "D",
+      "net": "13V8_SNS_M",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q902",
+      "terminal": "S",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q902",
+      "terminal": "G",
+      "net": "GATE_CUTOFF",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R902",
+      "terminal": "A",
+      "net": "PROTECT_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R902",
+      "terminal": "B",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "S901",
+      "terminal": "A",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "S901",
+      "terminal": "B",
+      "net": "PROTECT_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J902",
+      "terminal": "A",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J902",
+      "terminal": "B",
+      "net": "PROTECT_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C903",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C903",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C904",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C904",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R903",
+      "terminal": "A",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R903",
+      "terminal": "B",
+      "net": "UVLO_SENSE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R904",
+      "terminal": "A",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R904",
+      "terminal": "B",
+      "net": "OVLO_SENSE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C905",
+      "terminal": "A",
+      "net": "SOFT_START",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C905",
+      "terminal": "B",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J903",
+      "terminal": "VIN",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J903",
+      "terminal": "GND",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J903",
+      "terminal": "AUDIO",
+      "net": "13V8_AUD",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J903",
+      "terminal": "RFPA_UNPOPULATED",
+      "net": "RF_PA_DISCONNECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q903",
+      "terminal": "IN",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q903",
+      "terminal": "OUT",
+      "net": "13V8_AUD",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q903",
+      "terminal": "EN",
+      "net": "AUDIO_POWER_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "Q903",
+      "terminal": "GND",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R905",
+      "terminal": "A",
+      "net": "AUDIO_POWER_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R905",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "VIN1",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "VIN2",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "PGND",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "AGND",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "SW",
+      "net": "SW_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "FB",
+      "net": "FB_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "RT",
+      "net": "RT_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "PGOOD",
+      "net": "PG_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "EN_SYNC",
+      "net": "BUCK_EN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "VCC",
+      "net": "VCC_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "CBOOT",
+      "net": "BOOT_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "RBOOT",
+      "net": "RBOOT_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U902",
+      "terminal": "BIAS",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L902",
+      "terminal": "A",
+      "net": "SW_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L902",
+      "terminal": "B",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R906",
+      "terminal": "A",
+      "net": "FB_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R906",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R907",
+      "terminal": "A",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R907",
+      "terminal": "B",
+      "net": "FB_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R908",
+      "terminal": "A",
+      "net": "RT_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R908",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C906",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C906",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C907",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C907",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C908",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C908",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C909",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C909",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C910",
+      "terminal": "P",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C910",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C911",
+      "terminal": "P",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C911",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C912",
+      "terminal": "P",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C912",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C913",
+      "terminal": "P",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C913",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "VIN1",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "VIN2",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "PGND",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "AGND",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "SW",
+      "net": "SW_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "FB",
+      "net": "FB_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "RT",
+      "net": "RT_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "PGOOD",
+      "net": "PG_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "EN_SYNC",
+      "net": "BUCK_EN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "VCC",
+      "net": "VCC_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "CBOOT",
+      "net": "BOOT_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "RBOOT",
+      "net": "RBOOT_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U903",
+      "terminal": "BIAS",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L903",
+      "terminal": "A",
+      "net": "SW_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "L903",
+      "terminal": "B",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R909",
+      "terminal": "A",
+      "net": "FB_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R909",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R910",
+      "terminal": "A",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R910",
+      "terminal": "B",
+      "net": "FB_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R911",
+      "terminal": "A",
+      "net": "RT_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R911",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C914",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C914",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C915",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C915",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C916",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C916",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C917",
+      "terminal": "P",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C917",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C918",
+      "terminal": "P",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C918",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C919",
+      "terminal": "P",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C919",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C920",
+      "terminal": "P",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C920",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB901",
+      "terminal": "A",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB901",
+      "terminal": "B",
+      "net": "3V3_UI",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C921",
+      "terminal": "P",
+      "net": "3V3_UI",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C921",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB902",
+      "terminal": "A",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB902",
+      "terminal": "B",
+      "net": "5V_RF",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C922",
+      "terminal": "P",
+      "net": "5V_RF",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C922",
+      "terminal": "N",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB903",
+      "terminal": "A",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB903",
+      "terminal": "B",
+      "net": "5V_CODEC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C923",
+      "terminal": "P",
+      "net": "5V_CODEC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C923",
+      "terminal": "N",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB904",
+      "terminal": "A",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "FB904",
+      "terminal": "B",
+      "net": "5V_MISC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C924",
+      "terminal": "P",
+      "net": "5V_MISC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C924",
+      "terminal": "N",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U904",
+      "terminal": "IN",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U904",
+      "terminal": "OUT",
+      "net": "3V3_A",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U904",
+      "terminal": "EN",
+      "net": "PG_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U904",
+      "terminal": "GND",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C925",
+      "terminal": "P",
+      "net": "3V3_A",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C925",
+      "terminal": "N",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C926",
+      "terminal": "P",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C926",
+      "terminal": "N",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U905",
+      "terminal": "IN",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U905",
+      "terminal": "OUT",
+      "net": "1V8_CODEC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U905",
+      "terminal": "EN",
+      "net": "PG_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U905",
+      "terminal": "GND",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C927",
+      "terminal": "P",
+      "net": "1V8_CODEC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C927",
+      "terminal": "N",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C928",
+      "terminal": "P",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C928",
+      "terminal": "N",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U906",
+      "terminal": "A",
+      "net": "PG_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U906",
+      "terminal": "B",
+      "net": "PG_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U906",
+      "terminal": "Y",
+      "net": "PWR_GOOD_HW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U906",
+      "terminal": "VCC",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "U906",
+      "terminal": "GND",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R912",
+      "terminal": "A",
+      "net": "PG_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R912",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R913",
+      "terminal": "A",
+      "net": "PG_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R913",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R914",
+      "terminal": "A",
+      "net": "BUCK_EN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R914",
+      "terminal": "B",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R915",
+      "terminal": "A",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R915",
+      "terminal": "B",
+      "net": "BUCK_EN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R916",
+      "terminal": "A",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R916",
+      "terminal": "B",
+      "net": "PG_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R917",
+      "terminal": "A",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "R917",
+      "terminal": "B",
+      "net": "PG_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C929",
+      "terminal": "P",
+      "net": "CHARGE_CAP",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C929",
+      "terminal": "N",
+      "net": "13V8_FILTERED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C930",
+      "terminal": "P",
+      "net": "TMR_PROT",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C930",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C931",
+      "terminal": "P",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C931",
+      "terminal": "N",
+      "net": "FB_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C932",
+      "terminal": "P",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C932",
+      "terminal": "N",
+      "net": "FB_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C933",
+      "terminal": "P",
+      "net": "VCC_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C933",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C934",
+      "terminal": "P",
+      "net": "VCC_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C934",
+      "terminal": "N",
+      "net": "PGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C935",
+      "terminal": "P",
+      "net": "BOOT_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C935",
+      "terminal": "N",
+      "net": "SW_5V",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C936",
+      "terminal": "P",
+      "net": "BOOT_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "C936",
+      "terminal": "N",
+      "net": "SW_3V3",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "BAT",
+      "net": "13V8_PROTECTED",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "DIG",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "UI",
+      "net": "3V3_UI",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "ANALOG",
+      "net": "3V3_A",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "CODEC18",
+      "net": "1V8_CODEC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "PG",
+      "net": "PWR_GOOD_HW",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "FAULT",
+      "net": "PWR_FAULT_N",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J904",
+      "terminal": "GND",
+      "net": "DGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J905",
+      "terminal": "AUDIO",
+      "net": "13V8_AUD",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J905",
+      "terminal": "CODEC",
+      "net": "5V_CODEC",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J905",
+      "terminal": "V5",
+      "net": "5V_MAIN",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J905",
+      "terminal": "V3",
+      "net": "3V3_A",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J905",
+      "terminal": "GND",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J905",
+      "terminal": "MUTE",
+      "net": "AUDIO_POWER_ENABLE",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J906",
+      "terminal": "RF5",
+      "net": "5V_RF",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J906",
+      "terminal": "MCU3",
+      "net": "3V3_D",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J906",
+      "terminal": "GND",
+      "net": "AGND",
+      "physical_pin_number_verified": false
+    },
+    {
+      "ref": "J907",
+      "terminal": "RF_PA_PIN",
+      "net": "RF_PA_DISCONNECTED",
+      "physical_pin_number_verified": false
+    }
+  ],
+  "power_flow": [
+    [
+      "13V8_RAW",
+      "13V8_FUSED",
+      "F901"
+    ],
+    [
+      "13V8_FUSED",
+      "13V8_FILTERED",
+      "L901"
+    ],
+    [
+      "13V8_FILTERED",
+      "13V8_PROTECTED",
+      "U901+Q901+R901+Q902"
+    ],
+    [
+      "13V8_PROTECTED",
+      "13V8_AUD",
+      "Q903"
+    ],
+    [
+      "13V8_PROTECTED",
+      "5V_MAIN",
+      "U902"
+    ],
+    [
+      "13V8_PROTECTED",
+      "3V3_D",
+      "U903"
+    ],
+    [
+      "5V_MAIN",
+      "5V_RF",
+      "FB902"
+    ],
+    [
+      "5V_MAIN",
+      "5V_CODEC",
+      "FB903"
+    ],
+    [
+      "5V_MAIN",
+      "5V_MISC",
+      "FB904"
+    ],
+    [
+      "3V3_D",
+      "3V3_UI",
+      "FB901"
+    ],
+    [
+      "5V_MAIN",
+      "3V3_A",
+      "U904"
+    ],
+    [
+      "3V3_D",
+      "1V8_CODEC",
+      "U905"
+    ]
+  ],
+  "branches": {
+    "5V_MAIN": {
+      "nominal_v": 5.0,
+      "guaranteed_by": "U902",
+      "fsw_hz": 400000,
+      "L_H": 4.7e-06,
+      "Cout_nom_F": 8.8e-05,
+      "rated_amperes": 6,
+      "budgets_selected_peak_a": 1.5
+    },
+    "3V3_D": {
+      "nominal_v": 3.3,
+      "guaranteed_by": "U903",
+      "fsw_hz": 1000000,
+      "L_H": 2.2e-06,
+      "Cout_nom_F": 6.6e-05,
+      "rated_amperes": 6,
+      "budgets_selected_peak_a": 1.0
+    },
+    "3V3_A": {
+      "nominal_v": 3.3,
+      "max_a": 0.08,
+      "max_part_rated_a": 0.3
+    },
+    "1V8_CODEC": {
+      "nominal_v": 1.8,
+      "max_a": 0.1,
+      "max_part_rated_a": 0.3
+    }
+  },
+  "loads": [
+    {
+      "load": "LNA_ADL5535",
+      "rail": "5V_RF",
+      "nominal_a": 0.1,
+      "envelope_a": 0.16,
+      "note": "low-noise bead/LC after 5V; 5V actual needs oscilloscope+VNA"
+    },
+    {
+      "load": "PLL_LO",
+      "rail": "5V_RF",
+      "nominal_a": 0.15,
+      "envelope_a": 0.25,
+      "note": "PLL supply rails to be split by final PLL BOM"
+    },
+    {
+      "load": "AUDIO_CODEC_5V",
+      "rail": "5V_CODEC",
+      "nominal_a": 0.06,
+      "envelope_a": 0.12,
+      "note": "codec/analog group provisional"
+    },
+    {
+      "load": "AUDIO_SWITCH",
+      "rail": "5V_CODEC",
+      "nominal_a": 0.02,
+      "envelope_a": 0.06,
+      "note": "analog switch/conditioning provisional"
+    },
+    {
+      "load": "MISC_5V",
+      "rail": "5V_MISC",
+      "nominal_a": 0.24,
+      "envelope_a": 0.5,
+      "note": "relays/displays/LED loads to confirm"
+    },
+    {
+      "load": "MCU_STM32",
+      "rail": "3V3_D",
+      "nominal_a": 0.18,
+      "envelope_a": 0.27,
+      "note": "STM32 + control logic provisional"
+    },
+    {
+      "load": "SUPERVISORS",
+      "rail": "3V3_D",
+      "nominal_a": 0.025,
+      "envelope_a": 0.06,
+      "note": "V6.2 supervisors, gate bank, opto etc provisional"
+    },
+    {
+      "load": "FRONT_PANEL",
+      "rail": "3V3_UI",
+      "nominal_a": 0.12,
+      "envelope_a": 0.22,
+      "note": "two MCP23017 and pull-ups incl indicator LEDs"
+    },
+    {
+      "load": "SENSITIVE_A",
+      "rail": "3V3_A",
+      "nominal_a": 0.045,
+      "envelope_a": 0.08,
+      "note": "separate low-noise analog voltage LDO"
+    },
+    {
+      "load": "CODEC_1V8",
+      "rail": "1V8_CODEC",
+      "nominal_a": 0.05,
+      "envelope_a": 0.1,
+      "note": "voltage for codec analog/digital depends on selected codec variant"
+    },
+    {
+      "load": "SPEAKER_AMP",
+      "rail": "13V8_AUD",
+      "nominal_a": 0.4,
+      "envelope_a": 1.5,
+      "note": "class-D 8-ohm, envelope to be verified with audio load; no RF PA"
+    }
+  ],
+  "unresolved": [
+    "LM74900-Q1 PCB MOSFET selection and SOA, current limit/UVOV ladders, Cdvdt, charge pump and timer",
+    "fuse, TVS rating and pulse-energy coordination; no surge waveform/tested qualification",
+    "LM61460 feedback tolerance, feedforward/compensation, actual pin pads, layout and power losses",
+    "LDO absolute thermal and efficiency with PCB copper; actual codec rails",
+    "audio amplifier load, inrush, BTL and relay control",
+    "RF PA power current, separate fuse and interlock; explicitly absent",
+    "switching noise / conducted and radiated EMI in 26-28 MHz CB bands",
+    "native KiCad schematic/ERC/DRC, SPICE/PSpice vendor model, measurements"
+  ],
+  "release": {
+    "board_fabrication": false,
+    "rf_tx": false,
+    "rf_pa_power_connected": false,
+    "compliant_automotive_load_dump": false,
+    "validated_fuse": false,
+    "native_kicad": false,
+    "native_spice": false
+  }
+}

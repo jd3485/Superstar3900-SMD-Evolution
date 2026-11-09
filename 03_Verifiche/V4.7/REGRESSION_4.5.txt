@@ -1,0 +1,27 @@
+PASS 9 distinct library footprint names
+PASS 3 .pretty library directories
+PASS 15 PCB component instances
+PASS 9 schematic symbol types
+PASS 15 standalone .pcb components
+PASS 15 standalone .sch component instances
+PASS Standalone PCB bytes equal V4.3 candidate
+PASS Standalone schema retains project instance name
+PASS No schematic older project instance name
+PASS No footprint board net stored
+PASS All 9 footprint files parse
+PASS All 9 footprint geometries preserved
+PASS S3900E custom SMA footprint has 5 copper pads
+PASS Custom ADL5535 footprint has 4 pad shapes, 3 pin numbers
+PASS 9 symbol definitions in exported library
+PASS 9 external symbol names do not embed library prefix
+PASS fp-lib-table uses local KIPRJMOD
+PASS sym-lib-table uses local KIPRJMOD
+PASS Library identifiers from PCB all resolvable
+PASS Schematic symbol identifiers all resolvable
+PASS Schematic footprint IDs match PCB footprint IDs
+PASS Source schematic equals frozen V4.4 manifest
+PASS Source PCB equals frozen V4.4 manifest
+PASS Mutation footprint pad dimension changes signature
+PASS Mutation missing symbol breaks reference coverage
+PASS Unclosed footprint is rejected by parser
+SUCCESS: 26 static checks; native ERC/DRC NOT RUN

@@ -1,0 +1,38 @@
+{
+  "model": "V0.4 LINEARE, non ADIsimPLL",
+  "config": {
+    "R2": 1200.0,
+    "R3": 270.0,
+    "C1": 6.8e-09,
+    "C2": 1.2e-07,
+    "C3": 4.7e-09,
+    "Icp": 0.0025,
+    "Kv_hz_v": 40000000.0,
+    "N": 3750
+  },
+  "nominal_crossover_Hz": 4488.966835877419,
+  "nominal_phase_margin_deg": 54.73045916750573,
+  "montecarlo_seed": 39004,
+  "samples": 4000,
+  "montecarlo_min_crossover_Hz": 2831.1474768922176,
+  "montecarlo_max_crossover_Hz": 6211.244097643741,
+  "montecarlo_min_phase_margin_deg": 49.113209912014725,
+  "montecarlo_max_phase_margin_deg": 58.48325456139018,
+  "montecarlo_percentile_01_crossover_Hz": 2983.256568901552,
+  "montecarlo_percentile_99_crossover_Hz": 5952.744247651245,
+  "montecarlo_percentile_01_pm_deg": 50.548727068409946,
+  "montecarlo_percentile_99_pm_deg": 58.06505967273685,
+  "all_pm_ge_45_within_model": true,
+  "buffer_preliminary_chain": {
+    "pll_nominal_dBm": 5.0,
+    "lpfs_total_assumed_dB": 1.5,
+    "pad_in_dB": 16.0,
+    "adl5611_gain_at_30MHz_typ_dB": 21.8,
+    "pad_out_dB": 2.0,
+    "mixer_target_dBm": 7.0,
+    "amplifier_input_dBm": -12.5,
+    "amplifier_output_dBm": 9.3,
+    "mixer_lo_dBm": 7.300000000000001,
+    "p1db_headroom_vs_30MHz_typ_dB": 6.699999999999999
+  }
+}

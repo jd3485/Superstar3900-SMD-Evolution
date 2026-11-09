@@ -1,0 +1,12 @@
+{
+  "schema_file": "S3900E_PLL_V0_7_DRAFT.kicad_sch",
+  "syntax_parentheses_balanced": true,
+  "symbols_instances": 6,
+  "number_wires": 52,
+  "number_labels": 46,
+  "number_junctions": 3,
+  "pin_numbers_1_to_41_unique": true,
+  "pin_map_40_plus_dap": true,
+  "notes": "Controlli Python su struttura e mappa. NON sostituiscono apertura Eeschema, ERC, netlist KiCad e verifica footprint.",
+  "previous_tests_returncode": 0
+}

@@ -1,0 +1,8 @@
+{
+  "kicad_cli": "NOT INSTALLED",
+  "ngspice": "NOT INSTALLED",
+  "native_erc": "NOT RUN",
+  "spice": "NOT RUN",
+  "static_source_test": "6/6 PASS",
+  "ac_model": "analytic numeric, not SPICE"
+}

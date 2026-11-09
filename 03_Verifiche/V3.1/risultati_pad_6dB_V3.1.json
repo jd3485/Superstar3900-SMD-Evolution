@@ -1,0 +1,24 @@
+{
+  "canonical_50ohm": {
+    "Rsh_ideal_ohm": 150.47602375372455,
+    "Rseries_ideal_ohm": 37.35187703354018
+  },
+  "nominal_ohm": [
+    150,
+    37.4,
+    150
+  ],
+  "nominal_insertion_loss_dB": 6.012875688992844,
+  "nominal_input_return_loss_dB": 67.03592613793998,
+  "independent_resistor_tolerance_percent": 1,
+  "numerical_cases": 10000,
+  "range_insertion_loss_dB": [
+    5.956090632414686,
+    6.0689994539333085
+  ],
+  "range_input_return_loss_dB": [
+    47.70758915194354,
+    131.06393878143803
+  ],
+  "note": "Ideal zero-parasitic ABCD calculation, not a measured PCB"
+}

@@ -1,0 +1,12 @@
+Footprint to be validated in KiCad and checked against original manufacturer CAD. NOT FOR FAB.
+Reference: U101
+(footprint "S3900E_v35:ADL5535_SOT89_FIG17_REVIEW" (layer "F.Cu") (tstamp "987919e3-6da0-51d7-b69f-d981d70b30fb") (at 68 36)
+    (property "Reference" "U101" (at 0 -5.400 0) (layer "F.SilkS") (effects (font (size 0.9 0.9) (thickness 0.13))) (tstamp "f0581ed6-985e-5f59-b9ba-3a6d8e3aa7e0"))
+    (property "Value" "ADL5535" (at 0 3.100 0) (layer "F.Fab") (effects (font (size 0.7 0.7) (thickness 0.12))) (tstamp "96408b90-ac70-5521-bcad-a3c5fe5669f6"))
+    (attr smd)
+    (fp_rect (start -2.700 -4.500) (end 2.700 2.150) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp "307324ef-3aee-5fa4-8813-d1810d4a3d07"))
+    (pad "1" smd rect (at -1.500 0.635) (size 0.860 1.270) (layers "F.Cu" "F.Mask" "F.Paste") (net 3 "RF_LNA_IC_IN") (tstamp "622e6152-fc3d-5323-ae5e-b366d4dfb45c"))
+    (pad "2" smd rect (at 0.000 0.635) (size 0.860 1.270) (layers "F.Cu" "F.Mask" "F.Paste") (net 1 "GND_RF") (tstamp "a2f65f84-c444-5063-a74a-5c5a93ffc32b"))
+    (pad "3" smd rect (at 1.500 0.635) (size 0.860 1.270) (layers "F.Cu" "F.Mask" "F.Paste") (net 4 "RF_BIAS_OUT") (tstamp "fd9ba797-bcc3-5f30-909d-90fb18445d0c"))
+    (pad "2" smd rect (at 0.000 -2.360) (size 1.800 3.480) (layers "F.Cu" "F.Mask" "F.Paste") (net 1 "GND_RF") (tstamp "ae564310-a41c-5eb1-9ea9-adaf39419d59"))
+  )

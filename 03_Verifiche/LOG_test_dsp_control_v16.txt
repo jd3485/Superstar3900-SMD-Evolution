@@ -1,0 +1,9 @@
+{
+  "pass_status": true,
+  "ctcss_tones_synth_tested": 50,
+  "noise_rejection_samples": 1,
+  "ctcss_mixed_test": 1,
+  "vox_state_test": "PASS",
+  "dw_state_test": "PASS",
+  "coverage_note": "Solo simulazione numerica; non verifica DCS, analogica, RF o firmware embedded"
+}

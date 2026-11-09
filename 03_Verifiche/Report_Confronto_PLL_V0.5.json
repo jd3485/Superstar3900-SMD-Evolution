@@ -1,0 +1,58 @@
+{
+  "release": "V0.5",
+  "date": "2026-11-06",
+  "model": "PLL normalized in-band floor only; NOT total phase noise and NOT an RF simulation",
+  "references": {
+    "ADF4351": "https://www.analog.com/media/en/technical-documentation/data-sheets/adf4351.pdf",
+    "LMX2572": "https://www.ti.com/lit/ds/symlink/lmx2572.pdf"
+  },
+  "rf_frequency_hz": [
+    25615000,
+    28305000
+  ],
+  "lo_frequency_hz": [
+    36310000,
+    39000000
+  ],
+  "channel_count": 270,
+  "vco_frequency_hz": {
+    "ADF4351": [
+      2323840000,
+      2496000000
+    ],
+    "LMX2572": [
+      4647680000,
+      4992000000
+    ]
+  },
+  "n_range": {
+    "ADF4351": [
+      3631,
+      3900
+    ],
+    "LMX2572": [
+      3631,
+      3900
+    ]
+  },
+  "normalized_pn_at_lo_37p5mhz_dbchz": {
+    "ADF4351": {
+      "white": -126.5811743852845,
+      "flicker_10khz": -144.51937464544562,
+      "sum_10khz_hypothetical": -126.51191213929444
+    },
+    "LMX2572": {
+      "white": -141.5914743419243,
+      "flicker_10khz": -152.01937464544562,
+      "sum_10khz_hypothetical": -141.21475147168294
+    }
+  },
+  "difference_in_white_floor_db": 15.01,
+  "realtime_measurements": null,
+  "hardware_simulations": null,
+  "notes": [
+    "Do not apply ADF4351 V0.4 loop-filter components to LMX2572",
+    "PLL_N register data not generated: no validated chip programming/locking/PCB",
+    "Noise estimates only for phase noise terms under idealized conditions"
+  ]
+}

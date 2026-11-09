@@ -1,0 +1,16 @@
+{
+  "revision": "V5.5",
+  "status": "INCOMPLETE_OR_VIOLATIONS",
+  "issues": [
+    "STATUS_ERC_NOT_EXECUTED_CLEAN",
+    "ERC_REPORT_MISSING_OR_INVALID",
+    "STATUS_DRC_NOT_EXECUTED_CLEAN",
+    "DRC_REPORT_MISSING_OR_INVALID"
+  ],
+  "counts": {},
+  "provenance": "NOT_VERIFIED_BY_JSON_ALONE",
+  "native_executed_by_this_script": false,
+  "fabrication_allowed": false,
+  "note": "Structural validation is not proof of an authentic KiCad execution; review external runner log and approval gates."
+}
+

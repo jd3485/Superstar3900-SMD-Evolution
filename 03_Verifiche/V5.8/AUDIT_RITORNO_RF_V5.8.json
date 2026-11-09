@@ -1,0 +1,435 @@
+{
+  "revision": "V5.8",
+  "method": "sampled RF copper centerline vs closest GND through-via centre",
+  "pcb_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "reference_copper_identity_v48": true,
+  "rf_nets": 6,
+  "rf_tracks": 13,
+  "ground_via_centers": 70,
+  "sampling_step_mm": 0.2,
+  "nearest_via_distance_Lipschitz_sampling_upper_error_mm": 0.1,
+  "review_threshold_mm_not_a_design_rule": 5.0,
+  "by_net": [
+    {
+      "net": "RF_ATTEN_IN",
+      "rf_segment_count": 2,
+      "rf_trace_total_length_mm": 47.2,
+      "max_nearest_gnd_via_centre_mm": 9.5811,
+      "conservative_upper_bound_at_sample_step_mm": 9.6807,
+      "worst_point_mm": [
+        67.4697,
+        65.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_ATTEN_OUT",
+      "rf_segment_count": 2,
+      "rf_trace_total_length_mm": 49.2,
+      "max_nearest_gnd_via_centre_mm": 6.9385,
+      "conservative_upper_bound_at_sample_step_mm": 7.0382,
+      "worst_point_mm": [
+        85.5153,
+        65.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_BIAS_OUT",
+      "rf_segment_count": 5,
+      "rf_trace_total_length_mm": 31.6716,
+      "max_nearest_gnd_via_centre_mm": 5.7306,
+      "conservative_upper_bound_at_sample_step_mm": 5.8306,
+      "worst_point_mm": [
+        72.2,
+        45.0
+      ],
+      "segments_with_any_sample_over_5mm": 2,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_LNA_INPUT",
+      "rf_segment_count": 1,
+      "rf_trace_total_length_mm": 23.45,
+      "max_nearest_gnd_via_centre_mm": 5.7195,
+      "conservative_upper_bound_at_sample_step_mm": 5.8188,
+      "worst_point_mm": [
+        28.0,
+        36.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_LNA_OUT",
+      "rf_segment_count": 1,
+      "rf_trace_total_length_mm": 29.45,
+      "max_nearest_gnd_via_centre_mm": 5.7195,
+      "conservative_upper_bound_at_sample_step_mm": 5.819,
+      "worst_point_mm": [
+        122.0,
+        36.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    },
+    {
+      "net": "RF_LNA_IC_IN",
+      "rf_segment_count": 2,
+      "rf_trace_total_length_mm": 14.213,
+      "max_nearest_gnd_via_centre_mm": 5.2989,
+      "conservative_upper_bound_at_sample_step_mm": 5.3983,
+      "worst_point_mm": [
+        56.5246,
+        36.0
+      ],
+      "segments_with_any_sample_over_5mm": 1,
+      "screening_flag": "REVIEW_RETURN_PROXIMITY"
+    }
+  ],
+  "by_segment": [
+    {
+      "pcb_segment_index": 1,
+      "net": "RF_LNA_INPUT",
+      "start_mm": [
+        28.0,
+        36.0
+      ],
+      "end_mm": [
+        51.45,
+        36.0
+      ],
+      "length_mm": 23.45,
+      "trace_width_mm": 0.28,
+      "sample_count": 119,
+      "nearest_gnd_via_centre_max_mm": 5.7195,
+      "max_distance_sample_point_mm": [
+        28.0,
+        36.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.9508,
+      "samples_over_5mm": 15,
+      "sample_fraction_over_5mm": 0.1261,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 2,
+      "distance_max_unsampled_upper_bound_mm": 5.8188
+    },
+    {
+      "pcb_segment_index": 2,
+      "net": "RF_LNA_IC_IN",
+      "start_mm": [
+        52.55,
+        36.0
+      ],
+      "end_mm": [
+        65.865,
+        36.0
+      ],
+      "length_mm": 13.315,
+      "trace_width_mm": 0.28,
+      "sample_count": 68,
+      "nearest_gnd_via_centre_max_mm": 5.2989,
+      "max_distance_sample_point_mm": [
+        56.5246,
+        36.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.1426,
+      "samples_over_5mm": 5,
+      "sample_fraction_over_5mm": 0.0735,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 3,
+      "distance_max_unsampled_upper_bound_mm": 5.3983
+    },
+    {
+      "pcb_segment_index": 3,
+      "net": "RF_LNA_IC_IN",
+      "start_mm": [
+        65.865,
+        36.0
+      ],
+      "end_mm": [
+        66.5,
+        36.635
+      ],
+      "length_mm": 0.898,
+      "trace_width_mm": 0.28,
+      "sample_count": 6,
+      "nearest_gnd_via_centre_max_mm": 2.1603,
+      "max_distance_sample_point_mm": [
+        66.5,
+        36.635
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.1042,
+      "samples_over_5mm": 0,
+      "sample_fraction_over_5mm": 0.0,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 4,
+      "distance_max_unsampled_upper_bound_mm": 2.2501
+    },
+    {
+      "pcb_segment_index": 4,
+      "net": "RF_BIAS_OUT",
+      "start_mm": [
+        69.5,
+        36.635
+      ],
+      "end_mm": [
+        70.135,
+        36.635
+      ],
+      "length_mm": 0.635,
+      "trace_width_mm": 0.28,
+      "sample_count": 5,
+      "nearest_gnd_via_centre_max_mm": 2.553,
+      "max_distance_sample_point_mm": [
+        70.135,
+        36.635
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.1603,
+      "samples_over_5mm": 0,
+      "sample_fraction_over_5mm": 0.0,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 3,
+      "distance_max_unsampled_upper_bound_mm": 2.6324
+    },
+    {
+      "pcb_segment_index": 5,
+      "net": "RF_BIAS_OUT",
+      "start_mm": [
+        70.135,
+        36.635
+      ],
+      "end_mm": [
+        70.77,
+        36.0
+      ],
+      "length_mm": 0.898,
+      "trace_width_mm": 0.28,
+      "sample_count": 6,
+      "nearest_gnd_via_centre_max_mm": 2.6922,
+      "max_distance_sample_point_mm": [
+        70.77,
+        36.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.553,
+      "samples_over_5mm": 0,
+      "sample_fraction_over_5mm": 0.0,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 1,
+      "distance_max_unsampled_upper_bound_mm": 2.782
+    },
+    {
+      "pcb_segment_index": 6,
+      "net": "RF_BIAS_OUT",
+      "start_mm": [
+        70.77,
+        36.0
+      ],
+      "end_mm": [
+        91.45,
+        36.0
+      ],
+      "length_mm": 20.68,
+      "trace_width_mm": 0.28,
+      "sample_count": 105,
+      "nearest_gnd_via_centre_max_mm": 5.305,
+      "max_distance_sample_point_mm": [
+        85.4846,
+        36.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.6922,
+      "samples_over_5mm": 10,
+      "sample_fraction_over_5mm": 0.0952,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 1,
+      "distance_max_unsampled_upper_bound_mm": 5.4044
+    },
+    {
+      "pcb_segment_index": 7,
+      "net": "RF_BIAS_OUT",
+      "start_mm": [
+        70.77,
+        36.0
+      ],
+      "end_mm": [
+        72.2,
+        38.0
+      ],
+      "length_mm": 2.4586,
+      "trace_width_mm": 0.28,
+      "sample_count": 14,
+      "nearest_gnd_via_centre_max_mm": 4.0923,
+      "max_distance_sample_point_mm": [
+        71.76,
+        37.3846
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.6922,
+      "samples_over_5mm": 0,
+      "sample_fraction_over_5mm": 0.0,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 1,
+      "distance_max_unsampled_upper_bound_mm": 4.1869
+    },
+    {
+      "pcb_segment_index": 8,
+      "net": "RF_BIAS_OUT",
+      "start_mm": [
+        72.2,
+        38.0
+      ],
+      "end_mm": [
+        72.2,
+        45.0
+      ],
+      "length_mm": 7.0,
+      "trace_width_mm": 0.28,
+      "sample_count": 36,
+      "nearest_gnd_via_centre_max_mm": 5.7306,
+      "max_distance_sample_point_mm": [
+        72.2,
+        45.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.8,
+      "samples_over_5mm": 5,
+      "sample_fraction_over_5mm": 0.1389,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 1,
+      "distance_max_unsampled_upper_bound_mm": 5.8306
+    },
+    {
+      "pcb_segment_index": 9,
+      "net": "RF_LNA_OUT",
+      "start_mm": [
+        92.55,
+        36.0
+      ],
+      "end_mm": [
+        122.0,
+        36.0
+      ],
+      "length_mm": 29.45,
+      "trace_width_mm": 0.28,
+      "sample_count": 149,
+      "nearest_gnd_via_centre_max_mm": 5.7195,
+      "max_distance_sample_point_mm": [
+        122.0,
+        36.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.9509,
+      "samples_over_5mm": 19,
+      "sample_fraction_over_5mm": 0.1275,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 2,
+      "distance_max_unsampled_upper_bound_mm": 5.819
+    },
+    {
+      "pcb_segment_index": 16,
+      "net": "RF_ATTEN_IN",
+      "start_mm": [
+        28.0,
+        65.0
+      ],
+      "end_mm": [
+        73.45,
+        65.0
+      ],
+      "length_mm": 45.45,
+      "trace_width_mm": 0.28,
+      "sample_count": 229,
+      "nearest_gnd_via_centre_max_mm": 9.5811,
+      "max_distance_sample_point_mm": [
+        67.4697,
+        65.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.9512,
+      "samples_over_5mm": 166,
+      "sample_fraction_over_5mm": 0.7249,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 2,
+      "distance_max_unsampled_upper_bound_mm": 9.6807
+    },
+    {
+      "pcb_segment_index": 17,
+      "net": "RF_ATTEN_IN",
+      "start_mm": [
+        54.0,
+        65.0
+      ],
+      "end_mm": [
+        54.0,
+        66.75
+      ],
+      "length_mm": 1.75,
+      "trace_width_mm": 0.28,
+      "sample_count": 10,
+      "nearest_gnd_via_centre_max_mm": 4.45,
+      "max_distance_sample_point_mm": [
+        54.0,
+        65.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.7,
+      "samples_over_5mm": 0,
+      "sample_fraction_over_5mm": 0.0,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 1,
+      "distance_max_unsampled_upper_bound_mm": 4.5472
+    },
+    {
+      "pcb_segment_index": 18,
+      "net": "RF_ATTEN_OUT",
+      "start_mm": [
+        74.55,
+        65.0
+      ],
+      "end_mm": [
+        122.0,
+        65.0
+      ],
+      "length_mm": 47.45,
+      "trace_width_mm": 0.28,
+      "sample_count": 239,
+      "nearest_gnd_via_centre_max_mm": 6.9385,
+      "max_distance_sample_point_mm": [
+        85.5153,
+        65.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.9512,
+      "samples_over_5mm": 177,
+      "sample_fraction_over_5mm": 0.7406,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 2,
+      "distance_max_unsampled_upper_bound_mm": 7.0382
+    },
+    {
+      "pcb_segment_index": 19,
+      "net": "RF_ATTEN_OUT",
+      "start_mm": [
+        92.0,
+        65.0
+      ],
+      "end_mm": [
+        92.0,
+        66.75
+      ],
+      "length_mm": 1.75,
+      "trace_width_mm": 0.28,
+      "sample_count": 10,
+      "nearest_gnd_via_centre_max_mm": 4.45,
+      "max_distance_sample_point_mm": [
+        92.0,
+        65.0
+      ],
+      "nearest_gnd_via_centre_min_mm": 2.7,
+      "samples_over_5mm": 0,
+      "sample_fraction_over_5mm": 0.0,
+      "distinct_gnd_vias_within_3mm_of_trace_centreline": 1,
+      "distance_max_unsampled_upper_bound_mm": 4.5472
+    }
+  ],
+  "errors": [],
+  "status": "STATIC_RF_VIA_PROXIMITY_AUDITED_NATIVE_PENDING",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "native_zone_refill": "NOT_RUN",
+  "fabrication_allowed": false,
+  "tx_allowed": false,
+  "interpretation": [
+    "The nearest-via distance is a geometric measure ONLY, not return-current path length or RF performance.",
+    "A continuous nearby ground plane could provide the main RF return independently of via spacing.",
+    "Both inner ground planes are UNFILLED in this KiCad source; no dielectric stack-up/CPWG 50-ohm validation is available.",
+    "5mm is a study hotspot threshold only; no manufacturing or RF limit is asserted.",
+    "The upper bound for a straight segment follows from nearest-distance being 1-Lipschitz and step<=0.4mm.",
+    "No extra ground via should be added without native DRC and a validated stack-up.",
+    "NO FAB, NO PCBWay, NO TX"
+  ]
+}

@@ -1,0 +1,8 @@
+ID,Priorita,Blocco,Stato,Condizione_chiusura
+B37-01,CRITICA,"Sagome delle zone GND del footprint CONSMA002-SMD da rifare",APERTO,"CAD/ECAD ufficiale o riproduzione quotata validata con componente reale"
+B37-02,CRITICA,"Verso SMA e interferenze con bordo PCB non verificati in 3D",APERTO,"Modello STEP del connettore e verifica fisica in KiCad"
+B37-03,CRITICA,"Dissipazione e solder paste ADL5535 non validate",APERTO,"Pad/paste/termiche e fabbricabilità approvati"
+B37-04,CRITICA,"KiCad native DRC/ERC assenti",APERTO,"Aprire PCB e schema in KiCad, riempire rame, DRC/ERC senza violazioni bloccanti"
+B37-05,ALTA,"Impedenza 50 ohm non confermata",APERTO,"Stack-up PCBWay approvato e verifica impedenza distribuita"
+B37-06,ALTA,"Prestazioni non collaudate",APERTO,"Coupon RX realizzato e misura VNA, NF, linearità, alimentazione e termica"
+B37-07,CRITICA,"Protezione antenna TX/RX del sistema finale assente",APERTO,"Non collegare al trasmettitore; integrare circuitazione dedicata"

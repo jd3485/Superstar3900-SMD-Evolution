@@ -1,0 +1,26 @@
+test_16_pads_only (__main__.VerifyV43.test_16_pads_only) ... ok
+test_baseline_sha (__main__.VerifyV43.test_baseline_sha) ... ok
+test_candidate_matches_work_file (__main__.VerifyV43.test_candidate_matches_work_file) ... ok
+test_changes_not_identical (__main__.VerifyV43.test_changes_not_identical) ... ok
+test_clearance_nominal (__main__.VerifyV43.test_clearance_nominal) ... ok
+test_fab_block (__main__.VerifyV43.test_fab_block) ... ok
+test_four_sma (__main__.VerifyV43.test_four_sma) ... ok
+test_ground_pads_path_to_vias (__main__.VerifyV43.test_ground_pads_path_to_vias) ... ok
+test_net_count (__main__.VerifyV43.test_net_count) ... ok
+test_no_short_under_review_threshold (__main__.VerifyV43.test_no_short_under_review_threshold) ... ok
+test_not_native_kicad (__main__.VerifyV43.test_not_native_kicad) ... ok
+test_not_te_approved (__main__.VerifyV43.test_not_te_approved) ... ok
+test_orientation (__main__.VerifyV43.test_orientation) ... ok
+test_other_components_count (__main__.VerifyV43.test_other_components_count) ... ok
+test_paste_still_present (__main__.VerifyV43.test_paste_still_present) ... ok
+test_signal_islands (__main__.VerifyV43.test_signal_islands) ... ok
+test_span_after (__main__.VerifyV43.test_span_after) ... ok
+test_span_before (__main__.VerifyV43.test_span_before) ... ok
+test_trace_count_untouched (__main__.VerifyV43.test_trace_count_untouched) ... ok
+test_via_count_untouched (__main__.VerifyV43.test_via_count_untouched) ... ok
+test_zones_unfilled (__main__.VerifyV43.test_zones_unfilled) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.337s
+
+OK

@@ -1,0 +1,10 @@
+id;voce;esito;azione
+B01;SMA 4 GND pad geometry;CANDIDATA;Verificare original recommended footprint e CAD certificato
+B02;SMA x-axis projection;SOLO 2D;Controllo 3D, ingombro pannello e contatto RF
+B03;ADL5535 pad termico;COLLEGAMENTO F.Cu CANDIDATO;Confermare pasta e via tenting con assemblatore
+B04;Solder mask/paste;NON VALIDATI;Esaminare aperture e ponti di saldatura
+B05;KiCad ERC/DRC;NON ESEGUITI;Aprire progetto in ambiente KiCad e refill + DRC
+B06;Gerber e forature;NON PRODOTTI;Generare soltanto dopo approvazione
+B07;Misure RF;NON ESEGUITE;VNA S11/S21 e thermal powered test RX only
+B08;Stackup PCBWay;IPOTETICO;Confermare layer build e 50 ohm con produttore
+B09;SMA codice con suffisso -G;DA VERIFICARE;Confermare esatto part number acquisto

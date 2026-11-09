@@ -1,0 +1,8 @@
+Ref provvisorio,MPN candidato,Funzione,Dati/limiti,Stato
+U301,ADL5535ARKZ-R7,Amplificazione RF 27MHz,5V;97mA typ; SOT89; 20MHz values model,"CANDIDATO, NON ASSEMBLARE"
+MX301,ADE-1+,Conversione RF -> 10.695MHz,Mixer passivo; LO circa +7dBm; +15dBm IIP3 typical,CANDIDATO
+RF301-309,V2.9 CORE9,Preselettore 9 passivi,Componenti e valori nel BOM V2.9; <50ohm match> non validato,STUDIO
+AT301,rete pi 6dB 50ohm da calcolare,Attenuazione dopo LNA,Deve includere verifica effettiva portata e matching,NON DIMENSIONATO
+SW301,TBD,LNA bypass / ramo attenuatore,"Loss, isolation, linearity ancora aperti",NON SCELTO
+TR301,TBD,Protezione ingresso e T/R,Nessuna connessione a trasmettitore fino a validazione,BLOCCANTE
+LO301,TBD,Buffer e pulizia LO,+7 dBm effettivi al mixer,BLOCCANTE

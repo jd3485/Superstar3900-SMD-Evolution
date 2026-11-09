@@ -1,0 +1,12 @@
+attivita,peso_percento,completamento_stimato_percento,contributo_percentuale
+Specifiche e architettura,8,77,6.16
+Piano frequenze e logica canali,7,80,5.6
+PLL / riferimento / LO,15,46,6.9
+Ricevitore RF / FI / AF,18,3,0.54
+Trasmettitore / PA / filtri TX,15,0,0.0
+ATU / misure / pannello,9,0,0.0
+Firmware e interfacce,7,10,0.7
+Layout PCB e file produzione,10,0,0.0
+Simulazioni / ERC / DRC / collaudi,7,0,0.0
+Manuali finali,4,8,0.32
+TOTALE,100,,20.22

@@ -1,0 +1,18 @@
+{
+  "release": "V2.5",
+  "estimated_percent": 33,
+  "previous_percent": 32,
+  "delta": 1,
+  "interpretation": "Un punto per modellazione di architettura alternativa e analisi di rischio; nessun nuovo gate ERC/DRC/PCB/bench superato",
+  "physical_RF_verified": false,
+  "fabrication_ready": false,
+  "new_tests": 15,
+  "regression_v24": 7,
+  "monte_carlo_cases": 3000,
+  "next": [
+    "Confrontare soluzione comune e due/tre banchi con modelli di componente RF reali",
+    "Misurare o importare S-parameters switch/relè e L/C a 27MHz",
+    "Validare catena RX con NF/IIP3 e reiezione con leakage",
+    "Iniziare vera scheda RF KiCad con ERC prima del layout"
+  ]
+}

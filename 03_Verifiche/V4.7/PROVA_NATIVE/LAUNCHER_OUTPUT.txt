@@ -1,0 +1,2 @@
+NOT_RUN: kicad-cli not available; ERC/DRC/parity/zone refill not executed.
+LAUNCHER_EXIT=3

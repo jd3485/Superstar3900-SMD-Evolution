@@ -1,0 +1,23 @@
+{
+  "revision": "V0.8",
+  "type": "STRUCTURAL_ONLY_NOT_KICAD_ERC",
+  "new_smd_devices": 20,
+  "supply_branch_count": 6,
+  "bias_capacitor_count": 7,
+  "bulk_capacitor_count": 1,
+  "existing_100pct_pinmap": 41,
+  "balanced_sexp": true,
+  "new_part_refs_unique": true,
+  "distinct_supply_pins": true,
+  "bypass_net_pair_counts_verified": true,
+  "kicad_cli_available": false,
+  "erc_executed": false,
+  "netlist_exported": false,
+  "pcb_created": false,
+  "warnings": [
+    "Schema KiCad non aperto con KiCad.",
+    "Dati TCXO/output ancora preliminari.",
+    "Part numbers/dielectrics/cap ESR/layout non qualificati.",
+    "PLL loop filter ancora solo candidato."
+  ]
+}

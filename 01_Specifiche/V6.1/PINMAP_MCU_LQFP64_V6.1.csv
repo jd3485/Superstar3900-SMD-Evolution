@@ -1,0 +1,65 @@
+pin,gpio,rete,funzione
+1,VBAT,3V3_D,"VBAT = 3V3, RTC backup deferred"
+2,PC13,CH9_SENSE_N,PC13: CH9 direct active LOW; limited drive input
+3,PC14,PC14_OSC32_SPARE,"LSE optional, not UI"
+4,PC15,PC15_OSC32_SPARE,"LSE optional, not UI"
+5,PF0,PF0_HSE_IN,HSE crystal optional
+6,PF1,PF1_HSE_OUT,HSE crystal optional
+7,PG10,NRST,PG10-NRST; external reset circuit deferred
+8,PC0,PA_SENSE_N,PC0: PA physical switch direct
+9,PC1,AUDIO_I2S_TX,"PC1 SAI1_SD_A, reserved V2.1"
+10,PC2,CODEC_RESET_N,"PC2 codec reset, old design"
+11,PC3,EXP_RESET_N,PC3 expansion reset active LOW
+12,PA0,PTT_N,PA0 direct mic PTT sense
+13,PA1,SMETER_ADC,PA1 ADC analog S meter (signal conditioning TBD)
+14,PA2,FWD_MON_ADC,PA2 analog forward power (future TX; no TX)
+15,VSS,DGND,VSS
+16,VDD,3V3_D,VDD
+17,PA3,SQL_POT_ADC,PA3 squelch analog potentiometer
+18,PA4,PLL_CS_N,PA4 SPI1 NSS GPIO old
+19,PA5,PLL_SCK,PA5 SPI1 SCK old
+20,PA6,PA6_SPI1_MISO_RESERVE,SPI1 MISO reserved not panel
+21,PA7,PLL_SDI,PA7 SPI1 MOSI old
+22,PC4,EXP1_INT_N,PC4 expander1 INTA
+23,PC5,EXP2_INT_N,PC5 expander2 INTA
+24,PB0,PLL_MUXOUT,PB0 PLL old
+25,PB1,PLL_CE,PB1 PLL old
+26,PB2,PB2_RESERVE,Future digital
+27,VSSA,AGND,VSSA
+28,VREF+,VREF_ANA,VREF+ routed per analog plan
+29,VDDA,3V3_A,VDDA filtered
+30,PB10,AUDIO_BCLK,PB10 SAI1_SCK_A existing V2.1
+31,VSS,DGND,VSS
+32,VDD,3V3_D,VDD
+33,PB11,PB11_RESERVE,Panel reserve
+34,PB12,PB12_LED_DIM,Display/backlight low-current request (driver TBD)
+35,PB13,PB13_SPI2_SCK_RESERVE,SPI2 reserve
+36,PB14,PB14_SPI2_MISO_RESERVE,SPI2 reserve
+37,PB15,PB15_SPI2_MOSI_RESERVE,SPI2 reserve
+38,PC6,MUX_A0,PC6 audio V6.0
+39,PC7,MUX_A1,PC7 audio V6.0
+40,PC8,MUX_A2,PC8 audio V6.0
+41,PC9,MUX_EN_N,"PC9 / U601 EN_N, disabled by ext pullup"
+42,PA8,AMP_SD_REQUEST,PA8 logic request; HW gating MUST be inserted V6.2
+43,PA9,AUDIO_WCLK,PA9 SAI1_FS_A existing V2.1
+44,PA10,PA_RELAY_CMD,PA10 relay driver command V6.0
+45,PA11,AMP_FAULT_N,PA11 amp fault input
+46,PA12,POWER_GOOD,PA12 supply ready from future supervisor
+47,VSS,DGND,VSS
+48,VDD,3V3_D,VDD
+49,PA13,SWDIO,PA13 SWD pin reserve
+50,PA14,SWCLK,PA14 SWD pin reserve
+51,PA15,PA15_RESERVE,"JTAG optional, SWD retained"
+52,PC10,ENC_A,PC10 direct incremental encoder input
+53,PC11,ENC_B,PC11 direct incremental encoder input
+54,PC12,PC12_RESERVE,Future control
+55,PD2,PD2_RESERVE,Future control
+56,PB3,PB3_RESERVE,SWO/JTAG trace alternative; not panel
+57,PB4,PB4_RESERVE,future I/O
+58,PB5,AUDIO_I2S_RX,PB5 SAI1_SD_B existing V2.1
+59,PB6,CODEC_I2C_SCL,PB6 codec + two expanders + display I2C
+60,PB7,CODEC_I2C_SDA,PB7 codec + two expanders + display I2C
+61,PB8,BOOT0_STRAP,"PB8 boot strap, NO PANEL"
+62,PB9,PB9_RESERVE,"MCLK NOT used, codec has external osc"
+63,VSS,DGND,VSS
+64,VDD,3V3_D,VDD

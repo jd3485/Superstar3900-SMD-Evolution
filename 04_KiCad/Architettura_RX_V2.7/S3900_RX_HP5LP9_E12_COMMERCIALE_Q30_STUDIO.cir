@@ -1,0 +1,31 @@
+* Superstar3900 V2.7 E12_COMMERCIALE - FILTRO SPERIMENTALE NON VALIDATO
+* Perdita induttori simulata con resistenza serie fissa a 27 MHz: R=2*pi*f0*L/Q, Q ipotetico
+* V2.7: SPICE da ESEGUIRE, non gia validato in ngspice
+V1 SRC 0 AC 1
+RS SRC RF_IN 50
+C1 RF_IN N1 2.7e-10
+L2 N1 P2 2.7e-07
+RLOSS2 P2 0 1.526814
+C3 N1 N3 8.2e-11
+L4 N3 P4 2.7e-07
+RLOSS4 P4 0 1.526814
+C5 N3 N5 2.7e-10
+L6 N5 S6 3.3e-07
+RLOSS6 S6 N6 1.866106
+C7 N6 0 1.5e-10
+L8 N6 S8 5.6e-07
+RLOSS8 S8 N8 3.1667254
+C9 N8 0 1.8e-10
+L10 N8 S10 5.6e-07
+RLOSS10 S10 N10 3.1667254
+C11 N10 0 1.8e-10
+L12 N10 S12 5.6e-07
+RLOSS12 S12 N12 3.1667254
+C13 N12 0 1.5e-10
+L14 N12 S14 3.3e-07
+RLOSS14 S14 N14 1.866106
+RLOAD N14 0 50
+* RF output load across RLOAD, port assumed 50 Ohm each side
+.ac dec 100 1Meg 100Meg
+.print ac vm(N14)
+.end

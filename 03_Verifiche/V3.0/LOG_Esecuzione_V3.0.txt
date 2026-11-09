@@ -1,0 +1,57 @@
+V3.0 PASS [
+  {
+    "mode": "RX_NORMAL",
+    "nf_min_dB": 4.873258004803901,
+    "nf_max_dB": 5.102134481072018,
+    "iip3_min_dBm": 0.06407155062741424,
+    "iip3_max_dBm": 0.29294802689553096,
+    "gain_min_dB": 9.697340197661307,
+    "gain_max_dB": 9.926216673929423,
+    "image_rejection_validated": false,
+    "image_rejection_status": "full V2.9 prefilter model only; no PCB/mixer"
+  },
+  {
+    "mode": "RX_PAD_POST6",
+    "nf_min_dB": 5.282146103115246,
+    "nf_max_dB": 5.511022579383365,
+    "iip3_min_dBm": 6.035248257758454,
+    "iip3_max_dBm": 6.264124734026572,
+    "gain_min_dB": 3.697340197661307,
+    "gain_max_dB": 3.926216673929423,
+    "image_rejection_validated": false,
+    "image_rejection_status": "full V2.9 prefilter model only; no PCB/mixer"
+  },
+  {
+    "mode": "RX_LNA_BYPASS",
+    "nf_min_dB": 6.773783326070576,
+    "nf_max_dB": 7.002659802338692,
+    "iip3_min_dBm": 16.773783326070575,
+    "iip3_max_dBm": 17.00265980233869,
+    "gain_min_dB": -7.002659802338692,
+    "gain_max_dB": -6.773783326070576,
+    "image_rejection_validated": false,
+    "image_rejection_status": "full V2.9 prefilter model only; no PCB/mixer"
+  },
+  {
+    "mode": "RX_PAD_PRE6",
+    "nf_min_dB": 10.873258004803901,
+    "nf_max_dB": 11.102134481072019,
+    "iip3_min_dBm": 6.064071550627413,
+    "iip3_max_dBm": 6.29294802689553,
+    "gain_min_dB": 3.697340197661307,
+    "gain_max_dB": 3.926216673929423,
+    "image_rejection_validated": false,
+    "image_rejection_status": "full V2.9 prefilter model only; no PCB/mixer"
+  },
+  {
+    "mode": "RX_POST_FILTER_HYPOTHETICAL",
+    "nf_min_dB": 4.136556079358735,
+    "nf_max_dB": 4.136556079358735,
+    "iip3_min_dBm": 0.287777134728618,
+    "iip3_max_dBm": 0.287777134728618,
+    "gain_min_dB": 9.7,
+    "gain_max_dB": 9.7,
+    "image_rejection_validated": false,
+    "image_rejection_status": "UNVERIFIED SPLIT TOPOLOGY"
+  }
+]

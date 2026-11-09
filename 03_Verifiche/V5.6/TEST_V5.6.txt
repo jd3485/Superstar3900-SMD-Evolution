@@ -1,0 +1,28 @@
+test_displace_signal_pad_breaks_route (__main__.DeliberateFaults.test_displace_signal_pad_breaks_route) ... ok
+test_epsilon_rejects_unsafe_values (__main__.DeliberateFaults.test_epsilon_rejects_unsafe_values) ... ok
+test_new_filled_polygon_requires_reaudit (__main__.DeliberateFaults.test_new_filled_polygon_requires_reaudit) ... ok
+test_reference_swap_cannot_pass_identity (__main__.DeliberateFaults.test_reference_swap_cannot_pass_identity) ... ok
+test_remove_lna_input_track_separates_pads (__main__.DeliberateFaults.test_remove_lna_input_track_separates_pads) ... ok
+test_remove_lna_output_track_separates_pads (__main__.DeliberateFaults.test_remove_lna_output_track_separates_pads) ... ok
+test_signal_count_requires_seven (__main__.DeliberateFaults.test_signal_count_requires_seven) ... ok
+test_unfilled_zones_not_a_native_drc (__main__.DeliberateFaults.test_unfilled_zones_not_a_native_drc) ... ok
+test_wrong_segment_net_is_detected (__main__.DeliberateFaults.test_wrong_segment_net_is_detected) ... ok
+test_wrong_zone_net_is_detected (__main__.DeliberateFaults.test_wrong_zone_net_is_detected) ... ok
+test_counts_are_grounded_in_real_board (__main__.ReferenceBoard.test_counts_are_grounded_in_real_board) ... ok
+test_deterministic_reproducible (__main__.ReferenceBoard.test_deterministic_reproducible) ... ok
+test_eight_nets (__main__.ReferenceBoard.test_eight_nets) ... ok
+test_four_zones_unfilled (__main__.ReferenceBoard.test_four_zones_unfilled) ... ok
+test_ground_is_not_falsely_accepted (__main__.ReferenceBoard.test_ground_is_not_falsely_accepted) ... ok
+test_ground_islands_measured (__main__.ReferenceBoard.test_ground_islands_measured) ... ok
+test_ground_isolated_via_islands_measured (__main__.ReferenceBoard.test_ground_isolated_via_islands_measured) ... ok
+test_ground_pad_islands_measured (__main__.ReferenceBoard.test_ground_pad_islands_measured) ... ok
+test_report_no_native_assertion (__main__.ReferenceBoard.test_report_no_native_assertion) ... ok
+test_seven_signal_nets_each_connected (__main__.ReferenceBoard.test_seven_signal_nets_each_connected) ... ok
+test_seven_signal_nets_present (__main__.ReferenceBoard.test_seven_signal_nets_present) ... ok
+test_six_thermal_vias_plus_external_same_ground_group (__main__.ReferenceBoard.test_six_thermal_vias_plus_external_same_ground_group) ... ok
+test_unchanged_copper_relative_to_v48 (__main__.ReferenceBoard.test_unchanged_copper_relative_to_v48) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.754s
+
+OK

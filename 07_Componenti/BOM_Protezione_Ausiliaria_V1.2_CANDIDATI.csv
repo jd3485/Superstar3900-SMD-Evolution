@@ -1,0 +1,5 @@
+Reference,Component,MPN,Package,Footprint,Stato,Rationale_e_verifiche
+F200,Fusibile 1.5A rapido 125V AC/DC,045101.5MRL,Nano2 451 6.10x2.69mm,CUSTOM TBD,CANDIDATO NON QUALIFICATO,Non usare footprint 1206 3.2x1.6 V1.1; coordinamento e tenuta a 13.8V da provare
+D200,TVS bidirezionale VRWM 18V,SMBJ18CA,SMB/DO-214AA,Diode_SMD:D_SMB,DNP CANDIDATO,VC 29.2V a Ipp nominale datasheet; non dimostra prestazione applicazione; test surge obbligatorio
+U200,eFuse 4.2-60V,TPS26600PWPT,HTSSOP-16 PWP,Package_SO:TSSOP-16-1EP_4.4x5mm_P0.65mm,BOZZA,RTN separato da GND_MAIN; rating corrente e termica aperti
+Y1,TCXO 12.8MHz CMOS,7N-12.800MBP-T,10-pad 7.0x5.0mm,CUSTOM TBD,PIN10 ANCORA BLOCCANTE,TXC serie: pin10 AFC o GND a seconda versione; scheda part-specific prima del collegamento

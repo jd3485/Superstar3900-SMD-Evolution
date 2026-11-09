@@ -1,0 +1,8 @@
+ID,Oggetto,Stato,Pericolo se ignorato,Azione per chiusura,Responsabile fase
+V36-B01,SMA CONSMA002-SMD Ø2.05 e body overhang,BLOCCANTE,Componente non montabile o contatto RF errato,Confronto CAD/3D e prova di assemblaggio,meccanica RF
+V36-B02,ADL5535 paddle GND/stencil,APERTO,Dissipazione e saldatura non affidabili,Convalida Figure17 e thermal via/pasta,PCB assemblaggio
+V36-B03,Riempimento zone ground su 4 layer,BLOCCANTE,Ritorni RF interrotti/floating copper,Native refill + DRC + controllo plane In1.Cu,layout RF
+V36-B04,KiCad ERC/DRC/BOM sync,BLOCCANTE,Errori pad/net/meccanica non rilevati,ERC/DRC nativi e sincronizzazione,ECAD
+V36-B05,Stackup reale PCBWay 50ohm,BLOCCANTE,Impedenza e perdite non controllate,Conferma stackup e field solver RF,RF/PCBWay
+V36-B06,Test RF/VNA e prova DC alimentazione,BLOCCANTE,Prestazioni e stabilità non verificate,Assemblaggio prototipo + misura,RF lab
+V36-B07,Protezione TX/RX non presente,BLOCCANTE,Possibile danno LNA,Non collegare a TX; progettare protezione,architettura RF

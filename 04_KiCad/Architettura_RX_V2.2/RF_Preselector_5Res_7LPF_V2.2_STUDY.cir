@@ -1,0 +1,46 @@
+* Superstar3900 V2.2 RF PRESELECTOR theoretical model - NOT VERIFIED SPICE/PCB
+* First prototype: five RF shunt tanks, 7-pole Cheb lowpass, 50-ohm in/out
+* Q implemented with parallel resistors on RF tanks and series resistors in LPF inductors
+* all ideal C/L plus loss; no ESR frequency models, tolerance, coupling, shielding or EM effects
+VIN src 0 AC 1
+RS src in 50
+CC1 in t1 129.372803p
+CC2 t1 t2 30.407013p
+CC3 t2 t3 11.567649p
+CC4 t3 t4 11.567649p
+CC5 t4 t5 30.407013p
+CC6 t5 lp_in 129.372803p
+LR1 t1 0 330n
+CR1 t1 0 55.686878p
+RR1 t1 0 2788.7918
+LR2 t2 0 330n
+CR2 t2 0 70.342845p
+RR2 t2 0 2788.7918
+LR3 t3 0 330n
+CR3 t3 0 83.885380p
+RR3 t3 0 2788.7918
+LR4 t4 0 330n
+CR4 t4 0 70.342845p
+RR4 t4 0 2788.7918
+LR5 t5 0 330n
+CR5 t5 0 55.686878p
+RR5 t5 0 2788.7918
+RLP1 lp_in rl1 1.313570
+LLP1 rl1 lp1 388.589479n
+CLP2 lp1 0 137.039943p
+RLP3 lp1 rl3 2.093952
+LLP3 rl3 lp3 619.447574n
+CLP4 lp3 0 147.889783p
+RLP5 lp3 rl5 2.093952
+LLP5 rl5 lp5 619.447574n
+CLP6 lp5 0 137.039943p
+RLP7 lp5 rl7 1.313570
+LLP7 rl7 lp7 388.589479n
+RLOAD lp7 0 50
+* Matched S21[dB] = 20*log10(2*|V(out)|/|Vsrc|) with Vsrc=1AC
+* output node: lp7
+.ac dec 80 10Meg 100Meg
+.print ac vm(lp7)
+* To derive S21_dB use 20*log10(2*Vout_rms/Vsrc_rms) - source has 1V AC
+* NOT RUN THROUGH NGSPICE in V2.2
+.END

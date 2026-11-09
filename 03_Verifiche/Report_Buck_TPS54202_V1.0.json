@@ -1,0 +1,92 @@
+{
+  "release": "V1.0",
+  "type": "static schematic + manufacturer reference + analytical budgets",
+  "manufacturer_ref": "TI TPS54202 datasheet Rev C (2026), Fig 7-1, Table 7-2; TI TPS54202EVM-716 guide Rev A",
+  "kicad_erc_performed": false,
+  "kicad_drc_performed": false,
+  "ngspice_transient_performed": false,
+  "schematic_file": "04_KiCad/Sorgenti_Alimentazione_V1.0/S3900E_5V_BUCK_TPS54202_V1_0_DRAFT.kicad_sch",
+  "balanced_sexp": true,
+  "unique_ref_count": 13,
+  "net_connections_count": 30,
+  "net_count": 8,
+  "netlists_equivalent_to_kicad_export": false,
+  "vref_typ_V": 0.596,
+  "feedback_Rupper_ohm": 100000.0,
+  "feedback_Rlower_ohm": 13300.0,
+  "vout_typ_theoretical_V": 5.077203,
+  "vout_corner_V_ideal": [
+    4.8629,
+    5.2978
+  ],
+  "ripple_cases": [
+    {
+      "vin_V": 8.0,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.6347,
+      "inductor_ripple_A_pp_ideal": 0.2473,
+      "peak_2A_load_A_ideal": 2.1237
+    },
+    {
+      "vin_V": 10.0,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.5077,
+      "inductor_ripple_A_pp_ideal": 0.3333,
+      "peak_2A_load_A_ideal": 2.1666
+    },
+    {
+      "vin_V": 12.0,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.4231,
+      "inductor_ripple_A_pp_ideal": 0.3905,
+      "peak_2A_load_A_ideal": 2.1953
+    },
+    {
+      "vin_V": 13.8,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.3679,
+      "inductor_ripple_A_pp_ideal": 0.4279,
+      "peak_2A_load_A_ideal": 2.2139
+    },
+    {
+      "vin_V": 15.5,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.3276,
+      "inductor_ripple_A_pp_ideal": 0.4552,
+      "peak_2A_load_A_ideal": 2.2276
+    },
+    {
+      "vin_V": 18.0,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.2821,
+      "inductor_ripple_A_pp_ideal": 0.486,
+      "peak_2A_load_A_ideal": 2.243
+    },
+    {
+      "vin_V": 24.0,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.2116,
+      "inductor_ripple_A_pp_ideal": 0.5337,
+      "peak_2A_load_A_ideal": 2.2669
+    },
+    {
+      "vin_V": 28.0,
+      "vout_ideal_V": 5.0772,
+      "duty_ideal": 0.1813,
+      "inductor_ripple_A_pp_ideal": 0.5542,
+      "peak_2A_load_A_ideal": 2.2771
+    }
+  ],
+  "blocking": [
+    "Reverse polarity, fuse, TVS and input surge protection not yet electrically designed",
+    "Buck load transient/EMI/thermal/feedback stability not tested in CAD or hardware",
+    "TCXO pin 10 manufacturer-specific choice still unknown",
+    "No native KiCad ERC or footprint verification",
+    "No PCB or Gerber, not suitable for PCBWay"
+  ],
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tps54202.pdf",
+    "https://www.ti.com/lit/ug/slvuap3a/slvuap3a.pdf",
+    "https://www.digikey.it/en/products/detail/txc-corporation/7N-12-800MBP-T/5222401"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "revision": "V4.1",
+  "source_board": "V3.8, read-only",
+  "pcb_sha256": "57dd24b13edb5dc987e3ad8cdae0d2d8cc7a1fa3aefb455a63ebc86559eec489",
+  "pcb_outline_mm": [
+    110.0,
+    62.0
+  ],
+  "footprint_count": 15,
+  "signal_nets_count": 8,
+  "segments_count": 44,
+  "vias_count": 64,
+  "ground_zones": {
+    "declared": 4,
+    "refilled": 0
+  },
+  "sma": {
+    "J101": {
+      "rf_pad_diameter_mm": 2.05,
+      "ground_custom_pad_count": 4,
+      "ground_envelope_local_xmin_xmax_ymin_ymax_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_y_span_mm": 7.4,
+      "te_drawing_y_span_mm": 7.76,
+      "vertical_difference_mm": -0.36,
+      "custom_pad_mask_paste_present": true,
+      "rotation_deg": 0,
+      "status": "OPEN - NOT A TE APPROVED FOOTPRINT"
+    },
+    "J102": {
+      "rf_pad_diameter_mm": 2.05,
+      "ground_custom_pad_count": 4,
+      "ground_envelope_local_xmin_xmax_ymin_ymax_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_y_span_mm": 7.4,
+      "te_drawing_y_span_mm": 7.76,
+      "vertical_difference_mm": -0.36,
+      "custom_pad_mask_paste_present": true,
+      "rotation_deg": 180.0,
+      "status": "OPEN - NOT A TE APPROVED FOOTPRINT"
+    },
+    "J103": {
+      "rf_pad_diameter_mm": 2.05,
+      "ground_custom_pad_count": 4,
+      "ground_envelope_local_xmin_xmax_ymin_ymax_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_y_span_mm": 7.4,
+      "te_drawing_y_span_mm": 7.76,
+      "vertical_difference_mm": -0.36,
+      "custom_pad_mask_paste_present": true,
+      "rotation_deg": 0,
+      "status": "OPEN - NOT A TE APPROVED FOOTPRINT"
+    },
+    "J104": {
+      "rf_pad_diameter_mm": 2.05,
+      "ground_custom_pad_count": 4,
+      "ground_envelope_local_xmin_xmax_ymin_ymax_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_y_span_mm": 7.4,
+      "te_drawing_y_span_mm": 7.76,
+      "vertical_difference_mm": -0.36,
+      "custom_pad_mask_paste_present": true,
+      "rotation_deg": 180.0,
+      "status": "OPEN - NOT A TE APPROVED FOOTPRINT"
+    }
+  },
+  "adl5535": {
+    "supply_v_typical": 5.0,
+    "quiescent_current_a_typical": 0.097,
+    "quiescent_input_power_w_typical": 0.485,
+    "power_limit_w_max_abs_rating_with_soldered_paddle": 0.65,
+    "theta_ja_C_per_W_datasheet_reference_with_soldered_paddle": 30.7,
+    "quiescent_delta_T_C_reference_only": 14.889,
+    "paddle_copper_bounds_mm": [
+      67.1,
+      31.9,
+      68.9,
+      35.38
+    ],
+    "paddle_size_mm": [
+      1.8,
+      3.48
+    ],
+    "paste_margin_ratio_setting": -0.1,
+    "via_centers_within_paddle_count": 0,
+    "closest_ground_via": {
+      "center_mm": [
+        68.0,
+        31.05
+      ],
+      "diameter_mm": 0.7,
+      "copper_edge_distance_to_paddle_mm": 0.5,
+      "center_inside_paddle_bounds": false
+    },
+    "explicit_track_paddle_to_nearest_via": true,
+    "thermal_signoff": "OPEN - no thermal/stencil/PCB measurements"
+  },
+  "attenuator": {
+    "network": "R201(shunt)-R203(series)-R202(shunt)",
+    "resistors_ohm": {
+      "R201": 150.0,
+      "R203": 37.4,
+      "R202": 150.0
+    },
+    "reference_impedance_ohm": 50,
+    "ideal_dc_nominal": {
+      "s21": 0.500445,
+      "s11": -0.000445,
+      "insertion_loss_db": 6.012876,
+      "input_return_loss_db": 67.035926
+    },
+    "hypothetical_1percent_corner_analysis": {
+      "assumption": "Illustrative ±1% for each resistor; no manufacturing tolerance approved",
+      "corner_count": 8,
+      "loss_db_min": 5.9553,
+      "loss_db_max": 6.071,
+      "worst_input_return_loss_db": 47.5113
+    },
+    "status": "CALCULATED IDEAL RESISTIVE ONLY - NO RF MEASUREMENT"
+  },
+  "native_kicad_cli_available": false,
+  "native_erc_drc_performed": false,
+  "manufacturing_release": "BLOCKED - no Gerber, no PCBWay, no TX",
+  "limitations": [
+    "not native KiCad ERC or DRC",
+    "does not refill zones",
+    "no complete 3D official TE alignment",
+    "no circuit parasitics, RF impedance extraction or VNA",
+    "theoretical ADL thermal estimate does not validate junction temperature",
+    "no manufacturer-approved BOM tolerance or paste pattern",
+    "no proof of full ground connectivity on filled layers"
+  ]
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<rect width="1200" height="700" fill="#f7fafc"/><text x="45" y="58" fill="#1c3343" font-size="29" font-family="sans-serif" font-weight="bold">S3900E - V1.9 | ALIMENTAZIONE E AFE</text>
+<text x="45" y="90" fill="#6d7a86" font-size="16" font-family="sans-serif">Architettura candidata; netlist KiCad integrata e misure non ancora disponibili</text>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16847f"/></marker></defs>
+<g font-family="sans-serif" fill="#1c3343" text-anchor="middle"><rect x="45" y="156" width="232" height="114" rx="12" fill="#fff" stroke="#a7bbc3"/><text x="161" y="198" font-size="20" font-weight="bold">5V buck (V1.3)</text><text x="161" y="230" font-size="15">5V_RF_PREREGULATED</text>
+<rect x="355" y="156" width="232" height="114" rx="12" fill="#fff" stroke="#a7bbc3"/><text x="471" y="197" font-size="20" font-weight="bold">FB201 + C219/20</text><text x="471" y="230" font-size="14">5V_DIGITAL_FILTERED</text>
+<rect x="688" y="133" width="424" height="158" rx="12" fill="#e8f5f3" stroke="#16847f"/><text x="900" y="167" font-size="20" font-weight="bold">4 x LDO 3.3 V SMD</text><text x="900" y="197" font-size="16">MCU / CODEC IO / CODEC LDOIN</text><text x="900" y="223" font-size="16">CLOCK 12.288 MHz (U203)</text><text x="900" y="254" font-size="13">Separated rails, shared 5V source</text>
+<rect x="55" y="427" width="290" height="128" rx="12" fill="#fff" stroke="#a7bbc3"/><text x="200" y="464" font-size="19" font-weight="bold">Microfono esterno</text><text x="200" y="492" font-size="15">C227 1uF + R207 1k</text><text x="200" y="520" font-size="15">C228 4.7nF</text>
+<rect x="455" y="427" width="290" height="128" rx="12" fill="#fff" stroke="#a7bbc3"/><text x="600" y="464" font-size="19" font-weight="bold">FM discriminatore RAW</text><text x="600" y="492" font-size="15">C229 1uF + R208 1k</text><text x="600" y="520" font-size="15">C230 10nF · CTCSS/DCS</text>
+<rect x="855" y="427" width="290" height="128" rx="12" fill="#e8f5f3" stroke="#16847f"/><text x="1000" y="470" font-size="20" font-weight="bold">CODEC ADC</text><text x="1000" y="501" font-size="16">IN1_L: microfono</text><text x="1000" y="528" font-size="16">IN2_L: FM RAW</text></g>
+<g stroke="#16847f" stroke-width="3" fill="none" marker-end="url(#arr)"><path d="M277 211 H355"/><path d="M587 211 H688"/><path d="M345 490 H385 V605 H885 V545"/><path d="M745 490 H855"/></g>
+<text x="55" y="659" font-size="16" fill="#8b3b37" font-family="sans-serif">BOZZA - richiede ERC/DRC, verifica alimentazioni e misure rumore, spurie, livelli audio</text>
+</svg>

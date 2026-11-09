@@ -1,0 +1,39 @@
+* Superstar 3900 Evolution V6.6: RX-ONLY LC preselector 50 Ohm
+* MODELLO ILLUSTRATIVO con Q e SRF ASSUNTI, NO FAB / NO TX
+* 2uH/17.5pF - 22nH||1591pF - 2uH/17.5pF
+* f0=sqrt(25*29)=26.925824 MHz. Q(L)=60, Q(C)=400 (ASSUNTI)
+* SRF serie 90MHz => Cw=1.563599pF; SRF shunt 350MHz=>Cw=9.398997pF
+* ESR delle capacita' equivalenti a 26.9258 MHz.
+* Confronto PY modello: S21 = 2*V(OUT) se Vs=1V e Rs=RL=50Ohm.
+Vstim SRC 0 AC 1
+R_SOURCE SRC RF_IN 50
+L601 RF_IN L601_N 2u
+R_L601 L601_N RF_PRE_A 5.6393314
+Cw_L601 RF_IN RF_PRE_A 1.5635985p
+R_C601_C602 RF_PRE_A C1_N 0.84440946
+C601 C1_N RF_PRE_MID 16p
+C602 C1_N RF_PRE_MID 1.5p
+L602 RF_PRE_MID L602_N 22n
+R_L602 L602_N 0 0.06203265
+Cw_L602 RF_PRE_MID 0 9.3989966p
+R_C603_C604 RF_PRE_MID C2_N 0.0092879733
+C603 C2_N 0 1500p
+C604 C2_N 0 91p
+L603 RF_PRE_MID L603_N 2u
+R_L603 L603_N RF_PRE_B 5.6393314
+Cw_L603 RF_PRE_MID RF_PRE_B 1.5635985p
+R_C605_C606 RF_PRE_B C3_N 0.84440946
+C605 C3_N RF_OUT 16p
+C606 C3_N RF_OUT 1.5p
+* Capacita' bypass parassita fra i due connettori, SOLO MODELLO
+C_FEED RF_IN RF_OUT 0.05p
+R_LOAD RF_OUT 0 50
+.ac dec 200 20Meg 70Meg
+* ngspice NON ESEGUITO in ambiente chat. Eseguire in seguito e confrontare PY.
+.control
+set noaskquit
+run
+let s21=2*v(RF_OUT)
+plot db(s21)
+.endc
+.end

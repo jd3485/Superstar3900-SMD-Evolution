@@ -1,0 +1,9 @@
+(footprint "L_0603"
+  (layer "F.Cu")
+  (property "Reference" "REF**" (at 0 -2.350 0) (layer "F.SilkS") (effects (font (size 0.9 0.9) (thickness 0.13))) (tstamp "5a7b7600-d8c8-56ae-ad52-e3acfe9bfa4f"))
+  (property "Value" "L_0603" (at 0 2.150 0) (layer "F.Fab") (effects (font (size 0.7 0.7) (thickness 0.12))) (tstamp "0cad9ad9-1d45-55f3-8e3f-93fa24c7c20a"))
+  (attr smd)
+  (fp_rect (start -1.250 -0.750) (end 1.250 0.750) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp "d984d35f-314b-5476-9bf7-4ce30ba0666d"))
+  (pad "2" smd roundrect (at -0.800 0.000) (size 0.850 0.950) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.2) (tstamp "c5675c2f-f7c5-5c5f-a95f-9aefadbbe35d"))
+  (pad "1" smd roundrect (at 0.800 0.000) (size 0.850 0.950) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.2) (tstamp "1542f8bd-33eb-5cb5-9070-548438597287"))
+)

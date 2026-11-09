@@ -1,0 +1,101 @@
+ref,pin_or_terminal,net,role,note
+J801,SIG,IF1_MIXER_RAW,IF_50R,U501 IF pin2 V6.5
+J801,SHIELD,GND_IF,GND,RF local
+R801,1,IF1_MIXER_RAW,TERM,49.9 ohm
+R801,2,GND_IF,TERM,ground
+C801,1,IF1_MIXER_RAW,AC_COUPLE,positive
+C801,2,IF1_VGA_INP,AC_COUPLE,positive
+C802,1,IF1_VGA_INM,AC_REF,negative input coupling
+C802,2,GND_IF,AC_REF,ground
+U801,1,IF1_VGA_INP,INPR,ADI datasheet 16 pin
+U801,2,NC_IF_CURRENT_P,INPD,left NC voltage-input mode
+U801,3,NC_IF_CURRENT_M,INMD,left NC voltage-input mode
+U801,4,IF1_VGA_INM,INMR,ADI voltage input
+U801,5,GND_IF,COMM,ground
+U801,6,GND_IF,MODE,MODE low required for internal AGC
+U801,7,IF1_AGC_NODE,GAIN,short DETO
+U801,8,IF1_AGC_NODE,DETO,"short GAIN, dynamic capacitor"
+U801,9,NC_FBKM,FBKM,no external compensation until qualified
+U801,10,IF1_AGC_OUTM,OUTM,AC coupling after diff buffer TBD
+U801,11,IF1_AGC_OUTP,OUTP,AC coupling after diff buffer TBD
+U801,12,NC_FBKP,FBKP,no external compensation until qualified
+U801,13,IF1_AGC_SET,VAGC,target RMS from VREF divider
+U801,14,IF1_OFSN,OFSN,offset correction cap to VREF
+U801,15,3V3_A_IF_SW,VBAT,analog rail 3.3 V
+U801,16,IF1_VREF_1V5,VREF,internal 1.5 V DO NOT FORCE
+U801,EPAD,GND_IF,EPAD,quiet analog ground
+R802,1,IF1_VREF_1V5,SETPOINT,100k
+R802,2,IF1_AGC_SET,SETPOINT,100k
+R803,1,IF1_AGC_SET,SETPOINT,680k
+R803,2,GND_IF,SETPOINT,680k
+C803,1,IF1_AGC_NODE,DETO_CAP,1uF
+C803,2,GND_IF,DETO_CAP,1uF
+C804,1,IF1_VREF_1V5,BYPASS,100nF
+C804,2,GND_IF,BYPASS,100nF
+C805,1,3V3_A_IF_SW,BYPASS,100nF
+C805,2,GND_IF,BYPASS,100nF
+C806,1,3V3_A_IF_SW,BYPASS,1uF
+C806,2,GND_IF,BYPASS,1uF
+C807,1,IF1_OFSN,OFFSET,100nF
+C807,2,IF1_VREF_1V5,OFFSET,100nF
+J802,P,IF1_AGC_OUTP,OUT,diff
+J802,M,IF1_AGC_OUTM,OUT,diff
+J802,GND,GND_IF,GND,local
+L811,1,IF1_TANK1,TANK,isolated model
+L811,2,GND_IF,GND,isolated model
+C811,1,IF1_TANK1,TANK,isolated model
+C811,2,GND_IF,GND,isolated model
+C812,1,IF1_TANK1,TANK,isolated model
+C812,2,GND_IF,GND,isolated model
+R811,1,IF1_TANK1,TANK,isolated model
+R811,2,GND_IF,GND,isolated model
+B811,IN,IF1_TANK1,BUFFER_HIGH_Z,UNSELECTED_NOT_FINAL
+B811,OUT,IF1_BUFF1_OUT,BUFFER_OUT,UNSELECTED_NOT_FINAL
+L812,1,IF1_TANK2,TANK,isolated model
+L812,2,GND_IF,GND,isolated model
+C813,1,IF1_TANK2,TANK,isolated model
+C813,2,GND_IF,GND,isolated model
+C814,1,IF1_TANK2,TANK,isolated model
+C814,2,GND_IF,GND,isolated model
+R812,1,IF1_TANK2,TANK,isolated model
+R812,2,GND_IF,GND,isolated model
+B812,IN,IF1_TANK2,BUFFER_HIGH_Z,UNSELECTED_NOT_FINAL
+B812,OUT,IF1_BUFF2_OUT,BUFFER_OUT,UNSELECTED_NOT_FINAL
+U802,1,GND_IF,GND,ADE-1 port 1 vendor to confirm for new instance
+U802,2,IF2_455K_RAW,IF,455k
+U802,3,IF1_BUFF2_OUT,RF,IF1 10.695
+U802,4,GND_IF,GND,ground
+U802,5,GND_IF,GND,ground
+U802,6,LO2_10M24_RF,LO,+7 dBm target TBD
+J803,SIG,LO2_10M24_RF,LO_INPUT,frequency mode-dependent
+J803,GND,GND_IF,GND,ground
+J804,SIG,IF2_455K_RAW,IF2_OUTPUT,bandpass bank input
+J804,GND,GND_IF,GND,ground
+SW821,COMMON,IF2_455K_RAW,BANK_IN,nominal 50ohm matching TBD
+SW822,COMMON,IF2_MODE_SELECTED,BANK_OUT,buffer/load TBD
+SW821,FM,IF2_FM_IN,SELECTED_OUT,switch MPN unselected
+F821,IN,IF2_FM_IN,FILTER_IN,pin placeholder not vendor physical
+F821,GND,GND_IF,FILTER_GND,pin placeholder not vendor physical
+F821,OUT,IF2_FM_OUT,FILTER_OUT,pin placeholder not vendor physical
+SW822,FM,IF2_FM_OUT,SELECTED_IN,switch MPN unselected
+SW821,AM,IF2_AM_IN,SELECTED_OUT,switch MPN unselected
+F822,IN,IF2_AM_IN,FILTER_IN,pin placeholder not vendor physical
+F822,GND,GND_IF,FILTER_GND,pin placeholder not vendor physical
+F822,OUT,IF2_AM_OUT,FILTER_OUT,pin placeholder not vendor physical
+SW822,AM,IF2_AM_OUT,SELECTED_IN,switch MPN unselected
+SW821,SSB,IF2_SSB_IN,SELECTED_OUT,switch MPN unselected
+F823,IN,IF2_SSB_IN,FILTER_IN,pin placeholder not vendor physical
+F823,GND,GND_IF,FILTER_GND,pin placeholder not vendor physical
+F823,OUT,IF2_SSB_OUT,FILTER_OUT,pin placeholder not vendor physical
+SW822,SSB,IF2_SSB_OUT,SELECTED_IN,switch MPN unselected
+SW821,CW,IF2_CW_IN,SELECTED_OUT,switch MPN unselected
+F824,IN,IF2_CW_IN,FILTER_IN,pin placeholder not vendor physical
+F824,GND,GND_IF,FILTER_GND,pin placeholder not vendor physical
+F824,OUT,IF2_CW_OUT,FILTER_OUT,pin placeholder not vendor physical
+SW822,CW,IF2_CW_OUT,SELECTED_IN,switch MPN unselected
+J805,IF2,IF2_MODE_SELECTED,DEMOD_IN,no audio codec connection! demod to follow
+J806,LO,IF2_BFO_MODE,BFO,future detector oscillator
+J807,3V3,3V3_A_IF_SW,PWR,RX-only analog
+J807,GND,GND_IF,PWR,ground
+TP801,P,IF1_AGC_OUTP,DNI,no stub
+TP801,M,IF1_AGC_OUTM,DNI,no stub

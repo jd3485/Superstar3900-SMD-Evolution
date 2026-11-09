@@ -1,0 +1,207 @@
+{
+  "version": "V2.8",
+  "previous": "V2.7",
+  "progress_estimate_percent": 35,
+  "model": "Two-port ABCD lumped 50-ohm; Q(L) constant 20/30/60; series resonant branch L||C, capacitive tan_delta=0.001; no PCB parasitics",
+  "designs": {
+    "LP7_2TRAP_9C": {
+      "20": {
+        "loss_max_dB": 1.5492467375859125,
+        "image_rejection_min_dB": 63.03289309738152,
+        "s11_worst_dB": -17.587435690810654
+      },
+      "30": {
+        "loss_max_dB": 1.0562600482602442,
+        "image_rejection_min_dB": 65.3658826805351,
+        "s11_worst_dB": -17.254027149302495
+      },
+      "60": {
+        "loss_max_dB": 0.5632712949608618,
+        "image_rejection_min_dB": 67.81660596792233,
+        "s11_worst_dB": -16.890536967254334
+      },
+      "stress": {
+        "samples": 1200,
+        "pass_rate_exploratory": 0.8341666666666666,
+        "loss_p95_dB": 1.44944023185118,
+        "image_rejection_p05_dB": 58.01593568575901,
+        "s11_p95_dB": -15.031091165130189
+      }
+    },
+    "HP3_LP7_2TRAP_12C": {
+      "20": {
+        "loss_max_dB": 1.8386450272801123,
+        "image_rejection_min_dB": 63.30985597923079,
+        "s11_worst_dB": -13.188208163315736
+      },
+      "30": {
+        "loss_max_dB": 1.2739299696185875,
+        "image_rejection_min_dB": 65.58729564558034,
+        "s11_worst_dB": -12.834734261654264
+      },
+      "60": {
+        "loss_max_dB": 0.7663072978271502,
+        "image_rejection_min_dB": 67.97977093377247,
+        "s11_worst_dB": -12.476203014051865
+      },
+      "stress": {
+        "samples": 1200,
+        "pass_rate_exploratory": 0.765,
+        "loss_p95_dB": 1.6818224651469371,
+        "image_rejection_p05_dB": 58.24183055009366,
+        "s11_p95_dB": -11.154044745543553
+      }
+    }
+  },
+  "n_tracked_component_sections": {
+    "LP7_2TRAP": 7,
+    "HP3_LP7_2TRAP": 10
+  },
+  "n_individual_passives": {
+    "LP7_2TRAP": 9,
+    "HP3_LP7_2TRAP": 12
+  },
+  "design_gate": {
+    "loss_rx_dB_max": 1.5,
+    "image_rejection_dB_min": 60,
+    "s11_dB_max": -10
+  },
+  "stress": {
+    "trials_per_design": 1200,
+    "seed": 390028,
+    "L_tolerance_pct": 5,
+    "C_tolerance_pct": 2,
+    "Q_uniform_hypothesis": [
+      20,
+      60
+    ],
+    "not_yield_estimate": true
+  },
+  "low_frequency_diagnostic": [
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 1.0,
+      "attenuation_dB_Q30": 0.02617967433766314
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 5.0,
+      "attenuation_dB_Q30": 0.15935890470392788
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 10.0,
+      "attenuation_dB_Q30": 0.3117926803502511
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 15.0,
+      "attenuation_dB_Q30": 0.3868946630044301
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 20.0,
+      "attenuation_dB_Q30": 0.5320903513184774
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 25.615,
+      "attenuation_dB_Q30": 0.897660188303565
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 27.0,
+      "attenuation_dB_Q30": 0.9778138857805975
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 28.305,
+      "attenuation_dB_Q30": 1.0562600482602442
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 47.005,
+      "attenuation_dB_Q30": 65.3658826805351
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 48.35,
+      "attenuation_dB_Q30": 71.8721052526217
+    },
+    {
+      "scenario": "LP7_2TRAP_9C",
+      "freq_MHz": 49.695,
+      "attenuation_dB_Q30": 74.52136283511605
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 1.0,
+      "attenuation_dB_Q30": 64.69583066953972
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 5.0,
+      "attenuation_dB_Q30": 22.12424026566504
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 10.0,
+      "attenuation_dB_Q30": 6.884723368113363
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 15.0,
+      "attenuation_dB_Q30": 2.043577846556099
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 20.0,
+      "attenuation_dB_Q30": 0.970991698051529
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 25.615,
+      "attenuation_dB_Q30": 1.2286900683291904
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 27.0,
+      "attenuation_dB_Q30": 1.2563953758111222
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 28.305,
+      "attenuation_dB_Q30": 1.2739299696185875
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 47.005,
+      "attenuation_dB_Q30": 65.58729564558034
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 48.35,
+      "attenuation_dB_Q30": 72.07701773535317
+    },
+    {
+      "scenario": "HP3_LP7_2TRAP_12C",
+      "freq_MHz": 49.695,
+      "attenuation_dB_Q30": 74.71079450244734
+    }
+  ],
+  "blockers": [
+    "HF blocking 1..25 MHz needs measured system-level immunity",
+    "Vendor measured Q(f)/complex S2P at 27-50 MHz",
+    "Parasitic L/C of pads, vias and L-C mutual coupling",
+    "Full analog SPICE and EM PCB simulation",
+    "Native KiCad ERC/DRC and valid footprints",
+    "VNA S11/S21 measured on test coupon, including temperature and tolerances"
+  ],
+  "approval": "NO GO PCBWay; numerical study only",
+  "source_urls": {
+    "Coilcraft 0805CS 220nH": "https://www.coilcraft.com/en-us/products/rf/ceramic-core-chip-inductors/0805-%282012%29/0805cs/0805cs-221/",
+    "Coilcraft 0805CS series": "https://www.coilcraft.com/en-us/files/datasheet/0805CS",
+    "Elliptic parallel resonance series": "https://ham.v4.si/books/microwave/Microstrip%20Filters%20for%20RF-Microwave%20Applications.pdf",
+    "Murata GJM C0G availability": "https://www.trustedparts.com/en/manufacturers/murata/GJM"
+  }
+}

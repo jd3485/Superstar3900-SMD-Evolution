@@ -1,0 +1,65 @@
+Ref,Valore,MPN / specifica,Sezione,Stato,Qtà,Note
+U601,8:1 AF analog mux,"TMUX1308PWR, TSSOP16 PW",MUX,CANDIDATO,1,
+C601,100 nF,MLCC 0805 / tensione verificare,MUX,CANDIDATO,1,Adiacente U601 pin16
+R601,47 kohm,Generico 1% 0603,MUX,CANDIDATO,1,Default mux DISABILITATO
+R602,100 kohm,Generico 1% 0603,MUX,CANDIDATO,1,Address failsafe 000; EN HIGH prevents inadvertent signal
+R603,100 kohm,Generico 1% 0603,MUX,CANDIDATO,1,Address failsafe 000; EN HIGH prevents inadvertent signal
+R604,100 kohm,Generico 1% 0603,MUX,CANDIDATO,1,Address failsafe 000; EN HIGH prevents inadvertent signal
+C610,"1 uF, 10 V",MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,AC coupling; desired nominal 0.2-0.7 Vrms; cap bias
+R610,1 kohm,Generico 1% 0603,AFE,CANDIDATO,1,R input protection/limit
+R620,100 kohm,Generico 1% 0603,AFE,CANDIDATO,1,Bias input mux around 1.65 V
+C611,"1 uF, 10 V",MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,AC coupling; desired nominal 0.2-0.7 Vrms; cap bias
+R611,1 kohm,Generico 1% 0603,AFE,CANDIDATO,1,R input protection/limit
+R621,100 kohm,Generico 1% 0603,AFE,CANDIDATO,1,Bias input mux around 1.65 V
+C612,"1 uF, 10 V",MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,AC coupling; desired nominal 0.2-0.7 Vrms; cap bias
+R612,1 kohm,Generico 1% 0603,AFE,CANDIDATO,1,R input protection/limit
+R622,100 kohm,Generico 1% 0603,AFE,CANDIDATO,1,Bias input mux around 1.65 V
+C613,"1 uF, 10 V",MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,AC coupling; desired nominal 0.2-0.7 Vrms; cap bias
+R613,1 kohm,Generico 1% 0603,AFE,CANDIDATO,1,R input protection/limit
+R623,100 kohm,Generico 1% 0603,AFE,CANDIDATO,1,Bias input mux around 1.65 V
+C614,"1 uF, 10 V",MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,AC coupling; desired nominal 0.2-0.7 Vrms; cap bias
+R614,1 kohm,Generico 1% 0603,AFE,CANDIDATO,1,R input protection/limit
+R624,100 kohm,Generico 1% 0603,AFE,CANDIDATO,1,Bias input mux around 1.65 V
+U602,dual RRIO audio buffers,"TLV9062IDR, SOIC8",AFE,CANDIDATO,1,
+R630,10 kohm,Generico 1% 0603,AFE,CANDIDATO,1,3V3 half rail
+R631,10 kohm,Generico 1% 0603,AFE,CANDIDATO,1,3V3 half rail
+C630,"10 uF, 6.3V",MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,VMID reference low noise; buffer stability verify
+C631,100 nF,MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,U602 supply decoupling
+R632,2.2 kohm,Generico 1% 0603,AFE,CANDIDATO,1,Anti alias 1 pole (nominal 7.23 kHz)
+C632,10 nF,MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,Anti alias AC return to VMID
+C633,1 uF,MLCC 0805 / tensione verificare,AFE,CANDIDATO,1,"AC couple IN1_R, codec biases internally"
+R640,2.2 kohm,Generico 1% 0603,MIC,CANDIDATO,1,Only with supported 2-wire electret capsule / codec MICBIAS config
+R641,1 kohm,Generico 1% 0603,MIC,CANDIDATO,1,Series transient protection
+C640,1 uF,MLCC 0805 / tensione verificare,MIC,CANDIDATO,1,AC coupling to codec pin IN1_L
+C641,1 nF,MLCC 0805 / tensione verificare,MIC,CANDIDATO,1,"RF shunt; high-frequency path, validate mic response"
+U604,Mono class D BTL 10 W rated,"TPA3111D1PWP, HTSSOP28",POWER_AUDIO,CANDIDATO,1,
+RV601,10 kohm log audio,"Mono log potentiometer, footprint TBD",POWER_AUDIO,DA_SELEZIONARE,1,"Front panel vintage volume; endpoint A signal, B AGND, wiper AMP_VOL"
+C650,1 uF,MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Line output codec ac coupled (LOL pin22)
+C651,1 uF,MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,BTL amp input P via 1uF; internal 3V common mode
+C652,1 uF,MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,"Match BTL input impedance, single-ended source proposal"
+R650,100 kohm,Generico 1% 0603,SAFETY,CANDIDATO,1,Default amplifier shutdown; SD HIGH only with safety gating
+R651,10 kohm,Generico 1% 0603,SAFETY,CANDIDATO,1,Open drain fault pull-up to 3.3V; verify AVCC compliance
+C653,1 uF,MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Bootstrap gate driver bias bypass
+C654,1 uF,MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,PLIMIT bypass
+R652,51 kohm,Generico 1% 0603,POWER_AUDIO,CANDIDATO,1,PLIMIT divider study approx 1.96V; not calibrated
+R653,20 kohm,Generico 1% 0603,POWER_AUDIO,CANDIDATO,1,PLIMIT divider study
+C655,"220 uF, 25V",MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Bulk local supply
+C656,"100 nF, 25V",MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Close to PVCC pins; more ceramic may be needed per layout
+C657,"220 nF, 25V",MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Bootstrap near U604; validate per TI EVM
+C658,"220 nF, 25V",MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Bootstrap near U604; validate per TI EVM
+C659,"220 nF, 25V",MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Bootstrap near U604; validate per TI EVM
+C660,"220 nF, 25V",MLCC 0805 / tensione verificare,POWER_AUDIO,CANDIDATO,1,Bootstrap near U604; validate per TI EVM
+FB601,"Power ferrite bead, >2A",Mpn EMI-dependent,POWER_AUDIO,DA_SELEZIONARE,Single BTL leg ferrite; EMI qualification required,
+FB602,"Power ferrite bead, >2A",Mpn EMI-dependent,POWER_AUDIO,DA_SELEZIONARE,Single BTL leg ferrite; EMI qualification required,
+K601,DPDT coil 12V; BBM; >=2A contact,"Relay 12 V DPDT, MPN/THT/SMD TBD",SPEAKER,DA_SELEZIONARE,NC radio / NO PA; switch only with amplifier SD LOW,
+Q601,N-ch MOSFET logic level,"AO3400A, SOT23 (gate drive to qualify)",SPEAKER,CANDIDATO,"Relay coil sink, 3.3V compatible assumed/verify",
+R660,100 ohm,Generico 1% 0603,SPEAKER,CANDIDATO,1,FET gate resistor
+R661,100 kohm,Generico 1% 0603,SPEAKER,CANDIDATO,1,Default relay OFF => internal radio
+D601,Flyback diode,"1N4007, package TBD",SPEAKER,CANDIDATO,1,
+J601,4 vie,Connettore interfaccia da selezionare,INTERFACCIA,NON_SELEZIONATO,1,"MIC + PTT connector, electret default"
+J602,2 vie,Connettore interfaccia da selezionare,INTERFACCIA,NON_SELEZIONATO,1,Internal radio speaker 8 ohm candidate
+J603,2 vie,Connettore interfaccia da selezionare,INTERFACCIA,NON_SELEZIONATO,1,External PA speaker min 8 ohm candidate
+J605,6 vie,Connettore interfaccia da selezionare,INTERFACCIA,NON_SELEZIONATO,1,Five analog receiver demodulation source inputs
+J606,6 vie,Connettore interfaccia da selezionare,INTERFACCIA,NON_SELEZIONATO,1,To separate codec/MCU module; codec itself NOT on this daughterboard
+J604,16 vie,Connettore interfaccia da selezionare,INTERFACCIA,NON_SELEZIONATO,1,MCU / safety / power interface 16-pin; pins preliminary
+R670,0 ohm,Generico 1% 0603,MIC,CANDIDATO,1,Single-point analog reference strap; layout confirm

@@ -1,0 +1,25 @@
+PASS Static audit tied to actual source SHA
+PASS Correct amplifier reference
+PASS Paddle nominal width 1.80 mm
+PASS Paddle nominal height 3.48 mm
+PASS Paddle area 6.264 mm2
+PASS Paddle GND net
+PASS No via centers inside pad
+PASS Nearest via net ground and 0.5 mm copper edge gap
+PASS Nearest via diameter 0.7 mm
+PASS Nearest via drill 0.3 mm
+PASS Four zones enumerated
+PASS All four layer names enumerated
+PASS Four relevant SMA connectors not supply header
+PASS All SMA have four custom GND pads
+PASS No factory CAD validation claimed
+PASS No native KiCad run claimed
+PASS No fabrication approval claimed
+PASS Candidate board identical to V4.5 archive
+PASS KiCad 9-like missing refill flag rejects closed
+PASS Simulated KiCad10 command flags exercised (MOCK ONLY)
+PASS Fake KiCad10 never changes historical PCB
+PASS Tampering target via exists in source
+PASS Mutation with via-in-pad is rejected
+PASS Source still unchanged after mutation test
+SUCCESS 24 static/launcher tests, ZERO native KiCad runs

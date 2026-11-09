@@ -1,0 +1,72 @@
+{
+  "revision": "V1.5",
+  "check_kind": "independent static geometric + hierarchical structure; NOT native KiCad ERC",
+  "files": [
+    {
+      "file": "S3900E_AUX_POWER_V1_5.kicad_sch",
+      "pin_count": 8,
+      "labels": 15,
+      "wires": 11,
+      "no_connects": 0,
+      "unanchored_labels": 0,
+      "unmarked_pins": 0,
+      "misplaced_no_connect": 0,
+      "duplicate_uuid": 0,
+      "duplicate_component_pins": 0
+    },
+    {
+      "file": "01_EFUSE_AUX.kicad_sch",
+      "pin_count": 35,
+      "labels": 29,
+      "wires": 0,
+      "no_connects": 6,
+      "unanchored_labels": 0,
+      "unmarked_pins": 0,
+      "misplaced_no_connect": 0,
+      "duplicate_uuid": 0,
+      "duplicate_component_pins": 0
+    },
+    {
+      "file": "02_BUCK_5V.kicad_sch",
+      "pin_count": 30,
+      "labels": 30,
+      "wires": 0,
+      "no_connects": 0,
+      "unanchored_labels": 0,
+      "unmarked_pins": 0,
+      "misplaced_no_connect": 0,
+      "duplicate_uuid": 0,
+      "duplicate_component_pins": 0
+    },
+    {
+      "file": "03_PLL_LDO_TCXO.kicad_sch",
+      "pin_count": 145,
+      "labels": 126,
+      "wires": 91,
+      "no_connects": 8,
+      "unanchored_labels": 0,
+      "unmarked_pins": 0,
+      "misplaced_no_connect": 0,
+      "duplicate_uuid": 0,
+      "duplicate_component_pins": 0
+    }
+  ],
+  "critical_unresolved": [
+    "J100 physical footprint and current qualification",
+    "F200 validated footprint",
+    "TXC Y1 pin 10 is AFC OR GND depending exact device option",
+    "KiCad native ERC/netlist export unavailable",
+    "Transient/surge/EMI testing not performed",
+    "PCB and hardware prototype absent"
+  ],
+  "hierarchy_children": 3,
+  "J100_electrical_nets": {
+    "1": "PWR_13V8_AUX_RAW",
+    "2": "GND_MAIN"
+  },
+  "PLL_wire_label_splits": 6,
+  "efuse_rtn_separated_by_named_nets": true,
+  "pass_static_geometry": true,
+  "native_erc_executed": false,
+  "native_netlist_export_executed": false
+}

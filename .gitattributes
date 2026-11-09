@@ -1,0 +1,10 @@
+# Mantiene invariati i byte dei file V7.0 su tutti i sistemi (incluso Windows).
+* -text
+*.zip binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pyc binary
+*.kicad_pcb -text
+*.kicad_sch -text

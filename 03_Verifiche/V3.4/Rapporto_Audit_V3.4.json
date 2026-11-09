@@ -1,0 +1,33 @@
+{
+  "revision": "V3.4",
+  "artefatto": "Scheda RF RX sperimentale 50ohm",
+  "controlli_eseguiti": {
+    "integrita_zip_V3.3": true,
+    "parentesi_s_expr": true,
+    "numero_componenti": 15,
+    "numero_reti": 8,
+    "numero_zone_definite_NON_RIEMPITE": 3,
+    "numero_via_gnd": 2,
+    "numero_segmenti_routing": 0,
+    "bordo_110x62_mm": true,
+    "nessuna_rete_trasmissione": true
+  },
+  "stati_non_eseguiti": [
+    "Nessuna apertura KiCad reale (kicad-cli non presente)",
+    "ERC",
+    "DRC",
+    "riempimento zone",
+    "simulazione EM",
+    "confronto meccanico CAD reale dei connettori",
+    "verifica finale produttore PCBWay",
+    "nessuna simulazione termica",
+    "misure VNA"
+  ],
+  "problemi_bloccanti": [
+    "4 footprint SMA usano placeholder non basato su land pattern completo del produttore",
+    "footprint SOT-89/pad termico da correggere",
+    "no routing e zone copper non riempite",
+    "nessuna convalida meccanica/stackup da PCBWay"
+  ],
+  "nota": "Nessun miglioramento NF, S11, S21 o impedenza fisica rivendicato in V3.4."
+}

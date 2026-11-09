@@ -1,0 +1,11 @@
+PASS original SHA invariato
+PASS candidato SHA invariato
+PASS sezioni via aggiunte esattamente sei
+PASS differenza PCB limitata alle sei via GND
+PASS numero via e rete
+PASS centri e diametri dentro il pad
+PASS passo tra vie maggiore del diametro
+PASS studio non autorizzato alla fabbricazione
+PASS nessun ERC/DRC nativo inventato
+PASS nuova cartella schema presente
+RISULTATO: 10/10

@@ -1,0 +1,2 @@
+rev,data,percentuale_completata_stimata,percentuale_residua_stimata,variazione,giustificazione
+V3.8,2026-11-07,37,63,0,"PCB sperimentale più verificabile ma nessun sottosistema fisico validato e DRC KiCad non eseguito"

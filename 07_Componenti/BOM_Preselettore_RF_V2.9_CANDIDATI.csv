@@ -1,0 +1,13 @@
+Ref,Valore,Funzione,Produttore / codifica,Footprint candidato,Stato
+L101,180 nH,"Serie tra RF_IN e RF_NODE1, trappola #1",Coilcraft 0805CS-181XJRC,SMD 0805CS; footprint da validare,CANDIDATO
+C101,56 pF,"Parallelo a L101, trappola #1",C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,CANDIDATO
+C102,120 pF,RF_NODE1 -> GND RF,C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,CANDIDATO
+L103,470 nH,Serie RF,Coilcraft 0805CS-471XJRC,SMD 0805CS; footprint da validare,CANDIDATO
+C104,150 pF,RF_NODE2 -> GND RF,C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,CANDIDATO
+L105,470 nH,Serie RF,Coilcraft 0805CS-471XJRC,SMD 0805CS; footprint da validare,CANDIDATO
+C106,120 pF,RF_NODE3 -> GND RF,C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,CANDIDATO
+L107,180 nH,"Serie RF, trappola #2",Coilcraft 0805CS-181XJRC,SMD 0805CS; footprint da validare,CANDIDATO
+C107,62 pF,"Parallelo a L107, trappola #2",C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,CANDIDATO
+C110,270 pF,HP3 opzionale primo C serie,C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,"OPZIONALE, NON SCHEMATICO"
+L111,330 nH,HP3 opzionale L shunt,Coilcraft 0805CS-331XJRC,SMD 0805CS; footprint da validare,"OPZIONALE, NON SCHEMATICO"
+C112,270 pF,HP3 opzionale secondo C serie,C0G/NP0 50 V; MPN da assegnare,0603 1608M SMD,"OPZIONALE, NON SCHEMATICO"

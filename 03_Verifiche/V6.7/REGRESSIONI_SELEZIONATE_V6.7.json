@@ -1,0 +1,86 @@
+{
+  "suites": [
+    {
+      "rev": "V5.9",
+      "file": "test_progettazione_sistema_v59.py",
+      "status": "PASS",
+      "count": 20,
+      "seconds": 0.658,
+      "tail": "----------------------------------------------------------------------\nRan 20 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "rev": "V6.0",
+      "file": "test_audio_pa_v60.py",
+      "status": "PASS",
+      "count": 35,
+      "seconds": 0.753,
+      "tail": "----------------------------------------------------------------------\nRan 35 tests in 0.026s\n\nOK\n"
+    },
+    {
+      "rev": "V6.1",
+      "file": "test_mcu_pannello_v61.py",
+      "status": "PASS",
+      "count": 55,
+      "seconds": 0.813,
+      "tail": "----------------------------------------------------------------------\nRan 55 tests in 0.060s\n\nOK\n"
+    },
+    {
+      "rev": "V6.1",
+      "file": "test_integrazione_audio_v61.py",
+      "status": "PASS",
+      "count": 5,
+      "seconds": 0.705,
+      "tail": "----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "rev": "V6.2",
+      "file": "test_interblocchi_v62.py",
+      "status": "PASS",
+      "count": 31,
+      "seconds": 0.806,
+      "tail": "----------------------------------------------------------------------\nRan 31 tests in 0.097s\n\nOK\n"
+    },
+    {
+      "rev": "V6.3",
+      "file": "test_alimentazioni_v63.py",
+      "status": "PASS",
+      "count": 45,
+      "seconds": 0.675,
+      "tail": "----------------------------------------------------------------------\nRan 45 tests in 0.007s\n\nOK\n"
+    },
+    {
+      "rev": "V6.4",
+      "file": "test_pll_v64.py",
+      "status": "PASS",
+      "count": 60,
+      "seconds": 0.756,
+      "tail": "----------------------------------------------------------------------\nRan 60 tests in 0.055s\n\nOK\n"
+    },
+    {
+      "rev": "V6.5",
+      "file": "test_mixer_fi_v65.py",
+      "status": "PASS",
+      "count": 50,
+      "seconds": 1.286,
+      "tail": "----------------------------------------------------------------------\nRan 50 tests in 0.593s\n\nOK\n"
+    },
+    {
+      "rev": "V6.6",
+      "file": "test_preselettore_lc_v66.py",
+      "status": "PASS",
+      "count": 50,
+      "seconds": 0.732,
+      "tail": "----------------------------------------------------------------------\nRan 50 tests in 0.008s\n\nOK\n"
+    },
+    {
+      "rev": "V6.7",
+      "file": "test_frontend_rx_v67.py",
+      "status": "PASS",
+      "count": 60,
+      "seconds": 0.689,
+      "tail": "----------------------------------------------------------------------\nRan 60 tests in 0.003s\n\nOK\n"
+    }
+  ],
+  "all_selected_pass": true,
+  "old_history_not_full": "only recent suites V5.9-V6.7"
+}

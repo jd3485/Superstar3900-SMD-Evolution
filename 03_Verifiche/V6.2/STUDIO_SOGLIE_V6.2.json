@@ -1,0 +1,23 @@
+{
+  "simulator": "Monte Carlo analytic dividers, no SPICE",
+  "n": 50000,
+  "assumptions": {
+    "R_tolerance_fraction": 0.01,
+    "Vref_fraction": 0.01,
+    "other_TPS3700_errors_not_modeled": true
+  },
+  "uv_v": {
+    "minimum": 11.552508735847642,
+    "maximum": 12.22380838754163,
+    "mean": 11.880489646857868,
+    "nominal": 11.88
+  },
+  "ov_v": {
+    "minimum": 14.919808709467583,
+    "maximum": 15.804724582375634,
+    "mean": 15.360029447830694,
+    "nominal": 15.36
+  },
+  "at_13_8_V_ideal": true,
+  "hardware_qualification": false
+}

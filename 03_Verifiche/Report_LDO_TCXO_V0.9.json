@@ -1,0 +1,46 @@
+{
+  "revision": "V0.9",
+  "test_scope": "PYTHON STRUCTURE AND ENGINEERING ARITHMETIC ONLY",
+  "baseline_six_software_suites": "RE-RUN_SEPARATELY",
+  "balanced_parentheses": true,
+  "instances_total": 46,
+  "new_instances": 20,
+  "parts_unique": true,
+  "pll_oscinm_explicit_no_connect": true,
+  "separated_LDO_rails": true,
+  "ldo_pinmap_verified_TI_DBV": {
+    "IN": 1,
+    "GND": 2,
+    "EN": 3,
+    "NC": 4,
+    "OUT": 5
+  },
+  "tcxo_pinmap_based_on_generic_TXC_7N": "PART_NUMBER_PIN10_STILL_OPEN",
+  "nominal_5V_3p3_pll_90mA_diss_W": 0.153,
+  "nominal_5V_3p3_tcxo_10mA_diss_W": 0.017,
+  "thermal_example_LDO_100mA_5p25V_3p3_theta199p6_rise_C": 38.92,
+  "tcxo_max_lo_temp_stability_only_0p28ppm_hz": 10.92,
+  "tcxo_temp_stability_ref_0p28ppm_hz": 3.58,
+  "kicad_cli_present": false,
+  "erc_ran": false,
+  "spice_transient_ran": false,
+  "pcb_exists": false,
+  "firmware_completed": false,
+  "blocking": [
+    "upstream 13.8V -> 5V supply absent",
+    "TCXO pin 10 exact grade",
+    "TCXO footprint not qualified",
+    "KiCad CLI ERC not available",
+    "phase noise and input edge need hardware checks",
+    "pin-to-net audit by CAD pending",
+    "no validated PLL loop filter",
+    "no RF/PA/ATU/whole radio schema"
+  ],
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/lmx2572.pdf",
+    "https://www.ti.com/lit/ds/symlink/tps7a20.pdf",
+    "https://www.ti.com/product/TPS7A20/part-details/TPS7A2033PDBVR",
+    "https://www.digikey.com/en/products/detail/txc-corporation/7N-12-800MBP-T/5222401",
+    "https://www.nyang-tech.com/datasheet/1164170051/TXC-Corporation/7N-12.800MBP-T.pdf"
+  ]
+}

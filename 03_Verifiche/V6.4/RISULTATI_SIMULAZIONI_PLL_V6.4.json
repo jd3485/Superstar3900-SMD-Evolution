@@ -1,0 +1,77 @@
+{
+  "revisione": "V6.4",
+  "canali": 270,
+  "bande": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "alpha_count": 30,
+  "rx_min_hz": 25615000,
+  "rx_max_hz": 28305000,
+  "lo_min_hz": 36310000,
+  "lo_max_hz": 39000000,
+  "vco_min_hz": 4647680000,
+  "vco_max_hz": 4992000000,
+  "pll_n_min": 3631,
+  "pll_n_max": 3900,
+  "image_min_hz": 47005000,
+  "image_max_hz": 49695000,
+  "pfd_hz": 1280000,
+  "ref_hz": 12800000,
+  "r_div": 10,
+  "out_div": 128,
+  "integer_n_all": true,
+  "image_offset_hz": 21390000,
+  "tx_disabled_all": true,
+  "jitter_phase_noise_spectrum": "NOT_RUN_MODEL_UNAVAILABLE",
+  "tics_pro_register_profile": "NOT_GENERATED",
+  "kicad_erc_drc": "NOT_RUN_NOT_INSTALLED",
+  "spice_loop_transient": "NOT_RUN_VENDOR_MODEL_NOT_AVAILABLE",
+  "tcxo_scenario": {
+    "samples": 25000,
+    "scenario_ppm_uniform": [
+      -2.5,
+      2.5
+    ],
+    "seed": 6402,
+    "max_absolute_lo_error_hz_sample": 97.477813,
+    "p99_abs_lo_error_hz_sample": 94.054093,
+    "worst_sample_metadata": {
+      "banda": "F",
+      "canale": "40",
+      "ppm": -2.499431105212137,
+      "lo_hz": 39000000
+    },
+    "absolute_max_bound_for_all_channels_hz": 97.5,
+    "note": "Scenario ipotetico TCXO ±2.5ppm. Esclude deriva IF, rumore PLL e offset di riferimento misurati."
+  },
+  "pll_3v3_ldo_nominal_105ma_ambient85": {
+    "vin_v": 5.0,
+    "vout_v": 3.3,
+    "load_ma_assumed": 105,
+    "loss_w_ideal": 0.1785,
+    "theta_ja_k_per_w_assumed_conservative": 199.6,
+    "ambient_c_assumed": 85,
+    "tj_ideal_c": 120.629,
+    "thermal_125c_limit_exceeded": false,
+    "note": "RthetaJA conservativa illustrativa; nessuna valutazione termica reale PCB/part number/footprint."
+  },
+  "pll_3v3_ldo_design_150ma_ambient85": {
+    "vin_v": 5.0,
+    "vout_v": 3.3,
+    "load_ma_assumed": 150,
+    "loss_w_ideal": 0.255,
+    "theta_ja_k_per_w_assumed_conservative": 199.6,
+    "ambient_c_assumed": 85,
+    "tj_ideal_c": 135.898,
+    "thermal_125c_limit_exceeded": true,
+    "note": "RthetaJA conservativa illustrativa; nessuna valutazione termica reale PCB/part number/footprint."
+  },
+  "note_alimentazione": "La V6.3 gia prevedeva 150 mA nominali PLL_LO sul 5V_RF. La V6.4 ripartisce quel budget e richiede LDO dedicato 3V3_PLL; non sommare due volte. A 150 mA e 85C l esempio termico puo superare 125C: BLOCCO TERMICO APERTO.",
+  "rf_pa_connected": false,
+  "fab_authorized": false
+}

@@ -1,0 +1,1128 @@
+{
+  "version": "V5.9",
+  "status": "PRELIMINARY_ARCHITECTURE_NOT_ERC_DRC_NOT_FAB",
+  "scope": "Interconnessioni LOGICHE, non pinout fisico o netlist per fabbricazione",
+  "date": "2026-11-09",
+  "device_candidates": {
+    "MCU": "STM32G474RE",
+    "PLL": "LMX2572",
+    "CODEC": "TLV320AIC3204"
+  },
+  "clock_audio": {
+    "mclk_hz": 12288000,
+    "sampling_hz": 48000,
+    "slots": 2,
+    "bits_per_slot": 32,
+    "bit_clock_hz": 3072000,
+    "master": "CODEC",
+    "slave": "MCU"
+  },
+  "rx_first_if_hz": 10695000,
+  "rx_lo_injection": "high_side",
+  "modules": {
+    "ANT": {
+      "name": "Presa antenna SO-239",
+      "role": "connector",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        }
+      }
+    },
+    "TR_SWITCH": {
+      "name": "Scambio antenna RX/TX ad interblocco",
+      "role": "rf_switch",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "ant": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "rx": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        },
+        "tx": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "tx_permit_hw": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "RX_BPF": {
+      "name": "Preselettori RF commutati A-F",
+      "role": "rx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf_in": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "out": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        }
+      }
+    },
+    "RX_LNA": {
+      "name": "LNA con bypass/attenuatore",
+      "role": "rx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf_in": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "out": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        }
+      }
+    },
+    "RX_MIX": {
+      "name": "Primo mixer supereterodina",
+      "role": "rx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf_in": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "lo": {
+          "direction": "in",
+          "signal_type": "LO_50"
+        },
+        "if1": {
+          "direction": "out",
+          "signal_type": "IF_10M695"
+        }
+      }
+    },
+    "RX_IF": {
+      "name": "FI1 10,695 MHz; eventuale 455 kHz",
+      "role": "rx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "if1": {
+          "direction": "in",
+          "signal_type": "IF_10M695"
+        },
+        "if_demod": {
+          "direction": "out",
+          "signal_type": "IF_10M695"
+        }
+      }
+    },
+    "RX_DEMOD": {
+      "name": "Demodulatori AM/FM/USB/LSB/CW",
+      "role": "rx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "if_in": {
+          "direction": "in",
+          "signal_type": "IF_10M695"
+        },
+        "am_af": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "fm_af": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "usb_af": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "lsb_af": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "cw_af": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        }
+      }
+    },
+    "AF_MUX": {
+      "name": "Selettore analogico audio RX 5:1",
+      "role": "audio",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "am_in": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "fm_in": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "usb_in": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "lsb_in": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "cw_in": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "rx_selected": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "select": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "MIC_PRE": {
+      "name": "Microfono / bias / preamplificatore",
+      "role": "audio",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "mic_af": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        }
+      }
+    },
+    "CODEC": {
+      "name": "TLV320AIC3204; ADC L MIC, ADC R RX",
+      "role": "audio",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "adc_r": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "adc_l": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "mclk": {
+          "direction": "in",
+          "signal_type": "CLK_AUDIO"
+        },
+        "bclk": {
+          "direction": "out",
+          "signal_type": "CLK_AUDIO"
+        },
+        "wclk": {
+          "direction": "out",
+          "signal_type": "CLK_AUDIO"
+        },
+        "adc_digital": {
+          "direction": "out",
+          "signal_type": "AUDIO_DIGITAL"
+        },
+        "sai_tx": {
+          "direction": "in",
+          "signal_type": "AUDIO_DIGITAL"
+        },
+        "dac_l": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "dac_r": {
+          "direction": "out",
+          "signal_type": "AF_ANALOG"
+        },
+        "supply": {
+          "direction": "in",
+          "signal_type": "POWER_LOW"
+        },
+        "i2c": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "AUDIO_CLOCK": {
+      "name": "Clock MCLK comune 12,288 MHz",
+      "role": "audio",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "mclk": {
+          "direction": "out",
+          "signal_type": "CLK_AUDIO"
+        }
+      }
+    },
+    "MCU": {
+      "name": "STM32G474RE e DSP/controllo",
+      "role": "digital",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "sai_bclk": {
+          "direction": "in",
+          "signal_type": "CLK_AUDIO"
+        },
+        "sai_wclk": {
+          "direction": "in",
+          "signal_type": "CLK_AUDIO"
+        },
+        "sai_rx": {
+          "direction": "in",
+          "signal_type": "AUDIO_DIGITAL"
+        },
+        "dac_digital": {
+          "direction": "out",
+          "signal_type": "AUDIO_DIGITAL"
+        },
+        "ui_inputs": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "pll_spi": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "tx_request": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "vdd": {
+          "direction": "in",
+          "signal_type": "POWER_3V3"
+        },
+        "display": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "meter_adc": {
+          "direction": "in",
+          "signal_type": "MEAS_ANALOG"
+        },
+        "audio_select": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "amp_select": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "codec_control": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "atu_control": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "PLL": {
+      "name": "LMX2572, TCXO RF e buffer LO",
+      "role": "rf_clock",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "lo_rx": {
+          "direction": "out",
+          "signal_type": "LO_50"
+        },
+        "lo_tx": {
+          "direction": "out",
+          "signal_type": "LO_50"
+        },
+        "spi": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "lock": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "vdd": {
+          "direction": "in",
+          "signal_type": "POWER_3V3"
+        }
+      }
+    },
+    "AUDIO_OUT": {
+      "name": "Amplificatore e commutazione altoparlanti",
+      "role": "audio",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "program_in": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "radio_speaker": {
+          "direction": "out",
+          "signal_type": "AF_POWER"
+        },
+        "pa_speaker": {
+          "direction": "out",
+          "signal_type": "AF_POWER"
+        },
+        "vdd": {
+          "direction": "in",
+          "signal_type": "POWER_AUDIO"
+        },
+        "route": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "RADIO_SPK": {
+      "name": "Altoparlante radio",
+      "role": "connector",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "in": {
+          "direction": "in",
+          "signal_type": "AF_POWER"
+        }
+      }
+    },
+    "PA_SPK": {
+      "name": "Presa altoparlante PA esterno",
+      "role": "connector",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "in": {
+          "direction": "in",
+          "signal_type": "AF_POWER"
+        }
+      }
+    },
+    "TX_IF_MOD": {
+      "name": "Modulazione IF AM/FM/SSB candidata",
+      "role": "tx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "mic_mod_af": {
+          "direction": "in",
+          "signal_type": "AF_ANALOG"
+        },
+        "if_tx": {
+          "direction": "out",
+          "signal_type": "IF_10M695"
+        },
+        "mute_hw": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "dac_mute": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "TX_MIX": {
+      "name": "Conversione TX a RF CB, filtraggio immagini",
+      "role": "tx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "if": {
+          "direction": "in",
+          "signal_type": "IF_10M695"
+        },
+        "lo": {
+          "direction": "in",
+          "signal_type": "LO_50"
+        },
+        "rf": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        }
+      }
+    },
+    "TX_DRIVER": {
+      "name": "Driver RF candidato",
+      "role": "tx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf_in": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "rf": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        }
+      }
+    },
+    "TX_PA": {
+      "name": "Finale RF, polarizzazione e dissipazione",
+      "role": "tx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf_in": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "rf": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        },
+        "enable_hw": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "vdd": {
+          "direction": "in",
+          "signal_type": "POWER_13V8"
+        },
+        "temp_fault": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "TX_LPF": {
+      "name": "Filtro armoniche TX",
+      "role": "tx",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rf_in": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "rf": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        }
+      }
+    },
+    "ATU_METER": {
+      "name": "ATU bypass/relay e misura potenza/ROS",
+      "role": "rf",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "tx_rf": {
+          "direction": "in",
+          "signal_type": "RF_50"
+        },
+        "ant_rf": {
+          "direction": "out",
+          "signal_type": "RF_50"
+        },
+        "swr_fault": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "measurements": {
+          "direction": "out",
+          "signal_type": "MEAS_ANALOG"
+        },
+        "tune_control": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "PWR": {
+      "name": "Ingresso 13,8 V e domini di potenza protetti",
+      "role": "power",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "rail_3v3": {
+          "direction": "out",
+          "signal_type": "POWER_3V3"
+        },
+        "rail_3v3_rf": {
+          "direction": "out",
+          "signal_type": "POWER_3V3"
+        },
+        "rail_codec": {
+          "direction": "out",
+          "signal_type": "POWER_LOW"
+        },
+        "rail_audio": {
+          "direction": "out",
+          "signal_type": "POWER_AUDIO"
+        },
+        "rail_pa": {
+          "direction": "out",
+          "signal_type": "POWER_13V8"
+        },
+        "power_good": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "SAFETY": {
+      "name": "Interlock HW RF, indipendente da firmware",
+      "role": "safety",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "ptt_hw": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "pll_lock": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "tx_rf_enable": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "tx_mute": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "request_sw": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "swr": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "power_ok": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "temperature": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "pa_mode_hw": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        },
+        "tr_inhibit": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "tx_dac_mute": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "PANEL": {
+      "name": "Comandi vintage, ALFA, CH9, PA e PTT",
+      "role": "ui",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "switches": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "ptt_raw": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        },
+        "pa_hard": {
+          "direction": "out",
+          "signal_type": "LOGIC"
+        }
+      }
+    },
+    "METERS": {
+      "name": "Frequenza, S, PEP, ROS, modulazione",
+      "role": "ui",
+      "status": "DA_PROGETTARE_O_COMPLETARE",
+      "ports": {
+        "input": {
+          "direction": "in",
+          "signal_type": "LOGIC"
+        }
+      }
+    }
+  },
+  "connections": [
+    {
+      "id": "S001",
+      "from": "ANT.rf",
+      "to": "TR_SWITCH.ant",
+      "signal_type": "RF_50",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Presa d’antenna comune RX/TX"
+    },
+    {
+      "id": "S002",
+      "from": "TR_SWITCH.rx",
+      "to": "RX_BPF.rf_in",
+      "signal_type": "RF_50",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Scambio antenna RX"
+    },
+    {
+      "id": "S003",
+      "from": "RX_BPF.out",
+      "to": "RX_LNA.rf_in",
+      "signal_type": "RF_50",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Preselezione prima del guadagno"
+    },
+    {
+      "id": "S004",
+      "from": "RX_LNA.out",
+      "to": "RX_MIX.rf_in",
+      "signal_type": "RF_50",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Bypass LNA e attenuatore candidati"
+    },
+    {
+      "id": "S005",
+      "from": "PLL.lo_rx",
+      "to": "RX_MIX.lo",
+      "signal_type": "LO_50",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "LO alto 36,310–39,000 MHz candidato"
+    },
+    {
+      "id": "S006",
+      "from": "RX_MIX.if1",
+      "to": "RX_IF.if1",
+      "signal_type": "IF_10M695",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "FI nominale 10,695 MHz"
+    },
+    {
+      "id": "S007",
+      "from": "RX_IF.if_demod",
+      "to": "RX_DEMOD.if_in",
+      "signal_type": "IF_10M695",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Rami selettivi per modalità"
+    },
+    {
+      "id": "S008",
+      "from": "RX_DEMOD.am_af",
+      "to": "AF_MUX.am_in",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_AM",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Audio AM selezionato"
+    },
+    {
+      "id": "S009",
+      "from": "RX_DEMOD.fm_af",
+      "to": "AF_MUX.fm_in",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_FM",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Audio discriminatore FM"
+    },
+    {
+      "id": "S010",
+      "from": "RX_DEMOD.usb_af",
+      "to": "AF_MUX.usb_in",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_USB",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "USB prodotto/BFO"
+    },
+    {
+      "id": "S011",
+      "from": "RX_DEMOD.lsb_af",
+      "to": "AF_MUX.lsb_in",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_LSB",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "LSB prodotto/BFO"
+    },
+    {
+      "id": "S012",
+      "from": "RX_DEMOD.cw_af",
+      "to": "AF_MUX.cw_in",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_CW",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "CW filtrato / BFO"
+    },
+    {
+      "id": "S013",
+      "from": "AF_MUX.rx_selected",
+      "to": "CODEC.adc_r",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "ADC destro per audio ricezione; non MIC"
+    },
+    {
+      "id": "S014",
+      "from": "MIC_PRE.mic_af",
+      "to": "CODEC.adc_l",
+      "signal_type": "AF_ANALOG",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "ADC sinistro riservato MIC/VOX"
+    },
+    {
+      "id": "S015",
+      "from": "AUDIO_CLOCK.mclk",
+      "to": "CODEC.mclk",
+      "signal_type": "CLK_AUDIO",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "12,288 MHz; codec master BCLK/WCLK candidato"
+    },
+    {
+      "id": "S016",
+      "from": "CODEC.bclk",
+      "to": "MCU.sai_bclk",
+      "signal_type": "CLK_AUDIO",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Codec master SAI clock, STM32 slave"
+    },
+    {
+      "id": "S017",
+      "from": "CODEC.wclk",
+      "to": "MCU.sai_wclk",
+      "signal_type": "CLK_AUDIO",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "48 kHz stereo, 2 x 32 bit"
+    },
+    {
+      "id": "S018",
+      "from": "CODEC.adc_digital",
+      "to": "MCU.sai_rx",
+      "signal_type": "AUDIO_DIGITAL",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "ADC L MIC / ADC R RX"
+    },
+    {
+      "id": "S019",
+      "from": "MCU.dac_digital",
+      "to": "CODEC.sai_tx",
+      "signal_type": "AUDIO_DIGITAL",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "DSP audio->DAC L/R"
+    },
+    {
+      "id": "S020",
+      "from": "CODEC.dac_l",
+      "to": "AUDIO_OUT.program_in",
+      "signal_type": "AF_ANALOG",
+      "active_when": "RX_OR_PA",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "DAC L per RX / PA esterna"
+    },
+    {
+      "id": "S021",
+      "from": "AUDIO_OUT.radio_speaker",
+      "to": "RADIO_SPK.in",
+      "signal_type": "AF_POWER",
+      "active_when": "RX_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Alt. radio e volume"
+    },
+    {
+      "id": "S022",
+      "from": "AUDIO_OUT.pa_speaker",
+      "to": "PA_SPK.in",
+      "signal_type": "AF_POWER",
+      "active_when": "PA_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Altoparlante PA dedicato"
+    },
+    {
+      "id": "S023",
+      "from": "CODEC.dac_r",
+      "to": "TX_IF_MOD.mic_mod_af",
+      "signal_type": "AF_ANALOG",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "DAC R modulazione, HW mute indipendente"
+    },
+    {
+      "id": "S024",
+      "from": "TX_IF_MOD.if_tx",
+      "to": "TX_MIX.if",
+      "signal_type": "IF_10M695",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "AM/FM/SSB: catene IF da completare"
+    },
+    {
+      "id": "S025",
+      "from": "PLL.lo_tx",
+      "to": "TX_MIX.lo",
+      "signal_type": "LO_50",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "LO potenzialmente condiviso, frequenze TX da chiudere"
+    },
+    {
+      "id": "S026",
+      "from": "TX_MIX.rf",
+      "to": "TX_DRIVER.rf_in",
+      "signal_type": "RF_50",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Filtraggio immagini necessaria"
+    },
+    {
+      "id": "S027",
+      "from": "TX_DRIVER.rf",
+      "to": "TX_PA.rf_in",
+      "signal_type": "RF_50",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Drive e polarizzazione da dimensionare"
+    },
+    {
+      "id": "S028",
+      "from": "TX_PA.rf",
+      "to": "TX_LPF.rf_in",
+      "signal_type": "RF_50",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Filtro armoniche obbligatorio"
+    },
+    {
+      "id": "S029",
+      "from": "TX_LPF.rf",
+      "to": "ATU_METER.tx_rf",
+      "signal_type": "RF_50",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Sensori, accordatore e bypass"
+    },
+    {
+      "id": "S030",
+      "from": "ATU_METER.ant_rf",
+      "to": "TR_SWITCH.tx",
+      "signal_type": "RF_50",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "TX dopo LPF/ATU verso antenna"
+    },
+    {
+      "id": "S031",
+      "from": "PANEL.switches",
+      "to": "MCU.ui_inputs",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Banda, canale, ALFA, CH9, modo"
+    },
+    {
+      "id": "S032",
+      "from": "PANEL.ptt_raw",
+      "to": "SAFETY.ptt_hw",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "PTT entra nel ramo HW fail-closed"
+    },
+    {
+      "id": "S033",
+      "from": "MCU.pll_spi",
+      "to": "PLL.spi",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Programmazione PLL con mute fino al lock"
+    },
+    {
+      "id": "S034",
+      "from": "PLL.lock",
+      "to": "SAFETY.pll_lock",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Lock reale al gate HW"
+    },
+    {
+      "id": "S035",
+      "from": "SAFETY.tx_rf_enable",
+      "to": "TX_PA.enable_hw",
+      "signal_type": "LOGIC",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Segnale HW separato dal consenso SW"
+    },
+    {
+      "id": "S036",
+      "from": "SAFETY.tx_mute",
+      "to": "TX_IF_MOD.mute_hw",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Default mute/modulatore interdetto"
+    },
+    {
+      "id": "S037",
+      "from": "MCU.tx_request",
+      "to": "SAFETY.request_sw",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Richiesta logica, non abilitazione TX"
+    },
+    {
+      "id": "S038",
+      "from": "ATU_METER.swr_fault",
+      "to": "SAFETY.swr",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "ROS elevato inibisce TX"
+    },
+    {
+      "id": "S039",
+      "from": "PWR.rail_3v3",
+      "to": "MCU.vdd",
+      "signal_type": "POWER_3V3",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Alimentazione logica protetta"
+    },
+    {
+      "id": "S040",
+      "from": "PWR.rail_3v3_rf",
+      "to": "PLL.vdd",
+      "signal_type": "POWER_3V3",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "RF regolata separatamente"
+    },
+    {
+      "id": "S041",
+      "from": "PWR.rail_codec",
+      "to": "CODEC.supply",
+      "signal_type": "POWER_LOW",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Rail codec da definire nei dettagli"
+    },
+    {
+      "id": "S042",
+      "from": "PWR.rail_audio",
+      "to": "AUDIO_OUT.vdd",
+      "signal_type": "POWER_AUDIO",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Alimentatore ampli audio da dimensionare"
+    },
+    {
+      "id": "S043",
+      "from": "PWR.rail_pa",
+      "to": "TX_PA.vdd",
+      "signal_type": "POWER_13V8",
+      "active_when": "TX_CERTIFIED_ONLY",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Rail finale attraverso protezione HW"
+    },
+    {
+      "id": "S044",
+      "from": "PWR.power_good",
+      "to": "SAFETY.power_ok",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "PWR good HW, default OFF"
+    },
+    {
+      "id": "S045",
+      "from": "TX_PA.temp_fault",
+      "to": "SAFETY.temperature",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Protezione termica HW"
+    },
+    {
+      "id": "S046",
+      "from": "MCU.display",
+      "to": "METERS.input",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Frequenza, S, ROS, PEP, modulazione"
+    },
+    {
+      "id": "S047",
+      "from": "ATU_METER.measurements",
+      "to": "MCU.meter_adc",
+      "signal_type": "MEAS_ANALOG",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "PWR/SWR prima di calibrazione"
+    },
+    {
+      "id": "S048",
+      "from": "MCU.audio_select",
+      "to": "AF_MUX.select",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Seleziona 1/5 ingressi ADC destro"
+    },
+    {
+      "id": "S049",
+      "from": "MCU.amp_select",
+      "to": "AUDIO_OUT.route",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "PA solo audio, RF off hardware"
+    },
+    {
+      "id": "S050",
+      "from": "MCU.codec_control",
+      "to": "CODEC.i2c",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Codec I2C e reset/clock sequenza"
+    },
+    {
+      "id": "S051",
+      "from": "MCU.atu_control",
+      "to": "ATU_METER.tune_control",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Bypass default; accordo solo con safety"
+    },
+    {
+      "id": "S052",
+      "from": "PANEL.pa_hard",
+      "to": "SAFETY.pa_mode_hw",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "PA disabilita fisicamente TX"
+    },
+    {
+      "id": "S053",
+      "from": "SAFETY.tr_inhibit",
+      "to": "TR_SWITCH.tx_permit_hw",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Scambio RF TX solo con consenso HW"
+    },
+    {
+      "id": "S054",
+      "from": "SAFETY.tx_dac_mute",
+      "to": "TX_IF_MOD.dac_mute",
+      "signal_type": "LOGIC",
+      "active_when": "always",
+      "status": "CONTRATTO_LOGICO_CANDIDATO",
+      "comment": "Secondo interblocco mute audio TX"
+    }
+  ],
+  "tx_default": "HW_INHIBITED",
+  "implementation_status": "Module schemas and physical connector pinouts NOT COMPLETE"
+}

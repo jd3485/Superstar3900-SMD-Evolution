@@ -1,0 +1,20 @@
+ref,value,net1,net2,footprint,status,reason
+FB201,600R@100MHz_CANDIDATE,5V_RF_PREREGULATED,5V_DIGITAL_FILTERED,TBD,CANDIDATE NOT VALIDATED,Feeder isolator; choose ferrite after current and impedance vs frequency curves
+C219,10uF,5V_DIGITAL_FILTERED,GND,TBD,CANDIDATE NOT VALIDATED,"5V filtered bus local bulk; X7R, derating TBD"
+C220,100nF,5V_DIGITAL_FILTERED,GND,TBD,CANDIDATE NOT VALIDATED,5V filtered bus high freq
+U204,TPS7A2033PDBVR,5V_DIGITAL_FILTERED,3V3_MCU,SOT-23-5 pending exact pin-number footprint,CANDIDATE NOT VALIDATED,3.3V supply; thermal budget & dropout pending
+U205,TPS7A2033PDBVR,5V_DIGITAL_FILTERED,3V3_CODEC_IO,SOT-23-5 pending exact pin-number footprint,CANDIDATE NOT VALIDATED,3.3V supply; thermal budget & dropout pending
+U206,TPS7A2033PDBVR,5V_DIGITAL_FILTERED,3V3_CODEC_LDOIN,SOT-23-5 pending exact pin-number footprint,CANDIDATE NOT VALIDATED,3.3V supply; thermal budget & dropout pending
+C221,1uF,5V_DIGITAL_FILTERED,GND,TBD,CANDIDATE NOT VALIDATED,LDO input bypass; place at pin 1
+C222,1uF,3V3_MCU,GND,TBD,CANDIDATE NOT VALIDATED,LDO output bypass; place at pin 5
+C223,1uF,5V_DIGITAL_FILTERED,GND,TBD,CANDIDATE NOT VALIDATED,LDO input bypass; place at pin 1
+C224,1uF,3V3_CODEC_IO,GND,TBD,CANDIDATE NOT VALIDATED,LDO output bypass; place at pin 5
+C225,1uF,5V_DIGITAL_FILTERED,GND,TBD,CANDIDATE NOT VALIDATED,LDO input bypass; place at pin 1
+C226,1uF,3V3_CODEC_LDOIN,GND,TBD,CANDIDATE NOT VALIDATED,LDO output bypass; place at pin 5
+R206,4.7k,3V3_CODEC_IO,CODEC_LDO_SELECT,TBD,CANDIDATE NOT VALIDATED,TI single-rail configuration: D-LDO enabled via pullup
+C227,1uF,MIC_PREAMP_OUT,MIC_AC_COUPLED,TBD,CANDIDATE NOT VALIDATED,AC coupling; microphone preamplifier and limiting not yet designed
+R207,1k,MIC_AC_COUPLED,MIC_CODEC_IN,TBD,CANDIDATE NOT VALIDATED,"Series impedance / protection, provisional"
+C228,4.7nF,MIC_CODEC_IN,GND,TBD,CANDIDATE NOT VALIDATED,Anti-RF pole with 1k at 33.9kHz ideal; not 48k antialias
+C229,1uF,FM_DISCRIM_RAW,FM_AC_COUPLED,TBD,CANDIDATE NOT VALIDATED,AC coupling preserves low freq 67Hz CTCSS
+R208,1k,FM_AC_COUPLED,FM_CODEC_IN,TBD,CANDIDATE NOT VALIDATED,"Series resistor FM baseband, level still unknown"
+C230,10nF,FM_CODEC_IN,GND,TBD,CANDIDATE NOT VALIDATED,"Approx RC pole 15.9kHz, preserves CTCSS/DCS"

@@ -1,0 +1,87 @@
+{
+  "revision": "V1.2",
+  "tests_syntactic_and_interface": {
+    "sexpr_balanced": true,
+    "net_contract_names": true,
+    "EFUSE_RTN_isolated_from_other_schematics": true,
+    "TCXO_pin10_unresolved_label_present": true,
+    "fuse_wrong_1206_placeholder_removed": true,
+    "TVS_still_DNP": true
+  },
+  "power_labels": {
+    "EFUSE": [
+      "BUCK_VIN_PROTECTED",
+      "DV_DT_NODE",
+      "EFUSE_RTN",
+      "EFUSE_VIN",
+      "GND_MAIN",
+      "ILIM_NODE",
+      "OVP_NODE",
+      "PWR_13V8_AUX_RAW",
+      "UVLO_NODE"
+    ],
+    "BUCK": [
+      "5V_RF_PREREGULATED",
+      "BUCK_BOOT",
+      "BUCK_DIV_TOP",
+      "BUCK_EN",
+      "BUCK_FB",
+      "BUCK_SW",
+      "BUCK_VIN_PROTECTED",
+      "GND_MAIN"
+    ],
+    "PLL": [
+      "3V3_PLL_INPUT_FROM_LDO",
+      "3V3_REF_LDO",
+      "5V_RF_PREREGULATED",
+      "GND_MAIN",
+      "PLL_CE",
+      "PLL_CPOUT",
+      "PLL_CSB",
+      "PLL_MUXOUT",
+      "PLL_OSCINP_AC",
+      "PLL_RAMPCLK_PENDING",
+      "PLL_RAMPDIR_PENDING",
+      "PLL_SCK",
+      "PLL_SDI",
+      "PLL_SYNC_PENDING",
+      "PLL_SYSREFREQ_PENDING",
+      "PLL_VBIASVARAC",
+      "PLL_VBIASVCO",
+      "PLL_VBIASVCO2",
+      "PLL_VCCBUF",
+      "PLL_VCCCP",
+      "PLL_VCCDIG",
+      "PLL_VCCMASH",
+      "PLL_VCCVCO",
+      "PLL_VCCVCO2",
+      "PLL_VREFVCO",
+      "PLL_VREFVCO2",
+      "PLL_VREGIN",
+      "PLL_VREGVCO",
+      "PLL_VTUNE",
+      "RFOUT_AM_PENDING",
+      "RFOUT_AP_PENDING",
+      "RFOUT_BM_PENDING",
+      "RFOUT_BP_PENDING",
+      "TCXO_CMOS_12M8",
+      "TCXO_CMOS_DAMPED",
+      "TCXO_EN",
+      "TCXO_PIN10_AFC_OR_GND_TBD"
+    ]
+  },
+  "calculations": {
+    "eta_assumed": 0.85,
+    "aux_iin_at_13_8V_i5_1A": 0.4263,
+    "aux_iin_at_11_2V_i5_2A": 1.0504
+  },
+  "unperformed": [
+    "KiCad native ERC",
+    "native netlist extraction",
+    "PCB layout/DRC",
+    "SPICE transient modeling",
+    "cable inductance surge tests",
+    "hardware measurements",
+    "production release"
+  ]
+}

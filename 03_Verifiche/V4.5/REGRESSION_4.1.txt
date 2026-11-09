@@ -1,0 +1,17 @@
+test_1percent_corner_count (__main__.AuditV41Tests.test_1percent_corner_count) ... ok
+test_board_outline (__main__.AuditV41Tests.test_board_outline) ... ok
+test_connector_count (__main__.AuditV41Tests.test_connector_count) ... ok
+test_custom_land_geometry (__main__.AuditV41Tests.test_custom_land_geometry) ... ok
+test_kicad_no_fab (__main__.AuditV41Tests.test_kicad_no_fab) ... ok
+test_legacy_board_hash (__main__.AuditV41Tests.test_legacy_board_hash) ... ok
+test_paddle (__main__.AuditV41Tests.test_paddle) ... ok
+test_pi_nominal (__main__.AuditV41Tests.test_pi_nominal) ... ok
+test_rotate_180 (__main__.AuditV41Tests.test_rotate_180) ... ok
+test_special_circles_vs_boxes (__main__.AuditV41Tests.test_special_circles_vs_boxes) ... ok
+test_unfilled_zones (__main__.AuditV41Tests.test_unfilled_zones) ... ok
+test_value_perturbation (__main__.AuditV41Tests.test_value_perturbation) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK

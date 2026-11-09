@@ -1,0 +1,33 @@
+{
+  "version": "4.6",
+  "previous_version": "4.5",
+  "previous_zip_crc": "PASS",
+  "old_file_count": 733,
+  "old_file_same_path_same_bytes": 729,
+  "old_file_changed_active_with_exact_snapshot": 4,
+  "changed_documents": [
+    {
+      "path": "00_Gestione_Progetto/REGISTRO_DECISIONI.md",
+      "snapshot": "00_Gestione_Progetto/V4.6_SNAPSHOT_V4.5/00_Gestione_Progetto__REGISTRO_DECISIONI.md"
+    },
+    {
+      "path": "00_Gestione_Progetto/RIPRENDI_IN_UNA_NUOVA_CHAT.md",
+      "snapshot": "00_Gestione_Progetto/V4.6_SNAPSHOT_V4.5/00_Gestione_Progetto__RIPRENDI_IN_UNA_NUOVA_CHAT.md"
+    },
+    {
+      "path": "README.md",
+      "snapshot": "00_Gestione_Progetto/V4.6_SNAPSHOT_V4.5/README.md"
+    },
+    {
+      "path": "RIPRENDI_IN_UNA_NUOVA_CHAT.md",
+      "snapshot": "00_Gestione_Progetto/V4.6_SNAPSHOT_V4.5/RIPRENDI_IN_UNA_NUOVA_CHAT.md"
+    }
+  ],
+  "old_manifest_entries_valid": 732,
+  "missing_old_contents": 0,
+  "new_revision": "static technical audit and safe KiCad 10 preflight only",
+  "native_kicad_run": "NOT_RUN",
+  "manufacturer_CAD": "NOT_ACQUIRED",
+  "hardware_validated": 0,
+  "fabrication_approved": false
+}

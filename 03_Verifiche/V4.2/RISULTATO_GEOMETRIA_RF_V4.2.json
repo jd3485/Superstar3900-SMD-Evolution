@@ -1,0 +1,196 @@
+{
+  "revision": "V4.2",
+  "baseline": "V3.8 immutable NOT_FOR_FAB board",
+  "pcb_sha256": "57dd24b13edb5dc987e3ad8cdae0d2d8cc7a1fa3aefb455a63ebc86559eec489",
+  "geometry_engine": "Shapely top-copper geometric model, NOT KiCad DRC/zone fill",
+  "pad_geometry": "custom gr_poly + anchor, footprint rotation, nominal circles; roundrect as conservative box",
+  "copper_shape_count": 152,
+  "top_copper_inter_net_clearance": {
+    "review_threshold_mm": 0.2,
+    "closest_distance_mm": 0.45,
+    "closest_pair": [
+      "C102.1#0",
+      "C102.2#1"
+    ],
+    "clearance_below_review_threshold_count": 0,
+    "violations_first_30": [],
+    "meaning": "Nominal F.Cu 2D review only; excludes mask, paste, board house limits, non-F.Cu tracks/planes, DRC"
+  },
+  "signal_net_copper_components": [
+    {
+      "net": "RF_LNA_INPUT",
+      "copper_islands_without_zone_fill": 1
+    },
+    {
+      "net": "RF_LNA_IC_IN",
+      "copper_islands_without_zone_fill": 1
+    },
+    {
+      "net": "RF_BIAS_OUT",
+      "copper_islands_without_zone_fill": 1
+    },
+    {
+      "net": "RF_LNA_OUT",
+      "copper_islands_without_zone_fill": 1
+    },
+    {
+      "net": "+5V_BENCH",
+      "copper_islands_without_zone_fill": 1
+    },
+    {
+      "net": "RF_ATTEN_IN",
+      "copper_islands_without_zone_fill": 1
+    },
+    {
+      "net": "RF_ATTEN_OUT",
+      "copper_islands_without_zone_fill": 1
+    }
+  ],
+  "ground_top_copper": {
+    "ground_pad_count": 24,
+    "ground_via_count": 64,
+    "ground_pads_not_reaching_a_local_via_over_explicit_F_Cu": [],
+    "islands_without_plane_fill": 64,
+    "meaning": "No claim of global GND connectivity until four zones are refilled and DRC passes"
+  },
+  "sma": {
+    "J101": {
+      "rotation_deg": 0,
+      "ground_custom_polygon_count": 4,
+      "ground_bounds_board_coords_mm": [
+        24.4,
+        32.3,
+        31.6,
+        39.7
+      ],
+      "ground_span_mm": 7.4,
+      "te_recommended_span_mm": 7.76,
+      "difference_from_recommended_span_mm": -0.36,
+      "footprint_status": "OPEN; not approved by TE or assembler"
+    },
+    "J102": {
+      "rotation_deg": 180.0,
+      "ground_custom_polygon_count": 4,
+      "ground_bounds_board_coords_mm": [
+        118.4,
+        32.3,
+        125.6,
+        39.7
+      ],
+      "ground_span_mm": 7.4,
+      "te_recommended_span_mm": 7.76,
+      "difference_from_recommended_span_mm": -0.36,
+      "footprint_status": "OPEN; not approved by TE or assembler"
+    },
+    "J103": {
+      "rotation_deg": 0,
+      "ground_custom_polygon_count": 4,
+      "ground_bounds_board_coords_mm": [
+        24.4,
+        61.3,
+        31.6,
+        68.7
+      ],
+      "ground_span_mm": 7.4,
+      "te_recommended_span_mm": 7.76,
+      "difference_from_recommended_span_mm": -0.36,
+      "footprint_status": "OPEN; not approved by TE or assembler"
+    },
+    "J104": {
+      "rotation_deg": 180.0,
+      "ground_custom_polygon_count": 4,
+      "ground_bounds_board_coords_mm": [
+        118.4,
+        61.3,
+        125.6,
+        68.7
+      ],
+      "ground_span_mm": 7.4,
+      "te_recommended_span_mm": 7.76,
+      "difference_from_recommended_span_mm": -0.36,
+      "footprint_status": "OPEN; not approved by TE or assembler"
+    }
+  },
+  "board_outline_bounds_mm": [
+    20.0,
+    20.0,
+    130.0,
+    82.0
+  ],
+  "sma_courtyard_envelopes": {
+    "J101": {
+      "courtyard_bounds_mm": [
+        12.8,
+        30.6,
+        32.1,
+        41.4
+      ],
+      "beyond_left_edge_mm": 7.2,
+      "beyond_right_edge_mm": 0,
+      "meaning": "Approximate courtyard/overhang, not TE 3D body or mechanical signoff"
+    },
+    "J102": {
+      "courtyard_bounds_mm": [
+        117.9,
+        30.6,
+        137.2,
+        41.4
+      ],
+      "beyond_left_edge_mm": 0,
+      "beyond_right_edge_mm": 7.2,
+      "meaning": "Approximate courtyard/overhang, not TE 3D body or mechanical signoff"
+    },
+    "J103": {
+      "courtyard_bounds_mm": [
+        12.8,
+        59.6,
+        32.1,
+        70.4
+      ],
+      "beyond_left_edge_mm": 7.2,
+      "beyond_right_edge_mm": 0,
+      "meaning": "Approximate courtyard/overhang, not TE 3D body or mechanical signoff"
+    },
+    "J104": {
+      "courtyard_bounds_mm": [
+        117.9,
+        59.6,
+        137.2,
+        70.4
+      ],
+      "beyond_left_edge_mm": 0,
+      "beyond_right_edge_mm": 7.2,
+      "meaning": "Approximate courtyard/overhang, not TE 3D body or mechanical signoff"
+    }
+  },
+  "zone_status": {
+    "declared": 4,
+    "filled": 0
+  },
+  "microstrip_sensitivity_STUDY_ONLY": {
+    "trace_width_mm": 0.28,
+    "epsilon_r_assumed": 4.2,
+    "dielectric_height_mm_to_Z0_ohm": {
+      "0.08": 34.51,
+      "0.10": 40.27,
+      "0.12": 45.37,
+      "0.14": 49.93,
+      "0.16": 54.04,
+      "0.18": 57.77,
+      "0.20": 61.18,
+      "0.25": 68.53,
+      "0.30": 74.98
+    },
+    "assumptions": "Isolated ideal zero-thickness microstrip, no adjacent ground pour, no soldermask or weave. NOT a model of actual CPWG routing.",
+    "action": "Obtain manufacturer 4-layer stack-up and solve real grounded coplanar waveguide with mask before impedance signoff"
+  },
+  "approval": {
+    "kicad_native_DRC": "NOT RUN",
+    "kicad_native_ERC": "NOT RUN",
+    "te_mechanical": "OPEN",
+    "adi_thermal": "OPEN",
+    "stackup": "OPEN",
+    "rf_bench": "NOT BUILT",
+    "fabrication": "BLOCKED"
+  }
+}

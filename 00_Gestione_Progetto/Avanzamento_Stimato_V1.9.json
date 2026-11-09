@@ -1,0 +1,84 @@
+{
+  "revision": "V1.9",
+  "reported_completion_percent": 28,
+  "method": "continuity estimate, qualitative; internal workstream weighting is illustrative, not schedule forecast",
+  "model_sum_percent": 27.94,
+  "workstreams": [
+    {
+      "workstream": "Architettura e requisiti",
+      "weight_percent": 10,
+      "internal_completion_percent_estimate": 90,
+      "weighted_points": 9.0
+    },
+    {
+      "workstream": "PLL e sintesi",
+      "weight_percent": 10,
+      "internal_completion_percent_estimate": 48,
+      "weighted_points": 4.8
+    },
+    {
+      "workstream": "Alimentazione e protezioni",
+      "weight_percent": 10,
+      "internal_completion_percent_estimate": 50,
+      "weighted_points": 5.0
+    },
+    {
+      "workstream": "MCU / audio / DSP",
+      "weight_percent": 12,
+      "internal_completion_percent_estimate": 48,
+      "weighted_points": 5.76
+    },
+    {
+      "workstream": "Ricevitore RF/FI",
+      "weight_percent": 14,
+      "internal_completion_percent_estimate": 5,
+      "weighted_points": 0.7
+    },
+    {
+      "workstream": "Trasmettitore RF",
+      "weight_percent": 12,
+      "internal_completion_percent_estimate": 3,
+      "weighted_points": 0.36
+    },
+    {
+      "workstream": "Strumenti e accordatore",
+      "weight_percent": 9,
+      "internal_completion_percent_estimate": 5,
+      "weighted_points": 0.45
+    },
+    {
+      "workstream": "Firmware operativo",
+      "weight_percent": 7,
+      "internal_completion_percent_estimate": 16,
+      "weighted_points": 1.12
+    },
+    {
+      "workstream": "Layout PCB e fabbricabilita",
+      "weight_percent": 8,
+      "internal_completion_percent_estimate": 0,
+      "weighted_points": 0.0
+    },
+    {
+      "workstream": "Simulazioni e collaudi fisici",
+      "weight_percent": 5,
+      "internal_completion_percent_estimate": 3,
+      "weighted_points": 0.15
+    },
+    {
+      "workstream": "Manuali e documentazione",
+      "weight_percent": 3,
+      "internal_completion_percent_estimate": 20,
+      "weighted_points": 0.6
+    }
+  ],
+  "completion_requires": [
+    "Final schematics KiCad ERC",
+    "BOM verified",
+    "PCB DRC",
+    "SPICE",
+    "hardware RF/EMC test",
+    "assembly manuals",
+    "user manual",
+    "legal review"
+  ]
+}

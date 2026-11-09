@@ -1,0 +1,20 @@
+test_01_bands_and_positions (__main__.BankTests.test_01_bands_and_positions) ... ok
+test_02_band_labels (__main__.BankTests.test_02_band_labels) ... ok
+test_03_nonoverlap_monotonic (__main__.BankTests.test_03_nonoverlap_monotonic) ... ok
+test_04_all_channels_include_alpha (__main__.BankTests.test_04_all_channels_include_alpha) ... ok
+test_05_filter_has_three_shunts_four_series (__main__.BankTests.test_05_filter_has_three_shunts_four_series) ... ok
+test_06_center_frequency_scaling (__main__.BankTests.test_06_center_frequency_scaling) ... ok
+test_07_passivity_across_frequency (__main__.BankTests.test_07_passivity_across_frequency) ... ok
+test_08_finite_passband_results (__main__.BankTests.test_08_finite_passband_results) ... ok
+test_09_no_frequency_image_overlap (__main__.BankTests.test_09_no_frequency_image_overlap) ... ok
+test_10_stochastic_perturb_range (__main__.BankTests.test_10_stochastic_perturb_range) ... ok
+test_11_model_compare_to_V24 (__main__.BankTests.test_11_model_compare_to_V24) ... ok
+test_12_scenario_switch_loss_exactly_one_dB_apart (__main__.BankTests.test_12_scenario_switch_loss_exactly_one_dB_apart) ... ok
+test_13_all_six_results (__main__.BankTests.test_13_all_six_results) ... ok
+test_14_no_approval (__main__.BankTests.test_14_no_approval) ... ok
+test_15_mc_count (__main__.BankTests.test_15_mc_count) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK

@@ -1,0 +1,8 @@
+KiCad native availability audit 2026-11-07
+------------------------------------------
+command -v kicad-cli : not found
+command -v pcbnew   : not found
+python import pcbnew: not found
+
+Therefore ERC, DRC, filled-zone regeneration and Gerber output WERE NOT EXECUTED.
+Static 2D geometry test performed with Shapely is not an ECAD native DRC.

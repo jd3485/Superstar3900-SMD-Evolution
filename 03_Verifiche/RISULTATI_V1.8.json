@@ -1,0 +1,13 @@
+{
+  "revision": "V1.8",
+  "status": "draft",
+  "completion_percent_estimate": 27,
+  "test_audio_clock": 0,
+  "regression": {
+    "test_mcu_codec_v17.py": 0,
+    "run_all_tests.py": 0
+  },
+  "native_kicad_erc": "NOT_EXECUTED",
+  "spice": "NOT_EXECUTED",
+  "hardware": "NOT_TESTED"
+}

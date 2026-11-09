@@ -1,0 +1,29 @@
+reference,description,candidate_value,technology,status,note
+L_RF1,RF tank inductor,330 nH,SMD 1008,CANDIDATE,"Coilcraft 1008CS-331X_R_ SRF min 570 MHz; Q specified 45 at 100 MHz, not at 27 MHz"
+C_RF1,RF tank capacitor,55.687 pF,SMD C0G/NP0,SIMULATION_ONLY,Tuning/trimmer/selected E-series needed
+R_Q1,Equivalent RF inductor loss,2788.8 ohm,MODEL_ONLY,NOT_REAL_COMPONENT,Parallel loss for fixed Q=50
+L_RF2,RF tank inductor,330 nH,SMD 1008,CANDIDATE,"Coilcraft 1008CS-331X_R_ SRF min 570 MHz; Q specified 45 at 100 MHz, not at 27 MHz"
+C_RF2,RF tank capacitor,70.343 pF,SMD C0G/NP0,SIMULATION_ONLY,Tuning/trimmer/selected E-series needed
+R_Q2,Equivalent RF inductor loss,2788.8 ohm,MODEL_ONLY,NOT_REAL_COMPONENT,Parallel loss for fixed Q=50
+L_RF3,RF tank inductor,330 nH,SMD 1008,CANDIDATE,"Coilcraft 1008CS-331X_R_ SRF min 570 MHz; Q specified 45 at 100 MHz, not at 27 MHz"
+C_RF3,RF tank capacitor,83.885 pF,SMD C0G/NP0,SIMULATION_ONLY,Tuning/trimmer/selected E-series needed
+R_Q3,Equivalent RF inductor loss,2788.8 ohm,MODEL_ONLY,NOT_REAL_COMPONENT,Parallel loss for fixed Q=50
+L_RF4,RF tank inductor,330 nH,SMD 1008,CANDIDATE,"Coilcraft 1008CS-331X_R_ SRF min 570 MHz; Q specified 45 at 100 MHz, not at 27 MHz"
+C_RF4,RF tank capacitor,70.343 pF,SMD C0G/NP0,SIMULATION_ONLY,Tuning/trimmer/selected E-series needed
+R_Q4,Equivalent RF inductor loss,2788.8 ohm,MODEL_ONLY,NOT_REAL_COMPONENT,Parallel loss for fixed Q=50
+L_RF5,RF tank inductor,330 nH,SMD 1008,CANDIDATE,"Coilcraft 1008CS-331X_R_ SRF min 570 MHz; Q specified 45 at 100 MHz, not at 27 MHz"
+C_RF5,RF tank capacitor,55.687 pF,SMD C0G/NP0,SIMULATION_ONLY,Tuning/trimmer/selected E-series needed
+R_Q5,Equivalent RF inductor loss,2788.8 ohm,MODEL_ONLY,NOT_REAL_COMPONENT,Parallel loss for fixed Q=50
+C_COUP1,RF coupling capacitor,129.373 pF,SMD C0G/NP0,SIMULATION_ONLY,Optimize over PCB parasitics
+C_COUP2,RF coupling capacitor,30.407 pF,SMD C0G/NP0,SIMULATION_ONLY,Optimize over PCB parasitics
+C_COUP3,RF coupling capacitor,11.568 pF,SMD C0G/NP0,SIMULATION_ONLY,Optimize over PCB parasitics
+C_COUP4,RF coupling capacitor,11.568 pF,SMD C0G/NP0,SIMULATION_ONLY,Optimize over PCB parasitics
+C_COUP5,RF coupling capacitor,30.407 pF,SMD C0G/NP0,SIMULATION_ONLY,Optimize over PCB parasitics
+C_COUP6,RF coupling capacitor,129.373 pF,SMD C0G/NP0,SIMULATION_ONLY,Optimize over PCB parasitics
+L_LP1,LPF 7th order prototype,388.59 nH,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"
+C_LP2,LPF 7th order prototype,137.04 pF,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"
+L_LP3,LPF 7th order prototype,619.45 nH,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"
+C_LP4,LPF 7th order prototype,147.89 pF,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"
+L_LP5,LPF 7th order prototype,619.45 nH,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"
+C_LP6,LPF 7th order prototype,137.04 pF,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"
+L_LP7,LPF 7th order prototype,388.59 nH,SMD RF,SIMULATION_ONLY,"0.3 dB Chebyshev normalized approximation, actual matching/EM pending"

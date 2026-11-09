@@ -1,0 +1,19 @@
+test_01_reference_board_unchanged (__main__.ManufacturabilityPreflight.test_01_reference_board_unchanged) ... ok
+test_02_four_layer_and_thickness (__main__.ManufacturabilityPreflight.test_02_four_layer_and_thickness) ... ok
+test_03_pad_and_paste_dimensions (__main__.ManufacturabilityPreflight.test_03_pad_and_paste_dimensions) ... ok
+test_04_paste_ratio (__main__.ManufacturabilityPreflight.test_04_paste_ratio) ... ok
+test_05_six_vias_under_paste (__main__.ManufacturabilityPreflight.test_05_six_vias_under_paste) ... ok
+test_06_copper_vias_inside_pad (__main__.ManufacturabilityPreflight.test_06_copper_vias_inside_pad) ... ok
+test_07_drill_and_ring (__main__.ManufacturabilityPreflight.test_07_drill_and_ring) ... ok
+test_08_min_edge_stays_within_opening (__main__.ManufacturabilityPreflight.test_08_min_edge_stays_within_opening) ... ok
+test_09_safety_gates_not_approved (__main__.ManufacturabilityPreflight.test_09_safety_gates_not_approved) ... ok
+test_10_stencil_change_detected (__main__.ManufacturabilityPreflight.test_10_stencil_change_detected) ... ok
+test_11_missing_thermal_via_detected (__main__.ManufacturabilityPreflight.test_11_missing_thermal_via_detected) ... ok
+test_12_wrong_pad_net_detected (__main__.ManufacturabilityPreflight.test_12_wrong_pad_net_detected) ... ok
+test_13_required_project_documents (__main__.ManufacturabilityPreflight.test_13_required_project_documents) ... ok
+test_14_copper_original_v38_kept (__main__.ManufacturabilityPreflight.test_14_copper_original_v38_kept) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.008s
+
+OK

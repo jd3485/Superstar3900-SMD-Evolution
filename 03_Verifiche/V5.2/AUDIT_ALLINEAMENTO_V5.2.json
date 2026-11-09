@@ -1,0 +1,23 @@
+{
+  "version": "V5.2",
+  "date": "2026-11-08",
+  "reference_candidate": "04_KiCad/Modulo_RX_Test_50ohm_V4.8_TERMICA_6VIE_STUDIO_NON_FAB",
+  "new_candidate": "04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB",
+  "source_schematic_sha256": "bdcb4db6dae00eb2d2edb447b83ad4704170689b99fa90ab17a1270b386677b5",
+  "source_pcb_sha256": "00a65b2f738cf3e49f7a1c8d83a3f50e54beb48ca0afe722bb98ff9e9cbaa221",
+  "candidate_schematic_sha256": "43c358af20d25e693f25e7441902446215460ae9163e627410782fa54c12221c",
+  "candidate_pcb_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "components": 15,
+  "project_instance_refs_updated": 15,
+  "pcb_footprint_schematic_paths_added": 15,
+  "original_pcb_reconstructs_exactly": true,
+  "original_schematic_reconstructs_exactly": true,
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "manufacturer_approval": "NOT_RECEIVED",
+  "copper_modified": false,
+  "pads_modified": false,
+  "vias_modified": false,
+  "routing_modified": false,
+  "production_authorized": false
+}

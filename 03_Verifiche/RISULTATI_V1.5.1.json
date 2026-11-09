@@ -1,0 +1,26 @@
+{
+  "revision": "V1.5.1",
+  "tests": [
+    {
+      "cmd": "python3 test_funzioni_utente_v151.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_ch9_override (__main__.ContractTests.test_ch9_override) ... ok\ntest_dw_never_tx_on_secondary (__main__.ContractTests.test_dw_never_tx_on_secondary) ... ok\ntest_dw_receives_secondary (__main__.ContractTests.test_dw_receives_secondary) ... ok\ntest_echo_off_in_cw (__main__.ContractTests.test_echo_off_in_cw) ... ok\ntest_fm_code_allowed_independently (__main__.ContractTests.test_fm_code_allowed_independently) ... ok\ntest_mutually_exclusive_ctcss_dcs (__main__.ContractTests.test_mutually_exclusive_ctcss_dcs) ... ok\ntest_no_fm_subtones_on_am_ssb_cw (__main__.ContractTests.test_no_fm_subtones_on_am_ssb_cw) ... ok\ntest_pa_never_tx (__main__.ContractTests.test_pa_never_tx) ... ok\ntest_roger_beep_cannot_bypass_tx_guard (__main__.ContractTests.test_roger_beep_cannot_bypass_tx_guard) ... ok\ntest_tx_off_default (__main__.ContractTests.test_tx_off_default) ... ok\ntest_tx_only_when_safe (__main__.ContractTests.test_tx_only_when_safe) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "cmd": "python3 test_spi_transport_v15.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "cmd": "python3 run_all_tests.py",
+      "returncode": 0,
+      "stdout": "> test_frequency_plan.py\nPASS: 270 frequenze uniche; 240 normali + 30 ALFA; CH9; anomalie CH23/24; 40 posizioni TX predefinite.\n> test_pll_plan.py\nPASS: 270 LO e 270 INT unici; 36.310-39.000 MHz; VCO 2323.84-2496 MHz; errore 0Hz.\n> test_control_model.py\nPASS: CH9/ALFA/AM, 6 bande, blocco TX, 6 fault inibitori, ATU busy e input invalidi.\n> test_rx_noise_budget.py\nPASS: modello Friis NF=4.85dB; soglia termica stimata 0.121uV RMS (ipotesi).\n> test_stage2.py\nPASS stage2: 270 PLL points, R/prescaler range, LO endpoints, CH9 and INT\n> test_lo_filter.py\nPASS stage2 LC model S21 math: 7 elements, attenuation and 100MHz sweep finite\nRISULTATO: 6 suite PASS (solo controlli software; RF/EM e PCB non verificati).\n",
+      "stderr": ""
+    }
+  ],
+  "hardware_validated": false,
+  "native_kicad_erc": false,
+  "schematics_modified": false
+}

@@ -1,0 +1,13 @@
+ref,topology,function,value,tech,part_family,approved
+C101,CS,Passa-alto di studio,265 pF,C0G/NP0 SMD,Da definire MPN esatto,NO
+L102,LS,Passa-alto di studio,332 nH,0805 SMD wirewound,Coilcraft/alternativo MPN da selezionare,NO
+C103,CS,Passa-alto di studio,265 pF,C0G/NP0 SMD,Da definire MPN esatto,NO
+L104A,T,Induttore serie risonatore parallelo,180 nH,0805 SMD wirewound,Coilcraft 0805CS-181X_R_ (codice finale da fissare),NO
+C104B,T,Capacitore in parallelo alla bobina,56 pF,C0G/NP0 SMD 0402 o 0603,Da definire MPN esatto,NO
+C105,C,Elemento passa-basso,120 pF,C0G/NP0 SMD,Da definire MPN esatto,NO
+L106,L,Elemento passa-basso,470 nH,0805 SMD wirewound,Coilcraft/alternativo MPN da selezionare,NO
+C107,C,Elemento passa-basso,140 pF,C0G/NP0 SMD,Da definire MPN esatto,NO
+L108,L,Elemento passa-basso,470 nH,0805 SMD wirewound,Coilcraft/alternativo MPN da selezionare,NO
+C109,C,Elemento passa-basso,120 pF,C0G/NP0 SMD,Da definire MPN esatto,NO
+L110A,T,Induttore serie risonatore parallelo,180 nH,0805 SMD wirewound,Coilcraft 0805CS-181X_R_ (codice finale da fissare),NO
+C110B,T,Capacitore in parallelo alla bobina,62 pF,C0G/NP0 SMD 0402 o 0603,Da definire MPN esatto,NO

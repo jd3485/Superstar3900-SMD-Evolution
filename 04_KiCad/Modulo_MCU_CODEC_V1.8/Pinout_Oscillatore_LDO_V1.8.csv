@@ -1,0 +1,10 @@
+ref,pin,name,net,source,verification
+X201,1,OE,XO_OE,SiTime datasheet,datasheet lookup; NOT ERC
+X201,2,GND,GND,SiTime datasheet,datasheet lookup; NOT ERC
+X201,3,OUT,XO_MCLK_RAW,SiTime datasheet,datasheet lookup; NOT ERC
+X201,4,VDD,3V3_AUDIO_CLK,SiTime datasheet,datasheet lookup; NOT ERC
+U203,1,IN,5V_AUX_PROTECTED,TI TPS7A20 datasheet,datasheet lookup; NOT ERC
+U203,2,GND,GND,TI TPS7A20 datasheet,datasheet lookup; NOT ERC
+U203,3,EN,5V_AUX_PROTECTED,TI TPS7A20 datasheet,datasheet lookup; NOT ERC
+U203,4,NC,NO_CONNECT,TI TPS7A20 datasheet,datasheet lookup; NOT ERC
+U203,5,OUT,3V3_AUDIO_CLK,TI TPS7A20 datasheet,datasheet lookup; NOT ERC

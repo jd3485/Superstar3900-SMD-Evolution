@@ -1,0 +1,9 @@
+(footprint "R_0402_SHUNT_PERPENDICULAR"
+  (layer "F.Cu")
+  (property "Reference" "REF**" (at 0 -2.300 0) (layer "F.SilkS") (effects (font (size 0.9 0.9) (thickness 0.13))) (tstamp "24052254-c5f5-5cdb-9f19-48838e8ab70d"))
+  (property "Value" "R_0402_SHUNT_PERPENDICULAR" (at 0 2.100 0) (layer "F.Fab") (effects (font (size 0.7 0.7) (thickness 0.12))) (tstamp "fd4ab3e8-32cc-5f6f-92c3-f8649c58b4b6"))
+  (attr smd)
+  (fp_rect (start -0.625 -0.950) (end 0.625 0.950) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp "76812d93-e6ec-51c4-8c07-55e6cedcc567"))
+  (pad "1" smd roundrect (at 0.000 -0.550) (size 0.750 0.650) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.2) (tstamp "92fa0e46-3b68-5603-a5f4-2d04ab245f20"))
+  (pad "2" smd roundrect (at 0.000 0.550) (size 0.750 0.650) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.2) (tstamp "9c20ce47-5697-50b8-81fd-b0e12cc5b5c0"))
+)

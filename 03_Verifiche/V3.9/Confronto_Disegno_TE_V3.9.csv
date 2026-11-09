@@ -1,0 +1,8 @@
+voce;valore_TE_mm;valore_V38_mm;risultato;nota
+land_centrale_diametro;2.05;2.05;COINCIDENZA_NOMINALE;Pad centrale SMD senza foro. Verificare il contatto elettrico e la maschera
+feature_circolare_diametro;4.56;;DA_VERIFICARE;Disegno TE rev D foglio 2 - verificare sagoma/clearance via CAD ufficiale
+inviluppo_verticale_footprint;7.76;7.40;DIFFERENZA_0.36;Estensione calcolata da quattro pad custom GND V3.8 - geometrie non equivalenti approvate
+geometria_4_pad_GND;;custom;NON_APPROVATA;Confrontare con disegno e DXF originale TE
+finitura_corpo;oro;non_bloccata_BOM;DA_CONFERMARE;TE -G corpo oro - variante standard nickel secondo tabella disegno rev D
+courtyard_e_corpo_3D;;2D_approssimato;DA_VERIFICARE;Montaggio a bordo scheda e possibile interferenza meccanica
+soldermask_paste_GND;;presenti;NON_QUALIFICATI;Verificare fabbricante e assemblatore

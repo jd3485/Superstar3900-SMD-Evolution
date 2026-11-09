@@ -1,0 +1,12 @@
+test_butter_response (__main__.TestNetwork.test_butter_response) ... ok
+test_cheb_response (__main__.TestNetwork.test_cheb_response) ... ok
+test_filter_order_vs_image (__main__.TestNetwork.test_filter_order_vs_image) ... ok
+test_image_band_arithmetic (__main__.TestNetwork.test_image_band_arithmetic) ... ok
+test_passivity_lossless (__main__.TestNetwork.test_passivity_lossless) ... ok
+test_q_vs_insertion_loss (__main__.TestNetwork.test_q_vs_insertion_loss) ... ok
+test_zero_components (__main__.TestNetwork.test_zero_components) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.006s
+
+OK

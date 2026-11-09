@@ -1,0 +1,14 @@
+test_L_stress_unretuned (__main__.RevisionV26.test_L_stress_unretuned) ... ok
+test_Q_monotonic_loss (__main__.RevisionV26.test_Q_monotonic_loss) ... ok
+test_all_bands_and_Q (__main__.RevisionV26.test_all_bands_and_Q) ... ok
+test_no_manufacturing_approval (__main__.RevisionV26.test_no_manufacturing_approval) ... ok
+test_switch_loss_offset (__main__.RevisionV26.test_switch_loss_offset) ... ok
+test_vendor_Q_not_27MHz (__main__.RevisionV26.test_vendor_Q_not_27MHz) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+
+REPLAY:
+PASS: 5 Q scenarios x 6 bands, 270 frequencies; all Q values are scenario assumptions

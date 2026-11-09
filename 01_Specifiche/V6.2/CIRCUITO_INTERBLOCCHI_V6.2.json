@@ -1,0 +1,1720 @@
+{
+  "revision": "V6.2",
+  "date": "2026-11-09",
+  "type": "SCHEMA_A_COMPONENTI_CANDIDATO_NON_KICAD",
+  "production_release": false,
+  "tx_hardware_connected": false,
+  "rf_transmission_permitted": false,
+  "native_erc_drc": "NOT_RUN",
+  "components": [
+    {
+      "ref": "U801",
+      "description": "Supervisore 3V3 con watchdog e reset ~200ms",
+      "mpn": "TPS3823A-33DBVR, TI (variante 3.3V da confermare in distinta ordinabile)",
+      "status": "CANDIDATO",
+      "note": "RESET active low: high indicates good. watchdog 1.6 s nominal; WDI MCU PB11 ECO"
+    },
+    {
+      "ref": "C801",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "local U801"
+    },
+    {
+      "ref": "U802",
+      "description": "Rilevatore finestra 13.8V, comparatori OD",
+      "mpn": "TPS3700DDCR TI (DDC SOT23-6)",
+      "status": "CANDIDATO",
+      "note": "VDD 3.3V, INA+ undervoltage threshold, INB- overvoltage threshold"
+    },
+    {
+      "ref": "C802",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "local U802"
+    },
+    {
+      "ref": "R801",
+      "description": "287000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "UV divider upper 287k 1%"
+    },
+    {
+      "ref": "R802",
+      "description": "10000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "UV divider lower 10k 1%"
+    },
+    {
+      "ref": "R803",
+      "description": "374000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "OV divider upper 374k 1%"
+    },
+    {
+      "ref": "R804",
+      "description": "10000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "OV divider lower 10k 1%"
+    },
+    {
+      "ref": "C803",
+      "description": "4.7 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "anti-spike ~45 us nominal, no guarantee of propagation"
+    },
+    {
+      "ref": "C804",
+      "description": "4.7 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "anti-spike ~46 us nominal"
+    },
+    {
+      "ref": "R805",
+      "description": "10000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "open drain 3.3V pull-up"
+    },
+    {
+      "ref": "R806",
+      "description": "10000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "open drain 3.3V pull-up"
+    },
+    {
+      "ref": "R820",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "RX_SAFE_NC: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R821",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "PA_MODE_HW: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R822",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "FAULT_LOOP_OK: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R823",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "TX_ARM_REQUEST: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R824",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "TX_BENCH_KEY: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R825",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "AMP_SD_REQUEST: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R826",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "CODEC_READY: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R827",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "AMP_FAULT_N: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R828",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "PA_RELAY_CMD: default OFF at power-up/open circuit"
+    },
+    {
+      "ref": "R830",
+      "description": "10000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "PTT active-low, default HIGH: open circuit => no TX"
+    },
+    {
+      "ref": "R831",
+      "description": "100000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "placeholder; watchdog behavior for stuck-low depends on TPS3823 active WDI input"
+    },
+    {
+      "ref": "S801",
+      "description": "PA/RX mode selector: RX/PA SPDT second pole, break-before-make",
+      "mpn": "SPDT contact, hardware ECO to V6.1 S742; mechanical MPN TBD",
+      "status": "ECO_REQUIRED",
+      "note": "common 3V3; NC RX_SAFE; NO PA_MODE; plus original PA sense pole"
+    },
+    {
+      "ref": "J801",
+      "description": "Service TX keyed jumper default UNFITTED",
+      "mpn": "2 pin keyed jumper, DNI/open in all supplied configuration",
+      "status": "DNI",
+      "note": "jumper must stay physically OPEN; board cannot be cleared for TX"
+    },
+    {
+      "ref": "J802",
+      "description": "Fault loop future thermal + SWR sensor contacts",
+      "mpn": "Normally closed external series loop, connector MPN TBD",
+      "status": "OPEN_PENDING",
+      "note": "healthy closed loop -> 3V3, open -> fault, no false hardware approval"
+    },
+    {
+      "ref": "U803",
+      "description": "Inverter logico CMOS",
+      "mpn": "SN74LVC1G04DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "TX_PTT_ACTIVE=NOT PTT_N"
+    },
+    {
+      "ref": "C9803",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U803"
+    },
+    {
+      "ref": "U804",
+      "description": "Inverter logico CMOS",
+      "mpn": "SN74LVC1G04DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "NOT_PA_MODE_HW=NOT PA_MODE_HW"
+    },
+    {
+      "ref": "C9804",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U804"
+    },
+    {
+      "ref": "U805",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "PWR_STAGE1=SUP_3V3_OK AND BAT_UV_OK"
+    },
+    {
+      "ref": "C9805",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U805"
+    },
+    {
+      "ref": "U806",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "POWER_GOOD_HW=PWR_STAGE1 AND BAT_OV_OK"
+    },
+    {
+      "ref": "C9806",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U806"
+    },
+    {
+      "ref": "U807",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "RX_PERMIT_BASE=RX_SAFE_NC AND NOT_PA_MODE_HW"
+    },
+    {
+      "ref": "C9807",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U807"
+    },
+    {
+      "ref": "U808",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "HW_SAFE_LOOP=RX_PERMIT_BASE AND FAULT_LOOP_OK"
+    },
+    {
+      "ref": "C9808",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U808"
+    },
+    {
+      "ref": "U809",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "TX_SAFE_BASE=POWER_GOOD_HW AND HW_SAFE_LOOP"
+    },
+    {
+      "ref": "C9809",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U809"
+    },
+    {
+      "ref": "U810",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "TX_ARMED_HW=TX_SAFE_BASE AND TX_ARM_REQUEST"
+    },
+    {
+      "ref": "C9810",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U810"
+    },
+    {
+      "ref": "U811",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "TX_KEYED_HW=TX_ARMED_HW AND TX_PTT_ACTIVE"
+    },
+    {
+      "ref": "C9811",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U811"
+    },
+    {
+      "ref": "U812",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "TX_ENABLE_HARD=TX_KEYED_HW AND TX_BENCH_KEY"
+    },
+    {
+      "ref": "C9812",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U812"
+    },
+    {
+      "ref": "U813",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "AMP_REQ_CODEC=AMP_SD_REQUEST AND CODEC_READY"
+    },
+    {
+      "ref": "C9813",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U813"
+    },
+    {
+      "ref": "U814",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "AMP_REQ_POWER=AMP_REQ_CODEC AND POWER_GOOD_HW"
+    },
+    {
+      "ref": "C9814",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U814"
+    },
+    {
+      "ref": "U815",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "AMP_SD=AMP_REQ_POWER AND AMP_FAULT_N"
+    },
+    {
+      "ref": "C9815",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U815"
+    },
+    {
+      "ref": "U816",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "PA_RELAY_REQ=PA_RELAY_CMD AND PA_MODE_HW"
+    },
+    {
+      "ref": "C9816",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U816"
+    },
+    {
+      "ref": "U817",
+      "description": "AND 2 ingressi 1.65-5.5 V",
+      "mpn": "SN74LVC1G08DBVR (TI), DBV5",
+      "status": "CANDIDATO",
+      "note": "PA_RELAY_EN=PA_RELAY_REQ AND POWER_GOOD_HW"
+    },
+    {
+      "ref": "C9817",
+      "description": "100 nF",
+      "mpn": "MLCC classe/tensione e footprint TBD",
+      "status": "CANDIDATO",
+      "note": "Bypass local U817"
+    },
+    {
+      "ref": "R850",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "output low default during VDD ramp / if driver fails hi-Z; not fault tolerant"
+    },
+    {
+      "ref": "R851",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "output low default during VDD ramp / if driver fails hi-Z; not fault tolerant"
+    },
+    {
+      "ref": "R852",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "output low default during VDD ramp / if driver fails hi-Z; not fault tolerant"
+    },
+    {
+      "ref": "R853",
+      "description": "47000 ohm",
+      "mpn": "resistore 0603, 1% quando misura, footprint TBD",
+      "status": "CANDIDATO",
+      "note": "output low default during VDD ramp / if driver fails hi-Z; not fault tolerant"
+    },
+    {
+      "ref": "J803",
+      "description": "17 contatti",
+      "mpn": "connettore polarizzato / footprint da scegliere",
+      "status": "DA DEFINIRE",
+      "note": "Interface V6.2. Existing V6.1 J702 J604 must be ECO rerouted to pass through V6.2."
+    }
+  ],
+  "pins": [
+    {
+      "ref": "U801",
+      "pin": "1",
+      "net": "SUP_3V3_OK",
+      "function": "/RESET push pull"
+    },
+    {
+      "ref": "U801",
+      "pin": "2",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U801",
+      "pin": "3",
+      "net": "3V3_D",
+      "function": "MR tied high, no external reset"
+    },
+    {
+      "ref": "U801",
+      "pin": "4",
+      "net": "WDI_HEARTBEAT",
+      "function": "WDI driven actively; open wire to be assessed"
+    },
+    {
+      "ref": "U801",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VDD"
+    },
+    {
+      "ref": "C801",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C801",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U802",
+      "pin": "1",
+      "net": "BAT_UV_OK",
+      "function": "OUTA open drain: LOW if undervoltage"
+    },
+    {
+      "ref": "U802",
+      "pin": "2",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U802",
+      "pin": "3",
+      "net": "BAT_UV_SENSE",
+      "function": "INA+"
+    },
+    {
+      "ref": "U802",
+      "pin": "4",
+      "net": "BAT_OV_SENSE",
+      "function": "INB-"
+    },
+    {
+      "ref": "U802",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VDD 3.3V"
+    },
+    {
+      "ref": "U802",
+      "pin": "6",
+      "net": "BAT_OV_OK",
+      "function": "OUTB open drain: LOW if overvoltage"
+    },
+    {
+      "ref": "C802",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C802",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R801",
+      "pin": "1",
+      "net": "13V8_PROTECTED",
+      "function": ""
+    },
+    {
+      "ref": "R801",
+      "pin": "2",
+      "net": "BAT_UV_SENSE",
+      "function": ""
+    },
+    {
+      "ref": "R802",
+      "pin": "1",
+      "net": "BAT_UV_SENSE",
+      "function": ""
+    },
+    {
+      "ref": "R802",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R803",
+      "pin": "1",
+      "net": "13V8_PROTECTED",
+      "function": ""
+    },
+    {
+      "ref": "R803",
+      "pin": "2",
+      "net": "BAT_OV_SENSE",
+      "function": ""
+    },
+    {
+      "ref": "R804",
+      "pin": "1",
+      "net": "BAT_OV_SENSE",
+      "function": ""
+    },
+    {
+      "ref": "R804",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C803",
+      "pin": "1",
+      "net": "BAT_UV_SENSE",
+      "function": ""
+    },
+    {
+      "ref": "C803",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "C804",
+      "pin": "1",
+      "net": "BAT_OV_SENSE",
+      "function": ""
+    },
+    {
+      "ref": "C804",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R805",
+      "pin": "1",
+      "net": "BAT_UV_OK",
+      "function": ""
+    },
+    {
+      "ref": "R805",
+      "pin": "2",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R806",
+      "pin": "1",
+      "net": "BAT_OV_OK",
+      "function": ""
+    },
+    {
+      "ref": "R806",
+      "pin": "2",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R820",
+      "pin": "1",
+      "net": "RX_SAFE_NC",
+      "function": ""
+    },
+    {
+      "ref": "R820",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R821",
+      "pin": "1",
+      "net": "PA_MODE_HW",
+      "function": ""
+    },
+    {
+      "ref": "R821",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R822",
+      "pin": "1",
+      "net": "FAULT_LOOP_OK",
+      "function": ""
+    },
+    {
+      "ref": "R822",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R823",
+      "pin": "1",
+      "net": "TX_ARM_REQUEST",
+      "function": ""
+    },
+    {
+      "ref": "R823",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R824",
+      "pin": "1",
+      "net": "TX_BENCH_KEY",
+      "function": ""
+    },
+    {
+      "ref": "R824",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R825",
+      "pin": "1",
+      "net": "AMP_SD_REQUEST",
+      "function": ""
+    },
+    {
+      "ref": "R825",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R826",
+      "pin": "1",
+      "net": "CODEC_READY",
+      "function": ""
+    },
+    {
+      "ref": "R826",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R827",
+      "pin": "1",
+      "net": "AMP_FAULT_N",
+      "function": ""
+    },
+    {
+      "ref": "R827",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R828",
+      "pin": "1",
+      "net": "PA_RELAY_CMD",
+      "function": ""
+    },
+    {
+      "ref": "R828",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R830",
+      "pin": "1",
+      "net": "PTT_N",
+      "function": ""
+    },
+    {
+      "ref": "R830",
+      "pin": "2",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "R831",
+      "pin": "1",
+      "net": "WDI_HEARTBEAT",
+      "function": ""
+    },
+    {
+      "ref": "R831",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "S801",
+      "pin": "COM",
+      "net": "3V3_D",
+      "function": "common"
+    },
+    {
+      "ref": "S801",
+      "pin": "NC",
+      "net": "RX_SAFE_NC",
+      "function": "only closed in RX"
+    },
+    {
+      "ref": "S801",
+      "pin": "NO",
+      "net": "PA_MODE_HW",
+      "function": "only closed in PA"
+    },
+    {
+      "ref": "J801",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": "TEST 3V3 only"
+    },
+    {
+      "ref": "J801",
+      "pin": "2",
+      "net": "TX_BENCH_KEY",
+      "function": "OFF by default, 47k pulldown"
+    },
+    {
+      "ref": "J802",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": "loop source 3.3V"
+    },
+    {
+      "ref": "J802",
+      "pin": "2",
+      "net": "FAULT_LOOP_OK",
+      "function": "healthy loop return"
+    },
+    {
+      "ref": "U803",
+      "pin": "1",
+      "net": "NC_U803",
+      "function": "NC"
+    },
+    {
+      "ref": "U803",
+      "pin": "2",
+      "net": "PTT_N",
+      "function": "A"
+    },
+    {
+      "ref": "U803",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U803",
+      "pin": "4",
+      "net": "TX_PTT_ACTIVE",
+      "function": "Y"
+    },
+    {
+      "ref": "U803",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9803",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9803",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U804",
+      "pin": "1",
+      "net": "NC_U804",
+      "function": "NC"
+    },
+    {
+      "ref": "U804",
+      "pin": "2",
+      "net": "PA_MODE_HW",
+      "function": "A"
+    },
+    {
+      "ref": "U804",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U804",
+      "pin": "4",
+      "net": "NOT_PA_MODE_HW",
+      "function": "Y"
+    },
+    {
+      "ref": "U804",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9804",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9804",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U805",
+      "pin": "1",
+      "net": "SUP_3V3_OK",
+      "function": "A"
+    },
+    {
+      "ref": "U805",
+      "pin": "2",
+      "net": "BAT_UV_OK",
+      "function": "B"
+    },
+    {
+      "ref": "U805",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U805",
+      "pin": "4",
+      "net": "PWR_STAGE1",
+      "function": "Y"
+    },
+    {
+      "ref": "U805",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9805",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9805",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U806",
+      "pin": "1",
+      "net": "PWR_STAGE1",
+      "function": "A"
+    },
+    {
+      "ref": "U806",
+      "pin": "2",
+      "net": "BAT_OV_OK",
+      "function": "B"
+    },
+    {
+      "ref": "U806",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U806",
+      "pin": "4",
+      "net": "POWER_GOOD_HW",
+      "function": "Y"
+    },
+    {
+      "ref": "U806",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9806",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9806",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U807",
+      "pin": "1",
+      "net": "RX_SAFE_NC",
+      "function": "A"
+    },
+    {
+      "ref": "U807",
+      "pin": "2",
+      "net": "NOT_PA_MODE_HW",
+      "function": "B"
+    },
+    {
+      "ref": "U807",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U807",
+      "pin": "4",
+      "net": "RX_PERMIT_BASE",
+      "function": "Y"
+    },
+    {
+      "ref": "U807",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9807",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9807",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U808",
+      "pin": "1",
+      "net": "RX_PERMIT_BASE",
+      "function": "A"
+    },
+    {
+      "ref": "U808",
+      "pin": "2",
+      "net": "FAULT_LOOP_OK",
+      "function": "B"
+    },
+    {
+      "ref": "U808",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U808",
+      "pin": "4",
+      "net": "HW_SAFE_LOOP",
+      "function": "Y"
+    },
+    {
+      "ref": "U808",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9808",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9808",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U809",
+      "pin": "1",
+      "net": "POWER_GOOD_HW",
+      "function": "A"
+    },
+    {
+      "ref": "U809",
+      "pin": "2",
+      "net": "HW_SAFE_LOOP",
+      "function": "B"
+    },
+    {
+      "ref": "U809",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U809",
+      "pin": "4",
+      "net": "TX_SAFE_BASE",
+      "function": "Y"
+    },
+    {
+      "ref": "U809",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9809",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9809",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U810",
+      "pin": "1",
+      "net": "TX_SAFE_BASE",
+      "function": "A"
+    },
+    {
+      "ref": "U810",
+      "pin": "2",
+      "net": "TX_ARM_REQUEST",
+      "function": "B"
+    },
+    {
+      "ref": "U810",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U810",
+      "pin": "4",
+      "net": "TX_ARMED_HW",
+      "function": "Y"
+    },
+    {
+      "ref": "U810",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9810",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9810",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U811",
+      "pin": "1",
+      "net": "TX_ARMED_HW",
+      "function": "A"
+    },
+    {
+      "ref": "U811",
+      "pin": "2",
+      "net": "TX_PTT_ACTIVE",
+      "function": "B"
+    },
+    {
+      "ref": "U811",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U811",
+      "pin": "4",
+      "net": "TX_KEYED_HW",
+      "function": "Y"
+    },
+    {
+      "ref": "U811",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9811",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9811",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U812",
+      "pin": "1",
+      "net": "TX_KEYED_HW",
+      "function": "A"
+    },
+    {
+      "ref": "U812",
+      "pin": "2",
+      "net": "TX_BENCH_KEY",
+      "function": "B"
+    },
+    {
+      "ref": "U812",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U812",
+      "pin": "4",
+      "net": "TX_ENABLE_HARD",
+      "function": "Y"
+    },
+    {
+      "ref": "U812",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9812",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9812",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U813",
+      "pin": "1",
+      "net": "AMP_SD_REQUEST",
+      "function": "A"
+    },
+    {
+      "ref": "U813",
+      "pin": "2",
+      "net": "CODEC_READY",
+      "function": "B"
+    },
+    {
+      "ref": "U813",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U813",
+      "pin": "4",
+      "net": "AMP_REQ_CODEC",
+      "function": "Y"
+    },
+    {
+      "ref": "U813",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9813",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9813",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U814",
+      "pin": "1",
+      "net": "AMP_REQ_CODEC",
+      "function": "A"
+    },
+    {
+      "ref": "U814",
+      "pin": "2",
+      "net": "POWER_GOOD_HW",
+      "function": "B"
+    },
+    {
+      "ref": "U814",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U814",
+      "pin": "4",
+      "net": "AMP_REQ_POWER",
+      "function": "Y"
+    },
+    {
+      "ref": "U814",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9814",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9814",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U815",
+      "pin": "1",
+      "net": "AMP_REQ_POWER",
+      "function": "A"
+    },
+    {
+      "ref": "U815",
+      "pin": "2",
+      "net": "AMP_FAULT_N",
+      "function": "B"
+    },
+    {
+      "ref": "U815",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U815",
+      "pin": "4",
+      "net": "AMP_SD",
+      "function": "Y"
+    },
+    {
+      "ref": "U815",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9815",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9815",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U816",
+      "pin": "1",
+      "net": "PA_RELAY_CMD",
+      "function": "A"
+    },
+    {
+      "ref": "U816",
+      "pin": "2",
+      "net": "PA_MODE_HW",
+      "function": "B"
+    },
+    {
+      "ref": "U816",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U816",
+      "pin": "4",
+      "net": "PA_RELAY_REQ",
+      "function": "Y"
+    },
+    {
+      "ref": "U816",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9816",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9816",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "U817",
+      "pin": "1",
+      "net": "PA_RELAY_REQ",
+      "function": "A"
+    },
+    {
+      "ref": "U817",
+      "pin": "2",
+      "net": "POWER_GOOD_HW",
+      "function": "B"
+    },
+    {
+      "ref": "U817",
+      "pin": "3",
+      "net": "DGND",
+      "function": "GND"
+    },
+    {
+      "ref": "U817",
+      "pin": "4",
+      "net": "PA_RELAY_EN",
+      "function": "Y"
+    },
+    {
+      "ref": "U817",
+      "pin": "5",
+      "net": "3V3_D",
+      "function": "VCC"
+    },
+    {
+      "ref": "C9817",
+      "pin": "1",
+      "net": "3V3_D",
+      "function": ""
+    },
+    {
+      "ref": "C9817",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R850",
+      "pin": "1",
+      "net": "TX_ENABLE_HARD",
+      "function": ""
+    },
+    {
+      "ref": "R850",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R851",
+      "pin": "1",
+      "net": "AMP_SD",
+      "function": ""
+    },
+    {
+      "ref": "R851",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R852",
+      "pin": "1",
+      "net": "PA_RELAY_EN",
+      "function": ""
+    },
+    {
+      "ref": "R852",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "R853",
+      "pin": "1",
+      "net": "POWER_GOOD_HW",
+      "function": ""
+    },
+    {
+      "ref": "R853",
+      "pin": "2",
+      "net": "DGND",
+      "function": ""
+    },
+    {
+      "ref": "J803",
+      "pin": "1",
+      "net": "13V8_PROTECTED",
+      "function": "protected 13.8V after fuse/reverse polarity protection deferred"
+    },
+    {
+      "ref": "J803",
+      "pin": "2",
+      "net": "3V3_D",
+      "function": "verified regulator output from future power module"
+    },
+    {
+      "ref": "J803",
+      "pin": "3",
+      "net": "DGND",
+      "function": "digital ground"
+    },
+    {
+      "ref": "J803",
+      "pin": "4",
+      "net": "PTT_N",
+      "function": "from J705 / PA0, default high"
+    },
+    {
+      "ref": "J803",
+      "pin": "5",
+      "net": "AMP_SD_REQUEST",
+      "function": "from U201 PA8"
+    },
+    {
+      "ref": "J803",
+      "pin": "6",
+      "net": "PA_RELAY_CMD",
+      "function": "from U201 PA10"
+    },
+    {
+      "ref": "J803",
+      "pin": "7",
+      "net": "AMP_FAULT_N",
+      "function": "from J604"
+    },
+    {
+      "ref": "J803",
+      "pin": "8",
+      "net": "CODEC_READY",
+      "function": "from codec subsystem"
+    },
+    {
+      "ref": "J803",
+      "pin": "9",
+      "net": "WDI_HEARTBEAT",
+      "function": "U201 PB11 ECO V6.1"
+    },
+    {
+      "ref": "J803",
+      "pin": "10",
+      "net": "TX_ARM_REQUEST",
+      "function": "U201 PB4 ECO V6.1"
+    },
+    {
+      "ref": "J803",
+      "pin": "11",
+      "net": "POWER_GOOD_HW",
+      "function": "to MCU PA12 POWER_GOOD"
+    },
+    {
+      "ref": "J803",
+      "pin": "12",
+      "net": "PA_MODE_HW",
+      "function": "hardware V6.0 J604"
+    },
+    {
+      "ref": "J803",
+      "pin": "13",
+      "net": "RX_SAFE_NC",
+      "function": "physical RX NC"
+    },
+    {
+      "ref": "J803",
+      "pin": "14",
+      "net": "FAULT_LOOP_OK",
+      "function": "SWR/temp NC external"
+    },
+    {
+      "ref": "J803",
+      "pin": "15",
+      "net": "AMP_SD",
+      "function": "V6.0 J604 pin10 physical amplifier SD"
+    },
+    {
+      "ref": "J803",
+      "pin": "16",
+      "net": "PA_RELAY_EN",
+      "function": "relay driver input; existing MCU direct PA_RELAY_CMD must be rerouted"
+    },
+    {
+      "ref": "J803",
+      "pin": "17",
+      "net": "TX_ENABLE_HARD",
+      "function": "low voltage TX module control only, DO NOT connect to RF amp until validation"
+    }
+  ],
+  "gates": [
+    {
+      "ref": "U803",
+      "type": "NOT",
+      "a": "PTT_N",
+      "y": "TX_PTT_ACTIVE"
+    },
+    {
+      "ref": "U804",
+      "type": "NOT",
+      "a": "PA_MODE_HW",
+      "y": "NOT_PA_MODE_HW"
+    },
+    {
+      "ref": "U805",
+      "type": "AND",
+      "a": "SUP_3V3_OK",
+      "b": "BAT_UV_OK",
+      "y": "PWR_STAGE1"
+    },
+    {
+      "ref": "U806",
+      "type": "AND",
+      "a": "PWR_STAGE1",
+      "b": "BAT_OV_OK",
+      "y": "POWER_GOOD_HW"
+    },
+    {
+      "ref": "U807",
+      "type": "AND",
+      "a": "RX_SAFE_NC",
+      "b": "NOT_PA_MODE_HW",
+      "y": "RX_PERMIT_BASE"
+    },
+    {
+      "ref": "U808",
+      "type": "AND",
+      "a": "RX_PERMIT_BASE",
+      "b": "FAULT_LOOP_OK",
+      "y": "HW_SAFE_LOOP"
+    },
+    {
+      "ref": "U809",
+      "type": "AND",
+      "a": "POWER_GOOD_HW",
+      "b": "HW_SAFE_LOOP",
+      "y": "TX_SAFE_BASE"
+    },
+    {
+      "ref": "U810",
+      "type": "AND",
+      "a": "TX_SAFE_BASE",
+      "b": "TX_ARM_REQUEST",
+      "y": "TX_ARMED_HW"
+    },
+    {
+      "ref": "U811",
+      "type": "AND",
+      "a": "TX_ARMED_HW",
+      "b": "TX_PTT_ACTIVE",
+      "y": "TX_KEYED_HW"
+    },
+    {
+      "ref": "U812",
+      "type": "AND",
+      "a": "TX_KEYED_HW",
+      "b": "TX_BENCH_KEY",
+      "y": "TX_ENABLE_HARD"
+    },
+    {
+      "ref": "U813",
+      "type": "AND",
+      "a": "AMP_SD_REQUEST",
+      "b": "CODEC_READY",
+      "y": "AMP_REQ_CODEC"
+    },
+    {
+      "ref": "U814",
+      "type": "AND",
+      "a": "AMP_REQ_CODEC",
+      "b": "POWER_GOOD_HW",
+      "y": "AMP_REQ_POWER"
+    },
+    {
+      "ref": "U815",
+      "type": "AND",
+      "a": "AMP_REQ_POWER",
+      "b": "AMP_FAULT_N",
+      "y": "AMP_SD"
+    },
+    {
+      "ref": "U816",
+      "type": "AND",
+      "a": "PA_RELAY_CMD",
+      "b": "PA_MODE_HW",
+      "y": "PA_RELAY_REQ"
+    },
+    {
+      "ref": "U817",
+      "type": "AND",
+      "a": "PA_RELAY_REQ",
+      "b": "POWER_GOOD_HW",
+      "y": "PA_RELAY_EN"
+    }
+  ],
+  "threshold_reference_nominal_v": 0.4,
+  "uv_threshold_nominal_v": 11.88,
+  "ov_threshold_nominal_v": 15.36,
+  "selected_parts": [
+    {
+      "part": "TPS3823A-33DBVR",
+      "reference": "https://www.ti.com/product/TPS3823"
+    },
+    {
+      "part": "TPS3700DDCR",
+      "reference": "https://www.ti.com/product/TPS3700"
+    },
+    {
+      "part": "SN74LVC1G08DBVR",
+      "reference": "https://www.ti.com/product/SN74LVC1G08"
+    },
+    {
+      "part": "SN74LVC1G04DBVR",
+      "reference": "https://www.ti.com/lit/ds/symlink/sn74lvc1g04.pdf"
+    }
+  ],
+  "v61_eco_required": {
+    "PA_mode_switch": "replace S742 second contact DPST with SPDT break-before-make + separate sense pole",
+    "PB11": "reserve WDI_HEARTBEAT watchdog square transitions",
+    "PB4": "reserve TX_ARM_REQUEST",
+    "J702_and_J604": "AMP_SD and PA_RELAY_CMD rerouted through V6.2; original direct connections superseded",
+    "tx_module": "NO physical RF TX amplifier enabled/connected"
+  },
+  "notes": [
+    "TPS3700 has open-drain outputs; pull ups go to 3V3",
+    "TPS3823A-33 pinout DBV5 RESET1 GND2 MR3 WDI4 VDD5",
+    "PA input RX-safe is active HIGH when normally closed; broken contact leads LOW",
+    "TX_BENCH_KEY pull down and J801 unpopulated OPEN in every deliverable",
+    "No single-fault tolerance claim; needs real circuit testing, ESD and EMC and stuck-high analysis"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "revision": "V1.1",
+  "scope": "eFuse TPS26600 PWP auxiliary 13.8V -> protected buck input",
+  "calculation_type": "ideal DC divider + datasheet electrical corners (not transient simulation)",
+  "input_nominal_V": 13.8,
+  "thresholds_typical": {
+    "UVLO_rising_V": 10.571209503239741,
+    "OVP_rising_V": 16.260697674418605,
+    "I_limit_A_theoretical": 1.4634146341463417
+  },
+  "resistors": {
+    "R200_kOhm": 365.0,
+    "R201_kOhm": 16.2,
+    "R202_kOhm": 30.1,
+    "R203_kOhm": 8.2
+  },
+  "corner_scope": "1% resistors + 1.17 to 1.225 V comparator datasheet range; leakage ignored",
+  "UVLO_rise_corner_V": [
+    10.210897718281547,
+    11.077220913236031
+  ],
+  "OVP_rise_corner_V": [
+    15.69399460544061,
+    17.05236669015739
+  ],
+  "RON_typ_ohms": 0.15,
+  "P_eFuse_typ_at_1A_W": 0.15,
+  "P_eFuse_typ_at_Ilim_W": 0.3212373587150506,
+  "native_KiCad_ERC": false,
+  "native_KiCad_DRC": false,
+  "SPICE_Transient": false,
+  "HW_verified": false,
+  "warnings": [
+    "RTN and system GND must not be shorted (reverse input protection would be disabled)",
+    "Fuse and TVS have no final selected MPN, TVS is DNP, transient protection not validated",
+    "Transient start up, power dissipation, fault flags, EMI filter are open",
+    "Pin 10 of TXC TCXO and footprint remain blocking",
+    "External connector, entire RF TX and antennas not qualified"
+  ],
+  "datasheet": "https://www.ti.com/lit/ds/symlink/tps2660.pdf"
+}

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480">
+<rect width="1200" height="480" fill="#fafbfc"/>
+<text x="42" y="45" font-family="Arial" font-weight="bold" font-size="22" fill="#1b314d">Superstar 3900 Evolution - Preselettore RF V2.9 | test coupon 50 Ω</text>
+<text x="42" y="70" font-family="Arial" font-size="14" fill="#4c6176">SCHEMA SPERIMENTALE (9 passivi) - non approvato per PCB; HP3 opzionale escluso</text>
+<line x1="72" y1="250" x2="140" y2="250" stroke="#146d6b" stroke-width="3"/>
+<text x="65" y="232" font-family="Arial" font-size="14" fill="#233247">RF_IN 50 Ω</text>
+<line x1="140" y1="205" x2="140" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="340" y1="205" x2="340" y2="295" stroke="#146d6b" stroke-width="3"/>
+<circle cx="140" cy="250" r="4" fill="#146d6b"/>
+<circle cx="340" cy="250" r="4" fill="#146d6b"/>
+<line x1="186" y1="205" x2="206" y2="205" stroke="#146d6b" stroke-width="3"/>
+<path d="M 206 205 C 210 185,220 185,224 205 C 228 185,238 185,242 205 C 246 185,256 185,260 205 C 264 185,270 187,274 205" fill="none" stroke="#146d6b" stroke-width="3"/>
+<line x1="274" y1="205" x2="294" y2="205" stroke="#146d6b" stroke-width="3"/>
+<text x="205" y="179" font-family="Arial" font-size="14" fill="#233247">L101 180nH</text>
+<line x1="186" y1="295" x2="234" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="246" y1="295" x2="294" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="234" y1="282" x2="234" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="246" y1="282" x2="246" y2="308" stroke="#146d6b" stroke-width="3"/>
+<text x="216" y="269" font-family="Arial" font-size="14" fill="#233247">C101 56pF</text>
+<line x1="140" y1="205" x2="186" y2="205" stroke="#146d6b" stroke-width="3"/>
+<line x1="294" y1="205" x2="340" y2="205" stroke="#146d6b" stroke-width="3"/>
+<line x1="140" y1="295" x2="186" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="294" y1="295" x2="340" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="340" y1="250" x2="405" y2="250" stroke="#146d6b" stroke-width="3"/>
+<circle cx="405" cy="250" r="4" fill="#146d6b"/>
+<line x1="405" y1="250" x2="405" y2="292" stroke="#146d6b" stroke-width="3"/>
+<line x1="405" y1="292" x2="405" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="390" y1="308" x2="420" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="390" y1="322" x2="420" y2="322" stroke="#146d6b" stroke-width="3"/>
+<line x1="405" y1="322" x2="405" y2="357" stroke="#146d6b" stroke-width="3"/>
+<path d="M 390 357 h30 m-25 6 h20 m-15 6 h10" stroke="#146d6b" fill="none" stroke-width="2.5"/>
+<text x="425" y="315" font-family="Arial" font-size="14" fill="#233247">C102 120pF</text>
+<circle cx="685" cy="250" r="4" fill="#146d6b"/>
+<line x1="685" y1="250" x2="685" y2="292" stroke="#146d6b" stroke-width="3"/>
+<line x1="685" y1="292" x2="685" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="670" y1="308" x2="700" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="670" y1="322" x2="700" y2="322" stroke="#146d6b" stroke-width="3"/>
+<line x1="685" y1="322" x2="685" y2="357" stroke="#146d6b" stroke-width="3"/>
+<path d="M 670 357 h30 m-25 6 h20 m-15 6 h10" stroke="#146d6b" fill="none" stroke-width="2.5"/>
+<text x="705" y="315" font-family="Arial" font-size="14" fill="#233247">C104 150pF</text>
+<circle cx="895" cy="250" r="4" fill="#146d6b"/>
+<line x1="895" y1="250" x2="895" y2="292" stroke="#146d6b" stroke-width="3"/>
+<line x1="895" y1="292" x2="895" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="880" y1="308" x2="910" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="880" y1="322" x2="910" y2="322" stroke="#146d6b" stroke-width="3"/>
+<line x1="895" y1="322" x2="895" y2="357" stroke="#146d6b" stroke-width="3"/>
+<path d="M 880 357 h30 m-25 6 h20 m-15 6 h10" stroke="#146d6b" fill="none" stroke-width="2.5"/>
+<text x="915" y="315" font-family="Arial" font-size="14" fill="#233247">C106 120pF</text>
+<line x1="405" y1="250" x2="480" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="486" y1="250" x2="506" y2="250" stroke="#146d6b" stroke-width="3"/>
+<path d="M 506 250 C 510 230,520 230,524 250 C 528 230,538 230,542 250 C 546 230,556 230,560 250 C 564 230,570 232,574 250" fill="none" stroke="#146d6b" stroke-width="3"/>
+<line x1="574" y1="250" x2="594" y2="250" stroke="#146d6b" stroke-width="3"/>
+<text x="505" y="224" font-family="Arial" font-size="14" fill="#233247">L103 470nH</text>
+<line x1="480" y1="250" x2="486" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="594" y1="250" x2="685" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="685" y1="250" x2="730" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="736" y1="250" x2="756" y2="250" stroke="#146d6b" stroke-width="3"/>
+<path d="M 756 250 C 760 230,770 230,774 250 C 778 230,788 230,792 250 C 796 230,806 230,810 250 C 814 230,820 232,824 250" fill="none" stroke="#146d6b" stroke-width="3"/>
+<line x1="824" y1="250" x2="844" y2="250" stroke="#146d6b" stroke-width="3"/>
+<text x="755" y="224" font-family="Arial" font-size="14" fill="#233247">L105 470nH</text>
+<line x1="730" y1="250" x2="736" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="844" y1="250" x2="895" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="895" y1="250" x2="925" y2="250" stroke="#146d6b" stroke-width="3"/>
+<line x1="925" y1="205" x2="925" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="1100" y1="205" x2="1100" y2="295" stroke="#146d6b" stroke-width="3"/>
+<circle cx="925" cy="250" r="4" fill="#146d6b"/>
+<circle cx="1100" cy="250" r="4" fill="#146d6b"/>
+<line x1="958" y1="205" x2="978" y2="205" stroke="#146d6b" stroke-width="3"/>
+<path d="M 978 205 C 982 185,992 185,996 205 C 1000 185,1010 185,1014 205 C 1018 185,1028 185,1032 205 C 1036 185,1042 187,1046 205" fill="none" stroke="#146d6b" stroke-width="3"/>
+<line x1="1046" y1="205" x2="1066" y2="205" stroke="#146d6b" stroke-width="3"/>
+<text x="977" y="179" font-family="Arial" font-size="14" fill="#233247">L107 180nH</text>
+<line x1="958" y1="295" x2="1006" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="1018" y1="295" x2="1066" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="1006" y1="282" x2="1006" y2="308" stroke="#146d6b" stroke-width="3"/>
+<line x1="1018" y1="282" x2="1018" y2="308" stroke="#146d6b" stroke-width="3"/>
+<text x="988" y="269" font-family="Arial" font-size="14" fill="#233247">C107 62pF</text>
+<line x1="925" y1="205" x2="958" y2="205" stroke="#146d6b" stroke-width="3"/>
+<line x1="1066" y1="205" x2="1100" y2="205" stroke="#146d6b" stroke-width="3"/>
+<line x1="925" y1="295" x2="958" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="1066" y1="295" x2="1100" y2="295" stroke="#146d6b" stroke-width="3"/>
+<line x1="1100" y1="250" x2="1150" y2="250" stroke="#146d6b" stroke-width="3"/>
+<text x="1110" y="230" font-family="Arial" font-size="14" fill="#233247">RF_OUT 50 Ω</text>
+<rect x="42" y="402" width="1110" height="52" rx="8" fill="#e8eff5"/>
+<text x="55" y="424" font-family="Arial" font-size="14" fill="#233247">Entrambe le porte terminate a 50 Ω durante la misura S11/S21. Massa RF comune sui condensatori shunt.</text>
+<text x="55" y="442" font-family="Arial" font-size="14" fill="#233247">Schema di topologia; interfacce SMA, pad, eventuale HP3 e parassiti PCB non inclusi.</text>
+</svg>

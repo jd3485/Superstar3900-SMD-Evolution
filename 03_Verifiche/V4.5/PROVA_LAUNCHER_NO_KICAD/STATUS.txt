@@ -1,0 +1,1 @@
+NOT_RUN: kicad-cli not installed. Native ERC, DRC, zone refill and schematic parity not checked.

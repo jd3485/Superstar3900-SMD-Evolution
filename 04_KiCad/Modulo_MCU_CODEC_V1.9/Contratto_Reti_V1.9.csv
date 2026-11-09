@@ -1,0 +1,10 @@
+domain,source,sink,verification_limit
+BUCK_5V,5V_RF_PREREGULATED,FB201-1,"Existing 5V converter sheet, not yet same hierarchy"
+FILTER_5V,FB201-2 / 5V_DIGITAL_FILTERED,U203/U204/U205/U206 pin1,"Same MCU/codec sheet, local net labels only"
+MCU_3V3,U204-5 / 3V3_MCU,U201 VDD/VBAT,"Local labels, 4x VDD"
+CODEC_IO,U205-5 / 3V3_CODEC_IO,"U202 IOVDD, R206",Local labels
+CODEC_LDO,U206-5 / 3V3_CODEC_LDOIN,U202 LDOIN,Local labels
+AUDIO_CLK,U203-5 / 3V3_AUDIO_CLK,X201 VDD,Local labels
+MIC_PATH,MIC_PREAMP_OUT > C227 > R207,MIC_CODEC_IN > U202 pin 13,Mic conditioning not designed
+FM_PATH,FM_DISCRIM_RAW > C229 > R208,FM_CODEC_IN > U202 pin 15,Requires level and CTCSS measurements
+CODEC_LDO_SELECT,U205-5 > R206 > CODEC_LDO_SELECT,U202 pin30,"LDO enabled, pull-up TI style"

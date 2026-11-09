@@ -1,0 +1,22 @@
+COMMAND: ['python3', '/mnt/data/Superstar3900_SMD_Evolution_V1.5.1/03_Verifiche/test_funzioni_utente_v151.py']
+EXIT: 0
+
+STDOUT:
+
+STDERR:
+test_ch9_override (__main__.ContractTests.test_ch9_override) ... ok
+test_dw_never_tx_on_secondary (__main__.ContractTests.test_dw_never_tx_on_secondary) ... ok
+test_dw_receives_secondary (__main__.ContractTests.test_dw_receives_secondary) ... ok
+test_echo_off_in_cw (__main__.ContractTests.test_echo_off_in_cw) ... ok
+test_fm_code_allowed_independently (__main__.ContractTests.test_fm_code_allowed_independently) ... ok
+test_mutually_exclusive_ctcss_dcs (__main__.ContractTests.test_mutually_exclusive_ctcss_dcs) ... ok
+test_no_fm_subtones_on_am_ssb_cw (__main__.ContractTests.test_no_fm_subtones_on_am_ssb_cw) ... ok
+test_pa_never_tx (__main__.ContractTests.test_pa_never_tx) ... ok
+test_roger_beep_cannot_bypass_tx_guard (__main__.ContractTests.test_roger_beep_cannot_bypass_tx_guard) ... ok
+test_tx_off_default (__main__.ContractTests.test_tx_off_default) ... ok
+test_tx_only_when_safe (__main__.ContractTests.test_tx_only_when_safe) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK

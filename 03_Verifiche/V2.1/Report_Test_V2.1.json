@@ -1,0 +1,27 @@
+{
+  "revision": "V2.1",
+  "type": "STATIC SOURCE AUDIT; NOT ERC",
+  "passed": 12,
+  "total": 12,
+  "checks": {
+    "MCU_64_pins_and_codec_32_pins": true,
+    "MIC_left_ADC_U202_pin13": true,
+    "FM_right_ADC_U202_pin16": true,
+    "FM_left_ADC_U202_pin15_unassigned": true,
+    "FM_label_at_pin16": true,
+    "NC_moved_from_pin16_to15": true,
+    "no_fm_pin15_label": true,
+    "all_8_MCU_alt_function_pins_consistent": true,
+    "SAI_audio_slot_calculation": true,
+    "first_IF_LO_image_math": true,
+    "no_duplicate_IC_pins": true,
+    "parenthesis_balance_rough": true
+  },
+  "limitations": [
+    "KiCad executable absent, no netlist/ ERC",
+    "AF values from datasheet must be checked in STM32CubeMX",
+    "Codec register map not programmed or validated",
+    "ADC concurrency not measured",
+    "No PCB/EMC/SPICE tests"
+  ]
+}

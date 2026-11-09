@@ -1,0 +1,31 @@
+{
+  "revision": "V1.5",
+  "native_kicad_cli": null,
+  "tests": [
+    {
+      "test": "test_spi_interface_v15.py",
+      "returncode": 0,
+      "output": "\n..\n----------------------------------------------------------------------\nRan 2 tests in 0.007s\n\nOK\n"
+    },
+    {
+      "test": "test_spi_transport_v15.py",
+      "returncode": 0,
+      "output": "\n...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "test": "run_all_tests.py",
+      "returncode": 0,
+      "output": "> test_frequency_plan.py\nPASS: 270 frequenze uniche; 240 normali + 30 ALFA; CH9; anomalie CH23/24; 40 posizioni TX predefinite.\n> test_pll_plan.py\nPASS: 270 LO e 270 INT unici; 36.310-39.000 MHz; VCO 2323.84-2496 MHz; errore 0Hz.\n> test_control_model.py\nPASS: CH9/ALFA/AM, 6 bande, blocco TX, 6 fault inibitori, ATU busy e input invalidi.\n> test_rx_noise_budget.py\nPASS: modello Friis NF=4.85dB; soglia termica stimata 0.121uV RMS (ipotesi).\n> test_stage2.py\nPASS stage2: 270 PLL points, R/prescaler range, LO endpoints, CH9 and INT\n> test_lo_filter.py\nPASS stage2 LC model S21 math: 7 elements, attenuation and 100MHz sweep finite\nRISULTATO: 6 suite PASS (solo controlli software; RF/EM e PCB non verificati).\n\n"
+    },
+    {
+      "test": "test_connettivita_geometrica_v15.py",
+      "returncode": 0,
+      "output": "$ python test_connettivita_geometrica_v15.py\nPASS V1.5: 4 files, 3 child sheets, labels anchored incl. SPI sheet pins, EFUSE_RTN isolated.\nWARNING: static geometry audit only; KiCad ERC/netlist NOT performed.\n\n"
+    }
+  ],
+  "software_checks_pass": true,
+  "native_ERC_performed": false,
+  "native_netlist_performed": false,
+  "native_kicad_cli_available": false,
+  "release_status": "PRELIMINARY - NO FABRICATION"
+}

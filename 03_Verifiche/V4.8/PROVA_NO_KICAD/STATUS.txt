@@ -1,0 +1,1 @@
+NOT_RUN: kicad-cli unavailable; no native ERC/DRC, zone fill or parity.

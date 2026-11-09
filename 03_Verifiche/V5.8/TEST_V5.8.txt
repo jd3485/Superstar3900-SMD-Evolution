@@ -1,0 +1,35 @@
+test_01_baseline (__main__.Tests.test_01_baseline) ... ok
+test_02_no_errors (__main__.Tests.test_02_no_errors) ... ok
+test_03_reference_identity (__main__.Tests.test_03_reference_identity) ... ok
+test_04_six_nets (__main__.Tests.test_04_six_nets) ... ok
+test_05_thirteen_tracks (__main__.Tests.test_05_thirteen_tracks) ... ok
+test_06_ground_vias (__main__.Tests.test_06_ground_vias) ... ok
+test_07_max_rf_atten_in (__main__.Tests.test_07_max_rf_atten_in) ... ok
+test_08_max_range (__main__.Tests.test_08_max_range) ... ok
+test_09_segment_length (__main__.Tests.test_09_segment_length) ... ok
+test_10_all_flagged_as_review (__main__.Tests.test_10_all_flagged_as_review) ... ok
+test_11_no_native (__main__.Tests.test_11_no_native) ... ok
+test_12_no_fab_or_tx (__main__.Tests.test_12_no_fab_or_tx) ... ok
+test_13_bound (__main__.Tests.test_13_bound) ... ok
+test_14_more_fine_sampling (__main__.Tests.test_14_more_fine_sampling) ... ok
+test_15_zero_step_refused (__main__.Tests.test_15_zero_step_refused) ... ok
+test_16_large_step_refused (__main__.Tests.test_16_large_step_refused) ... ok
+test_17_removed_route (__main__.Tests.test_17_removed_route) ... ok
+test_18_changed_trace_width (__main__.Tests.test_18_changed_trace_width) ... ok
+test_19_changed_signal_net (__main__.Tests.test_19_changed_signal_net) ... ok
+test_20_changed_via_coordinates (__main__.Tests.test_20_changed_via_coordinates) ... ok
+test_21_changed_via_net (__main__.Tests.test_21_changed_via_net) ... ok
+test_22_changed_zone_layer (__main__.Tests.test_22_changed_zone_layer) ... ok
+test_23_deleted_ground_zone (__main__.Tests.test_23_deleted_ground_zone) ... ok
+test_24_pad_copper_changed (__main__.Tests.test_24_pad_copper_changed) ... ok
+test_25_no_reference_still_not_release (__main__.Tests.test_25_no_reference_still_not_release) ... ok
+test_26_net_label_changed (__main__.Tests.test_26_net_label_changed) ... ok
+test_27_sample_count_monotonic (__main__.Tests.test_27_sample_count_monotonic) ... ok
+test_28_lengths_positive (__main__.Tests.test_28_lengths_positive) ... ok
+test_29_all_rf_widths (__main__.Tests.test_29_all_rf_widths) ... ok
+test_30_all_source_positions_millimetric (__main__.Tests.test_30_all_source_positions_millimetric) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.459s
+
+OK

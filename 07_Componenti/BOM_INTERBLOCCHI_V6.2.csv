@@ -1,0 +1,62 @@
+ref,descrizione,mpn,stato,nota
+U801,Supervisore 3V3 con watchdog e reset ~200ms,"TPS3823A-33DBVR, TI (variante 3.3V da confermare in distinta ordinabile)",CANDIDATO,RESET active low: high indicates good. watchdog 1.6 s nominal; WDI MCU PB11 ECO
+C801,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,local U801
+U802,"Rilevatore finestra 13.8V, comparatori OD",TPS3700DDCR TI (DDC SOT23-6),CANDIDATO,"VDD 3.3V, INA+ undervoltage threshold, INB- overvoltage threshold"
+C802,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,local U802
+R801,287000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,UV divider upper 287k 1%
+R802,10000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,UV divider lower 10k 1%
+R803,374000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,OV divider upper 374k 1%
+R804,10000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,OV divider lower 10k 1%
+C803,4.7 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,"anti-spike ~45 us nominal, no guarantee of propagation"
+C804,4.7 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,anti-spike ~46 us nominal
+R805,10000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,open drain 3.3V pull-up
+R806,10000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,open drain 3.3V pull-up
+R820,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,RX_SAFE_NC: default OFF at power-up/open circuit
+R821,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,PA_MODE_HW: default OFF at power-up/open circuit
+R822,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,FAULT_LOOP_OK: default OFF at power-up/open circuit
+R823,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,TX_ARM_REQUEST: default OFF at power-up/open circuit
+R824,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,TX_BENCH_KEY: default OFF at power-up/open circuit
+R825,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,AMP_SD_REQUEST: default OFF at power-up/open circuit
+R826,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,CODEC_READY: default OFF at power-up/open circuit
+R827,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,AMP_FAULT_N: default OFF at power-up/open circuit
+R828,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,PA_RELAY_CMD: default OFF at power-up/open circuit
+R830,10000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,"PTT active-low, default HIGH: open circuit => no TX"
+R831,100000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,placeholder; watchdog behavior for stuck-low depends on TPS3823 active WDI input
+S801,"PA/RX mode selector: RX/PA SPDT second pole, break-before-make","SPDT contact, hardware ECO to V6.1 S742; mechanical MPN TBD",ECO_REQUIRED,common 3V3; NC RX_SAFE; NO PA_MODE; plus original PA sense pole
+J801,Service TX keyed jumper default UNFITTED,"2 pin keyed jumper, DNI/open in all supplied configuration",DNI,jumper must stay physically OPEN; board cannot be cleared for TX
+J802,Fault loop future thermal + SWR sensor contacts,"Normally closed external series loop, connector MPN TBD",OPEN_PENDING,"healthy closed loop -> 3V3, open -> fault, no false hardware approval"
+U803,Inverter logico CMOS,"SN74LVC1G04DBVR (TI), DBV5",CANDIDATO,TX_PTT_ACTIVE=NOT PTT_N
+C9803,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U803
+U804,Inverter logico CMOS,"SN74LVC1G04DBVR (TI), DBV5",CANDIDATO,NOT_PA_MODE_HW=NOT PA_MODE_HW
+C9804,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U804
+U805,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,PWR_STAGE1=SUP_3V3_OK AND BAT_UV_OK
+C9805,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U805
+U806,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,POWER_GOOD_HW=PWR_STAGE1 AND BAT_OV_OK
+C9806,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U806
+U807,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,RX_PERMIT_BASE=RX_SAFE_NC AND NOT_PA_MODE_HW
+C9807,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U807
+U808,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,HW_SAFE_LOOP=RX_PERMIT_BASE AND FAULT_LOOP_OK
+C9808,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U808
+U809,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,TX_SAFE_BASE=POWER_GOOD_HW AND HW_SAFE_LOOP
+C9809,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U809
+U810,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,TX_ARMED_HW=TX_SAFE_BASE AND TX_ARM_REQUEST
+C9810,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U810
+U811,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,TX_KEYED_HW=TX_ARMED_HW AND TX_PTT_ACTIVE
+C9811,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U811
+U812,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,TX_ENABLE_HARD=TX_KEYED_HW AND TX_BENCH_KEY
+C9812,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U812
+U813,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,AMP_REQ_CODEC=AMP_SD_REQUEST AND CODEC_READY
+C9813,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U813
+U814,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,AMP_REQ_POWER=AMP_REQ_CODEC AND POWER_GOOD_HW
+C9814,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U814
+U815,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,AMP_SD=AMP_REQ_POWER AND AMP_FAULT_N
+C9815,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U815
+U816,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,PA_RELAY_REQ=PA_RELAY_CMD AND PA_MODE_HW
+C9816,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U816
+U817,AND 2 ingressi 1.65-5.5 V,"SN74LVC1G08DBVR (TI), DBV5",CANDIDATO,PA_RELAY_EN=PA_RELAY_REQ AND POWER_GOOD_HW
+C9817,100 nF,MLCC classe/tensione e footprint TBD,CANDIDATO,Bypass local U817
+R850,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,output low default during VDD ramp / if driver fails hi-Z; not fault tolerant
+R851,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,output low default during VDD ramp / if driver fails hi-Z; not fault tolerant
+R852,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,output low default during VDD ramp / if driver fails hi-Z; not fault tolerant
+R853,47000 ohm,"resistore 0603, 1% quando misura, footprint TBD",CANDIDATO,output low default during VDD ramp / if driver fails hi-Z; not fault tolerant
+J803,17 contatti,connettore polarizzato / footprint da scegliere,DA DEFINIRE,Interface V6.2. Existing V6.1 J702 J604 must be ECO rerouted to pass through V6.2.

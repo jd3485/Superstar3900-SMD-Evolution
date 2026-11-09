@@ -1,0 +1,25 @@
+test_01_board_sha (__main__.TestV44.test_01_board_sha) ... ok
+test_02_part_count (__main__.TestV44.test_02_part_count) ... ok
+test_03_pin_count (__main__.TestV44.test_03_pin_count) ... ok
+test_04_unique_nets (__main__.TestV44.test_04_unique_nets) ... ok
+test_05_no_duplicate_ref_pin (__main__.TestV44.test_05_no_duplicate_ref_pin) ... ok
+test_06_original_study_mapping_equal (__main__.TestV44.test_06_original_study_mapping_equal) ... ok
+test_07_original_schematic_not_modified (__main__.TestV44.test_07_original_schematic_not_modified) ... ok
+test_08_static_validation (__main__.TestV44.test_08_static_validation) ... ok
+test_09_reproducibility (__main__.TestV44.test_09_reproducibility) ... ok
+test_10_footprints_mapped (__main__.TestV44.test_10_footprints_mapped) ... ok
+test_11_detect_wrong_net_label (__main__.TestV44.test_11_detect_wrong_net_label) ... ok
+test_12_detect_wrong_footprint (__main__.TestV44.test_12_detect_wrong_footprint) ... ok
+test_13_detect_wrong_bom_value (__main__.TestV44.test_13_detect_wrong_bom_value) ... ok
+test_14_stored_schematic_matches_builder (__main__.TestV44.test_14_stored_schematic_matches_builder) ... ok
+test_15_stored_csv_maps_pins (__main__.TestV44.test_15_stored_csv_maps_pins) ... ok
+test_16_safety_flags_false (__main__.TestV44.test_16_safety_flags_false) ... ok
+test_17_pin_mapping_L101 (__main__.TestV44.test_17_pin_mapping_L101) ... ok
+test_18_pin_mapping_AMP (__main__.TestV44.test_18_pin_mapping_AMP) ... ok
+test_19_pad_terminals (__main__.TestV44.test_19_pad_terminals) ... ok
+test_20_PCB_baseline_unmodified (__main__.TestV44.test_20_PCB_baseline_unmodified) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.088s
+
+OK

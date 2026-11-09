@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name "S3900E_V38_Review")(type "KiCad")(uri "${KIPRJMOD}/S3900E_V38_Review.pretty")(options "")(descr "S3900E V4.5 experimental footprint, NOT approved for fabrication"))
+  (lib (name "S3900E_v33")(type "KiCad")(uri "${KIPRJMOD}/S3900E_v33.pretty")(options "")(descr "S3900E V4.5 experimental footprint, NOT approved for fabrication"))
+  (lib (name "S3900E_v35")(type "KiCad")(uri "${KIPRJMOD}/S3900E_v35.pretty")(options "")(descr "S3900E V4.5 experimental footprint, NOT approved for fabrication"))
+)

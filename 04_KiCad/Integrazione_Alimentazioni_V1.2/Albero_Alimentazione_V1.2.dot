@@ -1,0 +1,26 @@
+digraph G {
+ graph [rankdir=LR, bgcolor="transparent", nodesep=0.42, ranksep=0.56];
+ node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, color="#326180", fillcolor="#eef6fa", fontcolor="#142c3a", margin="0.15,0.12"];
+ edge [color="#087f8c", penwidth=1.8, arrowsize=.8];
+ raw [label="13.8 V AUX RAW
+solo ausiliari"];
+ fuse [label="F200
+1.5 A candidato"];
+ ef [label="U200 TPS26600
+eFuse/OVP/UVLO"];
+ buck [label="TPS54202
+13.8 a 5 V"];
+ rail [label="5 V filtrati
+non validati"];
+ l1 [label="TPS7A2033
+3.3 V PLL"];
+ l2 [label="TPS7A2033
+3.3 V TCXO"];
+ raw -> fuse -> ef -> buck -> rail; rail -> l1; rail -> l2;
+ tvs [label="D200 SMBJ18CA
+DNP non montare", fillcolor="#fff2e0", color="#b77730"];
+ fuse -> tvs [style=dashed, label="shunt verso GND", fontsize=9];
+ ref [label="EFUSE_RTN != GND_MAIN
+NON unire", fillcolor="#fff1f0", color="#ba4444"];
+ ef -> ref [style=dashed, color="#ba4444", arrowhead=none];
+}

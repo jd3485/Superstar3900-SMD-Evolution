@@ -1,0 +1,3 @@
+# CHANGELOG V4.2 - 2026-11-08
+
+Nuovo audit statico per forme poligonali custom SMA e rotazioni, con shapely, 19 test riproducibili, rapporto JSON, report termico/meccanico e studio sensibilità impedenza; **nessun cambiamento del PCB RX V3.8**. Quattro zone GND ancora non riempite. Lo scostamento del footprint SMA rispetto alla quota TE resta aperto; produttore/rifornimento da verificare. Nuovo documento per stack-up CPWG e stato produzione. README, RIPRENDI e registro decisioni aggiornati con snapshot integrali V4.1. Tutto lo storico, inclusi manuale V4.0 e test V4.1, conservato. La nuova revisione NON autorizza fabbricazione né TX.

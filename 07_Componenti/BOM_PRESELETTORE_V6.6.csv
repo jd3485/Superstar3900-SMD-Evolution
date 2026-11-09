@@ -1,0 +1,13 @@
+ref,quantity,value_or_part,function,qualification,note
+J601,1,RF_IN_50R,Connettore ingresso coax schermato,Interfaccia esistente non qualificata,Footprint connettore in fase CAD
+J602,1,RF_OUT_50R,Connettore uscita al mixer ADE-1+ RF pin3,Interfaccia esistente non qualificata,Mantenere 50Ω termina nel carico mixer nominale
+L601,1,2.0 uH,Primo induttore serie risonante,MPN/TBD; QL=60 SRF=90MHz SOLO MODELLO,Attenzione SRF reale vicino ai 50MHz: prova obbligatoria
+L602,1,22 nH,Induttore di ramo shunt in parallelo C603/C604,MPN/TBD; QL=60 SRF=350MHz SOLO MODELLO,Qualificare Q e correnti RF
+L603,1,2.0 uH,Secondo induttore serie risonante,MPN/TBD; QL=60 SRF=90MHz SOLO MODELLO,Simmetria e schermatura richieste
+C601,1,16 pF NP0/C0G,"Rete serie lato ingresso, in parallelo a C602",SPECIFICHE MPN NON VERIFICATE,Tolleranza ipotizzata ±2% nel MC equivalente
+C602,1,1.5 pF NP0/C0G,"Rete serie lato ingresso, in parallelo a C601",SPECIFICHE MPN NON VERIFICATE,Somma nominale 17.5pF
+C603,1,1500 pF NP0/C0G,"Ramo shunt a massa, in parallelo a C604",SPECIFICHE MPN NON VERIFICATE,Valutare disponibilità RF/ESL e capacità di carico
+C604,1,91 pF NP0/C0G,"Ramo shunt a massa, in parallelo a C603",SPECIFICHE MPN NON VERIFICATE,Somma nominale 1591pF
+C605,1,16 pF NP0/C0G,"Rete serie lato uscita, in parallelo a C606",SPECIFICHE MPN NON VERIFICATE,Tolleranza ipotizzata ±2% nel MC equivalente
+C606,1,1.5 pF NP0/C0G,"Rete serie lato uscita, in parallelo a C605",SPECIFICHE MPN NON VERIFICATE,Somma nominale 17.5pF
+F501_ALT,1,SXBP-27R5+,"Filtro SMD 50Ω 24-31MHz alternativo; pin 1 ingresso, 8 uscita, 2-7 massa",DATASHEET_MFR_CANDIDATE_NOT_BOARD_QUALIFIED,"Alternativa al blocco LC, NON collegarli entrambi"

@@ -1,0 +1,16 @@
+{
+  "release": "V2.3",
+  "overall_estimated_percent": 31,
+  "prior_percent": 30,
+  "delta_percentage_points": 1,
+  "basis": "Parametric RF noise/IIP3 tradeoff tested; no hardware gate cleared",
+  "not_completed": [
+    "native KiCad ERC/DRC",
+    "physical PCB",
+    "real front-end filter",
+    "RX/TX measurement",
+    "firmware",
+    "manuals final",
+    "compliance"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "revision": "3.3",
+  "timestamp": "2026-11-07",
+  "actual_native_erc": "NON ESEGUITO",
+  "actual_native_drc": "NON ESEGUITO",
+  "native_kicad_file_open": "NON VERIFICATO",
+  "routing": "ASSENTE",
+  "zones": "ASSENTI",
+  "gerber": "NON GENERATI",
+  "component_count": 15,
+  "net_count_including_net0": 9,
+  "auto_static_checks": {
+    "board_header": true,
+    "parenthesis_balanced": true,
+    "4_copper_layers": true,
+    "15_footprints": true,
+    "8_named_nets": true,
+    "board_edge_110x62": true,
+    "no_tracks_no_zones": true,
+    "unique_references": true,
+    "pads_have_known_nets": true,
+    "connector4_count": true,
+    "SOT89_pin2_dual_pad": true,
+    "GND_on_SMA_shields": true,
+    "5V_only_on_bias_and_BENCH": true,
+    "no_TX_included": true,
+    "references_either_onboard": true
+  },
+  "status": "STUDIO CAD - NON PRONTO PRODUZIONE",
+  "known_blockers": [
+    "SMA footprint mechanical validation",
+    "SOT-89 land pattern verification",
+    "schematic-board sync",
+    "routing and ground plane",
+    "stack-up impedance confirmation",
+    "KiCad ERC DRC",
+    "hardware RF measurements"
+  ]
+}

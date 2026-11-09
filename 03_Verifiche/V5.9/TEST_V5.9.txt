@@ -1,0 +1,25 @@
+test_bad_mode_rejected (__main__.AudioDesign.test_bad_mode_rejected) ... ok
+test_ch9_override (__main__.AudioDesign.test_ch9_override) ... ok
+test_modes (__main__.AudioDesign.test_modes) ... ok
+test_no_hardware_control (__main__.AudioDesign.test_no_hardware_control) ... ok
+test_pa_priority (__main__.AudioDesign.test_pa_priority) ... ok
+test_power_loss (__main__.AudioDesign.test_power_loss) ... ok
+test_transition_mute (__main__.AudioDesign.test_transition_mute) ... ok
+test_tx_fail_closed (__main__.AudioDesign.test_tx_fail_closed) ... ok
+test_adc_separation (__main__.ContractDesign.test_adc_separation) ... ok
+test_amp_has_distinct_speakers (__main__.ContractDesign.test_amp_has_distinct_speakers) ... ok
+test_clock_consistency (__main__.ContractDesign.test_clock_consistency) ... ok
+test_five_audio_modes_to_mux (__main__.ContractDesign.test_five_audio_modes_to_mux) ... ok
+test_hw_rf_inhibit_bypass_absent (__main__.ContractDesign.test_hw_rf_inhibit_bypass_absent) ... ok
+test_module_count (__main__.ContractDesign.test_module_count) ... ok
+test_ports_exist_and_types_match (__main__.ContractDesign.test_ports_exist_and_types_match) ... ok
+test_rx_path_complete (__main__.ContractDesign.test_rx_path_complete) ... ok
+test_single_driver_per_input (__main__.ContractDesign.test_single_driver_per_input) ... ok
+test_status_blocks_fabrication (__main__.ContractDesign.test_status_blocks_fabrication) ... ok
+test_tx_chain_has_hardware_gate (__main__.ContractDesign.test_tx_chain_has_hardware_gate) ... ok
+test_unique_connection_ids (__main__.ContractDesign.test_unique_connection_ids) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.002s
+
+OK

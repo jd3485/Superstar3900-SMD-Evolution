@@ -1,0 +1,13 @@
+h_L1L2_mm,Dk_ipotizzato,rame_finito_mm,W_50ohm_senza_mask_mm,Z0_calcolato_0p28mm,stato
+0.16,4.2,0.0175,0.2872,50.7,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.16,4.2,0.035,0.263,48.44,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.16,4.74,0.0175,0.2593,47.99,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.16,4.74,0.035,0.235,45.84,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.1855,4.2,0.0175,0.3373,55.21,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.1855,4.2,0.035,0.3122,52.79,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.1855,4.74,0.0175,0.3049,52.27,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.1855,4.74,0.035,0.2798,49.98,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.21,4.2,0.0175,0.3855,59.1,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.21,4.2,0.035,0.3597,56.56,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.21,4.74,0.0175,0.3488,55.97,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"
+0.21,4.74,0.035,0.323,53.56,"APPROSSIMATO: niente mask, roughness, solver 2D, tolleranze laminazione"

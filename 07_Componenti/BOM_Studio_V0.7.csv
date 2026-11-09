@@ -1,0 +1,7 @@
+Ref,Valore,Package,Quantita,Stato,Funzione
+U1,LMX2572RHA,VQFN40+EP,1,BOZZA NON ACQUISTARE,PLL core
+R2,620R 1%,0402,1,BOZZA NON ACQUISTARE,Filtro anello candidato
+R3,22R 1%,0402,1,BOZZA NON ACQUISTARE,Filtro anello candidato
+C1,220p C0G 5%,0402,1,BOZZA NON ACQUISTARE,Filtro anello candidato
+C2,120n X7R 10%,0603,1,BOZZA NON ACQUISTARE,Filtro anello candidato
+C3,2n2 C0G 5%,0402,1,BOZZA NON ACQUISTARE,Filtro anello candidato

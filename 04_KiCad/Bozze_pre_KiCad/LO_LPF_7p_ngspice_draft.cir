@@ -1,0 +1,20 @@
+* S3900E LO LPF 7-pole Butterworth candidate V0.3
+* IDEAL LC network; NOT a validated hardware design
+* Use ac amplitude 2 V so 1 V into a matched 50ohm load means 0dB S21.
+VGEN vin 0 AC 2
+RS vin n0 50
+L1 n0 n1 80.4893n
+C2 n1 0 90.2104p
+L3 n1 n3 325.8947n
+C4 n3 0 144.6863p
+L5 n3 n5 325.8947n
+C6 n5 0 90.2104p
+L7 n5 out 80.4893n
+RLOAD out 0 50
+.ac dec 120 10Meg 160Meg
+* plot magnitude relative to matched 0 dB reference 1V
+.control
+run
+print vm(out)
+.endc
+.end

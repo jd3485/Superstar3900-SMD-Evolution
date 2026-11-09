@@ -1,0 +1,61 @@
+V5.9: PASS: . ok
+test_ports_exist_and_types_match (__main__.ContractDesign.test_ports_exist_and_types_match) ... ok
+test_rx_path_complete (__main__.ContractDesign.test_rx_path_complete) ... ok
+test_single_driver_per_input (__main__.ContractDesign.test_single_driver_per_input) ... ok
+test_status_blocks_fabrication (__main__.ContractDesign.test_status_blocks_fabrication) ... ok
+test_tx_chain_has_hardware_gate (__main__.ContractDesign.test_tx_chain_has_hardware_gate) ... ok
+test_unique_connection_ids (__main__.ContractDesign.test_unique_connection_ids) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.001s
+
+OK
+
+V6.0: PASS: ...................................
+----------------------------------------------------------------------
+Ran 35 tests in 0.025s
+
+OK
+
+V6.1 MCU: PASS: .......................................................
+----------------------------------------------------------------------
+Ran 55 tests in 0.058s
+
+OK
+
+V6.1 audio: PASS: .....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+V6.2: PASS: ealthy_paths) ... ok
+test_structure (__main__.TestInterlock.test_structure) ... ok
+test_threshold_montecarlo_50000 (__main__.TestInterlock.test_threshold_montecarlo_50000) ... ok
+test_thresholds_analytic (__main__.TestInterlock.test_thresholds_analytic) ... ok
+test_tps3700_open_drain_pullups (__main__.TestInterlock.test_tps3700_open_drain_pullups) ... ok
+test_tx_false_when_pa_relay_energized (__main__.TestInterlock.test_tx_false_when_pa_relay_energized) ... ok
+test_unique_component_pins (__main__.TestInterlock.test_unique_component_pins) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.089s
+
+OK
+
+V6.3: PASS: .............................................
+----------------------------------------------------------------------
+Ran 45 tests in 0.007s
+
+OK
+
+V6.4: PASS: ............................................................
+----------------------------------------------------------------------
+Ran 60 tests in 0.052s
+
+OK
+
+V6.5: PASS: ..................................................
+----------------------------------------------------------------------
+Ran 50 tests in 0.547s
+
+OK

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1105 719" width="1400">
+<rect width="100%" height="100%" fill="#101a29"/>
+<text x="50" y="38" fill="#f5fbff" font-family="DejaVu Sans,Arial" font-size="22" font-weight="bold">S3900E · COUPON RX 50 Ω / PIANO PIAZZAMENTO V3.2</text>
+<rect x="50" y="65" width="990" height="558" rx="13" fill="#17605d" stroke="#4de4d3" stroke-width="3"/>
+<text x="60" y="645" fill="#d2e4f1" font-family="DejaVu Sans,Arial" font-size="16">POSIZIONAMENTO CONCETTUALE • NON ROUTATO • NESSUN GERBER • NON FABBRICARE</text>
+<path d="M 167 209 L 923 209" stroke="#c6fdf3" stroke-width="3" stroke-dasharray="9 7" opacity=".55" fill="none"/>
+<path d="M 167 470 L 923 470" stroke="#c6fdf3" stroke-width="3" stroke-dasharray="9 7" opacity=".55" fill="none"/>
+<rect x="257" y="110" width="621" height="279" rx="8" fill="none" stroke="#c4e5df" stroke-width="2" stroke-dasharray="9 4" opacity=".4"/>
+<rect x="88.0" y="185.0" width="68" height="48" rx="5" fill="#dbdbe9" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="122" y="214" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">J101</text>
+<rect x="323.0" y="198.5" width="30" height="21" rx="5" fill="#00aeaa" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="338" y="214" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">C101</text>
+<rect x="454.0" y="190.0" width="56" height="38" rx="5" fill="#00aeaa" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="482" y="214" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">U101</text>
+<rect x="509.0" y="278.0" width="36" height="24" rx="5" fill="#cc9c3d" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="527" y="295" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">L101</text>
+<rect x="575.0" y="279.5" width="30" height="21" rx="5" fill="#cc9c3d" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="590" y="295" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">C103</text>
+<rect x="638.0" y="279.5" width="30" height="21" rx="5" fill="#cc9c3d" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="653" y="295" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">C104</text>
+<rect x="701.0" y="279.5" width="30" height="21" rx="5" fill="#cc9c3d" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="716" y="295" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">C105</text>
+<rect x="683.0" y="198.5" width="30" height="21" rx="5" fill="#00aeaa" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="698" y="214" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">C102</text>
+<rect x="934.0" y="185.0" width="68" height="48" rx="5" fill="#dbdbe9" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="968" y="214" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">J102</text>
+<rect x="88.0" y="446.0" width="68" height="48" rx="5" fill="#dbdbe9" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="122" y="475" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">J103</text>
+<rect x="341.0" y="459.5" width="30" height="21" rx="5" fill="#4d88df" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="356" y="475" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">R201</text>
+<rect x="521.0" y="459.5" width="30" height="21" rx="5" fill="#4d88df" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="536" y="475" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">R203</text>
+<rect x="701.0" y="459.5" width="30" height="21" rx="5" fill="#4d88df" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="716" y="475" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">R202</text>
+<rect x="934.0" y="446.0" width="68" height="48" rx="5" fill="#dbdbe9" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="968" y="475" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">J104</text>
+<rect x="816.0" y="311.5" width="88" height="47" rx="5" fill="#a56eea" stroke="#dffdf8" stroke-width="1.5"/>
+<text x="860" y="340" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" font-weight="bold" fill="#06131b">J105</text>
+<text x="104" y="578" fill="#e7f8f6" font-size="16" font-family="DejaVu Sans,Arial">L1 RF + local bias / L2 GND CONTINUO / L3 PWR+GND / L4 GND</text>
+<text x="410" y="146" fill="#caf2ef" font-size="12" font-family="DejaVu Sans,Arial">Via termiche proposte sotto pad U101 (numero e foratura DA VALIDARE)</text>
+</svg>

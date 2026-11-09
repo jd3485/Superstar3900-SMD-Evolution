@@ -1,0 +1,24 @@
+test_0_36_mismatch (__main__.TestGeometryV42.test_0_36_mismatch) ... ok
+test_custom_pad_no_primitives_rejected (__main__.TestGeometryV42.test_custom_pad_no_primitives_rejected) ... ok
+test_edge_courtyard_overhang (__main__.TestGeometryV42.test_edge_courtyard_overhang) ... ok
+test_four_zones_unfilled (__main__.TestGeometryV42.test_four_zones_unfilled) ... ok
+test_ground_pads_count (__main__.TestGeometryV42.test_ground_pads_count) ... ok
+test_ground_reaches_local_via (__main__.TestGeometryV42.test_ground_reaches_local_via) ... ok
+test_ideal_microstrip_sensitivity (__main__.TestGeometryV42.test_ideal_microstrip_sensitivity) ... ok
+test_min_clearance (__main__.TestGeometryV42.test_min_clearance) ... ok
+test_no_2d_copper_short (__main__.TestGeometryV42.test_no_2d_copper_short) ... ok
+test_no_release (__main__.TestGeometryV42.test_no_release) ... ok
+test_open_te_status (__main__.TestGeometryV42.test_open_te_status) ... ok
+test_reflection_of_rotated_sma (__main__.TestGeometryV42.test_reflection_of_rotated_sma) ... ok
+test_seven_signal_nets (__main__.TestGeometryV42.test_seven_signal_nets) ... ok
+test_sha_immutable (__main__.TestGeometryV42.test_sha_immutable) ... ok
+test_signal_copper_islands (__main__.TestGeometryV42.test_signal_copper_islands) ... ok
+test_sma_count (__main__.TestGeometryV42.test_sma_count) ... ok
+test_sma_custom_geometries (__main__.TestGeometryV42.test_sma_custom_geometries) ... ok
+test_sma_ground_span (__main__.TestGeometryV42.test_sma_ground_span) ... ok
+test_via_local_path_covers_sma (__main__.TestGeometryV42.test_via_local_path_covers_sma) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.140s
+
+OK

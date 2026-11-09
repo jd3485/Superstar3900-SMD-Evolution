@@ -1,0 +1,101 @@
+{
+  "revision": "V3.9 - documentary and independent nominal CAD audit",
+  "reference_board_revision": "V3.8",
+  "source_board_sha256": "57dd24b13edb5dc987e3ad8cdae0d2d8cc7a1fa3aefb455a63ebc86559eec489",
+  "manufacturer": "TE Connectivity / Linx",
+  "exact_part_number": "CONSMA002-SMD-G",
+  "primary_drawing": "https://www.te.com/en/product-CONSMA002-SMD-G.html (Customer Drawing C-CONSMA002-SMD-X-X rev D, sheet 2)",
+  "manufacturer_version_crosswalk": "Drawing rev D covers CONSMA002-SMD and CONSMA002-SMD-G; -G denotes gold body finish in drawing table",
+  "te_nominal_center_diameter_mm": 2.05,
+  "te_nominal_circular_clearance_feature_diameter_mm": 4.56,
+  "te_nominal_footprint_height_mm": 7.76,
+  "connectors": {
+    "J101": {
+      "center_smd_diameter_mm": 2.05,
+      "center_drill_present": false,
+      "ground_pad_count": 4,
+      "ground_envelope_local_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_envelope_height_mm": 7.4,
+      "te_recommended_footprint_nominal_height_mm": 7.76,
+      "total_height_delta_vs_te_mm": -0.36,
+      "all_ground_pads_custom_smd": true,
+      "all_ground_pads_have_mask_and_paste": true
+    },
+    "J102": {
+      "center_smd_diameter_mm": 2.05,
+      "center_drill_present": false,
+      "ground_pad_count": 4,
+      "ground_envelope_local_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_envelope_height_mm": 7.4,
+      "te_recommended_footprint_nominal_height_mm": 7.76,
+      "total_height_delta_vs_te_mm": -0.36,
+      "all_ground_pads_custom_smd": true,
+      "all_ground_pads_have_mask_and_paste": true
+    },
+    "J103": {
+      "center_smd_diameter_mm": 2.05,
+      "center_drill_present": false,
+      "ground_pad_count": 4,
+      "ground_envelope_local_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_envelope_height_mm": 7.4,
+      "te_recommended_footprint_nominal_height_mm": 7.76,
+      "total_height_delta_vs_te_mm": -0.36,
+      "all_ground_pads_custom_smd": true,
+      "all_ground_pads_have_mask_and_paste": true
+    },
+    "J104": {
+      "center_smd_diameter_mm": 2.05,
+      "center_drill_present": false,
+      "ground_pad_count": 4,
+      "ground_envelope_local_mm": [
+        -3.6,
+        3.6,
+        -3.7,
+        3.7
+      ],
+      "ground_envelope_height_mm": 7.4,
+      "te_recommended_footprint_nominal_height_mm": 7.76,
+      "total_height_delta_vs_te_mm": -0.36,
+      "all_ground_pads_custom_smd": true,
+      "all_ground_pads_have_mask_and_paste": true
+    }
+  },
+  "adl5535": {
+    "paddle_copper_mm": [
+      1.8,
+      3.48
+    ],
+    "paste_margin_ratio": "-0.100",
+    "thermal_process_validated": false
+  },
+  "segments": 44,
+  "vias": 64,
+  "zones_declared": 4,
+  "zones_filled": false,
+  "native_kicad_available": false,
+  "native_kicad_drc_performed": false,
+  "production_release": "BLOCKED - no Gerber or PCBWay order",
+  "remaining_actions": [
+    "Acquire official TE DXF/STEP for exact land and 3D signoff",
+    "Approve gold-part BOM, custom copper/GND geometry and paste/mask",
+    "KiCad PCB load + zone refill + DRC; schematic ERC and parity",
+    "Approve ADL5535 thermal/stencil process; PCBWay stackup and 50-ohm impedance",
+    "VNA and bench tests with TX physically disconnected"
+  ],
+  "disclaimer": "Not an ERC, DRC, 3D fit check, thermal sign-off, RF verification, or manufacturer CAD certification"
+}

@@ -1,0 +1,11 @@
+COMMAND: ['python3', '/mnt/data/Superstar3900_SMD_Evolution_V1.5.1/03_Verifiche/test_spi_transport_v15.py']
+EXIT: 0
+
+STDOUT:
+
+STDERR:
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

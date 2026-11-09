@@ -1,0 +1,136 @@
+{
+  "revision": "V5.7",
+  "suite_count": 18,
+  "passed": 18,
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "fabrication_allowed": false,
+  "results": [
+    {
+      "revision": "V4.0",
+      "script": "03_Verifiche/V4.0/test_radio_supervisor_v40.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "{\n  \"passed\": true,\n  \"matrix_states_checked\": 2400,\n  \"distinct_rx_positions\": 270,\n  \"channel_d_tx_checked\": 40,\n  \"guard_fault_injection\": 8,\n  \"note\": \"test funzionali software, nessun TX reale\"\n}\n\n"
+    },
+    {
+      "revision": "V4.1",
+      "script": "03_Verifiche/V4.1/test_audit_rf_v41.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "\ntest_1percent_corner_count (__main__.AuditV41Tests.test_1percent_corner_count) ... ok\ntest_board_outline (__main__.AuditV41Tests.test_board_outline) ... ok\ntest_connector_count (__main__.AuditV41Tests.test_connector_count) ... ok\ntest_custom_land_geometry (__main__.AuditV41Tests.test_custom_land_geometry) ... ok\ntest_kicad_no_fab (__main__.AuditV41Tests.test_kicad_no_fab) ... ok\ntest_legacy_board_hash (__main__.AuditV41Tests.test_legacy_board_hash) ... ok\ntest_paddle (__main__.AuditV41Tests.test_paddle) ... ok\ntest_pi_nominal (__main__.AuditV41Tests.test_pi_nominal) ... ok\ntest_rotate_180 (__main__.AuditV41Tests.test_rotate_180) ... ok\ntest_special_circles_vs_boxes (__main__.AuditV41Tests.test_special_circles_vs_boxes) ... ok\ntest_unfilled_zones (__main__.AuditV41Tests.test_unfilled_zones) ... ok\ntest_value_perturbation (__main__.AuditV41Tests.test_value_perturbation) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.010s\n\nOK\n"
+    },
+    {
+      "revision": "V4.2",
+      "script": "03_Verifiche/V4.2/test_geometria_rf_v42.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "edge_courtyard_overhang (__main__.TestGeometryV42.test_edge_courtyard_overhang) ... ok\ntest_four_zones_unfilled (__main__.TestGeometryV42.test_four_zones_unfilled) ... ok\ntest_ground_pads_count (__main__.TestGeometryV42.test_ground_pads_count) ... ok\ntest_ground_reaches_local_via (__main__.TestGeometryV42.test_ground_reaches_local_via) ... ok\ntest_ideal_microstrip_sensitivity (__main__.TestGeometryV42.test_ideal_microstrip_sensitivity) ... ok\ntest_min_clearance (__main__.TestGeometryV42.test_min_clearance) ... ok\ntest_no_2d_copper_short (__main__.TestGeometryV42.test_no_2d_copper_short) ... ok\ntest_no_release (__main__.TestGeometryV42.test_no_release) ... ok\ntest_open_te_status (__main__.TestGeometryV42.test_open_te_status) ... ok\ntest_reflection_of_rotated_sma (__main__.TestGeometryV42.test_reflection_of_rotated_sma) ... ok\ntest_seven_signal_nets (__main__.TestGeometryV42.test_seven_signal_nets) ... ok\ntest_sha_immutable (__main__.TestGeometryV42.test_sha_immutable) ... ok\ntest_signal_copper_islands (__main__.TestGeometryV42.test_signal_copper_islands) ... ok\ntest_sma_count (__main__.TestGeometryV42.test_sma_count) ... ok\ntest_sma_custom_geometries (__main__.TestGeometryV42.test_sma_custom_geometries) ... ok\ntest_sma_ground_span (__main__.TestGeometryV42.test_sma_ground_span) ... ok\ntest_via_local_path_covers_sma (__main__.TestGeometryV42.test_via_local_path_covers_sma) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.185s\n\nOK\n"
+    },
+    {
+      "revision": "V4.3",
+      "script": "03_Verifiche/V4.3/test_candidato_sma_v43.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": ". ok\ntest_candidate_matches_work_file (__main__.VerifyV43.test_candidate_matches_work_file) ... ok\ntest_changes_not_identical (__main__.VerifyV43.test_changes_not_identical) ... ok\ntest_clearance_nominal (__main__.VerifyV43.test_clearance_nominal) ... ok\ntest_fab_block (__main__.VerifyV43.test_fab_block) ... ok\ntest_four_sma (__main__.VerifyV43.test_four_sma) ... ok\ntest_ground_pads_path_to_vias (__main__.VerifyV43.test_ground_pads_path_to_vias) ... ok\ntest_net_count (__main__.VerifyV43.test_net_count) ... ok\ntest_no_short_under_review_threshold (__main__.VerifyV43.test_no_short_under_review_threshold) ... ok\ntest_not_native_kicad (__main__.VerifyV43.test_not_native_kicad) ... ok\ntest_not_te_approved (__main__.VerifyV43.test_not_te_approved) ... ok\ntest_orientation (__main__.VerifyV43.test_orientation) ... ok\ntest_other_components_count (__main__.VerifyV43.test_other_components_count) ... ok\ntest_paste_still_present (__main__.VerifyV43.test_paste_still_present) ... ok\ntest_signal_islands (__main__.VerifyV43.test_signal_islands) ... ok\ntest_span_after (__main__.VerifyV43.test_span_after) ... ok\ntest_span_before (__main__.VerifyV43.test_span_before) ... ok\ntest_trace_count_untouched (__main__.VerifyV43.test_trace_count_untouched) ... ok\ntest_via_count_untouched (__main__.VerifyV43.test_via_count_untouched) ... ok\ntest_zones_unfilled (__main__.VerifyV43.test_zones_unfilled) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.496s\n\nOK\n"
+    },
+    {
+      "revision": "V4.4",
+      "script": "03_Verifiche/V4.4/test_schema_pcb_v44.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "estV44.test_04_unique_nets) ... ok\ntest_05_no_duplicate_ref_pin (__main__.TestV44.test_05_no_duplicate_ref_pin) ... ok\ntest_06_original_study_mapping_equal (__main__.TestV44.test_06_original_study_mapping_equal) ... ok\ntest_07_original_schematic_not_modified (__main__.TestV44.test_07_original_schematic_not_modified) ... ok\ntest_08_static_validation (__main__.TestV44.test_08_static_validation) ... ok\ntest_09_reproducibility (__main__.TestV44.test_09_reproducibility) ... ok\ntest_10_footprints_mapped (__main__.TestV44.test_10_footprints_mapped) ... ok\ntest_11_detect_wrong_net_label (__main__.TestV44.test_11_detect_wrong_net_label) ... ok\ntest_12_detect_wrong_footprint (__main__.TestV44.test_12_detect_wrong_footprint) ... ok\ntest_13_detect_wrong_bom_value (__main__.TestV44.test_13_detect_wrong_bom_value) ... ok\ntest_14_stored_schematic_matches_builder (__main__.TestV44.test_14_stored_schematic_matches_builder) ... ok\ntest_15_stored_csv_maps_pins (__main__.TestV44.test_15_stored_csv_maps_pins) ... ok\ntest_16_safety_flags_false (__main__.TestV44.test_16_safety_flags_false) ... ok\ntest_17_pin_mapping_L101 (__main__.TestV44.test_17_pin_mapping_L101) ... ok\ntest_18_pin_mapping_AMP (__main__.TestV44.test_18_pin_mapping_AMP) ... ok\ntest_19_pad_terminals (__main__.TestV44.test_19_pad_terminals) ... ok\ntest_20_PCB_baseline_unmodified (__main__.TestV44.test_20_PCB_baseline_unmodified) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.131s\n\nOK\n"
+    },
+    {
+      "revision": "V4.5",
+      "script": "03_Verifiche/V4.5/test_librerie_v45.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "PASS 9 distinct library footprint names\nPASS 3 .pretty library directories\nPASS 15 PCB component instances\nPASS 9 schematic symbol types\nPASS 15 standalone .pcb components\nPASS 15 standalone .sch component instances\nPASS Standalone PCB bytes equal V4.3 candidate\nPASS Standalone schema retains project instance name\nPASS No schematic older project instance name\nPASS No footprint board net stored\nPASS All 9 footprint files parse\nPASS All 9 footprint geometries preserved\nPASS S3900E custom SMA footprint has 5 copper pads\nPASS Custom ADL5535 footprint has 4 pad shapes, 3 pin numbers\nPASS 9 symbol definitions in exported library\nPASS 9 external symbol names do not embed library prefix\nPASS fp-lib-table uses local KIPRJMOD\nPASS sym-lib-table uses local KIPRJMOD\nPASS Library identifiers from PCB all resolvable\nPASS Schematic symbol identifiers all resolvable\nPASS Schematic footprint IDs match PCB footprint IDs\nPASS Source schematic equals frozen V4.4 manifest\nPASS Source PCB equals frozen V4.4 manifest\nPASS Mutation footprint pad dimension changes signature\nPASS Mutation missing symbol breaks reference coverage\nPASS Unclosed footprint is rejected by parser\nSUCCESS: 26 static checks; native ERC/DRC NOT RUN\n\n"
+    },
+    {
+      "revision": "V4.6",
+      "script": "03_Verifiche/V4.6/test_rischi_v46.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "PASS Static audit tied to actual source SHA\nPASS Correct amplifier reference\nPASS Paddle nominal width 1.80 mm\nPASS Paddle nominal height 3.48 mm\nPASS Paddle area 6.264 mm2\nPASS Paddle GND net\nPASS No via centers inside pad\nPASS Nearest via net ground and 0.5 mm copper edge gap\nPASS Nearest via diameter 0.7 mm\nPASS Nearest via drill 0.3 mm\nPASS Four zones enumerated\nPASS All four layer names enumerated\nPASS Four relevant SMA connectors not supply header\nPASS All SMA have four custom GND pads\nPASS No factory CAD validation claimed\nPASS No native KiCad run claimed\nPASS No fabrication approval claimed\nPASS Candidate board identical to V4.5 archive\nPASS KiCad 9-like missing refill flag rejects closed\nPASS Simulated KiCad10 command flags exercised (MOCK ONLY)\nPASS Fake KiCad10 never changes historical PCB\nPASS Tampering target via exists in source\nPASS Mutation with via-in-pad is rejected\nPASS Source still unchanged after mutation test\nSUCCESS 24 static/launcher tests, ZERO native KiCad runs\n\n"
+    },
+    {
+      "revision": "V4.7",
+      "script": "03_Verifiche/V4.7/test_audit_te_v47.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "V47.test_13_paste_relief_not_explicit) ... ok\ntest_14_thermal_pad (__main__.CheckV47.test_14_thermal_pad) ... ok\ntest_15_thermal_paste_ratio (__main__.CheckV47.test_15_thermal_paste_ratio) ... ok\ntest_16_thermal_paste_nominal_fraction (__main__.CheckV47.test_16_thermal_paste_nominal_fraction) ... ok\ntest_17_thermal_paste_nominal_area (__main__.CheckV47.test_17_thermal_paste_nominal_area) ... ok\ntest_18_no_claim_of_manufacturing (__main__.CheckV47.test_18_no_claim_of_manufacturing) ... ok\ntest_19_no_claim_of_native_checks (__main__.CheckV47.test_19_no_claim_of_native_checks) ... ok\ntest_20_no_claim_of_thermal (__main__.CheckV47.test_20_no_claim_of_thermal) ... ok\ntest_21_sha_consistent (__main__.CheckV47.test_21_sha_consistent) ... ok\ntest_22_schematic_sha_consistent (__main__.CheckV47.test_22_schematic_sha_consistent) ... ok\ntest_23_corruption_pad_identity_detected (__main__.CheckV47.test_23_corruption_pad_identity_detected) ... ok\ntest_24_corruption_polygon_detected (__main__.CheckV47.test_24_corruption_polygon_detected) ... ok\ntest_25_no_fabrication_tags (__main__.CheckV47.test_25_no_fabrication_tags) ... ok\ntest_26_machine_report_valid_json (__main__.CheckV47.test_26_machine_report_valid_json) ... ok\ntest_27_no_mutation_of_board (__main__.CheckV47.test_27_no_mutation_of_board) ... ok\ntest_28_no_mutation_of_footprint (__main__.CheckV47.test_28_no_mutation_of_footprint) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 0.021s\n\nOK\n"
+    },
+    {
+      "revision": "V4.8",
+      "script": "03_Verifiche/V4.8/test_variante_termica_v48.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "PASS original SHA invariato\nPASS candidato SHA invariato\nPASS sezioni via aggiunte esattamente sei\nPASS differenza PCB limitata alle sei via GND\nPASS numero via e rete\nPASS centri e diametri dentro il pad\nPASS passo tra vie maggiore del diametro\nPASS studio non autorizzato alla fabbricazione\nPASS nessun ERC/DRC nativo inventato\nPASS nuova cartella schema presente\nRISULTATO: 10/10\n\n"
+    },
+    {
+      "revision": "V4.9",
+      "script": "03_Verifiche/V4.9/test_v49.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "st_02_four_layer_and_thickness (__main__.ManufacturabilityPreflight.test_02_four_layer_and_thickness) ... ok\ntest_03_pad_and_paste_dimensions (__main__.ManufacturabilityPreflight.test_03_pad_and_paste_dimensions) ... ok\ntest_04_paste_ratio (__main__.ManufacturabilityPreflight.test_04_paste_ratio) ... ok\ntest_05_six_vias_under_paste (__main__.ManufacturabilityPreflight.test_05_six_vias_under_paste) ... ok\ntest_06_copper_vias_inside_pad (__main__.ManufacturabilityPreflight.test_06_copper_vias_inside_pad) ... ok\ntest_07_drill_and_ring (__main__.ManufacturabilityPreflight.test_07_drill_and_ring) ... ok\ntest_08_min_edge_stays_within_opening (__main__.ManufacturabilityPreflight.test_08_min_edge_stays_within_opening) ... ok\ntest_09_safety_gates_not_approved (__main__.ManufacturabilityPreflight.test_09_safety_gates_not_approved) ... ok\ntest_10_stencil_change_detected (__main__.ManufacturabilityPreflight.test_10_stencil_change_detected) ... ok\ntest_11_missing_thermal_via_detected (__main__.ManufacturabilityPreflight.test_11_missing_thermal_via_detected) ... ok\ntest_12_wrong_pad_net_detected (__main__.ManufacturabilityPreflight.test_12_wrong_pad_net_detected) ... ok\ntest_13_required_project_documents (__main__.ManufacturabilityPreflight.test_13_required_project_documents) ... ok\ntest_14_copper_original_v38_kept (__main__.ManufacturabilityPreflight.test_14_copper_original_v38_kept) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.007s\n\nOK\n"
+    },
+    {
+      "revision": "V5.0",
+      "script": "03_Verifiche/V5.0/test_v50.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "5_percent (__main__.ReleaseTests.test_05_below_35_percent) ... ok\ntest_06_all_windows_within_original_paste (__main__.ReleaseTests.test_06_all_windows_within_original_paste) ... ok\ntest_07_tamper_detected (__main__.ReleaseTests.test_07_tamper_detected) ... ok\ntest_08_pad_tamper_detected (__main__.ReleaseTests.test_08_pad_tamper_detected) ... ok\ntest_09_board_hash_original (__main__.ReleaseTests.test_09_board_hash_original) ... ok\ntest_10_via_six_gnd (__main__.ReleaseTests.test_10_via_six_gnd) ... ok\ntest_11_gate_fail_closed (__main__.ReleaseTests.test_11_gate_fail_closed) ... ok\ntest_12_nine_requirements_open (__main__.ReleaseTests.test_12_nine_requirements_open) ... ok\ntest_13_supervisor_manual_preserved (__main__.ReleaseTests.test_13_supervisor_manual_preserved) ... ok\ntest_14_native_runner_does_not_fake_checks (__main__.ReleaseTests.test_14_native_runner_does_not_fake_checks) ... ok\ntest_15_study_no_fabrication (__main__.ReleaseTests.test_15_study_no_fabrication) ... ok\ntest_16_svg_exists (__main__.ReleaseTests.test_16_svg_exists) ... ok\ntest_17_no_output_cam_in_v50 (__main__.ReleaseTests.test_17_no_output_cam_in_v50) ... ok\ntest_18_schematic_source (__main__.ReleaseTests.test_18_schematic_source) ... ok\ntest_19_release_not_production (__main__.ReleaseTests.test_19_release_not_production) ... ok\ntest_20_options_distinct (__main__.ReleaseTests.test_20_options_distinct) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.026s\n\nOK\n"
+    },
+    {
+      "revision": "V5.1",
+      "script": "03_Verifiche/V5.1/test_v51.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "\ntest_attenuator (__main__.Tests.test_attenuator) ... ok\ntest_components (__main__.Tests.test_components) ... ok\ntest_csv_header (__main__.Tests.test_csv_header) ... ok\ntest_detects_missing_library (__main__.Tests.test_detects_missing_library) ... ok\ntest_detects_ref_duplicate (__main__.Tests.test_detects_ref_duplicate) ... ok\ntest_detects_wrong_attenuator (__main__.Tests.test_detects_wrong_attenuator) ... ok\ntest_detects_wrong_net (__main__.Tests.test_detects_wrong_net) ... ok\ntest_lna_power (__main__.Tests.test_lna_power) ... ok\ntest_local_libs (__main__.Tests.test_local_libs) ... ok\ntest_nets (__main__.Tests.test_nets) ... ok\ntest_never_authorized (__main__.Tests.test_never_authorized) ... ok\ntest_pins (__main__.Tests.test_pins) ... ok\ntest_rf_smas (__main__.Tests.test_rf_smas) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.021s\n\nOK\n"
+    },
+    {
+      "revision": "V5.2",
+      "script": "03_Verifiche/V5.2/test_v52.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "\ntest_15_components (__main__.T.test_15_components) ... ok\ntest_15_instances (__main__.T.test_15_instances) ... ok\ntest_15_pcb_paths (__main__.T.test_15_pcb_paths) ... ok\ntest_copper_invariant (__main__.T.test_copper_invariant) ... ok\ntest_corrupt_link (__main__.T.test_corrupt_link) ... ok\ntest_net_invariant (__main__.T.test_net_invariant) ... ok\ntest_pass (__main__.T.test_pass) ... ok\ntest_remove_link (__main__.T.test_remove_link) ... ok\ntest_rename_instance (__main__.T.test_rename_instance) ... ok\ntest_schematic_footprint_invariant (__main__.T.test_schematic_footprint_invariant) ... ok\ntest_schematic_values_invariant (__main__.T.test_schematic_values_invariant) ... ok\ntest_unexpected_extra_symbol (__main__.T.test_unexpected_extra_symbol) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.060s\n\nOK\n"
+    },
+    {
+      "revision": "V5.3",
+      "script": "03_Verifiche/V5.3/test_v53.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "_31_labels) ... ok\ntest_31_pin_nets (__main__.TestStaticV53.test_31_pin_nets) ... ok\ntest_31_wires (__main__.TestStaticV53.test_31_wires) ... ok\ntest_8_nets (__main__.TestStaticV53.test_8_nets) ... ok\ntest_bad_board_net_is_detected (__main__.TestStaticV53.test_bad_board_net_is_detected) ... ok\ntest_bad_schematic_label_is_detected (__main__.TestStaticV53.test_bad_schematic_label_is_detected) ... ok\ntest_bad_wire_endpoint_is_detected (__main__.TestStaticV53.test_bad_wire_endpoint_is_detected) ... ok\ntest_clean (__main__.TestStaticV53.test_clean) ... ok\ntest_footprint_library_geometry_corruption_is_detected (__main__.TestStaticV53.test_footprint_library_geometry_corruption_is_detected) ... ok\ntest_invalid_uuid_link_is_detected (__main__.TestStaticV53.test_invalid_uuid_link_is_detected) ... ok\ntest_local_libraries_match (__main__.TestStaticV53.test_local_libraries_match) ... ok\ntest_sma_multiple_ground_pads (__main__.TestStaticV53.test_sma_multiple_ground_pads) ... ok\ntest_trailing_tokens_are_rejected (__main__.TestStaticV53.test_trailing_tokens_are_rejected) ... ok\ntest_unbalanced_s_expression_is_rejected (__main__.TestStaticV53.test_unbalanced_s_expression_is_rejected) ... ok\ntest_wrong_component_value_is_detected (__main__.TestStaticV53.test_wrong_component_value_is_detected) ... ok\ntest_wrong_footprint_is_detected (__main__.TestStaticV53.test_wrong_footprint_is_detected) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.201s\n\nOK\n"
+    },
+    {
+      "revision": "V5.4",
+      "script": "03_Verifiche/V5.4/test_native_runner_v54.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "drc\": \"VIOLATIONS_OR_INCOMPLETE\",\n  \"zone_refill\": \"INCLUDED_IN_DRC_REVIEW_REQUIRED\",\n  \"schematic_parity\": \"INCLUDED_IN_DRC_REVIEW_REQUIRED\",\n  \"fab_authorized\": false,\n  \"tx_enabled\": false,\n  \"release\": \"BLOCKED_NOT_FOR_FAB\",\n  \"notes\": [\n    \"Native reports must be reviewed; never automatic fabrication approval\"\n  ],\n  \"native_erc_exit_code\": 5,\n  \"native_drc_exit_code\": 5,\n  \"source_unchanged\": true\n}\n{\n  \"revision\": \"V5.4\",\n  \"generated_utc\": \"2026-11-08T22:58:28.075924+00:00\",\n  \"candidate\": \"04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB\",\n  \"kicad_version\": \"9.0.10\",\n  \"native_erc\": \"NOT_RUN\",\n  \"native_drc\": \"NOT_RUN\",\n  \"zone_refill\": \"NOT_RUN\",\n  \"schematic_parity\": \"NOT_RUN\",\n  \"fab_authorized\": false,\n  \"tx_enabled\": false,\n  \"release\": \"BLOCKED_NOT_FOR_FAB\",\n  \"notes\": [\n    \"KiCad 10 or essential CLI flags not confirmed; NOT_RUN\"\n  ],\n  \"source_unchanged\": true\n}\n{\n  \"revision\": \"V5.4\",\n  \"generated_utc\": \"2026-11-08T22:58:29.967352+00:00\",\n  \"candidate\": \"04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB\",\n  \"kicad_version\": null,\n  \"native_erc\": \"NOT_RUN\",\n  \"native_drc\": \"NOT_RUN\",\n  \"zone_refill\": \"NOT_RUN\",\n  \"schematic_parity\": \"NOT_RUN\",\n  \"fab_authorized\": false,\n  \"tx_enabled\": false,\n  \"release\": \"BLOCKED_NOT_FOR_FAB\",\n  \"notes\": [\n    \"kicad-cli absent; ERC/DRC/parity NOT_RUN\"\n  ],\n  \"source_unchanged\": true\n}\n\n........\n----------------------------------------------------------------------\nRan 8 tests in 13.046s\n\nOK\n"
+    },
+    {
+      "revision": "V5.5",
+      "script": "03_Verifiche/V5.5/test_v55.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "nt) ... ok\ntest_no_native_claim (__main__.CopperScreen.test_no_native_claim) ... ok\ntest_same_board_deterministic (__main__.CopperScreen.test_same_board_deterministic) ... ok\ntest_short_mutation_detected (__main__.CopperScreen.test_short_mutation_detected) ... ok\ntest_threshold_is_effective (__main__.CopperScreen.test_threshold_is_effective) ... ok\ntest_drc_normal_violations_detected (__main__.NativeSemantic.test_drc_normal_violations_detected) ... ok\ntest_drc_parity_detected (__main__.NativeSemantic.test_drc_parity_detected) ... ok\ntest_drc_schema (__main__.NativeSemantic.test_drc_schema) ... ok\ntest_drc_unconnected_detected (__main__.NativeSemantic.test_drc_unconnected_detected) ... ok\ntest_erc_detects_violations (__main__.NativeSemantic.test_erc_detects_violations) ... ok\ntest_erc_schema (__main__.NativeSemantic.test_erc_schema) ... ok\ntest_fake_clean_structural_only (__main__.NativeSemantic.test_fake_clean_structural_only) ... ok\ntest_inconsistent_status_blocked (__main__.NativeSemantic.test_inconsistent_status_blocked) ... ok\ntest_rejects_fake_v54_stub (__main__.NativeSemantic.test_rejects_fake_v54_stub) ... ok\ntest_rejects_missing_array (__main__.NativeSemantic.test_rejects_missing_array) ... ok\ntest_rejects_old_version (__main__.NativeSemantic.test_rejects_old_version) ... ok\ntest_unavailable_folder_blocked (__main__.NativeSemantic.test_unavailable_folder_blocked) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 1.815s\n\nOK\n"
+    },
+    {
+      "revision": "V5.6",
+      "script": "03_Verifiche/V5.6/test_continuita_v56.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": "et_is_detected (__main__.DeliberateFaults.test_wrong_zone_net_is_detected) ... ok\ntest_counts_are_grounded_in_real_board (__main__.ReferenceBoard.test_counts_are_grounded_in_real_board) ... ok\ntest_deterministic_reproducible (__main__.ReferenceBoard.test_deterministic_reproducible) ... ok\ntest_eight_nets (__main__.ReferenceBoard.test_eight_nets) ... ok\ntest_four_zones_unfilled (__main__.ReferenceBoard.test_four_zones_unfilled) ... ok\ntest_ground_is_not_falsely_accepted (__main__.ReferenceBoard.test_ground_is_not_falsely_accepted) ... ok\ntest_ground_islands_measured (__main__.ReferenceBoard.test_ground_islands_measured) ... ok\ntest_ground_isolated_via_islands_measured (__main__.ReferenceBoard.test_ground_isolated_via_islands_measured) ... ok\ntest_ground_pad_islands_measured (__main__.ReferenceBoard.test_ground_pad_islands_measured) ... ok\ntest_report_no_native_assertion (__main__.ReferenceBoard.test_report_no_native_assertion) ... ok\ntest_seven_signal_nets_each_connected (__main__.ReferenceBoard.test_seven_signal_nets_each_connected) ... ok\ntest_seven_signal_nets_present (__main__.ReferenceBoard.test_seven_signal_nets_present) ... ok\ntest_six_thermal_vias_plus_external_same_ground_group (__main__.ReferenceBoard.test_six_thermal_vias_plus_external_same_ground_group) ... ok\ntest_unchanged_copper_relative_to_v48 (__main__.ReferenceBoard.test_unchanged_copper_relative_to_v48) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 2.222s\n\nOK\n"
+    },
+    {
+      "revision": "V5.7",
+      "script": "03_Verifiche/V5.7/test_piani_gnd_v57.py",
+      "status": "PASS",
+      "return_code": 0,
+      "tail": " (__main__.TestZoneEnvelope.test_15_clearance_sensitivity) ... ok\ntest_16_reject_clearance_extreme (__main__.TestZoneEnvelope.test_16_reject_clearance_extreme) ... ok\ntest_17_test_barrier_split (__main__.TestZoneEnvelope.test_17_test_barrier_split) ... ok\ntest_18_wrong_zone_layer (__main__.TestZoneEnvelope.test_18_wrong_zone_layer) ... ok\ntest_19_wrong_zone_net (__main__.TestZoneEnvelope.test_19_wrong_zone_net) ... ok\ntest_20_changed_zone_clearance (__main__.TestZoneEnvelope.test_20_changed_zone_clearance) ... ok\ntest_21_changed_spoke (__main__.TestZoneEnvelope.test_21_changed_spoke) ... ok\ntest_22_filled_zone_unverified (__main__.TestZoneEnvelope.test_22_filled_zone_unverified) ... ok\ntest_23_via_outside (__main__.TestZoneEnvelope.test_23_via_outside) ... ok\ntest_24_via_wrong_net (__main__.TestZoneEnvelope.test_24_via_wrong_net) ... ok\ntest_25_via_unexpected_layers (__main__.TestZoneEnvelope.test_25_via_unexpected_layers) ... ok\ntest_26_unsupported_inner_track (__main__.TestZoneEnvelope.test_26_unsupported_inner_track) ... ok\ntest_27_reduced_outline_margin (__main__.TestZoneEnvelope.test_27_reduced_outline_margin) ... ok\ntest_28_via_reach_regression (__main__.TestZoneEnvelope.test_28_via_reach_regression) ... ok\ntest_29_no_approved_pass_claim (__main__.TestZoneEnvelope.test_29_no_approved_pass_claim) ... ok\ntest_30_board_sha (__main__.TestZoneEnvelope.test_30_board_sha) ... ok\n\n----------------------------------------------------------------------\nRan 30 tests in 0.500s\n\nOK\n"
+    }
+  ]
+}

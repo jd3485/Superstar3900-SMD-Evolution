@@ -1,0 +1,30 @@
+* Superstar 3900 Evolution / V2.4 / topologia HP5+LP9 / STUDIO NON VALIDATO
+* Input/source = 50 ohm, V(in) AC 1V; 50 ohm at load.
+* Non validato con ngspice. R(L) fissato per Q=60 a 27 MHz, NON frequenza dipendente.
+Vac in 0 AC 1
+Rsource in n0 50
+C1 n0 n1 2.86131230445e-10
+L2 n1 np2 2.73231011968e-07
+R2 np2 0 0.772542486
+C3 n1 n3 8.84194128288e-11
+L4 n3 np4 2.73231011968e-07
+R4 np4 0 0.772542486
+C5 n3 n5 2.86131230445e-10
+L6 n5 n6r 3.22544102932e-07
+R6 n6r n6 0.911971966
+C7 n6 0 1.5565852078e-10
+L8 n6 n8r 5.75809925917e-07
+R8 n8r n8 1.62806421
+C9 n8 0 1.74446061217e-10
+L10 n8 n10r 5.9491306457e-07
+R10 n10r n10 1.68207706
+C11 n10 0 1.74446061217e-10
+L12 n10 n12r 5.75809925917e-07
+R12 n12r n12 1.62806421
+C13 n12 0 1.5565852078e-10
+L14 n12 n14r 3.22544102932e-07
+R14 n14r n14 0.911971966
+Rload n14 0 50
+.ac dec 100 2MEG 75MEG
+* S21 = 2*V(n14) / V(in) when matched (comparison only)
+.end

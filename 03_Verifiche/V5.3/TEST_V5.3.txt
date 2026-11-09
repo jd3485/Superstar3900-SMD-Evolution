@@ -1,0 +1,23 @@
+test_15_components (__main__.TestStaticV53.test_15_components) ... ok
+test_15_footprints (__main__.TestStaticV53.test_15_footprints) ... ok
+test_31_labels (__main__.TestStaticV53.test_31_labels) ... ok
+test_31_pin_nets (__main__.TestStaticV53.test_31_pin_nets) ... ok
+test_31_wires (__main__.TestStaticV53.test_31_wires) ... ok
+test_8_nets (__main__.TestStaticV53.test_8_nets) ... ok
+test_bad_board_net_is_detected (__main__.TestStaticV53.test_bad_board_net_is_detected) ... ok
+test_bad_schematic_label_is_detected (__main__.TestStaticV53.test_bad_schematic_label_is_detected) ... ok
+test_bad_wire_endpoint_is_detected (__main__.TestStaticV53.test_bad_wire_endpoint_is_detected) ... ok
+test_clean (__main__.TestStaticV53.test_clean) ... ok
+test_footprint_library_geometry_corruption_is_detected (__main__.TestStaticV53.test_footprint_library_geometry_corruption_is_detected) ... ok
+test_invalid_uuid_link_is_detected (__main__.TestStaticV53.test_invalid_uuid_link_is_detected) ... ok
+test_local_libraries_match (__main__.TestStaticV53.test_local_libraries_match) ... ok
+test_sma_multiple_ground_pads (__main__.TestStaticV53.test_sma_multiple_ground_pads) ... ok
+test_trailing_tokens_are_rejected (__main__.TestStaticV53.test_trailing_tokens_are_rejected) ... ok
+test_unbalanced_s_expression_is_rejected (__main__.TestStaticV53.test_unbalanced_s_expression_is_rejected) ... ok
+test_wrong_component_value_is_detected (__main__.TestStaticV53.test_wrong_component_value_is_detected) ... ok
+test_wrong_footprint_is_detected (__main__.TestStaticV53.test_wrong_footprint_is_detected) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.129s
+
+OK

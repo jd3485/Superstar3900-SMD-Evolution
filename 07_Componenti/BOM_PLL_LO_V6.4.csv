@@ -1,0 +1,17 @@
+ref,part,funzione,qty,note,stato
+U401,LMX2572RHAR,Sintetizzatore VCO/PLL RHA40,1,"Eredita pinmap V0.6, da verificare EVM/TI",CANDIDATO
+U402,TPS7A2033DBVR,LDO 3V3_PLL da 5V_RF,1,"300 mA nominali da TI, verifica termica bloccante",TERMICA APERTA
+Y401,TCXO_12M8,"12,8 MHz riferimento PLL",1,"Part number, stabilita, livello e pin 10 AFC/GND ancora aperti",TBD
+R401,47 kOhm 1%,CE a GND per default OFF,1,"Livelli MCU, timing di power-up da verificare",CANDIDATO
+R402,10 kOhm 1%,CSB pull-up a 3V3_PLL,1,Non attivare SPI durante lock,CANDIDATO
+"R403,R404",33 Ohm,Series resistors su SCK/SDI,2,Valore da misurare/EMI e integrita segnali,CANDIDATO
+"C401,C402",1 uF X7R,LDO ingresso e uscita,2,"Capacita effettiva da DC bias, ESR e PCB",CANDIDATO
+C403-C408,100 nF X7R,Bypass alimentazioni PLL,6,Quantita non sostituisce bypass completo originale,CANDIDATO
+C409-C411,1 uF X7R,Bypass PLL VCC/Vreg,3,"Rivalidare singolo pin TI, no rimozione bypass V0.8",CANDIDATO
+FB401,Ferrite bead,Isolamento 5V_RF verso U402,1,Impedenza 36-39MHz e corrente reali da misurare,TBD
+J401,6 pin controllo,Interfaccia MCU PLL SPI/CE/MUXout/GND,1,Nessuna alimentazione TX,CANDIDATO
+J402,SMA o connettore RF LO,LO_RF_RX 36-39MHz verso mixer RX,1,"Terminazione, filtro e livello da dimensionare",TBD
+"R405,C412",TBD,Rete uscita RFoutA AC e matching,2,Non progettare in autonomia 50Ω senza EVM e strumentazione,OPEN
+"R406,C413",TBD,RFoutB inutilizzato e terminazione,2,Confermare configurazione pin TI/TICS Pro,OPEN
+C414-C418,Da V0.6,Loop filter CPout/Vtune candidato,5,"NON cambiare valori senza TICS Pro, Kvco, charge pump e fase",OPEN
+D401,DNI,Eventuale linea test PLL; no RF PA TX,0,Non montato,DNI

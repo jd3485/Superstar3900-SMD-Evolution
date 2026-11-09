@@ -1,0 +1,40 @@
+name: Superstar3900 V5.6 topology and native KiCad 10 (NO FAB)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rx-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Shapely for independent static checks
+        run: python -m pip install 'shapely>=2,<3'
+      - name: Check V5.6 topology before installing KiCad
+        run: |
+          mkdir -p REPORT_NATIVE_V5.6
+          python -B 03_Verifiche/V5.6/audit_continuita_fcu_v56.py --output REPORT_NATIVE_V5.6/AUDIT_CONTINUITA_V5.6.json
+      - name: Install KiCad 10 from official KiCad PPA
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y kicad
+          kicad-cli version
+      - name: Execute native ERC DRC and parity via fail-closed runner
+        run: |
+          python -B 03_Verifiche/V5.6/run_kicad_e_topologia_v56.py --output REPORT_NATIVE_V5.6
+      - name: Upload static and native review evidence (even on failure)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: superstar3900-v56-topology-native-review-NO-FAB
+          path: REPORT_NATIVE_V5.6/
+          if-no-files-found: warn
+          retention-days: 30

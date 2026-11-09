@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "matrix_states_checked": 2400,
+  "distinct_rx_positions": 270,
+  "channel_d_tx_checked": 40,
+  "guard_fault_injection": 8,
+  "note": "test funzionali software, nessun TX reale"
+}

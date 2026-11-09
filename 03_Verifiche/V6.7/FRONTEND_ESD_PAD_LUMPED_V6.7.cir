@@ -1,0 +1,12 @@
+* RX-only small-signal verification model: ESD C=0.2pF and 6dB PI attenuator.
+* Not ADL5535 or SXBP vendor macromodel; not executed here (ngspice unavailable).
+V1 IN 0 AC 1
+R_SRC IN N1 50
+C_ESD N1 0 0.2p
+RSH1 N1 0 150
+RSER N1 N2 37.4
+RSH2 N2 0 150
+R_LOAD N2 0 50
+.ac dec 200 1Meg 100Meg
+.print ac vm(N2)
+.end

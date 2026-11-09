@@ -1,0 +1,36 @@
+{
+  "comparison_cases": {
+    "5 tank only Q50": {
+      "passband_min_db": -3.2497193363730394,
+      "passband_max_db": -2.720267939787912,
+      "worst_image_db": -47.42536857754307,
+      "insertion_max_db": 3.2497193363730394
+    },
+    "5 tank + 7 LPF Q30": {
+      "passband_min_db": -6.697042337482795,
+      "passband_max_db": -5.696191139696767,
+      "worst_image_db": -70.75580257683947,
+      "insertion_max_db": 6.697042337482795
+    },
+    "5 tank + 7 LPF Q50": {
+      "passband_min_db": -4.515636788696421,
+      "passband_max_db": -3.7064497962467247,
+      "worst_image_db": -68.94626933750558,
+      "insertion_max_db": 4.515636788696421
+    },
+    "5 tank + 7 LPF Q70": {
+      "passband_min_db": -3.4334914254924143,
+      "passband_max_db": -2.7140336678904937,
+      "worst_image_db": -67.97894974317208,
+      "insertion_max_db": 3.4334914254924143
+    },
+    "E24 nearest 5 tank + 7 LPF Q50": {
+      "passband_min_db": -4.36143733790192,
+      "passband_max_db": -3.6934563340197935,
+      "worst_image_db": -68.01125191281753,
+      "insertion_max_db": 4.36143733790192
+    }
+  },
+  "mc_joint_passes": 399,
+  "mc_joint_pass_rate": 0.798
+}

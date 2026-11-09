@@ -1,0 +1,26 @@
+{
+  "revision": "V3.7",
+  "checks": {
+    "parse_KiCad_compat_sexpr": true,
+    "15_components": true,
+    "8_nets": true,
+    "43_tracks": true,
+    "64_vias": true,
+    "4_unfilled_zones": true,
+    "all_7_signal_net_connectivity": true,
+    "31_schematic_pin_compat": true,
+    "24_ground_pads_reach_via": true,
+    "zero_inter_net_2d_clashes": true,
+    "min_clearance_at_least_0_20": true,
+    "no_sma_central_drill": true,
+    "all_4_sma_centers_smd_2_05": true,
+    "both_footprint_modules": true,
+    "pdf_dossier": true,
+    "no_gerber_generated": true,
+    "pdf_3_pages": true
+  },
+  "all_pass": true,
+  "native_kicad_drc_ran": false,
+  "manufacturer_footprint_approved": false,
+  "pcbway_release": false
+}

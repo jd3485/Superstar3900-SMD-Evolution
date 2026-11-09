@@ -1,0 +1,6 @@
+Q_assumed,one_filter_loss_max_dB,bank_ideal_loss_max_dB,bank_relay_pair_illustrative_loss_max_dB,bank_cmos_pair_illustrative_loss_max_dB,one_filter_min_image_rej_dB,bank_only_min_image_rej_dB
+20,4.218,3.63,4.03,5.03,59.855,26.736
+30,2.92,2.46,2.86,3.86,59.57,26.665
+45,2.05,1.669,2.069,3.069,59.39,26.623
+60,1.614,1.272,1.672,2.672,59.302,26.603
+90,1.178,0.873,1.273,2.273,59.217,26.584

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="355" viewBox="0 0 1320 355">
+<rect width="1320" height="355" fill="#111827"/>
+<text x="40" y="34" fill="#F8FAFC" font-size="22" font-family="Arial">SUPERSTAR 3900 • V6.9 • LO2/BFO e demodulatori — RX only</text>
+<rect x="50" y="80" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="62" y="108" fill="white" font-size="17" font-family="Arial">12.8 MHz clock</text><text x="62" y="131" fill="#9CA3AF" font-size="12" font-family="Arial">TCXO fanout TBD</text>
+<rect x="300" y="80" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="312" y="108" fill="white" font-size="17" font-family="Arial">Si5351C 20-QFN</text><text x="312" y="131" fill="#9CA3AF" font-size="12" font-family="Arial">PLLA/PLLB</text>
+<rect x="580" y="45" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="592" y="73" fill="white" font-size="17" font-family="Arial">LO2 driver</text><text x="592" y="96" fill="#9CA3AF" font-size="12" font-family="Arial">+7 dBm PENDING</text>
+<rect x="840" y="45" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="852" y="73" fill="white" font-size="17" font-family="Arial">ADE-1+</text><text x="852" y="96" fill="#9CA3AF" font-size="12" font-family="Arial">Mixer #2</text>
+<rect x="580" y="135" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="592" y="163" fill="white" font-size="17" font-family="Arial">BFO 455k</text><text x="592" y="186" fill="#9CA3AF" font-size="12" font-family="Arial">CLK1 + filter TBD</text>
+<rect x="840" y="135" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="852" y="163" fill="white" font-size="17" font-family="Arial">TS5A3157</text><text x="852" y="186" fill="#9CA3AF" font-size="12" font-family="Arial">switching detector</text>
+<rect x="580" y="245" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="592" y="273" fill="white" font-size="17" font-family="Arial">AM branch</text><text x="592" y="296" fill="#9CA3AF" font-size="12" font-family="Arial">envelope candidate</text>
+<rect x="840" y="245" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="852" y="273" fill="white" font-size="17" font-family="Arial">FM branch</text><text x="852" y="296" fill="#9CA3AF" font-size="12" font-family="Arial">quadrature TBD</text>
+<rect x="1080" y="190" width="194" height="72" rx="12" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/><text x="1092" y="218" fill="white" font-size="17" font-family="Arial">Audio mux</text><text x="1092" y="241" fill="#9CA3AF" font-size="12" font-family="Arial">V6.0 ADC_R</text>
+<path d="M244 116 L300 116" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M494 116 L580 80" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M774 80 L840 80" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M494 116 L580 170" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M774 170 L840 170" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M1034 170 L1080 215" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M774 280 L1080 215" stroke="#facc15" stroke-width="2" fill="none"/>
+<path d="M1034 280 L1080 215" stroke="#facc15" stroke-width="2" fill="none"/>
+<text x="35" y="337" fill="#fca5a5" font-family="Arial" font-size="14">BFO/LO2 sintetizzati solo nel modello; driver LO, AM/FM IF buffering, filtri SSB/CW, EMC e PCB ancora aperti. TX non collegata.</text>
+</svg>

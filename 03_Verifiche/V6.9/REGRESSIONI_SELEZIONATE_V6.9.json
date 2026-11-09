@@ -1,0 +1,79 @@
+{
+  "suite": [
+    {
+      "revision": "5.9",
+      "test": "test_progettazione_sistema_v59.py",
+      "exit_code": 0,
+      "tests": 20
+    },
+    {
+      "revision": "6.0",
+      "test": "test_audio_pa_v60.py",
+      "exit_code": 0,
+      "tests": 35
+    },
+    {
+      "revision": "6.1",
+      "test": "test_integrazione_audio_v61.py",
+      "exit_code": 0,
+      "tests": 5
+    },
+    {
+      "revision": "6.1",
+      "test": "test_mcu_pannello_v61.py",
+      "exit_code": 0,
+      "tests": 55
+    },
+    {
+      "revision": "6.2",
+      "test": "test_interblocchi_v62.py",
+      "exit_code": 0,
+      "tests": 31
+    },
+    {
+      "revision": "6.3",
+      "test": "test_alimentazioni_v63.py",
+      "exit_code": 0,
+      "tests": 45
+    },
+    {
+      "revision": "6.4",
+      "test": "test_pll_v64.py",
+      "exit_code": 0,
+      "tests": 60
+    },
+    {
+      "revision": "6.5",
+      "test": "test_mixer_fi_v65.py",
+      "exit_code": 0,
+      "tests": 50
+    },
+    {
+      "revision": "6.6",
+      "test": "test_preselettore_lc_v66.py",
+      "exit_code": 0,
+      "tests": 50
+    },
+    {
+      "revision": "6.7",
+      "test": "test_frontend_rx_v67.py",
+      "exit_code": 0,
+      "tests": 60
+    },
+    {
+      "revision": "6.8",
+      "test": "test_fi_agc_v68.py",
+      "exit_code": 0,
+      "tests": 60
+    },
+    {
+      "revision": "6.9",
+      "test": "test_lo2_demod_v69.py",
+      "exit_code": 0,
+      "tests": 70
+    }
+  ],
+  "totale_test": 541,
+  "suite_passing": 12,
+  "limitazioni": "Only selected V5.9-V6.9 test scripts; native KiCad ERC/DRC, ngspice, physical RF tests NOT RUN."
+}

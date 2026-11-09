@@ -1,0 +1,106 @@
+NOT_FOUND: 03_Verifiche/V4.1/test_rischi_v41.py (exit 0)
+
+
+PASS: 03_Verifiche/V4.2/test_geometria_rf_v42.py (exit 0)
+nal_copper_islands) ... ok
+test_sma_count (__main__.TestGeometryV42.test_sma_count) ... ok
+test_sma_custom_geometries (__main__.TestGeometryV42.test_sma_custom_geometries) ... ok
+test_sma_ground_span (__main__.TestGeometryV42.test_sma_ground_span) ... ok
+test_via_local_path_covers_sma (__main__.TestGeometryV42.test_via_local_path_covers_sma) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.145s
+
+OK
+
+
+PASS: 03_Verifiche/V4.3/test_candidato_sma_v43.py (exit 0)
+
+test_span_after (__main__.VerifyV43.test_span_after) ... ok
+test_span_before (__main__.VerifyV43.test_span_before) ... ok
+test_trace_count_untouched (__main__.VerifyV43.test_trace_count_untouched) ... ok
+test_via_count_untouched (__main__.VerifyV43.test_via_count_untouched) ... ok
+test_zones_unfilled (__main__.VerifyV43.test_zones_unfilled) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.307s
+
+OK
+
+
+PASS: 03_Verifiche/V4.4/test_schema_pcb_v44.py (exit 0)
+stV44.test_16_safety_flags_false) ... ok
+test_17_pin_mapping_L101 (__main__.TestV44.test_17_pin_mapping_L101) ... ok
+test_18_pin_mapping_AMP (__main__.TestV44.test_18_pin_mapping_AMP) ... ok
+test_19_pad_terminals (__main__.TestV44.test_19_pad_terminals) ... ok
+test_20_PCB_baseline_unmodified (__main__.TestV44.test_20_PCB_baseline_unmodified) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.089s
+
+OK
+
+
+PASS: 03_Verifiche/V4.5/test_librerie_v45.py (exit 0)
+SS Library identifiers from PCB all resolvable
+PASS Schematic symbol identifiers all resolvable
+PASS Schematic footprint IDs match PCB footprint IDs
+PASS Source schematic equals frozen V4.4 manifest
+PASS Source PCB equals frozen V4.4 manifest
+PASS Mutation footprint pad dimension changes signature
+PASS Mutation missing symbol breaks reference coverage
+PASS Unclosed footprint is rejected by parser
+SUCCESS: 26 static checks; native ERC/DRC NOT RUN
+
+
+PASS: 03_Verifiche/V4.6/test_rischi_v46.py (exit 0)
+iCad run claimed
+PASS No fabrication approval claimed
+PASS Candidate board identical to V4.5 archive
+PASS KiCad 9-like missing refill flag rejects closed
+PASS Simulated KiCad10 command flags exercised (MOCK ONLY)
+PASS Fake KiCad10 never changes historical PCB
+PASS Tampering target via exists in source
+PASS Mutation with via-in-pad is rejected
+PASS Source still unchanged after mutation test
+SUCCESS 24 static/launcher tests, ZERO native KiCad runs
+
+
+PASS: 03_Verifiche/V4.7/test_audit_te_v47.py (exit 0)
+25_no_fabrication_tags (__main__.CheckV47.test_25_no_fabrication_tags) ... ok
+test_26_machine_report_valid_json (__main__.CheckV47.test_26_machine_report_valid_json) ... ok
+test_27_no_mutation_of_board (__main__.CheckV47.test_27_no_mutation_of_board) ... ok
+test_28_no_mutation_of_footprint (__main__.CheckV47.test_28_no_mutation_of_footprint) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.019s
+
+OK
+
+
+PASS: 03_Verifiche/V4.8/test_variante_termica_v48.py (exit 0)
+PASS original SHA invariato
+PASS candidato SHA invariato
+PASS sezioni via aggiunte esattamente sei
+PASS differenza PCB limitata alle sei via GND
+PASS numero via e rete
+PASS centri e diametri dentro il pad
+PASS passo tra vie maggiore del diametro
+PASS studio non autorizzato alla fabbricazione
+PASS nessun ERC/DRC nativo inventato
+PASS nuova cartella schema presente
+RISULTATO: 10/10
+
+
+PASS: 03_Verifiche/V4.9/test_v49.py (exit 0)
+_detected) ... ok
+test_12_wrong_pad_net_detected (__main__.ManufacturabilityPreflight.test_12_wrong_pad_net_detected) ... ok
+test_13_required_project_documents (__main__.ManufacturabilityPreflight.test_13_required_project_documents) ... ok
+test_14_copper_original_v38_kept (__main__.ManufacturabilityPreflight.test_14_copper_original_v38_kept) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.006s
+
+OK
+
+

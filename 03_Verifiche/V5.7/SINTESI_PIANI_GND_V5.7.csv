@@ -1,0 +1,5 @@
+layer,zone_area_mm2,hypothetical_region_count,largest_ideal_region_mm2,ideal_fraction,gnd_vias_inside_outline,gnd_vias_in_largest_region,min_via_copper_to_zone_edge_mm,actual_zone_state,native_drc
+F.Cu,6581.16,1,6323.1039,0.960789,70,70,2.05,UNFILLED,NOT_RUN
+In1.Cu,6581.16,1,6581.16,1.0,70,70,2.05,UNFILLED,NOT_RUN
+In2.Cu,6581.16,1,6581.16,1.0,70,70,2.05,UNFILLED,NOT_RUN
+B.Cu,6581.16,1,6581.16,1.0,70,70,2.05,UNFILLED,NOT_RUN

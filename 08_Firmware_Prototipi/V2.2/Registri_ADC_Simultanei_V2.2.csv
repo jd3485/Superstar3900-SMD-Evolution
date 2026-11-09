@@ -1,0 +1,9 @@
+page,register_dec,value_hex,description,status
+1,52,0x80,IN1L -> LEFT + (20 kohm),CONCEPT_ONLY
+1,54,0x80,CM1L -> LEFT - (20 kohm),CONCEPT_ONLY
+1,55,0x20,IN2R -> RIGHT + (20 kohm),CONCEPT_ONLY
+1,57,0x80,CM1R -> RIGHT - (20 kohm),CONCEPT_ONLY
+1,59,0x0C,MICPGA LEFT unmute and compensation,CONCEPT_ONLY
+1,60,0x0C,MICPGA RIGHT unmute and compensation,CONCEPT_ONLY
+0,81,0xC0,Enable both ADC after valid clock,CONCEPT_ONLY
+0,82,0x00,Unmute ADC digital,CONCEPT_ONLY

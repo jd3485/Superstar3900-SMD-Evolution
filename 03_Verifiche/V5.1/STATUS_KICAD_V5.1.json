@@ -1,0 +1,15 @@
+{
+  "revision": "V5.1",
+  "date": "2026-11-08",
+  "status": "NOT_RUN",
+  "kicad_cli_available": false,
+  "pcbnew_python_available": false,
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "refill_zones": "NOT_RUN",
+  "schematic_parity": "NOT_RUN",
+  "attempted_apt_index_update": "TIMED_OUT",
+  "file_changes_to_ecad": "NONE",
+  "manufacturing_allowed": false,
+  "note": "Solo verifica statica BOM/reti; i report veri dovranno essere ottenuti su una macchina con KiCad 10."
+}

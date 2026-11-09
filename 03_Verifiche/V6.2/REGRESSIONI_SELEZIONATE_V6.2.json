@@ -1,0 +1,37 @@
+[
+  {
+    "file": "03_Verifiche/V5.9/test_progettazione_sistema_v59.py",
+    "status": "PASS",
+    "returncode": 0,
+    "duration_s": 0.65,
+    "log_tail": "rication) ... ok\ntest_tx_chain_has_hardware_gate (__main__.ContractDesign.test_tx_chain_has_hardware_gate) ... ok\ntest_unique_connection_ids (__main__.ContractDesign.test_unique_connection_ids) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.001s\n\nOK\n"
+  },
+  {
+    "file": "03_Verifiche/V6.0/test_audio_pa_v60.py",
+    "status": "PASS",
+    "returncode": 0,
+    "duration_s": 0.69,
+    "log_tail": "...................................\n----------------------------------------------------------------------\nRan 35 tests in 0.025s\n\nOK\n"
+  },
+  {
+    "file": "03_Verifiche/V6.1/test_mcu_pannello_v61.py",
+    "status": "PASS",
+    "returncode": 0,
+    "duration_s": 0.67,
+    "log_tail": ".......................................................\n----------------------------------------------------------------------\nRan 55 tests in 0.058s\n\nOK\n"
+  },
+  {
+    "file": "03_Verifiche/V6.1/test_integrazione_audio_v61.py",
+    "status": "PASS",
+    "returncode": 0,
+    "duration_s": 0.63,
+    "log_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "file": "03_Verifiche/V6.2/test_interblocchi_v62.py",
+    "status": "PASS",
+    "returncode": 0,
+    "duration_s": 0.69,
+    "log_tail": "se_when_pa_relay_energized) ... ok\ntest_unique_component_pins (__main__.TestInterlock.test_unique_component_pins) ... ok\n\n----------------------------------------------------------------------\nRan 31 tests in 0.085s\n\nOK\n"
+  }
+]

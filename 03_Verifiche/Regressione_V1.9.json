@@ -1,0 +1,32 @@
+[
+  {
+    "test": "test_audio_clock_v18.py",
+    "return_code": 0,
+    "tail": "PASS V1.8: 9 new pins (X201+U203), labels, no-connect, passive refs, MCLK=12.288MHz, FS=48kHz, BCLK=3.072MHz, no A/D internal LDO tied to 3.3V\nNot performed: KiCad ERC, exported netlist, STM32CubeMX and hardware measurements.\n\n"
+  },
+  {
+    "test": "test_mcu_codec_v17.py",
+    "return_code": 0,
+    "tail": "PASS: 64 STM32 + 32 CODEC; 11 pin checks, labels shared, internal LDO rails, KiCad syntax parentheses; NO ERC performed\n\n"
+  },
+  {
+    "test": "test_spi_transport_v15.py",
+    "return_code": 0,
+    "tail": "\n...\n----------------------------------------------------------------------\nRan 3 tests in 0.002s\n\nOK\n"
+  },
+  {
+    "test": "test_dsp_control_v16.py",
+    "return_code": 0,
+    "tail": "{\n  \"pass_status\": true,\n  \"ctcss_tones_synth_tested\": 50,\n  \"noise_rejection_samples\": 1,\n  \"ctcss_mixed_test\": 1,\n  \"vox_state_test\": \"PASS\",\n  \"dw_state_test\": \"PASS\",\n  \"coverage_note\": \"Solo simulazione numerica; non verifica DCS, analogica, RF o firmware embedded\"\n}\n\n"
+  },
+  {
+    "test": "test_funzioni_utente_v151.py",
+    "return_code": 0,
+    "tail": "_.ContractTests.test_pa_never_tx) ... ok\ntest_roger_beep_cannot_bypass_tx_guard (__main__.ContractTests.test_roger_beep_cannot_bypass_tx_guard) ... ok\ntest_tx_off_default (__main__.ContractTests.test_tx_off_default) ... ok\ntest_tx_only_when_safe (__main__.ContractTests.test_tx_only_when_safe) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nOK\n"
+  },
+  {
+    "test": "run_all_tests.py",
+    "return_code": 0,
+    "tail": "ATU busy e input invalidi.\n> test_rx_noise_budget.py\nPASS: modello Friis NF=4.85dB; soglia termica stimata 0.121uV RMS (ipotesi).\n> test_stage2.py\nPASS stage2: 270 PLL points, R/prescaler range, LO endpoints, CH9 and INT\n> test_lo_filter.py\nPASS stage2 LC model S21 math: 7 elements, attenuation and 100MHz sweep finite\nRISULTATO: 6 suite PASS (solo controlli software; RF/EM e PCB non verificati).\n\n"
+  }
+]

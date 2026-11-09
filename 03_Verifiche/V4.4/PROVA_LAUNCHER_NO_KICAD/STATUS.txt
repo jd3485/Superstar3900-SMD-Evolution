@@ -1,0 +1,1 @@
+BLOCKED: kicad-cli not installed. NO ERC OR DRC EXECUTED.

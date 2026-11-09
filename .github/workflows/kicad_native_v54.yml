@@ -1,0 +1,33 @@
+name: Superstar3900 RX KiCad 10 - native verification (NO FAB)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install stable KiCad 10 from official PPA
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y kicad
+          kicad-cli version
+      - name: Run fail-closed ERC, DRC, schematic parity and zone refill
+        shell: bash
+        run: |
+          python3 -B 03_Verifiche/V5.4/run_native_v54.py --output REPORT_NATIVE_V5.4
+      - name: Upload native reports, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: superstar3900-native-kicad-v54-reports
+          path: REPORT_NATIVE_V5.4/
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,10 @@
+{
+  "efuse_TI": "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+  "buck_TI": "https://www.ti.com/lit/ds/symlink/tps54202.pdf",
+  "fuse_LF": "https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1",
+  "fuse_part": "https://www.digikey.it/it/products/detail/littelfuse-inc/045101-5MRL/700820",
+  "tvs_lf": "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_smbj_datasheet.pdf.pdf",
+  "tvs_model": "https://www.diodes.com/part/view/SMBJ18CA",
+  "tcxo_txc": "https://txccrystal.com/images/pdf/7n.pdf",
+  "tcxo_part": "https://www.digikey.com/en/products/detail/txc-corporation/7N-12-800MBP-T/5222401"
+}

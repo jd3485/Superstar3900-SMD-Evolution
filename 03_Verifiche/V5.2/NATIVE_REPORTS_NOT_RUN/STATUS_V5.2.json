@@ -1,0 +1,16 @@
+{
+  "revision": "V5.2",
+  "timestamp_utc": "2026-11-08T20:32:32.117806+00:00",
+  "source_sha256": {
+    "board": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+    "schematic": "43c358af20d25e693f25e7441902446215460ae9163e627410782fa54c12221c"
+  },
+  "erc": "NOT_RUN",
+  "drc": "NOT_RUN",
+  "refill": "NOT_RUN",
+  "parity": "NOT_RUN",
+  "release": "BLOCKED",
+  "fabrication_authorized": false,
+  "TX_allowed": false,
+  "reason": "kicad-cli non disponibile in questo ambiente"
+}

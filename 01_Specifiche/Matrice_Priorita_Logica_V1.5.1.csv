@@ -1,0 +1,7 @@
+evento,canale_rx,canale_tx,RF_TX,dual_watch,ctcss_dcs,roger_beep,echo,nota
+PA attivo,PA audio,nessuno,OFF,OFF,OFF,OFF,OFF,uscita amplificatore PA esterno
+CH9 attivo,CH9 27.065 AM,CH9 se consentito,soggetto_interblocchi,OFF,OFF,OFF,OFF,richiamo emergenza con priorita
+RX standard primario,A,A se consentito,soggetto_interblocchi,opzionale,solo FM,abilitabile,abilitabile,impostazioni utente
+DW senza segnale,A/B alternati,A se consentito,soggetto_interblocchi,ON,solo FM,abilitabile,abilitabile,un solo RX non simultaneo
+DW segnale su B,B in ascolto,A se consentito,soggetto_interblocchi,sospeso_su_B,solo FM,abilitabile,abilitabile,mai TX automatica su B
+PTT/VOX con TX negata,stato precedente,nessuno,OFF,pausa,solo RX,OFF,OFF,interlock prevale

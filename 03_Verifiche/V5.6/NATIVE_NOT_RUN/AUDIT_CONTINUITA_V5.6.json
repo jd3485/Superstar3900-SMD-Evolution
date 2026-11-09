@@ -1,0 +1,303 @@
+{
+  "revision": "V5.6",
+  "scope": "TOP_COPPER_ONLY_UNFILLED_GEOMETRY",
+  "board_sha256": "f422314cbb7c529b8e2e56129aa17180c4aa6ae14f1b2a8b2c3798ea9fed6277",
+  "reference_v48_sha256": "00a65b2f738cf3e49f7a1c8d83a3f50e54beb48ca0afe722bb98ff9e9cbaa221",
+  "copper_identical_to_v48_study": true,
+  "geometry_counts": {
+    "pads": 44,
+    "segments": 44,
+    "vias": 70,
+    "zones": 4,
+    "filled_zone_polygons": 0
+  },
+  "net_count": 8,
+  "fcu_networks": {
+    "GND_RF": {
+      "net_id": 1,
+      "component_count": 64,
+      "pad_count": 24,
+      "track_count": 25,
+      "via_count": 70,
+      "pad_containing_islands": 24,
+      "via_only_islands": 40
+    },
+    "RF_LNA_INPUT": {
+      "net_id": 2,
+      "component_count": 1,
+      "pad_count": 2,
+      "track_count": 1,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    },
+    "RF_LNA_IC_IN": {
+      "net_id": 3,
+      "component_count": 1,
+      "pad_count": 2,
+      "track_count": 2,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    },
+    "RF_BIAS_OUT": {
+      "net_id": 4,
+      "component_count": 1,
+      "pad_count": 3,
+      "track_count": 5,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    },
+    "RF_LNA_OUT": {
+      "net_id": 5,
+      "component_count": 1,
+      "pad_count": 2,
+      "track_count": 1,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    },
+    "+5V_BENCH": {
+      "net_id": 6,
+      "component_count": 1,
+      "pad_count": 5,
+      "track_count": 6,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    },
+    "RF_ATTEN_IN": {
+      "net_id": 7,
+      "component_count": 1,
+      "pad_count": 3,
+      "track_count": 2,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    },
+    "RF_ATTEN_OUT": {
+      "net_id": 8,
+      "component_count": 1,
+      "pad_count": 3,
+      "track_count": 2,
+      "via_count": 0,
+      "pad_containing_islands": 1,
+      "via_only_islands": 0
+    }
+  },
+  "ground_pad_islands": [
+    {
+      "pads": [
+        "C103:2:14"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "C104:2:16"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "C105:2:18"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J101:2:1"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J101:2:2"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J101:2:3"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J101:2:4"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J102:2:22"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J102:2:23"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J102:2:24"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J102:2:25"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J103:2:27"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J103:2:28"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J103:2:29"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J103:2:30"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J104:2:38"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J104:2:39"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J104:2:40"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J104:2:41"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "J105:2:43"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "R201:2:32"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "R202:2:36"
+      ],
+      "tracks": 1,
+      "vias": 1
+    },
+    {
+      "pads": [
+        "U101:2:10"
+      ],
+      "tracks": 2,
+      "vias": 7
+    },
+    {
+      "pads": [
+        "U101:2:8"
+      ],
+      "tracks": 1,
+      "vias": 1
+    }
+  ],
+  "ground_zones": [
+    {
+      "layer": "F.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    },
+    {
+      "layer": "In1.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    },
+    {
+      "layer": "B.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    },
+    {
+      "layer": "In2.Cu",
+      "net": 1,
+      "name": "GND_RF",
+      "filled_polygons": 0
+    }
+  ],
+  "ground_pad_islands_count": 24,
+  "ground_via_only_islands_count": 40,
+  "ground_top_islands_count": 64,
+  "ground_connectivity": "PENDING_ZONE_REFILL_AND_NATIVE_DRC",
+  "signal_connectivity": "STATIC_PASS",
+  "errors": [],
+  "status": "STATIC_TOPOLOGY_PASS_GROUND_PENDING",
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "fabrication_allowed": false,
+  "limitations": [
+    "Ground islands are NOT DRC violations: four GND zones are present but UNFILLED.",
+    "This does not compute zone pours, thermal reliefs, drill clearance, netlist validity or interlayer paths.",
+    "Round pads/vias are polygonal Shapely approximations. 0.00001mm tolerance only avoids numerical noise.",
+    "A through-via on F.Cu does NOT prove that a ground plane is attached on any internal layer.",
+    "The V4.8 copper comparison is a static geometry identity check, not a native KiCad check.",
+    "Never use as a PCB fabrication authorization or radio TX authorization."
+  ]
+}

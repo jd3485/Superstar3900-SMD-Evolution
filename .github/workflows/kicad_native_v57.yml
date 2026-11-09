@@ -1,0 +1,39 @@
+name: Superstar3900 V5.7 analytical GND check + KiCad 10 (NO FAB)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rx-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install geometry checking dependency
+        run: python -m pip install 'shapely>=2,<3'
+      - name: Run independent static zone envelope and topology
+        run: |
+          mkdir -p REPORT_NATIVE_V5.7
+          python -B 03_Verifiche/V5.7/audit_piani_gnd_v57.py --output REPORT_NATIVE_V5.7/AUDIT_PIANI_GND_V5.7.json
+          python -B 03_Verifiche/V5.6/audit_continuita_fcu_v56.py --output REPORT_NATIVE_V5.7/AUDIT_TOPOLOGIA_V5.7.json
+      - name: Install KiCad 10 from official KiCad PPA
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y kicad
+          kicad-cli version
+      - name: Execute native checks with fail-closed review evidence
+        run: python -B 03_Verifiche/V5.7/run_piani_e_kicad_v57.py --output REPORT_NATIVE_V5.7
+      - name: Upload review evidence even on failed runs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: superstar3900-v57-NO-FAB-review-only
+          path: REPORT_NATIVE_V5.7/
+          if-no-files-found: warn
+          retention-days: 30

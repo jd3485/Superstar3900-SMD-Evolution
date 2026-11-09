@@ -1,0 +1,12 @@
+Carico,Rail,I_nominale_A,I_inviluppo_A,Note
+LNA_ADL5535,5V_RF,0.1,0.16,low-noise bead/LC after 5V; 5V actual needs oscilloscope+VNA
+PLL_LO,5V_RF,0.15,0.25,PLL supply rails to be split by final PLL BOM
+AUDIO_CODEC_5V,5V_CODEC,0.06,0.12,codec/analog group provisional
+AUDIO_SWITCH,5V_CODEC,0.02,0.06,analog switch/conditioning provisional
+MISC_5V,5V_MISC,0.24,0.5,relays/displays/LED loads to confirm
+MCU_STM32,3V3_D,0.18,0.27,STM32 + control logic provisional
+SUPERVISORS,3V3_D,0.025,0.06,"V6.2 supervisors, gate bank, opto etc provisional"
+FRONT_PANEL,3V3_UI,0.12,0.22,two MCP23017 and pull-ups incl indicator LEDs
+SENSITIVE_A,3V3_A,0.045,0.08,separate low-noise analog voltage LDO
+CODEC_1V8,1V8_CODEC,0.05,0.1,voltage for codec analog/digital depends on selected codec variant
+SPEAKER_AMP,13V8_AUD,0.4,1.5,"class-D 8-ohm, envelope to be verified with audio load; no RF PA"

@@ -1,0 +1,106 @@
+{
+  "revision": "V2.0",
+  "model": "ideal linear passive RC with codec modeled as Rin || Cshunt; not SPICE/hardware",
+  "Rin_assumptions": [
+    10000,
+    20000,
+    40000
+  ],
+  "change": "C227: 1uF -> 100nF, mic-only. C229 remains 1uF to retain FM subaudio",
+  "nominal": {
+    "mic": {
+      "typical_Rin_ohm_assumed": 20000.0,
+      "coupling_F": 1e-07,
+      "series_ohm": 1000.0,
+      "shunt_F": 4.7e-09,
+      "fc_simple_highpass_Hz": 79.57747154594767,
+      "fc_simple_lowpass_Hz": 33862.75384933944,
+      "freq_db": {
+        "30": -9.1566,
+        "67": -4.1654,
+        "85.4": -3.1534,
+        "100": -2.6292,
+        "250": -1.1397,
+        "1000": -0.8132,
+        "3000": -0.818,
+        "6000": -0.9,
+        "12000": -1.22,
+        "24000": -2.3071
+      }
+    },
+    "fm": {
+      "typical_Rin_ohm_assumed": 20000.0,
+      "coupling_F": 1e-06,
+      "series_ohm": 1000.0,
+      "shunt_F": 1e-08,
+      "fc_simple_highpass_Hz": 7.957747154594767,
+      "fc_simple_lowpass_Hz": 15915.494309189537,
+      "freq_db": {
+        "30": -0.7663,
+        "67": -0.5566,
+        "85.4": -0.5358,
+        "100": -0.5268,
+        "250": -0.5071,
+        "1000": -0.5177,
+        "3000": -0.6376,
+        "6000": -1.02,
+        "12000": -2.2817,
+        "24000": -5.3104
+      }
+    }
+  },
+  "stress_1000_per_point": {
+    "mic": {
+      "80.0": {
+        "min_dB": -8.757,
+        "median_dB": -3.56,
+        "max_dB": -1.14
+      },
+      "300.0": {
+        "min_dB": -2.499,
+        "median_dB": -1.051,
+        "max_dB": -0.556
+      },
+      "1000.0": {
+        "min_dB": -1.401,
+        "median_dB": -0.803,
+        "max_dB": -0.516
+      },
+      "3000.0": {
+        "min_dB": -1.317,
+        "median_dB": -0.827,
+        "max_dB": -0.53
+      }
+    },
+    "fm": {
+      "67.0": {
+        "min_dB": -1.224,
+        "median_dB": -0.561,
+        "max_dB": -0.288
+      },
+      "254.0": {
+        "min_dB": -0.947,
+        "median_dB": -0.509,
+        "max_dB": -0.277
+      },
+      "1000.0": {
+        "min_dB": -0.946,
+        "median_dB": -0.518,
+        "max_dB": -0.291
+      },
+      "3000.0": {
+        "min_dB": -1.069,
+        "median_dB": -0.636,
+        "max_dB": -0.391
+      }
+    }
+  },
+  "limitations": [
+    "Rin depends on codec register setting",
+    "no preamplifier/output source impedance model",
+    "no DC bias or clipping/EMI analysis",
+    "RC single stage not sufficient as sole anti-alias filter",
+    "cannot validate phase noise or radio performance",
+    "not ERC/DRC"
+  ]
+}

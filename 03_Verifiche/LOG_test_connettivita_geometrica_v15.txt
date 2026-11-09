@@ -1,0 +1,4 @@
+$ python test_connettivita_geometrica_v15.py
+PASS V1.5: 4 files, 3 child sheets, labels anchored incl. SPI sheet pins, EFUSE_RTN isolated.
+WARNING: static geometry audit only; KiCad ERC/netlist NOT performed.
+

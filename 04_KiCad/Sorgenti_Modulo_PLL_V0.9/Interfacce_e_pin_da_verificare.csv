@@ -1,0 +1,10 @@
+Interfaccia,Stato,Controllo_richiesto
+5V_RF_PREREGULATED,APERTO,"13.8V->5V switching/buck preregulator, filtro e protezioni non progettati"
+3V3_PLL_INPUT_FROM_LDO,BOZZA,"TPS7A2033PDBVR 3.3V; verifica ESR/bias caps, layout termico"
+3V3_REF_LDO,BOZZA,Sorgente separata per TCXO; rumore e riferimento da provare
+TCXO_PIN10_AFC_OR_GND_TBD,BLOCCANTE,Confermare obbligo AF/GND sul part-number specifico
+TCXO_EN,BOZZA,"Controllo OE pin8, 10k pull-up; livello alto abilitante da verificare"
+PLL_OSCINP_AC,BOZZA,"U1 pin8; C58 100nF e R61 33R: livello, slew rate e spurie da collaudare"
+OSCinM pin9,BOZZA,NC in single-ended; registro R5 IPBUF_TYPE = 1
+Footprint TCXO,BLOCCANTE,Non presente footprint KiCad certificato 7N; ricavare da mechanical drawing
+SPI / LO,APERTO,Non completati

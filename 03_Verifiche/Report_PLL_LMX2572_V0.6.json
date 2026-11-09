@@ -1,0 +1,76 @@
+{
+  "version": "V0.6",
+  "date": "2026-11-06",
+  "status": "MODELO_LINEARE_IPOTETICO_NON_VALIDATO",
+  "source": "TI LMX2572 SNAS740B sezione 8.1.11, pin 12 35; dati K_VCO ipotizzati",
+  "loop": {
+    "C1_pF": 220,
+    "C2_nF": 120,
+    "C3_nF": 2.2,
+    "R2_ohm": 620,
+    "R3_ohm": 22,
+    "Icp_mA": 2.5,
+    "Kvco_nominal_MHz_V": 55,
+    "N_nominal": 3750
+  },
+  "nominal": {
+    "crossover_Hz": 4015.5394044942163,
+    "phase_margin_deg": 59.760868799443685,
+    "peak_linear": 1.3321884801921091
+  },
+  "montecarlo": {
+    "samples": 4000,
+    "seed": 390006,
+    "Kvco_uniform_MHz_V": [
+      39,
+      85
+    ],
+    "N_uniform": [
+      3631,
+      3900
+    ],
+    "Icp_gauss_sigma_fraction": 0.08,
+    "C1_C3_gauss_sigma_fraction": 0.05,
+    "C2_gauss_sigma_fraction": 0.1,
+    "R2_R3_gauss_sigma_fraction": 0.01,
+    "min": [
+      2530.2126154394196,
+      43.968696194661334,
+      1.182881082350021
+    ],
+    "percentile5": [
+      3132.4345418619,
+      52.922774676399214,
+      1.2283757974157752
+    ],
+    "median": [
+      4416.918479349885,
+      61.43115140380761,
+      1.3080458198007432
+    ],
+    "percentile95": [
+      5863.331086863882,
+      67.46445316272896,
+      1.43958796074382
+    ],
+    "max": [
+      6916.234664162971,
+      71.10549541280166,
+      1.6274186834604072
+    ],
+    "pm_below_45_count": 2
+  },
+  "vco_core": {
+    "core_VCO3_count": 2,
+    "core_VCO4_count": 268,
+    "threshold_hz": 4650000000
+  },
+  "limitations": [
+    "No TI PLLatinum Sim run",
+    "No VCO gain characterization data covering process or temperature",
+    "No real circuit simulation",
+    "No power/reference phase noise or spurs modeled",
+    "No production schematic or PCB",
+    "Monte Carlo is arbitrary sampling not vendor PVT specification"
+  ]
+}

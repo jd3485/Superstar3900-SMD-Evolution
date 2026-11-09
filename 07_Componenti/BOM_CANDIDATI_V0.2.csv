@@ -1,0 +1,9 @@
+Blocco,Funzione,MPN candidato,Tecnologia,Stato,Prestazioni da validare,URL origine
+SY-01,Sintetizzatore con VCO,ADF4351BCPZ,SMD LFCSP-32,Studio non approvato,"PLL 36.31-39.00MHz; jitter e spurie; driver LO; potenza; disponibilita",https://www.analog.com/en/products/ADF4351.html
+RX-01,Primo mixer bilanciato,ADE-1+,SMD-6,Studio non approvato,"LO +7dBm; adattamenti RF/IF; IIP3 e perdita conversione",https://www.minicircuits.com/WebStore/dashboard.html?model=ADE-1%2B
+SY-02,Oscillatore riferimento,TCXO 12.800MHz (MPN da scegliere),SMD,Specifiche aperte,"stabilita in ppm; rumore; tensione; pinout; disponibilita",DA_SELEZIONARE
+SY-03,Amplificazione/buffer LO,MPN da scegliere,SMD,Specifiche aperte,"potenza +7dBm al mixer dopo filtro; isolamento; spurie",DA_SELEZIONARE
+RX-02,Preselettori 6 bande,Valori e MPN da dimensionare,SMD se possibile,Specifiche aperte,"Q; attenuazione inserzione; immagine; dinamica",DA_SELEZIONARE
+RX-03,Filtri quarzo SSB 10.695MHz/2.4kHz,MPN da scegliere,SMD se possibile,Reperibilita non confermata,"larghezza; ripple; impedenze; grupp delay",DA_SELEZIONARE
+ATU-01,Relè e L/C accordatore,MPN da scegliere,SMT/THT da decidere,Specifiche aperte,"tensioni/correnti RF; Q; isolamento",DA_SELEZIONARE
+TX-01,Finale e filtri uscita,MPN da scegliere,Da scegliere,Specifiche aperte,"dissipazione 4W AM/FM e 12W PEP SSB; spurie",DA_SELEZIONARE

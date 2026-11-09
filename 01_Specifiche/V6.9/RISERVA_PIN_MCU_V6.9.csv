@@ -1,0 +1,5 @@
+mcu_pad,prior_state,new_candidate,physical_condition,status
+PC12,PC12_RESERVE,LO2_REQUEST_RX,RX_SAFE_NC and SUP_3V3_OK external AND,ECO_REQUIRED_V6.1
+PB11,PB11_RESERVE,LO2_INTR_N open drain,pullup 10k to 3V3_LO2,ECO_REQUIRED_V6.1
+PB6,CODEC_I2C_SCL,Si5351C SCL shared,assess combined bus loading and existing pullups,SHARED_EXACT_PIN
+PB7,CODEC_I2C_SDA,Si5351C SDA shared,assess combined bus loading and addressing,SHARED_EXACT_PIN

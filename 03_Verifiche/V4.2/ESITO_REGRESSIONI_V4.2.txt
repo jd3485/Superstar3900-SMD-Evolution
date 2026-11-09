@@ -1,0 +1,38 @@
+VERIFICA REGRESSIONE V4.2 - 2026-11-08
+Baseline originale PCB V3.8 invariata. Nessuna misura HW/DRC/ERC.
+
+SCRIPT: 03_Verifiche/V4.0/test_radio_supervisor_v40.py
+{
+  "passed": true,
+  "matrix_states_checked": 2400,
+  "distinct_rx_positions": 270,
+  "channel_d_tx_checked": 40,
+  "guard_fault_injection": 8,
+  "note": "test funzionali software, nessun TX reale"
+}
+PIPESTATUS: 0
+
+SCRIPT: 03_Verifiche/V4.1/test_audit_rf_v41.py
+test_special_circles_vs_boxes (__main__.AuditV41Tests.test_special_circles_vs_boxes) ... ok
+test_unfilled_zones (__main__.AuditV41Tests.test_unfilled_zones) ... ok
+test_value_perturbation (__main__.AuditV41Tests.test_value_perturbation) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK
+PIPESTATUS: 0
+
+SCRIPT: 03_Verifiche/V4.2/test_geometria_rf_v42.py
+test_sma_custom_geometries (__main__.TestGeometryV42.test_sma_custom_geometries) ... ok
+test_sma_ground_span (__main__.TestGeometryV42.test_sma_ground_span) ... ok
+test_via_local_path_covers_sma (__main__.TestGeometryV42.test_via_local_path_covers_sma) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.137s
+
+OK
+PIPESTATUS: 0
+
+KICAD CLI:
+NON DISPONIBILE: NO DRC/ERC, NO ZONE REFILL

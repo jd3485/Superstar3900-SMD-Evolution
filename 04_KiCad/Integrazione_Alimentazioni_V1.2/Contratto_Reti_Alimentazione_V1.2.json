@@ -1,0 +1,55 @@
+{
+  "scope": "ramo ausiliario solo; non alimentazione finale RF / PA",
+  "sequence": [
+    "PWR_13V8_AUX_RAW",
+    "F200 / D200 DNP",
+    "TPS26600 / U200",
+    "BUCK_VIN_PROTECTED",
+    "TPS54202",
+    "5V_RF_PREREGULATED",
+    "2 x TPS7A2033",
+    "3V3_PLL_INPUT_FROM_LDO & 3V3_REF_LDO"
+  ],
+  "interfaces": [
+    {
+      "net": "BUCK_VIN_PROTECTED",
+      "must_be_in": [
+        "EFUSE",
+        "BUCK"
+      ]
+    },
+    {
+      "net": "5V_RF_PREREGULATED",
+      "must_be_in": [
+        "BUCK",
+        "PLL"
+      ]
+    },
+    {
+      "net": "GND_MAIN",
+      "must_be_in": [
+        "EFUSE",
+        "BUCK",
+        "PLL"
+      ]
+    },
+    {
+      "net": "EFUSE_RTN",
+      "must_be_in": [
+        "EFUSE"
+      ],
+      "must_not_be_in": [
+        "BUCK",
+        "PLL"
+      ]
+    }
+  ],
+  "stoppers": [
+    "Y1 pin 10 variant AFC/GND and exact footprint",
+    "fuse 451 land pattern must be drawn from official geometry",
+    "D200 to remain DNP until surge/fault coordination",
+    "current-mode fault response and fuse source SCCR/interrupting check",
+    "native KiCad validation and integration/hierarchical sheet needed",
+    "EMI switching converter/RF isolation unverified"
+  ]
+}

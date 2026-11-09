@@ -1,0 +1,1 @@
+PASS: 270 frequenze uniche; 240 normali + 30 ALFA; CH9; anomalie CH23/24; 40 posizioni TX predefinite.

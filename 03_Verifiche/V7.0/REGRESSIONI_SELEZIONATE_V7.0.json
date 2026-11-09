@@ -1,0 +1,125 @@
+{
+  "suites": [
+    {
+      "revision": "5.9",
+      "test": "test_progettazione_sistema_v59.py",
+      "passed": true,
+      "tests": 20,
+      "returncode": 0,
+      "seconds": 1.32,
+      "error": ""
+    },
+    {
+      "revision": "6.0",
+      "test": "test_audio_pa_v60.py",
+      "passed": true,
+      "tests": 35,
+      "returncode": 0,
+      "seconds": 1.0,
+      "error": ""
+    },
+    {
+      "revision": "6.1",
+      "test": "test_integrazione_audio_v61.py",
+      "passed": true,
+      "tests": 5,
+      "returncode": 0,
+      "seconds": 1.56,
+      "error": ""
+    },
+    {
+      "revision": "6.1",
+      "test": "test_mcu_pannello_v61.py",
+      "passed": true,
+      "tests": 55,
+      "returncode": 0,
+      "seconds": 1.19,
+      "error": ""
+    },
+    {
+      "revision": "6.2",
+      "test": "test_interblocchi_v62.py",
+      "passed": true,
+      "tests": 31,
+      "returncode": 0,
+      "seconds": 1.13,
+      "error": ""
+    },
+    {
+      "revision": "6.3",
+      "test": "test_alimentazioni_v63.py",
+      "passed": true,
+      "tests": 45,
+      "returncode": 0,
+      "seconds": 0.95,
+      "error": ""
+    },
+    {
+      "revision": "6.4",
+      "test": "test_pll_v64.py",
+      "passed": true,
+      "tests": 60,
+      "returncode": 0,
+      "seconds": 1.29,
+      "error": ""
+    },
+    {
+      "revision": "6.5",
+      "test": "test_mixer_fi_v65.py",
+      "passed": true,
+      "tests": 50,
+      "returncode": 0,
+      "seconds": 2.2,
+      "error": ""
+    },
+    {
+      "revision": "6.6",
+      "test": "test_preselettore_lc_v66.py",
+      "passed": true,
+      "tests": 50,
+      "returncode": 0,
+      "seconds": 1.12,
+      "error": ""
+    },
+    {
+      "revision": "6.7",
+      "test": "test_frontend_rx_v67.py",
+      "passed": true,
+      "tests": 60,
+      "returncode": 0,
+      "seconds": 1.88,
+      "error": ""
+    },
+    {
+      "revision": "6.8",
+      "test": "test_fi_agc_v68.py",
+      "passed": true,
+      "tests": 60,
+      "returncode": 0,
+      "seconds": 2.91,
+      "error": ""
+    },
+    {
+      "revision": "6.9",
+      "test": "test_lo2_demod_v69.py",
+      "passed": true,
+      "tests": 70,
+      "returncode": 0,
+      "seconds": 3.47,
+      "error": ""
+    },
+    {
+      "revision": "7.0",
+      "test": "test_demod_v70.py",
+      "passed": true,
+      "tests": 75,
+      "returncode": 0,
+      "seconds": 2.41,
+      "error": ""
+    }
+  ],
+  "total_tests": 616,
+  "passed_suites": 13,
+  "all_pass": true,
+  "scope": "selected V5.9-V7.0; not all historical suites"
+}

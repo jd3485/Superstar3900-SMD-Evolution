@@ -1,0 +1,37 @@
+ref,component_or_value,function,qualification,blocking_note
+J801,RX_IF1_RAW_10M695_50R,Connettore RF a 50 ohm da U501 ADE-1+ pin IF2,INTERFACE_LEGACY,RX ONLY; obbligo LO +7dBm non ancora qualificato
+R801,49.9 ohm 1%,"Termina ingresso IF1, circa 50 ohm",VALUE_CANDIDATE,"mismatch con 1000ohm INPR/INMR, verificare perdita e adattamento"
+C801,1 nF C0G,Disaccoppiamento RF ingresso VGA differenziale positivo,VALUE_CANDIDATE,dielettrico ed ESR non selezionati
+C802,1 nF C0G,Disaccoppiamento ingresso VGA negativo verso GND,VALUE_CANDIDATE,tiene INMR polarizzato internamente vicino 1.5V
+U801,Analog Devices AD8338ACPZ-R7,"VGA/AGC 18 MHz, 3.0-5.0 V, LFCSP-16",MFR_PINOUT_CONFIRMED,uscite differenziali non da caricare direttamente a 50ohm; layout da qualificare
+R802,100 kohm 1%,VREF a nodo VAGC: divisore target,VALUE_CANDIDATE,VREF NON pilotare da una sorgente esterna
+R803,680 kohm 1%,Nodo VAGC a massa,VALUE_CANDIDATE,target RMS modello circa 0.1923V (differenziale)
+C803,1 uF X7R,"DETO e GAIN collegati, AGC dinamica~17.45ms",VALUE_CANDIDATE,derating valore effettivo e attack/release differenziati da verificare
+C804,100 nF X7R,Disaccoppiamento VREF interno 1.5V,MFR_APP_CANDIDATE,VREF interno e AGND quieto
+C805,100 nF X7R,Disaccoppiamento VBAT 3V3_A,VALUE_CANDIDATE,posizionamento presso pin15
+C806,1 uF X7R,Disaccoppiamento bulk VBAT 3V3_A,VALUE_CANDIDATE,tolleranza/derating
+C807,100 nF X7R,"OFSN a VREF, offset-null pole nominale 3.98kHz",MFR_APP_CANDIDATE,necessaria compatibilita con primo IF
+J802,IF1_AGC_OUTP_OUTM,Uscita differenziale U801 verso filtro roofing e buffer IF2,INTERFACE_PENDING,necessario adattamento/driver ad alto Zin e blocco DC
+L811,1 uH high-Q (x2),Studio due risonatori FI1 a 10.695 MHz,STUDY_NO_MPN,"Q 80 ASSUNTO, Rserie/frequenza SRF ignoti"
+L812,1 uH high-Q (x2),Secondo risonatore FI1 a 10.695 MHz,STUDY_NO_MPN,interazione e taratura non simulate via layout
+C811,180 pF C0G,Capacità fissa risonatore 1,STUDY_VALUE,tuning nominale necessita 41.44pF addizionale
+C812,20-80 pF trimmer,Tuning risonatore 1,STUDY_NO_MPN,precisione stabilità e Q trimmer da qualificare
+C813,180 pF C0G,Capacità fissa risonatore 2,STUDY_VALUE,tuning nominale necessita 41.44pF addizionale
+C814,20-80 pF trimmer,Tuning risonatore 2,STUDY_NO_MPN,stabilità e self-resonance da qualificare
+R811,3.3 kohm,Carico equivalente risonatore 1,STUDY_VALUE,circuito reale richiede buffer alta impedenza
+R812,3.3 kohm,Carico equivalente risonatore 2,STUDY_VALUE,solo modello risonatore isolato
+B811,IF1_BUFFER_HIGH_Z_TBD,Separazione 2 risonatori,UNSELECTED,pin e alimentazione da selezionare; NON componenti completi
+B812,IF1_BUFFER_HIGH_Z_TBD,Uscita roofing verso mixer 2,UNSELECTED,stadio reale da qualificare
+U802,Mini-Circuits ADE-1+ (nuova istanza),Secondo mixer FI1 10.695 / LO2 10.240->455k,CANDIDATE_IF_PORT_PENDING,mixer richiede LO nominale +7dBm: fornitura LO2/port termination aperta
+J803,LO2_PROGRAMMABLE_10M2385_TO_10M2415,Frequenza 2LO programmabile coerente,INTERFACE_PENDING,generatore LO2 non scelto; no pin MCU ancora allocati
+J804,IF2_455K_RAW,Porta FI2 455k verso filtri modo,INTERFACE_PENDING,matching 50ohm verso 1500/2000ohm TBD
+F821,Murata SFPKA455KFA4-R1,Filtro SMD FM 455kHz banda ±6kHz a -6dB min,VENDOR_CATALOG_STUDY,datasheet 2011; perdita max 6dB e Z 1500ohm; disponibilità moderna non verificata
+F822,Murata SFPKA455KHA1-R1,Filtro SMD AM 455kHz ±3kHz a -6dB min,VENDOR_CATALOG_STUDY,datasheet 2011; perdita max 6dB e Z 2000ohm; disponibilità moderna non verificata
+F823,455kHz SSB 2.4/2.7kHz custom,Filtro selettivo USB/LSB a 455k,UNSELECTED_NO_FAB,non esiste MPN approvato e non inferire risposta da filtro AM
+F824,455kHz CW 500Hz custom,Filtro CW 500Hz a 455k,UNSELECTED_NO_FAB,non esiste MPN approvato; probabile meccanico / DSP seconda conversione
+SW821,"bank 4 vie input, 455kHz",Seleziona filtro di modo in ingresso,UNSELECTED,"doppio switch isolante, RON, OFF-C e bias da verificare"
+SW822,"bank 4 vie output, 455kHz",Seleziona filtro modo in uscita,UNSELECTED,selezione break-before-make con interblocco MUTE
+J805,IF2_MODE_SELECTED,Uscita 455k verso demodulatori,INTERFACE_PENDING,"AM envelope, FM discriminator, USB/LSB product, CW BFO futura"
+J806,IF2_BFO_USB_LSB_CW,BFO programmabile circa 455k ±1.5k/700Hz,INTERFACE_PENDING,oscillatore/BFO non scelto e architettura demod. aperta
+J807,3V3_A_IF_SW,"Rail analogica 3.3V, condizionata RX",INTERFACE_PENDING,allocazione correnti V6.3 e power gating hardware da rivedere
+TP801,IF1_AGC_DIFF_MON_DNI,Sonda non invasiva differenziale FI1,DNI,non montare stub ad alta frequenza prima simulazione

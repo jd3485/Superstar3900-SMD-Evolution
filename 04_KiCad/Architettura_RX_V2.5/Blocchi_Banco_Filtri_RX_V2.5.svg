@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 380" width="1050" height="380">
+<style>text{font-family:DejaVu Sans,Arial,sans-serif;fill:#233449} .major{font-size:18px;font-weight:700} .minor{font-size:14px} rect{stroke:#33546c;stroke-width:2;fill:#f4f8fb} .path{fill:none;stroke:#208477;stroke-width:3;stroke-linecap:round} .warning{font-size:14px;fill:#9b4916}</style>
+<text x="35" y="35" class="major">Superstar 3900 - architettura preselettore RX V2.5 (studio)</text>
+<rect x="20" y="91" width="125" height="57" rx="9"/><text x="82" y="112" text-anchor="middle" class="minor">Antenna RX</text><text x="82" y="132" text-anchor="middle" class="minor">protetta</text>
+<rect x="200" y="91" width="128" height="57" rx="9"/><text x="264" y="113" text-anchor="middle" class="minor">Selettore</text><text x="264" y="133" text-anchor="middle" class="minor">ingresso 1:6</text>
+<rect x="403" y="91" width="170" height="57" rx="9"/><text x="488" y="112" text-anchor="middle" class="minor">6 filtri LC</text><text x="488" y="133" text-anchor="middle" class="minor">3 risonatori</text>
+<rect x="630" y="91" width="135" height="57" rx="9"/><text x="697" y="112" text-anchor="middle" class="minor">Selettore</text><text x="697" y="132" text-anchor="middle" class="minor">uscita 6:1</text>
+<rect x="809" y="91" width="110" height="57" rx="9"/><text x="864" y="112" text-anchor="middle" class="minor">LNA</text><text x="864" y="132" text-anchor="middle" class="minor">ADL5535*</text>
+<path class="path" d="M145 119 H200 M328 119 H403 M573 119 H630 M765 119 H809"/>
+<path class="path" d="M864 148 V204 H698 V239"/>
+<rect x="624" y="239" width="148" height="58" rx="9"/><text x="698" y="260" text-anchor="middle" class="minor">LP7 comune</text><text x="698" y="281" text-anchor="middle" class="minor">post-LNA</text>
+<rect x="822" y="239" width="115" height="58" rx="9"/><text x="879" y="260" text-anchor="middle" class="minor">Mixer</text><text x="879" y="281" text-anchor="middle" class="minor">ADE-1+*</text>
+<path class="path" d="M772 268 H822"/>
+<text x="20" y="341" class="warning">* Componenti indicativi; dati a 27 MHz e integrita RF non qualificati. Solo RX; TX su percorso isolato.</text>
+</svg>

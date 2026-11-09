@@ -1,0 +1,15 @@
+{
+  "passed": 9,
+  "total": 9,
+  "checks": {
+    "vendor_component_model_3_coils": true,
+    "passive_energy_no_gain": true,
+    "schematic_balanced_sexpr": true,
+    "schematic_components_9": true,
+    "schematic_ground_branches_3": true,
+    "S2P_file_simulated": true,
+    "stress_2400_rows": true,
+    "no_mpn_invented_for_capacitors": true,
+    "pdf_generated": true
+  }
+}

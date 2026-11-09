@@ -1,0 +1,1 @@
+PASS: 64 STM32 + 32 CODEC; 11 pin checks, labels shared, internal LDO rails, KiCad syntax parentheses; NO ERC performed

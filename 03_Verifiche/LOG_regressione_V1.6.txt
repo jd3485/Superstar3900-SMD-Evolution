@@ -1,0 +1,15 @@
+> test_frequency_plan.py
+PASS: 270 frequenze uniche; 240 normali + 30 ALFA; CH9; anomalie CH23/24; 40 posizioni TX predefinite.
+> test_pll_plan.py
+PASS: 270 LO e 270 INT unici; 36.310-39.000 MHz; VCO 2323.84-2496 MHz; errore 0Hz.
+> test_control_model.py
+PASS: CH9/ALFA/AM, 6 bande, blocco TX, 6 fault inibitori, ATU busy e input invalidi.
+> test_rx_noise_budget.py
+PASS: modello Friis NF=4.85dB; soglia termica stimata 0.121uV RMS (ipotesi).
+> test_stage2.py
+PASS stage2: 270 PLL points, R/prescaler range, LO endpoints, CH9 and INT
+> test_lo_filter.py
+PASS stage2 LC model S21 math: 7 elements, attenuation and 100MHz sweep finite
+RISULTATO: 6 suite PASS (solo controlli software; RF/EM e PCB non verificati).
+
+STDERR:

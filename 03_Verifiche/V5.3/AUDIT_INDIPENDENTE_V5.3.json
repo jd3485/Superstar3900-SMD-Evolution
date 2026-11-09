@@ -1,0 +1,16 @@
+{
+  "revision": "V5.3",
+  "method": "independent static S-expression parsing, pin-coordinate/wire/label tracing",
+  "schematic_pin_nets": 31,
+  "wires": 31,
+  "labels": 31,
+  "components": 15,
+  "footprints": 15,
+  "schematic_pcb_errors": [],
+  "schematic_connection_warnings": [],
+  "footprint_library_mismatches": [],
+  "pass": true,
+  "native_erc": "NOT_RUN",
+  "native_drc": "NOT_RUN",
+  "manufacturing_allowed": false
+}

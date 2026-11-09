@@ -1,0 +1,5 @@
+# Tested with Python 3, Shapely 2, Matplotlib 3, Pillow, ReportLab.
+shapely>=2.0
+matplotlib>=3.7
+Pillow>=9.0
+reportlab>=3.6

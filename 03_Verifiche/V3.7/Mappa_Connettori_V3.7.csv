@@ -1,0 +1,5 @@
+Ref,X_mm,Y_mm,Rot_deg,Port direction (assumed),Central land diameter mm,Central hole,Ground pattern,mechanical validation
+J101,28,36,0,LEFT,2.05,NONE,4 square pads candidate,REVIEW
+J102,122,36,180,RIGHT,2.05,NONE,4 square pads candidate,REVIEW
+J103,28,65,0,LEFT,2.05,NONE,4 square pads candidate,REVIEW
+J104,122,65,180,RIGHT,2.05,NONE,4 square pads candidate,REVIEW

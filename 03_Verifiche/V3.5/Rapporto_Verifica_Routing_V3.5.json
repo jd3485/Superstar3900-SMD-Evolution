@@ -1,0 +1,50 @@
+{
+  "release": "V3.5",
+  "date": "2026-11-07",
+  "board": "04_KiCad/Modulo_RX_Test_50ohm_V3.5/S3900E_RX_TEST_50R_V3_5_PILOT_ROUTES_NOT_FOR_FAB.kicad_pcb",
+  "summary": {
+    "footprints": 15,
+    "nets": 8,
+    "zones_defined_not_filled": 3,
+    "segments": 23,
+    "vias": 4,
+    "s_expr_balanced": true,
+    "pilot_RF_width_mm": 0.28,
+    "rounding_assumption": "finite copper correction, bare microstrip"
+  },
+  "electrical": {
+    "nonground_nets_routed": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "note": "topological pilot connections only; pads J101-104 still under mechanical review"
+  },
+  "approx_geom": {
+    "clearance_threshold_mm": 0.18,
+    "minimum_modelled_clearance_mm": 0.635,
+    "fail_count": 0,
+    "failures": [],
+    "limitations": [
+      "rectangular pad approximation",
+      "no 3D model",
+      "no filled zones",
+      "no footprint copper graphics",
+      "no soldermask",
+      "not KiCad native DRC"
+    ]
+  },
+  "blockers": [
+    "TE SMA center feature 2.05 mm cannot be confidently classified pad vs hole from 2D drawing",
+    "SMA positions, metal shell overhang and mating directions not checked using official 3D CAD",
+    "ADL5535 Fig17 candidate needs verified via and paste stencil conditions",
+    "footprint electrical/schematic pin cross-check and native KiCad ERC/DRC unavailable",
+    "no assembly and no VNA, no PCB stack-up confirmation",
+    "ground zones defined but NOT filled; internal ground reference not validated"
+  ],
+  "manufacturability": "DO NOT FABRICATE"
+}

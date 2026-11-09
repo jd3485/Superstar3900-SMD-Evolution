@@ -1,0 +1,101 @@
+{
+  "rev": "V6.7",
+  "status": "NUMERICAL_SIMULATION_NOT_EM_OR_SPICE",
+  "frequency_positions": 270,
+  "default_assumptions": {
+    "coax_loss_db": 0.3,
+    "sxbp_filter_loss_typ_db": 1.3,
+    "sxbp_filter_loss_max_db_at_25C": 2.5,
+    "adl_gain_typ_27MHz_proxy_db": 16.5,
+    "adl_nf_typ_27MHz_proxy_db": 3.0,
+    "ade1_mixer_conversion_loss_typ_db": 5.0,
+    "ade1_mixer_nf_proxy_db": 5.0,
+    "esd_cap_max_pf": 0.2
+  },
+  "default_no_pad": {
+    "nf_db": 4.70411,
+    "net_conversion_gain_db": 9.9
+  },
+  "default_pad6": {
+    "nominal_pi_loss_db": 6.01288,
+    "pi_return_loss_db": 67.03593,
+    "nf_db": 5.13252,
+    "net_conversion_gain_db": 3.88712
+  },
+  "filter_max_il_case_no_pad": {
+    "nf_db": 5.90411,
+    "net_conversion_gain_db": 8.7
+  },
+  "esd_ideal_shunt_loss_27mhz_db": 3.124722314887806e-06,
+  "image_rejection": {
+    "vendor_stopband_min_db": 20.0,
+    "passband_max_db": 2.5,
+    "relative_worst_case_lower_bound_db_if_equal_other_gain": 17.5,
+    "desired_internal_target_db": 40.0,
+    "target_certified": false
+  },
+  "blocker_example": {
+    "input_antenna_dbm": 0.0,
+    "post_filter_dbm": -1.6,
+    "adl_out_dbm": 14.9,
+    "mixer_in_no_pad_dbm": 14.9,
+    "mixer_in_pad6_dbm": 8.88712,
+    "adl_input_p1db_ant_proxy_dbm": 2.8,
+    "caution": "LNA output P1dB is a TYPICAL 20MHz spec, proxy for 27MHz, not safe operating threshold"
+  },
+  "adl_thermal_approx": {
+    "dc_power_typ_w": 0.485,
+    "dc_power_115ma_w": 0.5750000000000001,
+    "estimated_tj_at_85c_115ma_and_30p7K_W_c": 102.6525,
+    "datasheet_pad_soldered_thetaJA_c_w": 30.7,
+    "measured": false
+  },
+  "monte_carlo": {
+    "samples": 20000,
+    "seed": 390067,
+    "model": "independent uniform ranges chosen for exploratory stress, NOT manufacturing probability",
+    "ranges": {
+      "filter_loss_db": [
+        1,
+        2.5
+      ],
+      "coax_loss_db": [
+        0.1,
+        0.6
+      ],
+      "lna_gain_db": [
+        15,
+        17
+      ],
+      "lna_nf_db": [
+        2.7,
+        4.0
+      ],
+      "mixer_conversion_loss_db": [
+        4.5,
+        7.0
+      ],
+      "mixer_nf_extra_db": [
+        0,
+        2
+      ]
+    },
+    "nf_min_db": 4.042404375054557,
+    "nf_median_db": 5.658361763789001,
+    "nf_max_db": 7.3090262578409515,
+    "gain_min_db": 5.145316122447889,
+    "gain_median_db": 8.119311353059883,
+    "gain_max_db": 11.215813045439447
+  },
+  "not_run": [
+    "native_KiCad_ERC",
+    "native_KiCad_DRC",
+    "ngspice_native",
+    "VNA_Sparams",
+    "EM_layout",
+    "hardware_ESD_or_TX_isolation",
+    "RF_blocker_nonlinear_measurement"
+  ],
+  "tx_enabled": false,
+  "fab_released": false
+}

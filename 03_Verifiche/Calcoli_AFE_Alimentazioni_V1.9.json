@@ -1,0 +1,46 @@
+{
+  "analog": {
+    "mic_input": {
+      "R_series_ohm": 1000,
+      "C_shunt_F": 4.7e-09,
+      "fc_ideal_Hz": 33862.75384933944
+    },
+    "fm_input": {
+      "R_series_ohm": 1000,
+      "C_shunt_F": 1e-08,
+      "fc_ideal_Hz": 15915.494309189537
+    },
+    "coupling_high_pass": {
+      "R_equiv_assumed_ohm": 20000,
+      "C_F": 1e-06,
+      "fc_assuming_20k_Hz": 7.957747154594767,
+      "note": "Codec ADC impedance is configuration-dependent, replace with measured values"
+    }
+  },
+  "digital_audio": {
+    "Fs_Hz": 48000,
+    "slots": 2,
+    "bits_per_slot": 32,
+    "BCLK_Hz": 3072000,
+    "MCLK_Hz": 12288000
+  },
+  "power": {
+    "source_buck_net": "5V_RF_PREREGULATED",
+    "post_ferrite_net": "5V_DIGITAL_FILTERED",
+    "old_orphan_net": "5V_AUX_PROTECTED",
+    "LDOs": [
+      "U203",
+      "U204",
+      "U205",
+      "U206"
+    ],
+    "supply_status": "BOM/SCHEMATIC DRAFT - NO KiCad ERC/physical measurements"
+  },
+  "validation": {
+    "native_kicad_erc": "NOT RUN (executable unavailable)",
+    "layout": "NOT STARTED",
+    "electrical_simulation": "NOT RUN",
+    "TX": "not developed",
+    "AFE": "partial candidate"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "revision": "V1.3",
+  "date": "2026-11-06",
+  "deliverable": "Gerarchia KiCad reale 3 fogli; DRAFT",
+  "source_drafts": "V1.2 parent schematics",
+  "root_uuid": "42fbbfb6-8589-483e-b375-7fae34cb8aa0",
+  "sheets": [
+    {
+      "name": "EFUSE",
+      "file": "01_EFUSE_AUX.kicad_sch",
+      "sheet_uuid": "cc5e6dc5-eb76-4606-9a92-87b2abd922ca",
+      "exported_pins": [
+        "PWR_13V8_AUX_RAW",
+        "BUCK_VIN_PROTECTED",
+        "GND_MAIN"
+      ],
+      "symbol_instance_paths_rewritten": 10
+    },
+    {
+      "name": "BUCK",
+      "file": "02_BUCK_5V.kicad_sch",
+      "sheet_uuid": "dca3230a-d92e-4655-b8bc-b779206bd380",
+      "exported_pins": [
+        "BUCK_VIN_PROTECTED",
+        "5V_RF_PREREGULATED",
+        "GND_MAIN"
+      ],
+      "symbol_instance_paths_rewritten": 13
+    },
+    {
+      "name": "PLL",
+      "file": "03_PLL_LDO_TCXO.kicad_sch",
+      "sheet_uuid": "f1572085-2bf6-4e75-89ef-b5b8ea240bb9",
+      "exported_pins": [
+        "5V_RF_PREREGULATED",
+        "GND_MAIN"
+      ],
+      "symbol_instance_paths_rewritten": 46
+    }
+  ],
+  "test_static": {
+    "balanced_sexpr": true,
+    "matching_hierarchical_labels_and_sheet_pins": true,
+    "root_has_explict_wire_segments": true,
+    "EFUSE_RTN_not_exported": true,
+    "child_project_paths_consistent": true,
+    "children_preserve_original_symbol_uuid_and_refs": true
+  },
+  "native_kicad_available": false,
+  "native_ERC_executed": false,
+  "native_netlist_export_executed": false,
+  "PCB_DRC_executed": false,
+  "critical_open_issues": [
+    "Footprint F200 unresolved",
+    "Pin10 TCXO unresolved",
+    "eFuse fault response & startup control",
+    "5V switcher EMI/noise validation",
+    "Buck power integration stress testing",
+    "No layout or PCB outputs"
+  ],
+  "notes": "Connettivita topologica dichiarata e verificata staticamente, NON un ERC elettrico native KiCad. Nessun interconnect di corrente RF finale.",
+  "regression_existing_test_suite_returncode": 0
+}

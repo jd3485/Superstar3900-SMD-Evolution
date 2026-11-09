@@ -1,0 +1,65 @@
+{
+  "fs_hz": 3640000,
+  "duration_s": 0.04,
+  "model_class": "NUMERICAL_IDEAL_ONLY",
+  "demod": {
+    "USB": {
+      "peak_hz": 999.9999999999999,
+      "rms": 0.450495081253335
+    },
+    "LSB": {
+      "peak_hz": 999.9999999999999,
+      "rms": 0.45049497245993186
+    },
+    "CW": {
+      "peak_hz": 699.9999999999999,
+      "rms": 0.45098875465299065
+    },
+    "AM": {
+      "peak_hz": 999.9999999999999,
+      "rms": 0.1066941229507044
+    },
+    "FM": {
+      "peak_hz": 999.9999999999999,
+      "rms": 0.0030513992066698676
+    }
+  },
+  "exploratory_lo2_lpf": {
+    "type": "IDEAL_BUTTERWORTH_5TH_ORDER_ONLY",
+    "corner_hz": 14200000,
+    "harmonic_hz": 30720000,
+    "nominal_at_3rd_harmonic_db": -33.515220263458644,
+    "corner_variations": 4000,
+    "3rd_harmonic_db_range": [
+      -36.66433819521604,
+      -30.579610156100422
+    ]
+  },
+  "exploratory_fm_quadrature": {
+    "phase_error_cases": 5000,
+    "quarter_cycle_tolerance_hypothetical": 0.05,
+    "relative_gain_range": [
+      0.9969182011732228,
+      0.9999999996222081
+    ]
+  },
+  "clock_error": {
+    "reference_ppm_range": [
+      -2.5,
+      2.5
+    ],
+    "rf_low_hz": 25615000,
+    "rf_high_hz": 28305000,
+    "residual_low_hz": 64.0375,
+    "residual_high_hz": 70.7625,
+    "note": "First-order common-reference correlation; SSB net RF frequency still drifts."
+  },
+  "limitations": [
+    "IF2 filter shapes and phase are IDEAL",
+    "FM discriminator uses ideal sampling delay",
+    "AM diode modeled ideal",
+    "SSB commutator inputs generated mathematically not by B981",
+    "No Si5351C register programming, jitter, phase noise, spur or clock output measurement",
+    "No RF transmission tested or connected"
+  ]
+}

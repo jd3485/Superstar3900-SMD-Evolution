@@ -1,0 +1,173 @@
+{
+  "revision": "V6.6",
+  "timestamp_assumption": "2026-11-09",
+  "technology": "linear passive Y-matrix -> S-parameters at 50 ohm",
+  "nominal": {
+    "num_channels": 270,
+    "rx_insertion_loss_db_min": 3.307190011712398,
+    "rx_insertion_loss_db_max": 5.593317472053634,
+    "image_attenuation_db_min": 52.83410504246123,
+    "image_attenuation_db_max": 53.54944851342115,
+    "image_rejection_relative_db_min": 47.95613104136751,
+    "rx_return_loss_db_min": 6.178516393946998,
+    "model": {
+      "l1_h": 2e-06,
+      "l2_h": 2.2e-08,
+      "l3_h": 2e-06,
+      "c1_f": 1.75e-11,
+      "c2_f": 1.591e-09,
+      "c3_f": 1.75e-11,
+      "q_l1": 60.0,
+      "q_l2": 60.0,
+      "q_l3": 60.0,
+      "q_c": 400.0,
+      "srf_l1_hz": 90000000.0,
+      "srf_l2_hz": 350000000.0,
+      "srf_l3_hz": 90000000.0,
+      "c_feed_f": 5e-14
+    }
+  },
+  "feedthrough_sweep": [
+    {
+      "c_feed_pf": 0,
+      "max_rx_loss_db": 5.59677931186128,
+      "min_img_atten_db": 61.72757396527264,
+      "min_relative_image_rejection_db": 58.081511873734044
+    },
+    {
+      "c_feed_pf": 0.02,
+      "max_rx_loss_db": 5.5953945060526955,
+      "min_img_atten_db": 57.050538366873596,
+      "min_relative_image_rejection_db": 53.029157898975896
+    },
+    {
+      "c_feed_pf": 0.05,
+      "max_rx_loss_db": 5.593317472053634,
+      "min_img_atten_db": 52.83410504246123,
+      "min_relative_image_rejection_db": 47.95613104136751
+    },
+    {
+      "c_feed_pf": 0.1,
+      "max_rx_loss_db": 5.589856217924542,
+      "min_img_atten_db": 48.53105200372574,
+      "min_relative_image_rejection_db": 43.16016403181992
+    },
+    {
+      "c_feed_pf": 0.2,
+      "max_rx_loss_db": 5.582935491478175,
+      "min_img_atten_db": 43.40977113718222,
+      "min_relative_image_rejection_db": 37.826835645704044
+    },
+    {
+      "c_feed_pf": 0.5,
+      "max_rx_loss_db": 5.562188014223962,
+      "min_img_atten_db": 35.88270593497991,
+      "min_relative_image_rejection_db": 30.320517920755947
+    },
+    {
+      "c_feed_pf": 1.0,
+      "max_rx_loss_db": 5.527660896744784,
+      "min_img_atten_db": 30.00634131868262,
+      "min_relative_image_rejection_db": 24.478680421937835
+    }
+  ],
+  "monte_carlo": {
+    "n": 4000,
+    "seed": 6606,
+    "distributions": {
+      "L": "independent uniform ±5%",
+      "C": "independent uniform ±2%",
+      "inductor_Q": "independent uniform [30,110] at f0",
+      "capacitor_Q": "uniform [300,700]",
+      "SRF_series": "uniform [55,150] MHz",
+      "SRF_shunt": "uniform [250,750] MHz",
+      "input_output_feedthrough": "uniform [0,0.5] pF"
+    },
+    "quantiles": {
+      "max_rx_loss_db": {
+        "0": 2.41431042262757,
+        "0.01": 2.9477364792713345,
+        "0.05": 3.5303294769313087,
+        "0.5": 5.811973155789564,
+        "0.95": 11.019143197323627,
+        "0.99": 13.696679402600328,
+        "1": 17.39854979511425
+      },
+      "min_image_atten_db": {
+        "0": 35.66189097981099,
+        "0.01": 35.9076698378464,
+        "0.05": 36.30104199551356,
+        "0.5": 41.52556875325683,
+        "0.95": 55.76872772003517,
+        "0.99": 61.67380677300934,
+        "1": 72.52271970389718
+      },
+      "min_relative_image_rejection_db": {
+        "0": 18.754481064406647,
+        "0.01": 25.378106483869054,
+        "0.05": 28.38154266611136,
+        "0.5": 35.54494421896693,
+        "0.95": 50.54934707698757,
+        "0.99": 55.58405360227503,
+        "1": 65.36861069760354
+      },
+      "min_rx_return_loss_db": {
+        "0": 0.5541814977652608,
+        "0.01": 1.038059695171922,
+        "0.05": 1.575999149869537,
+        "0.5": 4.8958474481870855,
+        "0.95": 9.434739855875124,
+        "0.99": 11.161364067486733,
+        "1": 14.336652012843174
+      },
+      "min_rx_loss_db": {
+        "0": 1.3293048098862001,
+        "0.01": 1.686884214302611,
+        "0.05": 1.952208132028949,
+        "0.5": 3.2165160457796778,
+        "0.95": 5.742899366018417,
+        "0.99": 7.047388500414846,
+        "1": 9.105274454170365
+      }
+    },
+    "fraction_rx_loss_above_6dB": 0.46825,
+    "fraction_relative_image_rejection_below_40dB": 0.7195,
+    "fraction_rx_return_loss_below_10dB": 0.9685,
+    "warning": "Monte Carlo illustrativo di elementi parassiti; nessuna distribuzione qualificata per MPN, nessun PCB, nessun SPICE vendor."
+  },
+  "external_datasheet_candidate": {
+    "manufacturer": "Mini-Circuits",
+    "mpn": "SXBP-27R5+",
+    "passband_mhz": [
+      24,
+      31
+    ],
+    "insertion_loss_typical_db": 1.3,
+    "insertion_loss_max_db_25C": 2.5,
+    "image_stopband_mhz": [
+      39,
+      900
+    ],
+    "image_attenuation_min_db_25C": 20,
+    "qualified_by_vendor_only_not_board": true,
+    "ground_pad_numbers": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "input_pad": 1,
+    "output_pad": 8
+  },
+  "remaining_gates": [
+    "Q/SRF vendor MPN for each inductor",
+    "network PCB parasitic C_IN_OUT EM/bench extraction",
+    "VNA 2-port S21/S11 270 positions and image",
+    "noise figure/selectivity dynamic range system budget",
+    "mixer drive and IF filters",
+    "native KiCad ERC/DRC not executed",
+    "NO TX NO FAB"
+  ]
+}

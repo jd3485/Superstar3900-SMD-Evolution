@@ -1,0 +1,70 @@
+{
+  "release": "V2.7",
+  "baseline": "V2.6",
+  "progress_percent_estimate": 34,
+  "release_status": "NO GO - non approvato per PCBWay",
+  "f_band_rx_MHz": [
+    25.615,
+    28.305
+  ],
+  "f_band_image_MHz": [
+    47.005,
+    49.695
+  ],
+  "model": "ABCD 50ohm from V2.4, LP9+HP5 with series L ESR from constant Q(f), tan_delta cap 0.001, no parasitics",
+  "new_bom": "14 componenti per variante, MPN L solo candidati, MPN C mancanti",
+  "montecarlo": "1000 perturbazioni per variante, Q uniform 20..60 (ipotetico), L +/-5% e C +/-2%; NON resa produttiva",
+  "gate_exploratory": {
+    "rx_loss_max_dB": 2,
+    "image_rejection_min_dB": 60,
+    "s11_worst_max_dB": -10
+  },
+  "nominal_q60": {
+    "TEORICO_V2.4": {
+      "max_pass_loss_db": 1.613595530995172,
+      "min_image_rejection_db": 59.30233522370783,
+      "worst_s11_db": -12.498877585281761
+    },
+    "E12_COMMERCIALE": {
+      "max_pass_loss_db": 1.546785456676033,
+      "min_image_rejection_db": 57.93609630947895,
+      "worst_s11_db": -12.050821550340816
+    },
+    "E24_COMMERCIALE": {
+      "max_pass_loss_db": 1.811641995138992,
+      "min_image_rejection_db": 59.81470837258801,
+      "worst_s11_db": -10.274326509543547
+    }
+  },
+  "montecarlo_metrics": {
+    "E12_COMMERCIALE": {
+      "n_test": 1000,
+      "frazione_gate_esplorativi": 0.0,
+      "p95_perdita_RX_dB": 3.819473,
+      "p5_reiezione_IMG_dB": 56.8096555,
+      "max_loss_q60": 1.546785456676033,
+      "min_image_q60": 57.93609630947895
+    },
+    "E24_COMMERCIALE": {
+      "n_test": 1000,
+      "frazione_gate_esplorativi": 0.046,
+      "p95_perdita_RX_dB": 3.9690529999999997,
+      "p5_reiezione_IMG_dB": 58.747094999999995,
+      "max_loss_q60": 1.811641995138992,
+      "min_image_q60": 59.81470837258801
+    }
+  },
+  "known_blockers": [
+    "Q e S2P dei componenti esatti a 27 MHz",
+    "MPN e fixture dei condensatori RF",
+    "parassiti PCB e collegamenti LNA",
+    "simulazioni SPICE native",
+    "KiCad ERC/DRC",
+    "misure VNA su circuito stampato"
+  ],
+  "source_urls": {
+    "coilcraft": "https://www.coilcraft.com/getmedia/dd5f20e4-1ff7-43df-8317-b693eb2dce3e/0805cs.pdf",
+    "murata_hq": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor/overview/lineup/low-esl",
+    "cap_sample": "https://www.digikey.com/en/products/detail/murata-electronics/GJM1555C1H220GB01D/7363125"
+  }
+}

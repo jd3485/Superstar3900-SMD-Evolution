@@ -1,0 +1,44 @@
+name: Superstar3900 RX KiCad 10 V5.5 - checked native reports NO FAB
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rx-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python and independent F.Cu copper screening
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install static geometry screen dependency
+        run: python -m pip install 'shapely>=2,<3'
+      - name: Execute static copper audit first
+        run: |
+          mkdir -p REPORT_NATIVE_V5.5
+          python -B 03_Verifiche/V5.5/audit_rame_v55.py \
+            --output REPORT_NATIVE_V5.5/AUDIT_RAME_FCU_V5.5.json
+      - name: Install KiCad 10 stable from KiCad PPA
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y kicad
+          kicad-cli version
+      - name: Run native ERC and DRC and validate report structures
+        shell: bash
+        run: |
+          python -B 03_Verifiche/V5.5/run_native_v55.py \
+            --output REPORT_NATIVE_V5.5
+      - name: Upload reports even if checks fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: superstar3900-native-kicad-v55-reports
+          path: REPORT_NATIVE_V5.5/
+          if-no-files-found: warn
+          retention-days: 30

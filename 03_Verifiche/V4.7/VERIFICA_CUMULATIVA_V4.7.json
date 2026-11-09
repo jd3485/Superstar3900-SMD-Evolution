@@ -1,0 +1,35 @@
+{
+  "version": "4.7",
+  "previous_version": "4.6",
+  "previous_zip_crc": "PASS",
+  "previous_files": 759,
+  "historical_unmodified_identical_bytes": 755,
+  "updated_active_documents_with_exact_snapshot": 4,
+  "changed_documents": [
+    {
+      "path": "00_Gestione_Progetto/REGISTRO_DECISIONI.md",
+      "snapshot": "00_Gestione_Progetto/V4.7_SNAPSHOT_V4.6/00_Gestione_Progetto__REGISTRO_DECISIONI.md"
+    },
+    {
+      "path": "00_Gestione_Progetto/RIPRENDI_IN_UNA_NUOVA_CHAT.md",
+      "snapshot": "00_Gestione_Progetto/V4.7_SNAPSHOT_V4.6/00_Gestione_Progetto__RIPRENDI_IN_UNA_NUOVA_CHAT.md"
+    },
+    {
+      "path": "README.md",
+      "snapshot": "00_Gestione_Progetto/V4.7_SNAPSHOT_V4.6/README.md"
+    },
+    {
+      "path": "RIPRENDI_IN_UNA_NUOVA_CHAT.md",
+      "snapshot": "00_Gestione_Progetto/V4.7_SNAPSHOT_V4.6/RIPRENDI_IN_UNA_NUOVA_CHAT.md"
+    }
+  ],
+  "sma_2_dimensions_verified_static": true,
+  "manufacturer_STEP_DXF": "NOT_ACQUIRED",
+  "kicad_cli": "NOT_INSTALLED",
+  "native_ERC_DRC": "NOT_RUN",
+  "new_static_tests": "28/28 PASS",
+  "historical_regressions": "V4.0-V4.6 PASS",
+  "hardware_validated": 0,
+  "fab_approved": false,
+  "tx_approved": false
+}

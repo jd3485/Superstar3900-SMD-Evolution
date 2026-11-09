@@ -1,0 +1,130 @@
+[
+  {
+    "revision": "V4.0",
+    "script": "V4.0/test_radio_supervisor_v40.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.1",
+    "script": "V4.1/test_audit_rf_v41.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.2",
+    "script": "V4.2/test_geometria_rf_v42.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.3",
+    "script": "V4.3/test_candidato_sma_v43.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.4",
+    "script": "V4.4/test_schema_pcb_v44.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.5",
+    "script": "V4.5/test_librerie_v45.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.6",
+    "script": "V4.6/test_rischi_v46.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.7",
+    "script": "V4.7/test_audit_te_v47.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.8",
+    "script": "V4.8/test_variante_termica_v48.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V4.9",
+    "script": "V4.9/test_v49.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.0",
+    "script": "V5.0/test_v50.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.1",
+    "script": "V5.1/test_v51.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.2",
+    "script": "V5.2/test_v52.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.3",
+    "script": "V5.3/test_v53.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.4",
+    "script": "V5.4/test_native_runner_v54.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.5",
+    "script": "V5.5/test_v55.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.6",
+    "script": "V5.6/test_continuita_v56.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.7",
+    "script": "V5.7/test_piani_gnd_v57.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.8",
+    "script": "V5.8/test_ritorno_rf_v58.py",
+    "status": "NOT_RUN_RESOURCE_LIMIT",
+    "reason": "previous suite preserved in prior archive; batch rerun exceeded runtime limit in two attempts (V4.0–V5.4 passed in earlier aborted runs); package builds with two latest short integration regressions"
+  },
+  {
+    "revision": "V5.9",
+    "script": "V5.9/test_progettazione_sistema_v59.py",
+    "status": "PASS",
+    "returncode": 0,
+    "tail": "_five_audio_modes_to_mux (__main__.ContractDesign.test_five_audio_modes_to_mux) ... ok\ntest_hw_rf_inhibit_bypass_absent (__main__.ContractDesign.test_hw_rf_inhibit_bypass_absent) ... ok\ntest_module_count (__main__.ContractDesign.test_module_count) ... ok\ntest_ports_exist_and_types_match (__main__.ContractDesign.test_ports_exist_and_types_match) ... ok\ntest_rx_path_complete (__main__.ContractDesign.test_rx_path_complete) ... ok\ntest_single_driver_per_input (__main__.ContractDesign.test_single_driver_per_input) ... ok\ntest_status_blocks_fabrication (__main__.ContractDesign.test_status_blocks_fabrication) ... ok\ntest_tx_chain_has_hardware_gate (__main__.ContractDesign.test_tx_chain_has_hardware_gate) ... ok\ntest_unique_connection_ids (__main__.ContractDesign.test_unique_connection_ids) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.001s\n\nOK\n"
+  },
+  {
+    "revision": "V6.0",
+    "script": "V6.0/test_audio_pa_v60.py",
+    "status": "PASS",
+    "returncode": 0,
+    "tail": "\n...................................\n----------------------------------------------------------------------\nRan 35 tests in 0.024s\n\nOK\n"
+  }
+]

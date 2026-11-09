@@ -1,0 +1,14 @@
+* SOLO FILTRO PASSIVO - simulazione AC non eseguita; nessun PLL dinamico in questo deck.
+* ingresso ideale 1 A AC di pompa di carica: V(vtune) = transimpedenza [Ohm].
+Icp 0 cp AC 1
+C1 cp 0 6.8n
+R2 cp n2 1.2k
+C2 n2 0 120n
+R3 cp vtune 270
+C3 vtune 0 4.7n
+.ac dec 100 10 10Meg
+.control
+run
+print v(vtune)
+.endc
+.end

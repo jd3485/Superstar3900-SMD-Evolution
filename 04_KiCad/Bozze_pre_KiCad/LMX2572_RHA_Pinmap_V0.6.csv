@@ -1,0 +1,42 @@
+pin,ti_name,type,net_proposta,connessione_preliminare
+1,CE,DIG_IN,PLL_CE,"abilitazione da MCU, default spento hardware"
+2,GND,GND,RF_GND,massa VCO
+3,VbiasVCO,BYPASS,VBIAS_VCO,470 nF X7R a massa VCO
+4,GND,GND,RF_GND,massa VCO
+5,SYNC,DIG_IN,SYNC_OPTION,"funzione inutilizzata TBD, stato sicuro da TI"
+6,GND,GND,RF_GND,massa digitale
+7,VccDIG,POWER,3V3_PLL,100 nF a massa digitale
+8,OSCinP,REF_IN,TCXO_12M8_AC,"AC coupling, adattare ampiezza datasheet"
+9,OSCinM,REF_IN,OSCinM_OPTION,single-ended: disposizione da validare su EVM
+10,VregIN,BYPASS,VREG_IN,1 uF a massa RF
+11,VccCP,POWER,3V3_PLL,100 nF a massa CP
+12,CPout,ANALOG_OUT,PLL_CPOUT,filtro C1/R2/C2/R3
+13,GND,GND,RF_GND,massa charge pump
+14,GND,GND,RF_GND,massa digitale
+15,VccMASH,POWER,3V3_PLL,1 uF a massa digitale
+16,SCK,DIG_IN,PLL_SPI_SCK,SPI clock 3.3V
+17,SDI,DIG_IN,PLL_SPI_MOSI,SPI dati 3.3V
+18,RFoutBM,RF_OUT,RF_B_NEG,"uscita B non usata: terminazione da TI, TBD"
+19,RFoutBP,RF_OUT,RF_B_POS,"uscita B non usata: terminazione da TI, TBD"
+20,MUXout,DIG_OUT,PLL_MUXOUT,"readback / lock detect, configurare"
+21,VccBUF,POWER,3V3_PLL,100 nF a massa RF
+22,RFoutAM,RF_OUT,RF_A_NEG,"uscita A (-), accoppiamento AC e terminazione da definire"
+23,RFoutAP,RF_OUT,RF_A_POS,"uscita A (+), accoppiamento AC -> filtro e buffer LO"
+24,CSB,DIG_IN,PLL_SPI_CSB,SPI chip select 3.3V
+25,GND,GND,RF_GND,massa VCO
+26,VccVCO2,POWER,3V3_PLL,1 uF a massa VCO
+27,VbiasVCO2,BYPASS,VBIAS_VCO2,100 nF X7R a massa VCO
+28,SysRefReq,DIG_IN,SYSREF_OPT,SYSREF non usato; stato sicuro da TI
+29,VrefVCO2,BYPASS,VREF_VCO2,10 uF a massa VCO
+30,RampClk,DIG_IN,RAMPCLK_OPT,ramp non usato; stato sicuro da TI
+31,GND,GND,RF_GND,massa VCO
+32,RampDir,DIG_IN,RAMPDIR_OPT,ramp non usato; stato sicuro da TI
+33,VbiasVARAC,BYPASS,VBIAS_VARAC,10 uF a massa VCO
+34,GND,GND,RF_GND,massa VCO
+35,Vtune,ANALOG_IN,PLL_VTUNE,"C3=2.2 nF a massa VCO, vicino pin"
+36,VrefVCO,BYPASS,VREF_VCO,10 uF a massa VCO
+37,VccVCO,POWER,3V3_PLL,1 uF a massa VCO
+38,VregVCO,BYPASS,VREG_VCO,10 nF a massa VCO
+39,GND,GND,RF_GND,massa VCO
+40,GND,GND,RF_GND,massa digitale
+DAP,Exposed pad,GND,RF_GND,pad termico a piano massa con vias

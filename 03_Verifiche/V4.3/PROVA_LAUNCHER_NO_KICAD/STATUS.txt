@@ -1,0 +1,1 @@
+BLOCKED: kicad-cli missing: NO DRC RUN

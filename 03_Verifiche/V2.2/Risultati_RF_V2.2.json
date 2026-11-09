@@ -1,0 +1,125 @@
+{
+  "model": "5 capacitively-coupled shunt RLC resonators + n=7 0.3dB Chebyshev LPF; ideal element response, constant Q, 50 ohm terminations",
+  "rf_band_mhz": [
+    25.615,
+    28.305
+  ],
+  "image_band_mhz": [
+    47.005,
+    49.695
+  ],
+  "ripple_db": 0.3,
+  "lpf_cutoff_mhz": 31.0,
+  "lpf_g_values": [
+    1.0,
+    1.5137794188968163,
+    1.3346234032558226,
+    2.4131044158961275,
+    1.4402893140741542,
+    2.4131044158961275,
+    1.3346234032558233,
+    1.513779418896814,
+    1.0
+  ],
+  "rf_l_nh": 330,
+  "rf_capacitors_opt_pf": [
+    129.37280327,
+    30.40701326,
+    11.56764921,
+    55.68687781,
+    70.34284482,
+    83.88538041
+  ],
+  "rf_capacitors_e24_pf": [
+    130.0,
+    30.0,
+    12.0,
+    56.0,
+    68.0,
+    82.0
+  ],
+  "lpf": [
+    {
+      "kind": "L",
+      "value": 3.885894794648471e-07,
+      "unit": "H"
+    },
+    {
+      "kind": "C",
+      "value": 1.370399430930917e-10,
+      "unit": "F"
+    },
+    {
+      "kind": "L",
+      "value": 6.194475741721765e-07,
+      "unit": "H"
+    },
+    {
+      "kind": "C",
+      "value": 1.4788978310795935e-10,
+      "unit": "F"
+    },
+    {
+      "kind": "L",
+      "value": 6.194475741721765e-07,
+      "unit": "H"
+    },
+    {
+      "kind": "C",
+      "value": 1.3703994309309176e-10,
+      "unit": "F"
+    },
+    {
+      "kind": "L",
+      "value": 3.885894794648465e-07,
+      "unit": "H"
+    }
+  ],
+  "comparison_cases": {
+    "5 tank only Q50": {
+      "passband_min_db": -3.2497193363730394,
+      "passband_max_db": -2.720267939787912,
+      "worst_image_db": -47.42536857754307,
+      "insertion_max_db": 3.2497193363730394
+    },
+    "5 tank + 7 LPF Q30": {
+      "passband_min_db": -6.697042337482795,
+      "passband_max_db": -5.696191139696767,
+      "worst_image_db": -70.75580257683947,
+      "insertion_max_db": 6.697042337482795
+    },
+    "5 tank + 7 LPF Q50": {
+      "passband_min_db": -4.515636788696421,
+      "passband_max_db": -3.7064497962467247,
+      "worst_image_db": -68.94626933750558,
+      "insertion_max_db": 4.515636788696421
+    },
+    "5 tank + 7 LPF Q70": {
+      "passband_min_db": -3.4334914254924143,
+      "passband_max_db": -2.7140336678904937,
+      "worst_image_db": -67.97894974317208,
+      "insertion_max_db": 3.4334914254924143
+    },
+    "E24 nearest 5 tank + 7 LPF Q50": {
+      "passband_min_db": -4.36143733790192,
+      "passband_max_db": -3.6934563340197935,
+      "worst_image_db": -68.01125191281753,
+      "insertion_max_db": 4.36143733790192
+    }
+  },
+  "monte_carlo_samples": 500,
+  "mc_seed": 390022,
+  "criteria": {
+    "passband_s21_min_db": -6,
+    "image_s21_max_db": -60
+  },
+  "mc_joint_passes": 399,
+  "mc_joint_pass_rate": 0.798,
+  "limitations": [
+    "Does NOT model PCB parasitics or shielding or RF inductor SRF, stray couplings or nonlinearities",
+    "Q of actual coil at 27 MHz unverified; 45 quoted in Coilcraft sheet is at 100 MHz",
+    "Not an in-circuit validated 50-ohm match; only power transmission simulated",
+    "Other filter position, mixer and NF tradeoff must be optimized",
+    "No native SPICE/ADS/KiCad ERC conducted"
+  ]
+}

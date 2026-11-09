@@ -1,0 +1,18 @@
+ref,qty,component_or_value,function,qualification,blocking_note
+J701,1,RX_ANTENNA_ISOLATED_50R,50ohm RX-only RF input,INTERFACE_PENDING,upstream relay/limit TX leakage NOT qualified; no TX connected
+D701,1,RClamp2271ZC Semtech,"Shunt RF ESD candidate, <=0.2pF max",CANDIDATE_DNI,Two-terminal TVS to GND; footprint polarity/ESD & RF injection not yet qualified
+F501,1,Mini-Circuits SXBP-27R5+,50ohm preselector (24-31MHz passband),MFR_SPEC_CANDIDATE,pins1 IN/8 OUT/2-7 GND. 2.5dB passband max at 25C; stopband 39-900MHz >=20dB
+C701,1,0.1uF,AC block F501 OUT -> ADL5535 RFIN,MFR_BASIC_CONNECTION_VALUE,"Real ESL/SRF, dielectric and part number unqualified"
+U101,1,ADL5535ARKZ-R7,50ohm RF amplifier 20MHz-1GHz,MFR_PINOUT_CONFIRMED_LEGACY,"SOT-89 1 RFIN, 2/paddle GND, 3 RFOUT+VCC; layout/thermal pending"
+L701,1,470nH Coilcraft 0603LS-NX family,RF output bias choke,MFR_BASIC_CONNECTION_VALUE,Exact manufacturer MPN/ESR/SRF to verify at 27MHz
+C702,1,0.1uF,DC block U101 pin3 -> output pad,MFR_BASIC_CONNECTION_VALUE,Q/ESL/size/voltage to qualify
+C703,1,68pF C0G,5V_RF_RX decouple close choke,MFR_BASIC_CONNECTION_VALUE,Value recommended by ADI; exact part pending
+C704,1,1.2nF C0G,5V_RF_RX decouple midband,MFR_BASIC_CONNECTION_VALUE,Value recommended by ADI; exact part pending
+C705,1,1uF MLCC,5V_RF_RX bulk local,MFR_BASIC_CONNECTION_VALUE,Derating and frequency model pending
+R701,1,0R BYPASS / 37.4ohm PAD,Pi pad series resistor,BUILD_OPTION_EXCLUSIVE,default 0R and R702/R703 DNI; 6 dB variant 37.4ohm and 150ohm shunts
+R702,1,DNI / 150ohm 1%,Pi pad shunt input,BUILD_OPTION_EXCLUSIVE,Do not populate for default bypass
+R703,1,DNI / 150ohm 1%,Pi pad shunt output,BUILD_OPTION_EXCLUSIVE,Do not populate for default bypass
+J702,1,RX_TO_ADE1_RF_50R,50ohm interface ADE-1+ RF pin 3,INTERFACE_PENDING,mixer input 3; LO +7dBm driver V6.5 not yet qualified
+J703,1,5V_RF_RX_SW_RXONLY,Switched 5V from power distribution,INTERFACE_PENDING,actual hardware disable RX supply while PA/TX requires future power gate
+J704,1,GND_RF,Return close to shield/50ohm reference,LAYOUT_PENDING,no common-mode antenna return path through digital GND
+TP701,1,COAX_TEST_COUPLER_PENDING,Input monitoring without capacitive stub,DNI,Do not install a pad stub until simulated / measured

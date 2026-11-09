@@ -1,0 +1,3 @@
+PASS V1.8: 9 new pins (X201+U203), labels, no-connect, passive refs, MCLK=12.288MHz, FS=48kHz, BCLK=3.072MHz, no A/D internal LDO tied to 3.3V
+Not performed: KiCad ERC, exported netlist, STM32CubeMX and hardware measurements.
+

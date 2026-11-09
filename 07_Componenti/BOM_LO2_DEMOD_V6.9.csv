@@ -1,0 +1,47 @@
+ref,component_or_value,function,qualification,blocking_note
+U971,Skyworks SI5351C-B-GM 20-QFN,CLKIN 12.8 MHz dual PLL clockgen,MFR_PINOUT_CONFIRMED,"Frequency plan only: no qualified I2C register image, jitter, output filtering or layout"
+R971,10 kΩ 1%,OEB default OFF via pullup,VALUE_CANDIDATE,
+R972,100 kΩ 1%,MOSFET gate pulldown,VALUE_CANDIDATE,
+R973,10 kΩ 1%,INTR open-drain pullup; MCU candidate PB11,VALUE_CANDIDATE,
+R974,33 Ω 1%,"source series damping only, NOT +7 dBm driver",VALUE_CANDIDATE,
+R975,33 Ω 1%,BFO logic series damping,VALUE_CANDIDATE,
+R976,100 kΩ 1%,default low if external control disconnected,VALUE_CANDIDATE,
+C971,100 nF X7R 10V,one per VDD/VDDO group; physical placement TBD,VALUE_CANDIDATE,
+C972,100 nF X7R 10V,one per VDD/VDDO group; physical placement TBD,VALUE_CANDIDATE,
+C973,100 nF X7R 10V,one per VDD/VDDO group; physical placement TBD,VALUE_CANDIDATE,
+C974,100 nF X7R 10V,one per VDD/VDDO group; physical placement TBD,VALUE_CANDIDATE,
+C975,4.7 µF X7R 10V,"bulk near clock IC, effective capacitance TBD",VALUE_CANDIDATE,
+Q971,2N7002 candidate SOT23,pull LO2 OEB low only with authorised RX clock enable,PIN_FUNCTION_CANDIDATE,Gate authorization must be validated independent of firmware; verify VGS thresholds and driver
+J971,REF_12M8_INPUT,buffered CMOS 12.8 MHz clock domain input,INTERFACE,actual reference fanout buffer drive/phase noise not specified
+J972,HW_SAFE_RX_ENABLE,"external hardware AND gate between RX switch, supply, and MCU PC12",INTERFACE_PENDING,explicit ECO PC12 required; source circuit not yet designed
+B971,LO2_BUFFER_DRIVER_UNSELECTED,convert CLK0 logic to ADE-1+ +7 dBm sine and filter spur,UNSELECTED_NO_FAB,No driver output to ADE-1+ until assembled and characterized
+J973,LO2_OUTPUT_PENDING,"interface to U802 LO pin6 via future driver, do not directly connect",INTERFACE_PENDING,LO2_RF_7DBM_PENDING is not driven by an instantiated amplifier
+B972,REFERENCE_FANOUT_BUFFER_UNSELECTED,12.8MHz source shared with LMX2572,UNSELECTED_NO_FAB,Phase noise / supply isolation / fanout still open
+U981,Texas Instruments TS5A3157DBVR SOT-23-6,SSB/CW switching demodulator candidate,MFR_PINOUT_CONFIRMED,No DC-negative signals; IF+ and IF- need external biased conditioned buffer
+C981,100 nF X7R 10V,U981 supply decoupling,VALUE_CANDIDATE,
+B981,IF2_BUFFER_AND_INVERTER_UNSELECTED,generate balanced antiphase IF signals centered around 1.65V,UNSELECTED_NO_FAB,"Needs selected amplifier, load and 455k phase match; no assumption of filter direct drive"
+J981,IF2_FILTER_SELECTOR_OUTPUT,from V6.8 SW822 SSB/CW output,INTERFACE,SSB/CW filter F823/F824 not yet selected
+R981,6.8 kΩ 1%,LPF stage 1,VALUE_CANDIDATE,
+C982,4.7 nF C0G,LPF stage 1,VALUE_CANDIDATE,
+R982,6.8 kΩ 1%,LPF stage 2; loading affects response,VALUE_CANDIDATE,
+C983,4.7 nF C0G,LPF stage 2,VALUE_CANDIDATE,
+C984,1 µF X7R 10V,audio AC coupling,VALUE_CANDIDATE,
+R983,100 kΩ 1%,audio input bias path,VALUE_CANDIDATE,
+J982,SSB_CW_AUDIO_OUT,"audio to V6.0 RX mux / codec, require level match",INTERFACE,DC offset and op amp driver to be qualified
+D991,Schottky diode 455k envelope candidate,AM rectifier,DIODE_VALUE_ONLY_NO_FOOTPRINT,"low signal sensitivity, knee, temperature, no real circuit model"
+R991,10 kΩ 1%,AM envelope return,VALUE_CANDIDATE,
+C991,4.7 nF C0G,AM low pass; RC corner ~3.39kHz,VALUE_CANDIDATE,
+C992,1 µF X7R,DC block,VALUE_CANDIDATE,
+R992,100 kΩ,audio load reference,VALUE_CANDIDATE,
+J991,IF2_AM_FILTERED_PORT,"after 455 AM filter, matching TBD",INTERFACE_PENDING,"Murata 2kΩ candidate, cannot tie diode directly without matching test"
+J992,AM_AUDIO_OUT,candidate to RX demod mux,INTERFACE,audio scaling not characterized
+B991,FM_LIMITER_UNSELECTED,limiter before 455k quadrature discriminator,UNSELECTED_NO_FAB,"needs 455k gain, limiter bandwidth and actual pinouts"
+B992,FM_QUADRATURE_PHASE_DETECTOR_UNSELECTED,455k FM discriminator candidate,UNSELECTED_NO_FAB,"requires physically realizable 90deg delay/phase shift, no component pinout yet"
+R993,6.8 kΩ,FM audio LPF nominal,VALUE_CANDIDATE,
+C993,4.7 nF,FM audio LPF nominal,VALUE_CANDIDATE,
+C994,1 µF,FM audio DC block,VALUE_CANDIDATE,
+R994,100 kΩ,FM audio load,VALUE_CANDIDATE,
+J993,IF2_FM_FILTERED_PORT,Murata FM 455k filter output,INTERFACE_PENDING,FM impedance 1.5kΩ; buffer still to choose
+J994,FM_AUDIO_OUT,candidate to V6.0 audio mux,INTERFACE,no actual discriminator hardware qualified
+J975,RX_CLOCK_CONTROL_ECO,"MCU pins PC12 LO2 clock request, PB11 interrupt proposal",INTERFACE_PENDING,"Pinmap V6.1 ECR update required, GPIO AF and I2C pullup budget TBD"
+R977,1 kΩ,gate series; external consent enforces low on unsafe,VALUE_CANDIDATE,

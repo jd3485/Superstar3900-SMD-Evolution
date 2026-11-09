@@ -1,0 +1,4 @@
+previous test runner: 0
+V0.9: 0: PASS V0.9: component refs, named nets, reference NC and budget arithmetic. No ERC.
+
+V1.0: 0: PASS V1.0 static: 13 ref, 30 connections, 8 nets, analytical 5.077V; ERC/DRC not run

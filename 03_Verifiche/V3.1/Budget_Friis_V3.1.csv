@@ -1,0 +1,4 @@
+Architecture (model only),NF total dB (nominal assumptions),Gain RF->IF dB (nominal assumptions)
+Filtro + ADL5535 + mixer,5.099,9.7
+Filtro + ADL5535 + pad 6dB + mixer,5.51,3.687
+Filtro + bypass LNA + mixer,7.0,-7.0

@@ -1,0 +1,8 @@
+{
+  "release": "V2.4",
+  "overall_estimated_percent": 32,
+  "prior_estimate": 31,
+  "delta": 1,
+  "note": "Stima soggettiva per modello passivo con test e confronto, nessun nuovo gate di validazione hardware superato",
+  "status": "Studio RX RF non validato"
+}
