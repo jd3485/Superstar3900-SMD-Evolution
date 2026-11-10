@@ -1,0 +1,9 @@
+reference,quantity,description,mpn,package,nominal,assembly,qualification
+X7601,1,Common clock candidate 30.72MHz MEMS oscillator,ASDMB-30.720MHZ-LY,2520 4-SMD,30.72MHz 3.3V CMOS,DNP,Manufacturer part shown on DigiKey as ASDMB-30.720MHZ-LY verify ordering
+U7601,1,Programmable 10bit DAC bridge FPGA candidate,iCE40UP5K-SG48I,QFN-48,5K LUT one 1.2V core 3.3V IO candidate,DNP,Lattice device verified but actual pin allocations timing and FPGA bitstream NOT_RUN
+R7601,1,Oscillator standby active low default-off pull-down candidate,TBD,0603,10k ohm,DNP,Safety hypothesis not fabricated or electrically qualified
+R7602,1,DAC900 PD active high pull-up to DAC supply candidate,TBD,0603,10k ohm,DNP,Independent PD hardware guard not implemented
+R7603,1,Clock link oscillator to FPGA deliberately open,TBD,0603,0 ohm DO NOT FIT,DNP,No electric clock connected
+R7604,1,Conceptual digital bus isolation link deliberately open,TBD,0603,0 ohm DO NOT FIT,DNP,Not a physical 10line bus and no FPGA pins assigned
+C7601,1,Oscillator bypass candidate from VDD to GND,TBD,0603,10nF,DNP,Abracon package drawing recommends about 0.01uF not verified in hardware
+J7601,1,Virtual clock and interlock boundary no physical connector,TBD,TBD,UNROUTED,DNP,No physical pins assigned

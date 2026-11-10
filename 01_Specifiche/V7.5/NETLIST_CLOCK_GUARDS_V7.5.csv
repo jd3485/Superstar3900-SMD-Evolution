@@ -1,0 +1,13 @@
+reference,pin,function,net,assembly,evidence
+X7601,1,STANDBY_ACTIVE_LOW,OSC_STANDBY_NOT_DRIVEN,DNP,Abracon ASDMB family drawing
+X7601,2,GND,GND_CONCEPT_ONLY,DNP,Abracon ASDMB family drawing
+X7601,3,CLOCK_OUTPUT,OSC_30M72_UNROUTED,DNP,Abracon ASDMB family drawing
+X7601,4,VDD,VDD_3V3_NOT_POWERED,DNP,Abracon ASDMB family drawing
+R7601,1,RESISTOR_A,OSC_STANDBY_NOT_DRIVEN,DNP,Generic 2terminal value proposed
+R7601,2,RESISTOR_B,GND_CONCEPT_ONLY,DNP,Generic 2terminal value proposed
+R7602,1,RESISTOR_A,DAC_PD_HIGH_NOT_DRIVEN,DNP,Generic 2terminal value proposed
+R7602,2,RESISTOR_B,VDD_3V3_NOT_POWERED,DNP,Generic 2terminal value proposed
+R7603,1,OPEN_LINK_A,OSC_30M72_UNROUTED,DNP,Generic 0ohm never fitted
+R7603,2,OPEN_LINK_B,FPGA_CLK_NOT_ASSIGNED,DNP,Generic 0ohm never fitted
+R7604,1,OPEN_LINK_A,FPGA_BUS_NOT_ASSIGNED,DNP,Concept NOT 10 physical bus links
+R7604,2,OPEN_LINK_B,DAC_BUS_UNDRIVEN,DNP,Concept NOT 10 physical bus links

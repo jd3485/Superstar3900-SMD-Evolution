@@ -1,0 +1,111 @@
+{
+  "revision": "V7.5",
+  "date": "2026-11-10",
+  "state": "numerical offline plus catalog-candidate DNP; NO FAB / NO TX",
+  "ci": {
+    "run_id": 42810193536,
+    "job_id": 129809378021,
+    "status": "success",
+    "log_verified": true,
+    "groups": {
+      "V75": {
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0
+      },
+      "V74": {
+        "passed": 21,
+        "failed": 0,
+        "skipped": 0
+      },
+      "V73": {
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0
+      },
+      "V72": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0
+      },
+      "V71": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "total_passed": 77,
+    "total_failed": 0,
+    "total_skipped": 0
+  },
+  "clock": {
+    "master_hz": 30720000,
+    "dac_hz": 3840000,
+    "audio_hz": 48000,
+    "divisors": {
+      "dac": 8,
+      "audio": 640
+    },
+    "audio_to_dac_ratio": 80,
+    "common_ratio_drift": 0,
+    "oscillator_mpn": "ASDMB-30.720MHZ-LY",
+    "oscillator_pin_count_verified": 4,
+    "oscillator_max_startup_ms_vendor": 3,
+    "proposed_guard_default_master_ticks": 92160,
+    "fpga_mpn": "iCE40UP5K-SG48I",
+    "fpga_pins_assigned": false,
+    "hardware_present": false
+  },
+  "dsp": {
+    "factors": [
+      5,
+      4,
+      4
+    ],
+    "taps_per_phase": 16,
+    "products_per_sec_new_interpolator": 80640000,
+    "hilbert_ref_products_per_sec": 6144000,
+    "products_per_sec_total_new": 86784000,
+    "products_per_sec_total_baseline_v73": 129024000,
+    "reduction_percent": 32.73809523809524,
+    "real_time_tested": false,
+    "spectral_masks_tested": false
+  },
+  "coherent_single_tone_spectrum": {
+    "tone_hz": 750,
+    "input_amplitude": 0.4,
+    "wanted_amplitude": 0.3999996336136226,
+    "window_seconds": 0.008,
+    "digital_images_relative_db": {
+      "47250": -114.00928220923218,
+      "48750": -114.28260412517604,
+      "239250": -140.85722246503934,
+      "240750": -140.91087736319582,
+      "959250": -164.91646720683087,
+      "960750": -164.9298814934034
+    },
+    "analog_DAC_sample_hold_simulated": false,
+    "speech_transients_tested": false
+  },
+  "constraints": {
+    "v75_bom_dnp_rows": 8,
+    "v75_partial_netlist_dnp_rows": 12,
+    "v75_oscillator_vendor_pins": 4,
+    "v75_fpga_pin_mapping_completed": false,
+    "tx_rf_permission": false,
+    "fpga_bitstream_compiled": false,
+    "physical_power_rail_validated": false
+  },
+  "not_run": [
+    "KiCad ERC/DRC",
+    "RTL synthesis and timing closure",
+    "physical FPGA pin assignment",
+    "physical DAC900 PD control",
+    "clock generation hardware and rail sequencing",
+    "MCU/FPGA throughput",
+    "vendor SPICE/IBIS or EMC",
+    "DAC RF spectrum measurement",
+    "fabrication",
+    "RF transmission"
+  ]
+}
