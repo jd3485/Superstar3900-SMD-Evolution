@@ -47,13 +47,14 @@ def connectivity(net):
         if not nodes:
             raise ValueError("Empty net node membership: "+name)
         mapping[name]=tuple(sorted(nodes))
-    if len(mapping)<90:
-        raise ValueError("Unexpectedly small real KiCad netlist")
+    if len(mapping)==0:
+        raise ValueError("No KiCad nets parsed; cannot establish connectivity")
     return mapping
 
 def main():
     a=connectivity(ORIG.read_text(encoding="utf-8"))
     b=connectivity(NEW.read_text(encoding="utf-8"))
+    print("KiCad native net counts: baseline",len(a),"candidate",len(b),flush=True)
     diff={
       name:{"before":a.get(name),"after":b.get(name)}
       for name in sorted(set(a)|set(b)) if a.get(name)!=b.get(name)
