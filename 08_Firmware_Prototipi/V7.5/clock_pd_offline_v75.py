@@ -111,8 +111,8 @@ class StartupFaultPlanner:
     in this model make a future PCB fail-safe.
     """
 
-    def __init__(self, stable_master_ticks=640):
-        if type(stable_master_ticks) is not int or not 8 <= stable_master_ticks <= 50000:
+    def __init__(self, stable_master_ticks=92_160):
+        if type(stable_master_ticks) is not int or not 8 <= stable_master_ticks <= 100_000:
             raise ValueError("bounded integer guard length required")
         self.stable_required=stable_master_ticks
         self._consecutive=0
