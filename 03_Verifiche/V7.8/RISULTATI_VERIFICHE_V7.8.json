@@ -1,0 +1,96 @@
+{
+  "revision": "V7.8",
+  "date": "2026-11-10",
+  "classification": "offline model and generic RTL synthesis ONLY; NO FAB / NO TX",
+  "validated_branch_ci": {
+    "id": 42842592233,
+    "job_id": 129921434758,
+    "status": "success",
+    "log_inspected": true,
+    "python_groups": {
+      "V78": 20,
+      "V77": 14,
+      "V76": 15,
+      "V75": 22,
+      "V74": 21,
+      "V73": 15,
+      "V72": 11,
+      "V71": 8
+    },
+    "python_pass_total": 126,
+    "fail": 0,
+    "skip": 0,
+    "rtl_benches": {
+      "V78": "PASS",
+      "V77": "PASS",
+      "V76": "PASS"
+    },
+    "generic_yosys_synth": {
+      "V78": "PASS",
+      "V77": "PASS"
+    }
+  },
+  "bug_fixed": "Original headroom-based V7.3 quantizer accepts raw samples >1 after scaling; V7.8 adds pre-quantizer strict unity guard and verified it.",
+  "dsp": {
+    "sample_count": 30720,
+    "nonperiodic_audio_samples": 384,
+    "output_hz": 3840000,
+    "chunk_invariance": true,
+    "headroom": 0.7,
+    "numerical_signal_to_error_db": 49.391780212511975,
+    "step_input_normalized": 1,
+    "step_filtered_peak": 1.142051346135701,
+    "step_accepted": false,
+    "hardware_DAC_SFDR_measured": false
+  },
+  "clock": {
+    "master_domain": "virtual",
+    "reference_domain": "independent virtual",
+    "master_heartbeat_div": 8,
+    "watchdog_timeout_ref_ticks": 40,
+    "cdc_ff": 3,
+    "missing_master_latched_in_Icarus": true,
+    "supervisor_hardware_present": false,
+    "second_physical_oscillator_present": false,
+    "physical_PD_controlled": false,
+    "rf_permission": false
+  },
+  "sg48_pinout": {
+    "official_catalog": "https://www.latticesemi.com/Products/FPGAandCPLD/iCE40UltraPlus",
+    "document_id": 51971,
+    "official_xlsx_bytes_retrieved": false,
+    "candidate_48pin_certified": false,
+    "PCF_status": "HOLD",
+    "synthetic_XLSX_parser_tests_only": true
+  },
+  "supervisor_candidate": {
+    "mpn": "Texas Instruments TPS3840PH30DBVR",
+    "function": "3.0V reset push-pull active HIGH, not independent clock monitor",
+    "assembly": "DNP",
+    "pins_verified_in_project": false,
+    "physical_PD_connection": false,
+    "power_loss_single_fault_safety_verified": false,
+    "source": "https://www.ti.com/product/TPS3840/part-details/TPS3840PH30DBVR"
+  },
+  "assembly": {
+    "new_bom_rows": 8,
+    "new_concept_netlist_rows": 10,
+    "all_DNP": true,
+    "physical_connections": "ALL_OPEN",
+    "RF_output_connected": false
+  },
+  "not_run": [
+    "original Lattice XLSX official SG48 comparison",
+    "pin package and I/O bank approval",
+    "physical second clock and clock-stop detector",
+    "physical independent supervisor and fail-open network",
+    "CDC MTBF and reset-domain crossing",
+    "ice40 place-route and device timing",
+    "schematic or KiCad ERC/DRC",
+    "analog vendor SPICE and physical filters",
+    "DAC900 and PA bench tests",
+    "EMI/EMC",
+    "PCB fabrication",
+    "radio RF transmission"
+  ]
+}
