@@ -1,6 +1,6 @@
 # PROTOCOLLO PERMANENTE — V7.16 DIAGNOSTICA SMA, NO FAB / NO TX
 
-**10 novembre 2026 · V7.16 branch/PR con CI verificata, ma controllare merge/HEAD `main`.** Baseline V7.15 conservata e tag storico v7.0 intatto.
+**10 novembre 2026 · V7.16 integrata in `main` con PR #16, merge `b8ad95695aed960621f4fd2160fa4b2ae921d6eb`. Verificare sempre HEAD `main`.** Baseline V7.15 conservata e tag storico v7.0 intatto.
 
 - KiCad9 CI [run 42920876308](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42920876308): **223 Python PASS**, 10 V7.16 +213 storici; quattro DRC nativi da veri cloni con fill/checkout path relativo corretto.
 - Test scientifico isolato sul vero PCB: 2 warning `lib_footprint_mismatch` J9102/J9104 con orientamento 180°, 0 unconnected; 2 warning invariate modificando etichette o rotazione custom pad; zero warning modificando l'orientamento completo da 180°→0°. **Zero DRC sul clone NON è una correzione valida**: i due SMA sul bordo destro a 0° avrebbero body/courtyard rivolti all'interno, mentre a 180° sporgono 7,2mm oltre x130 (estensione fino x137,2). Sorgente PCB originale invariato.
