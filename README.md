@@ -1,6 +1,16 @@
-# Superstar 3900 SMD Evolution — overlay V7.1 candidato (10 novembre 2026)
+# Superstar 3900 SMD Evolution — stato attuale V7.1 integrato in main
 
-**Baseline tag immutabile: `v7.0`. Nuovo lavoro V7.1: TX modulatore/IF *SOLO STUDIO* in branch di revisione.** La V7.1 non abilita alcuna RF, non è un circuito completo, e non sostituisce il rapporto V7.0.
+**10 novembre 2026 · V7.1 integrata con PR #1 · commit merge `4c3585c`.** Il branch principale `main` è la fonte dell'ultima revisione progettuale integrata. Il tag `v7.0` rimane la baseline storica immutabile. **V7.1 è solo un candidato numerico/documentale: NO FAB / NO TX.**
+
+**Regola per tutte le nuove chat:** leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e [`00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`](00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md); controllare l'HEAD `main`, i tag, le PR e la CI. Sviluppare la revisione successiva con test reali dichiarati, poi integrare in `main` (eventuale branch temporaneo solo per lavorare e verificare). Conservare la cronologia e aggiornare i documenti di ripresa a ogni revisione.
+
+**Prossima revisione pianificata: V7.2** — generazione IF2 455 kHz/DUC, modulazione audio multitonale e studio filtri IF/RF. Controlli nativi KiCad, misure RF, qualifica hardware e autorizzazioni TX rimangono aperti.
+
+---
+
+## Dettaglio V7.1 — integrazione candidata (10 novembre 2026)
+
+**Baseline tag immutabile: `v7.0`. La V7.1 TX modulatore/IF *SOLO STUDIO* è integrata in `main`.** La V7.1 non abilita alcuna RF, non è un circuito completo, e non sostituisce il rapporto V7.0.
 
 - Novità: piano matematico IF2 455kHz → 10.695MHz → 25.615–28.305MHz, inversione USB/LSB per LO alto, simulatori mono-tono AM/FM/SSB/CW esclusivamente offline.
 - Elaborati: `01_Specifiche/V7.1/ARCHITETTURA_TX_IF_INIBITA_V7.1.md`, `NETLIST_PIN_TO_NET_TX_V7.1.csv`, `07_Componenti/BOM_TX_IF_V7.1.csv`, `08_Firmware_Prototipi/V7.1/tx_if_offline_v71.py`, `03_Verifiche/V7.1/RAPPORTO_TECNICO_V7.1.md`.
@@ -12,7 +22,7 @@
 
 # Superstar 3900 SMD Evolution — STATO ATTUALE V7.0
 
-**Aggiornato il 9 novembre 2026. Questa sezione prevale sulle istruzioni storiche sottostanti.**
+**Archivio storico dello stato al 9 novembre 2026; prevale lo stato V7.1 in cima a questo file e la HEAD corrente di `main`.**
 **Ultima versione tecnica completata e importata: V7.0. Prossima revisione pianificata: V7.1 (TX modulatore/FI candidato, TX fisicamente disabilitata).**
 
 ## Ripresa sicura in nuove chat
