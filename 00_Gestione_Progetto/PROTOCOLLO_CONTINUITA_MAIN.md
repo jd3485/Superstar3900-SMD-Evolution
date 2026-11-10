@@ -1,3 +1,12 @@
+# AGGIORNAMENTO PROTOCOLLO — V7.3 INTEGRATA IN MAIN · 10 NOVEMBRE 2026
+
+- `main` contiene **V7.3**, merge PR #3 `9f64126f5490d34921da726d41354518b34be9a7`; 34/34 test software GitHub Actions PASS ([run 42803248288](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42803248288)). Modello causal/stateful, DAC900E candidato, F7401 matematica. **NO FAB / NO TX**.
+- **Prossima revisione V7.4:** dominio clock/FPGA/dati di DAC e I/V/filtri con valori/MPN verificati e modelli; continuare in `main` dopo test, preservando tutto lo storico; non dichiarare la catena TX operativa.
+- In ogni nuova chat il primo controllo è l'ultimo `main`, non il tag più recente né la memoria del testo storico. Per lo stato tecnico consultare `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e il rapporto tecnico più recente; in presenza di nuovo commit prevale quel nuovo stato.
+- La procedura e gli obblighi di sicurezza contenuti di seguito rimangono integralmente validi; gli stati V7.2/V7.1 in archivio restano informazioni storiche.
+
+---
+
 # Aggiornamento stato protocollo — 10 novembre 2026, V7.2 in MAIN
 
 - **Ultima revisione integrata al momento di questo aggiornamento: V7.2**, PR #2, merge `faab93ea00d64d43b3d4977a5a43f512977043a9`. Per stabilire cosa fare in futuro **verificare sempre HEAD `main` prima di leggere questa fotografia storica**.
