@@ -90,6 +90,9 @@ class NativeCadV712(unittest.TestCase):
         self.assertIn('(uuid "e5077bc3-17bb-4d5a-9dc0-77254ed70649")',new)
         self.assertIn('(sheet_instances (path "/" (page "1")))',new)
         self.assertIn('(embedded_fonts no)',new)
+        # KiCad sexpr quoted strings must encode newlines as a literal \n.
+        self.assertIn(r"study V4.3).\nERC NOT RUN.",new)
+        self.assertNotIn("study V4.3).\nERC NOT RUN.".replace(r"\n", "\n"),new)
 
     def test_13_no_native_qualification_claimed(self):
 
