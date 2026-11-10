@@ -1,3 +1,16 @@
+# PROTOCOLLO CONTINUITÀ MAIN — V7.9 INTEGRATA, 10 NOVEMBRE 2026
+
+- Revisione più recente al momento di questa annotazione: **V7.9 su `main`**, merge [PR #9](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/9) commit `38b9828728b02581bf24c070401dd70782051dbd`. L'HEAD `main` va sempre verificato prima di sviluppare: se maggiore, questo documento è solo archivio. Tag storico `v7.0` non alterato.
+- **Verifiche:** GitHub Actions [run 42848254217](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42848254217), job 129941518720: **17 Python V7.9 + 126 regressioni V7.1–V7.8 = 143 PASS, 0 FAIL/0 SKIP**, **4 testbench Icarus PASS**, Yosys sintesi generica V7.9 PASS. Log reale controllato; verifica baseline RX post-merge da controllare sul commit definitivo.
+- V7.9 corregge heartbeat V7.8 troppo veloce a 32kHz: nuovo /307200 dal 30.72MHz master, 100 transizioni/s, WDI falling ogni 20ms. TI TPS3430WDRCR finestra vendor lower max2.22ms upper min23.375ms; pin 1..10 e pad verificati da datasheet TI, **ancora DNP/non alimentati**. WDO open drain active LOW ≠ DAC900 PD active HIGH e reset non è latch, necessarie protezioni elettriche indipendenti a rail=0. Oscillatore secondario Abracon ASFLK-32.768KHZ-LJT è DNP senza pinout sul PCB.
+- Screening F7401 con Coilcraft MSS1260T-472MLD 4.7µH e MS590PNB183MSZ 18µH: SRF vendor tip/min, Q **assunto**, risultato solo ABCD matematico (~0.235dB IF2 e ~88.7dB immagini), non DAC900 I/V/PCB/EMC. BOM **11 DNP/OPEN**, netlist **15 terminali DNP/OPEN**. Nessun file di progettazione approva la TX.
+- Originale XLSX Lattice SG48 (document_id=51971) non ancora recuperato/confrontato: **pin-plan V7.6 / PCF HOLD**, niente FPGA pin-mapping o PNR/STA approvati. Storico V7.0–V7.8 conservato.
+- Documenti correnti: `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md`, `Superstar3900_Rapporto_Tecnico_V7.9.md`, `01_Specifiche/V7.9/ARCHITETTURA_HEARTBEAT_WATCHDOG_SRF_V7.9.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.9.md`.
+- **Prossima V7.10**: pinout originale Lattice autenticato, schemi DNP di supervisor/PD e isolamento RF normally-open con fault-mode rail=0 e componenti qualificati, filtro con Q/SRF/cap reali e DAC I/V, DSP fixed-point; integrare in main dopo test CI, preservare report storici.
+- **PROIBITO dichiarare FAB o TX:** tutto l'hardware TX DNP, nessuna trasmissione o scheda, test RF/EMC, KiCad/ERC/DRC, alimentazioni fisiche o normative non eseguiti. I gate software/RTL non sostituiscono interblocchi hardware.
+
+---
+
 # PROTOCOLLO MAIN / CONTINUITÀ — V7.8 INTEGRATA, 10 NOVEMBRE 2026
 
 - Versione integrata sulla main al momento: **V7.8**, [PR #8](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/8), commit merge `75027e768bef2b5a00f69d1675e462b8c35b1366`. Controllare l'HEAD `main` e le CI in ogni nuova chat: revisioni successive hanno priorità; il tag `v7.0` è baseline storica.
