@@ -1,3 +1,14 @@
+# PROTOCOLLO MAIN / CONTINUITÀ — V7.8 INTEGRATA, 10 NOVEMBRE 2026
+
+- Versione integrata sulla main al momento: **V7.8**, [PR #8](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/8), commit merge `75027e768bef2b5a00f69d1675e462b8c35b1366`. Controllare l'HEAD `main` e le CI in ogni nuova chat: revisioni successive hanno priorità; il tag `v7.0` è baseline storica.
+- **Verifiche:** 20 V7.8 + 14 V7.7 + 15 V7.6 + 22 V7.5 + 21 V7.4 + 15 V7.3 + 11 V7.2 + 8 V7.1 = **126 Python PASS, 0 FAIL/SKIP**, 3 bench Icarus e 2 `Yosys synth; check -assert` generici PASS, [run 42842592233](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42842592233), log verificato. Primo FAIL V7.8 corretto aggiungendo guardia normalized unity prima headroom. Verifiche dopo merge vanno controllate separatamente.
+- Nuovi blocchi: rilevatore master clock stop su **secondo dominio di riferimento virtuale**; acquisizione XLSX Lattice originale 51971 **fallita**, pinout/PCF SG48 resta HOLD; tool di comparazione ZIP/XML testato con sintetici, non vendor; test DSP non periodico a 10bit con SNR errore numerica ~49,392dB e overrange fail-closed; candidato TI TPS3840PH30DBVR solo DNP, non interblocco fisico.
+- Archivi autorevoli `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md`, `Superstar3900_Rapporto_Tecnico_V7.8.md`, `01_Specifiche/V7.8/ARCHITETTURA_WATCHDOG_PINOUT_DSP_V7.8.md`. Distinta V7.8 8 voci DNP/OPEN, netlist 10 terminali DNP/OPEN; precedente TX DNP immutato.
+- **Prossima V7.9:** ottenimento originale vendor, approvazione documentale dei pad SG48, clock watchdog e secondo reference fisico candidati con verifiche su datasheet, power sequencing/PD supervision anche rail=0, filtro Q/SRF con MPN, nessun PNR e nessun TX finché gate aperti.
+- Protocollo permanente: sviluppare concretamente su branch e CI, rapporti PASS/FAIL/NON ESEGUITO, poi integrare in `main` preservando storico; NON inventare nomi pin/hardware/risultati. **NO FAB / NO TX**. FPGA/DAC/mixer/PA/antenna TX fisicamente assenti, non alimentati e non instradati.
+
+---
+
 # PROTOCOLLO MAIN / CONTINUITÀ — V7.7 INTEGRATA, 10 NOVEMBRE 2026
 
 - Fotografia di stato: **V7.7 su `main`**, merge PR #7 `e68743f5474be26732cfb6cd4ad9953404a2935c`. Il tag `v7.0` rimane baseline storica, non la versione integrata. Nelle nuove chat controllare **prima di tutto HEAD `main`, PR e workflow**: revisioni successive prevalgono su questa intestazione e sull'archivio.
