@@ -1,3 +1,14 @@
+# PROTOCOLLO MAIN / CONTINUITÀ — V7.7 INTEGRATA, 10 NOVEMBRE 2026
+
+- Fotografia di stato: **V7.7 su `main`**, merge PR #7 `e68743f5474be26732cfb6cd4ad9953404a2935c`. Il tag `v7.0` rimane baseline storica, non la versione integrata. Nelle nuove chat controllare **prima di tutto HEAD `main`, PR e workflow**: revisioni successive prevalgono su questa intestazione e sull'archivio.
+- V7.7 comprende `v77_offline_top` di diagnostica, gate TX/PD/analogico zero costante, 2 bench RTL Icarus e sintesi Yosys **generica** (non implementazione iCE40), più modello numerico DAC10bit multitone/gradino e FMEA requisiti. **106 Python PASS / 0 FAIL / 0 SKIP**, 2 bench PASS, Yosys PASS nel run [42819963860](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42819963860); ultimo run PR ancora in installazione al merge, quindi non dichiararne un esito inesistente. Gli ultimi commit sul branch dopo il run avevano modificato soltanto documentazione.
+- Stato pinout SG48 **HOLD**: XLSX originale Lattice `iCE40UP5K Pinout`, document_id `51971`, è pubblicato dal produttore, ma non è stato scaricato/verificato nel contenuto. Nessun PCF o pad può essere approvato per PCB, no nextpnr/STA, bitstream, supervisione elettrica, clock e DAC fisico.
+- **Prossima V7.8:** verifica byte/righe XLSX vendor e associazioni per banca, poi qualifica dei constraints e PNR/STA, monitor clock indipendente e PD hardwired fail-closed, simulazione single fault, filtri analogici Q/SRF e DAC con dati vendor. Nuove funzioni restano DNP/OPEN senza TX.
+- L'ultima documentazione tecnica è `Superstar3900_Rapporto_Tecnico_V7.7.md`, `03_Verifiche/V7.7/RAPPORTO_TECNICO_V7.7.md`, `01_Specifiche/V7.7/ARCHITETTURA_RTL_QUANTIZZAZIONE_V7.7.md`, `README.md` e `RIPRENDI_IN_UNA_NUOVA_CHAT.md`.
+- Protocollo invariabile: sviluppare davvero con specifiche/BOM/netlist/modelli/test e rapporto con **PASS/FAIL/SKIP/NON ESEGUITO**, verificare CI, integrare revisioni coerenti in `main`, preservare storia; mai confondere simulazione con hardware qualificato. **NO FAB / NO TX**, mixer e finale RF fisicamente scollegati, nessun PCB/TX autorizzato.
+
+---
+
 # PROTOCOLLO DI CONTINUITA — V7.6 INTEGRATA SU MAIN, 10 NOVEMBRE 2026
 
 - Revisione più recente integrata al momento di questo aggiornamento: **V7.6**, [PR #6](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/6), merge `8309d11e1a06473119aafcb71a0cbe2aa0171e61`. Verificare SEMPRE HEAD `main` in ogni nuova chat: qualsiasi versione successiva prevale su questa fotografia e sui tag storici.
