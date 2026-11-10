@@ -53,14 +53,12 @@ class V713(unittest.TestCase):
 
     def test_04_original_symbol_definition_and_pins_unmodified(self):
         old=OLD.read_text();new=NEW.read_text()
-        self.assertEqual(
-           old[:old.index("(symbol (lib_id")],
-           new[:new.index("(symbol (lib_id")].replace(
-                "(generator \"S3900E_V7_13_GRID_REPAIR\")",
-                "(generator \"S3900E_V7_12_NATIVE_REPAIR\")").replace(
-                "V7.13 50MIL GRID SNAP - DRAFT NO FAB",
-                "V7.12 STANDALONE REPAIR PROBE - NOT FOR FAB").replaceAll("","")
-           if False else old[:old.index("(symbol (lib_id")])
+        oldhead=old[:old.index("(symbol (lib_id")]
+        newhead=new[:new.index("(symbol (lib_id")]
+        newhead=newhead.replace('S3900E_V7_13_GRID_REPAIR','S3900E_V7_12_NATIVE_REPAIR')
+        newhead=newhead.replace('V7.13 50MIL GRID SNAP - DRAFT NO FAB',
+                                'V7.12 STANDALONE REPAIR PROBE - NOT FOR FAB')
+        self.assertEqual(oldhead,newhead)
         # An independent digest-like direct comparison of embedded pin definitions:
         a=old[old.index("(lib_symbols"):old.index("(symbol (lib_id")]
         b=new[new.index("(lib_symbols"):new.index("(symbol (lib_id")]
@@ -126,7 +124,7 @@ class V713(unittest.TestCase):
     def test_12_software_rx_only_no_new_physical_tx(self):
         self.assertNotIn("TX_ENABLE_REQ",NEW.read_text())
         self.assertNotIn("(wire (pts",ROOT_NEW.read_text())
-        self.assertNotIn("NO TX",NEWPCB.read_text() if False else "")
+        self.assertIn("(kicad_pcb ",NEWPCB.read_text()[:60])
 
 if __name__=="__main__":
     unittest.main()
