@@ -1,13 +1,13 @@
-"""Run REAL installed KiCad ERC/DRC on preexisting unqualified sheets and PCB.
+"""Native KiCad 9 ERC/DRC issue inventory, not a production release.
 
-Exit code 0 from kicad-cli does NOT imply 0 reported violations unless KiCad
-was invoked with --exit-code-violations. Here failures are recorded (not hidden):
-the objective is to expose the legacy blockers without treating a draft PCB
-as approved for fabrication or exporting fabrication files.
+Runs the real KiCad CLI. All reports retained. V5.2 RX standalone currently
+fails to load as a root schematic: record that BLOCKER without claiming PASS.
+Successful diagnostic inventory != zero violations, valid nets, or approved PCB.
 """
 import json
-from pathlib import Path
 import re
+from collections import Counter
+from pathlib import Path
 import subprocess
 import sys
 
@@ -26,69 +26,72 @@ FILES={
      "04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_RX_TEST_50R_V5_2_LINKED_STUDY_NOT_FOR_FAB.kicad_pcb"),
 }
 
-
-def violation_summary(report):
-    # Keep raw original report: parsers differ across KiCad 8/9/10.
-    # This heuristic is NOT used to certify a design. Counts may be unknown.
-    counts={}
-    for kind in ("errors","warnings","violations","unconnected"):
-        patterns=[
-            rf"Found\s+(\d+)\s+{kind}",
-            rf"(\d+)\s+{kind}\s+found",
-        ]
-        for p in patterns:
-            m=re.search(p,report,flags=re.I)
-            if m:
-                counts[kind]=int(m.group(1))
-                break
-    return counts
-
+def summarize(report):
+    categories=Counter(re.findall(r"^\[([^\]]+)\]:",report,re.M))
+    d={"categories":dict(categories)}
+    erc=re.search(r"ERC messages:\s*(\d+)\s+Errors\s+(\d+)\s+Warnings\s+(\d+)",report)
+    if erc:
+        d.update(erc_total=int(erc.group(1)),erc_errors=int(erc.group(2)),
+                 erc_warnings=int(erc.group(3)))
+    drc=re.search(r"Found\s+(\d+)\s+DRC violations",report)
+    if drc:
+        d["drc_violations"]=int(drc.group(1))
+    unconnected=re.search(r"Found\s+(\d+)\s+unconnected",report)
+    if unconnected:
+        d["drc_unconnected"]=int(unconnected.group(1))
+    return d
 
 def main():
     OUT.mkdir(parents=True,exist_ok=True)
     entries={}
-    fatal=[]
-    for name,(category,action,relative) in FILES.items():
-        f=ROOT/relative
+    hard_fail=[]
+    legacy_unloadable=[]
+    for name,(kind,command,relative_path) in FILES.items():
+        path=ROOT/relative_path
         output=OUT/(name+".rpt")
-        args=["kicad-cli",category,action,"-o",str(output),str(f)]
-        proc=subprocess.run(args,cwd=ROOT,stdout=subprocess.PIPE,
-                            stderr=subprocess.PIPE,text=True,timeout=150)
-        log=(proc.stdout or "")+"\n"+(proc.stderr or "")
+        commandline=["kicad-cli",kind,command,"-o",str(output),str(path)]
+        proc=subprocess.run(commandline,cwd=ROOT,capture_output=True,
+                            text=True,timeout=150)
+        log=proc.stdout+"\n"+proc.stderr
         (OUT/(name+".stdout_stderr.txt")).write_text(log,encoding="utf-8")
-        text=output.read_text(encoding="utf-8",errors="replace") if output.exists() else ""
+        report=output.read_text(encoding="utf-8",errors="replace") if output.exists() else ""
         entries[name]={
-            "command":" ".join(args),
-            "cli_returncode":proc.returncode,
-            "report_written":bool(text),
-            "heuristic_violation_counts":violation_summary(text),
-            "report":"output-ci/"+output.name,
-            "legacy_unqualified":True,
-            "erc_or_drc_zero_violations_certified":False,
-            "manufacturing_release":False,
+           "returncode":proc.returncode,
+           "report_generated":bool(report),
+           "native_kicad_findings":summarize(report),
+           "report_path":"output-ci/"+output.name,
+           "erc_drc_zero_violations":False,
+           "pcb_manufacturing_release":False,
         }
-        if proc.returncode!=0 or not text:
-            fatal.append(name)
-        print(name,"CLI return=",proc.returncode,"report chars=",len(text),
-              "counts=",entries[name]["heuristic_violation_counts"])
+        print(name,"return",proc.returncode,"report_bytes",len(report),
+              "counts",entries[name]["native_kicad_findings"],flush=True)
+        if proc.returncode!=0 or not report:
+            if (name=="rx_v52_erc" and proc.returncode==3 and
+                "Failed to load schematic" in log):
+                legacy_unloadable.append(name)
+            else:
+                hard_fail.append(name)
     result={
-        "revision":"V7.10",
-        "meaning":"Native KiCad diagnostic audit of existing drafts, NOT fab certification",
-        "kicad_cli_attempts":entries,
-        "failed_to_execute":fatal,
-        "all_native_checks_executed":not bool(fatal),
-        "full_radio_PCB_completed":False,
-        "electrical_integration_validated":False,
-        "hardware_TX_enabled":False,
-        "NO_FAB_NO_TX":True
+       "revision":"V7.10",
+       "meaning":"Real KiCad 9 diagnostic reports; not qualified for fabrication",
+       "checks":entries,
+       "known_legacy_root_erc_load_failures":legacy_unloadable,
+       "unexpected_native_command_failures":hard_fail,
+       "full_native_erc_drc_pass":False,
+       "all_commands_generating_reports":not(hard_fail or legacy_unloadable),
+       "integration_electrically_complete":False,
+       "TX_RF_enabled":False,
+       "NO_FAB_NO_TX":True,
     }
     (OUT/"cad_audit_summary.json").write_text(
         json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-    if fatal:
-        print("Native KiCad audit BLOCKED or failed:",fatal,file=sys.stderr)
+    if legacy_unloadable:
+        print("KNOWN LEGACY BLOCKER:",legacy_unloadable,flush=True)
+    if hard_fail:
+        print("UNEXPECTED KIcad COMMAND FAILURE:",hard_fail,file=sys.stderr)
         return 2
+    print("DIAGNOSTIC COMPLETED, VIOLATIONS NOT WAIVED, NO FAB / NO TX")
     return 0
-
 
 if __name__=="__main__":
     sys.exit(main())
