@@ -1,0 +1,82 @@
+{
+  "revision": "V7.12",
+  "date": "2026-11-10",
+  "classification": "versioned native KiCad schematic parser repair and integrated reference annotation; NO FAB / NO TX",
+  "verified_earlier_source_identical_run": {
+    "id": 42865217281,
+    "job_id": 130001625196,
+    "conclusion": "success",
+    "kicad_cli_version": "9.0.8",
+    "note": "subsequent commits before PR modify reports/specifications, not KiCad or regression code"
+  },
+  "hierarchy": {
+    "sheets": 7,
+    "component_instances": 132,
+    "nets_exported": 99,
+    "original_colliding_reference_names": 11,
+    "original_duplicate_excess_instances": 14,
+    "reannotated_colliding_reference_names": 0,
+    "reannotated_duplicate_excess_instances": 0,
+    "original_sources_unchanged": true,
+    "qualified_cross_module_connections": 0,
+    "interfaces_hold_open": 15
+  },
+  "rx_standalone": {
+    "legacy_native_load_return": 3,
+    "original_bug": "raw newline inside quoted KiCad text and missing text object UUID",
+    "new_native_erc_exit": 0,
+    "new_native_netlist_load": "PASS on source with text",
+    "new_erc_errors": 0,
+    "new_erc_warnings": 76,
+    "new_erc_categories": {
+      "endpoint_off_grid": 46,
+      "lib_symbol_issues": 15,
+      "footprint_link_issues": 15
+    },
+    "native_erc_clean": false
+  },
+  "root_erc": {
+    "errors": 43,
+    "warnings": 416,
+    "total": 459,
+    "erc_clean": false
+  },
+  "rx_board_drc": {
+    "violations": 85,
+    "unconnected": 63,
+    "via_dangling": 70,
+    "lib_footprint_issues": 15,
+    "drill_out_of_range": 0,
+    "drc_clean": false,
+    "physical_copper_changed_from_V711": false,
+    "ref_annotation_consistent": true
+  },
+  "regression": {
+    "V712": 13,
+    "V711": 8,
+    "V710": 12,
+    "V71_to_V79": 143,
+    "python_total_pass": 176,
+    "python_total_fail": 0,
+    "python_total_skip": 0,
+    "icarus_reexecuted": false,
+    "yosys_reexecuted": false
+  },
+  "hardware": {
+    "complete_rx_board": false,
+    "complete_radio_board": false,
+    "safely_verified_analog_power": false,
+    "RF_TX_connected": false,
+    "fabrication_authorized": false,
+    "ERC_DRC_zero": false
+  },
+  "NO_FAB_NO_TX": true,
+  "next": [
+    "repair 46 off-grid RX schematic endpoints",
+    "qualify 15 lib symbols and 15 footprint links",
+    "address 63 unconnected RX items and 70 dangling ground vias with actual RF return paths",
+    "resolve root 43 ERC errors",
+    "qualify 15 intermodule interfaces before wiring",
+    "continue DSP firmware and RF numerical regressions"
+  ]
+}
