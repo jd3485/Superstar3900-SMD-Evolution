@@ -14,7 +14,7 @@ Overlay modulatore TX / FI2 455 kHz e due conversioni candidate a 10.695MHz e ba
 | Prove frequenza/modo per 270 × 5 | **1.350/1.350 PASS**; AM/FM centro, USB/LSB 1kHz e CW 700Hz, LO alto e inversione sideband | Non prova reiezione di banda laterale su parlato |
 | BOM/Netlist V7.1 letti dal branch GitHub | **9/9** righe BOM DNP; **22/22** righe netlist DNP; pin 1..6 esatti sui due ADE-1+ | Coerenza di file e mapping documentale, NON ERC nativo |
 | Matrice 64 combinazioni dei consensi di controllo | **64/64** RF permission False, eseguite dai test Python | L'isolamento fisico resta un vincolo DNP di progetto, non è misurato su un circuito |
-| CI GitHub Actions | **NON ESEGUITA** al momento della redazione; workflow predisposto | Stato potrà cambiare dopo push/PR; verificare i job reali |
+| CI GitHub Actions su checkout integrale | **8 PASS / 0 SKIP / 0 FAIL**, run 42791419516, job 129745528771, esito `success` e log verificati | Esecuzione software soltanto, non valida l'hardware |
 | Regressione storica completa V5.9..V7.0 | **NON ESEGUITA** in questa revisione | Il rapporto V7.0 riferiva 616 test storici, non ripetuti qui |
 
 Calcoli di riferimento: IF1 alta =10.240+0.455=**10.695MHz**; prodotto spur IF1 basso=10.240−0.455=**9.785MHz**; immagini RF per gli estremi **47.005–49.695MHz**. Per fRF=27.065MHz con tono 1kHz: USB RF desiderata 27.066MHz generata da IF2=454kHz, LSB 27.064MHz generata da IF2=456kHz. Si tratta di selezione algebrica dei prodotti di mixer, non di una misura di spettro.
