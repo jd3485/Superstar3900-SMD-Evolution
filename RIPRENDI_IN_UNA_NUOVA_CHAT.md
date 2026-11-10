@@ -1,3 +1,20 @@
+# RIPRESA PROGETTO SUPERSTAR 3900 SMD EVOLUTION — V7.13 SU MAIN
+
+**10 novembre 2026:** versione integrata più recente **V7.13**, PR [#13](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/13), merge `81928a6fc36f6e3bb98c04338026a4ed2f78769d`. Tag storico `v7.0` conservato. **Alla nuova chat controllare HEAD di `main`, PR aperte e GitHub Actions:** la revisione più recente prevale sempre su questo testo.
+
+1. Leggere `README.md`, `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, `Superstar3900_Rapporto_Tecnico_V7.13.md`, `01_Specifiche/V7.13/GRID_NETLIST_EQUIVALENCE_V7_13.md`, ECO, JSON e workflow V7.13.
+2. V7.13 ha **vero schema KiCad RX snap a griglia 50mil** (15 simboli +31 wire +31 labels) in `04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB` e root gerarchico `04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB`. **Netlist KIcad9 identiche punto per punto (nome rete/ref/pin)** V7.12 vs V7.13. Non sono stati aggiunti fili fra AUX, MCU e RX.
+3. **Vere misure ERC:** RX **46→0 off-grid**, **76→30 warning**, **0 ERC error**; root **459→413 segnalazioni**, di cui **43 errori** invariati. I 30 RX warning sono ancora 15 simboli e15 footprint: `sym-lib-table` e `fp-lib-table` ci sono, ma **non risultano effettivamente risolte dal KiCad CLI**. PCB RX non toccata: **85 DRC+63 unconnected**, 70 via dangling, 15 footprint warnings.
+4. **CI PR #13** [run 42870757111](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42870757111), job 130021089653, log verificato: **186 test Python PASS** (10 V7.13+13 V7.12+8 V7.11+12 V7.10+143 storici), reali export KiCad/ERC/DRC. Icarus/Yosys non rieseguiti su questa revisione. No scheda completa, misure RF, elettronica fabbricata.
+5. **Prossima V7.14:** riparare link KiCad vendor e preparare progetto `.kicad_pro` davvero portabile; risolvere routing/ground 70 via dangling+63 unconnected sulla PCB RX mantenendo le nets, poi 43 errori ERC del root e 15 interfaces MCU/AUX/RX OPEN/HOLD con pin verificati. Non collegare alla cieca.
+6. Conservare ogni revisione storica, tag `v7.0`, dati DSP/PLL/firmware; continuare sviluppo su branch, regressioni reali, rapporti PASS/FAIL/NON ESEGUITO e merge solo dopo CI comprovata.
+
+**NO FAB / NO TX:** TX/DAC/FPGA/mixer/PA/antenna DNP, non alimentati e non instradati. Nessun Gerber, PCB fabbricabile, PTT o TX permesso; pinout FPGA SG48 XLSX ufficiale ancora HOLD.
+
+---
+
+## ARCHIVIO — V7.12 E PRECEDENTI
+
 # RIPRENDERE IL PROGETTO SUPERSTAR 3900 SMD EVOLUTION — V7.12 SU MAIN
 
 **10 novembre 2026:** V7.12 integrata in `main`, [PR #12](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/12), merge `aad39c250fe626fa94424ff9ce2c08cb6b9ebcc8`. Tag `v7.0` baseline storica. **Verificare HEAD `main`, PR e Actions in ogni nuova chat**: se versione più nuova, usare quella e non questa intestazione.
