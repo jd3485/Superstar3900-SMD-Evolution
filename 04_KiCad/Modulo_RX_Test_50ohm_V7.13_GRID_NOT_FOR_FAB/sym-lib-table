@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "S3900E")(type "KiCad")(uri "${KIPRJMOD}/../Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E.kicad_sym")(options "")(descr "Archived RX experimental symbols, NOT FOR FAB"))
+)
