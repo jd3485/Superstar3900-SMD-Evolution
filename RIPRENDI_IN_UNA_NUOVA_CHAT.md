@@ -1,3 +1,18 @@
+# RIPRESA SUPERSTAR 3900 SMD EVOLUTION — V7.11 SU MAIN
+
+**10 novembre 2026:** V7.11 integrata [PR #11](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/11), merge `028c3a5f8d9f638d423be251a7a06336a961ead7`. Verificare sempre l'ultimo HEAD `main`: una revisione successiva prevale. Tag `v7.0` storico immutato.
+
+## Procedura e stato accertato
+1. Leggere repository GitHub privato `jd3485/Superstar3900-SMD-Evolution`, `README.md`, questo file, `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md` e il rapporto `Superstar3900_Rapporto_Tecnico_V7.11.md`; controllare HEAD main, PR e workflow prima di procedere.
+2. **V7.11 reale:** nuova copia `.kicad_pcb` del coupon RX V5.2 con sei via corrette foro 0,25→0,30mm, rame 0,55→0,60mm, originale preservato, fp-lib-table locale. KiCad CLI DRC su entrambi i file: **91→85 violazioni**, **6→0 errori drill**, **70 via dangling e 15 footprint warnings invariati**, **63 connessioni mancanti invariati**. **PCB DRC FAIL nel complesso**. GitHub Actions [run 42856926563](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42856926563), log verificato: **163 Python PASS (8+12+143)**, niente nuovi Icarus/Yosys in questa CI.
+3. Il root V7.10 in `04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB` ha 7 fogli, 132 componenti, 11 designatori riutilizzati e 99 nets; connettere i moduli è ancora bloccato. ERC root **43 errors +416 warnings**, RX V5.2 standalone **exit3** in `kicad-cli sch erc`. Le 15 interfacce tra AUX/MCU/RX sono `OPEN/HOLD`; non inferire connessioni per nomi simili o unire rail/pin senza validazione.
+4. **Prossima V7.12:** correggere caricamento schema RX standalone nativo, riannotare tutti i duplicati su copie versionate con report netlist, verificare footprint SMA/LNA con libre, risolvere 70 via dangling e 63 unconnected in modo elettricamente coerente, ridurre ERC e connettere gradualmente power/MCU/RX. Parallelamente preservare e rieseguire firmware/DSP/simulazioni.
+5. Tutti i componenti e interblocchi TX rimangono `DNP/OPEN`. Pinout iCE40 SG48 `HOLD`. **NO FAB / NO TX**: nessuna release Gerber, nessun PCB completo né hardware validato, nessun bench RF o trasmissione.
+
+---
+
+## ARCHIVIO — istruzioni V7.10 e precedenti
+
 # RIPRENDERE SUPERSTAR 3900 SMD EVOLUTION — V7.10 IN MAIN, KIcad NATIVO
 
 **10 novembre 2026:** V7.10 integrata con [PR #10](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/10), merge `8a18c12df4455265db8414784587f4d82a1f82ae`. Questo stato non prevale su versioni successive: **controllare sempre HEAD di `main`**. Il tag `v7.0` è storico preservato.
