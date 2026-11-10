@@ -1,0 +1,10 @@
+riferimento,qta,componente,mpn,package,valore,funzione,montaggio,stato
+U7201,1,Mixer passivo doppio bilanciato,ADE-1+,CD636,LO nominale +7dBm,455kHz IF2 to 10.695MHz IF1 candidate,DNP,Pinout vendor noto RF budget e matching NON verificati
+U7202,1,Mixer passivo doppio bilanciato,ADE-1+,CD636,LO nominale +7dBm,10.695MHz IF1 to channel RF candidate,DNP,Pinout vendor noto RF output NON collegata
+F7201,1,BPF 10.695MHz,TBD,TBD,TBD,Reject 9.785MHz undesired first conversion,DNP,MPN pinout transfer loss selectivity NON specificati
+F7202,1,BPF RF TX,TBD,TBD,TBD,Reject 47..50MHz second conversion image,DNP,MPN pinout emission requirements NON specificati
+R7201,1,Open 0ohm link,TBD,0603,0R,Isolate IF2 virtual source,DNP,NO assembly
+R7202,1,Open 0ohm link,TBD,0603,0R,Isolate LO2 from RX generator,DNP,NO assembly
+R7203,1,Open 0ohm link,TBD,0603,0R,IF1 bypass prohibited before BPF qualified,DNP,NO assembly
+R7204,1,Open 0ohm link,TBD,0603,0R,Isolate LO1 from PLL RX,DNP,NO assembly
+R7205,1,Open 0ohm link,TBD,0603,0R,Isolate RF output; second pad NOT routed,DNP,NO assembly
