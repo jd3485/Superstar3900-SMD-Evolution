@@ -36,6 +36,8 @@ jobs:
       - name: Native KiCad ERC and RX PCB DRC (legacy defects allowed but COUNTED)
         run: |
           python3 -B 03_Verifiche/V7.10/esegui_kicad_audit_v710.py
+      - name: Validate real KiCad diagnostics without falsely certifying ERC or DRC
+        run: python3 -B 03_Verifiche/V7.10/valida_report_nativi_v710.py
       - name: Upload actual native KiCad ERC DRC reports for review
         if: always()
         uses: actions/upload-artifact@v4
