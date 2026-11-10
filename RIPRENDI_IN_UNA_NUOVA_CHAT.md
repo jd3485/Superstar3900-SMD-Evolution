@@ -1,3 +1,21 @@
+# RIPRENDERE IN QUALSIASI NUOVA CHAT — SUPERSTAR 3900 SMD EVOLUTION V7.5
+
+**Fotografia 10 novembre 2026: V7.5 INTEGRATA IN MAIN** tramite PR #5, merge `a5ef405f9500c114e8a4d56d7f9b17ba5a89caf1`. Tag `v7.0` storico preservato, non ultimo ramo. Le sezioni V7.4/V7.3/V7.2 ecc. più sotto sono solo archivio.
+
+## Procedura permanente di ripresa
+1. Aprire GitHub privato `jd3485/Superstar3900-SMD-Evolution` e leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`. Verificare **ULTIMO COMMIT SU MAIN**, tag, PR aperte e workflow GitHub Actions prima di decidere la revisione attiva.
+2. Leggere `Superstar3900_Rapporto_Tecnico_V7.5.md`, `03_Verifiche/V7.5/RAPPORTO_TECNICO_V7.5.md`, `01_Specifiche/V7.5/ARCHITETTURA_CLOCK_UNICO_DSP_V7.5.md` ed ECO, BOM/netlist. Se `main` ha una revisione successiva, usare QUELLA.
+3. Stato V7.5: clock matematico comune 30,72MHz/8=3,84MHz DAC e /640=48kHz audio, oscillatore Abracon ASDMB candidato **4 pin DNP**, bridge Lattice iCE40UP5K QFN48 candidato **DNP senza pin mappati**; FIR multistadio 5×4×4 e analisi spettrale 750Hz solo offline, **77 test software PASS in CI** [run 42810514397](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42810514397). Nessuna simulazione HDL o MCU runtime, PCB o circuito TX montato.
+4. **Prossima V7.6**: pinout/constraints FPGA verificati, RTL di prova simulabile, controllo POR/PD realmente fail-closed proposto ma NON ancora montato, clock reset indipendente, calcolo spettrale multitono/transitori del nuovo interpolatore, Q/SRF e filtro analogico con dati vendor; proseguire progressivamente nei blocchi RX/TX evitando salti alla produzione.
+5. Ogni revisione: specifiche, BOM, pin-to-net solo se verificati, algoritmi o modelli funzionanti, CI e regressioni; distinguere **PASS / FAIL / SKIP / NON ESEGUITO** nel rapporto, conservare tutto lo storico, usare branch temporanei e unire in `main` solo dopo controlli realmente superati.
+6. **SICUREZZA INVARIABILE: NO FAB / NO TX**. DAC900 PD pin15 è active-high con pulldown interno: non lasciarlo flottante in eventuali studi futuri; ASDMB STANDBY pin1 è active-low con high/open=ON. Software e FPGA non sono interblocchi fisici indipendenti. Tutti gli IC e ponti TX DNP, nessuna RF/PA/antenna connessa, KiCad/ERC/DRC e hardware NON ESEGUITI.
+
+**Messaggio sufficiente:** Riprendi Superstar 3900 SMD Evolution da `jd3485/Superstar3900-SMD-Evolution`. Leggi i tre documenti di continuità e il rapporto più recente su main, verifica CI e continua la revisione successiva, integrando in main con NO FAB / NO TX.
+
+---
+
+## ARCHIVIO STORICO — istruzioni riferite a V7.4 E PRECEDENTI
+
 # CONTINUITA NUOVA CHAT — SUPERSTAR 3900 SMD EVOLUTION V7.4
 
 **Versione progettuale integrata al 10 novembre 2026: V7.4 su main**, PR #4, commit merge f92220b0e789673cb927f4e21a72ed4d16b92faf. Il tag v7.0 rimane la vecchia baseline intatta e NON sostituisce l'HEAD di main. Le intestazioni delle revisioni V7.3/V7.2/V7.1/V7.0 sotto questa sezione sono **storico**.
