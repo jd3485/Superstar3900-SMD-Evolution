@@ -1,6 +1,6 @@
 # RIPRESA SUPERSTAR 3900 SMD EVOLUTION — HANDOFF V7.15
 
-**10 novembre 2026: V7.15 proposta [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15). Controlla SEMPRE HEAD `main`, ultimi PR e CI prima di continuare.** Baseline V7.14 conservata, nessun PCB originale cambiato. Tag `v7.0` storico intatto. **NO FAB / NO TX.**
+**10 novembre 2026: V7.15 integrata in `main` con [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15), merge `ca81deb3fe83e210778590cc9e2db1a18e16b243`. Controlla SEMPRE HEAD `main`, ultimi PR e CI prima di continuare.** Baseline V7.14 conservata, nessun PCB originale cambiato. Tag `v7.0` storico intatto. **NO FAB / NO TX.**
 
 **Verifica tecnica conclusiva V7.15:** vera CI KiCad9 su copia temporanea del progetto RX con `pcbnew.ZONE_FILLER` e DRC nativo, refilled 4 zone GND_RF. As-is PCB: **72 DRC +63 unconnected** (70 via_dangling+2 SMA mismatch). Dopo refill *solo clone temporaneo*: **2 DRC +0 unconnected**, cioè via_dangling **70→0**, unconnected **63→0**, mismatch **2→2** su SMA **J9102/J9104**. Il source PCB V7.14 è identico (SHA256 `ec37ef62787eeb6607def2780d9a7da06a614eafd3b225283f6e9c6fd3a5f3d9`). Questo non è un PCB pronto e non approva ritorni RF o produzione. Il CLI non supportava `--refill-zones`; percorso alternativo Python pcbnew realmente eseguito, report nativi come artifact.
 
