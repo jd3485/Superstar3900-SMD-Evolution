@@ -1,3 +1,23 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.9 INTEGRATA SU MAIN
+
+**10 novembre 2026:** V7.9 integrata con [PR #9](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/9), merge `38b9828728b02581bf24c070401dd70782051dbd`. È **software/RTL simulato + screening documentale**, NON hardware fabbricabile o una radio in trasmissione. Tag storico `v7.0` conservato; verificare sempre HEAD `main` e la CI in ogni nuova chat.
+
+## Stato tecnico corrente V7.9
+- Corretto il modello V7.8 che commutava heartbeat a **3,84 milioni di transizioni/s**, non campionabile da un secondo riferimento a 32,768kHz. V7.9 ha `MASTER_TICKS_PER_TOGGLE=307200` sul master nominale 30,72MHz: cambio livello ogni **10ms**, fronte WDI discendente ogni **20ms**. Sono **segnali virtuali**, nessun FPGA o DAC alimentato.
+- Candidato reale **TI TPS3430WDRCR** watchdog window, pin verificati su datasheet SBVS366A p.3, WDI falling-edge; configurazione solo studio `CWD=NC, SET0=0, SET1=1, CRST=NC`: lower limit max 2,22ms, upper limit min 23,375ms; 20ms è aritmeticamente nella finestra. **WDO open-drain active LOW non può essere collegata direttamente a DAC900 PD active HIGH**; manca un latch/supervisor indipendente e protezione a rail=0. Riferimento possibile **Abracon ASFLK-32.768KHZ-LJT** 3,3V ±20ppm, DNP senza pinout fisico verificato.
+- Screening **filtro F7401 non implementabile direttamente**: Coilcraft `MSS1260T-472MLD` 4,7µH (SRF tipica 38MHz), `MS590PNB183MSZ` 18µH (SRF min 11,2MHz), Q induttore 60 e Q condensatore 500 **assunti** per ABCD 50Ω numerico. Risultato matematico con SRF stimata: loss IF2 ~**0,235dB**, attenuazione relativa alle immagini ~**88,7dB**; NON qualifica reale Q/ESR, I/V DAC900, PCB o emissioni. Tutti DNP.
+- **CI finale PR #9 PASS:** [GitHub Actions run 42848254217](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42848254217), log job 129941518720 verificato: **143/143 test Python PASS** (17 V7.9 +126 regressioni V7.1–V7.8), **4 bench Icarus PASS**, `Yosys synth/check` generico PASS, 0 FAIL/SKIP. Nessun test fisico.
+- V7.9 BOM **11 righe DNP/OPEN**, netlist **15 terminali DNP/OPEN** (TPS3430 pin ufficiali verificati). `Superstar3900_Rapporto_Tecnico_V7.9.md`, `01_Specifiche/V7.9/ARCHITETTURA_HEARTBEAT_WATCHDOG_SRF_V7.9.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.9.md`, `03_Verifiche/V7.9/RISULTATI_VERIFICHE_V7.9.json`.
+- **Pinout FPGA SG48 rimane HOLD:** foglio XLSX Lattice ufficiale `51971` ancora non acquisito/confrontato e nessun PNR/STA. Non produrre PCB usando PCF V7.6.
+
+**Prossima V7.10:** recuperare XLSX Lattice e verificare package/pad, sviluppare schemi DNP di interblocco PD e watchdog indipendenti e analizzare power-loss single-fault, selezionare componenti LC con Q/SRF vendor a 455kHz e rete I/V, prova DSP fixed point/MCU, continuare CI. **NO FAB / NO TX**; nessun PTT, mixer, PA o antenna RF connessi.
+
+**Per cambiare chat:** verificare `main`/tag/PR/CI e leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md`, `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md` e rapporto tecnico più recente. Conservare storico e integrare in main solo dopo test verificati.
+
+---
+
+## ARCHIVIO STORICO — V7.8 e precedenti, non stato corrente
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.8 INTEGRATA SU MAIN
 
 **10 novembre 2026:** V7.8 integrata con [PR #8](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/8), merge `75027e768bef2b5a00f69d1675e462b8c35b1366`. Questa è la revisione progettuale più recente di questa fotografia, NON hardware certificato. Verificare sempre HEAD `main` e le CI/PR all'inizio di una nuova chat; `v7.0` rimane tag storico immutato.
