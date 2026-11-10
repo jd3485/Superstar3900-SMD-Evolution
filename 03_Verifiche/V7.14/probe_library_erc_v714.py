@@ -43,8 +43,10 @@ def main():
     if not (status["all_electrical_net_node_memberships_unchanged"] 
             and status["baseline_nets"]==status["candidate_nets"]
             and cur["erc_errors"]<=orig["erc_errors"]
-            and cur["erc_total"]<=orig["erc_total"]):
+            and orig["erc_total"]==30 and cur["erc_total"]==0
+            and status["symbol_issues_before"]==15 and status["symbol_issues_after"]==0
+            and status["footprint_issues_before"]==15 and status["footprint_issues_after"]==0):
         raise SystemExit("BLOCKED native KiCad schematic regression")
-    print("PASS native KiCad no-regression diagnostic; NOT a PCB or RF qualification")
+    print("PASS V7.14 native KiCad ERC 30 to ZERO with unchanged net-pins; NOT RF PCB qualification")
 if __name__=="__main__":
     main()
