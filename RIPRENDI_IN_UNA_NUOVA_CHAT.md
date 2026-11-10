@@ -1,3 +1,21 @@
+# RIPRENDERE IL PROGETTO SUPERSTAR 3900 SMD EVOLUTION — V7.12 SU MAIN
+
+**10 novembre 2026:** V7.12 integrata in `main`, [PR #12](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/12), merge `aad39c250fe626fa94424ff9ce2c08cb6b9ebcc8`. Tag `v7.0` baseline storica. **Verificare HEAD `main`, PR e Actions in ogni nuova chat**: se versione più nuova, usare quella e non questa intestazione.
+
+## Continuità tecnica
+1. Leggere `README.md`, `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, `Superstar3900_Rapporto_Tecnico_V7.12.md`, spec/ECO, `.github/workflows/v712_kicad_native_annotation.yml`.
+2. KiCad vero V7.12: root `04_KiCad/Assemblaggio_RX_Power_V7.12_REANNOTATED_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch` + MCU rinumerato e RX schema/PCB allineati. Native KiCad9 netlist **7 sheets/132 instances/99 nets**, **11 conflitti ref→0**. Tutti i 15 limiti cross-module V7.10 ancora OPEN/HOLD, niente power/RF collegato.
+3. RX standalone V5.2 falliva parser KiCad exit3 per nota grafica con LF reale e UUID mancante: la copia V7.12 escapando `\n` e aggiungendo UUID è **loadable**, con `sch erc` **0 errori e 76 warning** (46 endpoint off-grid, 15 libs, 15 footprint). Root ERC **43 errori+416 warning**, PCB RX DRC **85 violazioni +63 unconnected**, di cui 70 dangling via +15 lib warnings: **non** ERC/DRC PASS totale.
+4. **PR CI finale verificata** [run 42866103256](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42866103256): **176 test Python PASS** (13 V7.12+8 V7.11+12 V7.10+143 firmware/DSP V7.1–V7.9), native KiCad exports/diagnostics PASS, nessun nuovo Icarus/Yosys. Il successo della CI è uno stato di diagnosi, non fabbricabilità.
+5. **Prossima V7.13:** risolvere warning schematic off-grid/symbol/footprint RX su nuova copia versionata, avanzare nel routing real RF 50ohm e ritorni massa, ridurre le 63 unconnected/70 via dangling, affrontare 43 ERC root e collegare power/MCU/RX solo quando pin/supply/impedance/vendor verificati. Conservare e continuare simulazioni, firmware, DSP, PLL, BOM e test.
+6. Mantenere revisioni storiche e `v7.0`, integrare nuove revisioni CAD+test su branch PR dopo CI effettiva, distinguere **PASS esecuzione** da **FAIL ERC/DRC elettrici**. Pinout iCE40 SG48 originale resta HOLD, tutta la catena TX resta **DNP/OPEN**.
+
+**Vincolo inviolabile: NO FAB / NO TX.** Non produrre PCB o Gerber e non alimentare trasmettitori/PA/antenna senza validazione reale.
+
+---
+
+## ARCHIVIO STORICO — V7.11 e precedenti
+
 # RIPRESA SUPERSTAR 3900 SMD EVOLUTION — V7.11 SU MAIN
 
 **10 novembre 2026:** V7.11 integrata [PR #11](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/11), merge `028c3a5f8d9f638d423be251a7a06336a961ead7`. Verificare sempre l'ultimo HEAD `main`: una revisione successiva prevale. Tag `v7.0` storico immutato.
