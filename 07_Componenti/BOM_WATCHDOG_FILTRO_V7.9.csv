@@ -1,0 +1,12 @@
+reference,qty,function,mpn,manufacturer,package,assembly,connection,qualification
+U8001,1,Independent window watchdog candidate,TPS3430WDRCR,Texas Instruments,VSON10 DRC,DNP,OPEN,Vendor pins confirmed; WDI rate math only; no electrically safe PD
+X8001,1,Second reference clock candidate 32.768kHz,ASFLK-32.768KHZ-LJT,Abracon,5032 4-SMD,DNP,OPEN,Vendor part existence confirmed; oscillator pinout/rail not implemented
+L8001,1,Nominal outer inductor screening 4.7uH,MSS1260T-472MLD,Coilcraft,Power SMD,DNP,OPEN,SRF typical 38MHz Q455k unknown model only
+L8007,1,Nominal outer inductor screening 4.7uH,MSS1260T-472MLD,Coilcraft,Power SMD,DNP,OPEN,SRF typical 38MHz Q455k unknown model only
+L8003,1,Nominal middle inductor screening 18uH,MS590PNB183MSZ,Coilcraft,Power SMD,DNP,OPEN,SRF min 11.2MHz tolerance 20 percent Q455k unknown
+L8005,1,Nominal middle inductor screening 18uH,MS590PNB183MSZ,Coilcraft,Power SMD,DNP,OPEN,SRF min 11.2MHz tolerance 20 percent Q455k unknown
+R8001,1,Future WDO open-drain pull-up hypothesis,TBD,TBD,0603,DNP,OPEN,Value rail and power-loss behavior unresolved
+R8002,1,Future DAC900 PD independent pull-up hypothesis,TBD,TBD,0603,DNP,OPEN,PD bias under rail loss not qualified
+Q8001,1,Independent normally-open RF-path isolation requirement,TBD,TBD,TBD,DNP,OPEN,No real IC or hardware fail-open mechanism
+C8001,1,Watchdog rail decoupling hypothesis,TBD,TBD,0603,DNP,OPEN,No power/ground plane
+J8001,1,Virtual watchdog diagnostic boundary,TBD,TBD,NO FOOTPRINT,DNP,OPEN,Not a physical connector
