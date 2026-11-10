@@ -1,0 +1,55 @@
+{
+  "revision": "V7.11",
+  "date": "2026-11-10",
+  "run_id": 42856926563,
+  "job_id": 129972377360,
+  "log_inspected": true,
+  "workflow_success": true,
+  "meaning": "native KiCad DRC improvement only, NOT DRC pass and NOT PCB manufacturing approved",
+  "original": {
+    "drc_violations": 91,
+    "drill_out_of_range": 6,
+    "lib_footprint_issues": 15,
+    "via_dangling": 70,
+    "unconnected_items": 63
+  },
+  "repaired": {
+    "drc_violations": 85,
+    "drill_out_of_range": 0,
+    "lib_footprint_issues": 15,
+    "via_dangling": 70,
+    "unconnected_items": 63
+  },
+  "cad_fix": {
+    "via_count": 6,
+    "old_drill_mm": 0.25,
+    "new_drill_mm": 0.3,
+    "old_copper_mm": 0.55,
+    "new_copper_mm": 0.6,
+    "nets_added": 0,
+    "original_file_preserved": true
+  },
+  "python_tests": {
+    "V711": 8,
+    "V710": 12,
+    "V71_to_V79": 143,
+    "passed": 163,
+    "failed": 0,
+    "skipped": 0
+  },
+  "full_circuit_and_pcb_complete": false,
+  "erc_zero_errors": false,
+  "drc_zero_violations": false,
+  "device_production_authorized": false,
+  "rf_tx_connected": false,
+  "next": [
+    "RX standalone ERC load exit3",
+    "fix 11 duplicate refs in 132 instance root",
+    "resolve actual footprint library issues",
+    "70 dangling vias and 63 unconnected items",
+    "root ERC 43 errors 416 warnings",
+    "qualify 15 power MCU RX interfaces OPEN/HOLD",
+    "continue firmware and DSP regressions"
+  ],
+  "NO_FAB_NO_TX": true
+}
