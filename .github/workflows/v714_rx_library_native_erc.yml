@@ -48,6 +48,29 @@ jobs:
             03_Verifiche/V7.14/output-ci/v714.erc.rpt | head -90 || true
       - name: KiCad ERC and exact net-pin non-regression probe
         run: python3 -B 03_Verifiche/V7.14/probe_library_erc_v714.py
+      - name: Static original/clone source and KiCad project tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.14 -p 'test_*.py' -v
+      - name: Native KiCad DRC on V7.14 RX standalone KiCad project
+        run: |
+          kicad-cli pcb drc -o 03_Verifiche/V7.14/output-ci/v714.rx.drc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_pcb
+          python3 - <<'PY'
+          import json,sys
+          sys.path.insert(0,"03_Verifiche/V7.11")
+          from confronta_drc_rx_v711 import parse
+          report=parse("03_Verifiche/V7.14/output-ci/v714.rx.drc.rpt")
+          print("NATIVE V7.14 RX BOARD DRC",json.dumps(report,indent=2))
+          assert report["unconnected_items"]==63,"RX board routing unexpectedly changed"
+          assert report["drc_violations"]<=85,"Native board DRC got worse"
+          assert report["categories"].get("drill_out_of_range",0)==0
+          PY
+          echo '--- V7.14 native board DRC sample ---'
+          head -45 03_Verifiche/V7.14/output-ci/v714.rx.drc.rpt
+      - name: Preserve V7.13 through V7.1 KiCad, DSP and firmware regressions
+        run: |
+          for version in V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
       - name: Upload genuine KiCad ERC and netlists
         if: always()
         uses: actions/upload-artifact@v4
