@@ -4,11 +4,13 @@ on:
     branches: [main, 'feature/v7.14-rx-library-diagnostics']
     paths:
       - '04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.14_LIB_NOT_FOR_FAB/**'
       - '03_Verifiche/V7.14/**'
       - '.github/workflows/v714_rx_library_native_erc.yml'
   pull_request:
     paths:
       - '04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.14_LIB_NOT_FOR_FAB/**'
       - '03_Verifiche/V7.14/**'
       - '.github/workflows/v714_rx_library_native_erc.yml'
 permissions:
@@ -61,7 +63,9 @@ jobs:
           report=parse("03_Verifiche/V7.14/output-ci/v714.rx.drc.rpt")
           print("NATIVE V7.14 RX BOARD DRC",json.dumps(report,indent=2))
           assert report["unconnected_items"]==63,"RX board routing unexpectedly changed"
-          assert report["drc_violations"]<=85,"Native board DRC got worse"
+          assert report["drc_violations"]==72,"Expected exactly 70 dangling vias +2 real footprint mismatches"
+          assert report["categories"].get("via_dangling",0)==70
+          assert report["categories"].get("lib_footprint_mismatch",0)==2
           assert report["categories"].get("drill_out_of_range",0)==0
           PY
           echo '--- V7.14 native board DRC sample ---'
@@ -71,6 +75,20 @@ jobs:
           for version in V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
             python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
           done
+      - name: Export KiCad native netlists from isolated seven-sheet V7.13 and V7.14 roots
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.14/output-ci/root_v713.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_13_GRID_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.14/output-ci/root_v714.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.14_LIB_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Native KiCad root ERC V7.13 and V7.14 (retain ALL errors and warnings)
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.14/output-ci/root_v713.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_13_GRID_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.14/output-ci/root_v714.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.14_LIB_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Require all 99 exact native root net pin memberships unchanged
+        run: python3 -B 03_Verifiche/V7.14/verifica_root_kicad_v714.py
       - name: Upload genuine KiCad ERC and netlists
         if: always()
         uses: actions/upload-artifact@v4
