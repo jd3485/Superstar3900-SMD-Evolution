@@ -1,0 +1,31 @@
+name: IF2 DUC V7.2 model-only checks
+on:
+  push:
+    branches: ['feature/v7.2-offline-duc-if2', 'main']
+    paths:
+      - '01_Specifiche/V7.2/**'
+      - '03_Verifiche/V7.2/**'
+      - '08_Firmware_Prototipi/V7.2/**'
+      - '07_Componenti/BOM_DUC_IF2_V7.2.csv'
+      - '.github/workflows/duc_if2_v72_model.yml'
+  pull_request:
+    paths:
+      - '01_Specifiche/V7.2/**'
+      - '03_Verifiche/V7.2/**'
+      - '08_Firmware_Prototipi/V7.2/**'
+      - '07_Componenti/BOM_DUC_IF2_V7.2.csv'
+      - '.github/workflows/duc_if2_v72_model.yml'
+permissions:
+  contents: read
+jobs:
+  offline-dsp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: V7.2 offline IF2 tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.2 -p 'test_*.py' -v
+      - name: V7.1 offline regression tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v
