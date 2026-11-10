@@ -1,3 +1,17 @@
+# HANDOFF — SUPERSTAR 3900 SMD V7.17 FULL-RADIO MASTER
+
+**11 novembre 2026 · V7.17 branch/PR, verificare merge/HEAD `main` prima di dichiarare stato. NO FAB / NO TX.**
+
+Ultimo avanzamento non è sul coupon RX ma sulla schematica completa: nuova directory KiCad `04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/` con master a sette fogli (file volutamente denominato `S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch` perché conserva l'identità project KiCad e le annotazioni dei fogli). Native KiCad [CI 42923409956](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42923409956): **99 reti e tutti pin/refs identici baseline, ERC 43 errori/340 warning, RX ERC 0/0, 241 Python PASS** (18 V7.17+223 precedenti), 0 FAIL/SKIP. Gli errori root includono 26 label aperte e 17 problemi elettrici/fili; 219 warning off-grid e121 libreria.
+
+`04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/MATRICE_INTERFACCE_PROPOSTE_V7_17_OPEN_HOLD.csv`: tutte **15 OPEN/HOLD**, corregge solo il nome proposto `FM_DISCR_RAW`→`FM_DISCRIM_RAW` lato MCU secondo netlist nativa, senza cablaggio. Due nomi di rete destinazione ancora assenti: `RX_IF_STAGE` e `RF_TX_UNROUTED` (TX intenzionalmente unroute). Non collegare rail 5V/3V3/GND o SPI senza qualifica, né usare un semplice naming match come verifica del segnale.
+
+`03_Verifiche/V7.17/RAPPORTO_TECNICO_CAD_V7.17.md`, `RISULTATI_VERIFICHE_V7_17.json`, parser e parity script e workflow `.github/workflows/v717_full_board_erc.yml` documentano test. No board completa, nessun Gerber/ordine/test RF, SMA destri 180° da qualificare. **Stima PCB completa ~10%, non aumenta** con l'audit. **Next V7.18:** eliminare 17 ERC HARD dopo datasheet power/PLL, ridurre 26 label con circuiti reali, poi completare IF/contratti e integrare PCB. SG48 e TX sempre HOLD.
+
+---
+
+## STORICO V7.16 E PRECEDENTI
+
 # RIPRESA SUPERSTAR 3900 SMD EVOLUTION — HANDOFF V7.16
 
 **10 novembre 2026: V7.16 integrata su `main` con [PR #16](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/16), merge `b8ad95695aed960621f4fd2160fa4b2ae921d6eb`. Controllare sempre HEAD `main`, PR, CI e tag.** Baseline V7.15 già integrata, tag storico `v7.0` e tutte le versioni preserved. **NO FAB / NO TX.**
