@@ -1,3 +1,14 @@
+# PROTOCOLLO CONTINUITÀ MAIN — V7.12 CAD NATIVO INTEGRATA (10 NOVEMBRE 2026)
+
+- Revisione corrente su main a questa fotografia **V7.12**, PR [#12](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/12), commit merge `aad39c250fe626fa94424ff9ce2c08cb6b9ebcc8`. All'avvio di qualunque chat **verificare HEAD main, PR, tag, CI**; revisioni successive prevalgono. Il tag `v7.0` è storico preservato.
+- KiCad CLI 9 nativo confermato: `sch export netlist` V7.10 vs V7.12 su **7 fogli /132 istanze /99 reti**: **11 designatori duplicati e14 extras→ZERO**. MCU 46 ref +6000, RX 15 ref +9000; nuovi file nativi editabili `.kicad_sch` e `.kicad_pcb`, originali inalterati. Tutti i confini tra moduli ancora OPEN/HOLD.
+- Bug KiCad standalone RX V5.2: testo grafico con LF non escapato + UUID mancante; copia V7.12 corretta, nativo `sch erc` ora **exit0, 0 errori/76 warning**. Root **43 errori+416 warning**; PCB coupon **85 DRC violazioni+63 unconnected** (70 dangling via,15 footprint warnings); *NON* dichiarare ERC/DRC globalmente superati.
+- CI finale [run 42866103256](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42866103256), job 130004727547: **176 Python PASS/0 FAIL/0 SKIP**, native netlist/ ERC/DRC inventory checks PASS, log verificato. Icarus/Yosys non rieseguiti in questa revisione. Report `Superstar3900_Rapporto_Tecnico_V7.12.md`, spec `01_Specifiche/V7.12/RIANNOTAZIONE_NATIVE_RX_MCU_V7_12.md`, ECO `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.12.md`.
+- **Prossima V7.13:** correggere off-grid/footprint/symbol RX con KiCad, affrontare DRC coupon via dangling e unconnected, ridurre ERC root e qualificare reti MCU/power/RX una per volta, proseguire firmware, DSP, modelli numerici, BOM e prove automatiche. Pinout Lattice SG48 originale ancora HOLD.
+- **NO FAB / NO TX.** Nessun PCB dell'intero apparato, no Gerber, no DAC/FPGA/PA o RF TX connessi/alimentati, nessuna validazione hardware/EMC o emissioni. Ogni CI verde è diagnosi, non autorizzazione fabbricazione; conservare storici.
+
+---
+
 # PROTOCOLLO CONTINUITÀ MAIN — V7.11 CAD NATIVO, 10 NOVEMBRE 2026
 
 - Stato su `main` alla data: **V7.11 integrata** con [PR #11](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/11), merge `028c3a5f8d9f638d423be251a7a06336a961ead7`. Verificare HEAD/PR/CI in ogni nuova chat; eventuale versione successiva prevale. `v7.0` tag storico preservato.
