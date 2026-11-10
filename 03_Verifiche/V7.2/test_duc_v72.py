@@ -95,6 +95,18 @@ class V72(unittest.TestCase):
         self.assertGreater(rf_image,70)
         self.assertLess(rf_edge,1)
 
+    def test_full_270_channel_ideal_filter_sweep(self):
+        sys.path.insert(0, str(ROOT/'03_Verifiche'/'V7.2'))
+        import analizza_filtri_v72 as survey
+        stats=survey.evaluate()
+        self.assertEqual(stats['channels'],270)
+        self.assertEqual(stats['alpha_count'],30)
+        self.assertGreater(stats['if1_lower_spur_9785_loss_db'],79)
+        self.assertLess(stats['rf_wanted_max_ideal_loss_db'],0.09)
+        self.assertGreater(stats['rf_image_min_relative_ideal_loss_db'],89)
+        self.assertGreater(stats['rf_lo_leak_min_relative_ideal_loss_db'],60)
+        self.assertIs(stats['rf_tx_permitted'],False)
+
     def test_repository_dnp_and_v71_regression(self):
         bom=ROOT/'07_Componenti'/'BOM_DUC_IF2_V7.2.csv'
         net=ROOT/'01_Specifiche'/'V7.2'/'NETLIST_DUC_IF2_V7.2.csv'
