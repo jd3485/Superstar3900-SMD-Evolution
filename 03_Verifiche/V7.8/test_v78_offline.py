@@ -182,6 +182,21 @@ class V78(unittest.TestCase):
         self.assertEqual(sum(x["alfa"]=="1" for x in rows),30)
         self.assertTrue(all(int(x["tx_permitted_v64"])==0 for x in rows))
 
+    def test_19_strict_unity_guard_before_headroom_scaling(self):
+        with self.assertRaises(ValueError):
+            dsp.quantize_with_peak_guard([1.00001])
+        with self.assertRaises(ValueError):
+            dsp.quantize_with_peak_guard([-1.00001])
+        self.assertEqual(len(dsp.quantize_with_peak_guard([0.0,0.5])),2)
+
+    def test_20_nonfinite_guard_and_empty_buffer_rejected(self):
+        with self.assertRaises(ValueError):
+            dsp.quantize_with_peak_guard([float("nan")])
+        with self.assertRaises(ValueError):
+            dsp.quantize_with_peak_guard([])
+        with self.assertRaises(ValueError):
+            dsp.quantize_with_peak_guard([float("inf")])
+
     def test_18_previous_fpga_sg48_candidate_remains_hold(self):
         p=ROOT/"01_Specifiche"/"V7.6"/"SG48_PIN_PLAN_CANDIDATE_V7.6.csv"
         with p.open(newline="",encoding="utf-8") as fh:
