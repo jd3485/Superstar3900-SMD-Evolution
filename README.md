@@ -1,3 +1,19 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.15 REFILL GND DIAGNOSTICO, NO FAB / NO TX
+
+**10 novembre 2026 · V7.15 proposta dalla [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15); dopo merge usare HEAD `main` come riferimento.** Storico e tag `v7.0` conservati. Questo è un avanzamento DIAGNOSTICO REALE, **non una PCB di produzione né una radio finita**.
+
+**Risultato nativo KiCad sorprendente ma documentato:** 70 via GND_RF dangling e63 unconnected DRC della V7.14 derivavano dal test su zone **non salvate come copper fill**. La CI V7.15 ha riempito le quattro zone con il vero `pcbnew.ZONE_FILLER` in una copia TEMPORANEA integrale del progetto (nessuna variazione del PCB sorgente, SHA256 invariato), poi `kicad-cli pcb drc` ha misurato **72→2 violazioni** e **63→0 unconnected**; **J9102/J9104 lib_footprint_mismatch rimangono 2**. Si tratta di prova sul clone, non di correzioni CAD persistite o qualifica fisica. `--refill-zones` non era supportato dal CLI della CI ed è registrato NON ESEGUITO, sostituito da una reale prova con pcbnew.
+
+**SMA vendor:** confronto con TE/Linx CONSMA002-SMD, disegno Rev D p.2/3: centro Ø2,05 mm e dimensione nominale trasversale 7,76 mm parzialmente compatibili. Tutti i pad KiCad locali risultano di forma identica alla libreria, inclusi J9102/J9104 ruotati 180°; la causa vera dei due warning non è stata ancora qualificata. CAD manufacturer DXF/STEP, assembly, pastemask, GND return/RF stackup NON approvati.
+
+**CI:** [push run 42918178033](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918178033) e [PR run 42918302874](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918302874), **12 test nuovi +201 regressioni =213 Python PASS**, ERC RX **0/0**, root ERC **43 errori/340 warning** (BLOCCANTE). Icarus/Yosys non rieseguiti; no hardware RF/EMC. Rapporto `03_Verifiche/V7.15/RAPPORTO_TECNICO_CAD_V7.15.md`, JSON `03_Verifiche/V7.15/RISULTATI_VERIFICHE_V7_15.json`, spec `01_Specifiche/V7.15/SMA_ZONE_READONLY_DIAGNOSTIC_V7_15.md`. Il progetto RX originale rimane byte-identico; **zero Gerber, NO FAB / NO TX**.
+
+**Prossima V7.16:** ricercare causa esatta mismatch SMA ruotate con KiCad e DXF/STEP TE, verificare pad/layer con review GUI, creare una PCB revisionata con zone salvate SOLO dopo qualifica, rieseguire DRC/stack-up/RF return; continuare a risolvere 43 ERC root, 15 interfacce OPEN/HOLD e SG48 HOLD, senza inventare connessioni. Non abilitare PA/antenna/TX.
+
+---
+
+## ARCHIVIO STORICO V7.14 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.14 CAD KICAD NATIVO SU MAIN
 
 **10 novembre 2026 · V7.14 integrata in `main`, [PR #14](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/14), merge `5c0940bf213776e93e72f2bd11fd20ce4fa842e7`.** La versione corrente va sempre ricontrollata tramite HEAD `main`, PR e GitHub Actions; `v7.0` storico intatto. **NO FAB / NO TX.**
