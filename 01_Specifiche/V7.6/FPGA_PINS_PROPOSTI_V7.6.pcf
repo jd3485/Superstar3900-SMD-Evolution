@@ -1,0 +1,36 @@
+# V7.6 CANDIDATE PCF ONLY / DO NOT USE FOR PCB OR PROGRAMMING
+# iCE40UP5K-SG48I: numbers from third-party reproduction of Lattice pinout,
+# cross-checked by SG48 supply/bank COUNT in primary FPGA-DS-02008-2.4.
+# Original vendor XLSX iCE40UP5K Pinout (document_id=51971) remains
+# independently unverified. PCF is not checked by Yosys/nextpnr.
+# Output signals are virtual; no DAC driver / no TX.
+# Required power pads / config / exposed GND paddle not in this PCF.
+set_io master_clk_candidate 35
+set_io reset_logic_candidate 4
+set_io source_valid_candidate 2
+set_io source_word_candidate[0] 6
+set_io source_word_candidate[1] 9
+set_io source_word_candidate[2] 10
+set_io source_word_candidate[3] 11
+set_io source_word_candidate[4] 12
+set_io source_word_candidate[5] 13
+set_io source_word_candidate[6] 18
+set_io source_word_candidate[7] 19
+set_io source_word_candidate[8] 20
+set_io source_word_candidate[9] 21
+set_io dac_word_candidate[0] 23
+set_io dac_word_candidate[1] 25
+set_io dac_word_candidate[2] 26
+set_io dac_word_candidate[3] 27
+set_io dac_word_candidate[4] 28
+set_io dac_word_candidate[5] 31
+set_io dac_word_candidate[6] 32
+set_io dac_word_candidate[7] 34
+set_io dac_word_candidate[8] 36
+set_io dac_word_candidate[9] 38
+set_io dac_clk_candidate 42
+set_io audio_strobe_debug_candidate 43
+set_io supervisor_status_candidate 3
+set_io fault_debug_candidate 44
+# CRITICAL: DAC900 PD active-high must NOT be driven by this FPGA alone.
+# NO physical DAC900 links / PA / antenna / TX permission.
