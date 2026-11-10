@@ -1,3 +1,17 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.16 DIAGNOSI ORIENTAMENTO SMA (NO FAB / NO TX)
+
+**10 novembre 2026 · revisione V7.16 su branch/PR, verificare HEAD di `main` prima di dichiarare il merge.** È un avanzamento **diagnostico CAD nativo** e NON un PCB aggiornato/producibile.
+
+**Progresso reale:** l'ultimo DRC KiCad9 su quattro cloni temporanei con zone riempite ha verificato la causalità del mismatch SMA J9102/J9104. Con posizione e orientamento originari 180°: **2 `lib_footprint_mismatch` +0 unconnected**; ruotando solo le etichette o i custom pad: ancora **2+0**; forzando entrambi gli SMA destro a orientamento 0°: **0+0**, ma la *direzione fisica dei connettori sul lato destro diventa SBAGLIATA*. Il courtyard corretto sporge oltre il bordo x130 sino a x137,2 mm; quello a 0° rientra nell'area fino a x126,1. **Non applicare il workaround**: la correzione deve preservare il montaggio a 180°. Il PCB sorgente storico e le sue net, piste/via/simboli sono invariati.
+
+**Evidenza CI** [run 42920876308](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42920876308): **10 nuovi test +213 regressioni =223 Python PASS, 0 FAIL/0 SKIP**; quattro DRC nativi misurati con KiCad9. Icarus/Yosys/hardware RF non rieseguiti. Sorgenti nuovi `03_Verifiche/V7.16/`, rapporto `03_Verifiche/V7.16/RAPPORTO_TECNICO_CAD_V7.16.md`, JSON `03_Verifiche/V7.16/RISULTATI_VERIFICHE_V7_16.json`, specifica `01_Specifiche/V7.16/PROTOCOLLO_SMA_ORIENTAMENTO_KICAD_V7_16.md`. Prima baselines: RX ERC 0/0, root 43 errori +340 warning, 15 interfacce OPEN/HOLD e SG48 HOLD.
+
+**Vendor:** il produttore TE Connectivity/Linx pubblica disegno Rev D e CAD ufficiali DXF/STEP per `CONSMA002-SMD`; questi archivi non sono stati importati/validati e nessuna impronta è qualificata per produzione. **Prossima V7.17:** acquisire e confrontare DXF/STEP per J9102/J9104, risolvere mismatch KiCad mantenendo 180°, verificare ingombro, ritorni GND_RF e zone-fill su un nuovo PCB versionato. NO FAB / NO PCBWAY / NO GERBER / NO TX.
+
+---
+
+## ARCHIVIO V7.15 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.15 REFILL GND DIAGNOSTICO, NO FAB / NO TX
 
 **10 novembre 2026 · V7.15 integrata in `main` con [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15), merge `ca81deb3fe83e210778590cc9e2db1a18e16b243`. Verificare sempre HEAD `main`.** Storico e tag `v7.0` conservati. Questo è un avanzamento DIAGNOSTICO REALE, **non una PCB di produzione né una radio finita**.
