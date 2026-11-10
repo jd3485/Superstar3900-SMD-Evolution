@@ -1,3 +1,18 @@
+# PROTOCOLLO DI CONTINUITÀ MAIN — V7.15 DIAGNOSTICA NATIVA, NO FAB / NO TX
+
+**10 novembre 2026 · proposta PR #15 V7.15; verificare HEAD `main` a ogni nuova chat.** Baseline V7.14 integrata intatta, `v7.0` preservata. Non cambiare circuiti o autorizzare TX in assenza di verifica fisica.
+
+- V7.15 aggiunge inventario e audit PCB nativo, 12 test e workflow. Dati KiCad9 riproducibili in [run push 42918178033](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918178033) e [PR 42918302874](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918302874): **213 Python PASS** incluso 201 regressioni; ERC RX 0/0, root 43 errori+340 warning.
+- Test DRC realmente eseguito PRIMA refill su PCB RX originale V7.14 **72 DRC +63 unconnected** (70 via dangling e 2 mismatch SMA J9102/J9104). File 15 footprints, 44 segmenti, 70 via net GND_RF, quattro zone senza `filled_polygon` persistiti.
+- Il KiCad CLI del runner non supporta `--refill-zones`: ramo NON ESEGUITO. **Alternativa vera:** copia temporanea di TUTTO il progetto in sibling folder, `pcbnew.ZONE_FILLER`, DRC nativo sulla copia salvata e poi distrutta. Misurati **2 DRC (solo J9102/J9104) +0 unconnected, zero via_dangling**. Originale SHA256 `ec37ef62787eeb6607def2780d9a7da06a614eafd3b225283f6e9c6fd3a5f3d9` invariato. Non equivale a layout fisico approvato.
+- Confronto parziale manufacturer TE/Linx `CONSMA002-SMD`, drawing Rev D: Ø2,05 e 7,76mm; DXF/STEP non importato, condizioni termiche/assembly e impedenza ancora HOLD. 15 interface MCU/AUX/RX OPEN/HOLD, FPGA SG48 HOLD, no new Icarus/Yosys/RF/EMC.
+- Documenti attuali: `03_Verifiche/V7.15/RAPPORTO_TECNICO_CAD_V7.15.md`, `03_Verifiche/V7.15/RISULTATI_VERIFICHE_V7_15.json`, `01_Specifiche/V7.15/SMA_ZONE_READONLY_DIAGNOSTIC_V7_15.md`, workflow `v715_rx_sma_zone_native.yml`, `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md`.
+- **NEXT V7.16:** qualificare J9102/J9104 con vendor CAD, revisionare/salvare su nuova copia il riempimento zone verificato, analizzare return RF, risolvere ERC root e contratti OPEN/HOLD, preservare firmware/DSP/PLL e versioni storiche. **NO FAB / NO TX.** Nessun Gerber, PCBWay, PA/antenna o trasmissione autorizzati.
+
+---
+
+## ARCHIVIO PROTOCOLLO V7.14 E PRECEDENTI
+
 # PROTOCOLLO PERMANENTE MAIN — V7.14 SU MAIN, NO FAB / NO TX
 
 **10 novembre 2026 · V7.14 integrata in `main`, [PR #14](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/14), merge `5c0940bf213776e93e72f2bd11fd20ce4fa842e7`.** La versione corrente va sempre ricontrollata tramite HEAD `main`, PR e GitHub Actions; `v7.0` storico intatto. **NO FAB / NO TX.**

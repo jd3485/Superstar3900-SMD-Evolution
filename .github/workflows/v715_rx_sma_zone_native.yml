@@ -1,0 +1,89 @@
+name: V7.15 native KiCad RX SMA/zone read-only diagnostics (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.15-sma-zone-diagnostics']
+    paths:
+      - '03_Verifiche/V7.15/**'
+      - '.github/workflows/v715_rx_sma_zone_native.yml'
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/**'
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.15/**'
+      - '.github/workflows/v715_rx_sma_zone_native.yml'
+permissions:
+  contents: read
+jobs:
+  ki9-read-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native KiCad
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq kicad
+          kicad-cli version
+          if ! /usr/bin/python3 -c "import pcbnew" 2>/dev/null; then
+            if apt-cache show python3-pcbnew >/dev/null 2>&1; then
+              sudo apt-get install -y -qq python3-pcbnew
+            fi
+          fi
+      - name: Read-only KiCad source inventory, SMA pad geometry, 70 vias and zone shells
+        run: |
+          mkdir -p 03_Verifiche/V7.15/output-ci
+          python3 -B 03_Verifiche/V7.15/audit_rx_topologia_v715.py \
+            --output 03_Verifiche/V7.15/output-ci/immutable_rx_geometry.json
+          python3 -B -m unittest discover -s 03_Verifiche/V7.15 -p 'test_*.py' -v
+      - name: Native KiCad9 ERC RX and root, no waivers
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.15/output-ci/v715.rx.erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.15/output-ci/v715.root.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.14_LIB_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          python3 - <<'PY'
+          import sys,json
+          from pathlib import Path
+          sys.path.insert(0,"03_Verifiche/V7.10")
+          from esegui_kicad_audit_v710 import summarize
+          p=Path("03_Verifiche/V7.15/output-ci")
+          rx=summarize((p/"v715.rx.erc.rpt").read_text())
+          root=summarize((p/"v715.root.erc.rpt").read_text())
+          (p/"v715.native_erc_summary.json").write_text(json.dumps({"rx":rx,"root":root},indent=2))
+          print(json.dumps({"rx":rx,"root":root},indent=2))
+          assert (rx["erc_errors"],rx["erc_warnings"])==(0,0)
+          assert root["erc_errors"]==43 and root["erc_warnings"]==340
+          print("RX ERC PASS; root ERC still BLOCKED, no hardware release")
+          PY
+      - name: Native KiCad board DRC without zone refill (V7.14 baseline)
+        run: |
+          PCB=04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_pcb
+          sha256sum "$PCB" > 03_Verifiche/V7.15/output-ci/board.before.sha256
+          kicad-cli pcb drc -o 03_Verifiche/V7.15/output-ci/v715.rx.asis.drc.rpt "$PCB"
+      - name: Optional native DRC after volatile refill, NO save-board
+        run: |
+          PCB=04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_pcb
+          OUT=03_Verifiche/V7.15/output-ci
+          if kicad-cli pcb drc --help 2>&1 | grep -q -- '--refill-zones'; then
+            echo SUPPORTED_EXECUTED > "$OUT/zone_refill_support.txt"
+            kicad-cli pcb drc --refill-zones -o "$OUT/v715.rx.refilled_volatile.drc.rpt" "$PCB"
+          else
+            echo UNSUPPORTED_NOT_RUN > "$OUT/zone_refill_support.txt"
+            echo 'KiCad build has no --refill-zones: comparison explicitly NOT RUN'
+          fi
+          sha256sum "$PCB" > "$OUT/board.after.sha256"
+          cmp "$OUT/board.before.sha256" "$OUT/board.after.sha256"
+      - name: Genuine zone fill on disposable project copy using pcbnew if available
+        run: /usr/bin/python3 -B 03_Verifiche/V7.15/probe_pcbnew_zone_fill_v715.py
+      - name: Parse genuine KiCad reports and reject baseline drift
+        run: python3 -B 03_Verifiche/V7.15/compare_native_zone_drc_v715.py
+      - name: Regressions all prior V7.14 through V7.1 Python suites
+        run: |
+          for version in V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Preserve real KiCad reports even on failure (no Gerbers)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v715-sma-zone-native-read-only-NO-FAB-NO-TX
+          path: 03_Verifiche/V7.15/output-ci/
+          if-no-files-found: warn

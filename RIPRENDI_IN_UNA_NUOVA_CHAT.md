@@ -1,3 +1,19 @@
+# RIPRESA SUPERSTAR 3900 SMD EVOLUTION — HANDOFF V7.15
+
+**10 novembre 2026: V7.15 proposta [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15). Controlla SEMPRE HEAD `main`, ultimi PR e CI prima di continuare.** Baseline V7.14 conservata, nessun PCB originale cambiato. Tag `v7.0` storico intatto. **NO FAB / NO TX.**
+
+**Verifica tecnica conclusiva V7.15:** vera CI KiCad9 su copia temporanea del progetto RX con `pcbnew.ZONE_FILLER` e DRC nativo, refilled 4 zone GND_RF. As-is PCB: **72 DRC +63 unconnected** (70 via_dangling+2 SMA mismatch). Dopo refill *solo clone temporaneo*: **2 DRC +0 unconnected**, cioè via_dangling **70→0**, unconnected **63→0**, mismatch **2→2** su SMA **J9102/J9104**. Il source PCB V7.14 è identico (SHA256 `ec37ef62787eeb6607def2780d9a7da06a614eafd3b225283f6e9c6fd3a5f3d9`). Questo non è un PCB pronto e non approva ritorni RF o produzione. Il CLI non supportava `--refill-zones`; percorso alternativo Python pcbnew realmente eseguito, report nativi come artifact.
+
+**Vendor:** TE/Linx `CONSMA002-SMD`, tavola `C-CONSMA002-SMD-X-X Rev D`: controllo parziale centro Ø2.05mm/trasversale 7.76mm. J9102/J9104 ruotati 180°; le firme geometriche dei pad sono identiche al modello locale, ma KiCad continua a segnalare 2 mismatch. NON aggiornare footprint senza DXF/STEP e review GUI / produttore.
+
+**CI reale:** [push 42918178033](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918178033), [PR 42918302874](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918302874): **213/213 test Python PASS**, KiCad9 ERC RX **0 errori/0 warning**, root **43 errori/340 warning** aperti. Nessuna prova Icarus/Yosys nuova, RF o prototipazione. Leggere nell'ordine `README.md`, `03_Verifiche/V7.15/RAPPORTO_TECNICO_CAD_V7.15.md`, `01_Specifiche/V7.15/SMA_ZONE_READONLY_DIAGNOSTIC_V7_15.md`, `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, JSON e workflow V7.15.
+
+**Prossima V7.16:** risolvere vendor SMA 2 mismatch, verifica e salvataggio zone su nuova copia nativa, DRC rigoroso, stackup/ritorno GND_RF; poi 43 ERC root, 15 interfacce RX/MCU/AUX OPEN/HOLD, SG48 HOLD, regressioni DSP/PLL/firmware. Nessun Gerber, nessuna release FAB, nessuna TX.
+
+---
+
+## STORICO HANDOFF V7.14 E PRECEDENTI
+
 # RIPRESA PROGETTO SUPERSTAR 3900 SMD EVOLUTION — V7.14 SU MAIN
 
 **10 novembre 2026 · V7.14 integrata in `main`, [PR #14](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/14), merge `5c0940bf213776e93e72f2bd11fd20ce4fa842e7`.** La versione corrente va sempre ricontrollata tramite HEAD `main`, PR e GitHub Actions; `v7.0` storico intatto. **NO FAB / NO TX.**

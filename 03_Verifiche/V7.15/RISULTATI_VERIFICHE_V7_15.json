@@ -1,0 +1,76 @@
+{
+  "revision": "V7.15",
+  "date": "2026-11-10",
+  "baseline": "main V7.14",
+  "branch": "feature/v7.15-sma-zone-diagnostics",
+  "source_pcb_sha256": "ec37ef62787eeb6607def2780d9a7da06a614eafd3b225283f6e9c6fd3a5f3d9",
+  "source_pcb_modified": false,
+  "ci_push_run": 42918178033,
+  "ci_pr_run": 42918302874,
+  "native_kicad": {
+    "rx_erc_errors": 0,
+    "rx_erc_warnings": 0,
+    "root_erc_errors": 43,
+    "root_erc_warnings": 340,
+    "as_saved_board": {
+      "drc_violations": 72,
+      "via_dangling": 70,
+      "lib_footprint_mismatch": 2,
+      "unconnected_items": 63,
+      "saved_filled_polygons": 0
+    },
+    "fill_method": "pcbnew.ZONE_FILLER on disposable full-project sibling-directory clone; save clone only",
+    "filled_temporary_clone": {
+      "drc_violations": 2,
+      "via_dangling": 0,
+      "lib_footprint_mismatch": 2,
+      "unconnected_items": 0,
+      "saved_filled_polygons": 4
+    },
+    "cli_refill_zones_option_supported": false,
+    "original_source_unchanged_after_test": true
+  },
+  "static_inventory": {
+    "footprints": 15,
+    "segments": 44,
+    "vias": 70,
+    "via_net": "GND_RF",
+    "zones": [
+      "F.Cu",
+      "In1.Cu",
+      "In2.Cu",
+      "B.Cu"
+    ]
+  },
+  "vendor_sma": {
+    "part": "TE Connectivity CONSMA002-SMD",
+    "drawing": "C-CONSMA002-SMD-X-X Rev D",
+    "center_mm": 2.05,
+    "transverse_mm": 7.76,
+    "drawings_2d_3d_imported": false,
+    "mechanically_approved": false,
+    "still_mismatched_refs": [
+      "J9102",
+      "J9104"
+    ]
+  },
+  "testing": {
+    "new_python": 12,
+    "previous_python": 201,
+    "passed": 213,
+    "failed": 0,
+    "skipped": 0,
+    "new_icarus_or_yosys": false
+  },
+  "open_gates": {
+    "rx_vendor_footprints": 2,
+    "root_erc_errors": 43,
+    "intermodule_open_hold": 15,
+    "fpga_sg48_hold": true,
+    "rf_ground_current_validation": false,
+    "hardware_rf_emc": false
+  },
+  "fabrication_allowed": false,
+  "rf_transmission_allowed": false,
+  "gerbers_created": false
+}
