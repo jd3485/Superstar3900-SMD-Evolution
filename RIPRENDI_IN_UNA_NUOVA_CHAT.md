@@ -1,3 +1,21 @@
+# RIPRENDERE SUPERSTAR 3900 SMD EVOLUTION — V7.10 IN MAIN, KIcad NATIVO
+
+**10 novembre 2026:** V7.10 integrata con [PR #10](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/10), merge `8a18c12df4455265db8414784587f4d82a1f82ae`. Questo stato non prevale su versioni successive: **controllare sempre HEAD di `main`**. Il tag `v7.0` è storico preservato.
+
+## Come continuare
+1. Aprire repository GitHub privato `jd3485/Superstar3900-SMD-Evolution`, leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, verificare `main`, PR, tag e Actions prima di procedere.
+2. Leggere `Superstar3900_Rapporto_Tecnico_V7.10.md`, `01_Specifiche/V7.10/PIANO_CAD_INTEGRAZIONE_RX_POWER_V7.10.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.10.md` e `03_Verifiche/V7.10/RISULTATI_VERIFICHE_V7_10.json`. Aprire davvero in KiCad `04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch`; conserva legami relativi ai 3 schemi originali. ZIP con 4 directory CAD e reports nel workflow [42855337776](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42855337776).
+3. Risultati verificati: KiCad CLI **9.0.8** export **7 sheets/132 components/99 nets**, **11 ref ambigui**. ERC root **43 errori +416 avvisi**; AUX V1.5 **22/248**, MCU V2.1 **18/92**; RX standalone **exit 3, impossibile da caricare**. PCB coupon RX V5.2: **91 violazioni DRC e 63 unconnected**. Tutto questo è **BLOCCANTE, non ERC/DRC PASS**. CI diagnostica ha **12 test V7.10 +143 regressioni DSP/firmware V7.1–V7.9 =155 PASS**, dopo avere effettivamente prodotto i report KiCad.
+4. **Prossima V7.11** focalizzata su CAD: recuperare/caricare schema RX standalone su copia verificata, annotare univocamente componenti in 7 fogli, risolvere cause footprint/library, R/X 63 unconnected, drills Ø0,25 vs rule min Ø0,30, ERC dei tre moduli, quindi integrare connessioni reali di alimentazioni/PLL/MCU/RX con componenti verificati, ripetere native KiCad CI. Non iniziare vero PCB full-radio prima della netlist stabile; non abbandonare test firmware e simulazioni.
+5. Tutti i moduli non inclusi nel root restano storici; l'intero TX (DAC900, FPGA iCE40, mixer, PA, antenna) **DNP, non alimentato, non connesso**. Originale XLSX pin SG48 Lattice doc 51971 ancora **HOLD**. Nessun PCB fabbricabile, Gerber, KiCad ERC/DRC zero, EMC, test radio TX autorizzato.
+6. Conservare storico e tag, lavorare su feature branch, far eseguire realmente KiCad e regressioni, riportare separatamente **PASS diagnostica / FAIL ERC-DRC / NON ESEGUITO hardware**, integrare in `main` solo dati corretti senza rivendicare avanzamenti non avvenuti.
+
+**Messaggio sufficiente:** Prosegui il progetto privato `jd3485/Superstar3900-SMD-Evolution` dal main più recente. Leggi rapporti CAD e i tre file di continuità, poi sviluppa V7.11 risolvendo realmente ERC/DRC e collegamenti KiCad, mantenendo regressioni DSP/firmware e **NO FAB / NO TX**.
+
+---
+
+## ARCHIVIO — V7.9 E PRECEDENTI
+
 # RIPRESA FUTURA — SUPERSTAR 3900 SMD EVOLUTION V7.9 SU MAIN
 
 **10 novembre 2026.** V7.9 integrata in `main` con [PR #9](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/9), merge `38b9828728b02581bf24c070401dd70782051dbd`. `v7.0` è tag storico intatto. Se la prossima chat trova una revisione più recente su `main`, usare quella e non questa fotografia.
