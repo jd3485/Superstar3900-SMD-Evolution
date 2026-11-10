@@ -1,0 +1,79 @@
+{
+  "revision": "V7.4",
+  "date": "2026-11-10",
+  "revision_type": "software and DNP design candidate; NO FAB / NO TX",
+  "head_for_verified_run": "bef6be68143f153d6fb6e8264c1f608c1d746e70",
+  "verified_ci": {
+    "run_id": 42806194163,
+    "job_id": 129795819928,
+    "conclusion": "success",
+    "test_groups": {
+      "v74": {
+        "pass": 21,
+        "fail": 0,
+        "skip": 0
+      },
+      "v73_regression": {
+        "pass": 15,
+        "fail": 0,
+        "skip": 0
+      },
+      "v72_regression": {
+        "pass": 11,
+        "fail": 0,
+        "skip": 0
+      },
+      "v71_regression": {
+        "pass": 8,
+        "fail": 0,
+        "skip": 0
+      }
+    },
+    "total_pass": 55,
+    "total_fail": 0,
+    "total_skip": 0,
+    "method": "verified full GitHub Actions job logs"
+  },
+  "model": {
+    "audio_rate_hz": 48000,
+    "dac_sample_rate_hz": 3840000,
+    "parallel_data_bits": 10,
+    "clock_period_ns": 260.4166666666667,
+    "virtual_fifo_codes": 1024,
+    "raw_data_bits_per_second": 38400000,
+    "packed_data_bytes_per_second": 7680000,
+    "packed_bytes_per_512_audio_sample_block": 81920,
+    "clock_skew_words_per_second_at_50ppm": 192,
+    "hardware_output_present": false
+  },
+  "iv": {
+    "reference": "TI DAC900 SBAS093B figure 6; ideal equivalent only",
+    "full_scale_current_nominal_a": 0.02,
+    "shunt_ohm": 49.9,
+    "termination_ohm": 49.9,
+    "parallel_effective_ohm": 24.95,
+    "max_voltage_code1023_v": 0.49851269531250003,
+    "resistor_mpn": "Vishay CRCW060349R9FKEA",
+    "vendor_data_verified": true,
+    "frequency_performance_validated": false,
+    "physical_circuit_present": false
+  },
+  "assembly": {
+    "v74_bom_rows": 7,
+    "v74_netlist_rows": 8,
+    "all_dnp": true,
+    "older_tx_dnp_unchanged": true,
+    "rf_output_routed": false
+  },
+  "not_run": [
+    "native KiCad ERC/DRC",
+    "board routing",
+    "vendor Spice/IBIS",
+    "clock and data HW timing",
+    "DAC900 IV/PD rail tests",
+    "PLL/STM32 actual DSP throughput",
+    "spectrum analyser and EMC",
+    "hardware fail safe injection",
+    "fabrication and TX emissions"
+  ]
+}
