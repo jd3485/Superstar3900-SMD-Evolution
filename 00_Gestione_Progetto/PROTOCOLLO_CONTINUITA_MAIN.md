@@ -1,3 +1,15 @@
+# PROTOCOLLO CONTINUITÀ MAIN — V7.11 CAD NATIVO, 10 NOVEMBRE 2026
+
+- Stato su `main` alla data: **V7.11 integrata** con [PR #11](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/11), merge `028c3a5f8d9f638d423be251a7a06336a961ead7`. Verificare HEAD/PR/CI in ogni nuova chat; eventuale versione successiva prevale. `v7.0` tag storico preservato.
+- Correzione KiCad autentica sulla COPIA V7.11 del coupon RX 50Ω V5.2: sei vie GND via-in-pad da **Øforo 0,25→0,30mm**, Ørame 0,55→0,60mm. `kicad-cli pcb drc` originale **91 DRC +63 unconnected**; V7.11 **85 DRC +63 unconnected**. Sei `drill_out_of_range` risolti, ma **70 via_dangling, 15 library warnings e 63 missing connections** ancora BLOCCANTI. `fp-lib-table` creata, avvisi librerie ancora presenti: non dichiarare riparata portabilità.
+- Esecuzione reale [GitHub Actions run 42856926563](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42856926563), job 129972377360: **8 V7.11 +12 V7.10 +143 V7.1–V7.9 = 163 Python PASS**, 0 FAIL/SKIP, DRC **miglioramento** PASS, ma DRC complessivo **NON PASS**. Icarus e Yosys nuovi non eseguiti in questa CI.
+- Root KiCad V7.10 ancora non interconnesso: **132 istanze**, **11 refs duplicati**, **43 ERC errors+416 warnings**, schema RX standalone exit3, 15 interfacce AUX/MCU/RX ancora OPEN/HOLD. Nessun PCB dell'intera radio, nessun Gerber o release per produttore.
+- Documentazione corrente `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md`, `Superstar3900_Rapporto_Tecnico_V7.11.md`, `01_Specifiche/V7.11/PIANO_CORREZIONI_KICAD_RX_V7.11.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.11.md`; storico V7.0–V7.10 conservato.
+- **Prossima V7.12:** riparare il caricamento RX standalone e annotare refs duplicati, qualificare libs e GND, eliminare via dangling/unconnected con vere connessioni, ridurre ERC native, qualificare interfacce AUX/MCU/RX per vero PCB integrato. Test DSP/firmware/PLL/RTL paralleli indispensabili.
+- **NO FAB / NO TX:** nessun PA/antenna, FPGA/DAC TX alimentati o collegati, nessuna KiCad ERC/DRC full pass, misure RF/EMC o fabbricazione autorizzata. Il colore verde della CI non equivale a progetto elettrico completo.
+
+---
+
 # PROTOCOLLO PERMANENTE — V7.10 KIcad NATIVO INTEGRATO SU MAIN, 10 NOVEMBRE 2026
 
 - Revisione integrata più recente al momento di questo aggiornamento: **V7.10**, [PR #10](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/10), merge `8a18c12df4455265db8414784587f4d82a1f82ae`; il tag `v7.0` rimane storico. Nuove chat devono **verificare HEAD main/PR/CI**, perché una revisione successiva prevale su questa fotografia.
