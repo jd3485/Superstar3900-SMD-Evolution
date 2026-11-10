@@ -1,0 +1,57 @@
+name: V7.14 native KiCad RX local library access and ERC diagnostic (NO FAB NO TX)
+on:
+  push:
+    branches: [main, 'feature/v7.14-rx-library-diagnostics']
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.14/**'
+      - '.github/workflows/v714_rx_library_native_erc.yml'
+  pull_request:
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.14/**'
+      - '.github/workflows/v714_rx_library_native_erc.yml'
+permissions:
+  contents: read
+jobs:
+  ki9-library:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native KiCad CLI
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: Export original V7.13 and local-symbol V7.14 netlists
+        run: |
+          mkdir -p 03_Verifiche/V7.14/output-ci
+          kicad-cli sch export netlist -o 03_Verifiche/V7.14/output-ci/v713.net \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_GRID_V7_13_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.14/output-ci/v714.net \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_sch
+      - name: Native KiCad ERC before local libraries (all warnings retained)
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.14/output-ci/v713.erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_GRID_V7_13_NOT_FOR_FAB.kicad_sch
+      - name: Native KiCad ERC with local RX symbol library (all warnings retained)
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.14/output-ci/v714.erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_sch
+      - name: Print specific native ERC library reasons from both reports
+        run: |
+          echo '--- V7.13 sample library warnings ---'
+          grep -A 6 -E '^\[(lib_symbol_issues|footprint_link_issues)\]' \
+            03_Verifiche/V7.14/output-ci/v713.erc.rpt | head -90 || true
+          echo '--- V7.14 sample library warnings ---'
+          grep -A 6 -E '^\[(lib_symbol_issues|footprint_link_issues)\]' \
+            03_Verifiche/V7.14/output-ci/v714.erc.rpt | head -90 || true
+      - name: KiCad ERC and exact net-pin non-regression probe
+        run: python3 -B 03_Verifiche/V7.14/probe_library_erc_v714.py
+      - name: Upload genuine KiCad ERC and netlists
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v714-native-kicad-library-diags-NO-FAB
+          path: 03_Verifiche/V7.14/output-ci/
+          if-no-files-found: warn
