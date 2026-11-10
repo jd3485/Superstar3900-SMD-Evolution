@@ -1,3 +1,22 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.13 CAD NATIVO INTEGRATA IN MAIN
+
+**10 novembre 2026:** V7.13 su `main`, [PR #13](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/13), merge `81928a6fc36f6e3bb98c04338026a4ed2f78769d`. Questo è uno stato SOFTWARE/CAD DIAGNOSTICO, non una release per fabbricare. Verificare sempre ultimo HEAD, PR, tag e Actions in una nuova chat; `v7.0` baseline storica conservata.
+
+## Nuovo avanzamento V7.13 (KiCad autentico, non soltanto documentazione)
+- Creato lo schema nativo `04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_GRID_V7_13_NOT_FOR_FAB.kicad_sch`. **15 simboli, 31 wires, 31 labels** riallineati a 1,27mm /50mil. Nuovo root 7-sheet `04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_13_GRID_NOT_FOR_FAB.kicad_sch`, AUX e MCU ancora **NON collegati elettricamente**. Sorgenti V7.12 intatti, PCB RX V7.12 NON modificata.
+- **Native KiCad9 sch export netlist**: tutti gli elementi `(nome rete, reference, pin)` della RX V7.12 e V7.13 risultano **identici**. **ERC RX endpoint_off_grid 46→0**, warning RX **76→30**, errori RX **0**. ERC root 7sheet **459→413 segnalazioni** (errori **43 invariati**, warning 416→370). Il gate misura vere esportazioni ERC, non simula il CAD.
+- **Ancora bloccanti**: RX 15 warning `lib_symbol_issues` +15 `footprint_link_issues`, nonostante `sym-lib-table/fp-lib-table` locali (non qualificati), root **43 errori ERC**, PCB RX **85 violazioni DRC e63 unconnected** (70 dangling via +15 footprint). Ancora **15 interfacce power/MCU/RX OPEN/HOLD**, nessuna PCB completa; pinout SG48 originale vendor HOLD.
+- **CI finale PR #13** [run 42870757111](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42870757111), job 130021089653, SUCCESS: **10 nuovi V7.13 +13 V7.12 +8 V7.11 +12 V7.10 +143 V7.1–V7.9 =186 Python PASS, 0 FAIL/SKIP**. Regressioni DSP/PLL/firmware conservate; Icarus/Yosys non rieseguiti in V7.13.
+- Rapporto `Superstar3900_Rapporto_Tecnico_V7.13.md`, spec `01_Specifiche/V7.13/GRID_NETLIST_EQUIVALENCE_V7_13.md`, ECO `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.13.md`, risultati JSON `03_Verifiche/V7.13/RISULTATI_VERIFICHE_V7_13.json`.
+
+**Prossima V7.14:** risolvere veramente caricamento librerie simboli/footprint con progetto KiCad portabile e footprint vendor, poi 70 via dangling/63 nets RX tramite ritorni GND e routing verificati; ridurre 43 errori ERC root e qualificare gradualmente confini MCU/AUX/RX. Continuare DSP, firmware e simulazioni.
+
+**Vincolo permanente NO FAB / NO TX:** nessuna nuova RF/TX attiva, DAC/FPGA/mixer/PA/antenna DNP/scollegati/non alimentati, nessun PCB finale o Gerber; una CI verde non dimostra sicurezza fisica. In una nuova chat leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`.
+
+---
+
+## ARCHIVIO STORICO — V7.12 E PRECEDENTI (non revisione corrente)
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.12 CAD NATIVO INTEGRATA IN MAIN
 
 **10 novembre 2026:** V7.12 integrata su `main` con [PR #12](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/12), merge `aad39c250fe626fa94424ff9ce2c08cb6b9ebcc8`. Verificare sempre HEAD `main` all'inizio della prossima chat: se esiste versione successiva prevale. Tag storico `v7.0` conservato.
