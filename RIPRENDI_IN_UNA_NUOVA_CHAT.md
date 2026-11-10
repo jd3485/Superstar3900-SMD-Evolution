@@ -1,3 +1,19 @@
+# RIPRESA PROGETTO SUPERSTAR 3900 SMD EVOLUTION — V7.14 SU MAIN
+
+**10 novembre 2026 · V7.14 integrata in `main`, [PR #14](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/14), merge `5c0940bf213776e93e72f2bd11fd20ce4fa842e7`.** La versione corrente va sempre ricontrollata tramite HEAD `main`, PR e GitHub Actions; `v7.0` storico intatto. **NO FAB / NO TX.**
+
+**Avanzamento CAD vero:** creati due progetti KiCad 9 con `.kicad_pro` e tabelle librerie locali: `04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/` (schema **e PCB** di coupon RX) e `04_KiCad/Assemblaggio_RX_Power_V7.14_LIB_NOT_FOR_FAB/` (gerarchia 7 fogli, NON collegamento elettrico fra i blocchi). I file storici rimangono conservati e il PCB RX è byte-identico alla V7.12. L'ERC RX è **0 errori /0 warning**, da **0/30** V7.13, grazie al corretto caricamento delle librerie KiCad tramite `.kicad_pro` (nessun waiver). La netlist RX e la gerarchia mantengono tutte le membership pin-rete originali: **99 reti gerarchiche identiche**. Il DRC RX è diminuito **85→72 violazioni**, ma rimangono **70 via GND dangling**, **2 footprint mismatch SMA J9102/J9104**, **63 unconnected items** e nessuna nuova pista. ERC root ancora **43 errori +340 warning** (V7.13: 43+370). Questi difetti sono BLOCCANTI per produzione.
+
+**CI della PR #14 verificata:** [Actions run 42886396335](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42886396335), log controllato: **15 V7.14 + 186 regressioni V7.1–V7.13 =201 test Python PASS, 0 FAIL/SKIP**, KiCad9 vero su due progetti con ERC/DRC e netlist. Icarus/Yosys non rieseguiti e nessun test fisico/RF realizzato. Rapporto corrente `Superstar3900_Rapporto_Tecnico_V7.14.md`, specifica `01_Specifiche/V7.14/PROGETTI_KICAD_RX_LIBRERIE_V7_14.md`, ECO `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.14.md`, JSON `03_Verifiche/V7.14/RISULTATI_VERIFICHE_V7_14.json`.
+
+**Prossima V7.15:** verificare con disegno manufacturer i due footprint SMA discordanti J9102/J9104, poi analizzare 70 via GND e 63 reti RX incomplete; ridurre i 43 errori ERC gerarchici, qualificare 15 interfacce MCU/AUX/RX ancora **OPEN/HOLD** e pin FPGA SG48 tuttora HOLD. Proseguire firmware, DSP, PLL, simulazioni, BOM e test. **Nessun Gerber, PCB completo, fabbricazione, PA/antenna o trasmissione RF autorizzati.**
+
+**Procedura nuova chat:** verificare main/PR/tags/CI, leggere questo file, `README.md`, `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md` e rapporto V7.14; continuare V7.15 con vero KiCad, preservando sorgenti storici e senza fabbricare.
+
+---
+
+## ARCHIVIO ISTRUZIONI V7.13 E PRECEDENTI
+
 # RIPRESA PROGETTO SUPERSTAR 3900 SMD EVOLUTION — V7.13 SU MAIN
 
 **10 novembre 2026:** versione integrata più recente **V7.13**, PR [#13](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/13), merge `81928a6fc36f6e3bb98c04338026a4ed2f78769d`. Tag storico `v7.0` conservato. **Alla nuova chat controllare HEAD di `main`, PR aperte e GitHub Actions:** la revisione più recente prevale sempre su questo testo.
