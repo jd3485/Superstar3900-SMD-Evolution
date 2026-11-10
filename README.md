@@ -1,3 +1,23 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.7 SU MAIN
+
+**10 novembre 2026 · PR #7 integrata**, merge `e68743f5474be26732cfb6cd4ad9953404a2935c`. Ultima revisione **candidata software/documentale**, **non circuito fabbricabile**. Il tag storico `v7.0` è preservato. Per il prossimo lavoro verificare sempre l'ultimo HEAD di `main`, non solo questa fotografia.
+
+## Novità V7.7
+- **Top Verilog diagnostico** `08_Firmware_Prototipi/V7.7/rtl/top_virtuale_v77.v`: combina gli strobi /8 e /640 e FIFO virtuale V7.6; `tx_rf_permission`, `dac_pd_released` e `analog_path_connected` restano **0 costanti**. Nessun DAC, clock pin, PA o antenna fisicamente guidati.
+- **Verifiche realmente passate su codice identico:** due testbench Icarus Verilog **PASS**, `Yosys synth -top v77_offline_top; check -assert` generico **PASS**, e **106/106 test Python PASS**, zero FAIL/SKIP (14 V7.7 + 92 V7.1–V7.6); [run GitHub Actions 42819963860](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42819963860), log ispezionato. I commit successivi alla CI positiva hanno cambiato **solo documenti**, non codice/test; la CI sulla PR finale era ancora in fase di installazione al merge. Non attribuirle PASS finché non sia effettivamente completata.
+- Quantizzazione **solo numerica DAC 10bit** con headroom 70%: multitono 750/1250Hz, SNR di errore di quantizzazione **51,47dB**, **NON** prestazione DAC900 elettrico. Step FIR 0→0,4: overshoot 14,205%. Inventario di 12 guasti e requisiti di PD/clock/isolamento indipendente **NON PROVATI HARDWARE**.
+- **Pinout FPGA Lattice SG48 non approvato:** documento ufficiale XLSX v1.1 `51971` identificato ma file binario non acquisito; PCF V7.6 e 48 pad restano **HOLD**, non realizzare il PCB con quei vincoli. Generica Yosys non significa nextpnr/STA/bitstream iCE40.
+- Nuova BOM **8 voci DNP/OPEN**, netlist virtuale **10 terminali DNP/OPEN**, tutte le revisioni V7.1–V7.7 TX fisicamente assenti e non instradate.
+- Rapporti: `Superstar3900_Rapporto_Tecnico_V7.7.md`, `03_Verifiche/V7.7/RAPPORTO_TECNICO_V7.7.md`, `01_Specifiche/V7.7/ARCHITETTURA_RTL_QUANTIZZAZIONE_V7.7.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.7.md`.
+
+**Prossima V7.8:** verifica del foglio XLSX Lattice originale con i 48 pin, qualificazione dei bank/pad/power, vero monitor clock indipendente e supervisor PD hardwired ancora DNP, prove quantitative DSP più ampie e filtro analogico con MPN, Q e SRF; soltanto dopo pinout verificato considerare PNR/STA. **NO FAB / NO TX**.
+
+**Ripresa in altra chat:** leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`; esaminare HEAD `main`, tag, PR, Actions e report più recente, quindi sviluppare prossima revisione con branch/CI/merge. Non dichiarare mai test elettrici, KiCad ERC/DRC, EMC o fabbricazione non eseguiti.
+
+---
+
+## ARCHIVIO — V7.6 E PRECEDENTI (non stato corrente)
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.6 INTEGRATA IN MAIN (10 novembre 2026)
 
 **V7.6 su main**, integrata con [Pull Request #6](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/6), merge `8309d11e1a06473119aafcb71a0cbe2aa0171e61`. È una **revisione sperimentale software/documentale**, non un dispositivo TX o un PCB validato. Il tag storico `v7.0` rimane immutato; prevale sempre HEAD `main` per lo stato più recente.
