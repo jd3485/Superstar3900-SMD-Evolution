@@ -104,6 +104,36 @@ class TestWholeRadioV717(unittest.TestCase):
         self.assertEqual(len(p),1)
         self.assertIn("NO_ASSUMED_EQUIVALENCE",p[0]["blocker"])
 
+    def test_15_fm_canonical_name_is_present_on_mcu_only(self):
+        with MATRIX.open(newline="",encoding="utf-8") as fh:
+            rows=list(csv.DictReader(fh))
+        line=[x for x in rows if x["domain"]=="rx_fm_audio"][0]
+        self.assertEqual(line["source_net"],"FM_DISCR_RAW")
+        self.assertEqual(line["candidate_destination_net"],"FM_DISCRIM_RAW")
+        self.assertEqual(line["physical_connection"],"OPEN")
+        self.assertEqual(line["qualification"],"HOLD")
+
+    def test_16_native_mcu_fm_port_canonicalization_is_not_wiring(self):
+        nets=["/MCU_CODEC_AFE_existing_V2_1_UNQUALIFIED/FM_DISCRIM_RAW"]
+        port=port_candidates(nets,"MCU_CODEC_V2.1","FM_DISCRIM_RAW")
+        self.assertEqual(port["status"],"EXACT_NATIVE_NET_NAME")
+        self.assertTrue(port["exact_matches"])
+
+    def test_17_contract_keeps_full_15_rows_without_duplicate_domains(self):
+        with MATRIX.open(newline="",encoding="utf-8") as fh:
+            rows=list(csv.DictReader(fh))
+        self.assertEqual(len(rows),15)
+        self.assertEqual(len(set(x["domain"] for x in rows)),15)
+
+    def test_18_versioned_full_radio_master_has_no_physical_wires(self):
+        path=ROOT/"04_KiCad"/"Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB"/"S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch"
+        src=path.read_text(encoding="utf-8")
+        self.assertIn("V7.17",src)
+        self.assertEqual(src.count('(property "Sheetfile"'),3)
+        self.assertNotIn("(wire (pts",src)
+        self.assertNotIn('(pin "',src)
+        self.assertIn("NO FAB / NO TX",src)
+
     def test_14_pll_ce_requires_physical_inhibit_and_safe_boot(self):
         with MATRIX.open(newline="",encoding="utf-8") as fh:
             records=list(csv.DictReader(fh))
