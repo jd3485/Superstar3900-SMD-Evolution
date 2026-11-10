@@ -1,3 +1,21 @@
+# RIPRESA FUTURA — SUPERSTAR 3900 SMD EVOLUTION V7.9 SU MAIN
+
+**10 novembre 2026.** V7.9 integrata in `main` con [PR #9](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/9), merge `38b9828728b02581bf24c070401dd70782051dbd`. `v7.0` è tag storico intatto. Se la prossima chat trova una revisione più recente su `main`, usare quella e non questa fotografia.
+
+## Procedura da seguire
+1. Accedere a GitHub privato `jd3485/Superstar3900-SMD-Evolution`; leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`. Verificare HEAD `main`, PR aperte, tag e **risultati delle GitHub Actions**, non fidarsi della sola versione scritta nei vecchi documenti.
+2. Rapporto corrente `Superstar3900_Rapporto_Tecnico_V7.9.md` e `03_Verifiche/V7.9/RAPPORTO_TECNICO_V7.9.md`; specifica `01_Specifiche/V7.9/ARCHITETTURA_HEARTBEAT_WATCHDOG_SRF_V7.9.md`; ECO `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.9.md`; distinte e test in cartelle V7.9.
+3. Stato V7.9: heartbeat numerico 30,72MHz /307200 **toggle ogni 10ms**, WDI falling ogni **20ms**, window TI TPS3430WDRCR CWD=NC SET0=0 SET1=1 **2,22ms max lower /23,375ms min upper**. Secondo riferimento candidato Abracon ASFLK 32.768kHz **DNP**. Il vecchio heartbeat V7.8 /8 è troppo veloce per un riferimento 32,768kHz: non usarlo come interfaccia di monitoraggio fisica. DAC900 PD active-HIGH e WDO TPS3430 open-drain active-LOW NON compatibili senza hardware autonomo con latch.
+4. Filtro IF2 screening numerico di due induttori Coilcraft con SRF catalogo e Q ASSUNTO: mai classificare 0,235dB/88,7dB come prestazioni RF reali. Pinout Lattice `iCE40UP5K` SG48 **HOLD** fino a verifica del workbook XLSX vendor documento 51971. Tutti i ponti TX DNP/OPEN.
+5. **CI verificata PR #9** [run 42848254217](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42848254217): **17 nuovi + 126 regressioni = 143 test Python PASS, 4 bench Icarus PASS, Yosys generic PASS**, log esaminato, zero FAIL/SKIP. Hardware, KiCad ERC/DRC, PNR/STA, EMC, misure, fabbricazione e TX **NON ESEGUITI**.
+6. **Prossima V7.10:** acquisire originale XLSX Lattice con verifica SHA256 e review package/PIO; progettare su carta supervisor indipendente e gate PD/fail-open con simulazione power loss e single fault senza montarlo; qualificare F7401 con vendor Q/ESR/cap/SRF e DAC900 corrente-output I/V; migliorare DSP fixed-point e misure numeriche. Creare report/ECO/BOM/test/CI in branch temporaneo, integrare revisione coerente in main dopo PASS, preservando storia.
+
+**Vincolo permanente NO FAB / NO TX:** nessuna PCB, nessuna alimentazione dei componenti DAC/FPGA/PA, nessuna uscita verso antenna, nessuna abilitazione PTT o emissioni; non attribuire sicurezza reale a booleani HDL.
+
+---
+
+## ARCHIVIO — istruzioni riferite a V7.8 e precedenti
+
 # RIPRESA DI SUPERSTAR 3900 SMD EVOLUTION — V7.8 IN MAIN
 
 **10 novembre 2026:** main ha integrato **V7.8** tramite [PR #8](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/8), merge `75027e768bef2b5a00f69d1675e462b8c35b1366`. Tag `v7.0` baseline storica immutata. Le indicazioni V7.7/V7.6/V7.5 riportate sotto sono archivio: all'inizio della prossima chat verificare comunque se `main` è avanzata oltre questa fotografia.
