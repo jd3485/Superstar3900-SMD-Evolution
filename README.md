@@ -1,3 +1,15 @@
+# Superstar 3900 SMD Evolution — overlay V7.1 candidato (10 novembre 2026)
+
+**Baseline tag immutabile: `v7.0`. Nuovo lavoro V7.1: TX modulatore/IF *SOLO STUDIO* in branch di revisione.** La V7.1 non abilita alcuna RF, non è un circuito completo, e non sostituisce il rapporto V7.0.
+
+- Novità: piano matematico IF2 455kHz → 10.695MHz → 25.615–28.305MHz, inversione USB/LSB per LO alto, simulatori mono-tono AM/FM/SSB/CW esclusivamente offline.
+- Elaborati: `01_Specifiche/V7.1/ARCHITETTURA_TX_IF_INIBITA_V7.1.md`, `NETLIST_PIN_TO_NET_TX_V7.1.csv`, `07_Componenti/BOM_TX_IF_V7.1.csv`, `08_Firmware_Prototipi/V7.1/tx_if_offline_v71.py`, `03_Verifiche/V7.1/RAPPORTO_TECNICO_V7.1.md`.
+- Controllo incremento: 270 posizioni × 5 modi confrontati aritmeticamente con il CSV storico, 9 righe BOM e 22 mapping di pin tutti DNP. Test locali: 6 PASS, 2 SKIP per checkout parziale; CI predisposta ma da verificare.
+- **Forte vincolo NO TX / NO FAB:** mixer e ponticelli DNP, porta RF non instradata, nessuna alimentazione/LO/PA TX fisicamente interconnessi. KiCad ERC/DRC, SPICE/EM e hardware NON ESEGUITI.
+- Prossimo sviluppo: specificare la vera generazione IF2/DUC e filtri, con verifiche di selettività, EMC e interblocchi, sempre in assenza di emissione.
+
+---
+
 # Superstar 3900 SMD Evolution — STATO ATTUALE V7.0
 
 **Aggiornato il 9 novembre 2026. Questa sezione prevale sulle istruzioni storiche sottostanti.**
