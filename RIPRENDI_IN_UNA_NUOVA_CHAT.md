@@ -1,11 +1,23 @@
+# ISTRUZIONI PER OGNI NUOVA CHAT — STATO MAIN V7.1
+
+**Decisione del 10 novembre 2026: la revisione progettuale integrata più recente deve essere su `main`.** V7.1 è stata incorporata in `main` con la PR #1 (merge `4c3585c`). L'ultima baseline taggata, `v7.0`, rimane intatta e recuperabile. **TX RF sempre scollegata e vietata; NO FAB.**
+
+**Sequenza obbligatoria alla ripresa:** (1) aprire GitHub privato `jd3485/Superstar3900-SMD-Evolution`; (2) leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`; (3) controllare l'ultimo commit `main`, i tag, le PR e la CI prima di scegliere la revisione; (4) leggere il rapporto tecnico più recente e i relativi file BOM/netlist/test; (5) continuare un modulo concreto, verificare ciò che è realmente verificabile e aggiornare rapporti e istruzioni; (6) integrare in `main` quando la revisione candidata è coerente e le verifiche dichiarate sono controllate. Se ci sono errori o rischi bloccanti, non forzare il merge.
+
+**Prossimo obiettivo dalla V7.1: V7.2**, generazione IF2/DUC a 455kHz e modulazione multitonale, filtri di selezione IF/RF e fail-closed, senza collegare un finale o un'antenna TX. Non confondere test numerici con KiCad ERC/DRC o prove hardware: **NON ESEGUITI** finché non verificati.
+
+**Nota di continuità:** il contesto deve essere ricostruito dal repository in ogni nuova chat; non dipendere dalla memoria di una chat precedente. Se `main` nel frattempo è avanzato, scegliere **la revisione successiva all'ultimo commit/reporto presente**, non tornare indietro alla V7.1.
+
+---
+
 # RIPRENDERE SUPERSTAR 3900 — V7.1 CANDIDATA, STATO 10 NOVEMBRE 2026
 
-**Verificare prima commit/tag/branch su GitHub.** Il tag `v7.0` rimane la baseline tecnica immutabile. La V7.1 è un overlay di studio su branch/PR, NON una radio completa né una TX funzionante.
+**Verificare prima commit/tag/branch su GitHub.** Il tag `v7.0` rimane la baseline tecnica immutabile. La V7.1 è un overlay di studio ora **integrato in main** via PR #1, NON una radio completa né una TX funzionante.
 
-1. Leggere questo aggiornamento, README, `03_Verifiche/V7.1/RAPPORTO_TECNICO_V7.1.md`, `01_Specifiche/V7.1/ARCHITETTURA_TX_IF_INIBITA_V7.1.md`, BOM, netlist ed ECO V7.1. Se la PR non è ancora stata integrata, confrontare col branch `feature/v7.1-tx-if-fail-closed`.
+1. Leggere questo aggiornamento, README, `03_Verifiche/V7.1/RAPPORTO_TECNICO_V7.1.md`, `01_Specifiche/V7.1/ARCHITETTURA_TX_IF_INIBITA_V7.1.md`, BOM, netlist ed ECO V7.1. La PR #1 è stata integrata; usare `main` per recuperare la V7.1.
 2. V7.1 ha definito IF2 455kHz → IF1 10.695MHz → RF di canale con prodotti immagine 9.785MHz e 47.005–49.695MHz; modello Python offline per cinque modi. Tutti i componenti/collegamenti TX sono DNP e il nodo RF non viene instradato.
 3. **Prossima V7.2**: generatore 455kHz/DUC e vera modulazione audio a più toni + selezione dei filtri IF/RF con dati e simulazioni; non collegare TX RF o finale, non inventare firmware DAC/PLL validato.
-4. Regole invariabili: storico intatto, BOM e netlist, test reali con PASS/SKIP/NOT_RUN separati; ERC/DRC nativo, fabbricazione, laboratorio e trasmissione RF NON autorizzati. Non trattare la documentazione storica V6.x/V7.0 sotto questa sezione come stato più recente del branch.
+4. Regole invariabili: storico intatto, BOM e netlist, test reali con PASS/SKIP/NOT_RUN separati; ERC/DRC nativo, fabbricazione, laboratorio e trasmissione RF NON autorizzati. Non trattare la documentazione storica V6.x/V7.0 sotto questa sezione come stato più recente di `main`.
 
 ---
 
