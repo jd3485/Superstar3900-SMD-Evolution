@@ -1,0 +1,62 @@
+name: V7.7 synth-checkable virtual RTL and 10bit DSP (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.7-synth-quantized-safety-dnp', 'main']
+    paths:
+      - '08_Firmware_Prototipi/V7.7/**'
+      - '03_Verifiche/V7.7/**'
+      - '01_Specifiche/V7.7/**'
+      - '07_Componenti/BOM_TOP_VIRTUALE_V7.7.csv'
+      - '.github/workflows/v77_virtual_synthesis_quantization.yml'
+  pull_request:
+    paths:
+      - '08_Firmware_Prototipi/V7.7/**'
+      - '03_Verifiche/V7.7/**'
+      - '01_Specifiche/V7.7/**'
+      - '07_Componenti/BOM_TOP_VIRTUALE_V7.7.csv'
+      - '.github/workflows/v77_virtual_synthesis_quantization.yml'
+permissions:
+  contents: read
+jobs:
+  virtual-rtl-and-numerical-dsp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Icarus Verilog and Yosys for LOGIC only
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog yosys
+      - name: V7.7 self-checking top simulation
+        run: |
+          iverilog -g2012 -Wall -s tb_top_virtuale_v77 -o /tmp/top_v77.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            08_Firmware_Prototipi/V7.7/rtl/top_virtuale_v77.v \
+            03_Verifiche/V7.7/tb_top_virtuale_v77.v
+          vvp /tmp/top_v77.vvp
+      - name: Yosys synth and structural check of virtual diagnostic top
+        run: |
+          yosys -Q -T -p 'read_verilog -sv 08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v 08_Firmware_Prototipi/V7.7/rtl/top_virtuale_v77.v; synth -top v77_offline_top; check -assert; stat' > /tmp/v77_yosys.log
+          tail -n 28 /tmp/v77_yosys.log
+      - name: V7.7 Python model tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.7 -p 'test_*.py' -v
+      - name: Quantized numerical multitone and transient (no analog or RF)
+        run: python3 -B 08_Firmware_Prototipi/V7.7/quantizzazione_e_sicurezza_offline_v77.py
+      - name: V7.6 RTL simulation regression
+        run: |
+          iverilog -g2012 -Wall -s tb_clock_fifo_virtual_v76 -o /tmp/rtl_v76.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            03_Verifiche/V7.6/tb_clock_fifo_virtual_v76.v
+          vvp /tmp/rtl_v76.vvp
+      - name: Python regressions V7.6
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.6 -p 'test_*.py' -v
+      - name: Python regressions V7.5
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.5 -p 'test_*.py' -v
+      - name: Python regressions V7.4
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.4 -p 'test_*.py' -v
+      - name: Python regressions V7.3
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.3 -p 'test_*.py' -v
+      - name: Python regressions V7.2
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.2 -p 'test_*.py' -v
+      - name: Python regressions V7.1
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v
