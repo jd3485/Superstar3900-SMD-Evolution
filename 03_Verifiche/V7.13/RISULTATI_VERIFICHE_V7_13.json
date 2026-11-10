@@ -1,0 +1,90 @@
+{
+  "revision": "V7.13",
+  "date": "2026-11-10",
+  "scope": "real KiCad9 schematic grid alignment of 50-ohm RX coupon with exact net/pin parity; NO FAB / NO TX",
+  "verified_ci": {
+    "run_id": 42869838167,
+    "job_id": 130017817769,
+    "conclusion": "success",
+    "native_KiCad_version": "9.x Ubuntu apt",
+    "log_inspected": true,
+    "python_groups": {
+      "V713": 10,
+      "V712": 13,
+      "V711": 8,
+      "V710": 12,
+      "V71_to_V79": 143
+    },
+    "python_pass": 186,
+    "python_fail": 0,
+    "python_skip": 0
+  },
+  "rx_schematic": {
+    "symbols_moved": 15,
+    "wire_segments_moved": 31,
+    "label_anchors_moved": 31,
+    "grid_mm": 1.27,
+    "cached_symbol_pin_offsets_changed": false,
+    "component_refs_changed": false,
+    "original_V712_preserved": true,
+    "original_endpoint_off_grid": 46,
+    "new_endpoint_off_grid": 0,
+    "original_erc_errors": 0,
+    "new_erc_errors": 0,
+    "original_erc_warnings": 76,
+    "new_erc_warnings": 30,
+    "remaining_warning_categories": {
+      "lib_symbol_issues": 15,
+      "footprint_link_issues": 15
+    }
+  },
+  "netlist_equivalence": {
+    "source": "two real KiCad9 sch export netlist",
+    "same_net_names": true,
+    "same_multiset_ref_pin_for_every_net": true,
+    "actual_copper_changed": false,
+    "rf_emissions_verified": false
+  },
+  "hierarchy_erc": {
+    "sheets": 7,
+    "original_total": 459,
+    "after_total": 413,
+    "original_errors": 43,
+    "after_errors": 43,
+    "original_warnings": 416,
+    "after_warnings": 370,
+    "electrical_interconnects_qualified": false,
+    "open_hold_interfaces": 15
+  },
+  "rx_board": {
+    "file_from_V712_unchanged": true,
+    "native_drc_violations": 85,
+    "unconnected_items": 63,
+    "dangling_vias": 70,
+    "footprint_link_warnings": 15,
+    "drill_out_of_range": 0,
+    "manufacture_approved": false
+  },
+  "library_links": {
+    "sym_lib_table_added": true,
+    "fp_lib_table_added": true,
+    "kiCad_ERC_missing_library_warning_cleared": false,
+    "absolute_package_pin_vendor_qualified": false
+  },
+  "not_executed": [
+    "physical RF measurement",
+    "PCB fabrication",
+    "complete 50ohm board routing",
+    "complete radio electrical schematic",
+    "root ERC 0-errors",
+    "RX PCB DRC 0-violations",
+    "KiCad package library fit confirmation",
+    "SG48 official Lattice XLSX authentication",
+    "PA/TX hardware",
+    "Icarus/Yosys re-run in V7.13",
+    "analog vendor SPICE",
+    "RF EMC tests"
+  ],
+  "tx_permission": false,
+  "NO_FAB_NO_TX": true
+}

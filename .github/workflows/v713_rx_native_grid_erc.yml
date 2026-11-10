@@ -1,0 +1,93 @@
+name: V7.13 real KiCad RX 1.27mm grid and native netlist-parity (NO FAB NO TX)
+on:
+  push:
+    branches: [main, 'feature/v7.13-rx-libraries-grid-cad']
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.13/**'
+      - '.github/workflows/v713_rx_native_grid_erc.yml'
+  pull_request:
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.13/**'
+      - '.github/workflows/v713_rx_native_grid_erc.yml'
+permissions:
+  contents: read
+jobs:
+  rx-native-kicad-grid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install actual KiCad 9 CLI
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: V7.13 source and non-TX static guards
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.13 -p 'test_*.py' -v
+      - name: Export ACTUAL native V7.12 RX standalone netlist
+        run: |
+          mkdir -p 03_Verifiche/V7.13/output-ci
+          kicad-cli sch export netlist \
+            -o 03_Verifiche/V7.13/output-ci/rx_v712_baseline.net \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_sch
+      - name: Export ACTUAL native V7.13 grid RX netlist
+        run: |
+          kicad-cli sch export netlist \
+            -o 03_Verifiche/V7.13/output-ci/rx_v713_snapped.net \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_GRID_V7_13_NOT_FOR_FAB.kicad_sch
+      - name: Fail closed on ANY native KiCad net/pin membership difference
+        run: python3 -B 03_Verifiche/V7.13/verifica_netlist_rx_v713.py
+      - name: Native KiCad ERC baseline V7.12 RX 50-mil default grid
+        run: |
+          kicad-cli sch erc \
+            -o 03_Verifiche/V7.13/output-ci/rx_v712_erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_sch
+      - name: Native KiCad ERC V7.13 corrected RX unchanged rules
+        run: |
+          kicad-cli sch erc \
+            -o 03_Verifiche/V7.13/output-ci/rx_v713_erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_GRID_V7_13_NOT_FOR_FAB.kicad_sch
+      - name: Native 7-sheet hierarchy ERC diagnostics only
+        run: |
+          kicad-cli sch erc \
+            -o 03_Verifiche/V7.13/output-ci/root_v713_erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_13_GRID_NOT_FOR_FAB.kicad_sch
+      - name: Require 46 to 0 native RX off-grid warnings with no new error
+        run: python3 -B 03_Verifiche/V7.13/verifica_erc_grid_v713.py
+      - name: PCB geometry remains V7.12 baseline, run real KiCad DRC
+        run: |
+          kicad-cli pcb drc \
+            -o 03_Verifiche/V7.13/output-ci/rx_v712_board_unchanged.drc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_pcb
+          python3 - <<'PY'
+          import sys,json
+          from pathlib import Path
+          sys.path.insert(0,"03_Verifiche/V7.11")
+          from confronta_drc_rx_v711 import parse
+          d=parse("03_Verifiche/V7.13/output-ci/rx_v712_board_unchanged.drc.rpt")
+          print(json.dumps(d,indent=2))
+          assert d["drc_violations"]==85 and d["unconnected_items"]==63
+          assert d["categories"].get("drill_out_of_range",0)==0
+          print("PASS unmodified DNP RX PCB native DRC diagnostic, still NOT fabrication ready")
+          PY
+      - name: Upload unchanged source and native KiCad ERC/netlist/DRC evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v713-rx-native-kicad-erc-netlist-parity-NO-FAB
+          path: 03_Verifiche/V7.13/output-ci/
+          if-no-files-found: warn
+      - name: Retain V7.12 and V7.11 and V7.10 CAD regressions
+        run: |
+          for version in V7.12 V7.11 V7.10; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Retain DSP firmware PLL and offline electrical V7.1 through V7.9
+        run: |
+          for version in V7.1 V7.2 V7.3 V7.4 V7.5 V7.6 V7.7 V7.8 V7.9; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
