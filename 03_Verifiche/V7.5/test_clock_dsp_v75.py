@@ -207,6 +207,20 @@ class V75(unittest.TestCase):
         self.assertFalse(p.snapshot()["tx_permission"])
         self.assertIsNone(p.snapshot()["dac_pd_asserted_in_proposed_physical_circuit"])
 
+    def test_22_coherent_image_spectral_spot_checks(self):
+        sys.path.insert(0, str(ROOT/"03_Verifiche"/"V7.5"))
+        from analizza_immagini_multistadio_v75 import analyze
+        results=analyze()
+        self.assertAlmostEqual(results["wanted_750hz_amplitude"],0.4,delta=0.01)
+        specs={"47250":-60,"48750":-60,
+               "239250":-75,"240750":-75,
+               "959250":-90,"960750":-90}
+        for f,limit in specs.items():
+            observed=results["nominal_digital_images"][f]["relative_to_750_hz_db"]
+            self.assertLess(observed,limit,(f,observed,limit))
+        self.assertFalse(results["rf_permission"])
+        self.assertTrue(results["analog_reconstruction_not_modeled"])
+
     def test_20_preserve_270_channel_plan(self):
         p=ROOT/"02_Piano_Frequenze"/"V6.4"/"PIANO_PLL_LO_270_RX_V6.4.csv"
         with p.open(encoding="utf-8",newline="") as fh: rows=list(csv.DictReader(fh))
