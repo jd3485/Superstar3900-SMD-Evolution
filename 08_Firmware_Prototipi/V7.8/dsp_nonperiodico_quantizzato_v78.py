@@ -36,6 +36,21 @@ def bounded_nonperiodic_audio(n=384,seed=78):
             for i in range(n)]
 
 
+def quantize_with_peak_guard(values, headroom=HEADROOM):
+    """Hard fail on raw normalized |x|>1 BEFORE downstream DAC headroom.
+
+    V7.3's numerical quantizer can legitimately encode >1 audio normalized
+    values after scaling by 0.7; that is NOT sufficient for V7.8's stricter
+    input quality contract. This guard is only software, not a hardware gate.
+    """
+    sample=list(values)
+    if not sample:
+        raise ValueError("empty audio buffer")
+    if any(not math.isfinite(v) or abs(v)>1.0 for v in sample):
+        raise ValueError("pre-quantizer normalized full scale exceeded")
+    return quantize_unsigned_10bit(sample,headroom=headroom)
+
+
 def error_stats(values, codes, headroom=HEADROOM):
     if len(values)!=len(codes) or not values:
         raise ValueError("aligned non-empty data required")
@@ -64,7 +79,7 @@ def analyze():
         split.extend(z.real for z in state.process(chunk))
     if one!=split:
         raise ArithmeticError("streaming output depends on block boundaries")
-    codes=quantize_unsigned_10bit(one,headroom=HEADROOM)
+    codes=quantize_with_peak_guard(one,headroom=HEADROOM)
     return {
        "audio_samples":len(audio),
        "if2_baseband_samples":len(one),
@@ -90,7 +105,7 @@ def check_loud_step_rejection(step_value=1.0):
     peak=max(y)
     quantization_accepted=True
     try:
-        quantize_unsigned_10bit(y,headroom=HEADROOM)
+        quantize_with_peak_guard(y,headroom=HEADROOM)
     except ValueError:
         quantization_accepted=False
     return {
