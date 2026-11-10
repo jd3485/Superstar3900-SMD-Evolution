@@ -1,0 +1,76 @@
+{
+  "revision": "V7.10",
+  "date": "2026-11-10",
+  "classification": "first native KiCad integration and defect audit, NO FAB / NO TX",
+  "verified_baseline_run": {
+    "run_id": 42853943931,
+    "job_id": 129961760643,
+    "conclusion": "success",
+    "native_kicad_version": "9.0.8",
+    "log_inspected": true
+  },
+  "integrated_root": {
+    "path": "04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch",
+    "native_netlist_export": "PASS with annotation warning",
+    "sheets": 7,
+    "component_instances": 132,
+    "unique_reference_designators": 118,
+    "reference_designator_collisions": 11,
+    "excess_duplicate_reference_instances": 14,
+    "nets_exported": 99,
+    "physical_cross_module_connections_made": 0,
+    "interface_contract_rows_open_hold": 15,
+    "pcb_full_radio_exists": false
+  },
+  "native_erc": {
+    "root": {
+      "errors": 43,
+      "warnings": 416,
+      "total": 459
+    },
+    "aux_power_v15": {
+      "errors": 22,
+      "warnings": 248,
+      "total": 270
+    },
+    "mcu_codec_v21": {
+      "errors": 18,
+      "warnings": 92,
+      "total": 110
+    },
+    "rx_v52_standalone": {
+      "cli_exit": 3,
+      "reason": "Failed to load schematic",
+      "erc_performed": false,
+      "root_repair_hypothesis_tried_and_rejected": true
+    }
+  },
+  "native_drc": {
+    "rx_v52_coupon": {
+      "drc_violations": 91,
+      "unconnected_items": 63,
+      "drill_out_of_range": 6,
+      "via_dangling": 70,
+      "missing_footprint_library_warnings": 15,
+      "board_release": false
+    }
+  },
+  "software_tests": {
+    "static_v710": 12,
+    "regression_v71_to_v79": 143,
+    "combined": 155,
+    "failed": 0,
+    "skipped": 0
+  },
+  "qualification": {
+    "native_kicad_audit_execution": "PASS",
+    "erc_zero_errors": false,
+    "drc_zero_violations": false,
+    "full_eda_project_validated": false,
+    "kicad_pcb_integrated_complete": false,
+    "spice_or_rf_bench": false,
+    "TX_rails_or_output_connected": false,
+    "manufacturing_approved": false
+  },
+  "next": "V7.11: repair RX schematic parser using versioned sources, reannotate 11 cross-module refs, review 63 missing RX connections / 6 via drills and footprint libraries, connect qualified power-PLL-MCU-RX nets one by one. Keep firmware/regressions. NO FAB/NO TX."
+}
