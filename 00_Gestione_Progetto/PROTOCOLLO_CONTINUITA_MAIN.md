@@ -1,3 +1,18 @@
+# PROTOCOLLO — SUPERSTAR 3900 SMD V7.17 FULL-BOARD INTEGRATION GATE
+
+**11 novembre 2026 · V7.17 su branch/PR, controllare merge e HEAD. NO FAB / NO TX.**
+
+- Master KiCad vero a sette pagine: `04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/`; nessun collegamento elettrico fra AUX/MCU/RX aggiunto; componenti/refs/99 reti e pin membership **IDENTICI** alla V7.14, testati nativamente [GitHub Actions 42923409956](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42923409956).
+- ERC master ancora 43 errori/340 warning, RX 0/0. Priorità 17 problemi elettrici/fili (6 undriven power, 5 undriven inputs, 3 dangling wires, 2 pins NC, 1 power output conflict) +26 label dangling. 219 endpoint_off_grid +121 library issues da risolvere successivamente.
+- CSV V7.17 con 15 interface OPEN/HOLD, `tx_permission=0`, unica rettifica di denominazione candidata destinazione FM `FM_DISCRIM_RAW` come appare in netlist MCU. Assenti `RX_IF_STAGE` (ricezione incompleta), `RF_TX_UNROUTED` (TX intenzionalmente assente). Nessuna alimentazione 5V/3V3, GND_MAIN/GND_RF o PLL SPI può essere implicitamente unita.
+- 18 test V7.17 +223 storici =**241 Python PASS**, 0 falliti/skip; nessuna misura reale, Icarus/Yosys nuovo, PCB totale, assembly o fabbricazione.
+- Rapporto `03_Verifiche/V7.17/RAPPORTO_TECNICO_CAD_V7.17.md`, JSON e artifact nativo ERC+netlist+ledger. Stima PCB totale **~10%**, diagnostica non alza il layout. Prossimo V7.18: risolvere 17 ERC hard guidato da datasheet e circuiti veri, qualificare rail/IF/PLL prima di PCB. SMA J9102/J9104 mantengono 180° meccanici e mismatch da qualificare.
+- **NO FAB / NO PCBWAY / NO GERBER / NO TX**, SG48 HOLD, nessuna antenna o PA connessi.
+
+---
+
+## STORICO PROTOCOLLO V7.16 E PRECEDENTI
+
 # PROTOCOLLO PERMANENTE — V7.16 DIAGNOSTICA SMA, NO FAB / NO TX
 
 **10 novembre 2026 · V7.16 integrata in `main` con PR #16, merge `b8ad95695aed960621f4fd2160fa4b2ae921d6eb`. Verificare sempre HEAD `main`.** Baseline V7.15 conservata e tag storico v7.0 intatto.

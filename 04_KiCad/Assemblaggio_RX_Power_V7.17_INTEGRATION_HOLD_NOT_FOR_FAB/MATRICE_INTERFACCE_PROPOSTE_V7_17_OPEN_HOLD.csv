@@ -1,0 +1,16 @@
+domain,source_module,source_net,candidate_destination_module,candidate_destination_net,physical_connection,qualification,tx_permission,blocker
+power_input,external,+13V8_AUX_RAW,AUX_V1.5,PWR_13V8_AUX_RAW,OPEN,HOLD,0,No connector rating or chassis star point
+ground,AUX_V1.5,GND_MAIN,RX_V5.2,GND_RF,OPEN,HOLD,0,Ground partition and EMC return current not reviewed
+power_5v,AUX_V1.5,5V_RF_PREREGULATED,RX_V5.2,+5V_BENCH,OPEN,HOLD,0,NO_ASSUMED_EQUIVALENCE - current ripple filtering LNA bias and rail startup not qualified
+power_codec,AUX_V1.5,5V_RF_PREREGULATED,MCU_CODEC_V2.1,3V3_CODEC_IO,OPEN,HOLD,0,NO_ASSUMED_EQUIVALENCE - wrong voltage no buck or LDO specified at boundary
+spi_sck,MCU_CODEC_V2.1,PLL_SCK,AUX_V1.5,PLL_SCK,OPEN,HOLD,0,MCU physical pin and voltage-level/boot review required
+spi_sdi,MCU_CODEC_V2.1,PLL_SDI,AUX_V1.5,PLL_SDI,OPEN,HOLD,0,MCU pin level and high impedance reset pending
+spi_csb,MCU_CODEC_V2.1,PLL_CSB,AUX_V1.5,PLL_CSB,OPEN,HOLD,0,CSB default hardware state not validated
+spi_ce,MCU_CODEC_V2.1,PLL_CE,AUX_V1.5,PLL_CE,OPEN,HOLD,0,LMX2572 CE default and hardware inhibit unqualified
+spi_muxout,AUX_V1.5,PLL_MUXOUT,MCU_CODEC_V2.1,PLL_MUXOUT,OPEN,HOLD,0,Physical MCU pin and MUXOUT function unset
+rx_in,external_rx_coupler,RX_RF_INPUT,RX_V5.2,RF_LNA_INPUT,OPEN,HOLD,0,Receive-only RF input bench SMA footprint not approved
+rx_after_atten,RX_V5.2,RF_ATTEN_OUT,MCU_CODEC_V2.1,RX_IF_STAGE,OPEN,HOLD,0,No matching downconversion/IF circuit or frequency link
+rf_bench_power,RX_V5.2,+5V_BENCH,AUX_V1.5,5V_RF_PREREGULATED,OPEN,HOLD,0,NO_ASSUMED_EQUIVALENCE - do not connect two provisional power domains
+rx_fm_audio,external_discriminator,FM_DISCR_RAW,MCU_CODEC_V2.1,FM_DISCRIM_RAW,OPEN,HOLD,0,Canonical label matched to native MCU netlist only - discriminator level protection and external port still unqualified
+codec_mic,MCU_CODEC_V2.1,MIC_CODEC_IN,external_mic,MIC_OUT,OPEN,HOLD,0,No physical microphone bias pinout EMC or ESD
+interlock,external_independent_supervisor,RF_ISOLATOR_OPEN,AUX_V1.5,RF_TX_UNROUTED,OPEN,HOLD,0,No physical TX path or isolator permitted

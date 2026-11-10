@@ -1,0 +1,92 @@
+{
+  "revision": "V7.17",
+  "date": "2026-11-11",
+  "status": "FULL_BOARD_INTEGRATION_GATE_NOT_FOR_FAB",
+  "baseline": "V7.16 main and V7.14 electrical seven-sheet hierarchy",
+  "verified_ci_run": 42923409956,
+  "verified_ci_result": "success",
+  "native_kicad": "KiCad 9.0.8",
+  "hierarchy": {
+    "pages": 7,
+    "original_nets": 99,
+    "v717_master_nets": 99,
+    "all_native_net_names_exact_match": true,
+    "every_pin_membership_exact_match": true,
+    "original_root_erc_errors": 43,
+    "master_root_erc_errors": 43,
+    "original_root_erc_warnings": 340,
+    "master_root_erc_warnings": 340,
+    "standalone_rx_erc_errors": 0,
+    "standalone_rx_erc_warnings": 0,
+    "cross_module_connections_qualified": 0
+  },
+  "erc": {
+    "error_categories": {
+      "label_dangling": 26,
+      "wire_dangling": 3,
+      "power_pin_not_driven": 6,
+      "pin_to_pin": 1,
+      "pin_not_driven": 5,
+      "pin_not_connected": 2
+    },
+    "electrical_hard_errors": 17,
+    "dangling_label_errors": 26,
+    "warning_categories": {
+      "endpoint_off_grid": 219,
+      "lib_symbol_issues": 117,
+      "footprint_link_issues": 4
+    },
+    "all_violations_retained": true,
+    "waivers_added": 0
+  },
+  "interfaces": {
+    "original": 15,
+    "versioned": 15,
+    "still_OPEN_HOLD": 15,
+    "tx_permission_all_zero": true,
+    "only_contract_change": {
+      "domain": "rx_fm_audio",
+      "candidate_destination_before": "FM_DISCR_RAW",
+      "candidate_destination_after": "FM_DISCRIM_RAW",
+      "reason": "native MCU KiCad schematic net label canonicalization only, no electrical hookup"
+    },
+    "missing_candidate_destinations": [
+      {
+        "domain": "rx_after_atten",
+        "candidate": "RX_IF_STAGE",
+        "status": "ABSENT_NEEDS_RF_IF_DESIGN"
+      },
+      {
+        "domain": "interlock",
+        "candidate": "RF_TX_UNROUTED",
+        "status": "ABSENT_INTENTIONAL_TX_HOLD"
+      }
+    ],
+    "not_approved_for_interconnection": [
+      "5V_RF_PREREGULATED",
+      "+5V_BENCH",
+      "3V3_CODEC_IO",
+      "GND_MAIN",
+      "GND_RF",
+      "PLL_CE",
+      "PLL_CSB",
+      "PLL_MUXOUT"
+    ]
+  },
+  "tests": {
+    "new_V717": 18,
+    "previous_V71_to_V716": 223,
+    "python_pass_total": 241,
+    "python_fail": 0,
+    "python_skip": 0,
+    "new_icarus_yosys": false,
+    "new_physical_hardware": false
+  },
+  "full_radio_pcb_layout_started": false,
+  "full_radio_pcb_layout_percent_estimate": 10,
+  "estimate_changed_due_to_this_diagnostic": false,
+  "gerbers_created": false,
+  "pcbway_fabrication_authorized": false,
+  "rf_transmission_permitted": false,
+  "next_release_scope": "V7.18 safe root ERC physical engineering repair after vendor/power/SPIs review; no blind nets"
+}
