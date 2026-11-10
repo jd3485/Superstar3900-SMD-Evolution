@@ -1,4 +1,19 @@
-# ISTRUZIONI PER OGNI NUOVA CHAT — STATO MAIN V7.1
+# RIPRESA IN QUALSIASI NUOVA CHAT — V7.2 INTEGRATA SU MAIN
+
+**10 novembre 2026: la V7.2 è integrata in `main` dalla PR #2 (merge `faab93ea00d64d43b3d4977a5a43f512977043a9`).** Questa intestazione prevale sui vecchi stati V7.1 e V7.0 presenti in archivio qui sotto. Il tag `v7.0` è storico e immutabile: la versione da riprendere è quella del **commit più recente su `main`**.
+
+## Procedura di continuità obbligatoria
+1. Apri il repository GitHub privato `jd3485/Superstar3900-SMD-Evolution`, leggi `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, quindi verifica HEAD `main`, tag, PR e CI.
+2. Apri il **rapporto tecnico più recente** (oggi `Superstar3900_Rapporto_Tecnico_V7.2.md` e `03_Verifiche/V7.2/RAPPORTO_TECNICO_V7.2.md`), l'ECO, le BOM e le netlist. Se esiste una revisione più recente su `main`, **usa quella**.
+3. **Prossima V7.3** da V7.2: selezione concreta DAC/clock e filtro di ricostruzione 455kHz su datasheet, trasformazione del DUC/Hilbert in algoritmo causale a stato per audio non periodico, budget MCU realistico e verifiche offline di spur/occupazione. Non collegare alcun PA, antenna o rete RF TX, non abilitare PTT/TX.
+4. Per ogni revisione aggiungi specifiche, distinta candidati, netlist pin-to-net quando fisicamente documentata, firmware/modello pertinente, test, regressioni, rapporto con **PASS/FAIL/SKIP/NON ESEGUITO** e criticità. Conserva lo storico e integra in `main` dopo verifiche realmente superate.
+5. **NO FAB / NO TX** permanente; i componenti V7.1 e V7.2 della catena TX rimangono **DNP** e l'uscita RF non è instradata. Nessuna dichiarazione inventata di test KiCad ERC/DRC, ngspice, EM o misure hardware.
+
+**Contesto breve:** V7.2 DUC multitonale offline 48kHz→3.84MSa/s a IF2 455kHz, Hilbert 257-tap, AM/FM/USB/LSB/CW; 11 test V7.2 + 8 V7.1 superati in CI, 270 canali verificati, filtri analogici ancora solo ideali. La verifica CI è documentata nel rapporto e su GitHub Actions. Le revisioni precedenti qui sotto sono **storico**, non nuove istruzioni.
+
+---
+
+## ARCHIVIO: istruzioni al tempo di V7.1
 
 **Decisione del 10 novembre 2026: la revisione progettuale integrata più recente deve essere su `main`.** V7.1 è stata incorporata in `main` con la PR #1 (merge `4c3585c`). L'ultima baseline taggata, `v7.0`, rimane intatta e recuperabile. **TX RF sempre scollegata e vietata; NO FAB.**
 
