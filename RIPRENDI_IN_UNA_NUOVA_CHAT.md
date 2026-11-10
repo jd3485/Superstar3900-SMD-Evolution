@@ -1,6 +1,6 @@
 # HANDOFF — SUPERSTAR 3900 SMD V7.17 FULL-RADIO MASTER
 
-**11 novembre 2026 · V7.17 branch/PR, verificare merge/HEAD `main` prima di dichiarare stato. NO FAB / NO TX.**
+**11 novembre 2026 · V7.17 MERGED su `main` tramite [PR #17](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/17), merge `ff26db4e55eb2ab7368cb222de58a8b969cf08d6`. NO FAB / NO TX.**
 
 Ultimo avanzamento non è sul coupon RX ma sulla schematica completa: nuova directory KiCad `04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/` con master a sette fogli (file volutamente denominato `S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch` perché conserva l'identità project KiCad e le annotazioni dei fogli). Native KiCad [CI 42923409956](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42923409956): **99 reti e tutti pin/refs identici baseline, ERC 43 errori/340 warning, RX ERC 0/0, 241 Python PASS** (18 V7.17+223 precedenti), 0 FAIL/SKIP. Gli errori root includono 26 label aperte e 17 problemi elettrici/fili; 219 warning off-grid e121 libreria.
 
