@@ -1,3 +1,14 @@
+# PROTOCOLLO DI CONTINUITA — V7.6 INTEGRATA SU MAIN, 10 NOVEMBRE 2026
+
+- Revisione più recente integrata al momento di questo aggiornamento: **V7.6**, [PR #6](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/6), merge `8309d11e1a06473119aafcb71a0cbe2aa0171e61`. Verificare SEMPRE HEAD `main` in ogni nuova chat: qualsiasi versione successiva prevale su questa fotografia e sui tag storici.
+- CI funzionale modello **Icarus RTL bench PASS** (clock-enable /8,/640, FIFO 16x10bit e fault latched) + **15 Python V7.6 + 22 V7.5 + 21 V7.4 + 15 V7.3 + 11 V7.2 + 8 V7.1 = 92 PASS, 0 FAIL, 0 SKIP**, [GitHub Actions run 42814827870](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42814827870), log verificato; nulla di fisico testato.
+- SG48 `iCE40UP5K-SG48I`: proposta di 48 pin + pad massa e PCF **HOLD**, numerazione ottenuta da copia SECONDARIA e solo conteggi incrociati con Lattice primario; verifica contro documento XLSX ufficiale Lattice ancora bloccante. Nessuna programmazione/HDL synthesis, place-route o mappa pin elettrica approvata.
+- Ultimi documenti: `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md`, `Superstar3900_Rapporto_Tecnico_V7.6.md`, `01_Specifiche/V7.6/ARCHITETTURA_RTL_PINPLAN_PROTEZIONI_V7.6.md`. BOM V7.6 5 DNP, netlist 8 OPEN/DNP. Lo storico v7.0–V7.5 rimane preservato.
+- **Prossima V7.7:** confronto vendor XLSX pinout, top FPGA e tempi/output di clock, monitor clock esterno, POR/PD indipendente, multitone/gradino con DAC quantizzato e filtro/Q/SRF; conservare NO FAB / NO TX anche se i test digitali riescono. Non progettare PA/antenna TX prima di interblocchi fisici indipendenti e validazione normativa.
+- Regola permanente invariata: branch temporanei per sviluppo/test, poi merge nella main più recente dopo verifiche reali; report con PASS/FAIL/SKIP/NON ESEGUITO. **Non dichiarare KiCad/ERC/DRC, SPICE vendor, EMC, hardware, fabbricazione o TX non eseguiti.**
+
+---
+
 # AGGIORNAMENTO PERMANENTE — V7.5 INTEGRATA SU MAIN (10 NOVEMBRE 2026)
 
 - La revisione progettuale integrata più recente alla data di queste note è **V7.5**, [PR #5](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/5), merge `a5ef405f9500c114e8a4d56d7f9b17ba5a89caf1`. Su nuove chat bisogna verificare l'HEAD `main`: una revisione successiva prevale su questo stato storico e sui tag precedenti.
