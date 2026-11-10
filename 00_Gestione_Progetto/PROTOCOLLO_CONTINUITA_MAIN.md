@@ -1,6 +1,6 @@
 # PROTOCOLLO DI CONTINUITÀ MAIN — V7.15 DIAGNOSTICA NATIVA, NO FAB / NO TX
 
-**10 novembre 2026 · proposta PR #15 V7.15; verificare HEAD `main` a ogni nuova chat.** Baseline V7.14 integrata intatta, `v7.0` preservata. Non cambiare circuiti o autorizzare TX in assenza di verifica fisica.
+**10 novembre 2026 · V7.15 integrata su `main` con PR #15, merge `ca81deb3fe83e210778590cc9e2db1a18e16b243`; verificare HEAD `main` a ogni nuova chat.** Baseline V7.14 integrata intatta, `v7.0` preservata. Non cambiare circuiti o autorizzare TX in assenza di verifica fisica.
 
 - V7.15 aggiunge inventario e audit PCB nativo, 12 test e workflow. Dati KiCad9 riproducibili in [run push 42918178033](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918178033) e [PR 42918302874](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42918302874): **213 Python PASS** incluso 201 regressioni; ERC RX 0/0, root 43 errori+340 warning.
 - Test DRC realmente eseguito PRIMA refill su PCB RX originale V7.14 **72 DRC +63 unconnected** (70 via dangling e 2 mismatch SMA J9102/J9104). File 15 footprints, 44 segmenti, 70 via net GND_RF, quattro zone senza `filled_polygon` persistiti.
