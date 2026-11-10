@@ -1,0 +1,109 @@
+{
+  "revision": "V7.9",
+  "date": "2026-11-10",
+  "classification": "offline RTL manufacturer window check and lossy SRF what-if filter model; NO FAB / NO TX",
+  "ci": {
+    "verified_branch_run_id": 42847265093,
+    "job_id": 129938002468,
+    "conclusion": "success",
+    "log_inspected": true,
+    "python_groups": {
+      "V79": 17,
+      "V78": 20,
+      "V77": 14,
+      "V76": 15,
+      "V75": 22,
+      "V74": 21,
+      "V73": 15,
+      "V72": 11,
+      "V71": 8
+    },
+    "python_total_pass": 143,
+    "python_total_fail": 0,
+    "python_total_skip": 0,
+    "icarus_benches_pass": [
+      "V7.9",
+      "V7.8",
+      "V7.7",
+      "V7.6"
+    ],
+    "yosys_generic_synthesis": "PASS",
+    "device_placement_timing_verified": false
+  },
+  "vendor_clock": {
+    "master_hz": 30720000,
+    "master_ticks_per_heartbeat_toggle": 307200,
+    "toggle_rate_hz": 100,
+    "wdi_falling_rate_hz": 50,
+    "wdi_falling_period_ms": 20,
+    "reference_candidate": "Abracon ASFLK-32.768KHZ-LJT",
+    "reference_rate_hz": 32768,
+    "reference_physical": false,
+    "old_v78_toggle_hz": 3840000,
+    "old_clock_alias_risk_at_32k": true,
+    "tps3430_candidate": "TPS3430WDRCR",
+    "watchdog_CWD": "NC",
+    "SET0": 0,
+    "SET1": 1,
+    "CRST": "NC",
+    "vendor_tWDL_max_ms": 2.22,
+    "vendor_tWDU_min_ms": 23.375,
+    "upper_window_margin_at_master_10ppm_ms": 3.3747999979999825,
+    "lower_window_margin_at_master_10ppm_ms": 17.77980000199998,
+    "voltage_and_external_single_fault_latch_built": false,
+    "physical_WDO_or_PD_connection": false
+  },
+  "vendor_wdi_pins": {
+    "1": "VDD1",
+    "2": "CWD",
+    "3": "SET0",
+    "4": "CRST",
+    "5": "GND",
+    "6": "SET1",
+    "7": "WDI",
+    "8": "WDO",
+    "9": "NC",
+    "10": "VDD2",
+    "paddle": "GND"
+  },
+  "filter": {
+    "nominal_ideal_matched_50ohm_max_wanted_loss_db": 0.0007481948508281974,
+    "catalog_substitute_loss_without_srf_db": 0.0006884920496776836,
+    "with_srf_approx_wanted_loss_db": 0.2353714080775981,
+    "with_srf_approx_relative_image_attenuation_min_db": 88.70178116928419,
+    "inductor_candidates": [
+      "Coilcraft MSS1260T-472MLD 4.7uH ±20% 38MHz typical SRF",
+      "Coilcraft MS590PNB183MSZ 18uH ±20% 11.2MHz minimum SRF"
+    ],
+    "inductor_Q_assumed": 60,
+    "capacitor_Q_assumed": 500,
+    "real_inductor_Q_at_455k_vendor_verified": false,
+    "dac900_current_voltage_network_physically_validated": false
+  },
+  "dnp": {
+    "bom_rows": 11,
+    "concept_netlist_rows": 15,
+    "all_DNP": true,
+    "all_physical_connections_open": true,
+    "tx_rf_path_connected": false
+  },
+  "sg48": {
+    "original_vendor_Lattice_XLSX_downloaded": false,
+    "pcf_status": "HOLD",
+    "nextpnr_STA_not_run": true
+  },
+  "not_executed": [
+    "Original Lattice iCE40UP5K SG48 pin XLSX verification",
+    "physical 32.768kHz reference start-up and power",
+    "hardware TPS3430 window reset and pin-load validation",
+    "independent latch and PD power-safe electrical behavior",
+    "single-fault backfeed/welded-relay/rail-off proof",
+    "FPGA ice40 place-and-route timing",
+    "Coilcraft Q at IF2 frequency and vendor parasitic SPICE",
+    "physical DAC900 current-output impedance matching",
+    "KiCad ERC/DRC",
+    "physical lab RF/EMC",
+    "manufacturing",
+    "radio transmission"
+  ]
+}
