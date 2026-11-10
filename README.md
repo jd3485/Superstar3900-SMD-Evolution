@@ -1,6 +1,6 @@
 # SUPERSTAR 3900 SMD EVOLUTION — V7.17 FULL-RADIO KICAD INTEGRATION GATE (NO FAB / NO TX)
 
-**11 novembre 2026 · V7.17 su branch/PR, controllare `main`/PR prima di dichiarare merge.** Il lavoro passa dal solo RX al **master schematico gerarchico per la radio completa**, ma resta senza cablaggi intermodulo e senza PCB unica. La stima di avanzamento layout PCB completa rimane **~10%**: questo è progresso di diagnosi e contratto, non routing/produzione.
+**11 novembre 2026 · V7.17 integrata su `main` tramite [PR #17](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/17), merge `ff26db4e55eb2ab7368cb222de58a8b969cf08d6`.** Il lavoro passa dal solo RX al **master schematico gerarchico per la radio completa**, ma resta senza cablaggi intermodulo e senza PCB unica. La stima di avanzamento layout PCB completa rimane **~10%**: questo è progresso di diagnosi e contratto, non routing/produzione.
 
 **Prova vera KiCad9:** [run 42923409956](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42923409956) PASS. Nuovo master `04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/`: 7 pagine, **99 reti e ogni ref/pin identici alla V7.14**, nessun nuovo wire/port/rail o TX, native root ERC invariato **43 errori/340 warning**, RX ERC **0/0**. **18 test nuovi +223 regressioni =241 PASS, 0 FAIL/0 SKIP**; nessun test Icarus/Yosys/RF nuovo.
 
