@@ -215,10 +215,7 @@
 (label "RF_ATTEN_OUT" (at 169.760 155.000 0) (effects (font (size 1.0 1.0)) (justify left bottom)) (uuid "9803e486-f9ec-58d7-a89e-70297339a829"))
 (wire (pts (xy 185.000 162.620) (xy 185.000 167.700)) (stroke (width 0) (type default)) (uuid "6c896337-a811-53d0-9eeb-1aed7d5f37b6"))
 (label "GND_RF" (at 185.000 167.700 0) (effects (font (size 1.0 1.0)) (justify left bottom)) (uuid "9daaeb04-564e-5274-b69f-759ef1830c25"))
-(text "SCHEMATIC NET-MATCHED STATIC CANDIDATE V4.4 (PCB V3.8 / study V4.3).
-ERC NOT RUN. NO FAB / NO PCBWAY / NO TX.
-SMA LAND PATTERN AND ADL5535 THERMALS UNAPPROVED.
-VERIFY FOOTPRINT LIBRARIES, PIN TYPES, BOM AND SCHEMATIC-PARITY IN NATIVE KICAD." (at 30 230 0) (effects (font (size 1.35 1.35))) (uuid "e5077bc3-17bb-4d5a-9dc0-77254ed70649"))
+(text "SCHEMATIC NET-MATCHED STATIC CANDIDATE V4.4 (PCB V3.8 / study V4.3).\nERC NOT RUN. NO FAB / NO PCBWAY / NO TX.\nSMA LAND PATTERN AND ADL5535 THERMALS UNAPPROVED.\nVERIFY FOOTPRINT LIBRARIES, PIN TYPES, BOM AND SCHEMATIC-PARITY IN NATIVE KICAD." (at 30 230 0) (effects (font (size 1.35 1.35))) (uuid "e5077bc3-17bb-4d5a-9dc0-77254ed70649"))
 
 (sheet_instances (path "/" (page "1")))
 (embedded_fonts no)
