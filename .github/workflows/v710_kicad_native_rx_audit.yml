@@ -44,7 +44,10 @@ jobs:
           path: |
             03_Verifiche/V7.10/output-ci/
           if-no-files-found: warn
-      - name: Regression V7.9 and V7.8 offline tests
+      - name: All historical Python DSP firmware and RX regressions V7.1 to V7.9
         run: |
-          python3 -B -m unittest discover -s 03_Verifiche/V7.9 -p 'test_*.py' -v
-          python3 -B -m unittest discover -s 03_Verifiche/V7.8 -p 'test_*.py' -v
+          for version in V7.1 V7.2 V7.3 V7.4 V7.5 V7.6 V7.7 V7.8 V7.9; do
+            echo "::group::Historical regression ${version}"
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+            echo "::endgroup::"
+          done
