@@ -29,7 +29,7 @@ class V713(unittest.TestCase):
     def test_03_all_coordinates_exact_grid(self):
         symbols,wires,labels=collection(V13.read_text())
         coords=[(m.group(1),m.group(2)) for m in symbols]
-        coords += [(m.group(1),m.group(2)) for m in labels]
+        coords += [(m.group(2),m.group(3)) for m in labels]
         for m in wires:coords.extend([(m.group(1),m.group(2)),(m.group(3),m.group(4))])
         for x,y in coords:
             self.assertAlmostEqual(float(x)/GRID,round(float(x)/GRID),places=6)
@@ -79,7 +79,7 @@ class V713(unittest.TestCase):
             self.assertTrue((parent/"../Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB"/(name+".pretty")).is_dir())
     def test_10_no_tx_and_no_fab(self):
         self.assertNotIn('(wire (pts',ROOT13.read_text())
-        self.assertFalse(any("TX_" in name for name in LABEL.findall(V13.read_text()) if isinstance(name,str)))
+        self.assertFalse(any("TX_" in name for name,_,_,_ in LABEL.findall(V13.read_text())))
         self.assertTrue((V13.parent/"sym-lib-table").read_text().find("NOT FOR FAB")>=0)
 
 if __name__=="__main__":unittest.main()
