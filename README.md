@@ -1,3 +1,23 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.8 INTEGRATA SU MAIN
+
+**10 novembre 2026:** V7.8 integrata con [PR #8](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/8), merge `75027e768bef2b5a00f69d1675e462b8c35b1366`. Questa è la revisione progettuale più recente di questa fotografia, NON hardware certificato. Verificare sempre HEAD `main` e le CI/PR all'inizio di una nuova chat; `v7.0` rimane tag storico immutato.
+
+## Aggiornamenti V7.8
+- **Watchdog diagnostico RTL su due clock virtuali:** heartbeat master e monitor da secondo dominio di riferimento simulato, 3 FF di sincronizzazione, fault latched quando si arresta il master ma il riferimento resta attivo. Tutti i permessi RF, PD e analogici restano **0 costanti**. Secondo clock, hardware supervisor e interlock **NON ESISTONO FISICAMENTE**.
+- **Pinout Lattice SG48:** tool `03_Verifiche/V7.8/audit_pinout_vendor_v78.py` per confronto SHA256/ZIP XML se disponibile originale XLSX. Documento ufficiale 51971 non recuperato, test fatti solo su workbook sintetici: file pin e PCF V7.6 rimangono **HOLD NON APPROVATI PER PCB**.
+- **DSP rigoroso:** quantizzazione 10 bit con guardia `|x| ≤ 1` **prima** dell'headroom del 70%; step 1,0 genera picco FIR numerico **1,142051** e fallisce senza clipping silenzioso. Stimolo audio 375/1730Hz + rumore non periodico, streaming invariato a blocchi, SNR digitale di solo errore di quantizzazione **49,392 dB** (NON SNR DAC reale).
+- **Supervisor rail candidato TI TPS3840PH30DBVR** SOT23-5, reset active-high 3,0V. Solo **DNP/OPEN**, non connesso a PD e non è un watchdog di clock. Nuove BOM **8 DNP/OPEN** e netlist **10 terminali DNP/OPEN**.
+- **CI verificata su codice della feature:** **20 V7.8 + 106 regressioni = 126/126 Python PASS**, 3 testbench Icarus PASS, 2 sintesi logiche Yosys generiche PASS. GitHub Actions [run 42842592233](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42842592233), log controllato. Una prima CI FAIL ha rilevato il criterio headroom debole, poi corretto e riprovato. I commit successivi alla CI positiva hanno aggiunto soltanto registri e rapporti. Le CI sul merge/main vanno verificate separatamente.
+- Rapporto: `Superstar3900_Rapporto_Tecnico_V7.8.md`; specifica: `01_Specifiche/V7.8/ARCHITETTURA_WATCHDOG_PINOUT_DSP_V7.8.md`; ECO: `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.8.md`.
+
+**Prossima V7.9:** acquisire/autenticare originale XLSX Lattice e verificare pin/bank/pad SG48, scegliere davvero secondo riferimento clock/watchdog e isolamento fisico con datasheet/pin, analizzare PD a perdita alimentazione, CDC/MTBF e F7401 con componenti Q/SRF verificati. No PNR/STA né PCB finché la mappa vendor non è approvata.
+
+**Metodo di continuità:** leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, controllare ultima main, lavorare in branch con test/rapporti, unire in `main` dopo risultati validati. **NO FAB / NO TX**: tutti i componenti TX DNP, mixer/PA/antenna non collegati; nessuna emissione o collaudo fisico dichiarato.
+
+---
+
+## ARCHIVIO STORICO — V7.7 E PRECEDENTI (non stato corrente)
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.7 SU MAIN
 
 **10 novembre 2026 · PR #7 integrata**, merge `e68743f5474be26732cfb6cd4ad9953404a2935c`. Ultima revisione **candidata software/documentale**, **non circuito fabbricabile**. Il tag storico `v7.0` è preservato. Per il prossimo lavoro verificare sempre l'ultimo HEAD di `main`, non solo questa fotografia.
