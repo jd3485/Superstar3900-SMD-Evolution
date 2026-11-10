@@ -1,0 +1,81 @@
+name: V7.9 decimated heartbeat TPS3430 window + SRF screening (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.9-slow-heartbeat-watchdog-filter-dnp', 'main']
+    paths:
+      - '08_Firmware_Prototipi/V7.9/**'
+      - '03_Verifiche/V7.9/**'
+      - '01_Specifiche/V7.9/**'
+      - '07_Componenti/BOM_WATCHDOG_FILTRO_V7.9.csv'
+      - '.github/workflows/v79_watchdog_window_srf.yml'
+  pull_request:
+    paths:
+      - '08_Firmware_Prototipi/V7.9/**'
+      - '03_Verifiche/V7.9/**'
+      - '01_Specifiche/V7.9/**'
+      - '07_Componenti/BOM_WATCHDOG_FILTRO_V7.9.csv'
+      - '.github/workflows/v79_watchdog_window_srf.yml'
+permissions:
+  contents: read
+jobs:
+  v79-model-and-regressions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Icarus Verilog and Yosys for model-only checks
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog yosys
+      - name: New V7.9 decimated heartbeat and independent-clock RTL simulation
+        run: |
+          iverilog -g2012 -Wall -s tb_slow_heartbeat_v79 -o /tmp/v79.vvp \
+            08_Firmware_Prototipi/V7.8/rtl/clock_watchdog_indipendente_v78.v \
+            08_Firmware_Prototipi/V7.9/rtl/slow_heartbeat_v79.v \
+            03_Verifiche/V7.9/tb_slow_heartbeat_v79.v
+          vvp /tmp/v79.vvp
+      - name: V7.9 Yosys generic synthesis only no FPGA PNR or bitstream
+        run: |
+          yosys -Q -T -p 'read_verilog -sv 08_Firmware_Prototipi/V7.8/rtl/clock_watchdog_indipendente_v78.v 08_Firmware_Prototipi/V7.9/rtl/slow_heartbeat_v79.v; synth -top v79_virtual_watchdog_top; check -assert; stat' > /tmp/v79_yosys.log
+          tail -n 24 /tmp/v79_yosys.log
+      - name: V7.9 Python manufacturer-window and LC sensitivity checks
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.9 -p 'test_*.py' -v
+      - name: V7.9 numerical LC simulation and WDI/alias metrics
+        run: |
+          python3 -B 03_Verifiche/V7.9/analizza_filtro_srf_v79.py
+          python3 -B -c 'import sys,json;sys.path.insert(0,"08_Firmware_Prototipi/V7.9");import controlli_clock_watchdog_v79 as w;print(json.dumps({"cadence":w.derive_cadence(),"window":w.watchdog_window(),"alias":w.ref_sampling_risk()},indent=2))'
+      - name: V7.8 Icarus bench regression
+        run: |
+          iverilog -g2012 -Wall -s tb_clock_watchdog_v78 -o /tmp/v78.vvp \
+            08_Firmware_Prototipi/V7.8/rtl/clock_watchdog_indipendente_v78.v \
+            03_Verifiche/V7.8/tb_clock_watchdog_v78.v
+          vvp /tmp/v78.vvp
+      - name: V7.7 Icarus bench regression
+        run: |
+          iverilog -g2012 -Wall -s tb_top_virtuale_v77 -o /tmp/v77.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            08_Firmware_Prototipi/V7.7/rtl/top_virtuale_v77.v \
+            03_Verifiche/V7.7/tb_top_virtuale_v77.v
+          vvp /tmp/v77.vvp
+      - name: V7.6 Icarus bench regression
+        run: |
+          iverilog -g2012 -Wall -s tb_clock_fifo_virtual_v76 -o /tmp/v76.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            03_Verifiche/V7.6/tb_clock_fifo_virtual_v76.v
+          vvp /tmp/v76.vvp
+      - name: Python regressions V7.8
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.8 -p 'test_*.py' -v
+      - name: Python regressions V7.7
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.7 -p 'test_*.py' -v
+      - name: Python regressions V7.6
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.6 -p 'test_*.py' -v
+      - name: Python regressions V7.5
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.5 -p 'test_*.py' -v
+      - name: Python regressions V7.4
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.4 -p 'test_*.py' -v
+      - name: Python regressions V7.3
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.3 -p 'test_*.py' -v
+      - name: Python regressions V7.2
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.2 -p 'test_*.py' -v
+      - name: Python regressions V7.1
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v
