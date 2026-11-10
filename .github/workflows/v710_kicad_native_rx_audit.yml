@@ -33,6 +33,8 @@ jobs:
             -o 03_Verifiche/V7.10/output-ci/integration.net \
             04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch
           test -s 03_Verifiche/V7.10/output-ci/integration.net
+      - name: Audit duplicate component references in KiCad-generated netlist
+        run: python3 -B 03_Verifiche/V7.10/analizza_netlist_kicad_v710.py
       - name: Native KiCad ERC and RX PCB DRC (legacy defects allowed but COUNTED)
         run: |
           python3 -B 03_Verifiche/V7.10/esegui_kicad_audit_v710.py
