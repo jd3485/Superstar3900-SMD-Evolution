@@ -8,7 +8,7 @@ from math import cos, pi, sqrt, log10, isfinite
 from pathlib import Path
 import sys
 
-ROOT=Path(__file__).resolve().parents[3]
+ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/"08_Firmware_Prototipi"/"V7.5"))
 sys.path.insert(0,str(ROOT/"08_Firmware_Prototipi"/"V7.3"))
 from interpolatore_multistadio_offline_v75 import ThreeStageInterpolator
