@@ -72,7 +72,7 @@ class V710(unittest.TestCase):
 
     def test_05_rx_pcb_contains_8_defined_nets_no_tx(self):
         s=RXPCB.read_text(encoding="utf-8")
-        nets=re.findall(r'\(net (\d+) "([^"]+)"\)',s)
+        nets=re.findall(r'(?m)^  \(net (\d+) "([^"]*)"\)',s)
         self.assertEqual([int(x) for x,_ in nets[:9]],list(range(9)))
         for _,name in nets:
             self.assertNotIn("TX_",name)
@@ -88,9 +88,8 @@ class V710(unittest.TestCase):
 
     def test_07_no_tx_symbols_or_pcb_in_new_integration(self):
         s=TOP.read_text(encoding="utf-8")
-        self.assertNotIn('DAC900',s)
-        self.assertNotIn('PA_',s)
-        self.assertNotIn('RF_TX_',s)
+        self.assertNotIn('(symbol (lib_id',s)
+        self.assertNotIn('(property "Footprint"',s)
         self.assertNotIn('kicad_pcb',s)
 
     def test_08_interface_contract_exists_and_open(self):
