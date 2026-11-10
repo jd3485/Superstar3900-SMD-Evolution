@@ -200,6 +200,13 @@ class V75(unittest.TestCase):
         self.assertFalse(clock.tx_permission(ptt=True,final=True,bench=True))
         self.assertFalse(fir.tx_permission(ptt=True,dac=True))
 
+    def test_21_default_startup_guard_matches_vendor_upper_bound(self):
+        p=clock.StartupFaultPlanner()
+        self.assertEqual(p.stable_required,92_160)
+        self.assertEqual(clock.resource_plan()["oscillator_max_startup_ticks_ceiling"],92_160)
+        self.assertFalse(p.snapshot()["tx_permission"])
+        self.assertIsNone(p.snapshot()["dac_pd_asserted_in_proposed_physical_circuit"])
+
     def test_20_preserve_270_channel_plan(self):
         p=ROOT/"02_Piano_Frequenze"/"V6.4"/"PIANO_PLL_LO_270_RX_V6.4.csv"
         with p.open(encoding="utf-8",newline="") as fh: rows=list(csv.DictReader(fh))
