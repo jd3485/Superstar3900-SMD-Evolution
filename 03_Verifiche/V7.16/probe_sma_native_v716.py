@@ -62,7 +62,9 @@ def variant_board(original,experiment):
 
 def run_one(experiment,root,original):
     import pcbnew
-    clone=root/experiment
+    clone=root
+    # Must be a direct sibling of the original KiCad project: fp-lib-table
+    # uses historical relative paths resolved from the project directory.
     shutil.copytree(SRC,clone,dirs_exist_ok=True)
     path=clone/PCB.name
     modified=variant_board(original,experiment)
@@ -92,16 +94,16 @@ def main():
             "source_pad_geometry_preserved":True,
             "vendor_2d_3d_CAD_imported":False,
             "experiments":{}, "no_fab":True,"no_tx":True}
-    with tempfile.TemporaryDirectory(prefix="v716_sma_probes_",dir=SRC.parent) as td:
-        for experiment in ("as_saved","reference_value_text_180_diagnostic",
-                           "orientation_0_diagnostic","pad_rotation_180_diagnostic"):
-            try:
+    for experiment in ("as_saved","reference_value_text_180_diagnostic",
+                       "orientation_0_diagnostic","pad_rotation_180_diagnostic"):
+        try:
+            with tempfile.TemporaryDirectory(prefix="v716_sma_"+experiment+"_",dir=SRC.parent) as td:
                 data=run_one(experiment,Path(td),original)
-                result["experiments"][experiment]=data
-                print(experiment,json.dumps(data["native_drc"]))
-            except Exception as e:
-                result["experiments"][experiment]={"status":"FAILED","reason":repr(e)}
-                print(experiment,"FAILED",repr(e))
+            result["experiments"][experiment]=data
+            print(experiment,json.dumps(data["native_drc"]))
+        except Exception as e:
+            result["experiments"][experiment]={"status":"FAILED","reason":repr(e)}
+            print(experiment,"FAILED",repr(e))
     result["source_pcb_unchanged"]=hashlib.sha256(PCB.read_bytes()).hexdigest()==checksum
     (OUT/"v716.sma_native_forensics.json").write_text(json.dumps(result,indent=2)+"\n")
     print(json.dumps(result,indent=2))
