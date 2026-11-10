@@ -1,3 +1,19 @@
+# RIPRESA SUPERSTAR 3900 SMD EVOLUTION — HANDOFF V7.16
+
+**10 novembre 2026: V7.16 su branch diagnostica/PR. Controllare sempre HEAD `main`, PR, CI e tag.** Baseline V7.15 già integrata, tag storico `v7.0` e tutte le versioni preserved. **NO FAB / NO TX.**
+
+**KiCad nativo verificato** [Actions 42920876308](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42920876308): quattro cloni di progetto V7.14, fill zone reale con `pcbnew.ZONE_FILLER`, quindi DRC vero. Baseline J9102/J9104 a 180°: 2 warning footprint e zero unconnected. Etichette ruotate: 2. Custom pad ruotati: 2. Intero footprint J9102/J9104 ruotato a 0°: DRC 0, ma **montaggio errato** sul lato destro della PCB; il courtyard passerebbe da x117,9–137,2 a x106,8–126,1 mm, fuori direzione rispetto al connettore che deve uscire dal bordo x130. NON utilizzare questa falsa correzione. Originale byte-identico (V7.12 = V7.14), nessun TX/fab.
+
+**Risultati software**: **10 nuovi test V7.16 +213 regressioni V7.1–V7.15 =223 PASS, 0 FAIL/SKIP**. Restano ERC RX 0/0, root 43 errori+340 warning, 15 cross-module OPEN/HOLD, SG48 HOLD, nessuna qualifica RF o vendor. Non rieseguiti Icarus/Yosys.
+
+**Fonti/documenti**: `README.md`; `03_Verifiche/V7.16/RAPPORTO_TECNICO_CAD_V7.16.md`, `RISULTATI_VERIFICHE_V7_16.json`; `01_Specifiche/V7.16/PROTOCOLLO_SMA_ORIENTAMENTO_KICAD_V7_16.md`, workflow `.github/workflows/v716_sma_native.yml`. TE CONSMA002-SMD DXF e STEP elencati ufficialmente, ma CAD originale non scaricato/importato/approvato.
+
+**Prossima V7.17:** import e validazione geometrica vendor DXF/STEP, mismatch SMA senza cambiare il montaggio a 180°, provare PCB refill versionata **NOT_FOR_FAB**, poi root ERC/interfacce e test DSP/PLL/firmware. No Gerber, ordini PCBWay, PA/antenna o RF TX.
+
+---
+
+## STORICO HANDOFF V7.15 E PRECEDENTI
+
 # RIPRESA SUPERSTAR 3900 SMD EVOLUTION — HANDOFF V7.15
 
 **10 novembre 2026: V7.15 integrata in `main` con [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15), merge `ca81deb3fe83e210778590cc9e2db1a18e16b243`. Controlla SEMPRE HEAD `main`, ultimi PR e CI prima di continuare.** Baseline V7.14 conservata, nessun PCB originale cambiato. Tag `v7.0` storico intatto. **NO FAB / NO TX.**
