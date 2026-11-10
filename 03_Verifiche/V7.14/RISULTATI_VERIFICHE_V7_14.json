@@ -1,0 +1,121 @@
+{
+  "revision": "V7.14",
+  "date": "2026-11-10",
+  "scope": "Actual project-local KiCad9 .kicad_pro, schematic/PCB and library-table diagnostic improvement, NO FAB NO TX",
+  "baseline_commit": "02f2aeaa4f1a37c232a3840016bf743f71ab8424",
+  "ci": {
+    "run_id": 42885432839,
+    "job_id": 130072389853,
+    "conclusion": "success",
+    "log_inspected": true,
+    "kicad_version": "9.0.x CI apt package",
+    "python_tests": {
+      "V714": 15,
+      "V713": 10,
+      "V712": 13,
+      "V711": 8,
+      "V710": 12,
+      "V79": 17,
+      "V78": 20,
+      "V77": 14,
+      "V76": 15,
+      "V75": 22,
+      "V74": 21,
+      "V73": 15,
+      "V72": 11,
+      "V71": 8
+    },
+    "python_pass": 201,
+    "python_fail": 0,
+    "python_skip": 0,
+    "new_icarus_tests_executed": false,
+    "new_yosys_synthesis_executed": false
+  },
+  "RX": {
+    "schematic": {
+      "native_erc_old": {
+        "errors": 0,
+        "warnings": 30,
+        "missing_symbol_library": 15,
+        "missing_footprint_libraries": 15
+      },
+      "native_erc_new": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "exact_native_net_and_pin_memberships_unchanged": true,
+      "component_refs": 15,
+      "symbols_vendor_PIN_verified": false
+    },
+    "pcb": {
+      "same_raw_bytes_as_v712": true,
+      "copper_modification": false,
+      "old_drc_violations": 85,
+      "new_drc_violations": 72,
+      "via_dangling": 70,
+      "footprint_library_mismatch": 2,
+      "mismatch_refs": [
+        "J9102",
+        "J9104"
+      ],
+      "unconnected_items": 63,
+      "undersized_drills": 0,
+      "pcb_drc_clean": false
+    },
+    "project_files": [
+      ".kicad_pro",
+      ".kicad_sch",
+      ".kicad_pcb",
+      "sym-lib-table",
+      "fp-lib-table",
+      "S3900E.kicad_sym"
+    ],
+    "libraries_physically_qualified": false
+  },
+  "hierarchy": {
+    "native_old_nets": 99,
+    "native_new_nets": 99,
+    "every_net_name_ref_pin_pair_identical": true,
+    "sheets": 7,
+    "electrical_module_interconnects_added": 0,
+    "interfaces_open_hold": 15,
+    "old_ERC": {
+      "errors": 43,
+      "warnings": 370,
+      "total": 413
+    },
+    "new_ERC": {
+      "errors": 43,
+      "warnings": 340,
+      "total": 383
+    },
+    "root_ERC_clean": false,
+    "remaining_categories": {
+      "lib_symbol_issues": 117,
+      "footprint_link_issues": 4,
+      "endpoint_off_grid": 219,
+      "label_dangling": 26,
+      "wire_dangling": 3,
+      "power_pin_not_driven": 6,
+      "pin_to_pin": 1,
+      "pin_not_driven": 5,
+      "pin_not_connected": 2
+    }
+  },
+  "method": "Removed missing-library configuration warnings by adding valid minimal KiCad projects, not by waiving or disabling DRC/ERC; no vendor footprint approval",
+  "not_executed": [
+    "KiCad GUI visual/manufacturing review",
+    "SMA J9102 J9104 vendor footprint qualification",
+    "RF via return-path and power integrity",
+    "63 RX incomplete copper connections routing",
+    "43 root ERC errors repair",
+    "All FPGA SG48 pad constraints",
+    "PCB Gerbers/assembly",
+    "bench RF/EMC",
+    "TX"
+  ],
+  "pcb_fabrication_allowed": false,
+  "rf_transmission_permitted": false,
+  "NO_FAB_NO_TX": true,
+  "next": "V7.15 qualify two SMA footprint mismatches and actual RF return path/routing before reducing 70 dangling vias/63 unconnected and root 43 ERC errors; preserve DSP/firmware regressions."
+}
