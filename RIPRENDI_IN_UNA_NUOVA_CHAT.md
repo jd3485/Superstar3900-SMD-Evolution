@@ -1,3 +1,19 @@
+# RIPRENDERE IL PROGETTO — V7.3 IN MAIN · 10 NOVEMBRE 2026
+
+**La V7.3 è già integrata in `main` tramite PR #3, merge `9f64126f5490d34921da726d41354518b34be9a7`.** Questa sezione prevale sugli stati V7.2, V7.1, V7.0 e vecchi piani riportati in seguito. Il tag `v7.0` identifica la baseline storica, **non** la versione da cui riprendere il lavoro.
+
+## Procedura permanente per la prossima chat
+1. Aprire GitHub privato `jd3485/Superstar3900-SMD-Evolution`, leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`. Verificare l'ultimo commit su **`main`**, eventuali PR/tag e test CI prima di avanzare la versione.
+2. Leggere `Superstar3900_Rapporto_Tecnico_V7.3.md`, `01_Specifiche/V7.3/ARCHITETTURA_DUC_DAC_V7.3.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.3.md`, BOM e netlist. La V7.3 ha un DSP causale *offline* IF2 455kHz, DAC900E candidato **DNP**, LPF ricostruzione **solo matematica**, e **34/34 test software in CI PASS**. NESSUN hardware o TX.
+3. **Prossima V7.4:** sviluppare concretamente il bridge/clock per DAC e l'interfaccia corrente→tensione e filtraggio a 455kHz con componenti veri e pin verificati, budget alimentazioni, architettura DSP più efficiente. **Non** supporre che STM32G474 possa emettere direttamente 3,84MSa/s paralleli, né che una LPF 50Ω si adatti automaticamente al DAC in corrente.
+4. Revisioni successive: aggiungere schemi candidati, BOM, netlist pin-to-net solo se documentata, MCU/firmware/modelli, verifiche numeriche riproducibili e regressioni con esiti **PASS/FAIL/SKIP/NON ESEGUITO**; preservare lo storico e integrare in `main` al superamento delle verifiche dichiarate.
+5. **NO FAB / NO TX**: tutti i componenti TX nelle V7.1–V7.3 DNP, uscita mixer non instradata; KiCad/ERC/DRC e misure su hardware NON ESEGUITI. Nessun finale RF o antenna connessa.
+6. Se `main` è avanzato ancora rispetto a queste note, prevalgono gli **ultimi commit e rapporti realmente presenti**, non questa fotografia. La continuità dipende dal repository, non dalla memoria della chat.
+
+---
+
+## ARCHIVIO STORICO — istruzioni riferite a V7.2 e revisioni precedenti
+
 # RIPRESA IN QUALSIASI NUOVA CHAT — V7.2 INTEGRATA SU MAIN
 
 **10 novembre 2026: la V7.2 è integrata in `main` dalla PR #2 (merge `faab93ea00d64d43b3d4977a5a43f512977043a9`).** Questa intestazione prevale sui vecchi stati V7.1 e V7.0 presenti in archivio qui sotto. Il tag `v7.0` è storico e immutabile: la versione da riprendere è quella del **commit più recente su `main`**.
