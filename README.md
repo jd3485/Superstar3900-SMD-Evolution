@@ -1,3 +1,21 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.11 CAD NATIVO SU MAIN
+
+**10 novembre 2026:** V7.11 integrata con [PR #11](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/11), merge `028c3a5f8d9f638d423be251a7a06336a961ead7`. La priorità attuale è **schemi e PCB KiCad reali**, senza abbandonare firmware, DSP, simulazioni, componenti, documentazione e test. Verificare sempre HEAD `main`; il tag `v7.0` rimane storico.
+
+## Cosa è stato realmente modificato in V7.11
+- Creato un nuovo **`.kicad_pcb` nativo, editabile** da una copia del coupon RX 50Ω V5.2: `04_KiCad/Modulo_RX_Test_50ohm_V7.11_DRC_REPAIR_NOT_FOR_FAB/S3900E_RX_TEST_50R_V7_11_DRILL_LIBRARY_REPAIR_NOT_FOR_FAB.kicad_pcb`. Sei fori delle via GND sotto U101 corretti **0,25→0,30mm** e relative piazzole rame **0,55→0,60mm**; originale V5.2 inalterato, nessuna nuova pista/net/componenti TX.
+- **Confronto DRC con `kicad-cli` nativo, REALMENTE ESEGUITO**: RX originale **91 DRC violations /63 unconnected**, V7.11 **85 DRC violations /63 unconnected**. Esattamente **6 `drill_out_of_range`→0**; restano **70 `via_dangling`** e **15 `lib_footprint_issues`**, anche dopo nuova `fp-lib-table` relativa. **Non è un DRC PASS** e non si autorizza fabbricazione.
+- Verifiche sul branch: [Actions run 42856926563](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42856926563), job 129972377360, log esaminato: **8 test Python V7.11 +12 V7.10 +143 regressioni V7.1–V7.9 = 163 PASS /0 FAIL/0 SKIP**; DRC nativo comparativo PASS per miglioramento soltanto, **non** zero errori. Rapporto `Superstar3900_Rapporto_Tecnico_V7.11.md`, specifica `01_Specifiche/V7.11/PIANO_CORREZIONI_KICAD_RX_V7.11.md`, ECO `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.11.md`, JSON `03_Verifiche/V7.11/RISULTATI_VERIFICHE_V7_11.json`.
+- Il root KiCad gerarchico V7.10 RX/AUX/MCU rimane un **indice elettricamente isolato**, con 132 istanze/11 riferimenti duplicati, 15 interfacce OPEN/HOLD, 43 errori ERC+416 warning. Lo schema RX standalone continua a fallire `kicad-cli sch erc` (exit3). **Il PCB completo della radio ancora non esiste**. Il pinout Lattice SG48 resta HOLD. Nessuna protezione TX fisica autorizzata.
+
+**Prossima V7.12:** sistemare caricamento KiCad schema RX standalone e designatori ripetuti, riparare librerie/footprint, reti GND e **63 connessioni mancanti** senza tracciare a caso; affrontare i residui ERC e connettere power/MCU/RX soltanto dopo validazione delle reti. Continuare regressioni DSP/firmware e simulazioni; nessun Gerber o TX.
+
+**NO FAB / NO TX:** non alimentare DAC/FPGA/mixer/PA/antenna; i test KiCad diagnosticano difetti e non autorizzano PCB o emissioni. Per riprendere da un'altra chat leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`.
+
+---
+
+## ARCHIVIO — V7.10 e versioni precedenti
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.10 CAD NATIVO INTEGRATA IN MAIN
 
 **10 novembre 2026:** V7.10 integrata su `main` con [PR #10](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/10), merge `8a18c12df4455265db8414784587f4d82a1f82ae`. È la prima milestone centrata sul **vero progetto KiCad**, senza abbandonare software, DSP, firmware e test storici. Il tag `v7.0` è storico e preservato: verificare sempre l'HEAD di `main` prima di continuare.
