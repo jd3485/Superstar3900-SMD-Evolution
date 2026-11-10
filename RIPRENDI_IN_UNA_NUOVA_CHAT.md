@@ -1,3 +1,21 @@
+# RIPRESA DA QUALSIASI NUOVA CHAT — V7.6 SU MAIN
+
+**10 novembre 2026.** Ultima revisione integrata in `main`: **V7.6**, PR #6, merge `8309d11e1a06473119aafcb71a0cbe2aa0171e61`. Il tag v7.0 preserva soltanto la baseline storica; gli stati V7.5 e precedenti in questo file sotto l'archivio NON sono lo stato corrente. In una chat futura prevale comunque **l'ultimo commit verificato su main** anche quando più nuovo della V7.6.
+
+## Procedura operativa di ripresa
+1. Aprire il repository GitHub privato `jd3485/Superstar3900-SMD-Evolution`, leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`; controllare commit HEAD main, tag, PR aperte e workflow GitHub Actions.
+2. Leggere il rapporto più recente, oggi `Superstar3900_Rapporto_Tecnico_V7.6.md` e `03_Verifiche/V7.6/RAPPORTO_TECNICO_V7.6.md`, la specifica V7.6, ECO, BOM e netlist. Se main è passato alla V7.7 o successiva, NON tornare indietro.
+3. Stato V7.6: RTL comportamentale Verilog per strobi /8 e /640 e FIFO virtuale con fault bloccati, **testbench Icarus PASS**, **92/92 Python PASS** in CI su PR #6 [run 42814827870](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42814827870). Segnali RF e rilascio PD sempre zero; simulazione NON equivale a firmware FPGA. Pin-plan SG48 candidata 48 pin + paddle, PCF **HOLD / non verificato contro XLSX vendor originale**, nessun place-route, PCB o collegamento RF.
+4. Prossima revisione **V7.7**: verificare XLSX ufficiale Lattice document_id=51971 e concludere il pinout FPGA senza inventare pad; implementare un TOP HDL simulabile e qualificare sintesi/constraints quando disponibili; monitor esterno di arresto clock, supervisor POR/PD analogico indipendente, analisi single-fault, DAC 10bit quantizzato, DSP su multitoni/transitori e filtro Q/SRF vendor.
+5. Conservare i file storici e la baseline immutabile, usare un branch provvisorio per sviluppare, eseguire test/regressioni reali, scrivere report con PASS/FAIL/SKIP/NON ESEGUITO, e integrare in **main** dopo verifiche superate. Non accettare green CI numerica come approvazione KiCad/ERC/DRC, EMI o safety hardware.
+6. **NO FAB / NO TX senza eccezioni.** Il DAC900 PD pin15 active-high con pulldown interno, oscillatore ASDMB STANDBY active-low, FPGA con GPIO non definiti durante avvio e GND sul paddle richiedono verifica fisica indipendente. Tutti i componenti e ponti del TX sono DNP; nessun finale RF o antenna TX collegata; non abilitare PTT/emissioni.
+
+**Messaggio minimo:** Riprendi Superstar 3900 SMD Evolution dal repository GitHub privato `jd3485/Superstar3900-SMD-Evolution`; verifica `main`, leggi README, protocollo e rapporto tecnico più recente, poi continua la revisione successiva con test e merge in main, mantenendo **NO FAB / NO TX**.
+
+---
+
+## ARCHIVIO — istruzioni storiche V7.5 e precedenti
+
 # RIPRENDERE IN QUALSIASI NUOVA CHAT — SUPERSTAR 3900 SMD EVOLUTION V7.5
 
 **Fotografia 10 novembre 2026: V7.5 INTEGRATA IN MAIN** tramite PR #5, merge `a5ef405f9500c114e8a4d56d7f9b17ba5a89caf1`. Tag `v7.0` storico preservato, non ultimo ramo. Le sezioni V7.4/V7.3/V7.2 ecc. più sotto sono solo archivio.
