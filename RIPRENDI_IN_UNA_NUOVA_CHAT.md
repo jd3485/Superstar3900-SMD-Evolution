@@ -1,3 +1,21 @@
+# RIPRENDERE IL PROGETTO IN NUOVA CHAT — V7.7 IN MAIN
+
+**Fotografia 10 novembre 2026:** revisione progettuale **V7.7 già integrata in `main`** mediante [PR #7](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/7), merge `e68743f5474be26732cfb6cd4ad9953404a2935c`. Il tag `v7.0` è storico. Gli stati V7.6 e precedenti riportati sotto l'archivio sono soltanto cronologia.
+
+## Istruzioni permanenti di continuità
+1. Aprire `jd3485/Superstar3900-SMD-Evolution` su GitHub privato, leggere `README.md`, questo file e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`. **Verificare SEMPRE HEAD `main`, PR e Actions**, perché se la revisione è già passata alla V7.8 o successiva, prevale quella.
+2. Leggere `Superstar3900_Rapporto_Tecnico_V7.7.md`, `03_Verifiche/V7.7/RAPPORTO_TECNICO_V7.7.md`, `01_Specifiche/V7.7/ARCHITETTURA_RTL_QUANTIZZAZIONE_V7.7.md`, ECO, BOM e netlist prima di modificare sorgenti.
+3. V7.7: **top RTL diagnostico** con strobe/FIFO, porte RF/PD/analogico tutte 0, due bench Icarus **PASS**, sintesi logica **Yosys generica PASS**, **106 Python PASS**, log [run 42819963860](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42819963860). I commit successivi al run validato contenevano soltanto report/documentazione; la PR-run finale era ancora in installazione alla data del merge: controllarne l'esito prima di citarla. Modello quantizzazione 10bit offline SNR numerica ~51,47dB; NO DAC fisico.
+4. **Prossima V7.8:** acquisire originale XLSX Lattice SG48 documento `51971` e confrontare pin 1–48/paddle, conservare **HOLD** sulla PCF sino alla verifica ufficiale. Solo dopo, top fisico, PNR, STA e pin IO bank; approfondire supervisor indipendente PD e watchdog autonomo, power sequencing, filtro Q/SRF con MPN. Tutta l'elettronica TX DNP.
+5. Ogni sviluppo aggiunge specifiche, distinta, netlist accurata, modello/RTL quando pertinente, test e regressioni, report distinguendo **PASS, FAIL, SKIP, NON ESEGUITO**, poi integra in **`main`** quando coerente. Non sovrascrivere lo storico/tag.
+6. **NO FAB / NO TX**. DAC900 PD active-high con pull-down interno può essere ON con pin flottante; nessun modello software rende un hardware safe. RF, PA, antenna e PTT non connessi, nessun KiCad ERC/DRC, banco, EMC, misure TX o fabbricazione dichiarati senza prova reale.
+
+**Messaggio per la prossima chat:** Riprendi Superstar 3900 SMD Evolution da `jd3485/Superstar3900-SMD-Evolution`. Verifica lo stato attuale di main e la CI, leggi README, protocollo e rapporto tecnico più recente e sviluppa la revisione seguente, mantenendo DNP e NO FAB / NO TX.
+
+---
+
+## ARCHIVIO — istruzioni storiche riferite a V7.6 E PRECEDENTI
+
 # RIPRESA DA QUALSIASI NUOVA CHAT — V7.6 SU MAIN
 
 **10 novembre 2026.** Ultima revisione integrata in `main`: **V7.6**, PR #6, merge `8309d11e1a06473119aafcb71a0cbe2aa0171e61`. Il tag v7.0 preserva soltanto la baseline storica; gli stati V7.5 e precedenti in questo file sotto l'archivio NON sono lo stato corrente. In una chat futura prevale comunque **l'ultimo commit verificato su main** anche quando più nuovo della V7.6.
