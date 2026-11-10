@@ -22,6 +22,8 @@ def main():
         refill=parse(OUT/"v715.rx.refilled_volatile.drc.rpt")
     elif marker!="UNSUPPORTED_NOT_RUN":
         raise ValueError("Refill mode unknown; cannot claim it ran")
+    probe=json.loads((OUT/"v715.pcbnew_temporary_clone_probe.json").read_text())
+    clone=probe["native_drc"] if probe["status"]=="EXECUTED" else None
     source=audit()
     check(source)
     disk_hash=hashlib.sha256(PCB.read_bytes()).hexdigest()
@@ -34,6 +36,12 @@ def main():
         "baseline_native_drc":base,
         "volatile_zone_refill_supported":refill is not None,
         "volatile_zone_refill_native_drc":refill,
+        "pcbnew_temporary_clone_refill_executed":clone is not None,
+        "pcbnew_temporary_clone_native_drc":clone,
+        "pcbnew_saved_filled_polygons":probe["saved_filled_polygons_on_temporary_clone"],
+        "pcbnew_original_sha256_unchanged":probe["source_project_unchanged"],
+        "pcbnew_delta_violations":clone["drc_violations"]-base["drc_violations"] if clone else None,
+        "pcbnew_delta_unconnected":clone["unconnected_items"]-base["unconnected_items"] if clone else None,
         "delta_drc_violations":(refill["drc_violations"]-base["drc_violations"]) if refill else None,
         "delta_unconnected_items":(refill["unconnected_items"]-base["unconnected_items"]) if refill else None,
         "baseline_drc_clean":base["drc_violations"]==0 and base["unconnected_items"]==0,
@@ -52,6 +60,17 @@ def main():
         raise SystemExit("70 via dangling native baseline drift")
     if base["categories"].get("lib_footprint_mismatch",0)!=2:
         raise SystemExit("2 SMA library mismatch native baseline drift")
+    if not probe["source_project_unchanged"]:
+        raise SystemExit("Source PCB SHA drift during pcbnew clone probe")
+    if clone is not None:
+        if not (clone["drc_violations"]==2 and clone["unconnected_items"]==0
+                and clone["categories"].get("lib_footprint_mismatch",0)==2
+                and clone["categories"].get("via_dangling",0)==0
+                and probe["saved_filled_polygons_on_temporary_clone"]==4):
+            raise SystemExit("New KiCad pcbnew filled-clone DRC baseline changed; inspect without waivers")
+        print("PASS: genuine cloned zone-fill native DRC 72->2, unconnected 63->0; NOT RF/vendor qualification")
+    else:
+        print("NOT RUN: pcbnew filled-clone DRC unavailable; retain RX DRC blockers")
     print("PASS: native KiCad DRC diagnostic and immutable PCB, NOT fabrication or TX release")
 
 if __name__=="__main__":
