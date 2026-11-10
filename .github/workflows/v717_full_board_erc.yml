@@ -48,7 +48,7 @@ jobs:
         run: python3 -B 03_Verifiche/V7.17/audit_full_board_native_v717.py
       - name: Verify 99 exact native KiCad net and pin memberships preserved V7.14 to V7.17
         run: python3 -B 03_Verifiche/V7.17/verify_versioned_full_board_master_v717.py
-      - name: Verify 14 explicit V7.17 interface, isolation and TX safety tests
+      - name: Verify 18 explicit V7.17 interface, hold-master and TX safety tests
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.17 -p 'test_*.py' -v
       - name: Preserve all 223 prior KiCad, DSP, PLL and firmware regression tests
         run: |
