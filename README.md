@@ -1,4 +1,21 @@
-# Superstar 3900 SMD Evolution — stato attuale V7.1 integrato in main
+# Superstar 3900 SMD Evolution — STATO ATTUALE V7.2 IN MAIN
+
+**10 novembre 2026 · `main` integra la V7.2 tramite [PR #2](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/2), merge `faab93ea00d64d43b3d4977a5a43f512977043a9`.** Questo è un **avanzamento progettuale candidato**, non un trasmettitore validato. Ultimo tag storico immutabile `v7.0`; per la revisione attiva controllare sempre HEAD di `main`, non soltanto il tag.
+
+## Novità V7.2
+- Modello digitale **solo offline** di sorgente IF2 455 kHz: audio 48 kHz, interpolazione 80× a 3,84 MSa/s, Hilbert 257 tap per USB/LSB e AM/FM/CW a più toni/impulso; nessun DAC/GPIO/PA fisicamente controllato.
+- Studio numerico matematico F7201 IF1 e F7202 RF (Butterworth **ideali**, non filtri qualificati), comparazione aritmetica con **270 canali / 30 ALFA** del piano storico, regressioni logiche fail-closed.
+- **19/19 test GitHub Actions PASS** (11 V7.2 + 8 V7.1) nel checkout integrale; [run 42794577497](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42794577497) completata con `success`. Non sono misure di laboratorio.
+- Nuova BOM da **8 voci DNP**, netlist concettuale **12 terminali DNP**: DAC U7301 e filtro F7301 senza MPN e pin fisici non inventati. U7201/U7202 e tutti i ponti TX V7.1 restano DNP; uscita RF senza instradamento.
+- Documenti: `01_Specifiche/V7.2/ARCHITETTURA_DUC_IF2_V7.2.md`, `Superstar3900_Rapporto_Tecnico_V7.2.md`, `03_Verifiche/V7.2/RAPPORTO_TECNICO_V7.2.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.2.md`.
+
+**Prossima V7.3:** selezione progettuale DAC/clock e filtro di ricostruzione 455 kHz, digital processing *causale* per audio non periodico, budget computazionale e test spettrali offline su transitori; nessun collegamento a finale/antenna. Persistono blocchi RX/PLL, alimentazioni, MPN filtri, interblocchi V6.2, KiCad/ERC/DRC, EM, hardware e conformità normativa.
+
+**Regola permanente per nuove chat:** leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, verificare l'ultima revisione `main` e proseguire con nuovo modulo/test; integrare la revisione coerente in `main`, mantenendo lo storico. **NO FAB / NO TX.**
+
+---
+
+## ARCHIVIO: stato V7.1 integrato in main (10 novembre 2026)
 
 **10 novembre 2026 · V7.1 integrata con PR #1 · commit merge `4c3585c`.** Il branch principale `main` è la fonte dell'ultima revisione progettuale integrata. Il tag `v7.0` rimane la baseline storica immutabile. **V7.1 è solo un candidato numerico/documentale: NO FAB / NO TX.**
 
