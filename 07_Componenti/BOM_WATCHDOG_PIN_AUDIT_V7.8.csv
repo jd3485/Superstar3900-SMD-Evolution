@@ -1,0 +1,9 @@
+reference,quantity,function,vendor_mpn,package,assembly,physical_connection,verification
+U7901,1,3.0V rail supervisor candidate active-high reset,Texas Instruments TPS3840PH30DBVR,SOT-23-5,DNP,OPEN,Manufacturer orderable part confirmed; pinout and PD wiring NOT verified
+U7902,1,Independent oscillator-domain watchdog physical IC requirement,TBD,TBD,DNP,OPEN,No IC selected or independent-clock physical verification
+X7901,1,Second reference clock candidate for external clock monitor,TBD,TBD,DNP,OPEN,No independent oscillator selected or powered
+Q7901,1,Fail-open analog and RF isolation device requirement,TBD,TBD,DNP,OPEN,No electrically fail-open device selected
+R7901,1,DAC900 PD hardwired default-asserted pull-up study,TBD,0603,DNP,OPEN,Not a tested power-up or backfeed scheme
+R7902,1,Deliberately absent DAC digital link zero-ohm,TBD,0603,DNP,OPEN,Do not fit; all DAC parallel lines remain unrouted
+C7901,1,Supervisor CT programmable reset delay capacitor placeholder,TBD,0603,DNP,OPEN,Delay values and ramp behavior not tested
+J7901,1,Virtual independent-clock diagnostics test connector,TBD,NO FOOTPRINT,DNP,OPEN,No connector pins mapped or routed
