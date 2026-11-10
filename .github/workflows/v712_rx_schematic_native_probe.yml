@@ -1,0 +1,55 @@
+name: V7.12 native RX standalone schematic probe (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.12-rx-standalone-annotation-cad', main]
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.12/**'
+      - '.github/workflows/v712_rx_schematic_native_probe.yml'
+  pull_request:
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.12/**'
+      - '.github/workflows/v712_rx_schematic_native_probe.yml'
+permissions:
+  contents: read
+jobs:
+  standalone-rx-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real KiCad CLI
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: Probe both original and normalized RX schematics without waivers
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          files={
+            "original_V5.2":Path("04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_RX_TEST_50R_V5_2_LINKED_STUDY_NOT_FOR_FAB.kicad_sch"),
+            "candidate_V7.12":Path("04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_sch"),
+          }
+          out=Path("03_Verifiche/V7.12/output-ci")
+          out.mkdir(parents=True,exist_ok=True)
+          for name,file in files.items():
+            for op in ("erc","netlist"):
+              if op=="erc":
+                cmd=["kicad-cli","sch","erc","-o",str(out/(name+".rpt")),str(file)]
+              else:
+                cmd=["kicad-cli","sch","export","netlist","-o",str(out/(name+".net")),str(file)]
+              p=subprocess.run(cmd,text=True,capture_output=True,timeout=90)
+              status=f"{name} {op} RETURN {p.returncode} stdout={p.stdout!r} stderr={p.stderr!r}"
+              print(status,flush=True)
+              (out/(name+"_"+op+"_return.txt")).write_text(status+"\n")
+          PY
+      - name: Upload experimental native reports and diagnostic errors
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v712-rx-schematic-native-load-probe-NO-FAB
+          path: 03_Verifiche/V7.12/output-ci/
+          if-no-files-found: warn
