@@ -1,3 +1,17 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.17 FULL-RADIO KICAD INTEGRATION GATE (NO FAB / NO TX)
+
+**11 novembre 2026 · V7.17 su branch/PR, controllare `main`/PR prima di dichiarare merge.** Il lavoro passa dal solo RX al **master schematico gerarchico per la radio completa**, ma resta senza cablaggi intermodulo e senza PCB unica. La stima di avanzamento layout PCB completa rimane **~10%**: questo è progresso di diagnosi e contratto, non routing/produzione.
+
+**Prova vera KiCad9:** [run 42923409956](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42923409956) PASS. Nuovo master `04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/`: 7 pagine, **99 reti e ogni ref/pin identici alla V7.14**, nessun nuovo wire/port/rail o TX, native root ERC invariato **43 errori/340 warning**, RX ERC **0/0**. **18 test nuovi +223 regressioni =241 PASS, 0 FAIL/0 SKIP**; nessun test Icarus/Yosys/RF nuovo.
+
+**Contratto 15 interfacce TUTTE OPEN/HOLD:** sola rettifica candidata del nome FM lato MCU `FM_DISCR_RAW` → `FM_DISCRIM_RAW` già esistente nel vero schema. Nessuna connessione reale effettuata. Mancano tuttora `RX_IF_STAGE` (catena RX→IF da progettare) e `RF_TX_UNROUTED` (TX volutamente non presente). Rail 5V/3V3 e GND da qualificare, 17 errori ERC a livello elettrico/fili e 26 label. Report e JSON `03_Verifiche/V7.17/`, workflow `.github/workflows/v717_full_board_erc.yml`.
+
+**Prossimo:** V7.18 affrontare ERC fisici POWER/PLL e collegamenti SPI solo dopo verifica datasheet/pinout, poi 15 interfacce, schema completo e primo layout PCB reale della radio. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
+## STORICO README V7.16 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.16 DIAGNOSI ORIENTAMENTO SMA (NO FAB / NO TX)
 
 **10 novembre 2026 · V7.16 integrata su `main` con [PR #16](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/16), merge `b8ad95695aed960621f4fd2160fa4b2ae921d6eb`. Verificare sempre HEAD di `main`.** È un avanzamento **diagnostico CAD nativo** e NON un PCB aggiornato/producibile.
