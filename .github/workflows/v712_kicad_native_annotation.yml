@@ -56,11 +56,11 @@ jobs:
           folder=Path("03_Verifiche/V7.12/output-ci")
           file=Path("04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_sch")
           proc=subprocess.run(["kicad-cli","sch","erc","-o",str(folder/"v712_rx_standalone_erc.rpt"),str(file)],capture_output=True,text=True,timeout=75)
-          obj={"native_kicad_exit":proc.returncode,"stdout":proc.stdout,"stderr":proc.stderr,"report_generated":(folder/"v712_rx_standalone_erc.rpt").exists(),"standalone_erc_pass":False,"NO_FAB_NO_TX":True}
+          obj={"native_kicad_exit":proc.returncode,"stdout":proc.stdout,"stderr":proc.stderr,"report_generated":(folder/"v712_rx_standalone_erc.rpt").is_file(),"standalone_root_load_fixed":proc.returncode==0,"standalone_erc_zero_violations":False,"NO_FAB_NO_TX":True}
           (folder/"v712_rx_standalone_load_status.json").write_text(json.dumps(obj,indent=2)+"\n")
           print("RX STANDALONE NATIVE KICAD STATUS",json.dumps(obj,indent=2))
-          if proc.returncode not in (0,3):
-            raise SystemExit("unexpected native KiCad CLI error")
+          if proc.returncode != 0 or not (folder/"v712_rx_standalone_erc.rpt").is_file():
+            raise SystemExit("RX standalone native KiCad parser regression")
           PY
       - name: Verify revised PCB DRC has not regressed from V7.11 and retain report
         run: |
