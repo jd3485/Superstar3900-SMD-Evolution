@@ -1,0 +1,57 @@
+name: V7.11 native RX PCB drill and footprint-table DRC comparison (NO FAB NO TX)
+on:
+  push:
+    branches: [main, 'feature/v7.11-rx-coupon-native-drc-repair']
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.11_DRC_REPAIR_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.11/**'
+      - '.github/workflows/v711_rx_coupon_native_drc.yml'
+  pull_request:
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.11_DRC_REPAIR_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.11/**'
+      - '.github/workflows/v711_rx_coupon_native_drc.yml'
+permissions:
+  contents: read
+jobs:
+  native-rx-cad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real KiCad CLI
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: Verify versioned native PCB was modified only in six vias and open library links
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.11 -p 'test_*.py' -v
+      - name: KiCad native DRC of original V5.2 (preserve ALL warnings)
+        run: |
+          mkdir -p 03_Verifiche/V7.11/output-ci
+          kicad-cli pcb drc -o 03_Verifiche/V7.11/output-ci/rx_v52_legacy_drc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_RX_TEST_50R_V5_2_LINKED_STUDY_NOT_FOR_FAB.kicad_pcb
+          test -s 03_Verifiche/V7.11/output-ci/rx_v52_legacy_drc.rpt
+      - name: KiCad native DRC of corrected V7.11 PCB, project-local footprint table
+        run: |
+          kicad-cli pcb drc -o 03_Verifiche/V7.11/output-ci/rx_v711_repaired_drc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.11_DRC_REPAIR_NOT_FOR_FAB/S3900E_RX_TEST_50R_V7_11_DRILL_LIBRARY_REPAIR_NOT_FOR_FAB.kicad_pcb
+          test -s 03_Verifiche/V7.11/output-ci/rx_v711_repaired_drc.rpt
+      - name: Native report comparison MUST prove 6 drill errors removed
+        run: python3 -B 03_Verifiche/V7.11/confronta_drc_rx_v711.py
+      - name: Publish both native KiCad DRC reports and machine-readable comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v711-original-vs-fixed-native-kicad-drc-NO-FAB
+          path: 03_Verifiche/V7.11/output-ci/
+          if-no-files-found: warn
+      - name: V7.10 original KiCad hierarchy regression and static checks
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.10 -p 'test_*.py' -v
+      - name: Preserve firmware DSP numeric and safety regressions V7.1 to V7.9
+        run: |
+          for version in V7.1 V7.2 V7.3 V7.4 V7.5 V7.6 V7.7 V7.8 V7.9; do
+            echo "::group::Historical regression ${version}"
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+            echo "::endgroup::"
+          done
