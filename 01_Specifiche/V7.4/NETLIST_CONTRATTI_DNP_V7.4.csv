@@ -1,0 +1,9 @@
+reference,pin,concept_net,assembly,meaning
+R7501,1,DAC_IOUT_NOT_CONNECTED,DNP,Unpopulated conceptual shunt at pin22
+R7501,2,AGND_CONCEPT_NOT_CONNECTED,DNP,Unpopulated nominal 50ohm
+R7502,1,F7401_INPUT_50OHM_NOT_CONNECTED,DNP,Unpopulated hypothetical line load
+R7502,2,AGND_CONCEPT_NOT_CONNECTED,DNP,Unpopulated nominal 50ohm
+R7503,1,DAC_IOUT_NOT_CONNECTED,DNP,Deliberate physical open between DAC and filter
+R7503,2,F7401_LPF_NOT_CONNECTED,DNP,Deliberate physical open between DAC and filter
+R7504,1,DAC_IOUTB_NOT_CONNECTED,DNP,Unpopulated optional complement dummy load
+R7504,2,AGND_CONCEPT_NOT_CONNECTED,DNP,Unpopulated optional complement dummy load
