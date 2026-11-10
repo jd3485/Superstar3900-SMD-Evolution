@@ -1,0 +1,84 @@
+{
+  "revision": "V7.16",
+  "date": "2026-11-10",
+  "status": "DIAGNOSTIC_NOT_FOR_FAB",
+  "baseline_main": "V7.15",
+  "source_board_v714_unchanged": true,
+  "workflow_run_id": 42920876308,
+  "workflow_conclusion": "success",
+  "native_kicad9": {
+    "method": "pcbnew real zone fill on separate sibling-directory disposable clones; kicad-cli pcb drc",
+    "as_saved_filled": {
+      "violations": 2,
+      "unconnected": 0,
+      "lib_footprint_mismatch": 2
+    },
+    "reference_value_text_180": {
+      "violations": 2,
+      "unconnected": 0,
+      "lib_footprint_mismatch": 2
+    },
+    "pad_rotation_180": {
+      "violations": 2,
+      "unconnected": 0,
+      "lib_footprint_mismatch": 2
+    },
+    "footprint_orientation_0_DIAGNOSTIC_ONLY": {
+      "violations": 0,
+      "unconnected": 0,
+      "lib_footprint_mismatch": 0,
+      "mechanically_wrong": true
+    },
+    "root_erc_current_errors": 43,
+    "root_erc_current_warnings": 340
+  },
+  "mechanical": {
+    "board_right_edge_x_mm": 130,
+    "board_left_edge_x_mm": 20,
+    "J9101_J9103_orientation_deg": 0,
+    "J9102_J9104_orientation_deg": 180,
+    "SMA_local_courtyard_x_mm": [
+      -15.2,
+      4.1
+    ],
+    "J9102_J9104_current_global_courtyard_x_mm": [
+      117.9,
+      137.2
+    ],
+    "J9102_J9104_diagnostic_zero_deg_courtyard_x_mm": [
+      106.8,
+      126.1
+    ],
+    "required_external_overhang_on_right_mm": 7.2,
+    "orientation_zero_is_not_approved_design_change": true
+  },
+  "vendor": {
+    "manufacturer": "TE Connectivity/Linx",
+    "part": "CONSMA002-SMD",
+    "drawing": "C-CONSMA002-SMD-X-X Rev D",
+    "manufacturer_url": "https://www.te.com/en/product-CONSMA002-SMD.html",
+    "center_pad_diameter_mm": 2.05,
+    "transverse_footprint_dimension_mm": 7.76,
+    "manufacturer_DXF_STEP_downloaded": false,
+    "vendor_footprint_approved": false
+  },
+  "tests": {
+    "V716_new": 10,
+    "regressions_V71_through_V715": 213,
+    "passed_total": 223,
+    "fail": 0,
+    "skip": 0,
+    "new_icarus_yosys_run": false,
+    "physical_rf_test": false
+  },
+  "open_gates": {
+    "sma_library_mismatches_with_required_rotation": 2,
+    "root_erc_errors": 43,
+    "crossmodule_interfaces_hold": 15,
+    "FPGA_SG48_hold": true,
+    "full_rf_return_vendor_qualified": false
+  },
+  "fabrication_permitted": false,
+  "tx_permitted": false,
+  "gerbers_created": false
+}
