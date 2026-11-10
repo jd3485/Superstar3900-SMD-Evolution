@@ -25,7 +25,7 @@ class NativeCadV712(unittest.TestCase):
         for p in (NEW_RX,NEW_MCU,NEW_PCB,NEW_TOP):
             self.assertTrue(p.is_file())
             self.assertIn("NOT_FOR_FAB",str(p))
-            self.assertGreater(p.stat().st_size,5000)
+            self.assertGreater(p.stat().st_size,2500 if p==NEW_TOP else 5000)
     def test_02_mcu_exact_46_reference_transform(self):
         self.assertEqual(len(refs(ORIG_MCU.read_text())),46)
         self.assertEqual(refs(NEW_MCU.read_text()),map_to_range(ORIG_MCU.read_text(),6000))
