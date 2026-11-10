@@ -1,6 +1,6 @@
 # SUPERSTAR 3900 SMD EVOLUTION — V7.15 REFILL GND DIAGNOSTICO, NO FAB / NO TX
 
-**10 novembre 2026 · V7.15 proposta dalla [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15); dopo merge usare HEAD `main` come riferimento.** Storico e tag `v7.0` conservati. Questo è un avanzamento DIAGNOSTICO REALE, **non una PCB di produzione né una radio finita**.
+**10 novembre 2026 · V7.15 integrata in `main` con [PR #15](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/15), merge `ca81deb3fe83e210778590cc9e2db1a18e16b243`. Verificare sempre HEAD `main`.** Storico e tag `v7.0` conservati. Questo è un avanzamento DIAGNOSTICO REALE, **non una PCB di produzione né una radio finita**.
 
 **Risultato nativo KiCad sorprendente ma documentato:** 70 via GND_RF dangling e63 unconnected DRC della V7.14 derivavano dal test su zone **non salvate come copper fill**. La CI V7.15 ha riempito le quattro zone con il vero `pcbnew.ZONE_FILLER` in una copia TEMPORANEA integrale del progetto (nessuna variazione del PCB sorgente, SHA256 invariato), poi `kicad-cli pcb drc` ha misurato **72→2 violazioni** e **63→0 unconnected**; **J9102/J9104 lib_footprint_mismatch rimangono 2**. Si tratta di prova sul clone, non di correzioni CAD persistite o qualifica fisica. `--refill-zones` non era supportato dal CLI della CI ed è registrato NON ESEGUITO, sostituito da una reale prova con pcbnew.
 
