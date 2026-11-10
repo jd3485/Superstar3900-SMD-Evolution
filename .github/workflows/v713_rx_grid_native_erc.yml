@@ -1,0 +1,77 @@
+name: V7.13 native KiCad RX 50mil grid and symbol library (NO FAB NO TX)
+on:
+  push:
+    branches: [main, 'feature/v7.13-rx-grid-symbol-library-cad']
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_REPAIR_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_REPAIR_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.13/**'
+      - '.github/workflows/v713_rx_grid_native_erc.yml'
+  pull_request:
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_REPAIR_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_REPAIR_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.13/**'
+      - '.github/workflows/v713_rx_grid_native_erc.yml'
+permissions:
+  contents: read
+jobs:
+  native-kicad-rx:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install KiCad 9 native CLI
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: V7.13 source, grid and NO-TX invariant tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.13 -p 'test_*.py' -v
+      - name: Real KiCad netlist export on V7.12 root
+        run: |
+          mkdir -p 03_Verifiche/V7.13/output-ci
+          kicad-cli sch export netlist \
+            -o 03_Verifiche/V7.13/output-ci/hierarchy_v712.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.12_REANNOTATED_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch
+      - name: Real KiCad netlist export on V7.13 corrected grid root
+        run: |
+          kicad-cli sch export netlist \
+            -o 03_Verifiche/V7.13/output-ci/hierarchy_v713.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_REPAIR_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_13_GRID_NOT_FOR_FAB.kicad_sch
+      - name: Strict verification of all 99 net names and EVERY PIN on them
+        run: python3 -B 03_Verifiche/V7.13/verifica_integrita_netlist_v713.py
+      - name: Real KiCad RX standalone V7.12 ERC baseline
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.13/output-ci/rx_v712_erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_sch
+      - name: Real KiCad RX standalone V7.13 ERC grid and symbol library
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.13/output-ci/rx_v713_erc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_13_GRID_NOT_FOR_FAB.kicad_sch
+      - name: Real KiCad seven sheet root V7.13 ERC inventory
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.13/output-ci/root_v713_erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.13_GRID_REPAIR_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_13_GRID_NOT_FOR_FAB.kicad_sch
+      - name: Real KiCad DRC unchanged RX coupon board
+        run: |
+          kicad-cli pcb drc -o 03_Verifiche/V7.13/output-ci/rx_v713_pcb_drc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.13_GRID_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_13_GRID_NOT_FOR_FAB.kicad_pcb
+      - name: Native ERC and DRC quality gate without suppression
+        run: python3 -B 03_Verifiche/V7.13/verifica_erc_drc_nativi_v713.py
+      - name: Upload real KiCad netlists and ERC/DRC reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v713-kicad-erc-drc-netpin-audit-NO-FAB
+          path: 03_Verifiche/V7.13/output-ci/
+          if-no-files-found: warn
+      - name: Preserve all 13 V7.12 and 8 V7.11 and 12 V7.10 tests
+        run: |
+          for ver in V7.12 V7.11 V7.10; do
+            python3 -B -m unittest discover -s 03_Verifiche/${ver} -p 'test_*.py' -v
+          done
+      - name: Preserve 143 firmware/DSP/RF numerical and safety tests V7.1 to V7.9
+        run: |
+          for ver in V7.1 V7.2 V7.3 V7.4 V7.5 V7.6 V7.7 V7.8 V7.9; do
+            python3 -B -m unittest discover -s 03_Verifiche/${ver} -p 'test_*.py' -v
+          done
