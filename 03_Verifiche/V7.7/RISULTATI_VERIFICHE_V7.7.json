@@ -1,0 +1,81 @@
+{
+  "revision": "V7.7",
+  "date": "2026-11-10",
+  "classification": "Offline RTL logical synthesis/simulation and numerical quantization; NO FAB / NO TX",
+  "ci_verified_branch_run": {
+    "id": 42819963860,
+    "job_id": 129842672029,
+    "status": "success",
+    "source_log_reviewed": true,
+    "verilog_v77_bench": "PASS",
+    "verilog_v76_regression_bench": "PASS",
+    "yosys_generic_logic_synth_and_check": "PASS",
+    "python_tests": {
+      "V77": 14,
+      "V76": 15,
+      "V75": 22,
+      "V74": 21,
+      "V73": 15,
+      "V72": 11,
+      "V71": 8,
+      "passed_total": 106,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "quantization_model": {
+    "tones_hz": [
+      750,
+      1250
+    ],
+    "headroom": 0.7,
+    "fs_hz": 3840000,
+    "window_samples": 30720,
+    "numerical_error_rms": 0.0008011652422630285,
+    "numerical_snr_db": 51.47038433081939,
+    "code_min": 300,
+    "code_max": 723,
+    "nonperiodic_step_level": 0.4,
+    "step_peak": 0.45682053845428033,
+    "step_overshoot_pct": 14.20513461357007,
+    "step_peak_code": 675,
+    "hardware_dac_snr_measured": false
+  },
+  "virtual_rtl": {
+    "top": "v77_offline_top",
+    "physical_dac_clock_output": false,
+    "tx_rf_permission": false,
+    "physical_pd_release": false,
+    "analog_connection": false,
+    "external_clock_watchdog_present": false,
+    "pnr_done": false,
+    "sta_done": false,
+    "bitstream_done": false
+  },
+  "vendor_pinout": {
+    "vendor_document_id": "51971",
+    "official_spreadsheet_listed": true,
+    "official_xlsx_content_fetched": false,
+    "secondary_v76_pin_plan_status": "HOLD",
+    "physical_pin_numbers_certified": false
+  },
+  "hardware": {
+    "bom_items": 8,
+    "netlist_terminals": 10,
+    "all_dnp": true,
+    "all_connections_open": true,
+    "single_fault_protection_electrically_verified": false
+  },
+  "not_run": [
+    "Vendor Lattice XLSX binary cross-check",
+    "ice40 technology mapping",
+    "physical pinout and place-and-route",
+    "static timing analysis physical",
+    "power sequencing and PD external supervisor",
+    "KiCad ERC/DRC",
+    "analog SPICE/EMC",
+    "bench spectrum and hardware DAC SNR",
+    "fabrication",
+    "RF emission"
+  ]
+}
