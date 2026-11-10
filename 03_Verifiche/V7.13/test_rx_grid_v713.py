@@ -96,7 +96,7 @@ class V713(unittest.TestCase):
         self.assertEqual(new.count('(property "Sheetfile"'),3)
         self.assertNotIn("(wire (pts",new)
         self.assertNotIn("(global_label ",new)
-        sheetfiles=re.findall(r'\\(property "Sheetfile" "([^"]+)"',new)
+        sheetfiles=re.findall(r'\(property "Sheetfile" "([^"]+)"',new)
         self.assertEqual(len(sheetfiles),3)
         self.assertTrue(all((ROOT_NEW.parent / fp).resolve().is_file()
                             for fp in sheetfiles))
