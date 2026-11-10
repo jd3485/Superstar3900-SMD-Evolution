@@ -22,6 +22,11 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq kicad
           kicad-cli version
+          if ! /usr/bin/python3 -c "import pcbnew" 2>/dev/null; then
+            if apt-cache show python3-pcbnew >/dev/null 2>&1; then
+              sudo apt-get install -y -qq python3-pcbnew
+            fi
+          fi
       - name: Read-only KiCad source inventory, SMA pad geometry, 70 vias and zone shells
         run: |
           mkdir -p 03_Verifiche/V7.15/output-ci
@@ -66,6 +71,8 @@ jobs:
           fi
           sha256sum "$PCB" > "$OUT/board.after.sha256"
           cmp "$OUT/board.before.sha256" "$OUT/board.after.sha256"
+      - name: Genuine zone fill on disposable project copy using pcbnew if available
+        run: /usr/bin/python3 -B 03_Verifiche/V7.15/probe_pcbnew_zone_fill_v715.py
       - name: Parse genuine KiCad reports and reject baseline drift
         run: python3 -B 03_Verifiche/V7.15/compare_native_zone_drc_v715.py
       - name: Regressions all prior V7.14 through V7.1 Python suites
