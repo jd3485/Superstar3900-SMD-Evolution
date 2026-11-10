@@ -67,7 +67,7 @@ jobs:
           kicad-cli pcb drc -o 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt \
             04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_pcb
           test -s 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt
-          grep -E '^Found [0-9]+ (DRC violations|unconnected)' 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt
+          # Native .rpt section totals are parsed and verified in next step.
       - name: Enforce native PCB DRC nonregression after reference reannotation
         run: python3 -B 03_Verifiche/V7.12/verifica_pcb_drc_v712.py
       - name: Isolate standalone RX KiCad parser failure using disposable schematic copies
