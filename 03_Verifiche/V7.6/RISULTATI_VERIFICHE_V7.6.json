@@ -1,0 +1,104 @@
+{
+  "revision": "V7.6",
+  "date": "2026-11-10",
+  "type": "RTL behavioral simulation and numerical DSP only; NO FAB / NO TX",
+  "verified_ci": {
+    "run_id": 42814160564,
+    "job_id": 129822843348,
+    "status": "success",
+    "rtl_bench": "PASS",
+    "python_groups": {
+      "V76": {
+        "pass": 15,
+        "fail": 0,
+        "skip": 0
+      },
+      "V75": {
+        "pass": 22,
+        "fail": 0,
+        "skip": 0
+      },
+      "V74": {
+        "pass": 21,
+        "fail": 0,
+        "skip": 0
+      },
+      "V73": {
+        "pass": 15,
+        "fail": 0,
+        "skip": 0
+      },
+      "V72": {
+        "pass": 11,
+        "fail": 0,
+        "skip": 0
+      },
+      "V71": {
+        "pass": 8,
+        "fail": 0,
+        "skip": 0
+      }
+    },
+    "python_total": 92
+  },
+  "rtl": {
+    "master_hz_assumed": 30720000,
+    "dac_ce_divisor": 8,
+    "audio_ce_divisor": 640,
+    "verified_master_ticks": 1280,
+    "verified_dac_strobes": 160,
+    "verified_audio_strobes": 2,
+    "virtual_fifo_codes": 16,
+    "faults_latched": [
+      "underflow",
+      "overflow",
+      "independent guard dropped",
+      "external clock monitor status dropped"
+    ],
+    "hardware_dac_clk_waveform": false,
+    "physical_pd_released": false,
+    "rf_permission": false
+  },
+  "sg48": {
+    "pin_inventory_edge": 48,
+    "ground_paddle": 1,
+    "total_rows": 49,
+    "vendor_primary_summary_verified": true,
+    "vendor_full_xlsx_pin_numbers_verified": false,
+    "source_secondary": "https://git.threefortiethofonehamster.com/kelvin/bldc-driver/src/branch/master/pcb/ice40up5k_pinout.csv",
+    "all_pin_rows_assembly": "DNP",
+    "pcf_status": "HOLD NOT PLACE_AND_ROUTE VALIDATED"
+  },
+  "dsp": {
+    "scenario": "coherent two-tone 750+1250Hz and nonperiodic step 0 to 0.4 to 0",
+    "output_sample_rate_hz": 3840000,
+    "step_rise_peak": 0.45682053845428033,
+    "step_steady_value": 0.4,
+    "step_overshoot_percent": 14.20513461357007,
+    "step_fall_final_abs_average": 0,
+    "images_per_tone": 6,
+    "numerical_relative_threshold_db": -65,
+    "quantized_dac_10bit_tested": false,
+    "physical_rf_mask_tested": false
+  },
+  "new_parts": {
+    "bom_rows": 5,
+    "virtual_net_rows": 8,
+    "assembly": "ALL_DNP",
+    "physical_connections": "ALL_OPEN",
+    "tx_path_physically_connected": false
+  },
+  "not_executed": [
+    "original Lattice XLSX pinout cross-check",
+    "full FPGA top synthesis",
+    "nextpnr constraints/timing closure",
+    "real DAC900 clock and data bus",
+    "physical POR/PD supervisor and fail-open link",
+    "FPGA/MCU power supplies and reset sequence",
+    "electrical PCB ERC/DRC",
+    "vendor SPICE/IBIS/EMC",
+    "bench measurements",
+    "fabrication",
+    "RF transmission"
+  ]
+}
