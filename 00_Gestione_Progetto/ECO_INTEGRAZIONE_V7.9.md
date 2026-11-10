@@ -1,0 +1,14 @@
+# ECO INTEGRAZIONE V7.9 — HEARTBEAT, WINDOW WDI, SRF SOLO NUMERICI
+
+**10 novembre 2026.** Aggiornamento incrementale V7.8→V7.9. Tutte le vecchie versioni conservate, tutti i componenti TX e connettori RF DNP/OPEN. **NO FAB / NO TX.**
+
+1. Corretta una criticità di fattibilità V7.8: il heartbeat commutava ogni 8 fronti master 30,72MHz = **3,84MHz di transizioni**, irriconoscibile via campionamento semplice da un secondo riferimento di **32,768kHz**. Nuovo `v79_slow_heartbeat` commuta ogni 307.200 fronti master (=100/s), WDI futuro riceverebbe un fronte di discesa ogni 20ms. Nessun pin realizzato, nessun bitstream.
+2. Aggiunto TOP diagnostico RTL e bench Icarus multiclok: arrestando solo master, il riferimento indipendente simulato mantiene il fault latched. Tutte le uscite `tx_rf_permission, dac_pd_released, analog_path_connected` zero costante. Simulazione accelerata e `Yosys synth` **GENERICA** soltanto, non PNR/STA né fail-safe elettrico.
+3. Watchdog fisico candidato **TI TPS3430WDRCR**, distinto da TPS3840 rail supervisor di V7.8. Finestra documentata `CWD=NC, SET0=0, SET1=1`: tWDL(max)=2,22ms, tWDU(min)=23,375ms. Il periodo nominale 20ms è dentro con margine superiore ~3,375ms. Pinout 1 VDD1,2 CWD,3 SET0,4 CRST,5 GND,6 SET1,7 WDI,8 WDO,9 NC,10 VDD2, pad termico GND verificati sul datasheet TI p.3. **Tutti DNP/OPEN**.
+4. WDO è open-drain active LOW e si rilascia dopo tRST; non è un latch permanente né una uscita di PD active HIGH sicura durante perdita di alimentazione. Nessun WDO→PD o PA: serve polarità, bias, secondo blocco normalmente aperto, single fault test reali. Oscillatore secondario candidato **Abracon ASFLK-32.768KHZ-LJT** ±20ppm 3,3V CMOS DNP, senza pin verificati.
+5. Screening filtro F7401 con candidati **Coilcraft MSS1260T-472MLD 4,7µH** e **MS590PNB183MSZ 18µH**, SRF tip38MHz / min11,2MHz da produttore. Modello ABCD idealizzato con Q induttore **assunto 60** e Q C **assunto 500**, Cp dedotta da SRF: non vendor SPICE, non DAC I/V, non EMI. Tolleranze L ±20%, Q @455k e capacità non selezionate, quindi **non qualificato per PCB**.
+6. Nuova BOM **11 elementi DNP/OPEN**, netlist **15 pin/terminali DNP/OPEN**, 17 nuovi test + 126 regressioni; CI da completare nella PR finale e registrare. RX 270 posizioni, 30 ALFA invariati.
+7. Originale XLSX Lattice pin SG48 doc 51971 non recuperato: V7.6 PCF rimane **HOLD**. Non fare nextpnr, pin assegnati, board, ERC/DRC o TX.
+8. Tutto lo sviluppo in `main` si integra solo come software e studio dopo test effettivi; **NO FAB / NO TX**.
+
+**Prossima V7.10:** acquisire pinout ufficiale Lattice con SHA256 autenticato; progettare watchdog TPS3430 e interblocco hardware indipendente in schemi DNP con analisi perdita rail e stuck-at; validare filtro con Q/SRF di componenti idonei, costi e footprint; simulare DSP quantizzato e runtime, mantenendo isolato il percorso RF.
