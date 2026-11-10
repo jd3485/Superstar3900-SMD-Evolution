@@ -1,0 +1,9 @@
+reference,quantity,description,mpn,package,assembly,physical_connection,qualification
+U7801,1,Virtual RTL top study only,Existing U7601 candidate,NOT PLACED,DNP,OPEN,No FPGA bitstream or pinmap validated
+U7802,1,External oscillator watchdog candidate,TBD,TBD,DNP,OPEN,No independent hardware clock-stop detector
+U7803,1,Independent power-on PD supervisor candidate,TBD,TBD,DNP,OPEN,No power sequencing or PD drive proved
+U7804,1,Independent RF fail-open isolator requirement,TBD,TBD,DNP,OPEN,No RF path or antenna
+J7801,1,Virtual digital diagnostics boundary,TBD,NO FOOTPRINT,DNP,OPEN,No physical interface
+R7801,1,Deliberately open 0ohm DAC input link,TBD,0603,DNP,OPEN,Open by design proposal
+R7802,1,Deliberately open 0ohm RF mixer link,TBD,0603,DNP,OPEN,Open by design proposal
+C7801,1,Supervisor rail decoupling placeholder,TBD,0603,DNP,OPEN,Unselected power domain
