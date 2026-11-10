@@ -82,7 +82,17 @@ class NativeCadV712(unittest.TestCase):
             a=re.findall(r'\(property "Reference" "([A-Za-z]+\d+)"',s)
             b=re.findall(r'\(reference "([A-Za-z]+\d+)"\)',s)
             self.assertEqual(sorted(a),sorted(b))
-    def test_12_no_native_qualification_claimed(self):
+    def test_12_rx_standalone_text_object_has_required_uuid(self):
+        old=ORIG_RX.read_text()
+        new=NEW_RX.read_text()
+        self.assertIn('(text "SCHEMATIC NET-MATCHED',old)
+        self.assertNotIn('e5077bc3-17bb-4d5a-9dc0-77254ed70649',old)
+        self.assertIn('(uuid "e5077bc3-17bb-4d5a-9dc0-77254ed70649")',new)
+        self.assertIn('(sheet_instances (path "/" (page "1")))',new)
+        self.assertIn('(embedded_fonts no)',new)
+
+    def test_13_no_native_qualification_claimed(self):
+
         self.assertNotIn("(wire (pts",NEW_TOP.read_text())
         self.assertNotIn("(global_label ",NEW_TOP.read_text())
         self.assertNotIn("TX_",",".join(refs(NEW_RX.read_text())))
