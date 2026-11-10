@@ -116,6 +116,16 @@ def main():
         raise SystemExit("Expected exactly two SMA mismatches")
     if any(a.get("status")=="FAILED" for a in result["experiments"].values()):
         raise SystemExit("One or more causal native KiCad experiments FAILED")
+    expected={
+        "as_saved":2, "reference_value_text_180_diagnostic":2,
+        "orientation_0_diagnostic":0, "pad_rotation_180_diagnostic":2
+    }
+    for name,count in expected.items():
+        actual=result["experiments"][name]["native_drc"]
+        if actual["drc_violations"]!=count or actual["unconnected_items"]!=0:
+            raise SystemExit("Unexpected KiCad native differential DRC for "+name)
+        if actual["categories"].get("lib_footprint_mismatch",0)!=count:
+            raise SystemExit("Wrong native lib_footprint_mismatch category "+name)
     print("PASS: native original and three cloned SMA geometry experiments; NO FAB/TX")
 
 if __name__=="__main__":main()
