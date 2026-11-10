@@ -62,6 +62,8 @@ jobs:
           if proc.returncode != 0 or not (folder/"v712_rx_standalone_erc.rpt").is_file():
             raise SystemExit("RX standalone native KiCad parser regression")
           PY
+      - name: Parse both native KiCad ERC reports and retain all 76 RX / 459 root violations
+        run: python3 -B 03_Verifiche/V7.12/verifica_erc_nativo_v712.py
       - name: Verify revised PCB DRC has not regressed from V7.11 and retain report
         run: |
           kicad-cli pcb drc -o 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt \
