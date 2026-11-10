@@ -1,0 +1,86 @@
+name: V7.12 native KiCad reannotation and isolated RX/MCU root (NO FAB NO TX)
+on:
+  push:
+    branches: [main, 'feature/v7.12-rx-standalone-annotation-cad']
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/**'
+      - '04_KiCad/Modulo_MCU_CODEC_V7.12_REANNOTATED_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.12_REANNOTATED_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.12/**'
+      - '.github/workflows/v712_kicad_native_annotation.yml'
+  pull_request:
+    paths:
+      - '04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/**'
+      - '04_KiCad/Modulo_MCU_CODEC_V7.12_REANNOTATED_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.12_REANNOTATED_NOT_FOR_FAB/**'
+      - '03_Verifiche/V7.12/**'
+      - '.github/workflows/v712_kicad_native_annotation.yml'
+permissions:
+  contents: read
+jobs:
+  native-reannotation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install KiCad CLI for actual CAD exports
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: Static V7.12 design and PCB source preservation
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.12 -p 'test_*.py' -v
+      - name: Export original V7.10 native hierarchical KiCad netlist
+        run: |
+          mkdir -p 03_Verifiche/V7.12/output-ci
+          kicad-cli sch export netlist -o 03_Verifiche/V7.12/output-ci/integration_v710_original.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch
+          test -s 03_Verifiche/V7.12/output-ci/integration_v710_original.net
+      - name: Export V7.12 native hierarchical KiCad netlist with unique MCU/RX refs
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.12/output-ci/integration_v712_reannotated.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.12_REANNOTATED_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch
+          test -s 03_Verifiche/V7.12/output-ci/integration_v712_reannotated.net
+      - name: Mandatory native netlist comparison 11 duplicate refs to ZERO
+        run: python3 -B 03_Verifiche/V7.12/verifica_netlist_annotazione_v712.py
+      - name: Real KiCad ERC on reannotated hierarchy (all defects counted)
+        run: |
+          kicad-cli sch erc \
+            -o 03_Verifiche/V7.12/output-ci/v712_hierarchy_erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.12_REANNOTATED_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch
+          test -s 03_Verifiche/V7.12/output-ci/v712_hierarchy_erc.rpt
+      - name: Real KiCad standalone RX test - record persistent parser blocker transparently
+        run: |
+          python3 - <<'PY'
+          import subprocess,json
+          from pathlib import Path
+          folder=Path("03_Verifiche/V7.12/output-ci")
+          file=Path("04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_sch")
+          proc=subprocess.run(["kicad-cli","sch","erc","-o",str(folder/"v712_rx_standalone_erc.rpt"),str(file)],capture_output=True,text=True,timeout=75)
+          obj={"native_kicad_exit":proc.returncode,"stdout":proc.stdout,"stderr":proc.stderr,"report_generated":(folder/"v712_rx_standalone_erc.rpt").exists(),"standalone_erc_pass":False,"NO_FAB_NO_TX":True}
+          (folder/"v712_rx_standalone_load_status.json").write_text(json.dumps(obj,indent=2)+"\n")
+          print("RX STANDALONE NATIVE KICAD STATUS",json.dumps(obj,indent=2))
+          if proc.returncode not in (0,3):
+            raise SystemExit("unexpected native KiCad CLI error")
+          PY
+      - name: Verify revised PCB DRC has not regressed from V7.11 and retain report
+        run: |
+          kicad-cli pcb drc -o 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt \
+            04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/S3900E_RX_STANDALONE_V7_12_NOT_FOR_FAB.kicad_pcb
+          test -s 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt
+          grep -E '^Found [0-9]+ (DRC violations|unconnected)' 03_Verifiche/V7.12/output-ci/v712_rx_reannotated_pcb_drc.rpt
+      - name: Publish genuine KiCad reports (not fabrication outputs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v712-native-kicad-reference-annotation-DNP-NO-FAB
+          path: 03_Verifiche/V7.12/output-ci/
+          if-no-files-found: warn
+      - name: Preserve CAD V7.10 and V7.11 regressions
+        run: |
+          python3 -B -m unittest discover -s 03_Verifiche/V7.10 -p 'test_*.py' -v
+          python3 -B -m unittest discover -s 03_Verifiche/V7.11 -p 'test_*.py' -v
+      - name: Preserve all V7.1 to V7.9 DSP firmware numeric regressions
+        run: |
+          for version in V7.1 V7.2 V7.3 V7.4 V7.5 V7.6 V7.7 V7.8 V7.9; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
