@@ -18,8 +18,6 @@ FILES={
      "04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch"),
  "rx_v52_erc":("sch","erc",
      "04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_RX_TEST_50R_V5_2_LINKED_STUDY_NOT_FOR_FAB.kicad_sch"),
- "rx_v710_root_repair_erc":("sch","erc",
-     "04_KiCad/Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_RX_TEST_50R_V7_10_ROOT_REPAIR_NOT_FOR_FAB.kicad_sch"),
  "aux_power_v15_erc":("sch","erc",
      "04_KiCad/Gerarchico_Alimentazioni_V1.5/S3900E_AUX_POWER_V1_5.kicad_sch"),
  "mcu_codec_v21_erc":("sch","erc",
