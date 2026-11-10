@@ -1,3 +1,12 @@
+# Aggiornamento stato protocollo — 10 novembre 2026, V7.2 in MAIN
+
+- **Ultima revisione integrata al momento di questo aggiornamento: V7.2**, PR #2, merge `faab93ea00d64d43b3d4977a5a43f512977043a9`. Per stabilire cosa fare in futuro **verificare sempre HEAD `main` prima di leggere questa fotografia storica**.
+- **CI V7.2:** 11 test software V7.2 + 8 test di regressione V7.1, tutti PASS. GitHub Actions run 42794577497; `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `Superstar3900_Rapporto_Tecnico_V7.2.md` sono gli accessi principali.
+- **Prossimo progetto V7.3:** DAC/clock e filtro 455kHz candidati con datasheet, streaming DSP causale, spettro offline, mantenendo DNP tutti i TX, NO FAB/NO TX. L'ultima baseline taggata v7.0 non è equivalente alla revisione integrata.
+- **Conservazione:** la storia V7.0/V7.1 e lo stato documentale precedente restano disponibili. Le regole permanenti del protocollo sotto questa intestazione non cambiano.
+
+---
+
 # Protocollo permanente di ripresa — Superstar 3900 SMD Evolution
 
 **Decisione concordata il 10 novembre 2026. Fonte di verità: repository privato `jd3485/Superstar3900-SMD-Evolution`.**
