@@ -25,7 +25,7 @@
     (uuid "a0d4b38b-c0e2-4bad-9e45-1c06b9e27654")
     (property "Sheetname" "MCU_CODEC_AFE_existing_V2_1_UNQUALIFIED" (at 139.7 44.958 0)
       (effects (font (size 1.27 1.27)) (justify left bottom)))
-    (property "Sheetfile" "../Modulo_MCU_CODEC_V7.13_REANNOTATED_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch" (at 139.7 102.362 0)
+    (property "Sheetfile" "../Modulo_MCU_CODEC_V7.12_REANNOTATED_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch" (at 139.7 102.362 0)
       (effects (font (size 1.27 1.27)) (justify left top)))
     (instances (project "S3900E_RX_POWER_INTEGRATION_V7_13_GRID_NOT_FOR_FAB"
       (path "/36ffce0c-4d7d-44bf-97c6-05d8e901c710" (page "6"))))
