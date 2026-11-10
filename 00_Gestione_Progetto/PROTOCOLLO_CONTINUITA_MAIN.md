@@ -1,3 +1,15 @@
+# PROTOCOLLO PERMANENTE — V7.10 KIcad NATIVO INTEGRATO SU MAIN, 10 NOVEMBRE 2026
+
+- Revisione integrata più recente al momento di questo aggiornamento: **V7.10**, [PR #10](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/10), merge `8a18c12df4455265db8414784587f4d82a1f82ae`; il tag `v7.0` rimane storico. Nuove chat devono **verificare HEAD main/PR/CI**, perché una revisione successiva prevale su questa fotografia.
+- Nuovo **schema KiCad gerarchico nativo e riutilizzabile** `04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch`: riferisce AUX V1.5 (con 3 sottopagine), MCU/CODEC V2.1 e coupon RX V5.2; **7 pagine, 132 istanze, 99 nets esportati**, ma **11 designatori duplicati** e **15 interfacce tra blocchi OPEN/HOLD**, senza cablaggio reale. Non esiste PCB completo della radio.
+- **AUDIT nativo KiCad 9.0.8**: root 43 ERC errors / 416 warnings; AUX 22/248, MCU 18/92; RX schema standalone exit3 (non caricabile); RX coupon PCB DRC **91 violations, altre 63 unconnected**. Non dichiarare KiCad/ERC/DRC risolti. Il root esporta la netlist con warning di annotazione. La prima ipotesi di fix `sheet_instances` su RX standalone era falsa ed è stata annullata.
+- **Test regressivi non abbandonati**: 12 unit test V7.10 +143 unit test V7.1–V7.9 = **155 PASS /0 FAIL/0 SKIP**; [GitHub Actions run 42855337776](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42855337776) successo **solo per audit/tracciabilità**, con CAD netlist e rapporti artifact, non significa ERC/DRC pass.
+- **Prossima V7.11:** correggere lo schema RX standalone, consolidare annotazione e librerie footprint, ridurre 63 missing nets e difetti via, qualificare le alimentazioni e le interfacce SPI/RX. Creare vero circuito KiCad integrato e PCB solo dopo link/netlist verificati, senza perdere sviluppo firmware/modelli, report rigoroso.
+- Rapporti correnti: `README.md`, `RIPRENDI_IN_UNA_NUOVA_CHAT.md`, `Superstar3900_Rapporto_Tecnico_V7.10.md`, `01_Specifiche/V7.10/PIANO_CAD_INTEGRAZIONE_RX_POWER_V7.10.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.10.md`, audit JSON in `03_Verifiche/V7.10`.
+- **NO FAB / NO TX**: tutte le sezioni TX DNP, nessuna uscita PA/antenna, nessun Gerber o release PCB. SG48 Lattice originale XLSX pinout resta HOLD. Ogni esecuzione e violazione deve essere registrata con esito PASS/FAIL/NOT_RUN e nessun falso claim.
+
+---
+
 # PROTOCOLLO CONTINUITÀ MAIN — V7.9 INTEGRATA, 10 NOVEMBRE 2026
 
 - Revisione più recente al momento di questa annotazione: **V7.9 su `main`**, merge [PR #9](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/9) commit `38b9828728b02581bf24c070401dd70782051dbd`. L'HEAD `main` va sempre verificato prima di sviluppare: se maggiore, questo documento è solo archivio. Tag storico `v7.0` non alterato.
