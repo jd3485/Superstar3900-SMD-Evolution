@@ -43,3 +43,8 @@ Workflow `.github/workflows/v710_kicad_native_rx_audit.yml`:
 - I blocchi TX sono ancora tutti DNP; prima di una futura integrazione TX servono protezioni fail-closed indipendenti, verifiche elettriche e normative. Nessuna fabbricazione o RF emissione.
 
 **Le revisioni V7.0–V7.9 e le loro simulazioni/firmware/test vengono preservati. NO FAB / NO TX.**
+
+## Evidenze della prima esecuzione con KiCad 9.0.8
+
+L'export nativo ha prodotto **7 fogli, 132 istanze di componenti, 99 reti e 11 designatori duplicati** fra moduli; l'annotazione non è pronta. L'ERC del root contiene **43 errori / 416 avvisi** e il DRC del PCB RX V5.2 **91 violazioni + 63 connessioni non chiuse**. Il file schematico RX V5.2 standalone non si carica (exit 3), anche dopo una prova di aggiunta `sheet_instances` poi rimossa. Tutte queste voci sono **blocchi aperti, non test ERC/DRC superati**. La CI verde verifica soltanto che KiCad abbia prodotto l'audit e che i software regressivi non siano stati alterati.
+
