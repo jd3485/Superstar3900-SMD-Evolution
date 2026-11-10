@@ -1,6 +1,6 @@
 # SUPERSTAR 3900 SMD EVOLUTION — V7.16 DIAGNOSI ORIENTAMENTO SMA (NO FAB / NO TX)
 
-**10 novembre 2026 · revisione V7.16 su branch/PR, verificare HEAD di `main` prima di dichiarare il merge.** È un avanzamento **diagnostico CAD nativo** e NON un PCB aggiornato/producibile.
+**10 novembre 2026 · V7.16 integrata su `main` con [PR #16](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/16), merge `b8ad95695aed960621f4fd2160fa4b2ae921d6eb`. Verificare sempre HEAD di `main`.** È un avanzamento **diagnostico CAD nativo** e NON un PCB aggiornato/producibile.
 
 **Progresso reale:** l'ultimo DRC KiCad9 su quattro cloni temporanei con zone riempite ha verificato la causalità del mismatch SMA J9102/J9104. Con posizione e orientamento originari 180°: **2 `lib_footprint_mismatch` +0 unconnected**; ruotando solo le etichette o i custom pad: ancora **2+0**; forzando entrambi gli SMA destro a orientamento 0°: **0+0**, ma la *direzione fisica dei connettori sul lato destro diventa SBAGLIATA*. Il courtyard corretto sporge oltre il bordo x130 sino a x137,2 mm; quello a 0° rientra nell'area fino a x126,1. **Non applicare il workaround**: la correzione deve preservare il montaggio a 180°. Il PCB sorgente storico e le sue net, piste/via/simboli sono invariati.
 
