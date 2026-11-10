@@ -1,6 +1,6 @@
 # RIPRESA SUPERSTAR 3900 SMD EVOLUTION — HANDOFF V7.16
 
-**10 novembre 2026: V7.16 su branch diagnostica/PR. Controllare sempre HEAD `main`, PR, CI e tag.** Baseline V7.15 già integrata, tag storico `v7.0` e tutte le versioni preserved. **NO FAB / NO TX.**
+**10 novembre 2026: V7.16 integrata su `main` con [PR #16](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/16), merge `b8ad95695aed960621f4fd2160fa4b2ae921d6eb`. Controllare sempre HEAD `main`, PR, CI e tag.** Baseline V7.15 già integrata, tag storico `v7.0` e tutte le versioni preserved. **NO FAB / NO TX.**
 
 **KiCad nativo verificato** [Actions 42920876308](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42920876308): quattro cloni di progetto V7.14, fill zone reale con `pcbnew.ZONE_FILLER`, quindi DRC vero. Baseline J9102/J9104 a 180°: 2 warning footprint e zero unconnected. Etichette ruotate: 2. Custom pad ruotati: 2. Intero footprint J9102/J9104 ruotato a 0°: DRC 0, ma **montaggio errato** sul lato destro della PCB; il courtyard passerebbe da x117,9–137,2 a x106,8–126,1 mm, fuori direzione rispetto al connettore che deve uscire dal bordo x130. NON utilizzare questa falsa correzione. Originale byte-identico (V7.12 = V7.14), nessun TX/fab.
 
