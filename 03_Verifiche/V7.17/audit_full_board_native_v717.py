@@ -13,7 +13,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/"03_Verifiche"/"V7.17"/"output-ci"
 OUT.mkdir(parents=True,exist_ok=True)
-MATRIX=ROOT/"04_KiCad"/"Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB"/"MATRICE_INTERFACCE_DA_QUALIFICARE_V7_10.csv"
+HISTORIC_MATRIX=ROOT/"04_KiCad"/"Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB"/"MATRICE_INTERFACCE_DA_QUALIFICARE_V7_10.csv"
+MATRIX=ROOT/"04_KiCad"/"Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB"/"MATRICE_INTERFACCE_PROPOSTE_V7_17_OPEN_HOLD.csv"
 MAPPING={
     "AUX_V1.5":"/AUX_POWER_existing_V1_5_UNQUALIFIED/",
     "MCU_CODEC_V2.1":"/MCU_CODEC_AFE_existing_V2_1_UNQUALIFIED/",
@@ -104,6 +105,19 @@ def audit_interfaces(net_names):
         records=list(csv.DictReader(fh))
     if len(records)!=15:
         raise ValueError("Expected all 15 historical OPEN/HOLD interfaces")
+    with HISTORIC_MATRIX.open(encoding="utf-8",newline="") as fh:
+        original=list(csv.DictReader(fh))
+    if len(original)!=15:
+        raise ValueError("History contract unexpectedly changed")
+    for i,(old,new) in enumerate(zip(original,records),1):
+        expected=dict(old)
+        if old["domain"]=="rx_fm_audio":
+            expected["candidate_destination_net"]="FM_DISCRIM_RAW"
+            expected["blocker"]=new["blocker"]
+            if "Canonical label" not in new["blocker"]:
+                raise ValueError("FM signal label correction has no qualification warning")
+        if expected!=new:
+            raise ValueError("Unapproved interface contract change at row "+str(i))
     out=[]
     for idx,r in enumerate(records,1):
         if any(r[k]!=v for k,v in (
@@ -142,6 +156,8 @@ def main():
         raise SystemExit("Unexpected count in electrical-hard blockers")
     missing=[x for x in matrix if x["source"]["status"]=="NOT_FOUND_NATIVE_NETLIST"
              or x["candidate_destination"]["status"]=="NOT_FOUND_NATIVE_NETLIST"]
+    if len(missing)!=2 or set(x["domain"] for x in missing)!={"rx_after_atten","interlock"}:
+        raise SystemExit("Unexpected unmatched ports; FM destination should now be native-net name only")
     result={
         "revision":"V7.17",
         "method":"real native KiCad9 root and RX ERC plus native exported 7-sheet netlist",
@@ -163,6 +179,7 @@ def main():
         "native_net_names_scoped_within_original_modules":True,
         "module_interconnects_electrically_approved":0,
         "interface_matrix_count":len(matrix),"interfaces_open_hold":15,
+        "matrix_approved_change":"FM discriminator destination label canonicalized, OPEN/HOLD unchanged",
         "interfaces_with_missing_net_name":len(missing),
         "interface_name_mismatches":[{"id":x["id"],"domain":x["domain"],
            "source":x["source"],"candidate_destination":x["candidate_destination"]}
