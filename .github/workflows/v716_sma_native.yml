@@ -25,6 +25,8 @@ jobs:
           /usr/bin/python3 -c 'import pcbnew; print("pcbnew version",pcbnew.Version())'
       - name: KiCad footprint-library original versus diagnostic-reload clone
         run: /usr/bin/python3 -B 03_Verifiche/V7.16/probe_sma_native_v716.py
+      - name: Verify V7.16 SMA courtyard and source invariants
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.16 -p "test_*.py" -v
       - name: Verify V7.15 static invariants and historical regressions
         run: |
           for version in V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
