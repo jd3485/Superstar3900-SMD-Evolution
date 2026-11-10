@@ -1,0 +1,78 @@
+{
+  "version": "V7.3",
+  "date": "2026-11-10",
+  "source": "GitHub Actions run 42802528582 job 129783402835 log inspected",
+  "mode": "numerical offline only; no physical TX/PCB",
+  "tests": {
+    "v73": {
+      "pass": 15,
+      "fail": 0,
+      "skip": 0
+    },
+    "v72_regression": {
+      "pass": 11,
+      "fail": 0,
+      "skip": 0
+    },
+    "v71_regression": {
+      "pass": 8,
+      "fail": 0,
+      "skip": 0
+    },
+    "total_pass": 34
+  },
+  "digital": {
+    "sample_rate_audio": 48000,
+    "sample_rate_if2": 3840000,
+    "hilbert_taps": 257,
+    "interpolator_taps_per_phase": 32,
+    "interpolator_phases": 80,
+    "hilbert_group_delay_audio_samples": 128,
+    "interpolator_group_delay_audio_samples": 15.5,
+    "naive_dsp_macs_per_sec": 129024000,
+    "parallel_data_rate_bits_per_sec": 38400000,
+    "physical_dac_present": false
+  },
+  "dac": {
+    "candidate": "Texas Instruments DAC900E",
+    "bits": 10,
+    "pin_count": 28,
+    "data_pin_count": 10,
+    "assembly": "DNP",
+    "output_connected": false
+  },
+  "lpf": {
+    "type": "mathematical 7-pole Butterworth lowpass 50ohm, no current DAC matching",
+    "cutoff_hz": 850000,
+    "nominal_max_wanted_loss_db": 0.001,
+    "nominal_min_image_relative_attenuation_db": 84.019,
+    "q80_qc500_max_wanted_loss_db": 0.174,
+    "mc_scenarios": 400,
+    "mc_L_tolerance_pct": 5,
+    "mc_C_tolerance_pct": 2,
+    "mc_Q_L_min": 40,
+    "mc_Q_L_max": 120,
+    "mc_Q_C_min": 200,
+    "mc_Q_C_max": 1000,
+    "mc_max_wanted_loss_db": 0.342,
+    "mc_min_relative_image_attenuation_db": 82.494,
+    "mc_min_return_loss_db": 24.353,
+    "hardware_verified": false
+  },
+  "artifacts": {
+    "bom_rows": 12,
+    "netlist_rows": 42,
+    "all_dnp": true,
+    "tx_rf_routed": false
+  },
+  "not_run": [
+    "KiCad ERC/DRC",
+    "vendor SPICE/IBIS",
+    "PCB routing",
+    "clock/FPGA/MCU real-time validation",
+    "RF measurements",
+    "EMC",
+    "fabrication",
+    "RF transmission"
+  ]
+}

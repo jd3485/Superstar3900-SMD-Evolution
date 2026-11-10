@@ -1,0 +1,13 @@
+reference,qty,kind,vendor_mpn,package,nominal_value,function,assembly,verification
+U7401,1,DAC parallel current-output 10-bit,Texas Instruments DAC900E,TSSOP-28,10-bit / 3.84 MSa/s target,Real pinout study; NOT interfaced to MCU,DNP,Vendor datasheet SBAS093B; interface unqualified
+U7402,1,FPGA or parallel-output bridge,TBD,TBD,10-bit parallel at 3.84MHz,Would drive D9..D0 and CLK; not designed,DNP,No MCU pin mapping; throughput unresolved
+X7401,1,Clock 3.840000MHz source,TBD,TBD,3.840000MHz,Clock source jitter and start-up not qualified,DNP,No selected oscillator / PLL register profile
+F7401,1,Passive LC reconstruction LPF,TBD,TBD,7-pole fc 850kHz ideal 50ohm,Only numerical 2-port after future I/V interface,DNP,No vendor Q/SRF/MPN nor I/V circuit
+J7401,1,Digital interface connector candidate,TBD,TBD,10-bit plus CLK,No physical connector or pin map authorized,DNP,No routed board
+R7401,1,DAC PD pull-up candidate,TBD,0603,10k ohm,"Would hold active-high PD on when supply exists, disabling DAC",DNP,"Requires power domain, transient/fault qualification"
+R7402,1,FSA full-scale resistor candidate,TBD,0603,2k ohm preliminary,Sets approximate 19.84mA full-scale at 1.24V ref and 32x current,DNP,Value depends on analogue output budget
+R7403,1,DAC-output isolation/open bridge,TBD,0603,0 ohm NOT ASSEMBLED,Isolates IOUT from any IF2 analogue network,DNP,No electrical output connected
+C7401,1,DAC BYP to AGND decoupling candidate,TBD,0603,100nF,Pin23 decoupling if populated later,DNP,No physical PCB
+C7402,1,DAC BW to VA bypass candidate,TBD,0603,100nF,Pin19 bypass to VA vendor recommendation,DNP,No physical PCB
+C7403,1,DAC VA to AGND candidate,TBD,0603,100nF,Pin24 analog supply local bypass,DNP,No physical PCB
+C7404,1,DAC VD to DGND candidate,TBD,0603,100nF,Pin27 digital supply local bypass,DNP,No physical PCB
