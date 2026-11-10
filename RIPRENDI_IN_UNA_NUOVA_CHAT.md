@@ -1,3 +1,21 @@
+# CONTINUITA NUOVA CHAT — SUPERSTAR 3900 SMD EVOLUTION V7.4
+
+**Versione progettuale integrata al 10 novembre 2026: V7.4 su main**, PR #4, commit merge f92220b0e789673cb927f4e21a72ed4d16b92faf. Il tag v7.0 rimane la vecchia baseline intatta e NON sostituisce l'HEAD di main. Le intestazioni delle revisioni V7.3/V7.2/V7.1/V7.0 sotto questa sezione sono **storico**.
+
+## Come riprendere in una chat futura
+1. Accedere al repository GitHub privato jd3485/Superstar3900-SMD-Evolution, leggere README.md, questo file e 00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md. Verificare SEMPRE ultimo commit main, tag, PR aperte e GitHub Actions prima di prendere decisioni.
+2. Leggere l'ultima versione del rapporto tecnico (attualmente Superstar3900_Rapporto_Tecnico_V7.4.md e 03_Verifiche/V7.4/RAPPORTO_TECNICO_V7.4.md), poi la specifica V7.4, ECO e BOM. In presenza di V7.5 o revisione maggiore già su main, usare quella; non ripartire automaticamente da V7.4.
+3. Stato tecnico V7.4: solo modelli software, 10bit DAC900E virtuale, FIFO fault latched, clock 3.84MHz, I/V 49.9Ω+49.9Ω ispirato a TI Fig.6, **tutto DNP**. 21 nuovi test e 34 regressioni precedenti, **55/55 PASS** verificati in CI [run 42807026035](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42807026035). Tutti gli switch/PA/antenna TX rimangono fisicamente assenti; R7503 separa IOUT da F7401 come **vincolo DNP concettuale**, non scheda montata.
+4. **Sviluppare V7.5:** scegliere un circuito clock 48k/3.84MHz sincronizzato e bridge dati con MPN/pinout documentati; analizzare PD hardwired, power rails e reset sicuri; sviluppare IOUT/IOUTB, carichi analogici e filtro LC realmente selezionabili, ottimizzare DUC adatto alle risorse MCU/FPGA, mantenere interfaccia TX completamente disabilitata.
+5. Ogni revisione: specifica funzionale concreta, BOM, netlist pin-to-net solo quando i pin del produttore sono verificati, software e verifiche riproducibili, regressioni CI, report distinguendo PASS/FAIL/SKIP/NON ESEGUITO, storico intatto. Il branch serve ai test, poi eseguire merge in main se coerente.
+6. **NO FAB / NO TX sempre**: non produrre PCB né abilitare PA/antenna, PTT o RF. KiCad/ERC/DRC, SPICE vendor, EMI/EMC, clock, DATI DAC, protezioni PD e test di trasmissione reali non sono stati eseguiti.
+
+**Messaggio sufficiente nella nuova chat:** Riprendi Superstar 3900 SMD Evolution dal mio repository privato jd3485/Superstar3900-SMD-Evolution, verifica main, leggi README e protocollo, continua la revisione successiva con CI, integra in main e mantieni NO FAB/NO TX.
+
+---
+
+## ARCHIVIO — istruzioni storiche dalla V7.3 in poi
+
 # RIPRENDERE IL PROGETTO — V7.3 IN MAIN · 10 NOVEMBRE 2026
 
 **La V7.3 è già integrata in `main` tramite PR #3, merge `9f64126f5490d34921da726d41354518b34be9a7`.** Questa sezione prevale sugli stati V7.2, V7.1, V7.0 e vecchi piani riportati in seguito. Il tag `v7.0` identifica la baseline storica, **non** la versione da cui riprendere il lavoro.
