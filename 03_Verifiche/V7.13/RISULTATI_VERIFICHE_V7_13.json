@@ -1,0 +1,100 @@
+{
+  "revision": "V7.13",
+  "date": "2026-11-10",
+  "scope": "Real KiCad9 standalone RX schematic 50mil grid correction, all TX DNP, no fabrication",
+  "baseline": {
+    "main_sha": "29212dd41050a658d637a412773a77d309402074",
+    "previous_revision": "V7.12",
+    "total_sheets": 7,
+    "component_instances": 132,
+    "rx_symbols": 15,
+    "rx_wire_elements": 31,
+    "rx_label_elements": 31,
+    "rx_pcb_DRC_violations": 85,
+    "rx_pcb_unconnected": 63
+  },
+  "correction": {
+    "grid_mm": 1.27,
+    "grid_mils": 50,
+    "coordinate_pairs_snapped": 154,
+    "max_per_axis_shift_mm": 0.635,
+    "existing_symbol_pin_UUID_and_values_unchanged": true,
+    "pcb_copper_changed": false,
+    "invalid_MCU_sheet_target_found_and_corrected": true,
+    "all_three_sheets_exist_checked": true,
+    "original_files_preserved": true
+  },
+  "native_kicad": {
+    "version": "9.0.8",
+    "baseline_root_net_count": 99,
+    "candidate_root_net_count": 99,
+    "net_ref_pin_membership_differences": 0,
+    "rx_erc_before": {
+      "errors": 0,
+      "warnings": 76,
+      "endpoint_off_grid": 46,
+      "lib_symbol_issues": 15,
+      "footprint_link_issues": 15
+    },
+    "rx_erc_after": {
+      "errors": 0,
+      "warnings": 30,
+      "endpoint_off_grid": 0,
+      "lib_symbol_issues": 15,
+      "footprint_link_issues": 15
+    },
+    "root_erc_before": {
+      "errors": 43,
+      "warnings": 416,
+      "total": 459
+    },
+    "root_erc_after": {
+      "errors": 43,
+      "warnings": 370,
+      "total": 413
+    },
+    "rx_pcb_drc_after": {
+      "violations": 85,
+      "unconnected_items": 63,
+      "via_dangling": 70,
+      "lib_footprint_issues": 15,
+      "drill_out_of_range": 0
+    },
+    "ERC_zero_warning": false,
+    "root_ERC_zero_errors": false,
+    "pcb_DRC_zero_violations": false
+  },
+  "ci": {
+    "source_code_run_id": 42869660331,
+    "source_code_run_success": true,
+    "source_code_job": "Verified from Actions logs",
+    "new_V713_python_tests": 12,
+    "previous_python_tests": 176,
+    "all_python_tests": 188,
+    "python_failed": 0,
+    "python_skipped": 0,
+    "icarus_reexecuted": false,
+    "yosys_reexecuted": false,
+    "postmerge_check_pending": true
+  },
+  "qualification": {
+    "rx_lib_symbols_qualified": false,
+    "rx_footprints_qualified": false,
+    "RF_ground_return_validated": false,
+    "rx_63_copper_connections_completed": false,
+    "MCU_AUX_RX_interblock_connections_qualified": false,
+    "all_15_interblock_interfaces": "OPEN/HOLD",
+    "sg48_vendor_pinout": "HOLD",
+    "RF_TX_path_connected": false,
+    "pcb_fabrication_approved": false,
+    "TX_permitted": false
+  },
+  "next": [
+    "Resolve 15 missing/invalid symbol library link warnings RX",
+    "Qualify 15 footprint links to current verified physical component drawings",
+    "Analyze 70 dangling GND vias and 63 incomplete RX coupon copper connections",
+    "Eliminate 43 remaining root ERC errors after independent circuit review",
+    "Qualify rail/logic interfaces one at a time while preserving DSP firmware and RF numeric regression"
+  ],
+  "NO_FAB_NO_TX": true
+}
