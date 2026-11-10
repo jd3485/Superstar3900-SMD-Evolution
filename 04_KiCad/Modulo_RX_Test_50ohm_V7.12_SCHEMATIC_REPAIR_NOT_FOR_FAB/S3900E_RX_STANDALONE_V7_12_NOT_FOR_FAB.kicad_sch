@@ -1,4 +1,4 @@
-(kicad_sch (version 20231120) (generator "eeschema")
+(kicad_sch (version 20231120) (generator "S3900E_V7_12_NATIVE_REPAIR")
 (uuid "8a793700-1a2e-43d4-83b4-94186f9d58c2") (paper "A3")
 (title_block (title "Superstar 3900 - RF test board matching 15 references and 8 PCB nets")
  (date "2026-11-08") (rev "V7.12 STANDALONE REPAIR PROBE - NOT FOR FAB"))
