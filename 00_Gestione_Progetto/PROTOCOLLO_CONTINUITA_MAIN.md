@@ -1,3 +1,13 @@
+# AGGIORNAMENTO PERMANENTE — V7.5 INTEGRATA SU MAIN (10 NOVEMBRE 2026)
+
+- La revisione progettuale integrata più recente alla data di queste note è **V7.5**, [PR #5](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/5), merge `a5ef405f9500c114e8a4d56d7f9b17ba5a89caf1`. Su nuove chat bisogna verificare l'HEAD `main`: una revisione successiva prevale su questo stato storico e sui tag precedenti.
+- Verifiche software registrate: **22 test V7.5 + 21 V7.4 + 15 V7.3 + 11 V7.2 + 8 V7.1 = 77 PASS, 0 FAIL / 0 SKIP**, [GitHub Actions 42810514397](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42810514397) (log esaminato), oltre all'integrità della baseline v7.0 quando eseguita. Nessuna misura fisica.
+- Nuovo sviluppo V7.5: clock unico 30,72MHz, oscillatore Abracon ASDMB con pin ufficiali, ponte Lattice iCE40UP5K **senza mappatura pin e senza RTL**, interpolatore DSP 5×4×4 a budget teorico ridotto; tutti i componenti e i ponti TX DNP, RF/PA/antenna assenti. Documenti principali: README.md, RIPRENDI_IN_UNA_NUOVA_CHAT.md e Superstar3900_Rapporto_Tecnico_V7.5.md.
+- **Prossima V7.6:** pinout e constraints FPGA, modello HDL simulabile, supervisione hardware indipendente PD/rail e guasti, spettri multitonali/transienti e filtri con dati Q/SRF/MPN. L'intero circuito TX resta scollegato: **NO FAB / NO TX**.
+- Lo storico V7.0–V7.4 e le vecchie istruzioni di seguito sono **archivio conservato**. Il vecchio tag `v7.0` non equivale allo stato attuale `main`. Mantenere test riproducibili, dichiarare sempre NON ESEGUITO per KiCad/ERC/DRC, RTL reale, misura hardware, EMC o fabbricazione non realizzati; continuare su feature branch durante CI e unire in main una revisione candidata coerente.
+
+---
+
 # AGGIORNAMENTO PROTOCOLLO — V7.4 IN MAIN, 10 NOVEMBRE 2026
 
 - Revisione più recente integrata al momento di questo commit: **V7.4** tramite [PR #4](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/4), merge f92220b0e789673cb927f4e21a72ed4d16b92faf, su **main**. È sviluppo sperimentale software/documentale **NO FAB / NO TX**, non collaudo fisico.
