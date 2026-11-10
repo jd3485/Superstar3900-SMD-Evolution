@@ -1,3 +1,22 @@
+# Superstar 3900 SMD Evolution — STATO CORRENTE V7.3 SU MAIN
+
+**10 novembre 2026.** `main` ha integrato la **V7.3**, via [PR #3](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/3), merge `9f64126f5490d34921da726d41354518b34be9a7`. **Revisione progettuale candidata, NON hardware approvato.** Il tag storico `v7.0` è preservato; controllare sempre HEAD di `main` per trovare la versione effettivamente più recente.
+
+## Sviluppo V7.3
+- `08_Firmware_Prototipi/V7.3/duc_if2_causale_v73.py`: DSP **offline causale a stato**, Hilbert 257 tap, interpolazione 80×/32 tap/fase a 3,84MSa/s da audio 48kHz, AM/FM/USB/LSB/CW, continuità fra blocchi e segnalazione overrange. **Non** firmware operativo STM32.
+- `U7401` TI **DAC900E TSSOP-28**, 10bit parallel/current-output, pin verificati dal datasheet TI SBAS093B, **DNP**; clock 3,84MHz e bridge digitali senza MPN/pin/realizzazione. **12 righe BOM DNP, 42 righe netlist DNP**; IOUT/IOUTB non instradati.
+- `F7401` LC 7 poli, cutoff matematico 850kHz, circuito 50Ω **non collegato al DAC in corrente**: test ABCD e MC400 con Q/induttanze ipotizzati, **non filtro fisico qualificato**.
+- **34/34 test software PASS** (15 V7.3 + 11 V7.2 + 8 V7.1), GitHub Actions [run 42803248288](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42803248288), log verificati e 0 skip/fail.
+- Consultare `Superstar3900_Rapporto_Tecnico_V7.3.md`, `03_Verifiche/V7.3/RAPPORTO_TECNICO_V7.3.md`, `01_Specifiche/V7.3/ARCHITETTURA_DUC_DAC_V7.3.md` e `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.3.md`.
+
+**Prossima V7.4:** progettare il dominio digitale DAC/clock/bridge, candidati I/V/matching analogici e alimentazioni, valutare ottimizzazione DSP e vincoli MCU, senza collegare il finale o RF TX. Lo storico e gli schemi precedenti restano intatti. KiCad ERC/DRC, SPICE vendor, EMC, test fisici e autorizzazioni normative **NON ESEGUITI**.
+
+**Procedura permanente per nuove chat:** leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, verificare il commit `main`, sviluppare la revisione seguente con verifiche concrete e poi integrarvi il lavoro. **NO FAB / NO TX.**
+
+---
+
+## ARCHIVIO STORICO — intestazioni V7.2 e precedenti (non stato corrente)
+
 # Superstar 3900 SMD Evolution — STATO ATTUALE V7.2 IN MAIN
 
 **10 novembre 2026 · `main` integra la V7.2 tramite [PR #2](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/2), merge `faab93ea00d64d43b3d4977a5a43f512977043a9`.** Questo è un **avanzamento progettuale candidato**, non un trasmettitore validato. Ultimo tag storico immutabile `v7.0`; per la revisione attiva controllare sempre HEAD di `main`, non soltanto il tag.
