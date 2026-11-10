@@ -1,3 +1,23 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.5 IN MAIN (10 novembre 2026)
+
+**V7.5 integrata su main** tramite [PR #5](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/5), merge `a5ef405f9500c114e8a4d56d7f9b17ba5a89caf1`. Revisione **software e candidata documentale**, NON un circuito RF completo o pronto da fabbricare. Il tag `v7.0` è storico e immutabile. L'ultimo commit di `main` prevale sulla fotografia di queste note.
+
+## Novità V7.5
+- Clock unico nominale **30,72MHz** con rapporto intero **/8 = 3,84MHz DAC** e **/640 = 48kHz audio**, indipendenza da drift *relativo* fra clock derivati da una stessa sorgente. Oscillatore candidato **Abracon ASDMB-30.720MHZ-LY**, 4 terminali con pin verificati dal disegno vendor, **DNP e non collegato**.
+- Bridge FPGA candidato **Lattice iCE40UP5K-SG48I**, QFN48, **DNP**, **nessun pin FPGA allocato e nessun bitstream/PCB**. PD DAC900 active-high con pulldown interno e oscillator STANDBY active-low che sarebbe ON se floating: sicurezza hardware e power-up indipendenti ancora da progettare, NON dimostrati da software.
+- Nuovo interpolatore multistadio *offline* **×5 ×4 ×4** con 16 tap/fase, stato conservato tra blocchi. Budget matematico FIR e Hilbert **86,784 M prodotti/s** rispetto a **129,024 M/s** V7.3 (−32,74%); NON benchmark realtime STM32G474/FPGA. Verifica di immagini digitali nominali su singolo tono coerente 750Hz, **non** prestazioni di DAC, filtro o emissioni RF.
+- Nuovi 8 componenti BOM e 12 terminali netlist, **TUTTI DNP**, RF/PA/antenna non instradati. Tutte le revisioni storiche e gli interblocchi documentali precedenti conservati.
+- **77/77 unit test software PASS**, 0 FAIL/0 SKIP (22 nuovi V7.5 + 21 V7.4 + 15 V7.3 + 11 V7.2 + 8 V7.1), [GitHub Actions PR run 42810514397](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42810514397), log verificato; NON qualifica hardware.
+- Leggere `Superstar3900_Rapporto_Tecnico_V7.5.md`, `03_Verifiche/V7.5/RAPPORTO_TECNICO_V7.5.md`, `01_Specifiche/V7.5/ARCHITETTURA_CLOCK_UNICO_DSP_V7.5.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.5.md`.
+
+**Prossima V7.6:** pin-mapping FPGA e constraints documentati, simulazione RTL di clock/FIFO solo software, analisi POR/PD hardwired indipendente, spettro digitale su transitori/multitono e selezione di componenti analogici con dati SRF/Q. Non collegare RF TX, finale o antenna; non autorizzare PCB.
+
+**Regola di continuità fra chat:** controllare `main`, tag, PR e CI, poi leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`; continuare a sviluppare la prossima revisione e integrarla in `main` dopo test verificati. **NO FAB / NO TX.**
+
+---
+
+## ARCHIVIO STORICO — V7.4 E PRECEDENTI (non stato corrente)
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.4 IN MAIN
 
 **10 novembre 2026: V7.4 integrata in main** tramite [Pull Request #4](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/4), merge commit f92220b0e789673cb927f4e21a72ed4d16b92faf. La V7.4 è una revisione **software e di progettazione DNP**, NON un circuito completo, fabbricabile o abilitato alla trasmissione RF. Il tag v7.0 è la baseline storica intatta, mentre la versione attiva si ricava dall'HEAD attuale di main.
