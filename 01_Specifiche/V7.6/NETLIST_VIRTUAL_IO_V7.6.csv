@@ -1,0 +1,9 @@
+reference,pin,conceptual_port,assembly,physical_connection,status
+R7701,1,OSC_OUTPUT_NOT_WIRED,DNP,OPEN,Clock remains off hardware
+R7701,2,FPGA_CLK_INPUT_NOT_WIRED,DNP,OPEN,Clock remains off hardware
+R7702,1,FPGA_BUS_PLACEHOLDER_NOT_WIRED,DNP,OPEN,Abstract boundary not 10 physical traces
+R7702,2,DAC_BUS_PLACEHOLDER_NOT_WIRED,DNP,OPEN,Abstract boundary not 10 physical traces
+J7701,1,MASTER_CLOCK_VIRTUAL,DNP,OPEN,No connector selected
+J7701,2,SAMPLE_STROBE_VIRTUAL,DNP,OPEN,No connector selected
+J7701,3,FAULT_VIRTUAL,DNP,OPEN,No connector selected
+J7701,4,GND_CONCEPT_VIRTUAL,DNP,OPEN,No connector selected

@@ -1,0 +1,49 @@
+name: V7.6 virtual RTL and multitone spectrum (NO FAB / NO TX)
+on:
+  push:
+    branches: ['feature/v7.6-rtl-pinplan-spectral-dnp', 'main']
+    paths:
+      - '01_Specifiche/V7.6/**'
+      - '03_Verifiche/V7.6/**'
+      - '08_Firmware_Prototipi/V7.6/**'
+      - '07_Componenti/BOM_SIMULAZIONE_RTL_V7.6.csv'
+      - '.github/workflows/v76_rtl_spectral.yml'
+  pull_request:
+    paths:
+      - '01_Specifiche/V7.6/**'
+      - '03_Verifiche/V7.6/**'
+      - '08_Firmware_Prototipi/V7.6/**'
+      - '07_Componenti/BOM_SIMULAZIONE_RTL_V7.6.csv'
+      - '.github/workflows/v76_rtl_spectral.yml'
+permissions:
+  contents: read
+jobs:
+  virtual-rtl-and-dsp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Icarus Verilog simulation tool
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog
+      - name: Compile and execute self-checking RTL bench
+        run: |
+          iverilog -g2012 -Wall -s tb_clock_fifo_virtual_v76 -o /tmp/rtl_v76.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            03_Verifiche/V7.6/tb_clock_fifo_virtual_v76.v
+          vvp /tmp/rtl_v76.vvp
+      - name: V7.6 Python pin plan, spectra and DNP tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.6 -p 'test_*.py' -v
+      - name: Record V7.6 multitone and transient numerical spectrum
+        run: python3 -B 03_Verifiche/V7.6/analizza_multitono_transienti_v76.py
+      - name: Regressions V7.5
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.5 -p 'test_*.py' -v
+      - name: Regressions V7.4
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.4 -p 'test_*.py' -v
+      - name: Regressions V7.3
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.3 -p 'test_*.py' -v
+      - name: Regressions V7.2
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.2 -p 'test_*.py' -v
+      - name: Regressions V7.1
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v

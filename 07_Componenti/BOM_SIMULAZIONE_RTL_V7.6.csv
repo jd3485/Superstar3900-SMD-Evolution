@@ -1,0 +1,6 @@
+reference,quantity,description,mpn,package,assembly,qualification
+U7701,1,Virtual logic behavior for iCE40UP5K reference study,Existing U7601 candidate DNP,QFN48 NOT ROUTED,DNP,NO FPGA configured or powered
+U7702,1,Independent power and PD supervisor requirement,TBD,TBD,DNP,No selected IC or electrical interlock
+J7701,1,Conceptual four-terminal debug and control boundary,TBD,NO PHYSICAL CONNECTOR,DNP,No validated connector pinout
+R7701,1,Clock isolation zero-ohm link never fitted,TBD,0603,DNP,Physically open by design proposal
+R7702,1,Conceptual DAC data isolation boundary zero-ohm never fitted,TBD,0603,DNP,Not a substitute for ten separate line links
