@@ -1,3 +1,18 @@
+# PROTOCOLLO PERMANENTE — V7.16 DIAGNOSTICA SMA, NO FAB / NO TX
+
+**10 novembre 2026 · V7.16 branch/PR con CI verificata, ma controllare merge/HEAD `main`.** Baseline V7.15 conservata e tag storico v7.0 intatto.
+
+- KiCad9 CI [run 42920876308](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42920876308): **223 Python PASS**, 10 V7.16 +213 storici; quattro DRC nativi da veri cloni con fill/checkout path relativo corretto.
+- Test scientifico isolato sul vero PCB: 2 warning `lib_footprint_mismatch` J9102/J9104 con orientamento 180°, 0 unconnected; 2 warning invariate modificando etichette o rotazione custom pad; zero warning modificando l'orientamento completo da 180°→0°. **Zero DRC sul clone NON è una correzione valida**: i due SMA sul bordo destro a 0° avrebbero body/courtyard rivolti all'interno, mentre a 180° sporgono 7,2mm oltre x130 (estensione fino x137,2). Sorgente PCB originale invariato.
+- TE Connectivity/Linx `CONSMA002-SMD`, drawing Rev D e CAD DXF/STEP elencati sul sito ufficiale. Modellazione 2D/3D originale, F.Paste/F.Mask, stackup, RF return, DFM e qualifica vendor NON ESEGUITI.
+- RX ERC baseline 0/0; root ERC ancora 43 errori+340 warning, 15 interfacce RX/AUX/MCU OPEN/HOLD, SG48 HOLD; nessun nuovo Icarus/Yosys hardware o RF/EMC.
+- Rapporti `03_Verifiche/V7.16/RAPPORTO_TECNICO_CAD_V7.16.md` e JSON, protocollo vendor in `01_Specifiche/V7.16/`; codice in `03_Verifiche/V7.16/`; workflow `.github/workflows/v716_sma_native.yml`. **Next V7.17:** qualificare vendor/transform conservando 180°, poi clone PCB con refill persistito e ERC root, storico preservato.
+- Non creare Gerber, non produrre, non collegare/accendere DAC/FPGA/PA/antenna e non trasmettere. **NO FAB / NO TX**.
+
+---
+
+## STORICO PROTOCOLLO V7.15 E PRECEDENTI
+
 # PROTOCOLLO DI CONTINUITÀ MAIN — V7.15 DIAGNOSTICA NATIVA, NO FAB / NO TX
 
 **10 novembre 2026 · V7.15 integrata su `main` con PR #15, merge `ca81deb3fe83e210778590cc9e2db1a18e16b243`; verificare HEAD `main` a ogni nuova chat.** Baseline V7.14 integrata intatta, `v7.0` preservata. Non cambiare circuiti o autorizzare TX in assenza di verifica fisica.
