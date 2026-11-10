@@ -1,0 +1,35 @@
+name: V7.3 causal IF2 offline / DAC candidate (NO FAB NO TX)
+on:
+  pull_request:
+    paths:
+      - '08_Firmware_Prototipi/V7.3/**'
+      - '01_Specifiche/V7.3/**'
+      - '03_Verifiche/V7.3/**'
+      - '07_Componenti/BOM_DUC_DAC_V7.3.csv'
+      - '.github/workflows/duc_if2_v73_causal.yml'
+  push:
+    branches: ['feature/v7.3-causal-duc-dac900-dnp', 'main']
+    paths:
+      - '08_Firmware_Prototipi/V7.3/**'
+      - '01_Specifiche/V7.3/**'
+      - '03_Verifiche/V7.3/**'
+      - '07_Componenti/BOM_DUC_DAC_V7.3.csv'
+      - '.github/workflows/duc_if2_v73_causal.yml'
+permissions:
+  contents: read
+jobs:
+  offline-duc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify V7.3 causal model and finite-Q ladder
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.3 -p 'test_*.py' -v
+      - name: Report ideal/Q-sensitive LPF study (not physical measurements)
+        run: python3 -B 03_Verifiche/V7.3/analizza_reconstruction_lpf_v73.py
+      - name: V7.2 offline regression
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.2 -p 'test_*.py' -v
+      - name: V7.1 offline regression
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v
