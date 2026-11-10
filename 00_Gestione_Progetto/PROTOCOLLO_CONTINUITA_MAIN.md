@@ -1,6 +1,6 @@
 # PROTOCOLLO — SUPERSTAR 3900 SMD V7.17 FULL-BOARD INTEGRATION GATE
 
-**11 novembre 2026 · V7.17 su branch/PR, controllare merge e HEAD. NO FAB / NO TX.**
+**11 novembre 2026 · V7.17 MERGED su `main` tramite PR #17, merge `ff26db4e55eb2ab7368cb222de58a8b969cf08d6`. NO FAB / NO TX.**
 
 - Master KiCad vero a sette pagine: `04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/`; nessun collegamento elettrico fra AUX/MCU/RX aggiunto; componenti/refs/99 reti e pin membership **IDENTICI** alla V7.14, testati nativamente [GitHub Actions 42923409956](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42923409956).
 - ERC master ancora 43 errori/340 warning, RX 0/0. Priorità 17 problemi elettrici/fili (6 undriven power, 5 undriven inputs, 3 dangling wires, 2 pins NC, 1 power output conflict) +26 label dangling. 219 endpoint_off_grid +121 library issues da risolvere successivamente.
