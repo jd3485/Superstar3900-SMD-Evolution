@@ -1,0 +1,23 @@
+ref,pin,funzione,nodo_candidato,montaggio,stato_verifica
+U7201,1,GND,GND_TX_VIRTUAL,DNP,Pin ADE-1+ datasheet
+U7201,2,IF,IF2_TX_AFTER_OPEN_R7201,DNP,Pin ADE-1+ datasheet
+U7201,3,RF,IF1_UPPER_10695_UNFILTERED,DNP,Pin ADE-1+ datasheet
+U7201,4,GND,GND_TX_VIRTUAL,DNP,Pin ADE-1+ datasheet
+U7201,5,GND,GND_TX_VIRTUAL,DNP,Pin ADE-1+ datasheet
+U7201,6,LO,LO2_TX_AFTER_OPEN_R7202,DNP,Pin ADE-1+ datasheet
+U7202,1,GND,GND_TX_VIRTUAL,DNP,Pin ADE-1+ datasheet
+U7202,2,IF,IF1_FILTERED_AFTER_OPEN_F7201,DNP,Pin ADE-1+ datasheet
+U7202,3,RF,RF_MIX_OUTPUT_NO_CONNECT,DNP,Pin ADE-1+ datasheet
+U7202,4,GND,GND_TX_VIRTUAL,DNP,Pin ADE-1+ datasheet
+U7202,5,GND,GND_TX_VIRTUAL,DNP,Pin ADE-1+ datasheet
+U7202,6,LO,LO1_TX_AFTER_OPEN_R7204,DNP,Pin ADE-1+ datasheet
+R7201,1,PAD1,TX_IF2_VIRTUAL_SOURCE,DNP,Pad 1 of hypothetical 0R link
+R7201,2,PAD2,IF2_TX_AFTER_OPEN_R7201,DNP,Pad 2 of hypothetical 0R link
+R7202,1,PAD1,LO2_V69_SOURCE_NO_CONNECT,DNP,Pad 1 of hypothetical 0R link
+R7202,2,PAD2,LO2_TX_AFTER_OPEN_R7202,DNP,Pad 2 of hypothetical 0R link
+R7203,1,PAD1,IF1_UPPER_10695_UNFILTERED,DNP,Pad 1 of hypothetical 0R bypass forbidden until F7201 qualification
+R7203,2,PAD2,IF1_FILTERED_AFTER_OPEN_F7201,DNP,Pad 2 of hypothetical 0R bypass forbidden until F7201 qualification
+R7204,1,PAD1,LO1_V64_SOURCE_NO_CONNECT,DNP,Pad 1 of hypothetical 0R link
+R7204,2,PAD2,LO1_TX_AFTER_OPEN_R7204,DNP,Pad 2 of hypothetical 0R link
+R7205,1,PAD1,RF_MIX_OUTPUT_NO_CONNECT,DNP,Pad 1 of hypothetical 0R link
+R7205,2,PAD2,RF_TX_OUT_NOT_ROUTED,DNP,Pad 2 not routed to any connector or PA
