@@ -1,3 +1,22 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.4 IN MAIN
+
+**10 novembre 2026: V7.4 integrata in main** tramite [Pull Request #4](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/4), merge commit f92220b0e789673cb927f4e21a72ed4d16b92faf. La V7.4 è una revisione **software e di progettazione DNP**, NON un circuito completo, fabbricabile o abilitato alla trasmissione RF. Il tag v7.0 è la baseline storica intatta, mentre la versione attiva si ricava dall'HEAD attuale di main.
+
+## Contenuto nuovo della V7.4
+- Studio del **bus DAC900E 10-bit** in 08_Firmware_Prototipi/V7.4/dac900_bridge_offline_v74.py: clock 48kHz ×80 → **3.84MSa/s**, FIFO virtuale di 1024 parole, traccia fittizia clock e fallimenti latched su underflow/overflow/timing/rail/clock. NON è un driver hardware né firmware FPGA/STM32.
+- Calcolo **I/V passivo** a corrente DAC nominale 20mA con due terminazioni **49.9Ω** Vishay CRCW060349R9FKEA candidate: R_eff 24.95Ω, uscita ideale ~0.4985V al codice 1023. R7501/R7502 e tutti gli altri dispositivi **DNP**; R7503 mantiene IOUT→F7401 **aperto**.
+- **7 righe BOM e 8 terminali netlist tutti DNP**; ponte U7501 e oscillatore X7501 **TBD** senza MPN né pin verificati; il PA, mixer e antenna TX rimangono non collegati.
+- **55/55 test Python automatici PASS, 0 FAIL / 0 SKIP** (21 V7.4, 15 V7.3, 11 V7.2 e 8 V7.1), sul commit della PR #4; [GitHub Actions run 42807026035](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42807026035), log verificato. Modelli numerici + integrità del CSV storico (270 canali); NON misure di circuiti.
+- Rapporti: Superstar3900_Rapporto_Tecnico_V7.4.md, 03_Verifiche/V7.4/RAPPORTO_TECNICO_V7.4.md; specifica 01_Specifiche/V7.4/ARCHITETTURA_DAC_CLOCK_IV_V7.4.md; ECO 00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.4.md.
+
+**Prossima V7.5:** sorgente sincronizzata clock/bridge con scelta IC e dati pin verificati, dominio power-up e PD indipendente, uscita analogica IOUT/IOUTB e filtro realizzabile con Q/SRF reali, architettura DSP più efficiente. Nessun salto alla fabbricazione o TX RF. Non sono stati effettuati KiCad ERC/DRC, simulazioni circuitali vendor, schede funzionanti, EMC o test in trasmissione.
+
+**Per continuare in una nuova chat:** leggere la parte iniziale di README.md, RIPRENDI_IN_UNA_NUOVA_CHAT.md e 00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md, verificare commit main/tag/PR/CI e ripartire dal rapporto tecnico più recente. Lo sviluppo passa da branch provvisorio a main dopo verifiche, con storico conservato. **NO FAB / NO TX.**
+
+---
+
+## ARCHIVIO — stato V7.3 e precedenti (non stato corrente)
+
 # Superstar 3900 SMD Evolution — STATO CORRENTE V7.3 SU MAIN
 
 **10 novembre 2026.** `main` ha integrato la **V7.3**, via [PR #3](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/3), merge `9f64126f5490d34921da726d41354518b34be9a7`. **Revisione progettuale candidata, NON hardware approvato.** Il tag storico `v7.0` è preservato; controllare sempre HEAD di `main` per trovare la versione effettivamente più recente.
