@@ -1,3 +1,13 @@
+# AGGIORNAMENTO PROTOCOLLO — V7.4 IN MAIN, 10 NOVEMBRE 2026
+
+- Revisione più recente integrata al momento di questo commit: **V7.4** tramite [PR #4](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/4), merge f92220b0e789673cb927f4e21a72ed4d16b92faf, su **main**. È sviluppo sperimentale software/documentale **NO FAB / NO TX**, non collaudo fisico.
+- CI GitHub Actions V7.4 [run 42807026035](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42807026035) conclusa con successo: **21 test nuovi V7.4 + 15 V7.3 + 11 V7.2 + 8 V7.1 = 55 test PASS, 0 FAIL/0 SKIP**. I/O analogici, clock e DAC reali NON provati.
+- Rapporti correnti: Superstar3900_Rapporto_Tecnico_V7.4.md, 03_Verifiche/V7.4/RAPPORTO_TECNICO_V7.4.md, README.md e RIPRENDI_IN_UNA_NUOVA_CHAT.md. Le istruzioni precedenti sono archivio. La prima fonte di verità è SEMPRE l'ultimo commit presente su main.
+- **Prossima revisione progettuale V7.5:** selezione MPN/pin clock sincronizzato e bridge, analisi power/PD indipendente, filtro DAC con modello e componenti SRF/Q, verifiche realtime e riduzione complessità DSP. Tutti i dispositivi TX e output verso PA/antenna DNP/non instradati. Conservare storia e utilizzare PR temporanee poi integrare in main dopo CI.
+- Il tag storico v7.0 rimane immutato. **Non confondere** il protocollo/versione software con qualifica KiCad, cablaggio, schede o autorizzazione TX.
+
+---
+
 # AGGIORNAMENTO PROTOCOLLO — V7.3 INTEGRATA IN MAIN · 10 NOVEMBRE 2026
 
 - `main` contiene **V7.3**, merge PR #3 `9f64126f5490d34921da726d41354518b34be9a7`; 34/34 test software GitHub Actions PASS ([run 42803248288](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42803248288)). Modello causal/stateful, DAC900E candidato, F7401 matematica. **NO FAB / NO TX**.
