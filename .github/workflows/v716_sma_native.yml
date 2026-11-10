@@ -1,0 +1,41 @@
+name: V7.16 native SMA footprint root-cause experiment (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.16-sma-native-diagnosis']
+    paths:
+      - '03_Verifiche/V7.16/**'
+      - '.github/workflows/v716_sma_native.yml'
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.16/**'
+      - '.github/workflows/v716_sma_native.yml'
+permissions:
+  contents: read
+jobs:
+  native-sma-forensics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real KiCad 9 with Python pcbnew
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          kicad-cli version
+          /usr/bin/python3 -c 'import pcbnew; print("pcbnew version",pcbnew.Version())'
+      - name: KiCad footprint-library original versus diagnostic-reload clone
+        run: /usr/bin/python3 -B 03_Verifiche/V7.16/probe_sma_native_v716.py
+      - name: Verify V7.16 SMA courtyard and source invariants
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.16 -p "test_*.py" -v
+      - name: Verify V7.15 static invariants and historical regressions
+        run: |
+          for version in V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Archive genuine KiCad DRC and JSON (no production files)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v716-real-kicad-sma-forensics-NO-FAB-NO-TX
+          path: 03_Verifiche/V7.16/output-ci/
+          if-no-files-found: warn
