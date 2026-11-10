@@ -1,0 +1,8 @@
+reference,qty,description,mpn,package,nominal,assembly,status
+R7501,1,Nominal 50-ohm shunt for single-ended IOUT I/V (reference concept),Vishay CRCW060349R9FKEA,0603,49.9 ohm 1 percent,DNP,Source DigiKey vendor part + datasheet validation pending
+R7502,1,Nominal 50-ohm remote filter termination (not physically connected),Vishay CRCW060349R9FKEA,0603,49.9 ohm 1 percent,DNP,Filter 50-ohm interface conceptual only
+R7503,1,Intentionally open analogue link between DAC IOUT and F7401,TBD,0603,0 ohm DO NOT POPULATE,DNP,Hard open conceptual separation
+R7504,1,Optional complementary IOUTB dummy termination (not modeled physically),TBD,0603,24.9 ohm concept,DNP,Requires vendor data and independent analogue review
+U7501,1,Parallel 10-bit bridge or FPGA candidate without selected IC,TBD,TBD,10 data bits + clock,DNP,No pin assignment and no firmware timing validation
+X7501,1,48kHz-synchronous 3.840000MHz clock candidate without selected IC,TBD,TBD,3840000 Hz ratio x80,DNP,No oscillator clock tree or jitter budget
+J7501,1,Virtual data and PD boundary connector without selected package,TBD,TBD,No pins allocated,DNP,Not a real physical connector
