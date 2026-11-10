@@ -36,8 +36,18 @@ jobs:
         run: |
           kicad-cli sch erc -o 03_Verifiche/V7.17/output-ci/rx_v714.current.erc.rpt \
             04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/S3900E_RX_LIB_V7_14_NOT_FOR_FAB.kicad_sch
+      - name: Export KiCad native V7.17 versioned seven-sheet HOLD master netlist
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.17/output-ci/root_v717.hold_master.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Native KiCad ERC of V7.17 full-radio HOLD master
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.17/output-ci/root_v717.hold_master.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: Audit every real root ERC category and all 15 netlist interface candidates
         run: python3 -B 03_Verifiche/V7.17/audit_full_board_native_v717.py
+      - name: Verify 99 exact native KiCad net and pin memberships preserved V7.14 to V7.17
+        run: python3 -B 03_Verifiche/V7.17/verify_versioned_full_board_master_v717.py
       - name: Verify 14 explicit V7.17 interface, isolation and TX safety tests
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.17 -p 'test_*.py' -v
       - name: Preserve all 223 prior KiCad, DSP, PLL and firmware regression tests
