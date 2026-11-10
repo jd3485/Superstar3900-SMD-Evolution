@@ -1,0 +1,13 @@
+reference,pin,nominal_port,virtual_node,assembly,pinout_status
+J7301,1,AUDIO_48K,AUDIO_48K_VIRTUAL,DNP,Concept only no physical connector verified
+J7301,2,MODE,MODE_VIRTUAL,DNP,Concept only no physical connector verified
+J7301,3,GND,GND_VIRTUAL,DNP,Concept only no physical connector verified
+J7301,4,PTT,PTT_VIRTUAL_OPEN,DNP,Concept only no physical connector verified
+J7302,1,TEST_IF2,IF2_TEST_UNROUTED,DNP,Concept only no physical connector verified
+J7302,2,GND,GND_VIRTUAL,DNP,Concept only no physical connector verified
+R7301,1,A,IF2_DIGITAL_VIRTUAL,DNP,0R generic terminal
+R7301,2,B,DAC_INPUT_NOT_IMPLEMENTED,DNP,0R generic terminal
+R7302,1,A,DAC_ANALOG_OUT_NOT_IMPLEMENTED,DNP,0R generic terminal
+R7302,2,B,F7301_INPUT_NOT_SELECTED,DNP,0R generic terminal
+R7303,1,A,F7301_OUTPUT_NOT_SELECTED,DNP,0R generic terminal
+R7303,2,B,U7201_IF2_DISCONNECTED,DNP,0R generic terminal

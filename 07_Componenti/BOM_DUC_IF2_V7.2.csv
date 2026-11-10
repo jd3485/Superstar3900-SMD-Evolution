@@ -1,0 +1,9 @@
+reference,qty,description,mpn,package,function,assembly,verification
+M7301,1,Digital IF2 model offline only,NONE,NO_PHYSICAL_DEVICE,48k audio to 3.84Msps mathematical DUC,DNP,Software model only
+U7301,1,Physical DAC candidate not yet selected,TBD,TBD,Convert digital IF2 to analog if ever qualified,DNP,No silicon pinout or power budget
+F7301,1,IF2 analog reconstruction BPF 455kHz,TBD,TBD,Analog images reconstruction and 455k matching,DNP,MPN BW Q matching and loss missing
+J7301,1,Virtual concept 4-pin interface header,TBD,TBD,Conceptual audio and control boundary,DNP,No real connector schematic
+J7302,1,Virtual 2-pin measurement boundary header,TBD,TBD,Unconnected future IF2 measurement,DNP,No output physically routed
+R7301,1,Open-link zero-ohm resistor placeholder,TBD,0603,Isolate digital IF2 from unspecified DAC,DNP,Open circuit always
+R7302,1,Open-link zero-ohm resistor placeholder,TBD,0603,Isolate unspecified DAC analog output from BPF,DNP,Open circuit always
+R7303,1,Open-link zero-ohm resistor placeholder,TBD,0603,Isolate IF2 from U7201 mixer V7.1,DNP,Open circuit always
