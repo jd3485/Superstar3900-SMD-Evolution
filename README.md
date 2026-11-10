@@ -1,3 +1,23 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.10 CAD NATIVO INTEGRATA IN MAIN
+
+**10 novembre 2026:** V7.10 integrata su `main` con [PR #10](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/10), merge `8a18c12df4455265db8414784587f4d82a1f82ae`. È la prima milestone centrata sul **vero progetto KiCad**, senza abbandonare software, DSP, firmware e test storici. Il tag `v7.0` è storico e preservato: verificare sempre l'HEAD di `main` prima di continuare.
+
+## Stato effettivo V7.10
+- Creato **nuovo file schematico nativo KiCad** `04_KiCad/Assemblaggio_RX_Power_V7.10_NOT_FOR_FAB/S3900E_RX_POWER_INTEGRATION_V7_10_NOT_FOR_FAB.kicad_sch`. È un indice gerarchico che richiama tre blocchi già realizzati: **AUX power V1.5** (eFuse, buck e LDO/TCXO/PLL), **MCU/codec V2.1**, **RX test coupon 50Ω V5.2**. Il progetto KiCad di test RX possiede un `.kicad_pcb` separato. **I tre fogli non sono ancora connessi elettricamente tra loro** e il PCB completo dell'apparato **non esiste**.
+- `MATRICE_INTERFACCE_DA_QUALIFICARE_V7_10.csv`: **15 confini elettrici OPEN/HOLD**; vietato unire per nome le reti 5V, 3V3, SPI, IF/RX e masse senza pin e protezioni realmente qualificati. Nessuna catena TX aggiunta: DAC, FPGA, PA/antenna tutti DNP e non collegati.
+- **Prima CI con KiCad CLI nativo 9.0.8**: `sch export netlist` riuscito con warning annotazione; risultato **7 fogli, 132 istanze componenti, 118 ref univoci, 11 designatori riutilizzati (14 occorrenze in eccesso), 99 reti esportate**. Il root ha **43 errori ERC +416 avvisi**. Alimentazione V1.5 **22 errori/248 avvisi**, MCU V2.1 **18 errori/92 avvisi**. RX V5.2 standalone non caricabile da `kicad-cli sch erc` (exit3), anche se incluso nel root, quindi nessun ERC standalone certificato.
+- **PCB coupon RX V5.2 DRC nativo:** **91 violazioni DRC e altre 63 connessioni non completate**, tra cui 6 via drill sotto limite, 70 via dangling warnings e 15 problemi footprint library. **Questo NON è un DRC PASS e NON è un PCB completo**. Tentativo di aggiungere `sheet_instances` per riparare RX standalone FALLITO: originale preservato, fix inefficace rimosso.
+- **CI di AUDIT V7.10:** 12 test statici nuovi PASS e **143 regressioni Python V7.1–V7.9 PASS** = **155/155** sul branch, workflow [run 42855337776](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42855337776), log ispezionato. Workflow è GREEN perché *diagnosi KiCad realmente eseguita*, NON perché gli errori ERC/DRC sono assenti. Gli output sono scaricabili come artifact `v710-kicad-native-audit-not-for-fab`, incluso ZIP con sorgenti KiCad modificabili, netlist autentica e rapporti.
+- Rapporto `Superstar3900_Rapporto_Tecnico_V7.10.md`, specifica `01_Specifiche/V7.10/PIANO_CAD_INTEGRAZIONE_RX_POWER_V7.10.md`, ECO `00_Gestione_Progetto/ECO_INTEGRAZIONE_CAD_V7.10.md`, risultati `03_Verifiche/V7.10/RISULTATI_VERIFICHE_V7_10.json`.
+
+**Prossima V7.11:** con nuovi file KiCad versionati, risolvere prima il caricamento dello schema RX V5.2, correggere i designatori ripetuti, verificare footprint/simboli, affrontare le 63 connessioni PCB e le via fuori specifica, ridurre ERC/DRC e collegare uno per uno i moduli power/PLL/MCU/RX sulla base di pin verificati. In parallelo continuare DSP/firmware/CI. Il pinout FPGA SG48 rimane HOLD finché non acquisito l'XLSX Lattice originale. Solo quando lo schema integrato è connesso e verificato iniziare il **PCB integrato vero**.
+
+**NO FAB / NO TX**: nessun Gerber, nessuna alimentazione TX, PA o antenna, nessun ordine PCB. Non attribuire sicurezza o stato di produzione a semplici simulazioni o a una CI diagnostica verde. Per ripresa da nuova chat leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, poi verificare HEAD `main`, PR/tag/actions.
+
+---
+
+## ARCHIVIO STORICO — V7.9 e precedenti, non stato corrente
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.9 INTEGRATA SU MAIN
 
 **10 novembre 2026:** V7.9 integrata con [PR #9](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/9), merge `38b9828728b02581bf24c070401dd70782051dbd`. È **software/RTL simulato + screening documentale**, NON hardware fabbricabile o una radio in trasmissione. Tag storico `v7.0` conservato; verificare sempre HEAD `main` e la CI in ogni nuova chat.
