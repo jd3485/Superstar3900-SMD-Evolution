@@ -1,0 +1,30 @@
+name: TX IF V7.1 model-only tests
+on:
+  pull_request:
+    paths:
+      - '01_Specifiche/V7.1/**'
+      - '03_Verifiche/V7.1/**'
+      - '07_Componenti/BOM_TX_IF_V7.1.csv'
+      - '08_Firmware_Prototipi/V7.1/**'
+      - '02_Piano_Frequenze/V6.4/PIANO_PLL_LO_270_RX_V6.4.csv'
+      - '.github/workflows/tx_if_v71_model.yml'
+  push:
+    branches: ['feature/v7.1-tx-if-fail-closed']
+    paths:
+      - '01_Specifiche/V7.1/**'
+      - '03_Verifiche/V7.1/**'
+      - '07_Componenti/BOM_TX_IF_V7.1.csv'
+      - '08_Firmware_Prototipi/V7.1/**'
+      - '.github/workflows/tx_if_v71_model.yml'
+permissions:
+  contents: read
+jobs:
+  offline-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all V7.1 model and repository assertions
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v
