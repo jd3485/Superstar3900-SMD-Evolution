@@ -1,3 +1,23 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.6 INTEGRATA IN MAIN (10 novembre 2026)
+
+**V7.6 su main**, integrata con [Pull Request #6](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/6), merge `8309d11e1a06473119aafcb71a0cbe2aa0171e61`. È una **revisione sperimentale software/documentale**, non un dispositivo TX o un PCB validato. Il tag storico `v7.0` rimane immutato; prevale sempre HEAD `main` per lo stato più recente.
+
+## Stato tecnico V7.6
+- Modulo RTL Verilog comportamentale `08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v`, div clock-enable **/8 e /640** per DAC/audio nominali da master 30,72MHz, FIFO virtuale 10bit×16, fault latched. **Nessuna clock waveform DAC fisica**; porte di permesso RF e rilascio DAC PD **sempre zero**.
+- Testbench con Icarus Verilog `03_Verifiche/V7.6/tb_clock_fifo_virtual_v76.v` eseguito con **PASS**; **92/92 test Python PASS**, zero FAIL/SKIP (15 V7.6 + 22 V7.5 + 21 V7.4 + 15 V7.3 + 11 V7.2 + 8 V7.1), GitHub Actions [run 42814827870](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42814827870), log del job verificato. Non è sintesi/place-route, timing closure o test elettrico.
+- Nuovo pin-plan del candidato FPGA `iCE40UP5K-SG48I`, **48 pin periferici + paddle GND**, con vincoli PCF **HOLD**, perché i numeri provengono da una riproduzione secondaria e non sono ancora stati confrontati con l'XLSX ufficiale Lattice; il datasheet primario conferma i conteggi per banca e l'obbligo del paddle GND. **Non usare per produzione o programmazione FPGA**.
+- DSP multitone numerico 750/1250Hz e gradino 0→0,4→0; picco di FIR ~**0,45682** (+14,2%) evidenzia rischio di overshoot e necessità di headroom; non è una misura di emissioni DAC/RF.
+- Nuova BOM **5 elementi DNP** e netlist **8 terminali OPEN/DNP**; tutte le revisioni TX V7.1–V7.6 e le interfacce PA/antenna fisiche restano non montate e non instradate.
+- Documenti tecnici: `Superstar3900_Rapporto_Tecnico_V7.6.md`, `03_Verifiche/V7.6/RAPPORTO_TECNICO_V7.6.md`, `01_Specifiche/V7.6/ARCHITETTURA_RTL_PINPLAN_PROTEZIONI_V7.6.md`, `00_Gestione_Progetto/ECO_INTEGRAZIONE_V7.6.md`.
+
+**Prossima revisione V7.7:** verificare pinout nel file XLSX Lattice ufficiale, chiudere top/constraints FPGA con simulazione e sintetizzabilità tracciate, clock output e monitor esterno, progettare POR/PD hardwired indipendente, quantizzazione DAC e filtri con dati Q/SRF reali. Non confondere software simulato con hardware sicuro.
+
+**Ripresa nuova chat:** leggere `RIPRENDI_IN_UNA_NUOVA_CHAT.md` e `00_Gestione_Progetto/PROTOCOLLO_CONTINUITA_MAIN.md`, verificare HEAD `main`/tag/PR/CI e sviluppare la revisione successiva. Merge in `main` solo dopo verifiche controllate. **NO FAB / NO TX.**
+
+---
+
+## ARCHIVIO — stato V7.5 e revisioni precedenti (storico, non stato corrente)
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.5 IN MAIN (10 novembre 2026)
 
 **V7.5 integrata su main** tramite [PR #5](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/5), merge `a5ef405f9500c114e8a4d56d7f9b17ba5a89caf1`. Revisione **software e candidata documentale**, NON un circuito RF completo o pronto da fabbricare. Il tag `v7.0` è storico e immutabile. L'ultimo commit di `main` prevale sulla fotografia di queste note.
