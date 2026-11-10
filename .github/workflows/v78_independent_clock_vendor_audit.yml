@@ -1,0 +1,74 @@
+name: V7.8 independent reference watchdog and vendor pinout HOLD (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.8-independent-clock-audit-dnp', 'main']
+    paths:
+      - '08_Firmware_Prototipi/V7.8/**'
+      - '03_Verifiche/V7.8/**'
+      - '01_Specifiche/V7.8/**'
+      - '07_Componenti/BOM_WATCHDOG_PIN_AUDIT_V7.8.csv'
+      - '.github/workflows/v78_independent_clock_vendor_audit.yml'
+  pull_request:
+    paths:
+      - '08_Firmware_Prototipi/V7.8/**'
+      - '03_Verifiche/V7.8/**'
+      - '01_Specifiche/V7.8/**'
+      - '07_Componenti/BOM_WATCHDOG_PIN_AUDIT_V7.8.csv'
+      - '.github/workflows/v78_independent_clock_vendor_audit.yml'
+permissions:
+  contents: read
+jobs:
+  independent-ref-and-safety-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Icarus and Yosys for numerical logic checks ONLY
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog yosys
+      - name: Icarus V7.8 independent clock-stop bench
+        run: |
+          iverilog -g2012 -Wall -s tb_clock_watchdog_v78 -o /tmp/v78_ref.vvp \
+            08_Firmware_Prototipi/V7.8/rtl/clock_watchdog_indipendente_v78.v \
+            03_Verifiche/V7.8/tb_clock_watchdog_v78.v
+          vvp /tmp/v78_ref.vvp
+      - name: Yosys generic logic synthesis for V7.8 independent clock monitor
+        run: |
+          yosys -Q -T -p 'read_verilog -sv 08_Firmware_Prototipi/V7.8/rtl/clock_watchdog_indipendente_v78.v; synth -top v78_offline_dual_domain_top; check -assert; stat' > /tmp/v78_yosys.log
+          tail -n 32 /tmp/v78_yosys.log
+      - name: V7.8 Python provenance DSP and safety tests (synthetic XLSX not vendor)
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.8 -p 'test_*.py' -v
+      - name: V7.8 bounded nonperiodic 10-bit numerical study
+        run: python3 -B 08_Firmware_Prototipi/V7.8/dsp_nonperiodico_quantizzato_v78.py
+      - name: V7.7 Icarus top regression
+        run: |
+          iverilog -g2012 -Wall -s tb_top_virtuale_v77 -o /tmp/v77.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            08_Firmware_Prototipi/V7.7/rtl/top_virtuale_v77.v \
+            03_Verifiche/V7.7/tb_top_virtuale_v77.v
+          vvp /tmp/v77.vvp
+      - name: V7.7 generic Yosys synthesis regression
+        run: |
+          yosys -Q -T -p 'read_verilog -sv 08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v 08_Firmware_Prototipi/V7.7/rtl/top_virtuale_v77.v; synth -top v77_offline_top; check -assert; stat' > /tmp/v77_regression_yosys.log
+          tail -n 12 /tmp/v77_regression_yosys.log
+      - name: V7.6 Icarus reference regression
+        run: |
+          iverilog -g2012 -Wall -s tb_clock_fifo_virtual_v76 -o /tmp/v76.vvp \
+            08_Firmware_Prototipi/V7.6/rtl/clock_fifo_virtual_v76.v \
+            03_Verifiche/V7.6/tb_clock_fifo_virtual_v76.v
+          vvp /tmp/v76.vvp
+      - name: Python regressions V7.7
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.7 -p 'test_*.py' -v
+      - name: Python regressions V7.6
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.6 -p 'test_*.py' -v
+      - name: Python regressions V7.5
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.5 -p 'test_*.py' -v
+      - name: Python regressions V7.4
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.4 -p 'test_*.py' -v
+      - name: Python regressions V7.3
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.3 -p 'test_*.py' -v
+      - name: Python regressions V7.2
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.2 -p 'test_*.py' -v
+      - name: Python regressions V7.1
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.1 -p 'test_*.py' -v
