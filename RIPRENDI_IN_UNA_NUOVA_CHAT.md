@@ -30,6 +30,14 @@ Analizzato in ambiente offline lo ZIP [artefatto V7.22 13849074958](https://gith
 
 ---
 
+## RIPRESA ATTIVA — V7.27 INTEGRATA, 11 novembre 2026
+
+Leggere `main` [AGENTS.md](AGENTS.md) e [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md) prima di ripartire. [PR #29 V7.26](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/29) MERGED, CI [43019926260](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43019926260) PASS 12 test, 117 `lib_symbol_issues` risolti con nuova libreria di 32 S3900E simboli/collisioni R-C isolate; ERC 36/340→36/223, tutti i 132 componenti/100 reti/ogni pin invariato.
+
+[PR #30 V7.27](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/30) **MERGED** squash `18c027c3073a2442bb3c5979382e13c6a904adaf`, CI [43022065783](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43022065783) PASS 14 nuovi test, artefatto 13854479601 scaricato e letto. Nuovo footprint TI LMX2572 RHA0040H 40 periferici + DAP41 rame4.5mm/9 aperture stencil1.26mm, solo proprietà footprint U1 cambiata in copia di schema AUX, DAP41 già su GND_MAIN, netlist 0 differenze. **ERC 36 errori/222 warning**, di cui 219 endpoint_off_grid e 3 footprint link errati **F200,Y1,L100**. 42 missing footprint, 15 cross-module OPEN/HOLD, SG48 HOLD; nessuna PCB unica, nessuna qualifica fab/stencil. V7.28: L100 15uH/3.5A MPN/I_sat/I_rms/land non selezionati, non assegnare impronte fittizie; power source/return e off-grid differenziali. **NO FAB/NO GERBER/NO PCBWAY/NO TX**, budget Actions a pagamento: CI mirata una volta per PR.
+
+---
+
 ## STATO ATTIVO — V7.26 INTEGRATA (11 novembre 2026)
 
 [PR #29](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/29) **MERGED** squash `564e3c4ad2caebec053d000659edb3bec453c6d4`; [CI native run 43019926260 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43019926260), 12 test nuovi e artefatto 13854287534. Nuova libreria KiCad `04_KiCad/Librerie_Simboli_V7.26_UNIFIED_NOT_FOR_FAB/S3900E.kicad_sym` di 32 simboli AUX/MCU/RX, 6 nomi separati R/C nei fogli AUX versionati, root V7.26. **0 nodi elettrici cambiati; 132 componenti/100 reti, 42 footprint mancanti**; ERC **36 errori invariati, warning 340→223**, tutti i 117 warning libreria risolti effettivamente, senza waiver.
