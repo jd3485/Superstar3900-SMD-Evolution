@@ -72,7 +72,8 @@ def main():
     eb=native_erc(OUT/"v719.root_v719.erc.rpt")
     contract=json.loads(CONTRACT.read_text())
     expected=contract["expected_future_pin_nets"]
-    targets={PREFIX+k:sorted((r,p) for r,p in v) for k,v in expected.items()}
+    targets={(("/AUX_POWER_existing_V1_5_UNQUALIFIED/GND_MAIN") if k=="GND_MAIN" else PREFIX+k):sorted((r,p) for r,p in v)
+             for k,v in expected.items()}
     for name,want in targets.items():
         got=b.get(name,[])
         if name.endswith("/GND_MAIN"):
