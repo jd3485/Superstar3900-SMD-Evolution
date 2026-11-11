@@ -1,6 +1,6 @@
 # SUPERSTAR 3900 SMD EVOLUTION — V7.21 PRE-LAYOUT PCB QUALITY GATES (NO FAB / NO TX)
 
-**11 novembre 2026 · V7.21 su branch/PR, verificare merge `main`.** Decisione di progetto: prima verificare pacchetti reali, pad, alimentazioni e termica, poi creare un'unica PCB. Non promettere «zero errori» sulla base di un DRC non significativo.
+**11 novembre 2026 · V7.21 integrata su `main` tramite [PR #21](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/21), squash merge `9805f110d0acf59e69f7f54e87e299248b99d96b`.** Decisione di progetto: prima verificare pacchetti reali, pad, alimentazioni e termica, poi creare un'unica PCB. Non promettere «zero errori» sulla base di un DRC non significativo.
 
 **Audit sulla vera netlist KiCad9 a 7 fogli:** **132 componenti**, **84 footprint assegnati**, **48 mancanti** (46 MCU/CODEC, 2 connettori J100/J101 AUX). Fra gli 84 assegnati **F200** fusibile e **Y1** TCXO hanno nomi espliciti `NON_VALIDATO`/`UNVALIDATED`; tutti gli altri footprint non sono ancora vendor-certified. Il nuovo audit ha verificato **sei candidati primari sulle vere librerie KiCad9**: STM32G474RET6 LQFP64 10×10/64 pad, TLV320AIC3204 VQFN32 RHB 5×5/33 pad incluso **EP33**, quattro LDO TPS7A20 DBV SOT23-5/5 pad. CANDIDATI soltanto: nessuno assegnato agli schemi prima del confronto pin/land pattern.
 
