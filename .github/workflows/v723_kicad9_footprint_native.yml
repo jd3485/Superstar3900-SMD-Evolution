@@ -19,7 +19,8 @@ jobs:
       - name: Install PCBNEW Python bindings from Ubuntu KiCad package
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq kicad python3-kicad
+          sudo apt-get install -y -qq kicad
+          /usr/bin/python3 -c 'import pcbnew; print(pcbnew.GetBuildVersion())'
           kicad-cli version
       - name: Load all three candidate footprint files into the genuine KiCad native C++ model
         run: |
