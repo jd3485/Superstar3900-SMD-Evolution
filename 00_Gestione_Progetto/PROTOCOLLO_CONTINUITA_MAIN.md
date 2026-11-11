@@ -1,6 +1,6 @@
 # PROTOCOLLO CONTINUITÀ — V7.21 PRE-LAYOUT QUALITY / BOM / TERMICA (NO FAB/TX)
 
-**11 novembre 2026 · V7.21 su branch/PR; confermare merge/HEAD prima di dire `main`.**
+**11 novembre 2026 · V7.21 MERGED su `main` tramite [PR #21](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/21), squash merge `9805f110d0acf59e69f7f54e87e299248b99d96b`.**
 
 - Vero KiCad9 master 7 fogli V7.19 / netlist 100 reti: **132 componenti**, 48 footprint missing (46 MCU/CODEC +2 AUX J100/J101), 84 assigned (NON tutti approvati), F200 e Y1 assigned con marcatori espliciti non validati. Root ERC ancora **36 errors/340 warnings**, 15 interfaces OPEN/HOLD.
 - **CRITICAL pin/pad mismatch:** codec U6202 TI RHB footprint has EP33 thermal pad whereas actual embedded KiCad symbol has **only pins 1–32** (verified from exported libpart). TI SLOS602E §12.1 says thermal pad MUST be connected to PCB ground plane, and is not internally connected. Must add EP33 pin and qualify its GND in V7.22; no footprint release before.
