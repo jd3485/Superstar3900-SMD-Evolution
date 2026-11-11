@@ -1,18 +1,16 @@
 name: V7.11 native RX PCB drill and footprint-table DRC comparison (NO FAB NO TX)
 on:
-  push:
-    branches: [main, 'feature/v7.11-rx-coupon-native-drc-repair']
-    paths:
-      - '04_KiCad/Modulo_RX_Test_50ohm_V7.11_DRC_REPAIR_NOT_FOR_FAB/**'
-      - '03_Verifiche/V7.11/**'
-      - '.github/workflows/v711_rx_coupon_native_drc.yml'
   pull_request:
     paths:
       - '04_KiCad/Modulo_RX_Test_50ohm_V7.11_DRC_REPAIR_NOT_FOR_FAB/**'
       - '03_Verifiche/V7.11/**'
-      - '.github/workflows/v711_rx_coupon_native_drc.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   native-rx-cad:
     runs-on: ubuntu-latest

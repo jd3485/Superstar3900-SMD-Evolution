@@ -1,0 +1,23 @@
+name: Workflow cost and safety policy (NO FAB / NO TX)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - 'ci/workflow_policy/**'
+      - 'AGENTS.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install small YAML parser, no KiCad/ngspice
+        run: python3 -m pip install --disable-pip-version-check -q 'PyYAML==6.0.3'
+      - name: Validate workflow budget and safety rules
+        run: python3 -B ci/workflow_policy/audit_workflow_costs.py

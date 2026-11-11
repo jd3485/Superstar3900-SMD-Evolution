@@ -1,22 +1,18 @@
 name: V7.7 synth-checkable virtual RTL and 10bit DSP (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.7-synth-quantized-safety-dnp', 'main']
-    paths:
-      - '08_Firmware_Prototipi/V7.7/**'
-      - '03_Verifiche/V7.7/**'
-      - '01_Specifiche/V7.7/**'
-      - '07_Componenti/BOM_TOP_VIRTUALE_V7.7.csv'
-      - '.github/workflows/v77_virtual_synthesis_quantization.yml'
   pull_request:
     paths:
       - '08_Firmware_Prototipi/V7.7/**'
       - '03_Verifiche/V7.7/**'
       - '01_Specifiche/V7.7/**'
       - '07_Componenti/BOM_TOP_VIRTUALE_V7.7.csv'
-      - '.github/workflows/v77_virtual_synthesis_quantization.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   virtual-rtl-and-numerical-dsp:
     runs-on: ubuntu-latest

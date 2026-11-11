@@ -4,6 +4,16 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## V7.30 - Audit e ottimizzazione GitHub Actions IN BRANCH (non ancora integrati)
+
+**Main live al bootstrap:** bb4567b97dedc2b4d574d123f1fa7683ae630bc3, V7.29 integrata PR #32, 0 PR aperte. Audit di 34 workflow: molti push+PR ridondanti, baseline V7.0 su ogni nuovo CAD, installazioni KiCad ripetute. Il branch feature/v7.30-actions-cost-guardrails prepara modifiche a 30 workflow PR con paths ristretti, workflow_dispatch, concurrency sicura, filtro solo report Markdown, altri 4 workflow KiCad V5.4–V5.7 manual-only. Zero step tecnici rimossi. Un gate YAML veloce centrale verifica policy, non sostituisce le verifiche native.
+
+**Prima di merge** controllare differenza jobs dei 34 workflow con main, esecuzione reale della CI di policy, e rispetto delle protezioni PR; poi registrare SHA/run. Non dichiarare verifiche non effettuate. Nel contesto locale corrente kicad-cli e ngspice NON sono installati; test elettronici nativi richiederanno CI mirata.
+
+**Prossimo CAD:** root V7.29, 132 componenti/100 reti, 42 footprint mancanti, ERC 36 errori/220 warning, di cui 219 offgrid e 1 Y1 TCXO pin10 AFC/GND HOLD. 15 interfacce OPEN/HOLD, SG48 HOLD, PCB unica assente. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
 ## STATO TECNICO CANONICO — 11 novembre 2026 — V7.29 INTEGRATA, CI PASS 14 TEST, ERC 36/220
 
 **GitHub live:** [PR #32 V7.29](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/32) **MERGED**, squash `336883111b9817b7cb5d7472c7cd439db5b73f64`. [CI nativa #43024443162](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43024443162) **SUCCESS**, 14 test Python V7.29 PASS, KiCad9 `pcbnew.FootprintLoad` + originale/revisionata netlist/ERC, dati nel [run artifact #13856172598](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43024443162/artifacts/13856172598) ZIP effettivamente scaricato e JSON `v729.native_littelfuse_f200.json` letto. Dopo il merge anche il workflow base V7.0 [run #43024653345](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43024653345) è **SUCCESS**. Evitare duplicate CI perché Actions oltre quota è pagato dall'utente.

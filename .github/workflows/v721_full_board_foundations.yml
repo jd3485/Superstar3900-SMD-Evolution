@@ -1,18 +1,15 @@
 name: V7.21 full-radio footprint and power-thermal release gates (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.21-power-thermal-board-readiness-gates']
-    paths:
-      - '.github/workflows/v721_full_board_foundations.yml'
-      - '03_Verifiche/V7.21/**'
-      - '01_Specifiche/V7.21/**'
   pull_request:
     paths:
-      - '.github/workflows/v721_full_board_foundations.yml'
       - '03_Verifiche/V7.21/**'
       - '01_Specifiche/V7.21/**'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   board_foundations:
     runs-on: ubuntu-latest

@@ -1,22 +1,18 @@
 name: V7.4 DAC900 bridge / I-V offline checks (NO FAB NO TX)
 on:
-  push:
-    branches: [feature/v7.4-dac-clock-iv-fail-closed, main]
-    paths:
-      - '01_Specifiche/V7.4/**'
-      - '03_Verifiche/V7.4/**'
-      - '08_Firmware_Prototipi/V7.4/**'
-      - '07_Componenti/BOM_DAC_BRIDGE_IV_V7.4.csv'
-      - '.github/workflows/dac_bridge_v74_offline.yml'
   pull_request:
     paths:
       - '01_Specifiche/V7.4/**'
       - '03_Verifiche/V7.4/**'
       - '08_Firmware_Prototipi/V7.4/**'
       - '07_Componenti/BOM_DAC_BRIDGE_IV_V7.4.csv'
-      - '.github/workflows/dac_bridge_v74_offline.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   offline-bridge:
     runs-on: ubuntu-latest

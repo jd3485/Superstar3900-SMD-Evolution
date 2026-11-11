@@ -1,16 +1,18 @@
 name: Superstar3900 - integrita baseline V7.0 e test RX (NO FAB NO TX)
 on:
-  push:
-    branches: [main]
+  pull_request:
     paths:
-      - '.github/workflows/verifica_v70.yml'
-      - 'ci/**'
+      - 'ci/verifica_manifest.py'
+      - 'MANIFEST_SHA256_V7.0.csv'
       - '03_Verifiche/V6.9/**'
       - '03_Verifiche/V7.0/**'
-      - '04_KiCad/**'
+      - '!03_Verifiche/**/*.md'
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   verifica-v70:
     runs-on: ubuntu-24.04

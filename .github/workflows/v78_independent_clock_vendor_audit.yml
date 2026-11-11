@@ -1,22 +1,18 @@
 name: V7.8 independent reference watchdog and vendor pinout HOLD (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.8-independent-clock-audit-dnp', 'main']
-    paths:
-      - '08_Firmware_Prototipi/V7.8/**'
-      - '03_Verifiche/V7.8/**'
-      - '01_Specifiche/V7.8/**'
-      - '07_Componenti/BOM_WATCHDOG_PIN_AUDIT_V7.8.csv'
-      - '.github/workflows/v78_independent_clock_vendor_audit.yml'
   pull_request:
     paths:
       - '08_Firmware_Prototipi/V7.8/**'
       - '03_Verifiche/V7.8/**'
       - '01_Specifiche/V7.8/**'
       - '07_Componenti/BOM_WATCHDOG_PIN_AUDIT_V7.8.csv'
-      - '.github/workflows/v78_independent_clock_vendor_audit.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   independent-ref-and-safety-model:
     runs-on: ubuntu-latest

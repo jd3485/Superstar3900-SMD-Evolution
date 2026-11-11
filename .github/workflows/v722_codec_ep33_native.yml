@@ -1,18 +1,19 @@
 name: V7.22 codec EP33 native KiCad differential (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.22-codec-ep33-ground-eco']
   pull_request:
     paths:
-      - '.github/workflows/v722_codec_ep33_native.yml'
       - '03_Verifiche/V7.22/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.22_EP33_GROUNDED_NOT_FOR_FAB/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.22_EP33_NOT_FOR_FAB/**'
       - '04_KiCad/Librerie_Footprint_V7.22_DBV_TI_HOLD/**'
       - '04_KiCad/Librerie_Footprint_V7.22_RHB_TI_HOLD/**'
       - '04_KiCad/Librerie_Footprint_V7.22_ST_LQFP_TI_HOLD/**'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   codec_ep33_native:
     runs-on: ubuntu-latest

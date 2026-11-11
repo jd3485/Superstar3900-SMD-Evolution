@@ -1,18 +1,15 @@
 name: V7.17 native seven-sheet full-radio ERC and interface audit (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.17-full-board-erc-interface-audit']
-    paths:
-      - '03_Verifiche/V7.17/**'
-      - '04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/**'
-      - '.github/workflows/v717_full_board_erc.yml'
   pull_request:
     paths:
       - '03_Verifiche/V7.17/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.17_INTEGRATION_HOLD_NOT_FOR_FAB/**'
-      - '.github/workflows/v717_full_board_erc.yml'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   full-radio-integration-readiness:
     runs-on: ubuntu-latest

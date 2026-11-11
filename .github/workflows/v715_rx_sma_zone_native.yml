@@ -1,17 +1,14 @@
 name: V7.15 native KiCad RX SMA/zone read-only diagnostics (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.15-sma-zone-diagnostics']
-    paths:
-      - '03_Verifiche/V7.15/**'
-      - '.github/workflows/v715_rx_sma_zone_native.yml'
-      - '04_KiCad/Modulo_RX_Test_50ohm_V7.14_LIB_DIAGNOSTIC_NOT_FOR_FAB/**'
   pull_request:
     paths:
       - '03_Verifiche/V7.15/**'
-      - '.github/workflows/v715_rx_sma_zone_native.yml'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   ki9-read-only:
     runs-on: ubuntu-latest

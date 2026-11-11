@@ -1,18 +1,16 @@
 name: V7.12 native RX standalone schematic probe (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.12-rx-standalone-annotation-cad', main]
-    paths:
-      - '04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/**'
-      - '03_Verifiche/V7.12/**'
-      - '.github/workflows/v712_rx_schematic_native_probe.yml'
   pull_request:
     paths:
       - '04_KiCad/Modulo_RX_Test_50ohm_V7.12_SCHEMATIC_REPAIR_NOT_FOR_FAB/**'
       - '03_Verifiche/V7.12/**'
-      - '.github/workflows/v712_rx_schematic_native_probe.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   standalone-rx-probe:
     runs-on: ubuntu-latest

@@ -6,17 +6,13 @@ on:
       - '01_Specifiche/V7.3/**'
       - '03_Verifiche/V7.3/**'
       - '07_Componenti/BOM_DUC_DAC_V7.3.csv'
-      - '.github/workflows/duc_if2_v73_causal.yml'
-  push:
-    branches: ['feature/v7.3-causal-duc-dac900-dnp', 'main']
-    paths:
-      - '08_Firmware_Prototipi/V7.3/**'
-      - '01_Specifiche/V7.3/**'
-      - '03_Verifiche/V7.3/**'
-      - '07_Componenti/BOM_DUC_DAC_V7.3.csv'
-      - '.github/workflows/duc_if2_v73_causal.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   offline-duc:
     runs-on: ubuntu-latest
