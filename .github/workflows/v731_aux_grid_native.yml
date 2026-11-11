@@ -1,0 +1,41 @@
+name: V7.31 native KiCad9 AUX connector grid parity (NO FAB NO TX)
+on:
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.31/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  native_grid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real KiCad9, once on PR only
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          kicad-cli version
+          mkdir -p 03_Verifiche/V7.31/output-ci
+      - name: Export original and revised seven-sheet netlists and ERC
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.31/output-ci/v731.original.net 04_KiCad/Assemblaggio_RX_Power_V7.29_F200_LITTELFUSE_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.31/output-ci/v731.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.29_F200_LITTELFUSE_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.31/output-ci/v731.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.31/output-ci/v731.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Fail closed on changed electrical nodes or new ERC
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.31 -p 'test_*.py' -v
+      - name: Save native evidence only - no PCB, Gerbers or TX
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v731-native-aux-grid-NO-FAB-TX
+          path: 03_Verifiche/V7.31/output-ci/
+          if-no-files-found: warn
