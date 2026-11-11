@@ -2,6 +2,12 @@ name: Superstar3900 - integrita baseline V7.0 e test RX (NO FAB NO TX)
 on:
   push:
     branches: [main]
+    paths:
+      - '.github/workflows/verifica_v70.yml'
+      - 'ci/**'
+      - '03_Verifiche/V6.9/**'
+      - '03_Verifiche/V7.0/**'
+      - '04_KiCad/**'
   workflow_dispatch:
 permissions:
   contents: read
