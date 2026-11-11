@@ -1,3 +1,19 @@
+# HANDOFF SUPERSTAR 3900 SMD — V7.21 PCB QUALITY GATES
+
+**11 novembre 2026 · V7.21 branch/PR, controllare HEAD/merge prima di dichiarare `main`. NO FAB / NO TX.** Scopo: utente ha delegato pianificazione e scelte a ChatGPT per una PCB tecnicamente corretta e senza errori noti, NON per falsificare completamento. Evitare automaticamente fab/PCBWay/TX.
+
+**Fatti KiCad9 CI [42986310630](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42986310630): 132 componenti reali, 84 footprint scritti, 48 mancanti**: 46 nel blocco MCU_CODEC, 2 J100/J101 AUX; F200 e Y1 sono tra i 84 ma esplicitamente `NON_VALIDATO`/`UNVALIDATED`. Gli altri assigned non equivalgono a vendor-certification. Candidati KiCad9 standard LIB veri: U6201 STM32G474RET6 `Package_QFP:LQFP-64_10x10mm_P0.5mm` (64 pads); U6202 TLV320AIC3204 `Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm` (33 pads **EP33** obbligatorio review pin/network/stencil); U6203–U6206 TPS7A2033PDBVR `Package_TO_SOT_SMD:SOT-23-5` (5 pads). **Non assegnati** ai simboli DRAFT: sono soltanto shortlist package dimensionali, il full vendor pin map HOLD.
+
+**6 LDO TPS7A20 ×300mA nameplate**, 2 AUX 5V e 4 MCU 5V **non ancora connessa** (non sommare come carico misurato di unico buck). 5→3.3V a300mA=0,51W; JEDEC DBV 187,1°C/W => a40°C Tj~135,4°C >125°C operativo nell'esempio. Valutare correnti REALI e derating/PCB. Buck U100 TPS54202 nominale R100k/R13k3 ->5,077V, calcolo statico limiti Vref R1% 4,863–5,298V; 2A output max. eFuse TPS26600 0.1–2.23A adjustable, F200 1.5A candidato non qualificato.
+
+**V7.21 test**: script `03_Verifiche/V7.21/audit_board_foundations_v721.py`, `audit_candidate_packages_v721.py`, 16+8 =24 nuovi test; **284 storici =308 PASS** (0 FAIL/SKIP) in CI con vero KiCad9 e ngspice legacy. Artifact `v721-132-components-48-fp-missing-power-thermal-NO-FAB-NO-TX` ha i veri report ERC/netlist, CSV 48 refs, shortlist 6 IC, JSON risk. Report `03_Verifiche/V7.21/RAPPORTO_TECNICO_CAD_V7.21.md`, `RISULTATI_VERIFICHE_V7_21.json`, [quality gate plan](https://github.com/jd3485/Superstar3900-SMD-Evolution/blob/main/01_Specifiche/V7.21/PIANO_QUALITA_PCB_UNICA_GATES_V7_21.md). Resta root ERC **36/340**, 15 link OPEN/HOLD, SG48 HOLD, RX→IF missing, SMA J9102/J9104 180° mismatch unvalidated, no global board, no TI PLLatinum or physical bench. Progress full PCB **~10% invariato**.
+
+**Next V7.22:** verify ST/TI actual pin maps U6201/U6202 and explicitly represent EP33 physical stencil/net, version MCU schematic and assign 6 package candidates only after exact vendor signoff and real native KiCad checks; then other 42 missing footprints, power budget 13.8→5→3.3, true mechanical chassis and PCB. **NO FAB / NO TX.**
+
+---
+
+## STORICO HANDOFF V7.20 E PRECEDENTI
+
 # HANDOFF — SUPERSTAR3900 SMD V7.20 FULL-RADIO POWER + LINEAR PLL MODEL
 
 **11 novembre 2026 · V7.20 MERGED su `main` tramite [PR #20](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/20), squash commit `271cf7c84c0ceeb1e490ac44ff065147c76fbb4e`. NO FAB / NO TX.**
