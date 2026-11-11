@@ -1,3 +1,5 @@
+> **HANDOFF CHATGPT WORK PERMANENTE:** non basarsi sulla memoria di altre chat. Nuova sessione Work: recuperare da GitHub `main` [AGENTS.md](AGENTS.md) + [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md), poi riprendere branch/PR nativi e proseguire **più revisioni reali nella stessa sessione** con test/PR/merge quando consentito. Alla fine aggiornare il checkpoint GitHub per la sessione successiva. [Testo istruzioni persistenti Progetto ChatGPT](00_Gestione_Progetto/ISTRUZIONI_CHATGPT_PROJECT_WORK.md). **NO FAB / NO TX.**
+
 # HANDOFF SUPERSTAR 3900 SMD — V7.21 PCB QUALITY GATES
 
 **11 novembre 2026 · V7.21 MERGED su `main` tramite [PR #21](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/21), squash merge `9805f110d0acf59e69f7f54e87e299248b99d96b`. NO FAB / NO TX.** Scopo: utente ha delegato pianificazione e scelte a ChatGPT per una PCB tecnicamente corretta e senza errori noti, NON per falsificare completamento. Evitare automaticamente fab/PCBWay/TX.
