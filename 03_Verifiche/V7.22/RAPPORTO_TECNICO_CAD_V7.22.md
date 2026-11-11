@@ -13,7 +13,7 @@
 
 ## Verifica CI
 
-Workflow `v722_codec_ep33_native.yml` esegue KiCad9 CLI ERC/netlist originali e revised, richiede stessa topologia tranne **un solo ref-pin-net U6202/33 sulla GND locale**, 100 reti, 132 componenti, pin 1–32 conservati e conformi ai nomi TI, nessun ERC nuovo critico. 21 nuovi test V7.22 + 308 regressioni storiche (attesi 329 complessivi). Non segnare PASS senza conferma CI.
+Workflow `v722_codec_ep33_native.yml` esegue KiCad9 CLI ERC/netlist originali e revised, richiede stessa topologia tranne **un solo ref-pin-net U6202/33 sulla GND locale**, 100 reti, 132 componenti, pin 1–32 conservati e conformi ai nomi TI, nessun ERC nuovo critico. 26 nuovi test V7.22 + 308 regressioni storiche (attesi 334 complessivi). Non segnare PASS senza conferma CI.
 
 ## HOLD
 
@@ -42,3 +42,9 @@ Il datasheet TI [TLV320AIC3204 SLOS602E Rev.E, esempio PCB e stencil pp. 53–54
 Il generico KiCad `Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm` consultato dall'archivio ufficiale usa EP rame 3,50 mm e pasta 4×1,41 mm (superficie stampata circa 64,9%): geometria **non identica** all'esempio TI. Non è prova di inutilizzabilità del generico, ma non va approvato senza verifica. Creato footprint locale *specifico vendor* `04_KiCad/Librerie_Footprint_V7.22_RHB_TI_HOLD/S3900E_TI_RHB_Review.pretty/TLV320AIC3204_RHB0032E_VENDOR_CANDIDATE.kicad_mod`, 33 pad fisici, paste separate senza duplicazione rame, registrato nel `fp-lib-table` del root V7.22. Sono aggiunti **6 nuovi test** per ogni centro/dimensione 1–33, geometrie solder paste, percentuale d'area e HOLD: 21 test V7.22 + 308 storici = **329 previsti NON ESEGUITI in CI**.
 
 Resta **NON ASSEGNATO** a U6202. Manca verifica KiCad9 parser/DRC, physical assembly, stencil production house, pad thermal via se applicabile, ritorno massa globale e protezioni. Niente Gerber o TX.
+
+## ST STM32G474RET6 LQFP64: CAD candidate da land pattern consigliato DS12288
+
+ST [DS12288 Rev.6, §6.4 pp.210–211, Figura 63](https://www.st.com/resource/en/datasheet/stm32g474vb.pdf): LQFP64 body 10×10mm, passo 0,50mm; **64 lands 1,20×0,30mm** (orientati radialmente), ingombro esterno rame **12,70×12,70mm**, distanza interna piste pad 10,30×10,30mm; lunghezza complessiva tangenziale tra bordi delle 16 piazzole **7,8mm**. Costruita libreria locale `04_KiCad/Librerie_Footprint_V7.22_ST_LQFP_TI_HOLD/S3900E_ST_LQFP_Review.pretty/STM32G474RE_LQFP64_ST_DS12288_CANDIDATE.kicad_mod`, 64 pad numerati come top view ST (pin 1 in basso a sinistra, 17 a destra in basso, 33 in alto a destra, 49 in alto a sinistra), centri ±5,75mm e passo 0,50mm. Nuova voce in `fp-lib-table`; cinque test aggiunti che validano mappa 64/64 e geometria.
+
+Il footprint KiCad generico ufficiale `Package_QFP:LQFP-64_10x10mm_P0.5mm` ha nell'archivio GitHub piazzole 1,55×0,30mm centri ±5,675mm, quindi **differisce** dall'esempio dimensionale ST; ciò non certifica che sia inidoneo (IPC e disponibilità assemblatore possono differire). Non attribuire produzione né PCB pronta. **U6201 rimane senza footprint**, come U6202 e U6203–U6206; serve revisione KiCad9 e footprint/solder mask/stencil/courtyard reali, verifica MPN e condizioni termiche; avanzamento PCB ~10% storico invariato. 26 test V7.22 +308 precedenti = **334 previsti, NON certificati con runner GitHub ancora KO**. **NO FAB / NO TX**.
