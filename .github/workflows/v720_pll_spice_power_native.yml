@@ -1,0 +1,59 @@
+name: V7.20 independent ngspice 270-channel PLL model and native 6-power ERC audit (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.20-pll-linear-spice-power-audit']
+    paths:
+      - '.github/workflows/v720_pll_spice_power_native.yml'
+      - '03_Verifiche/V7.20/**'
+      - '01_Specifiche/V7.20/**'
+  pull_request:
+    paths:
+      - '.github/workflows/v720_pll_spice_power_native.yml'
+      - '03_Verifiche/V7.20/**'
+      - '01_Specifiche/V7.20/**'
+permissions:
+  contents: read
+jobs:
+  native-pll-analog-power-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native KiCad 9 and ngspice simulators
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad ngspice
+          kicad-cli version
+          ngspice --version | head -n 3
+          mkdir -p 03_Verifiche/V7.20/output-ci
+      - name: Export native full 7-sheet V7.19 netlist and preserve original ERC
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.20/output-ci/v720.root_v719.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.20/output-ci/v720.root_v719.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Compare genuine ngspice AC with independent nodal model and 270 integer-channel parameter sensitivities
+        run: python3 -B 03_Verifiche/V7.20/verify_pll_spice_270_v720.py
+      - name: Audit all six genuine undriven root power pins against actual exported node types
+        run: python3 -B 03_Verifiche/V7.20/audit_native_power_v720.py
+      - name: Preserve V7.19 native diagnostic prerequisites for its 13 historical tests
+        run: |
+          /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
+          /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
+      - name: Run V7.20 15 new ngspice and power safety tests
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.20 -p 'test_*.py' -v
+      - name: Preserve all 266 V7.19-V7.1 regressions
+        run: |
+          for version in V7.19 V7.18 V7.17 V7.16 V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Archive only native evidence (not manufacturing files)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v720-ngspice-native-6-power-ledger-NO-FAB-NO-TX
+          path: |
+            03_Verifiche/V7.20/output-ci/
+            03_Verifiche/V7.19/output-ci/v719.pll_pin_forensics.json
+            03_Verifiche/V7.19/output-ci/v719.label_direct_native.json
+          if-no-files-found: warn
