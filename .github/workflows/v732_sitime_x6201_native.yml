@@ -1,0 +1,44 @@
+name: V7.32 native SiTime X6201 3225 footprint KiCad9 gate (NO FAB NO TX)
+on:
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.32/**'
+      - '04_KiCad/Librerie_Footprint_V7.32_SITIME_X6201_HOLD/**'
+      - '04_KiCad/Modulo_MCU_CODEC_V7.32_SITIME_X6201_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.32_SITIME_X6201_REVIEW_NOT_FOR_FAB/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  native_x6201:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/kicad/kicad:9.0
+      options: --user 0
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: KiCad9 pcbnew preinstalled - avoid apt or pip
+        run: |
+          kicad-cli version
+          python3 -c 'import pcbnew; print(pcbnew.GetBuildVersion())'
+          mkdir -p 03_Verifiche/V7.32/output-ci
+      - name: Native seven-sheet netlists and ERC before-after
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.32/output-ci/v732.original.net 04_KiCad/Assemblaggio_RX_Power_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.32/output-ci/v732.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.32/output-ci/v732.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.32_SITIME_X6201_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.32/output-ci/v732.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.32_SITIME_X6201_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Test native vendor land, component map, unchanged nets and ERC
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.32 -p 'test_*.py' -v
+      - name: Keep native evidence only - NO FAB/TX
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v732-native-sitime-x6201-NO-FAB-TX
+          path: 03_Verifiche/V7.32/output-ci/
+          if-no-files-found: warn
