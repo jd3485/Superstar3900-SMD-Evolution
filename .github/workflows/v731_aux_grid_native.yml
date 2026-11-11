@@ -15,13 +15,13 @@ concurrency:
 jobs:
   native_grid:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - name: Install real KiCad9, once on PR only
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq kicad
+          timeout 180s sudo apt-get update -qq
+          timeout 360s sudo apt-get install -y -qq kicad
           kicad-cli version
           mkdir -p 03_Verifiche/V7.31/output-ci
       - name: Export original and revised seven-sheet netlists and ERC
