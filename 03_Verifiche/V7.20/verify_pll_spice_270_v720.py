@@ -123,6 +123,21 @@ def ngspice_crosscheck(v):
         raise ValueError("ngspice fixture does not match independent R/C admittance model "+repr(result))
     return result
 
+def ti_vco_kvco_typical(f_vco_hz):
+    """TI LMX2572 datasheet SNAS740B Table 135 p64, equation 4 p65.
+    These are TYPICAL manufacturer application figures, not process/thermal
+    guarantees. VCO calibration or core selection has NOT been configured.
+    """
+    mhz=f_vco_hz/1e6
+    cores=(("VCO3",4200.,4650.,47.,64.),("VCO4",4650.,5200.,50.,73.))
+    match=[(name,low,high,kvlow,kvhigh) for name,low,high,kvlow,kvhigh in cores
+           if low<=mhz<high]
+    if len(match)!=1:
+        raise ValueError("VCO frequency outside planned VCO3/VCO4 range "+str(mhz))
+    core,fmin,fmax,kvmin,kvmax=match[0]
+    kv=kvmin+(kvmax-kvmin)*(mhz-fmin)/(fmax-fmin)
+    return core,kv*1e6
+
 def band_sweep(v):
     with PLAN.open(encoding="utf-8",newline="") as f:
         rows=list(csv.DictReader(f))
@@ -143,9 +158,43 @@ def band_sweep(v):
                 fc,pm=crossover(v,kv,n,icp)
                 out.append({"n":n,"kvco_hz_per_v":kv,"icp_A":icp,
                             "crossover_hz":fc,"phase_margin_deg":pm})
+    # Additional TI typical VCO gain overlay: 270 x one typical CpGain
+    # (CPG=4 or 8 both 2500uA, *not* configured in firmware), no PVT claim.
+    by_vendor=[]
+    for row in rows:
+        n=int(row["pll_n_integer"])
+        core,kvco=ti_vco_kvco_typical(int(row["vco_hz"]))
+        fc,pm=crossover(v,kvco,n,2.5e-3)
+        by_vendor.append({"banda":row["banda"],"canale":row["canale"],
+                          "n":n,"f_vco_hz":int(row["vco_hz"]),
+                          "vco_core_typical":core,"ti_typical_kvco_hz_per_v":kvco,
+                          "hypothetical_cpg":4,"crossover_hz":fc,
+                          "phase_margin_deg":pm})
+    with (OUT/"v720.TI_typical_270_channel_linear_model.csv").open(
+            "w",newline="",encoding="utf-8") as handle:
+        writer=csv.DictWriter(handle,fieldnames=list(by_vendor[0]))
+        writer.writeheader()
+        writer.writerows(by_vendor)
+    cores={name:sum(x["vco_core_typical"]==name for x in by_vendor)
+           for name in ("VCO3","VCO4")}
+    vendor={
+        "source":"TI LMX2572 SNAS740B Table 135 p64 and equation 4; charge-pump Table2 p16",
+        "status":"TYPICAL_EXTRAPOLATION_ONLY_NOT_HARDWARE_CHARACTERIZATION",
+        "core_counts":cores,"cases":len(by_vendor),
+        "CPG_nominal_assumed_not_programmed":4,
+        "CPG_8_also_gives_2_5mA":True,
+        "min_crossover_case":min(by_vendor,key=lambda x:x["crossover_hz"]),
+        "max_crossover_case":max(by_vendor,key=lambda x:x["crossover_hz"]),
+        "min_phase_margin_case":min(by_vendor,key=lambda x:x["phase_margin_deg"]),
+        "max_phase_margin_case":max(by_vendor,key=lambda x:x["phase_margin_deg"]),
+        "cases_below_45deg":sum(x["phase_margin_deg"]<45 for x in by_vendor)
+    }
+    if cores!={"VCO3":2,"VCO4":268}:
+        raise ValueError("Project 270 integer VCO3/VCO4 split changed")
     by_fc=sorted(out,key=lambda x:x["crossover_hz"])
     by_pm=sorted(out,key=lambda x:x["phase_margin_deg"])
     return {"channels":len(rows),"cases":len(out),
+            "ti_vendor_typical_270_channel_linear_model":vendor,
             "kvco_hz_per_v_assumed":[39e6,55e6,85e6],
             "icp_A_assumed":[2.3e-3,2.5e-3,2.7e-3],
             "min_crossover_case":by_fc[0],"max_crossover_case":by_fc[-1],
