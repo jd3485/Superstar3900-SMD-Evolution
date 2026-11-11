@@ -1,0 +1,42 @@
+name: V7.26 collision-safe unified KiCad symbol library native parity (NO FAB NO TX)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/v726_native_symbol_library.yml'
+      - '03_Verifiche/V7.26/**'
+      - '04_KiCad/Librerie_Simboli_V7.26_UNIFIED_NOT_FOR_FAB/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.26_UNIQUE_SYMBOLS_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.26_UNIFIED_SYMBOL_LIB_NOT_FOR_FAB/**'
+permissions:
+  contents: read
+concurrency:
+  group: v726-unique-sym-lib-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  native_library_erc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native KiCad9, no fabrication utilities
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          kicad-cli version
+          mkdir -p 03_Verifiche/V7.26/output-ci
+      - name: Native seven-sheet KiCad netlist/ERC before and after, NO shortcuts
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.26/output-ci/v726.original.net 04_KiCad/Assemblaggio_RX_Power_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.26/output-ci/v726.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.26/output-ci/v726.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.26_UNIFIED_SYMBOL_LIB_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.26/output-ci/v726.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.26_UNIFIED_SYMBOL_LIB_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Fail-closed 12 gates with exact every pin/net parity and no new ERC
+        run: |
+          python3 -B -m unittest discover -s 03_Verifiche/V7.26 -p 'test_*.py' -v
+      - name: Archive CAD ERC/netlist evidence ONLY (not fabrication)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v726-native-sym-library-erc-pin-net-HOLD-NO-FAB-TX
+          path: 03_Verifiche/V7.26/output-ci/
+          if-no-files-found: warn
