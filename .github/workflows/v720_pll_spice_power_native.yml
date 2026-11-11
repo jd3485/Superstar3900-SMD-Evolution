@@ -40,7 +40,7 @@ jobs:
         run: |
           /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
           /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
-      - name: Run V7.20 15 new ngspice and power safety tests
+      - name: Run V7.20 18 new ngspice, TI Kvco and power safety tests
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.20 -p 'test_*.py' -v
       - name: Preserve all 266 V7.19-V7.1 regressions
         run: |
