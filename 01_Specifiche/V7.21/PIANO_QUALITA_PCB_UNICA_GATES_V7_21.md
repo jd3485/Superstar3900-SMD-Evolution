@@ -33,7 +33,7 @@ Verifica degli effettivi numeri dei pad disponibili nella libreria standard **Ki
 | IC | Package candidato da confronto | Verifica ancora necessaria |
 |---|---|---|
 | U6201 STM32G474RET6 | **ST LQFP64 10×10 mm, passo 0,5 mm**; footprint KiCad `Package_QFP:LQFP-64_10x10mm_P0.5mm` | 64 pin di simbolo DRAFT ↔ pad/pinout ST, land pattern IPC, 3D e orientamento |
-| U6202 TLV320AIC3204 | **TI RHB VQFN32 5×5 mm passo 0,5 mm**, EP nominale 3,45 mm; candidato `Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm` | **33° pad termico centrale** da ricondurre correttamente allo schema e a un piano elettrico approvato; land pattern/paste mask e via termiche vendor |
+| U6202 TLV320AIC3204 | **TI RHB VQFN32 5×5 mm passo 0,5 mm**, EP nominale 3,45 mm; candidato `Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm` | **pad termico EP33 fisico ASSENTE nel simbolo nativo KiCad che include solo 1–32**; TI §12.1 prescrive collegamento EP al piano GND. Obbligatoria ECO del simbolo, poi verifica GND return, land/paste e termica |
 | U6203..U6206 TPS7A2033PDBVR | **TI DBV SOT-23-5**, footprint `Package_TO_SOT_SMD:SOT-23-5` | 5 pad ↔ pin fisici (IN/GND/EN/NC/OUT), corrente/termica, decoupling e posizione rame |
 
 Il pad centrale dell'RHB è fisico: la documentazione TI indica esplicitamente che **deve essere saldato al PCB**. Un simbolo che gestisse solo i 32 pin perimetrali senza rappresentare/attribuire la piazzola 33 richiederebbe una ECO specifica; NON inventare il potenziale da assegnare senza controllo applicativo.
