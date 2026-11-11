@@ -34,6 +34,8 @@ jobs:
             04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: Independent 132-component BOM and JEDEC power thermal sanity gate
         run: python3 -B 03_Verifiche/V7.21/audit_board_foundations_v721.py
+      - name: Verify six MCU codec LDO package candidate pad sets in ACTUAL KiCad standard libraries, no CAD assignment
+        run: python3 -B 03_Verifiche/V7.21/audit_candidate_packages_v721.py
       - name: Retain all V7.20 numeric power and ngspice prerequisites, without changing design
         run: |
           cp 03_Verifiche/V7.21/output-ci/v721.root_v719.net 03_Verifiche/V7.20/output-ci/v720.root_v719.net
@@ -42,7 +44,7 @@ jobs:
           python3 -B 03_Verifiche/V7.20/audit_native_power_v720.py
           /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
           /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
-      - name: 16 new V7.21 regression tests for missing packages thermal and rail separation
+      - name: 24 new V7.21 regression tests for missing packages thermal and rail separation
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.21 -p 'test_*.py' -v
       - name: Preserve all 284 V7.20 through V7.1 Python regressions
         run: |
