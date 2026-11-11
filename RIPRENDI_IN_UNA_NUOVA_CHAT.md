@@ -30,6 +30,14 @@ Analizzato in ambiente offline lo ZIP [artefatto V7.22 13849074958](https://gith
 
 ---
 
+## STATO ATTIVO — V7.26 INTEGRATA (11 novembre 2026)
+
+[PR #29](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/29) **MERGED** squash `564e3c4ad2caebec053d000659edb3bec453c6d4`; [CI native run 43019926260 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43019926260), 12 test nuovi e artefatto 13854287534. Nuova libreria KiCad `04_KiCad/Librerie_Simboli_V7.26_UNIFIED_NOT_FOR_FAB/S3900E.kicad_sym` di 32 simboli AUX/MCU/RX, 6 nomi separati R/C nei fogli AUX versionati, root V7.26. **0 nodi elettrici cambiati; 132 componenti/100 reti, 42 footprint mancanti**; ERC **36 errori invariati, warning 340→223**, tutti i 117 warning libreria risolti effettivamente, senza waiver.
+
+**Prossimo V7.27:** 4 footprint link issues nativi: F200/Y1 S3900E UNVALIDATED, L100 `Inductor_SMD:L_10.0x10.0_H5.0` senza MPN, U1 LMX2572 footprint alias KiCad inesistente. TI LMX2572 RHA0040H ha **40 perimetro + DAP41** nel datasheet ufficiale; U1 pin41 DAP è già presente e connesso a `GND_MAIN` nella netlist, insieme alle masse periferiche. Valutare versione CAD reviewer-only package vendor TI 4,5x4,5mm centro e stencil 9x1,26mm, nessun TX, evitare spostamento o correzione non fondata. Ultimo report ERC 219 endpoint_off_grid, 4 footprint links, 26 dangling labels, 6 power, 4 PLL control. **NO FAB/GERBER/PCBWAY/TX, SG48 HOLD, 15 OPEN/HOLD**, nessuna PCB integrata. Budget Actions sbloccato a pagamento dall'utente: una sola CI mirata per PR.
+
+---
+
 ## STATO ATTIVO 11 NOVEMBRE 2026 ~12:20 CET — V7.23/V7.24 INTEGRATE
 
 Da `main` [AGENTS.md](AGENTS.md) e [checkpoint](00_Gestione_Progetto/WORK_STATO_CORRENTE.md) leggere **prima** di cambiare il progetto. [PR #25](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/25) **MERGED** squash `8e46b26bb488fb1484ee9cc2b1c366b91badfb80`: vero KiCad9 `pcbnew.FootprintLoad` sui tre nuovi footprint ST/TI candidate **64+33+5 pad numerati e 4 paste-window**, layer e geometrie, run [43011010863 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011010863), KiCad9.0.8, artefatto 13849469820. Primo run 43010894472 era fallito solo per pacchetto `python3-kicad` inesistente, corretto installando `kicad` (binding già incluso). **Non** conferma DRC globale, assembly o qualifica produttiva; footprint sempre non assegnati.

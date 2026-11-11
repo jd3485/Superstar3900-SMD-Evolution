@@ -4,6 +4,20 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## STATO ATTIVO — 11 novembre 2026, V7.26 INTEGRATA: 117 avvisi simboli eliminati realmente
+
+**GitHub live:** [PR #29](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/29) **MERGED** squash `564e3c4ad2caebec053d000659edb3bec453c6d4`. [GitHub Actions 43019926260](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43019926260) **SUCCESS**, un unico runner KiCad9 di confronto nativo V7.25→V7.26, **12 test V7.26 PASS**, nessuna regressione elettrica verificata: **132 componenti, 100 reti, delta zero nodi pin/rete, 42 footprint non assegnati**. **36 errori ERC** identici prima/dopo; avvisi **340→223**, esattamente i **117 `lib_symbol_issues`** eliminati, senza soppressione regole/waiver. [Artefatto reale 13854287534](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43019926260/artifacts/13854287534), `v726.native_library_parity.json` letto dal ZIP (conferma 36/223 e `lib_symbol_warnings_new:0`).
+
+**Reale CAD versione V7.26:** `04_KiCad/Librerie_Simboli_V7.26_UNIFIED_NOT_FOR_FAB/S3900E.kicad_sym` con **32 simboli univoci embedded** AUX/MCU/RX; 3 copie controllate dei fogli AUX e 6 nomi R/C distinti (`R_EFUSE,C_EFUSE,R_BUCK,C_BUCK,R_PLL,C_PLL`) mantenendo pin e fili intatti; nuovo root `04_KiCad/Assemblaggio_RX_Power_V7.26_UNIFIED_SYMBOL_LIB_NOT_FOR_FAB/`, `sym-lib-table` completo. Tutti i fogli storici V7.25 intatti e disponibili. Una CI mirata su `pull_request` soltanto per limitare costi Actions. **Non dichiarare che i 344 vecchi test sono stati rieseguiti V7.26**: restano run verde V7.25, mentre 12 nuovi test specifici sono PASS.
+
+**Residuo ERC V7.26 (nativo):** 36 errori = 26 `label_dangling`, 6 `power_pin_not_driven`, 4 `pin_not_driven`; 223 avvisi = **219 `endpoint_off_grid` + 4 `footprint_link_issues`**. Quattro link non validi esatti: F200 `S3900E:` review, Y1 `S3900E:` review (entrambi HOLD/UNVALIDATED), L100 `Inductor_SMD:L_10.0x10.0_H5.0` assente, PLL U1 `Package_DFN_QFN:VQFN-40-1EP_6x6mm_P0.5mm_EP4.35x4.35mm` assente. Da **non** far sparire usando false footprint.
+
+**NEXT V7.27:** valutare MPN vendor **TI LMX2572 RHA0040H VQFN40 + DAP41**, il cui pad centrale 41 compare già nella netlist U1 sul GND_MAIN con 10 GND periferici (da verificare pinmap/datasheet e RF power); creare solo un'impronta `HOLD` qualificata geometrica secondo land/stencil TI, verificare con `pcbnew.FootprintLoad` nativo e, se sicuro, sostituire l'alias KiCad U1 inesistente su nuovo AUX/root **solo reviewer-only**, assicurando netlist invariata. Il datasheet TI SNAS740B (2019) riferisce pad DAP come RF ground e prescrive thermal pad saldato con vias; esempio package RHA0040H espone **41 pad**, centrale **4,5 mm**, land periferici 0,60 × 0,25 mm passo 0,50, stencil 9 aperture da 1,26 mm con ~70% copertura. La guida pin functions TI ufficiale assegna **pin 11 VccCP, pin 21 VccBUF** (non basarsi su descrizioni image/OCR ambigue). L100 15uH/3.5A senza MPN e F200/Y1 restano HOLD, non assegnare footprint inventati. Evitare DRC senza PCB unica.
+
+**Vincoli:** 15 cross-module RX/MCU/AUX OPEN/HOLD, SG48 HOLD, nessuna PCB unificata, no Gerber, PCBWAY, TX; 42 footprint mancanti, F200/Y1 package non approvati, power source/return 13,8→5→3,3V non dimostrato. Progresso storico ~10% stima invariata. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+---
+
 ## STATO CORRENTE — 11 novembre 2026 — V7.25 **MERGED**, 344 TEST PASS (consultare prima delle sezioni storiche)
 
 Ultimo `main` revisionato in questa sessione: [V7.25 PR #28 merged](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/28), commit squash **`a1924b2b525de27b4e677b992abd702741922781`**. Le precedenti sezioni su V7.25 come *prossima* e su 48 footprint mancanti sono **storiche** e non devono prevalere sul presente checkpoint. V7.22 PR #23, V7.23 PR #25 (real `pcbnew.FootprintLoad`), V7.24 PR #26 (ottimizzazione trigger CI a consumo) sono già MERGED.
