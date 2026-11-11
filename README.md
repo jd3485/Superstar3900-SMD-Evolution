@@ -1,3 +1,5 @@
+> **CONTINUITÀ CHATGPT WORK — CONFIGURAZIONE PERMANENTE (11/11/2026).** Nuove sessioni: leggere anzitutto [AGENTS.md](AGENTS.md) (mandato tecnico permanente e ciclo multi-revisione senza ripetere «continua») e [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md) (checkpoint aggiornabile). Per configurare un Progetto ChatGPT Work usare [ISTRUZIONI_CHATGPT_PROJECT_WORK.md](00_Gestione_Progetto/ISTRUZIONI_CHATGPT_PROJECT_WORK.md). Nessun lavoro prosegue automaticamente dopo la fine della chat senza nuova sessione/attività, e NO FAB/TX resta attivo.
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.21 PRE-LAYOUT PCB QUALITY GATES (NO FAB / NO TX)
 
 **11 novembre 2026 · V7.21 integrata su `main` tramite [PR #21](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/21), squash merge `9805f110d0acf59e69f7f54e87e299248b99d96b`.** Decisione di progetto: prima verificare pacchetti reali, pad, alimentazioni e termica, poi creare un'unica PCB. Non promettere «zero errori» sulla base di un DRC non significativo.

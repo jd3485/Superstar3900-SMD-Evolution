@@ -1,3 +1,5 @@
+> **CONTINUITÀ WORK TRA CHAT:** protocollo permanente [AGENTS.md](../AGENTS.md), stato operativo dinamico [WORK_STATO_CORRENTE.md](WORK_STATO_CORRENTE.md), istruzioni persistenti [ISTRUZIONI_CHATGPT_PROJECT_WORK.md](ISTRUZIONI_CHATGPT_PROJECT_WORK.md). All'avvio della nuova chat Work ricostruire HEAD/PR/CI dal repo, eseguire *più versioni tecniche consecutive* e aggiornare il checkpoint dopo ogni merge; mai richiedere un nuovo «continua» dopo ogni PR, né inventare esecuzioni in background. **NO FAB / NO TX.**
+
 # PROTOCOLLO CONTINUITÀ — V7.21 PRE-LAYOUT QUALITY / BOM / TERMICA (NO FAB/TX)
 
 **11 novembre 2026 · V7.21 MERGED su `main` tramite [PR #21](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/21), squash merge `9805f110d0acf59e69f7f54e87e299248b99d96b`.**
