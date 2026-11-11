@@ -1,5 +1,17 @@
 > **HANDOFF CHATGPT WORK PERMANENTE:** non basarsi sulla memoria di altre chat. Nuova sessione Work: recuperare da GitHub `main` [AGENTS.md](AGENTS.md) + [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md), poi riprendere branch/PR nativi e proseguire **più revisioni reali nella stessa sessione** con test/PR/merge quando consentito. Alla fine aggiornare il checkpoint GitHub per la sessione successiva. [Testo istruzioni persistenti Progetto ChatGPT](00_Gestione_Progetto/ISTRUZIONI_CHATGPT_PROJECT_WORK.md). **NO FAB / NO TX.**
 
+# HANDOFF ATTIVO — V7.22 U6202 TI RHB EP33 IN PR #23, NON MERGIATA (11 NOVEMBRE 2026)
+
+**Prima di ogni nuova azione leggere [AGENTS.md](AGENTS.md) e [checkpoint canonico main](00_Gestione_Progetto/WORK_STATO_CORRENTE.md)**; questo handoff è subordinato ai fatti GitHub più recenti. **Ultima versione TECNICA integrata: V7.21 PR #21**; PR #22 era solo continuità, main bootstrap `ac244c8f4a6058be3f9093f00d60a850d68a9501`; commit del checkpoint sessione `a20b952baed96e8eff7a969a9615d6813faed375`.
+
+**PR [#23](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/23), branch `feature/v7.22-codec-ep33-ground-eco`, commit `b09fe26c2ced19cde75f7d8998320bbfce5ed9d5` NON MERGIATA**: reali file KiCad nuovi in `04_KiCad/Modulo_MCU_CODEC_V7.22_EP33_GROUNDED_NOT_FOR_FAB/` e master `04_KiCad/Assemblaggio_RX_Power_V7.22_EP33_NOT_FOR_FAB/`; U6202 aggiunto pad fisico EP33 con GND locale MCU (TI SLOS602E), nulla collegato tra moduli; footprint non assegnato. Nuovo report `03_Verifiche/V7.22/RAPPORTO_TECNICO_CAD_V7.22.md`, nuovo audit nativo `03_Verifiche/V7.22/test_ep33_v722.py` e workflow `.github/workflows/v722_codec_ep33_native.yml` (8 nuovi + 308 regressioni storiche = 316 attesi, ma **NON ESEGUITI**). Verifica statica GitHub invertendo le sole modifiche del nuovo pin/label/titoli recupera esattamente i due originali, parentesi bilanciate, senza PWR_FLAG. Fix del test di pin 33 conflitto STM32/codec già commit `b09fe26...`.
+
+**Blocco CI prima dell'esecuzione:** GitHub [run 42993364753](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42993364753) e [run 42993371627](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42993371627) segnalano `failure` **con runner_id=0 e steps=[]**; nessun log disponibile, nessun KiCad9/ERC/netlist/DRC eseguito, causa non dimostrata (verificare Actions/runner/billing repository). **Non unire PR #23 senza CI e confronti di netlist/ERC reali**, conservare checkpoint e ripartire dalla PR invece di duplicarla.
+
+**Baseline reale main V7.21**: 132 componenti, 100 reti, 36 ERC errori/340 warning, 48 footprint assenti, 15 interface OPEN/HOLD, assente PCB unica, ~10% stima invariata. Dopo V7.22 verificata proseguire con U6201 ST LQFP64 e U6203–U6206 TI DBV, test pin/pad/vendor/stencil; niente assunzioni meccaniche, termiche, net/ground e nessun Gerber/TX. **NO FAB / NO GERBER / NO PCBWAY / NO TX / SG48 HOLD**.
+
+---
+
 # HANDOFF SUPERSTAR 3900 SMD — V7.21 PCB QUALITY GATES
 
 **11 novembre 2026 · V7.21 MERGED su `main` tramite [PR #21](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/21), squash merge `9805f110d0acf59e69f7f54e87e299248b99d96b`. NO FAB / NO TX.** Scopo: utente ha delegato pianificazione e scelte a ChatGPT per una PCB tecnicamente corretta e senza errori noti, NON per falsificare completamento. Evitare automaticamente fab/PCBWay/TX.
