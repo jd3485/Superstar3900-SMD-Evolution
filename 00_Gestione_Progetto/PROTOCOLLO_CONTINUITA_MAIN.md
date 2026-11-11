@@ -1,3 +1,18 @@
+# PROTOCOLLO CONTINUITÀ — V7.18 ECO ERC TPS26600 / PLL TEST
+
+**11 novembre 2026 · V7.18 su branch/PR, controllare merge e HEAD.** Storico preservato, nessuna modifica ai vecchi KiCad. **NO FAB / NO TX.**
+
+- Nuovo AUX versionato `04_KiCad/Gerarchico_Alimentazioni_V7.18_PINMODEL_NOT_FOR_FAB/`: nel solo simbolo embedded U200 TPS26600PWPT OUT16 `power_out`→`passive`, OUT15 resta `power_out`. TI SLVSDG2G p.5: entrambi pin OUT15/16 stessa uscita power. **Wiring identico / nessun pin eliminato**.
+- Nuovo master KiCad 7 fogli `04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/`: tutta la netlist **99 reti e pin/refs IDENTICI** al master V7.17; ERC nativo [CI 42964160297](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42964160297) **43→42 errori**, 340 warning invariati; sola categoria `pin_to_pin` -1. 12 test V7.18+241 storici=**253 PASS**, 0 FAIL/skip; no hardware.
+- PLL R2/R3: **4 prove su CLONI** con vero `kicad-cli` confermano nessun miglioramento. R2 rewire proposto 42/341 avvisi, R3 invert 42/340; entrambi 42/341 vs 42/340 baseline. Le proposte non sono state salvate nello schema versionato. Occorre topologia TI e revisione visuale prima di aggiungere piste.
+- Residuo **42 errori =26 label +16 hard**: 6 power undriven,5 input undriven,3 wire dangling,2 pin non connected; 15 interfaces OPEN/HOLD, 5V vs3V3 distinti, SG48 HOLD, TX fisicamente assente, RX_IF mancante, SMA 180° non qualificato.
+- Full PCB layout ~10% stimato senza aumento; `03_Verifiche/V7.18/RAPPORTO_TECNICO_CAD_V7.18.md`+JSON e `01_Specifiche/V7.18/ECO_EFUSE_DUAL_OUT_PINMODEL_V7_18.md` danno handoff. Prossimo V7.19: riparare loop filter con verifica TI e root ERC, senza inventare connessioni di alimentazione.
+- **NO FAB / NO GERBER / NO PCBWAY / NO TX**, nessun collaudo vero, nessuna antenna o PA.
+
+---
+
+## STORICO PROTOCOLLO V7.17 E PRECEDENTI
+
 # PROTOCOLLO — SUPERSTAR 3900 SMD V7.17 FULL-BOARD INTEGRATION GATE
 
 **11 novembre 2026 · V7.17 MERGED su `main` tramite PR #17, merge `ff26db4e55eb2ab7368cb222de58a8b969cf08d6`. NO FAB / NO TX.**
