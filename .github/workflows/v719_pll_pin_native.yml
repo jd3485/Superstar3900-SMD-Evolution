@@ -1,0 +1,57 @@
+name: V7.19 native TI LMX2572 loop pin forensic and 253 regression gate (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.19-pll-loop-pin-connectivity']
+    paths:
+      - '03_Verifiche/V7.19/**'
+      - '.github/workflows/v719_pll_pin_native.yml'
+      - '01_Specifiche/V7.19/**'
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.19/**'
+      - '.github/workflows/v719_pll_pin_native.yml'
+      - '01_Specifiche/V7.19/**'
+permissions:
+  contents: read
+jobs:
+  ki9-pll-pin-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install genuine KiCad
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq kicad
+          kicad-cli version
+      - name: Compare 4 disposable TI loop-filter pin experiments and native ref/pin netlist
+        run: /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
+      - name: Test direct native KiCad labels on R2 R3 without changing versioned source
+        run: /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
+      - name: Real KiCad 9 export both whole-radio V7.18 and V7.19 master netlists
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.19/output-ci/v719.root_v718.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.19/output-ci/v719.root_v719.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Native KiCad full ERC baseline and V7.19 six-label correction, ALL errors retained
+        run: |
+          kicad-cli sch erc -o 03_Verifiche/V7.19/output-ci/v719.root_v718.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.19/output-ci/v719.root_v719.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Fail-closed manufacturer TI loop 12 ref-pin membership KiCad release gate
+        run: /usr/bin/python3 -B 03_Verifiche/V7.19/check_loop_full_native_v719.py
+      - name: Verify 13 TI filter topology/label semantics gates
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.19 -p 'test_*.py' -v
+      - name: Preserve all V7.18 through V7.1 KiCad firmware DSP regressions
+        run: |
+          for version in V7.18 V7.17 V7.16 V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Retain every native KiCad ERC, netlist and pin membership diagnostic
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v719-real-kicad-ti-loop-pin-forensics-NO-FAB-NO-TX
+          path: 03_Verifiche/V7.19/output-ci/
+          if-no-files-found: warn

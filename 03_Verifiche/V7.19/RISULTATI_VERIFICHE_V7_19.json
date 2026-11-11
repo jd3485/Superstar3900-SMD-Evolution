@@ -1,0 +1,144 @@
+{
+  "revision": "V7.19",
+  "date": "2026-11-11",
+  "scope": "Real KiCad9 7-sheet Superstar 3900 SMD radio PLL loop CPOUT-R2/C2-R3-VTUNE pin-to-net correction; NOT FOR FAB",
+  "baseline_commit_main": "ce0dd755f19e58d972a91aa18b973f78efb9bc65",
+  "native_ci_run_id": 42967147073,
+  "ci_conclusion": "success",
+  "kicad_native": "kicad-cli sch export netlist and sch erc KiCad9",
+  "vendor_sources": [
+    "https://www.ti.com/lit/ds/symlink/lmx2572.pdf",
+    "https://www.ti.com/lit/ug/snau217b/snau217b.pdf"
+  ],
+  "cad_source_eco": {
+    "changed_pll_schematic": "04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/03_PLL_LDO_TCXO.kicad_sch",
+    "added_direct_pin_net_labels": 6,
+    "no_new_wires": true,
+    "all_other_aux_schematics_byte_identical_v718": true,
+    "all_original_power_rx_mcu_schematics_untouched": true,
+    "whole_radio_7_sheet_master": "04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch"
+  },
+  "native_erc": {
+    "before": {
+      "errors": 42,
+      "warnings": 340
+    },
+    "after": {
+      "errors": 36,
+      "warnings": 340
+    },
+    "category_changes": {
+      "pin_not_connected": -2,
+      "wire_dangling": -3,
+      "pin_not_driven": -1
+    },
+    "after_categories_residual": {
+      "label_dangling": 26,
+      "power_pin_not_driven": 6,
+      "pin_not_driven": 4
+    },
+    "no_erc_waivers_added": true
+  },
+  "native_netlist": {
+    "before_nets": 99,
+    "after_nets": 100,
+    "only_added_net": "/AUX_POWER_existing_V1_5_UNQUALIFIED/03 PLL + LDO + TCXO/PLL_R2_C2",
+    "exact_changed_net_pin_memberships_only": [
+      "PLL_CPOUT",
+      "PLL_VTUNE",
+      "PLL_R2_C2"
+    ],
+    "unexpected_changed_other_net_pin_memberships": 0,
+    "TI_figure179_expected_pin_nets_verified": true,
+    "required_pin_memberships": {
+      "PLL_CPOUT": [
+        [
+          "U1",
+          "12"
+        ],
+        [
+          "C1",
+          "2"
+        ],
+        [
+          "R2",
+          "1"
+        ],
+        [
+          "R3",
+          "1"
+        ]
+      ],
+      "PLL_R2_C2": [
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "C2",
+          "2"
+        ]
+      ],
+      "PLL_VTUNE": [
+        [
+          "U1",
+          "35"
+        ],
+        [
+          "R3",
+          "2"
+        ],
+        [
+          "C3",
+          "2"
+        ]
+      ],
+      "GND_MAIN_shunt_subset": [
+        [
+          "C1",
+          "1"
+        ],
+        [
+          "C2",
+          "1"
+        ],
+        [
+          "C3",
+          "1"
+        ]
+      ]
+    }
+  },
+  "tests": {
+    "new_V719": 13,
+    "prior_V71_to_V718": 253,
+    "total_python_pass": 266,
+    "fail": 0,
+    "skip": 0,
+    "RF_hardware": false,
+    "Icarus_Yosys_new": false
+  },
+  "functional_limits": {
+    "filter_values_verified_by_PLLatinumSim": false,
+    "RF_phase_margin_verified": false,
+    "RF_noise_spurs_verified": false,
+    "vendor_component_values_approved": false,
+    "physical_VTUNE_C3_placement_approved": false
+  },
+  "outstanding": {
+    "root_erc_errors": 36,
+    "root_erc_warnings": 340,
+    "interfaces_open_hold": 15,
+    "full_radio_schematic_electrically_integrated": false,
+    "rf_stage_RX_IF_missing": true,
+    "SG48_HOLD": true,
+    "SMA_J9102_J9104_vendor_qualification_pending": true,
+    "full_radio_pcb_created": false
+  },
+  "full_radio_pcb_layout_percentage_estimate": 10,
+  "estimate_changed_this_version": false,
+  "fabrication_authorized": false,
+  "gerbers_created": false,
+  "rf_transmission_permitted": false,
+  "next": "V7.20 analog PLLatinum Sim loop stability + root power driver qualifications; no TX and 15 interfaces HOLD"
+}

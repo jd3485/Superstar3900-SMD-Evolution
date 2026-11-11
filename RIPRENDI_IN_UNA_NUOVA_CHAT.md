@@ -1,3 +1,19 @@
+# HANDOFF — SUPERSTAR 3900 SMD V7.19 TI PLL LOOP PIN-NET
+
+**11 novembre 2026 · V7.19 branch/PR, verificare merge e HEAD `main`. NO FAB / NO TX.**
+
+Nuovo master KiCad a 7 fogli `04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/` punta a clone AUX `04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/`. Solo cambiamento elettrico effettivo: **6 label direttamente su pin** nel figlio `03_PLL_LDO_TCXO.kicad_sch`, alimentazione/eFuse/BUCK/MCU/RX/PCB originali byte invariati. **TI LMX2572 datasheet SNAS740B Fig179 p75** CPOUT U1:12/C1:2/R2:1/R3:1, nuova net R2:2–C2:2, VTUNE U1:35/R3:2/C3:2; capacitori a GND_MAIN, ritorno RF ancora da qualificare.
+
+Native KiCad9 [CI 42967147073](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42967147073) **success**, root ERC **42→36 errori**, 340 warning invariati; 99→100 reti (unica `PLL_R2_C2`); netlist pin memberships di tutte le altre reti **IDENTICI**. 13 V7.19 +253 precedenti=**266 Python PASS**, 0 FAIL/SKIP, nessun collaudo RF. Il parziale 42→40 ottenuto muovendo fili R2 non bastava: R2/R3 erano ancora assenti dalla netlist; la revisione V7.19 risolve a livello CAD con sei assegnazioni pin-label, senza accreditare validazione analogica.
+
+Rimangono **36 ERC** (26 label,6 power un-driven,4 input un-driven), 340 warning, **15 interfacce OPEN/HOLD** e SG48 HOLD, TX/PA/DAC/RF emissione assenti. Loop values 620Ω 22Ω 220p 120n 2.2n unqualified; TI EVM ha valori diversi, occorre PLLatinum Sim per veri RF/phase margin/spurs e piano GND. SMA J9102 J9104 180° da conservare, mismatch DRC da risolvere con MPN. **Nessuna PCB intera**: stima ~10% invariata. **NO FAB/NO TX/no PCBWay/no Gerber**.
+
+Report `03_Verifiche/V7.19/RAPPORTO_TECNICO_CAD_V7.19.md`, JSON `RISULTATI_VERIFICHE_V7_19.json`, specifiche TI `01_Specifiche/V7.19/`, native scripts e workflow `.github/workflows/v719_pll_pin_native.yml`. **Next V7.20:** verifica analogica loop, poi quattro ingressi PLL e sei power drivers con datasheet ed eventualmente ECO versionate, 15 interfacce, schema globale ERC clean e prima PCB totale.
+
+---
+
+## STORICO HANDOFF V7.18 E PRECEDENTI
+
 # HANDOFF SUPERSTAR 3900 SMD — V7.18 MODELLO EFUSE E LOOP PLL
 
 **11 novembre 2026 · V7.18 MERGED in `main` tramite [PR #18](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/18), merge `29965cdcdfe2edd1e241295315bfe18fabc864a5`.** Sorgenti V7.17 e precedenti intatti. **NO FAB / NO TX.**

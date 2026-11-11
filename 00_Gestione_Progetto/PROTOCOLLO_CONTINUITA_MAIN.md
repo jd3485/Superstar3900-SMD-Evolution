@@ -1,3 +1,19 @@
+# PROTOCOLLO CONTINUITÀ MAIN — V7.19 LMX2572 LOOP PIN-NET
+
+**11 novembre 2026 · V7.19 branch/PR, controllare merge e HEAD. NO FAB / NO TX.**
+
+- Origine: V7.18 root KiCad ERC 42 errori/340 avvisi; `R2/R3` disegnati ma mancanti dalla netlist nativa. Schema vendor [TI LMX2572 SNAS740B Fig179 p75](https://www.ti.com/lit/ds/symlink/lmx2572.pdf) e EVM SNAU217B confermano topologia CPout-R3-Vtune, C1 shunt CP, R2-C2 in serie shunt, C3 shunt Vtune.
+- V7.19 master a sette fogli `04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/`; ramo versionato `04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/`. Nel SOLO file PLL aggiunte **esattamente sei label** su R2:1/R2:2/R3:1/R3:2/C2:2/C3:2; tutti gli altri schemi AUX byte identici a V7.18 e RX/MCU immutati.
+- Vero KiCad9 [CI 42967147073](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42967147073): **36 ERC errori (prima 42), 340 warning invariati**, rete nativa 99→100 (**sola `PLL_R2_C2`**), 12 membership pin TI esatti, no cambi fuori dalle tre reti `PLL_CPOUT/PLL_R2_C2/PLL_VTUNE`. -2 pin_not_connected/-3 wire_dangling/-1 pin_not_driven. **266 Python PASS =13 V7.19+253 regressioni;0 FAIL/SKIP**.
+- HOLD non risolti: **36 ERC =26 dangling-label+6 power undriven+4 input undriven**, 340 warning, 15 interfacce OPEN/HOLD, SG48 HOLD, RF filter R2 620/R3 22/C1 220p/C2 120n/C3 2.2n non simulato/qualificato, GND per VCO da verificare, SMA 180° J9102/J9104 mismatch non qualificato. Nessun vero PCB globale / Gerber / PCBWay / TX.
+- Percentuale della PCB COMPLETA ~10% invariata perché è avanzato lo schematico, non routing e layout. V7.20: **PLLatinum Sim** e power input qualification, poi 15 interfacce e PCB reale. Source `03_Verifiche/V7.19/RAPPORTO_TECNICO_CAD_V7.19.md`, JSON, artifact nativo.
+
+**NO FAB / NO TX, niente emissioni, protezioni PA/antenna non installate.**
+
+---
+
+## STORICO PROTOCOLLO V7.18 E PRECEDENTI
+
 # PROTOCOLLO CONTINUITÀ — V7.18 ECO ERC TPS26600 / PLL TEST
 
 **11 novembre 2026 · V7.18 MERGED in `main` tramite PR #18, merge `29965cdcdfe2edd1e241295315bfe18fabc864a5`.** Storico preservato, nessuna modifica ai vecchi KiCad. **NO FAB / NO TX.**

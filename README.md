@@ -1,3 +1,17 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.19 PLL TI LOOP PIN-NET CORRECTION (NO FAB / NO TX)
+
+**11 novembre 2026 · V7.19 su branch/PR, verificare merge in `main`.** Avanzamento REALE dello schematico KiCad a 7 fogli: nuova copia versionata `04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/` con ramo AUX `04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/`. Le versioni passate restano immutate. Nel SOLO foglio PLL sono aggiunte 6 etichette a pin R2/R3/C2/C3: topologia **TI LMX2572 datasheet Fig.179**: CPOUT=U1:12/R2:1/R3:1/C1:2, R2_C2=R2:2/C2:2, VTUNE=U1:35/R3:2/C3:2. Nessun filo, nuova rete di power, intermodulo, TX o PCB aggiunti.
+
+**Prova native KiCad 9:** [CI 42967147073](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42967147073) **PASS**: V7.18 42 errori/340 avvisi → V7.19 **36 errori/340 avvisi**, 99→**100 reti** (sola nuova `PLL_R2_C2`), -2 pin_not_connected, -3 wire_dangling, -1 input_not_driven; **nessun ref/pin cambiato fuori da tre reti del filtro**. **13 test nuovi +253 storici =266 Python PASS**, 0 falliti/skip. Nessuna nuova simulazione analogica o prova hardware.
+
+**ATTENZIONE:** i valori R2 620Ω/R3 22Ω/C1 220p/C2 120n/C3 2.2n e margine fase/rumore VCO sono ancora HOLD: il contratto verifica esclusivamente le reti CAD, non valida PLLatinum Sim o layout RF. 36 ERC root aperti (26 label, 6 alimentazioni, 4 input), 340 warning, 15 interfacce OPEN/HOLD, RX_IF_STAGE ancora mancante, SG48 e TX HOLD, SMA 180° da qualificare. **PCB completa ~10%, invariato:** nessun PCB globale esistente.
+
+Rapporto `03_Verifiche/V7.19/RAPPORTO_TECNICO_CAD_V7.19.md`, JSON e artifact `v719-real-kicad-ti-loop-pin-forensics-NO-FAB-NO-TX`; fonte TI `01_Specifiche/V7.19/PIANO_PINNET_LOOP_PLL_TI_V7_19.md`. Next V7.20: simulazione PLL per stabilità e qualifiche alimentazione/ritorni, poi interfacce e vero layout PCB. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+---
+
+## STORICO README V7.18 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.18 eFuse ERC / PLL LOOP NATIVE AUDIT (NO FAB / NO TX)
 
 **11 novembre 2026 · V7.18 integrata su `main` tramite [PR #18](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/18), merge `29965cdcdfe2edd1e241295315bfe18fabc864a5`.** Ora l'integrazione schematico intera radio a 7 fogli include una **copia KiCad V7.18 con modifica reale, strettamente limitata, del modello elettrico TPS26600 OUT16**; nessun routing o PCB unica è stato creato.
