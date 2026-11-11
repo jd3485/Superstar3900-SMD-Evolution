@@ -1,6 +1,6 @@
 # HANDOFF SUPERSTAR 3900 SMD — V7.18 MODELLO EFUSE E LOOP PLL
 
-**11 novembre 2026 · branch/PR V7.18, verificare merge/HEAD `main`.** Sorgenti V7.17 e precedenti intatti. **NO FAB / NO TX.**
+**11 novembre 2026 · V7.18 MERGED in `main` tramite [PR #18](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/18), merge `29965cdcdfe2edd1e241295315bfe18fabc864a5`.** Sorgenti V7.17 e precedenti intatti. **NO FAB / NO TX.**
 
 Nella directory `04_KiCad/Gerarchico_Alimentazioni_V7.18_PINMODEL_NOT_FOR_FAB/`, l'unica ECO fisica di schema è nel simbolo embedded TPS26600PWPT eFuse U200: pin OUT15 rimane `power_out`, pin OUT16 diventa `passive` *come attributo ERC soltanto*, mantenendo entrambi sullo stesso output (TI TPS2660x SLVSDG2G p.5). La nuova gerarchia completa è `04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/`, le altre tre schede AUX root/BUCK/PLL sono byte-intatte, RX/MCU originali intatti.
 
