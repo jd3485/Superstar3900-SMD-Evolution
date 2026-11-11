@@ -1,5 +1,11 @@
 > **HANDOFF CHATGPT WORK PERMANENTE:** non basarsi sulla memoria di altre chat. Nuova sessione Work: recuperare da GitHub `main` [AGENTS.md](AGENTS.md) + [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md), poi riprendere branch/PR nativi e proseguire **più revisioni reali nella stessa sessione** con test/PR/merge quando consentito. Alla fine aggiornare il checkpoint GitHub per la sessione successiva. [Testo istruzioni persistenti Progetto ChatGPT](00_Gestione_Progetto/ISTRUZIONI_CHATGPT_PROJECT_WORK.md). **NO FAB / NO TX.**
 
+## AGGIORNAMENTO 11 NOVEMBRE 2026 — CAUSA CI IDENTIFICATA, RIPRENDERE PR #23
+
+Screenshot ufficiali GitHub Actions dell'account `jd3485`: **2.000/2.000 minuti (100%) esauriti**, reset indicato **1 dicembre 2026**. Non più indagare genericamente il runner come se mancasse evidenza: gli aborti `runner_id=0` sono compatibili con quota Actions insufficiente. La schermata cita il caso di **budget $0 che blocca utilizzo oltre quota**; **non** è una prova che l'impostazione reale sia $0. Non abilitare spesa, modificare budget o rendere pubblico il repository. Vedi [issue #24](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/24) corretta con la causa.
+
+Proseguire modifiche CAD su PR #23 e predisporre test locali **solo se verificabili** (qui `kicad-cli` e `ngspice` mancanti, `apt-get update` timeout). **Nessun test locale KiCad9 certificato**, nessun merge. Il 1 dicembre 2026, a quota ripristinata, rieseguire i test native KiCad e 334 Python; non autorizzare fabbricazione, Gerber, TX, bypass di gate. Ultimo ramo HEAD `9aedec44e1fe10bdc61a3a55c75903263a98cbae`. **NO FAB / NO TX**.
+
 # HANDOFF ATTIVO — 11 novembre 2026, PR #23 V7.22 NON MERGIATA
 
 **Fonte vincolante:** leggere da GitHub **[AGENTS.md](AGENTS.md)** e **[WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md)** su `main`, poi PR/Actions LIVE. Ultima versione tecnica merge **V7.21 PR #21**; `main` prima della continuazione `b805a333e23e78d44e0c357cf43a66ae6cdb3646`. Non usare memoria vecchia per dati di branch.

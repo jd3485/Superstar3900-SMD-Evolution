@@ -4,6 +4,14 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## Aggiornamento confermato — quota GitHub Actions esaurita (11 novembre 2026)
+
+**CAUSA BLOCKER IDENTIFICATA DALL'UTENTE:** screenshot originale dell'avviso ufficiale GitHub `jd3485`: **2.000 / 2.000 minuti GitHub Actions consumati, 100% del ciclo**. Reset comunicato per **1 dicembre 2026**. GitHub dichiara che oltre quota la fatturazione è possibile salvo **budget Actions impostato a $0**, caso in cui le esecuzioni vengono bloccate fino al reset. **Non è stato letto direttamente il valore budget $0 dell'account**: non inventare impostazioni; indisponibilità dei runner con `runner_id=0` su workflow nuovi e vecchi coerente con esaurimento quota. [Issue #24 aggiornata](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/24).
+
+**Regola operativa NO COSTI:** non modificare budget/fatturazione, non acquistare minuti, non cambiare visibilità del repo o bypassare protezione branch. Non generare workflow falliti a ripetizione prima del reset senza ragione. **Sviluppo V7.22 può proseguire su PR #23** con verifiche native offline/locali a costo zero se l'ambiente dispone di KiCad9/ngspice; per contro in questa sessione `kicad-cli` e `ngspice` risultano **assenti** e `apt-get update` ha raggiunto timeout (~18s), quindi **nessuna verifica KiCad9 locale è stata eseguita**. I test Python V7.22 non sono stati eseguiti con netlist ERC reali. Non fare merge della PR tecnica senza gate nativi; dopo reset 1 dicembre rieseguire interamente il CI e registrare ID/run/esiti effettivi.
+
+**Stato immutato:** PR #23 aperta, branch HEAD `9aedec44e1fe10bdc61a3a55c75903263a98cbae`, tre nuovi footprint candidati ST/TI non assegnati; 26 test nuovi + 308 storici **334 previsti NON ESEGUITI**; 48 footprint root mancanti, ERC baseline V7.21 36/340, 15 interfacce OPEN/HOLD, PCB unica assente. **NO FAB / NO GERBER / NO PCBWAY / NO TX; SG48 HOLD.**
+
 ## Sessione 11 novembre 2026 — **V7.22 PR #23 NON MERGIATA**: ECO codec + tre librerie vendor, GitHub Actions runner BLOCCATO
 
 **Verifica live:** `main` base tecnico integrato **V7.21 PR #21** (CI [42987421253](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42987421253), 308 Python PASS in KiCad9); PR #22 solo protocollo; `main` prima di questa continuazione `b805a333e23e78d44e0c357cf43a66ae6cdb3646` (checkpoint precedente). **Non dichiarare V7.22 integrata**.
