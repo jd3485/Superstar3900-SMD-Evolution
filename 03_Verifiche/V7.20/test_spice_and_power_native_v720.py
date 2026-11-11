@@ -3,7 +3,7 @@ import json
 import math
 import unittest
 from pathlib import Path
-from verify_pll_spice_270_v720 import (ROOT,OUT,PLAN,HIST,CIR,fixture,crossover,band_sweep,z_vtune)
+from verify_pll_spice_270_v720 import (ROOT,OUT,PLAN,HIST,CIR,fixture,crossover,band_sweep,z_vtune,ti_vco_kvco_typical)
 from audit_native_power_v720 import (EXPECTED,NET,ERC,SOURCE_MASTER,export_net_nodes)
 class V720PLLAndPower(unittest.TestCase):
     @classmethod
@@ -97,6 +97,32 @@ class V720PLLAndPower(unittest.TestCase):
         self.assertTrue(self.pll["no_tx"])
         self.assertTrue(self.power["no_fab"])
         self.assertTrue(self.power["no_tx"])
+
+    def test_16_ti_vco_core_boundary_typical(self):
+        core_a,ka=ti_vco_kvco_typical(4_647_680_000)
+        core_b,kb=ti_vco_kvco_typical(4_650_240_000)
+        self.assertEqual(core_a,"VCO3")
+        self.assertEqual(core_b,"VCO4")
+        self.assertLess(kb,ka)
+        self.assertAlmostEqual(ti_vco_kvco_typical(4_650_000_000)[1],50e6)
+
+    def test_17_vendor_table_covers_exact_270_channels_with_no_approval(self):
+        x=self.pll["sweep_exact_270_channel_project_plan"]["ti_vendor_typical_270_channel_linear_model"]
+        self.assertEqual(x["core_counts"],{"VCO3":2,"VCO4":268})
+        self.assertEqual(x["cases"],270)
+        self.assertEqual(x["status"],"TYPICAL_EXTRAPOLATION_ONLY_NOT_HARDWARE_CHARACTERIZATION")
+        self.assertEqual(x["CPG_nominal_assumed_not_programmed"],4)
+        self.assertTrue(x["CPG_8_also_gives_2_5mA"])
+
+    def test_18_manufacturer_typical_results_have_270_trace_rows(self):
+        import csv
+        csvfile=OUT/"v720.TI_typical_270_channel_linear_model.csv"
+        with csvfile.open(newline="",encoding="utf-8") as f:
+            rows=list(csv.DictReader(f))
+        self.assertEqual(len(rows),270)
+        self.assertEqual(len({int(x["n"]) for x in rows}),270)
+        self.assertTrue(all(float(x["crossover_hz"])>0 for x in rows))
+        self.assertTrue(all(float(x["phase_margin_deg"])>0 for x in rows))
 
     def test_15_analog_linear_study_does_not_close_root_erc(self):
         self.assertEqual(self.power["root_erc_errors"],36)
