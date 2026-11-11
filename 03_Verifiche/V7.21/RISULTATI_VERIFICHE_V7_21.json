@@ -1,0 +1,146 @@
+{
+  "revision": "V7.21",
+  "date": "2026-11-11",
+  "status": "PRELAYOUT_QUALITY_GATES_BLOCKED_NO_FAB_NO_TX",
+  "source_base": "V7.20 main HEAD 8e63602bde3848a834d8977ccbf014c2462e46d2",
+  "native_ci_run_id": 42986310630,
+  "ci_conclusion": "success",
+  "root_kicad": {
+    "schematic_pages": 7,
+    "components": 132,
+    "nets": 100,
+    "footprints_assigned": 84,
+    "footprints_missing": 48,
+    "missing_footprints_MCU_CODEC": 46,
+    "missing_footprints_AUX_CONNECTORS": 2,
+    "explicitly_unvalidated_assigned_footprints": [
+      "F200 S3900E:LF_451_FOOTPRINT_NON_VALIDATO",
+      "Y1 S3900E:TXC_7N_7x5_10pad_UNVALIDATED"
+    ],
+    "root_erc_errors": 36,
+    "root_erc_warnings": 340,
+    "crossmodule_interfaces_OPEN_HOLD": 15,
+    "board_single_unified_created": false
+  },
+  "candidate_package_pad_study": {
+    "source": "real installed KiCad9 standard library .kicad_mod pads",
+    "candidate_IC_count": 6,
+    "U6201": {
+      "part": "STM32G474RET6",
+      "package": "ST LQFP64 10x10 0.5",
+      "kicad": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
+      "pads": 64
+    },
+    "U6202": {
+      "part": "TLV320AIC3204",
+      "package": "TI RHB VQFN 5x5 0.5 EP3.45",
+      "kicad": "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm",
+      "pads": 33,
+      "ep33_qualification_required": true,
+      "native_symbol_pin_numbers_present": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "native_symbol_EP33_missing": true,
+      "manufacturer_EP_ground_required": true,
+      "manufacturer_EP_internally_connected": false,
+      "critical_cad_gate": "ADD_SYMBOL_PIN_EP33_AND_GND_BEFORE_FOOTPRINT_RELEASE"
+    },
+    "U6203_to_U6206": {
+      "part": "TPS7A2033PDBVR",
+      "package": "TI DBV SOT23-5",
+      "kicad": "Package_TO_SOT_SMD:SOT-23-5",
+      "pads_per_component": 5,
+      "count": 4
+    },
+    "schematic_assignment_performed": false,
+    "pin_to_pad_vendor_qualified": false
+  },
+  "power": {
+    "efuse": {
+      "MPN": "TPS26600PWPT",
+      "adjustable_current_limit_top_A": 2.23,
+      "unknown_actual_setting": true
+    },
+    "fuse_F200": {
+      "description": "045101.5MRL CANDIDATO",
+      "rating_A": 1.5,
+      "footprint_vendor_validated": false
+    },
+    "buck": {
+      "MPN": "TPS54202DDCR",
+      "output_nominal_voltage_V": 5.077203,
+      "source_output_max_A": 2,
+      "feedback_tolerance_only_min_V": 4.862918,
+      "feedback_tolerance_only_max_V": 5.297793,
+      "current_budget_qualified": false
+    },
+    "ldo": {
+      "MPN": "TPS7A2033PDBVR",
+      "count": 6,
+      "on_AUX_5V": 2,
+      "on_isolated_MCU_5V": 4,
+      "each_max_current_A": 0.3,
+      "combined_nameplate_A": 1.8,
+      "JEDEC_RthetaJA_DBV_C_per_W": 187.1,
+      "power_case_W_at_5v_3v3_300mA": 0.51,
+      "junction_case_C_at_40C_ambient": 135.421,
+      "at_40C_exceeds_Tj_125": true,
+      "thermal_safety_verified": false
+    },
+    "ground_aux_vs_mcu_isolated": true,
+    "EFUSE_RTN_vs_GND_MAIN_isolated": true
+  },
+  "tests": {
+    "new_v721": 24,
+    "previous_v71_to_v720": 284,
+    "total_python_pass": 308,
+    "fail": 0,
+    "skip": 0,
+    "real_kicad9": true,
+    "real_installed_library_pad_check": true,
+    "real_hardware": false
+  },
+  "project_progress_estimate_whole_PCB_percent": 10,
+  "percent_increased_by_this_audit": false,
+  "rf_tx_allowed": false,
+  "fabrication_allowed": false,
+  "next": "V7.22 versioned pin-to-pad symbol mapping and actual six IC footprints then 42 remaining, thermal/load budget, mechanical and ERC gates",
+  "references": [
+    "https://www.ti.com/product/TPS54202",
+    "https://www.ti.com/product/TPS2660",
+    "https://www.ti.com/product/TPS7A20",
+    "https://www.st.com/resource/en/datasheet/stm32g474vb.pdf",
+    "https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf"
+  ]
+}

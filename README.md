@@ -1,3 +1,19 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.21 PRE-LAYOUT PCB QUALITY GATES (NO FAB / NO TX)
+
+**11 novembre 2026 · V7.21 su branch/PR, verificare merge `main`.** Decisione di progetto: prima verificare pacchetti reali, pad, alimentazioni e termica, poi creare un'unica PCB. Non promettere «zero errori» sulla base di un DRC non significativo.
+
+**Audit sulla vera netlist KiCad9 a 7 fogli:** **132 componenti**, **84 footprint assegnati**, **48 mancanti** (46 MCU/CODEC, 2 connettori J100/J101 AUX). Fra gli 84 assegnati **F200** fusibile e **Y1** TCXO hanno nomi espliciti `NON_VALIDATO`/`UNVALIDATED`; tutti gli altri footprint non sono ancora vendor-certified. Il nuovo audit ha verificato **sei candidati primari sulle vere librerie KiCad9**: STM32G474RET6 LQFP64 10×10/64 pad, TLV320AIC3204 VQFN32 RHB 5×5/33 pad incluso **EP33**, quattro LDO TPS7A20 DBV SOT23-5/5 pad. CANDIDATI soltanto: nessuno assegnato agli schemi prima del confronto pin/land pattern.
+
+**Rischio TERMICO:** 6 TPS7A2033PDBVR da 300mA max ciascuno, due nella AUX 5V e quattro nella MCU 5V tuttora separata; 5→3,3V a 300mA =0,51W su un LDO, con `RθJA JEDEC=187,1°C/W` DBV e 40°C ambient =`TJ≈135,4°C` nell'esempio, superiore a 125°C operativo. Non prova il consumo effettivo: impone budget corrente e verifica termica PCB. **Buck** TPS54202 2A, R101=100k/R102=13k3 -> nominale `5,077V`, scenario limiti VREF +R `4,863–5,298V`; eFuse TPS26600 limite configurabile e F200 1,5A candidato. Serve qualificare tutti i rail, fuses, input e RTN.
+
+**CI KiCad9** [run 42986310630](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42986310630) **success**: **24 test nuovi +284 regressioni=308 Python PASS, 0 FAIL/0 SKIP**. Nessun modificatore di schema o PCB, root ERC **36 errori/340 warning**, 15 RX/MCU/AUX OPEN/HOLD. Artefatti CSV delle 48 impronte mancanti e 6 package candidati, schematics/netlist e JSON in `03_Verifiche/V7.21/`. Rapporto `03_Verifiche/V7.21/RAPPORTO_TECNICO_CAD_V7.21.md`, gate di rilascio `01_Specifiche/V7.21/PIANO_QUALITA_PCB_UNICA_GATES_V7_21.md`, workflow `.github/workflows/v721_full_board_foundations.yml`.
+
+**PCB completa stimata ~10% invariata**, nessuna tavola/meccanica inventata e nessun sbroglio globale simulato. **Next V7.22:** creare versione CAD per i sei IC con pin-pad/EP33 verificati; sistemare 42 missing remaining, poi budget termico/ritorni; solo dopo real PCB unica. **NO FAB / NO GERBER / NO PCBWAY / NO TX**, SG48 e tutti i 15 contratti HOLD.
+
+---
+
+## STORICO README V7.20 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.20 PLL NGSPICE / TI 270 CANALI / POWER ERC LEDGER (NO FAB / NO TX)
 
 **11 novembre 2026 · V7.20 MERGED su `main` tramite [PR #20](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/20), squash commit `271cf7c84c0ceeb1e490ac44ff065147c76fbb4e`.** Ultimo avanzamento è una **verifica analogica del modello** e un audit sulle sei sorgenti POWER della schematica completa, non una PCB unica. **Gli schemi V7.19 e precedenti e il coupon RX rimangono invariati**.
