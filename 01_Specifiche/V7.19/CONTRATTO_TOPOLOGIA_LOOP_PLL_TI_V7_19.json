@@ -1,0 +1,113 @@
+{
+  "revision": "V7.19",
+  "scope": "conceptual LMX2572 3rd order PLL loop filter, NO FAB / NO TX",
+  "evidence": {
+    "manufacturer_datasheet": "https://www.ti.com/lit/ds/symlink/lmx2572.pdf",
+    "datasheet_revision": "SNAS740B",
+    "manufacturer_figure": "Figure 179 (p.75), External Loop Filter",
+    "manufacturer_evm_reference": "https://www.ti.com/lit/ug/snau217b/snau217b.pdf",
+    "evm_fig": "Figure 19 (p.13), LMX2572EVM schematic"
+  },
+  "symbols": {
+    "U1": {
+      "component": "LMX2572RHA",
+      "pins": {
+        "CPout": "12",
+        "Vtune": "35"
+      }
+    },
+    "R2": {
+      "provisional_value": "620R",
+      "pin1": "CPout-side",
+      "pin2": "C2-side"
+    },
+    "R3": {
+      "provisional_value": "22R",
+      "pin1": "CPout-side",
+      "pin2": "Vtune-side"
+    },
+    "C1": {
+      "provisional_value": "220p C0G",
+      "pin2": "CPout-side",
+      "pin1": "GND"
+    },
+    "C2": {
+      "provisional_value": "120n X7R",
+      "pin2": "R2-side",
+      "pin1": "GND"
+    },
+    "C3": {
+      "provisional_value": "2n2 C0G",
+      "pin2": "Vtune-side",
+      "pin1": "GND"
+    }
+  },
+  "expected_future_pin_nets": {
+    "PLL_CPOUT": [
+      [
+        "U1",
+        "12"
+      ],
+      [
+        "C1",
+        "2"
+      ],
+      [
+        "R2",
+        "1"
+      ],
+      [
+        "R3",
+        "1"
+      ]
+    ],
+    "PLL_R2_C2": [
+      [
+        "R2",
+        "2"
+      ],
+      [
+        "C2",
+        "2"
+      ]
+    ],
+    "PLL_VTUNE": [
+      [
+        "U1",
+        "35"
+      ],
+      [
+        "R3",
+        "2"
+      ],
+      [
+        "C3",
+        "2"
+      ]
+    ],
+    "GND_MAIN": [
+      [
+        "C1",
+        "1"
+      ],
+      [
+        "C2",
+        "1"
+      ],
+      [
+        "C3",
+        "1"
+      ]
+    ]
+  },
+  "status": "TOPOLOGY_PROPOSAL_HOLD_NOT_NATIVE_CONNECTED",
+  "vendor_approved_values": false,
+  "actual_application_loop_bandwidth_qualified": false,
+  "loop_filter_component_values_not_equal_to_TI_EVM_default": true,
+  "minimum_shunt_capacitance_vtune_nF_TI": 1.5,
+  "design_c3_nF": 2.2,
+  "actual_placed_c3_distance_mm_verified": false,
+  "pllatinum_sim_calibration_and_phase_margin_verified": false,
+  "pcb_fabrication_permitted": false,
+  "rf_tx_permitted": false
+}
