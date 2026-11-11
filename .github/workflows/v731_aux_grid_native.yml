@@ -15,14 +15,15 @@ concurrency:
 jobs:
   native_grid:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/kicad/kicad:9.0
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - name: Install real KiCad9, once on PR only
+      - name: KiCad official 9.0 CLI preinstalled, no apt-get
         run: |
-          timeout 180s sudo apt-get update -qq
-          timeout 360s sudo apt-get install -y -qq kicad
           kicad-cli version
+          python3 --version
           mkdir -p 03_Verifiche/V7.31/output-ci
       - name: Export original and revised seven-sheet netlists and ERC
         run: |
