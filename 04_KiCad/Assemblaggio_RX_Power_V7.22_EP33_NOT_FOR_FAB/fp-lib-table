@@ -2,4 +2,5 @@
   (lib (name "S3900E_V38_Review")(type "KiCad")(uri "${KIPRJMOD}/../Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_V38_Review.pretty")(options "")(descr "RX experiment DNP"))
   (lib (name "S3900E_v33")(type "KiCad")(uri "${KIPRJMOD}/../Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_v33.pretty")(options "")(descr "RX experiment DNP"))
   (lib (name "S3900E_v35")(type "KiCad")(uri "${KIPRJMOD}/../Modulo_RX_Test_50ohm_V5.2_PARITY_LINK_STUDY_NOT_FOR_FAB/S3900E_v35.pretty")(options "")(descr "RX experiment DNP"))
+  (lib (name "S3900E_TI_DBV_V722_HOLD")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Footprint_V7.22_DBV_TI_HOLD/S3900E_TI_DBV_Review.pretty")(options "")(descr "TI DBV0005A review candidate only, no assignment/NO FAB"))
 )
