@@ -1,0 +1,41 @@
+name: V7.28 Bourns L100 SRP1038A-150M vendor land plus buck worst-case (NO FAB TX)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/v728_bourns_l100_native.yml'
+      - '03_Verifiche/V7.28/**'
+      - '04_KiCad/Librerie_Footprint_V7.28_BOURNS_L100_HOLD/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.28_L100_BOURNS_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.28_L100_BOURNS_REVIEW_NOT_FOR_FAB/**'
+permissions:
+  contents: read
+concurrency:
+  group: v728-bourns-l100-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  buck_l100_native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install actual KiCad9 PCBNEW bindings
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          /usr/bin/python3 -c 'import pcbnew; print(pcbnew.GetBuildVersion())'
+          mkdir -p 03_Verifiche/V7.28/output-ci
+      - name: Real seven sheet native KiCad netlist and ERC before/after
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.28/output-ci/v728.original.net 04_KiCad/Assemblaggio_RX_Power_V7.27_PLL_RHA41_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.28/output-ci/v728.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.27_PLL_RHA41_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.28/output-ci/v728.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.28_L100_BOURNS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.28/output-ci/v728.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.28_L100_BOURNS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Genuine native KiCad land and no electrical changes + 13 Python gates
+        run: /usr/bin/python3 -B -m unittest discover -s 03_Verifiche/V7.28 -p 'test_*.py' -v
+      - name: Store only ERC and netlist evidence (NO PCB/Gerber)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v728-native-bourns-L100-thermal-HOLD-NO-FAB-TX
+          path: 03_Verifiche/V7.28/output-ci/
+          if-no-files-found: warn
