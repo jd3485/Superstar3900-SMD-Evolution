@@ -13,7 +13,7 @@
 
 ## Verifica CI
 
-Workflow `v722_codec_ep33_native.yml` esegue KiCad9 CLI ERC/netlist originali e revised, richiede stessa topologia tranne **un solo ref-pin-net U6202/33 sulla GND locale**, 100 reti, 132 componenti, pin 1–32 conservati e conformi ai nomi TI, nessun ERC nuovo critico. 15 nuovi test V7.22 + 308 regressioni storiche (attesi 323 complessivi). Non segnare PASS senza conferma CI.
+Workflow `v722_codec_ep33_native.yml` esegue KiCad9 CLI ERC/netlist originali e revised, richiede stessa topologia tranne **un solo ref-pin-net U6202/33 sulla GND locale**, 100 reti, 132 componenti, pin 1–32 conservati e conformi ai nomi TI, nessun ERC nuovo critico. 21 nuovi test V7.22 + 308 regressioni storiche (attesi 329 complessivi). Non segnare PASS senza conferma CI.
 
 ## HOLD
 
@@ -34,3 +34,11 @@ Fonte primaria TI [TPS7A20 SBVS338H Rev.H](https://www.ti.com/lit/ds/symlink/tps
 ECO CAD additiva reale (solo **review library**): `04_KiCad/Librerie_Footprint_V7.22_DBV_TI_HOLD/S3900E_TI_DBV_Review.pretty/TPS7A20_DBV0005A_VENDOR_CANDIDATE.kicad_mod`, cinque pad con centri ±1,30 mm (x), y ±0,95/0; pad 1,10×0,60; pad 4 N/C fisico comunque presente. Registrata biblioteca via `fp-lib-table` nella sola gerarchia V7.22. Nessuna istanza U6203–U6206 riceve il footprint; non cambia alcuna rete, valore o pin di schema. Per **qualifica finale** occorrono verifica KiCad9 nativa, paste/mask/stencil, clearance/courtyard, variante produttore, saldatura e termica (rischio TPS7A20 a 300mA), prima di assegnazione e DRC della PCB unificata. **NO FAB / NO TX**.
 
 5 nuovi test statici verificano forma, dimensioni, orientamento pad 1–5, tabella biblioteca e mantenimento dei quattro footprint non assegnati: attesi 15 test V7.22 + 308 storici = **323**, **NON certificati** finché Actions non assegna runner. Il workflow acquisisce automaticamente la directory biblioteca come parte del commit; mai generare Gerber.
+
+## Impronta TI RHB0032E 32+EP33: nuovo candidato CAD esatto per quote vendor
+
+Il datasheet TI [TLV320AIC3204 SLOS602E Rev.E, esempio PCB e stencil pp. 53–54](https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf) prescrive per package RHB0032E: 32 pad perimetrali **0,60×0,25 mm** su passo 0,50 mm, centri esterni a **±2,40 mm**; pad rame centrale **EP33 3,45×3,45 mm** con piano massa (vedi prescrizione §12.1). Stencil di esempio 0,125 mm: **4 aperture quadrate 1,49×1,49 mm** su centri ±0,845 mm, circa **74,61%** area EP33. Vias termiche opzionali e se sotto pasta vanno preferibilmente filled/plugged/tented: questo **non autorizza** a forare il pad né creare GND via/plane arbitrarie.
+
+Il generico KiCad `Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm` consultato dall'archivio ufficiale usa EP rame 3,50 mm e pasta 4×1,41 mm (superficie stampata circa 64,9%): geometria **non identica** all'esempio TI. Non è prova di inutilizzabilità del generico, ma non va approvato senza verifica. Creato footprint locale *specifico vendor* `04_KiCad/Librerie_Footprint_V7.22_RHB_TI_HOLD/S3900E_TI_RHB_Review.pretty/TLV320AIC3204_RHB0032E_VENDOR_CANDIDATE.kicad_mod`, 33 pad fisici, paste separate senza duplicazione rame, registrato nel `fp-lib-table` del root V7.22. Sono aggiunti **6 nuovi test** per ogni centro/dimensione 1–33, geometrie solder paste, percentuale d'area e HOLD: 21 test V7.22 + 308 storici = **329 previsti NON ESEGUITI in CI**.
+
+Resta **NON ASSEGNATO** a U6202. Manca verifica KiCad9 parser/DRC, physical assembly, stencil production house, pad thermal via se applicabile, ritorno massa globale e protezioni. Niente Gerber o TX.
