@@ -33,9 +33,9 @@ def gate():
   assert l.Contains(pcbnew.F_Cu) and l.Contains(pcbnew.F_Mask) and l.Contains(pcbnew.F_Paste)
   pads[n]=geom(pad)
  assert pads=={"1":(-4.75,0.,4.1,3.5),"2":(4.75,0.,4.1,3.5)}
- assert abs(pads["2"][0]+2.05-(-pads["1"][0]-2.05)-5.4)<1e-6
+ assert abs((pads["2"][0]-pads["2"][2]/2) - (pads["1"][0]+pads["1"][2]/2) - 5.4)<1e-6
  # This Bourns drawing gives 13.6mm EXTERNAL span and 5.4mm INTERNAL gap.
- assert (pads["2"][0]+pads["2"][2]/2)-(pads["1"][0]-pads["1"][2]/2)==13.6
+ assert abs((pads["2"][0]+pads["2"][2]/2)-(pads["1"][0]-pads["1"][2]/2)-13.6)<1e-6
  old=compmap(OUT/"v728.original.net");new=compmap(OUT/"v728.revised.net")
  assert len(old)==len(new)==132
  assert {ref for ref in old if old[ref]!=new[ref]}=={"L100"}
