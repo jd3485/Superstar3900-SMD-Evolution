@@ -1,0 +1,34 @@
+name: V7.23 KiCad9 native vendor footprint load only - NO FAB NO TX
+on:
+  push:
+    branches: ['feature/v7.23-kicad9-native-footprint-gate']
+    paths:
+      - '.github/workflows/v723_kicad9_footprint_native.yml'
+      - '03_Verifiche/V7.23/**'
+permissions:
+  contents: read
+concurrency:
+  group: v723-native-footprints
+  cancel-in-progress: true
+jobs:
+  verify_native_library:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PCBNEW Python bindings from Ubuntu KiCad package
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad
+          /usr/bin/python3 -c 'import pcbnew; print(pcbnew.GetBuildVersion())'
+          kicad-cli version
+      - name: Load all three candidate footprint files into the genuine KiCad native C++ model
+        run: |
+          /usr/bin/python3 -B 03_Verifiche/V7.23/audit_native_footprints_v723.py
+      - name: Record native footprint load evidence only (no PCB/Gerber)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v723-pcbnew-native-footprints-NO-FAB-NO-TX
+          path: 03_Verifiche/V7.23/output-ci/v723.native_footprint_load.json
+          if-no-files-found: warn
