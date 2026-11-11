@@ -1,0 +1,104 @@
+{
+  "revision": "V7.18",
+  "date": "2026-11-11",
+  "scope": "V7.18 versioned seven-sheet full-radio KiCad integration master and eFuse OUT pin semantic model; NO FAB/TX",
+  "native_ci_run_id": 42964160297,
+  "conclusion": "success",
+  "kicad": "native kicad-cli sch export netlist / sch erc on Ubuntu KiCad9",
+  "vendor_sources": [
+    "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+    "https://www.ti.com/lit/ds/symlink/lmx2572.pdf"
+  ],
+  "source_baseline": "V7.17",
+  "native_root": {
+    "before": {
+      "erc_errors": 43,
+      "erc_warnings": 340,
+      "lib_pin_to_pin": 1,
+      "nets": 99
+    },
+    "after": {
+      "erc_errors": 42,
+      "erc_warnings": 340,
+      "lib_pin_to_pin": 0,
+      "nets": 99
+    },
+    "native_all_net_names_and_ref_pin_memberships_identical": true,
+    "only_erc_category_decrease": "pin_to_pin",
+    "delta_categories": {
+      "pin_to_pin": -1
+    },
+    "warning_waivers_added": 0,
+    "physical_connections_added": 0
+  },
+  "eco": {
+    "part_number": "TPS26600PWPT",
+    "package": "HTSSOP16",
+    "source_component": "U200",
+    "manufacturer_OUT15": true,
+    "manufacturer_OUT16": true,
+    "out15_schematic_pin_type": "power_out",
+    "out16_schematic_pin_type_before": "power_out",
+    "out16_schematic_pin_type_after": "passive (ERC model only)",
+    "physical_out15_out16_same_net": true,
+    "out15_out16_net": "BUCK_VIN_PROTECTED",
+    "other_child_files_byte_identical": true,
+    "all_existing_pcb_files_untouched": true
+  },
+  "pll_native_experiments": [
+    {
+      "name": "as_is",
+      "erc_errors": 42,
+      "erc_warnings": 340,
+      "net_pin_delta": 0
+    },
+    {
+      "name": "r2_outside_body_lead",
+      "erc_errors": 42,
+      "erc_warnings": 341,
+      "net_pin_delta": 0
+    },
+    {
+      "name": "r3_pin180_only",
+      "erc_errors": 42,
+      "erc_warnings": 340,
+      "net_pin_delta": 0
+    },
+    {
+      "name": "r2_outside_plus_R3_pin_rotation",
+      "erc_errors": 42,
+      "erc_warnings": 341,
+      "net_pin_delta": 0
+    }
+  ],
+  "pll_variant_used_in_versioned_schematic": false,
+  "erc_residual_errors": {
+    "label_dangling": 26,
+    "power_pin_not_driven": 6,
+    "pin_not_driven": 5,
+    "wire_dangling": 3,
+    "pin_not_connected": 2
+  },
+  "erc_residual_warnings": {
+    "endpoint_off_grid": 219,
+    "lib_symbol_issues": 117,
+    "footprint_link_issues": 4
+  },
+  "interfaces_open_hold": 15,
+  "rtc_pinout_SG48_hold": true,
+  "tests": {
+    "new_V718": 12,
+    "prior_V71_through_V717": 241,
+    "python_pass": 253,
+    "python_fail": 0,
+    "python_skip": 0,
+    "new_icarus_yosys": false,
+    "bench_test": false
+  },
+  "radio_single_pcb_created": false,
+  "full_radio_pcb_layout_percent_estimate": 10,
+  "estimate_change_due_to_this_eco": false,
+  "fabrication_authorized": false,
+  "rf_tx_permitted": false,
+  "gerbers_created": false
+}
