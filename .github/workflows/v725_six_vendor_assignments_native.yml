@@ -1,0 +1,64 @@
+name: V7.25 six MPN-symbol-pad-footprint review native diff (NO FAB NO TX)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/v725_six_vendor_assignments_native.yml'
+      - '03_Verifiche/V7.25/**'
+      - '04_KiCad/Modulo_MCU_CODEC_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/**'
+permissions:
+  contents: read
+jobs:
+  six_vendor_footprint_review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install KiCad and ngspice (no fabrication export)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad ngspice
+          kicad-cli version
+          mkdir -p 03_Verifiche/V7.25/output-ci 03_Verifiche/V7.22/output-ci 03_Verifiche/V7.21/output-ci 03_Verifiche/V7.20/output-ci
+      - name: Real native old and new KiCad ERC and netlist
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.22/output-ci/v722.original.net 04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.22/output-ci/v722.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.22/output-ci/v722.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.22_EP33_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.22/output-ci/v722.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.22_EP33_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          cp 03_Verifiche/V7.22/output-ci/v722.original.net 03_Verifiche/V7.21/output-ci/v721.root_v719.net
+          cp 03_Verifiche/V7.22/output-ci/v722.original.erc.rpt 03_Verifiche/V7.21/output-ci/v721.root_v719.erc.rpt
+      - name: Actual KiCad9 native PCBNEW footprint parser from V7.23
+        run: /usr/bin/python3 -B 03_Verifiche/V7.23/audit_native_footprints_v723.py
+      - name: Real V7.22 versus V7.25 root KiCad9 netlist and ERC (NO FAB)
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.25/output-ci/v725.original.net 04_KiCad/Assemblaggio_RX_Power_V7.22_EP33_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.25/output-ci/v725.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.22_EP33_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.25/output-ci/v725.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.25/output-ci/v725.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Gate V7.25 exactly six only assignments and no electrical net changes
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.25 -p 'test_*.py' -v
+      - name: Gate physical EP33 and all old net nodes (26 V7.22 tests)
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.22 -p 'test_*.py' -v
+      - name: Retain V7.21 baseline and V7.20 ngspice checks
+        run: |
+          python3 -B 03_Verifiche/V7.21/audit_board_foundations_v721.py
+          python3 -B 03_Verifiche/V7.21/audit_candidate_packages_v721.py
+          cp 03_Verifiche/V7.21/output-ci/v721.root_v719.net 03_Verifiche/V7.20/output-ci/v720.root_v719.net
+          cp 03_Verifiche/V7.21/output-ci/v721.root_v719.erc.rpt 03_Verifiche/V7.20/output-ci/v720.root_v719.erc.rpt
+          python3 -B 03_Verifiche/V7.20/verify_pll_spice_270_v720.py
+          python3 -B 03_Verifiche/V7.20/audit_native_power_v720.py
+          /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
+          /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
+      - name: Preserve 308 earlier Python regressions
+        run: |
+          for version in V7.21 V7.20 V7.19 V7.18 V7.17 V7.16 V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Keep KiCad evidence, no Gerbers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v725-6-vendor-footprints-native-NO-FAB-NO-TX
+          path: 03_Verifiche/V7.25/output-ci/
+          if-no-files-found: warn
