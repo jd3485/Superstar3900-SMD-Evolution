@@ -95,9 +95,11 @@ def audit():
         raise ValueError("Root KiCad ERC 36/340 baseline changed")
     nets=map_power_nets(NET)
     get=lambda suffix:[(name,pins) for name,pins in nets.items() if name.endswith("/"+suffix)]
-    buck=get("5V_RF_PREREGULATED")
-    if len(buck)!=1 or not buck[0][0].startswith("/AUX_POWER_existing"):
-        raise ValueError("Expected isolated AUX 5V power rail")
+    buck=[row for row in get("5V_RF_PREREGULATED") if row[0].startswith("/AUX_POWER_existing")]
+    unqualified_mcu_candidate=[row for row in get("5V_RF_PREREGULATED")
+                               if row[0].startswith("/MCU_CODEC_AFE_existing")]
+    if len(buck)!=1 or len(unqualified_mcu_candidate)!=1:
+        raise ValueError("Expected two isolated AUX and MCU 5V candidate names, NOT physically shorted")
     if sum(ref in ("U2","U3") and pin=="1" for ref,pin,_ in buck[0][1])!=2:
         raise ValueError("AUX two LDO input pins not on exact five-volt net")
     digital=get("5V_DIGITAL_FILTERED")
