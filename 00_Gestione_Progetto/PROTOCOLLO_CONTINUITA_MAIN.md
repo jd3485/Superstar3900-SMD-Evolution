@@ -1,3 +1,19 @@
+# PROTOCOLLO CONTINUITÀ — V7.21 PRE-LAYOUT QUALITY / BOM / TERMICA (NO FAB/TX)
+
+**11 novembre 2026 · V7.21 su branch/PR; confermare merge/HEAD prima di dire `main`.**
+
+- Vero KiCad9 master 7 fogli V7.19 / netlist 100 reti: **132 componenti**, 48 footprint missing (46 MCU/CODEC +2 AUX J100/J101), 84 assigned (NON tutti approvati), F200 e Y1 assigned con marcatori espliciti non validati. Root ERC ancora **36 errors/340 warnings**, 15 interfaces OPEN/HOLD.
+- Real KiCad9 library test **6 candidate packages** senza assegnazione: U6201 ST LQFP64 10x10/p0.5 pad1..64, U6202 TI RHB VQFN32 5x5/p0.5 32 perim + pad **33 EP**, U6203..6206 TI TPS7A20 DBV SOT23-5 pad1..5. MPN ↔ symbol pin and stencil/mask/thermal/integration NOT verified.
+- Serious thermal *screen*: TPS7A20 DBV JEDEC `RθJA=187.1°C/W`. 5→3.3V @300mA =0.51W, 40°C ambient JEDEC example TJ≈135.4°C above 125°C operating. Not measured load nor board temperature; require continuous load & derating calculation before PCB release. 6 LDO nameplate 1.8A not real load, 2 AUX 5V,4 isolated MCU 5V.
+- TPS54202 buck 2A, feedback R101100k/R10213k3 -> Vout_nom≈5.077V, Vref+R tolerance-only arithmetic 4.863–5.298V, not guaranteed total. eFuse TPS26600 2.23A adjustable upper, F200 1.5A candidate and footprint not validated. GND_MAIN vs GND MCU and EFUSE_RTN isolated, no PWR_FLAG or fake connection.
+- Native GitHub Actions [CI 42986310630](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42986310630) **success**, **24 V7.21 tests +284 past=308 PASS 0 FAIL/SKIP**, no hardware. All KiCad original files unchanged, no global PCB, Gerber or TX.
+- Outputs `03_Verifiche/V7.21/RAPPORTO_TECNICO_CAD_V7.21.md`, results JSON, CI CSV missing48 and package6, spec `01_Specifiche/V7.21/PIANO_QUALITA_PCB_UNICA_GATES_V7_21.md`. Whole PCB approx **10% estimate unchanged**; next **V7.22** source-vendor pin map + EP33 and 6 IC package assignment versioned, then remaining 42 and power/mechanical gate.
+- **NO FAB / NO GERBER / NO PCBWAY / NO TX**, SG48 HOLD. Do not claim zero errors without ERC+DRC/inspection/bench.
+
+---
+
+## STORICO PROTOCOLLO V7.20 E PRECEDENTI
+
 # PROTOCOLLO CONTINUITÀ MAIN — V7.20 PLL SPICE + POWER ERC
 
 **11 novembre 2026 · V7.20 MERGED su `main` tramite [PR #20](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/20), squash commit `271cf7c84c0ceeb1e490ac44ff065147c76fbb4e`. NO FAB / NO TX.**
