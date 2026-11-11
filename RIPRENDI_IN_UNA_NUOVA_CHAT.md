@@ -1,3 +1,21 @@
+# HANDOFF SUPERSTAR 3900 SMD — V7.18 MODELLO EFUSE E LOOP PLL
+
+**11 novembre 2026 · branch/PR V7.18, verificare merge/HEAD `main`.** Sorgenti V7.17 e precedenti intatti. **NO FAB / NO TX.**
+
+Nella directory `04_KiCad/Gerarchico_Alimentazioni_V7.18_PINMODEL_NOT_FOR_FAB/`, l'unica ECO fisica di schema è nel simbolo embedded TPS26600PWPT eFuse U200: pin OUT15 rimane `power_out`, pin OUT16 diventa `passive` *come attributo ERC soltanto*, mantenendo entrambi sullo stesso output (TI TPS2660x SLVSDG2G p.5). La nuova gerarchia completa è `04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/`, le altre tre schede AUX root/BUCK/PLL sono byte-intatte, RX/MCU originali intatti.
+
+**Prova KiCad9 nativa:** [CI 42964160297](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42964160297) PASS, **ERC 43→42 errori, 340 warning invariati, `pin_to_pin` 1→0, 99 reti con tutte le membership ref/pin IDENTICHE**, interfacce OPEN/HOLD sempre 15, SG48 HOLD. **12 nuovi test V7.18 +241 regressioni V7.1–V7.17 =253 PASS**, 0 FAIL/SKIP.
+
+**Esperimenti R2/R3 loop** su quattro cloni temporanei (NON applicati): as-is 42/340; R2 wire da fuori corpo 42/341; R3 simmetria pin 180° 42/340; entrambi 42/341. Nessuna modifica della membership di net; non si può correggere l'anello senza revisarene fisicamente pin e rete. Restano **26 label +16 altri errori ERC (6 power, 5 input, 3 wire, 2 pin NC)** e nessuna qualifica della sezione PLL 3V3/5V, IF2, SMA o real PCB.
+
+Aprire `03_Verifiche/V7.18/RAPPORTO_TECNICO_CAD_V7.18.md`, machine JSON, `01_Specifiche/V7.18/ECO_EFUSE_DUAL_OUT_PINMODEL_V7_18.md`, workflow `.github/workflows/v718_efuse_pll_native.yml`, artifact DRC/ERC KiCad native. Non interpretare CI verde come scheda fabbricabile. Percentuale PCB completa ~10% invariata.
+
+**Next V7.19:** verificare KiCad GUI e TI EVM del loop filter R2/R3, qualificare 5V/3V3/GND e il PLL safe-start, ridurre i 16 hard ERC su circuiti reali, poi interfacce, schematico unificato e PCB intera. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
+## STORICO HANDOFF V7.17 E PRECEDENTI
+
 # HANDOFF — SUPERSTAR 3900 SMD V7.17 FULL-RADIO MASTER
 
 **11 novembre 2026 · V7.17 MERGED su `main` tramite [PR #17](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/17), merge `ff26db4e55eb2ab7368cb222de58a8b969cf08d6`. NO FAB / NO TX.**
