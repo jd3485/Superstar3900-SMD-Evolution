@@ -116,6 +116,8 @@ class TestAdditionalVendorPinMaps(unittest.TestCase):
         src=NM.read_text()
         for ref in ("U6203","U6204","U6205","U6206"):
             self.assertEqual(src.count('(property "Reference" "'+ref+'"'),1)
-        self.assertTrue(all('TPS7A2033PDBVR' in src for _ in range(1)))
+            instance=src.split('(property "Reference" "'+ref+'"',1)[1].split('(instances ',1)[0]
+            self.assertIn('(property "Value" "TPS7A2033PDBVR"',instance)
+            self.assertIn('(property "Footprint" ""',instance)
 
 if __name__=="__main__":unittest.main()
