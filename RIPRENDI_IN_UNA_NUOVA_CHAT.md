@@ -1,6 +1,6 @@
 # HANDOFF — SUPERSTAR 3900 SMD V7.19 TI PLL LOOP PIN-NET
 
-**11 novembre 2026 · V7.19 branch/PR, verificare merge e HEAD `main`. NO FAB / NO TX.**
+**11 novembre 2026 · V7.19 MERGED su `main` con [PR #19](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/19), squash merge `6d5ccb179cbe46760605edde6c44c2fc89a9ac5e`. NO FAB / NO TX.**
 
 Nuovo master KiCad a 7 fogli `04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/` punta a clone AUX `04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/`. Solo cambiamento elettrico effettivo: **6 label direttamente su pin** nel figlio `03_PLL_LDO_TCXO.kicad_sch`, alimentazione/eFuse/BUCK/MCU/RX/PCB originali byte invariati. **TI LMX2572 datasheet SNAS740B Fig179 p75** CPOUT U1:12/C1:2/R2:1/R3:1, nuova net R2:2–C2:2, VTUNE U1:35/R3:2/C3:2; capacitori a GND_MAIN, ritorno RF ancora da qualificare.
 
