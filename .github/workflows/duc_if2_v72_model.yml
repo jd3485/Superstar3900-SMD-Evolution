@@ -1,22 +1,18 @@
 name: IF2 DUC V7.2 model-only checks
 on:
-  push:
-    branches: ['feature/v7.2-offline-duc-if2', 'main']
-    paths:
-      - '01_Specifiche/V7.2/**'
-      - '03_Verifiche/V7.2/**'
-      - '08_Firmware_Prototipi/V7.2/**'
-      - '07_Componenti/BOM_DUC_IF2_V7.2.csv'
-      - '.github/workflows/duc_if2_v72_model.yml'
   pull_request:
     paths:
       - '01_Specifiche/V7.2/**'
       - '03_Verifiche/V7.2/**'
       - '08_Firmware_Prototipi/V7.2/**'
       - '07_Componenti/BOM_DUC_IF2_V7.2.csv'
-      - '.github/workflows/duc_if2_v72_model.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   offline-dsp:
     runs-on: ubuntu-latest

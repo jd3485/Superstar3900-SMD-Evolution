@@ -1,18 +1,16 @@
 name: V7.19 native TI LMX2572 loop pin forensic and 253 regression gate (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.19-pll-loop-pin-connectivity']
-    paths:
-      - '03_Verifiche/V7.19/**'
-      - '.github/workflows/v719_pll_pin_native.yml'
-      - '01_Specifiche/V7.19/**'
   pull_request:
     paths:
       - '03_Verifiche/V7.19/**'
-      - '.github/workflows/v719_pll_pin_native.yml'
       - '01_Specifiche/V7.19/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   ki9-pll-pin-probe:
     runs-on: ubuntu-latest

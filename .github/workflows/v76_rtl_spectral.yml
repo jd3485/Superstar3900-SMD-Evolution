@@ -1,22 +1,18 @@
 name: V7.6 virtual RTL and multitone spectrum (NO FAB / NO TX)
 on:
-  push:
-    branches: ['feature/v7.6-rtl-pinplan-spectral-dnp', 'main']
-    paths:
-      - '01_Specifiche/V7.6/**'
-      - '03_Verifiche/V7.6/**'
-      - '08_Firmware_Prototipi/V7.6/**'
-      - '07_Componenti/BOM_SIMULAZIONE_RTL_V7.6.csv'
-      - '.github/workflows/v76_rtl_spectral.yml'
   pull_request:
     paths:
       - '01_Specifiche/V7.6/**'
       - '03_Verifiche/V7.6/**'
       - '08_Firmware_Prototipi/V7.6/**'
       - '07_Componenti/BOM_SIMULAZIONE_RTL_V7.6.csv'
-      - '.github/workflows/v76_rtl_spectral.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   virtual-rtl-and-dsp:
     runs-on: ubuntu-latest

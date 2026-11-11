@@ -12,6 +12,17 @@ Realizzare una **PCB unica Superstar 3900 SMD Evolution** tecnicamente corretta,
 
 **Modalità esecutiva:** in una singola sessione Work/agent, procedere attraverso **più revisioni sensate e sostanziali**, finché esistono tempo, capacità e fonti attendibili. Non fermarsi soltanto perché una PR è stata integrata. Dopo una PR verde, aggiornare lo stato, passare al prossimo blocker ragionevole, continuare entro i limiti della sessione. Fermarsi quando manca un dato essenziale, non c'è accesso all'app/strumento o per un vincolo di sicurezza reale. Non promettere lavoro dopo la chiusura della sessione.
 
+## Regola permanente V7.30: ChatGPT progetta; GitHub conserva; Actions verifica solo quando serve
+
+**Il responsabile tecnico degli errori è ChatGPT, non GitHub Actions.** Ogni modifica CAD/elettrica deve avere una valutazione dei datasheet, delle connessioni, di pin e pad e dei rischi; non sostituire la diagnosi con un run verde.
+
+1. Eseguire localmente quando effettivamente disponibili KiCad CLI, Python e ngspice. Se una prova non è realizzabile localmente, usarne la **CI tecnica mirata sulla PR** e registrare run ID e rapporti nativi. Non considerare superato un test non eseguito. Prima del merge di una PR CAD richiedere ERC e netlist nativi prima/dopo, conservazione dei nodi pin-rete, test componenti/footprint e simulazioni pertinenti; DRC quando esiste una vera PCB. Mai sopprimere errori o abbreviare gate safety per risparmiare.
+2. I 34 workflow storici devono essere **solo pull_request su paths tecnici pertinenti o workflow_dispatch manuale**; i quattro controlli KiCad V5.4–V5.7 restano solo manuali. Non duplicare push, PR e merge. La CI rapida actions_policy_quick.yml valida le configurazioni YAML quando cambiano le regole o un workflow.
+3. Per 03_Verifiche escludere soltanto rapporti Markdown con !03_Verifiche/**/*.md alla fine dei filtri; non escludere test Python, netlist, modelli, CSV, dati tecnici e input reali. Non escludere le specifiche Markdown se usate dalle prove. Conservare integrità SHA256 tag v7.0, manifest e regressioni numeriche automatiche su input originali e manuali per CAD indipendente; non avviare il workflow numerico V7.0 a ogni merge KiCad se la CI nativa specifica è già passata.
+4. Concurrency annulla soltanto run **PR obsoleti della stessa PR** e **mai** un controllo manuale/finale. Conservere tutti gli step tecnici preesistenti; evitare apt/pip, job o installazioni ripetute quando non necessari. Per nuovi workflow usare permissions contents:read e workflow_dispatch con trigger PR paths stretti se necessario.
+5. Non modificare billing, budget, visibilità o settings GitHub senza consenso esplicito. GitHub Actions può costare dopo quota inclusa; audit e prove locali vanno privilegiati ma non inventati. Memorizzare i veri esiti di CI, errori e HOLD nel checkpoint GitHub.
+6. Invariati **NO FAB / NO GERBER / NO PCBWAY / NO TX, SG48 HOLD, 15 cross-module OPEN/HOLD**, nessun PWR_FLAG artificiale, corto fra domini o falsa PCB completa.
+
 ## Contratto di bootstrap per una nuova chat
 
 **Prima di modificare qualsiasi cosa**:

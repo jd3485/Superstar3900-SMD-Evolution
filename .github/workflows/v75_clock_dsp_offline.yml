@@ -1,22 +1,18 @@
 name: V7.5 shared clock and staged DSP model-only (NO FAB NO TX)
 on:
-  push:
-    branches: [feature/v7.5-coherent-clock-multistage-dnp, main]
-    paths:
-      - '08_Firmware_Prototipi/V7.5/**'
-      - '03_Verifiche/V7.5/**'
-      - '01_Specifiche/V7.5/**'
-      - '07_Componenti/BOM_CLOCK_BRIDGE_V7.5.csv'
-      - '.github/workflows/v75_clock_dsp_offline.yml'
   pull_request:
     paths:
       - '08_Firmware_Prototipi/V7.5/**'
       - '03_Verifiche/V7.5/**'
       - '01_Specifiche/V7.5/**'
       - '07_Componenti/BOM_CLOCK_BRIDGE_V7.5.csv'
-      - '.github/workflows/v75_clock_dsp_offline.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   clock-dsp-offline:
     runs-on: ubuntu-latest

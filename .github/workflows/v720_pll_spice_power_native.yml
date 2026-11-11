@@ -1,18 +1,16 @@
 name: V7.20 independent ngspice 270-channel PLL model and native 6-power ERC audit (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.20-pll-linear-spice-power-audit']
-    paths:
-      - '.github/workflows/v720_pll_spice_power_native.yml'
-      - '03_Verifiche/V7.20/**'
-      - '01_Specifiche/V7.20/**'
   pull_request:
     paths:
-      - '.github/workflows/v720_pll_spice_power_native.yml'
       - '03_Verifiche/V7.20/**'
       - '01_Specifiche/V7.20/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   native-pll-analog-power-audit:
     runs-on: ubuntu-latest

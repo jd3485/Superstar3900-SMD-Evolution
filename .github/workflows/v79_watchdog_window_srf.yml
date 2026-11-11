@@ -1,22 +1,18 @@
 name: V7.9 decimated heartbeat TPS3430 window + SRF screening (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.9-slow-heartbeat-watchdog-filter-dnp', 'main']
-    paths:
-      - '08_Firmware_Prototipi/V7.9/**'
-      - '03_Verifiche/V7.9/**'
-      - '01_Specifiche/V7.9/**'
-      - '07_Componenti/BOM_WATCHDOG_FILTRO_V7.9.csv'
-      - '.github/workflows/v79_watchdog_window_srf.yml'
   pull_request:
     paths:
       - '08_Firmware_Prototipi/V7.9/**'
       - '03_Verifiche/V7.9/**'
       - '01_Specifiche/V7.9/**'
       - '07_Componenti/BOM_WATCHDOG_FILTRO_V7.9.csv'
-      - '.github/workflows/v79_watchdog_window_srf.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   v79-model-and-regressions:
     runs-on: ubuntu-latest

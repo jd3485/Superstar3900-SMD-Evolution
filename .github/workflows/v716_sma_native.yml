@@ -1,16 +1,15 @@
 name: V7.16 native SMA footprint root-cause experiment (NO FAB NO TX)
 on:
-  push:
-    branches: ['feature/v7.16-sma-native-diagnosis']
-    paths:
-      - '03_Verifiche/V7.16/**'
-      - '.github/workflows/v716_sma_native.yml'
   pull_request:
     paths:
       - '03_Verifiche/V7.16/**'
-      - '.github/workflows/v716_sma_native.yml'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   native-sma-forensics:
     runs-on: ubuntu-latest
