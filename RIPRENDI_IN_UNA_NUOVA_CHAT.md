@@ -14,6 +14,16 @@ Screenshot ufficiali GitHub Actions dell'account `jd3485`: **2.000/2.000 minuti 
 
 Proseguire modifiche CAD su PR #23 e predisporre test locali **solo se verificabili** (qui `kicad-cli` e `ngspice` mancanti, `apt-get update` timeout). **Nessun test locale KiCad9 certificato**, nessun merge. Il 1 dicembre 2026, a quota ripristinata, rieseguire i test native KiCad e 334 Python; non autorizzare fabbricazione, Gerber, TX, bypass di gate. Ultimo ramo HEAD `9aedec44e1fe10bdc61a3a55c75903263a98cbae`. **NO FAB / NO TX**.
 
+## STATO ATTIVO 11 NOVEMBRE 2026 ~12:20 CET — V7.23/V7.24 INTEGRATE
+
+Da `main` [AGENTS.md](AGENTS.md) e [checkpoint](00_Gestione_Progetto/WORK_STATO_CORRENTE.md) leggere **prima** di cambiare il progetto. [PR #25](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/25) **MERGED** squash `8e46b26bb488fb1484ee9cc2b1c366b91badfb80`: vero KiCad9 `pcbnew.FootprintLoad` sui tre nuovi footprint ST/TI candidate **64+33+5 pad numerati e 4 paste-window**, layer e geometrie, run [43011010863 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011010863), KiCad9.0.8, artefatto 13849469820. Primo run 43010894472 era fallito solo per pacchetto `python3-kicad` inesistente, corretto installando `kicad` (binding già incluso). **Non** conferma DRC globale, assembly o qualifica produttiva; footprint sempre non assegnati.
+
+[PR #26](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/26) **MERGED** squash `9308b710db8a13071de60ad9f9b93fed3c414b89`: workflow V7.0 `push main` ora `paths` sui file tecnici, invece di partire per ogni markdown checkpoint; avvio manuale preservato. Migliora costo Actions a pagamento sbloccate dall'utente. [run 43011495583](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011495583) era in coda all'ultima verifica, controllare live.
+
+La V7.22 è **MERGED**, [run 42997229515 attempt2](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515) PASS 334 test; status finale 7 fogli/132 comp/100 reti, ERC 36/340, **48 footprint mancanti (incl. U6201–U6206)**, 15 interfacce OPEN/HOLD, SG48 HOLD, PCB unica NON esistente. V7.25: package symbol-pad verification contro vendor, ERC root causa per causa, 13.8/5/3.3V rails. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
 # HANDOFF ATTIVO — 11 novembre 2026, PR #23 V7.22 NON MERGIATA
 
 **Fonte vincolante:** leggere da GitHub **[AGENTS.md](AGENTS.md)** e **[WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md)** su `main`, poi PR/Actions LIVE. Ultima versione tecnica merge **V7.21 PR #21**; `main` prima della continuazione `b805a333e23e78d44e0c357cf43a66ae6cdb3646`. Non usare memoria vecchia per dati di branch.

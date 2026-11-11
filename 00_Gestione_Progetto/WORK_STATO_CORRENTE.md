@@ -4,6 +4,29 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## Sessione 11 novembre 2026 ore 12:20 CET — **V7.23 e V7.24 INTEGRATE, V7.25 PROSSIMA**
+
+**Verifica indipendente da GitHub live:** `main` dopo [PR #25](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/25) squash `8e46b26bb488fb1484ee9cc2b1c366b91badfb80` e [PR #26](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/26) squash `9308b710db8a13071de60ad9f9b93fed3c414b89`, entrambe **MERGED**. Base V7.22 precedente [PR #23](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/23), squash `e6b04082e4268cccc8338127824a0a2e0341ad91`, [run 42997229515 attempt 2 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515) **334 Python PASS, KiCad9/ERC/netlist root prima/dopo 36 errori + 340 warning, 132 comp/100 reti, U6202 EP33 local GND**.
+
+### V7.23: nuovo controllo vero KiCad9 sulle tre librerie
+
+- Script `03_Verifiche/V7.23/audit_native_footprints_v723.py` usa **`pcbnew.FootprintLoad`** del KiCad nativo, NON regex per la verifica finale. Compara coordinate, dimensioni, pad numerati, layer rame F.Cu, F.Mask, F.Paste e paste-only. **102 pad elettrici numerati in totale (ST LQFP64 64 + codec TI RHB 33 + TI DBV 5)**; TI codec EP33 ha **quattro pad separati di pasta non-rame** 1,49×1,49 mm. Suite di review, nessun export né PCB di prova salvata.
+- Primo [run 43010894472](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43010894472) **failure INSTALL** perché l'Ubuntu runner non ha `python3-kicad` come pacchetto separato: nessun test CAD in quel run. Corretto workflow rimuovendo il pacchetto fittizio (binding `pcbnew` installato insieme a `kicad`).
+- Successivo [run 43011010863](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011010863) **SUCCESS**, KiCad **9.0.8+dfsg-1**, step native footprint load **success**, artefatto [13849469820](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011010863/artifacts/13849469820) `v723.native_footprint_load.json`. Letto log CI: ST64, TI RHB33+4 paste-only, TI DBV5, geometry/layers veri tutti PASS. **Non si sono assegnati footprint a U6201–U6206.** Il gate dimostra caricamento nativo, non qualifica stencil/assemblaggio/DRC globale.
+- La PR #25 è stata verificata **e integrata**, quindi i tre footprint candidati restano nell'albero root, ma sempre `HOLD/NO ASSIGNMENT`.
+
+### V7.24: controllo preventivo dei costi Actions
+
+- **L'utente ha sbloccato Actions a pagamento**. Nessuna modifica di billing o budget effettuata dall'agente. Il vecchio workflow `.github/workflows/verifica_v70.yml` partiva su ogni push in `main`, anche solo aggiornamenti checkpoint. [PR #26](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/26) limitata ai `paths` tecnici (`ci/**`, `03_Verifiche/V6.9/**`, `03_Verifiche/V7.0/**`, `04_KiCad/**`, stesso workflow), mantenendo `workflow_dispatch` e tutti gli step SHA256/tag v7.0 + regressioni numeriche invariati. Nessuna modifica CAD o elettrica V7.24, nessun test indebolito **dentro** il workflow. Per modifiche solo a `00_Gestione_Progetto` non deve partire il runner V7.0. V7.24 merge squash `9308b710db8a13071de60ad9f9b93fed3c414b89`; [baseline run 43011495583](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011495583) **in coda all'ultima consultazione** — verificarne il risultato in diretta, non dichiararlo verde se non completato.
+
+### Stato reale e prossimo passo V7.25
+
+**48 footprint ancora mancanti in schema** nonostante le nuove librerie, F200/Y1 presenti ma UNVALIDATED. **15 interfacce cross-domain OPEN/HOLD**, `EFUSE_RTN` non unire a `GND_MAIN`, SG48 HOLD. Root 7 fogli/132 comp/100 reti, **ERC 36 errori / 340 warning preesistenti**, nessuna PCB unica completata, nessun DRC globale possibile su PCB inesistente, avanzamento ~10% stima storica invariata. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+**V7.25 priorità:** confrontare pin-to-pad/vendor per U6201/U6202/U6203–U6206 anche contro netlist native, verificare stencil e assembly DFM, fare vera correzione KiCad se emerge un difetto con prova. In parallelo analizzare/reportare e poi ridurre *difetti ERC reali* senza PWR_FLAG fittizi, short fra domini o waiver; esaminare source/return 13,8V→5V→3,3V e termiche LDO; soltanto dopo assegnazione controllata di footprint e progetto PCB unitario. Usare **una CI mirata per revisione** e monitorare costo GitHub Actions.
+
+---
+
 ## Aggiornamento 11 novembre 2026 ore 12:09 CET — **V7.22 INTEGRATA, CI VERDE, passare a V7.23**
 
 **Fonte live verifica GitHub:** `main` revisione ingegneristica V7.22 integrata con squash [PR #23](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/23), commit **`e6b04082e4268cccc8338127824a0a2e0341ad91`**. La PR #23 è **MERGED**, non più aperta. Tutti i paragrafi sotto questa sezione che dicono `PR #23 NON MERGIATA` o `CI bloccata` sono **storico superato**, NON stato corrente.
