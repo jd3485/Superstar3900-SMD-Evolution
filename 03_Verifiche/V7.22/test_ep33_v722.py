@@ -40,7 +40,7 @@ def audit():
     assert new[33]==("EP_GND_THERMAL_PAD","passive",48.26,-30.48,180)
     mcu=NM.read_text()
     assert mcu.count('(label "GND" (at 448.2600 190.4800 0)')==1
-    assert mcu.count('(number "33"')==1
+    # Pin 33 also exists on STM32 U6201: verify codec-specific 33 using pins(NM) above.
     codec=mcu.split('(property "Reference" "U6202"',1)[1].split('(instances ',1)[0]
     assert '(property "Footprint" ""' in codec
     assert NR.read_text().count('../Modulo_MCU_CODEC_V7.22_EP33_GROUNDED_NOT_FOR_FAB/')==1
