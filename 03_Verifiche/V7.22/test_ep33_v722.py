@@ -78,4 +78,44 @@ class TestNativeTI(unittest.TestCase):
     def test_erc_no_new_errors(self):self.assertLessEqual(self.data["erc_revision"]["errors"],36)
     def test_footprint_hold(self):self.assertFalse(self.data["footprint_U6202_assigned"])
     def test_safety(self):self.assertTrue(self.data["NO_FAB"] and self.data["NO_TX"] and self.data["SG48_HOLD"])
+
+# Independent manufacturer pin-number -> function map from ST DS12288 Rev.6
+# LQFP64 Figure 7 p50; TI SBVS338H Rev.H DBV Figure 4-4/Table p4.
+# This is a SYMBOL electrical pinmap gate, NOT an assembly land-pattern approval.
+ST_LQFP64=(
+"VBAT","PC13","PC14","PC15","PF0","PF1","PG10-NRST","PC0",
+"PC1","PC2","PC3","PA0","PA1","PA2","VSS","VDD",
+"PA3","PA4","PA5","PA6","PA7","PC4","PC5","PB0",
+"PB1","PB2","VSSA","VREF+","VDDA","PB10","VSS","VDD",
+"PB11","PB12","PB13","PB14","PB15","PC6","PC7","PC8",
+"PC9","PA8","PA9","PA10","PA11","PA12","VSS","VDD",
+"PA13","PA14","PA15","PC10","PC11","PC12","PD2","PB3",
+"PB4","PB5","PB6","PB7","PB8-BOOT0","PB9","VSS","VDD"
+)
+TI_TPS7A20_DBV=("IN","GND","EN","NC","OUT")
+
+def symbol_pin_names(libpart):
+    src=NM.read_text()
+    start='(symbol "S3900E:'+libpart+'"'
+    assert src.count(start)==1
+    block=src.split(start,1)[1].split('(symbol "S3900E:',1)[0]
+    rows=re.findall(r'\(pin [\w-]+ line \(at [-.\d]+ [-.\d]+ \d+\) \(length [\d.]+\) \(name "([^"]+)"[^\n]*?\(number "(\d+)"',block)
+    pins={int(num):name for name,num in rows}
+    assert len(pins)==len(rows), "duplicate symbol pin number"
+    return pins
+
+class TestAdditionalVendorPinMaps(unittest.TestCase):
+    def test_09_st_ds12288_lqfp64_exact_pin_to_name(self):
+        p=symbol_pin_names("STM32G474RE_LQFP64_DRAFT")
+        self.assertEqual(p,{n:name for n,name in enumerate(ST_LQFP64,1)})
+
+    def test_10_ti_sbvs338h_dbv_exact_pin_to_name_and_four_instances(self):
+        p=symbol_pin_names("TPS7A2033_DBV_DRAFT")
+        self.assertEqual(p,{n:name for n,name in enumerate(TI_TPS7A20_DBV,1)})
+        self.assertEqual(p[4],"NC")  # N/C, not a power or GND pin
+        src=NM.read_text()
+        for ref in ("U6203","U6204","U6205","U6206"):
+            self.assertEqual(src.count('(property "Reference" "'+ref+'"'),1)
+        self.assertTrue(all('TPS7A2033PDBVR' in src for _ in range(1)))
+
 if __name__=="__main__":unittest.main()
