@@ -4,6 +4,20 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## Aggiornamento 11 novembre 2026 ore 12:09 CET — **V7.22 INTEGRATA, CI VERDE, passare a V7.23**
+
+**Fonte live verifica GitHub:** `main` revisione ingegneristica V7.22 integrata con squash [PR #23](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/23), commit **`e6b04082e4268cccc8338127824a0a2e0341ad91`**. La PR #23 è **MERGED**, non più aperta. Tutti i paragrafi sotto questa sezione che dicono `PR #23 NON MERGIATA` o `CI bloccata` sono **storico superato**, NON stato corrente.
+
+**RUN NATIVA realmente riuscita:** [GitHub Actions 42997229515, tentativo 2, 11 Nov 11:09 UTC](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515) `success`, runner attivo, KiCad9 + ngspice, esportazione netlist/ ERC root pre/post, **334 test Python PASS, 0 FAIL/0 SKIP**, 22 gruppi (26 V7.22 +308 storici). Artefatto reale [13849074958](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515/artifacts/13849074958), `v722.native_pin_net_diff.json` letto e confrontato in ZIP, conferma **132 componenti /100 reti**, un solo nodo nuovo `/MCU_CODEC_AFE_existing_V2_1_UNQUALIFIED/GND, U6202, pin 33`, zero nodi rimossi. ERC **36 errori/340 warning** prima **e dopo** (non pulito, nessun peggioramento). I 3 footprint locali da vendor ST/TI sono verificati con 16 test statici di geometria (oltre ai test della ECO), registrati in fp-lib-table ma **NON assegnati**; **48 footprint ancora mancanti**. `NO FAB` sempre attivo.
+
+**Blocco costi Actions risolto dall'utente:** budget Actions sbloccato; il runner hosted è tornato attivo e il workflow ha avuto successo. [Issue #24](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/24) deve essere chiusa come risolta (quota pregressa 2.000/2.000 + budget $0, poi aumento approvato direttamente dall'utente). Evitare lanci ripetuti o duplicati: i nuovi minuti oltre quota sono **a pagamento**, minimizzare workflow e preferire una sola CI mirata per revisione. Non modificare billing/budget autonomamente.
+
+**Priorità V7.23:** verificare in KiCad9 parsing eseguibile dei 3 `.kicad_mod` (non basta regex), rivedere pad/mask/paste/courtyard con datasheet e vincoli IPC, qualificare MPN-symbol-pad-footprint per U6201/U6202/U6203–U6206 prima di eventuale assegnazione, mantenendo hold qualora un elemento non dimostrato. Poi source/return della catena 13,8V→5V→3,3V ed ERC nativo. Non generare PCB dimostrativa chiamandola radio completa.
+
+**VINCOLI:** 15 interfacce cross-module **OPEN/HOLD**, SG48 HOLD, nessun corto GND dei domini o EFUSE_RTN, nessun PWR_FLAG arbitrario; root **7 fogli, 132 comp,100 reti, ERC 36/340**, **48 footprint senza assegnazione**, F200/Y1 unvalidated, nessuna PCB unificata; ~10% stima storica immutata. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
 ## Aggiornamento confermato — quota GitHub Actions esaurita (11 novembre 2026)
 
 **CAUSA BLOCKER IDENTIFICATA DALL'UTENTE:** screenshot originale dell'avviso ufficiale GitHub `jd3485`: **2.000 / 2.000 minuti GitHub Actions consumati, 100% del ciclo**. Reset comunicato per **1 dicembre 2026**. GitHub dichiara che oltre quota la fatturazione è possibile salvo **budget Actions impostato a $0**, caso in cui le esecuzioni vengono bloccate fino al reset. **Non è stato letto direttamente il valore budget $0 dell'account**: non inventare impostazioni; indisponibilità dei runner con `runner_id=0` su workflow nuovi e vecchi coerente con esaurimento quota. [Issue #24 aggiornata](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/24).

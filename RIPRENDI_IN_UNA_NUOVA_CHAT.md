@@ -1,5 +1,13 @@
 > **HANDOFF CHATGPT WORK PERMANENTE:** non basarsi sulla memoria di altre chat. Nuova sessione Work: recuperare da GitHub `main` [AGENTS.md](AGENTS.md) + [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md), poi riprendere branch/PR nativi e proseguire **più revisioni reali nella stessa sessione** con test/PR/merge quando consentito. Alla fine aggiornare il checkpoint GitHub per la sessione successiva. [Testo istruzioni persistenti Progetto ChatGPT](00_Gestione_Progetto/ISTRUZIONI_CHATGPT_PROJECT_WORK.md). **NO FAB / NO TX.**
 
+## HANDOFF CORRENTE — V7.22 MERGED, RIPARTIRE DA V7.23 (11 novembre 2026)
+
+Verificato [PR #23 MERGED](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/23), squash commit `e6b04082e4268cccc8338127824a0a2e0341ad91`; [Actions run 42997229515 attempt 2 SUCCESS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515), **334 PASS** senza FAIL, artefatto ZIP 13849074958 confermato: EP33/U6202 pin33 aggiunto alla massa LOCALE MCU, 132 componenti, 100 reti, zero nodi persi, ERC 36 errori/340 warning invariati. Tre librerie footprint manufacturer-candidate (ST LQFP64, TI RHB33, TI DBV5) ancora **NON assegnate**, 48 impronte mancanti. Budget Actions sbloccato dall'utente: ora CI a consumo, evitare duplicate.
+
+V7.23: qualificare nativamente KiCad9 le 3 librerie vendor, verificare land/stencil/package, eventuali 6 assegnazioni solo dopo signoff documentato; continuare soluzione power source/return, ERC 36 errori, 15 interfacce HOLD. Non produrre Gerber, fabbricazione, TX, corti fra masse. **V7.21→V7.22 è integrata; le precedenti sezioni sul blocco Actions / PR #23 aperta sono storico superato.**
+
+---
+
 ## AGGIORNAMENTO 11 NOVEMBRE 2026 — CAUSA CI IDENTIFICATA, RIPRENDERE PR #23
 
 Screenshot ufficiali GitHub Actions dell'account `jd3485`: **2.000/2.000 minuti (100%) esauriti**, reset indicato **1 dicembre 2026**. Non più indagare genericamente il runner come se mancasse evidenza: gli aborti `runner_id=0` sono compatibili con quota Actions insufficiente. La schermata cita il caso di **budget $0 che blocca utilizzo oltre quota**; **non** è una prova che l'impostazione reale sia $0. Non abilitare spesa, modificare budget o rendere pubblico il repository. Vedi [issue #24](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/24) corretta con la causa.
