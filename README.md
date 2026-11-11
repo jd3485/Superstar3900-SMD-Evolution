@@ -1,6 +1,6 @@
 # SUPERSTAR 3900 SMD EVOLUTION — V7.18 eFuse ERC / PLL LOOP NATIVE AUDIT (NO FAB / NO TX)
 
-**11 novembre 2026 · V7.18 su branch/PR, verificare merge in `main`.** Ora l'integrazione schematico intera radio a 7 fogli include una **copia KiCad V7.18 con modifica reale, strettamente limitata, del modello elettrico TPS26600 OUT16**; nessun routing o PCB unica è stato creato.
+**11 novembre 2026 · V7.18 integrata su `main` tramite [PR #18](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/18), merge `29965cdcdfe2edd1e241295315bfe18fabc864a5`.** Ora l'integrazione schematico intera radio a 7 fogli include una **copia KiCad V7.18 con modifica reale, strettamente limitata, del modello elettrico TPS26600 OUT16**; nessun routing o PCB unica è stato creato.
 
 **Dato tecnico validato da TI:** nel TPS26600PWPT HTSSOP, i pin OUT **15 e 16 sono due terminali della stessa uscita fisica** (datasheet SLVSDG2G p.5). L'ECO nel simbolo embedded su copia `04_KiCad/Gerarchico_Alimentazioni_V7.18_PINMODEL_NOT_FOR_FAB/` rende il solo pin16 `passive` per l'ERC di KiCad, mentre pin15 resta `power_out`, entrambi restano sullo stesso `BUCK_VIN_PROTECTED`. La versione storica V1.5 è byte-intatta e non si separano i pin.
 
