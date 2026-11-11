@@ -23,6 +23,10 @@ class CandidatePackagesV721(unittest.TestCase):
         self.assertEqual(row["pad_count"],33)
         self.assertIn(33,row["actual_installed_pad_numbers"])
         self.assertTrue(self.report["codec_RHB_pad33_exposed_pad_requires_GND_and_stencil_review"])
+        self.assertTrue(self.report["codec_RHB_physical_EP33_missing_from_native_symbol"])
+        self.assertEqual(self.report["codec_RHB_symbol_pin_numbers"],list(range(1,33)))
+        self.assertIn("MISSING_EP33_SYMBOL_PIN",self.report["codec_EP33_CAD_blocker"])
+        self.assertIn("Connect the thermal pad to ground",self.report["codec_EP33_manufacturer_ground_requirement"])
 
     def test_04_six_pads_not_false_qualification(self):
         self.assertTrue(all(not x["symbol_pin_to_pad_mapping_vendor_verified"] for x in self.report["records"]))
