@@ -1,6 +1,6 @@
 # PROTOCOLLO CONTINUITÀ MAIN — V7.19 LMX2572 LOOP PIN-NET
 
-**11 novembre 2026 · V7.19 branch/PR, controllare merge e HEAD. NO FAB / NO TX.**
+**11 novembre 2026 · V7.19 MERGED su `main` con PR #19, squash merge `6d5ccb179cbe46760605edde6c44c2fc89a9ac5e`. NO FAB / NO TX.**
 
 - Origine: V7.18 root KiCad ERC 42 errori/340 avvisi; `R2/R3` disegnati ma mancanti dalla netlist nativa. Schema vendor [TI LMX2572 SNAS740B Fig179 p75](https://www.ti.com/lit/ds/symlink/lmx2572.pdf) e EVM SNAU217B confermano topologia CPout-R3-Vtune, C1 shunt CP, R2-C2 in serie shunt, C3 shunt Vtune.
 - V7.19 master a sette fogli `04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/`; ramo versionato `04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/`. Nel SOLO file PLL aggiunte **esattamente sei label** su R2:1/R2:2/R3:1/R3:2/C2:2/C3:2; tutti gli altri schemi AUX byte identici a V7.18 e RX/MCU immutati.
