@@ -1,3 +1,17 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.20 PLL NGSPICE / TI 270 CANALI / POWER ERC LEDGER (NO FAB / NO TX)
+
+**11 novembre 2026 · V7.20 su branch/PR, verificare merge/HEAD in `main`.** Ultimo avanzamento è una **verifica analogica del modello** e un audit sulle sei sorgenti POWER della schematica completa, non una PCB unica. **Gli schemi V7.19 e precedenti e il coupon RX rimangono invariati**.
+
+**Evidenza reale:** [CI 42971210346](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42971210346) **success**: `ngspice` originale del filtro PLL, **501 punti AC 10Hz–1MHz**, confronto con modello nodale indipendente, errore relativo massimo **8,31×10⁻⁷**, riproduzione del nominale V0.6 4.015,5Hz/59,76° **solo alle ipotesi del modello**, **non TI PLLatinum Sim**. Analizzati tutti **270** canali Integer-N (N3631..3900, fPFD1,28MHz), **2430** casi Kvco/Icp ipotetici; in più secondo sweep su **KVCO tipico ufficiale TI** (SNAS740B Tab.135 Eq.4): 2 canali VCO3 /268 VCO4, CPG4 o8 => nominali 2,5mA senza readback firmware. Nel modello lineare con KVCO tipico: **3,814–4,678kHz crossover**, margine **58,63°–62,87°**, NON limiti garantiti, phase noise/spurie/lock time non simulati.
+
+**Audit KiCad9 nativo sulle 6 alimentazioni senza power-output:** U200:1 `EFUSE_VIN`, U200:8 `EFUSE_RTN`, U2:1 `5V_RF_PREREGULATED`, U2:2 `GND_MAIN`, U6203:1 `5V_DIGITAL_FILTERED`, U6203:2 `GND`. Tutte **HOLD**, nessun PWR_FLAG o waiver, non cortocircuitare GND_MAIN/EFUSE_RTN. Root ERC invariato **36 errori/340 warning**, 15 interfacce OPEN/HOLD. **18 test V7.20 +266 storici=284 Python PASS**, 0 FAIL/skip.
+
+Rapporto e JSON `03_Verifiche/V7.20/`, protocollo TI `01_Specifiche/V7.20/PROTOCOLLO_PLL_NGSPICE_TI_TYPICAL_POWER_HOLD_V7_20.md`, workflow `.github/workflows/v720_pll_spice_power_native.yml`. La PCB completa resta **~10% stimato**, senza sbroglio/routing globale. **Next V7.21:** qualificare 13,8V→eFuse→buck→LDO, ritorni di massa e impostazioni PLL reali, poi PLLatinum Sim / bench e 15 interfacce. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+---
+
+## STORICO README V7.19 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.19 PLL TI LOOP PIN-NET CORRECTION (NO FAB / NO TX)
 
 **11 novembre 2026 · V7.19 integrata su `main` tramite [PR #19](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/19), squash merge `6d5ccb179cbe46760605edde6c44c2fc89a9ac5e`.** Avanzamento REALE dello schematico KiCad a 7 fogli: nuova copia versionata `04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/` con ramo AUX `04_KiCad/Gerarchico_Alimentazioni_V7.19_PLL_PINNET_NOT_FOR_FAB/`. Le versioni passate restano immutate. Nel SOLO foglio PLL sono aggiunte 6 etichette a pin R2/R3/C2/C3: topologia **TI LMX2572 datasheet Fig.179**: CPOUT=U1:12/R2:1/R3:1/C1:2, R2_C2=R2:2/C2:2, VTUNE=U1:35/R3:2/C3:2. Nessun filo, nuova rete di power, intermodulo, TX o PCB aggiunti.

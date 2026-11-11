@@ -1,0 +1,153 @@
+{
+  "revision": "V7.20",
+  "date": "2026-11-11",
+  "status": "INDEPENDENT_NGSPICE_AND_VENDOR_TYPICAL_PLL_POWER_AUDIT_NO_FAB_NO_TX",
+  "base": "V7.19 main; no source KiCad changes",
+  "vendor_sources": [
+    "https://www.ti.com/lit/ds/symlink/lmx2572.pdf",
+    "https://www.ti.com/tool/PLLATINUMSIM-SW"
+  ],
+  "native_ci_run_id": 42971210346,
+  "native_ci_success": true,
+  "external_simulator": {
+    "tool": "ngspice",
+    "analysis": "passive filter AC current injection from CPOUT to VTUNE",
+    "samples": 501,
+    "freq_range_hz": [
+      10,
+      1000000
+    ],
+    "max_relative_magnitude_discrepancy": 8.308319410301149e-7,
+    "independent_model": "two-node complex nodal admittance Python standard library",
+    "actual_PLLatinumSim": false
+  },
+  "historical_model": {
+    "source": "03_Verifiche/PLL_LMX2572_V0.6_riproduci.py",
+    "nominal_assumptions": {
+      "C1_pF": 220,
+      "C2_nF": 120,
+      "C3_nF": 2.2,
+      "R2_ohm": 620,
+      "R3_ohm": 22,
+      "Icp_mA": 2.5,
+      "Kvco_MHz_per_V": 55,
+      "N": 3750
+    },
+    "nominal_crossover_hz": 4015.54,
+    "nominal_phase_margin_deg": 59.76,
+    "old_montecarlo_samples": 4000,
+    "old_model_cases_pm_below_45": 2,
+    "not_ti_vendor_characterized": true
+  },
+  "frequency_plan": {
+    "source": "02_Piano_Frequenze/Tabella_LMX2572_270_Integer_N_V0.5.csv",
+    "channels": 270,
+    "integer_N_range": [
+      3631,
+      3900
+    ],
+    "fPFD_Hz": 1280000,
+    "frequency_arithmetic_only": true
+  },
+  "hypothetical_sensitivity_cases": {
+    "cases": 2430,
+    "model_Kvco_MHz_V": [
+      39,
+      55,
+      85
+    ],
+    "model_Icp_mA": [
+      2.3,
+      2.5,
+      2.7
+    ],
+    "limitations": "Not a TI process/temperature/voltage guaranteed interval"
+  },
+  "TI_vendor_typical": {
+    "source": "LMX2572 SNAS740B Table135 p64, Eq4 p65 and CPG Table2 p16",
+    "vco3_channels": 2,
+    "vco4_channels": 268,
+    "TI_typical_not_limits": true,
+    "CPG_assumed_no_register_configuration": "CPG4 or CPG8 => nominal 2.5mA",
+    "examples_at_core_boundary_N": [
+      3632,
+      3633
+    ],
+    "crossover_min_hz": 3813.999061,
+    "crossover_max_hz": 4677.91902,
+    "phase_margin_min_deg": 58.6292589,
+    "phase_margin_max_deg": 62.870553,
+    "hardware_stability_demonstrated": false,
+    "RF_noise_spurs_measured": false
+  },
+  "root_erc": {
+    "errors": 36,
+    "warnings": 340,
+    "root_net_count": 100,
+    "error_categories": {
+      "label_dangling": 26,
+      "power_pin_not_driven": 6,
+      "pin_not_driven": 4
+    }
+  },
+  "power_input_ledger": [
+    {
+      "ref": "U200",
+      "pin": "1",
+      "net": "EFUSE_VIN",
+      "hold": true
+    },
+    {
+      "ref": "U200",
+      "pin": "8",
+      "net": "EFUSE_RTN",
+      "hold": true
+    },
+    {
+      "ref": "U2",
+      "pin": "1",
+      "net": "5V_RF_PREREGULATED",
+      "hold": true
+    },
+    {
+      "ref": "U2",
+      "pin": "2",
+      "net": "GND_MAIN",
+      "hold": true
+    },
+    {
+      "ref": "U6203",
+      "pin": "1",
+      "net": "5V_DIGITAL_FILTERED",
+      "hold": true
+    },
+    {
+      "ref": "U6203",
+      "pin": "2",
+      "net": "GND",
+      "hold": true
+    }
+  ],
+  "new_pwr_flags": 0,
+  "ERC_waivers": 0,
+  "new_electrical_links": 0,
+  "all_15_crossmodule_contracts_OPEN_HOLD": true,
+  "tests": {
+    "new_v720": 18,
+    "historical_V71_to_V719": 266,
+    "python_pass": 284,
+    "python_fail": 0,
+    "python_skip": 0,
+    "KiCad9_native_ERC": true,
+    "ngspice_native_ac": true,
+    "PLLatinumSim_executed": false,
+    "physical_hardware_test": false
+  },
+  "schematic_electrical_modification": false,
+  "full_radio_pcb_file_created": false,
+  "pcb_layout_full_percent_estimate": 10,
+  "percent_change_due_to_study": false,
+  "tx_allowed": false,
+  "fabrication_allowed": false,
+  "next": "V7.21 verify input 13.8V and buck/LDO current/ground return, qualify CPG actual register settings, then official PLLatinum Sim/hardware and 15 crossmodule links"
+}

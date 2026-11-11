@@ -1,3 +1,19 @@
+# HANDOFF — SUPERSTAR3900 SMD V7.20 FULL-RADIO POWER + LINEAR PLL MODEL
+
+**11 novembre 2026 · V7.20 su branch/PR; verificare merge e HEAD `main`; NO FAB / NO TX.**
+
+La V7.20 non cambia alcun vero schematico V7.19: aggiunge **ngspice nativo + verifica indipendente del filtro passivo** (501 punti AC 10Hz..1MHz, scarto massimo 8,31×10⁻⁷), simulazione di sensibilità su **270 canali Integer-N (N3631..3900) e 2430 casi KVCO/Icp *ipotetici*** e interpolation di **KVCO tipico TI** LMX2572 SNAS740B Table135/Eq4 per **2 VCO3/268 VCO4**, con **CPG4 o8 nominale 2,5mA**, *mai programmato o misurato*. Sui valori tipici il modello restituisce **crossover 3814–4678Hz / phase margin 58,63–62,87°**. Questi sono numeri solo del modello lineare: **PLLatinum Sim NON eseguito**, niente spurie, rumore fase, lock time, core autocalibration, PVT garantito o test fisici. Il vecchio Monte Carlo V0.6 aveva 2/4000 margini sotto45° con tolleranze assunte.
+
+**Native KiCad9** su master V7.19: root ERC **36 errori/340 warning**, netlist **100 reti** invariata. I 6 `power_pin_not_driven` ora sono mappati pin/net reali: `U200:1 EFUSE_VIN`, `U200:8 EFUSE_RTN`, `U2:1 5V_RF_PREREGULATED`, `U2:2 GND_MAIN`, `U6203:1 5V_DIGITAL_FILTERED`, `U6203:2 GND`. Restano tutti **HOLD** con 0 PWR_FLAGS; 15 interfacce sempre OPEN/HOLD, SG48 HOLD, TX assente, `RX_IF_STAGE` da progettare.
+
+[CI 42971210346](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42971210346) **success**, **18 V7.20 +266 storici =284 Python PASS**, 0 FAIL/SKIP. Fonti `03_Verifiche/V7.20/RAPPORTO_TECNICO_CAD_V7.20.md` e JSON `RISULTATI_VERIFICHE_V7_20.json`, protocollo vendor `01_Specifiche/V7.20/`. Traccia CSV nativa 270 canali e ledger dei 6 pin nell'artifact GitHub Actions. Non ci sono variazioni di posizionamento o routing PCB, **PCB completa stimata ~10% invariata**. SMA J9102/04 180° vendor HOLD.
+
+**NEXT V7.21:** reale verifica del power budget 13,8V e fuse+LDO, masse differenziate, configurazione CPG/TCXO reale, poi validazione TI PLLatinum Sim o banco; qualificare 15 interfacce prima del layout globale. **NO FAB / NO TX / NO GERBER / NO PCBWAY**.
+
+---
+
+## STORICO HANDOFF V7.19 E PRECEDENTI
+
 # HANDOFF — SUPERSTAR 3900 SMD V7.19 TI PLL LOOP PIN-NET
 
 **11 novembre 2026 · V7.19 MERGED su `main` con [PR #19](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/19), squash merge `6d5ccb179cbe46760605edde6c44c2fc89a9ac5e`. NO FAB / NO TX.**
