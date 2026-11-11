@@ -4,6 +4,24 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## Verifica V7.25 — lettura nativa ERC storica e triage rigoroso, 11 novembre 2026 (nessun nuovo CAD integrato)
+
+**Artefatto del run verde V7.22** [13849074958](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515/artifacts/13849074958) estratto in ambiente di analisi senza consumo di altri minuti Actions. Il file KiCad9 originale `v722.revised.erc.rpt` (52.064 bytes) contiene esattamente **376 messaggi: 36 errori e 340 warning**. La distribuzione letta direttamente (non ricostruita da chat precedente) è: **26 `label_dangling` errors**, **6 `power_pin_not_driven` errors**, **4 `pin_not_driven` errors**, **219 `endpoint_off_grid` warnings**, **117 `lib_symbol_issues` warnings**, **4 `footprint_link_issues` warnings**.
+
+**Dieci pin da investigare con fonti reali prima di ogni modifica elettrica:**
+- MCU U6203 **IN:1, GND:2** (nessuna sorgente/return riconosciuta, 2 ERC).
+- AUX eFuse U200 **IN:1, RTN:8** (2 ERC), source/return 13.8V/EFUSE_RTN OPEN/HOLD.
+- AUX U2 LDO **IN:1, GND:2** (2 ERC), source/return OPEN/HOLD.
+- AUX PLL U1 **SYNC:5, SysRefReq:28, RampClk:30, RampDir:32** (4 ERC, input senza driver).
+
+**117 warning librerie** includono simboli locali `S3900E` non trovati nella libreria dichiarata per il root (per esempio `CONN_2_EXT_DRAFT`, `HOST_SPI_6PIN_DRAFT`, `F/C/D/R`): `sym-lib-table` del root punta a RX test library insufficiente. Prossimo ECO plausibile: costruire **libreria S3900E versionata completa** da simboli embedded reali, deduplicare verificando pin/MPN, retarget root **solo dopo** aver provato che netlist non cambia; non inventare simboli o ottimizzare via waiver. **219 off-grid warnings** vanno affrontati senza snap indiscriminato; **26 dangling labels** rappresentano potenziali interfacce non qualificate, non ricollegare TX. [Issue #27 con tabella e blocker puntuali](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/27).
+
+**GATE:** niente nuova PR V7.25 né modifica elettrica per questi problemi finché non è dimostrata una correzione sicura. Root V7.22 invariato in V7.23/V7.24. Ultimo CI V7.0 [43011495583](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43011495583) **SUCCESS**, e successivo commit solo checkpoint precedente `cac509458f743655c5a503067b98bced74f78c77` **non ha prodotto Actions runs**, confermando il risparmio di workflow V7.24. Uso Actions ora a pagamento: evitare runner inutili.
+
+**Sicurezza invariata:** 15 interfacce OPEN/HOLD, 48 footprint ancora mancanti, 36/340 ERC non corretti, SG48 HOLD, nessuna PCB unica/DRC globale. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+---
+
 ## Sessione 11 novembre 2026 ore 12:20 CET — **V7.23 e V7.24 INTEGRATE, V7.25 PROSSIMA**
 
 **Verifica indipendente da GitHub live:** `main` dopo [PR #25](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/25) squash `8e46b26bb488fb1484ee9cc2b1c366b91badfb80` e [PR #26](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/26) squash `9308b710db8a13071de60ad9f9b93fed3c414b89`, entrambe **MERGED**. Base V7.22 precedente [PR #23](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/23), squash `e6b04082e4268cccc8338127824a0a2e0341ad91`, [run 42997229515 attempt 2 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515) **334 Python PASS, KiCad9/ERC/netlist root prima/dopo 36 errori + 340 warning, 132 comp/100 reti, U6202 EP33 local GND**.
