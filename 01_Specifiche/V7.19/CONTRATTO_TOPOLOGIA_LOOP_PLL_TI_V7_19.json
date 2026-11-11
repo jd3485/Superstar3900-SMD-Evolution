@@ -100,7 +100,7 @@
       ]
     ]
   },
-  "status": "TOPOLOGY_PROPOSAL_HOLD_NOT_NATIVE_CONNECTED",
+  "status": "CAD_KICAD9_PINNET_VERIFIED_V719_BUT_RF_VALUES_HOLD",
   "vendor_approved_values": false,
   "actual_application_loop_bandwidth_qualified": false,
   "loop_filter_component_values_not_equal_to_TI_EVM_default": true,
@@ -109,5 +109,12 @@
   "actual_placed_c3_distance_mm_verified": false,
   "pllatinum_sim_calibration_and_phase_margin_verified": false,
   "pcb_fabrication_permitted": false,
-  "rf_tx_permitted": false
+  "rf_tx_permitted": false,
+  "cad_pin_net_verified": true,
+  "native_verification_run": "https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42967147073",
+  "native_erc_before_errors": 42,
+  "native_erc_after_errors": 36,
+  "native_erc_warnings": 340,
+  "native_netlist_before_nets": 99,
+  "native_netlist_after_nets": 100
 }
