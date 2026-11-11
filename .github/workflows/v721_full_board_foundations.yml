@@ -1,0 +1,58 @@
+name: V7.21 full-radio footprint and power-thermal release gates (NO FAB NO TX)
+on:
+  push:
+    branches: ['feature/v7.21-power-thermal-board-readiness-gates']
+    paths:
+      - '.github/workflows/v721_full_board_foundations.yml'
+      - '03_Verifiche/V7.21/**'
+      - '01_Specifiche/V7.21/**'
+  pull_request:
+    paths:
+      - '.github/workflows/v721_full_board_foundations.yml'
+      - '03_Verifiche/V7.21/**'
+      - '01_Specifiche/V7.21/**'
+permissions:
+  contents: read
+jobs:
+  board_foundations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native KiCad 9 and ngspice, no board production software invoked
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq kicad ngspice
+          kicad-cli version
+          ngspice --version | head -n 3
+          mkdir -p 03_Verifiche/V7.21/output-ci 03_Verifiche/V7.20/output-ci
+      - name: Export actual KiCad9 seven-sheet 132-component netlist and complete root ERC
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.21/output-ci/v721.root_v719.net \
+            04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.21/output-ci/v721.root_v719.erc.rpt \
+            04_KiCad/Assemblaggio_RX_Power_V7.19_PLL_PINNET_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Independent 132-component BOM and JEDEC power thermal sanity gate
+        run: python3 -B 03_Verifiche/V7.21/audit_board_foundations_v721.py
+      - name: Retain all V7.20 numeric power and ngspice prerequisites, without changing design
+        run: |
+          cp 03_Verifiche/V7.21/output-ci/v721.root_v719.net 03_Verifiche/V7.20/output-ci/v720.root_v719.net
+          cp 03_Verifiche/V7.21/output-ci/v721.root_v719.erc.rpt 03_Verifiche/V7.20/output-ci/v720.root_v719.erc.rpt
+          python3 -B 03_Verifiche/V7.20/verify_pll_spice_270_v720.py
+          python3 -B 03_Verifiche/V7.20/audit_native_power_v720.py
+          /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
+          /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
+      - name: 16 new V7.21 regression tests for missing packages thermal and rail separation
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.21 -p 'test_*.py' -v
+      - name: Preserve all 284 V7.20 through V7.1 Python regressions
+        run: |
+          for version in V7.20 V7.19 V7.18 V7.17 V7.16 V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
+            python3 -B -m unittest discover -s 03_Verifiche/${version} -p 'test_*.py' -v
+          done
+      - name: Archive only native CAD netlist, missing BOM ledger and numeric risk evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v721-132-components-48-fp-missing-power-thermal-NO-FAB-NO-TX
+          path: 03_Verifiche/V7.21/output-ci/
+          if-no-files-found: warn
