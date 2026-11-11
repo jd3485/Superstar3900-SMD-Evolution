@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - '03_Verifiche/V7.16/**'
+      - '!03_Verifiche/**/*.md'
   workflow_dispatch:
 permissions:
   contents: read

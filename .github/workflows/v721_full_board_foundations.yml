@@ -4,6 +4,7 @@ on:
     paths:
       - '03_Verifiche/V7.21/**'
       - '01_Specifiche/V7.21/**'
+      - '!03_Verifiche/**/*.md'
   workflow_dispatch:
 permissions:
   contents: read

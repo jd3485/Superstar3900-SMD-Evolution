@@ -6,6 +6,7 @@ on:
       - '04_KiCad/Librerie_Footprint_V7.22_DBV_TI_HOLD/**'
       - '04_KiCad/Librerie_Footprint_V7.22_RHB_TI_HOLD/**'
       - '04_KiCad/Librerie_Footprint_V7.22_ST_LQFP_TI_HOLD/**'
+      - '!03_Verifiche/**/*.md'
   workflow_dispatch:
 permissions:
   contents: read
