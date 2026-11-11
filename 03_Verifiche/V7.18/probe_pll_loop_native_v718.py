@@ -125,6 +125,22 @@ def main():
                       for k,x in results.items()},indent=2))
     if not report["source_unchanged"] or baseline["erc_errors"]!=42 or baseline["erc_warnings"]!=340:
         raise SystemExit("Native baseline changed or V7.18 source was modified")
+    # Four tested variations are intentionally NOT engineering corrections.
+    # Fail closed if a future KiCad build starts treating them as newly wired nets
+    # or reports an ERC improvement that requires fresh expert review.
+    expected_status={
+      "as_is":(42,340),
+      "r2_outside_body_lead":(42,341),
+      "r3_pin180_only":(42,340),
+      "r2_outside_plus_R3_pin_rotation":(42,341)
+    }
+    for name,(errors,warnings) in expected_status.items():
+        row=report["experiments"][name]
+        if (row["erc_errors"],row["erc_warnings"])!=(errors,warnings):
+            raise SystemExit("Native experiment changed; do NOT auto-approve PLL candidate "+name)
+        if row["changed_exact_native_ref_pin_net_memberships"]:
+            raise SystemExit("KiCad detected a new PLL pin connectivity variant; gate stays HOLD "+name)
+
     print("PASS: four genuine KiCad loop-filter clone experiments; NO auto wiring or FAB/TX")
 
 if __name__=="__main__":
