@@ -1,6 +1,6 @@
 # PROTOCOLLO CONTINUITÀ — V7.18 ECO ERC TPS26600 / PLL TEST
 
-**11 novembre 2026 · V7.18 su branch/PR, controllare merge e HEAD.** Storico preservato, nessuna modifica ai vecchi KiCad. **NO FAB / NO TX.**
+**11 novembre 2026 · V7.18 MERGED in `main` tramite PR #18, merge `29965cdcdfe2edd1e241295315bfe18fabc864a5`.** Storico preservato, nessuna modifica ai vecchi KiCad. **NO FAB / NO TX.**
 
 - Nuovo AUX versionato `04_KiCad/Gerarchico_Alimentazioni_V7.18_PINMODEL_NOT_FOR_FAB/`: nel solo simbolo embedded U200 TPS26600PWPT OUT16 `power_out`→`passive`, OUT15 resta `power_out`. TI SLVSDG2G p.5: entrambi pin OUT15/16 stessa uscita power. **Wiring identico / nessun pin eliminato**.
 - Nuovo master KiCad 7 fogli `04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/`: tutta la netlist **99 reti e pin/refs IDENTICI** al master V7.17; ERC nativo [CI 42964160297](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42964160297) **43→42 errori**, 340 warning invariati; sola categoria `pin_to_pin` -1. 12 test V7.18+241 storici=**253 PASS**, 0 FAIL/skip; no hardware.
