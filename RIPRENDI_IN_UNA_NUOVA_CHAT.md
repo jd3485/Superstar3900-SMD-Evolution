@@ -1,6 +1,6 @@
 # HANDOFF — SUPERSTAR3900 SMD V7.20 FULL-RADIO POWER + LINEAR PLL MODEL
 
-**11 novembre 2026 · V7.20 su branch/PR; verificare merge e HEAD `main`; NO FAB / NO TX.**
+**11 novembre 2026 · V7.20 MERGED su `main` tramite [PR #20](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/20), squash commit `271cf7c84c0ceeb1e490ac44ff065147c76fbb4e`. NO FAB / NO TX.**
 
 La V7.20 non cambia alcun vero schematico V7.19: aggiunge **ngspice nativo + verifica indipendente del filtro passivo** (501 punti AC 10Hz..1MHz, scarto massimo 8,31×10⁻⁷), simulazione di sensibilità su **270 canali Integer-N (N3631..3900) e 2430 casi KVCO/Icp *ipotetici*** e interpolation di **KVCO tipico TI** LMX2572 SNAS740B Table135/Eq4 per **2 VCO3/268 VCO4**, con **CPG4 o8 nominale 2,5mA**, *mai programmato o misurato*. Sui valori tipici il modello restituisce **crossover 3814–4678Hz / phase margin 58,63–62,87°**. Questi sono numeri solo del modello lineare: **PLLatinum Sim NON eseguito**, niente spurie, rumore fase, lock time, core autocalibration, PVT garantito o test fisici. Il vecchio Monte Carlo V0.6 aveva 2/4000 margini sotto45° con tolleranze assunte.
 
