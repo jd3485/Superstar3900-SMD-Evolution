@@ -1,3 +1,19 @@
+# SUPERSTAR 3900 SMD EVOLUTION — V7.18 eFuse ERC / PLL LOOP NATIVE AUDIT (NO FAB / NO TX)
+
+**11 novembre 2026 · V7.18 su branch/PR, verificare merge in `main`.** Ora l'integrazione schematico intera radio a 7 fogli include una **copia KiCad V7.18 con modifica reale, strettamente limitata, del modello elettrico TPS26600 OUT16**; nessun routing o PCB unica è stato creato.
+
+**Dato tecnico validato da TI:** nel TPS26600PWPT HTSSOP, i pin OUT **15 e 16 sono due terminali della stessa uscita fisica** (datasheet SLVSDG2G p.5). L'ECO nel simbolo embedded su copia `04_KiCad/Gerarchico_Alimentazioni_V7.18_PINMODEL_NOT_FOR_FAB/` rende il solo pin16 `passive` per l'ERC di KiCad, mentre pin15 resta `power_out`, entrambi restano sullo stesso `BUCK_VIN_PROTECTED`. La versione storica V1.5 è byte-intatta e non si separano i pin.
+
+**KiCad9 nativo** [run 42964160297](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42964160297) **success**: root ERC prima **43 errori/340 warning** → versione V7.18 **42 errori/340 warning**; l'unico errore eliminato è `pin_to_pin` fra le due uscite della stessa U200, **99 net e tutti i ref/pin elettricamente identici**. RX e firmware/DSP/PLL baseline non modificati. **12 nuovi test +241 precedenti =253 Python PASS, 0 FAIL/0 SKIP**.
+
+**Loop-filter R2/R3:** quattro test KiCad9 su cloni temporanei del progetto completo; nessun esperimento ha eliminato errori: baseline 42/340, R2 filo esterno 42/341, R3 rotazione 42/340, combinazione 42/341, tutte le netlist di ref/pin invariate. **Nessuna di queste prove viene messa in produzione o applicata alla schematica.** Restano 26 label e 16 altri errori elettrici/fili, 15 interfacce OPEN/HOLD, stadio RX_IF mancante e SMA J9102/J9104 non qualificati.
+
+Nuovo master: `04_KiCad/Assemblaggio_RX_Power_V7.18_POWER_PINMODEL_NOT_FOR_FAB/`. Rapporto `03_Verifiche/V7.18/RAPPORTO_TECNICO_CAD_V7.18.md`, JSON `RISULTATI_VERIFICHE_V7_18.json`, specifica `01_Specifiche/V7.18/ECO_EFUSE_DUAL_OUT_PINMODEL_V7_18.md`, workflow `.github/workflows/v718_efuse_pll_native.yml`. Percentuale PCB completa **~10% invariata**, perché non esiste ancora una PCB unica sbrogliata. Next V7.19: ricostruire filtro PLL e i 16 errori hard per completare schema e interfacce prima del layout. **NO FAB / NO GERBER / NO TX**.
+
+---
+
+## STORICO README V7.17 E PRECEDENTI
+
 # SUPERSTAR 3900 SMD EVOLUTION — V7.17 FULL-RADIO KICAD INTEGRATION GATE (NO FAB / NO TX)
 
 **11 novembre 2026 · V7.17 integrata su `main` tramite [PR #17](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/17), merge `ff26db4e55eb2ab7368cb222de58a8b969cf08d6`.** Il lavoro passa dal solo RX al **master schematico gerarchico per la radio completa**, ma resta senza cablaggi intermodulo e senza PCB unica. La stima di avanzamento layout PCB completa rimane **~10%**: questo è progresso di diagnosi e contratto, non routing/produzione.
