@@ -26,9 +26,22 @@ for ref in ("U6203","U6204","U6205","U6206"):
     "numbers":list(range(1,6)),"vendor_package":"TI DBV SOT23-5, 300mA",
     "vendor_source":"https://www.ti.com/lit/ds/symlink/tps7a20.pdf"})
 
+def native_codec_symbol_pin_numbers():
+    """Inspect embedded KiCad exporter libpart, NOT assumed vendor declaration."""
+    text=NET.read_text(encoding="utf-8")
+    marker='    (libpart (lib "S3900E") (part "TLV320AIC3204_RHB32_DRAFT")'
+    if text.count(marker)!=1:
+        raise ValueError("KiCad codec library source not unique")
+    body=text.split(marker,1)[1].split('\n    (libpart ',1)[0]
+    numbers=[int(n) for n in re.findall(r'\(pin \(num "(\d+)"\) \(name "[^"]+"\)',body)]
+    if len(numbers)!=32 or set(numbers)!=set(range(1,33)):
+        raise ValueError("Codec embedded symbol changed; review actual EP33 pin in native netlist")
+    return numbers
+
 def inspect():
     comps={c["ref"]:c for c in native_components(NET)}
     original=schematic_values(MCU)
+    codec_symbol_pins=native_codec_symbol_pin_numbers()
     results=[]
     for c in CANDIDATES:
         ref=c["ref"]
@@ -63,6 +76,10 @@ def inspect():
       "candidate_IC_footprint_count":len(results),
       "candidate_package_check":"Installed KiCad9 library pad numbers (not physical vendor certification)",
       "codec_RHB_pad33_exposed_pad_requires_GND_and_stencil_review":True,
+      "codec_RHB_physical_EP33_missing_from_native_symbol":33 not in codec_symbol_pins,
+      "codec_RHB_symbol_pin_numbers":codec_symbol_pins,
+      "codec_EP33_manufacturer_ground_requirement":"TI TLV320AIC3204 SLOS602E Section 12.1 Connect the thermal pad to ground; thermal pad pin function says connect to PCB ground plane, not internally connected",
+      "codec_EP33_CAD_blocker":"MISSING_EP33_SYMBOL_PIN_MUST_BE_ADDED_AND_GROUNDED_IN_NEW_VERSION_BEFORE_PCB",
       "MCU_symbol_is_DRAFT_64_pin_check_required":True,
       "other_42_missing_footprints_still_HOLD":True,
       "records":results,
