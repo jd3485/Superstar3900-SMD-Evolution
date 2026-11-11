@@ -33,7 +33,7 @@ Il file CSV `v721.missing_footprints.csv` con tutti e 48 i reference designator 
 | U6202 TLV320AIC3204 | [TI SLOS602E](https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf) RHB VQFN 32 5×5 passo 0,5, pad termico ~3,45×3,45 | `Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm` | **33** |
 | U6203/04/05/06 TPS7A2033PDBVR | [TI SBVS338H](https://www.ti.com/lit/ds/symlink/tps7a20.pdf) DBV SOT23-5 | `Package_TO_SOT_SMD:SOT-23-5` | 5 ciascuno |
 
-**Questo non libera nessun componente**: il simbolo MCU/codec è `DRAFT` ed è necessario un confronto completo pin/pad (in particolare TI RHB **EP33**, connessione e stencil solder-paste), quote rame, courtyard, assemblaggio e MPN definitivo. I 42 footprint rimanenti sono ancora da scegliere. F200 fusibile candidato ha nome `FOOTPRINT_NON_VALIDATO` e Y1 oscillatore 7N TXC ha `UNVALIDATED`.
+**BLOCCO CAD verificato: il simbolo KiCad nativo del codec U6202 espone soltanto i pin 1–32, mentre il footprint TI RHB porta anche EP33.** Il [datasheet TI SLOS602E §12.1](https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf) richiede che il thermal pad venga saldato e collegato al piano di massa (non è internamente collegato). V7.22 dovrà introdurre un pin EP33 nello schema versionato, collegarlo al GND approvato e validare stencil/land pattern. **Questo non libera ancora nessun componente**: anche i restanti simboli `DRAFT` richiedono confronto completo pin↔pad, quote rame, courtyard, assemblaggio e MPN definitivo. I 42 footprint rimanenti sono ancora da scegliere. F200 fusibile candidato ha nome `FOOTPRINT_NON_VALIDATO` e Y1 oscillatore 7N TXC ha `UNVALIDATED`.
 
 ## 3. Prima valutazione quantitativa delle alimentazioni
 
