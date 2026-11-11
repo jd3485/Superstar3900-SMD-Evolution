@@ -30,6 +30,16 @@ Analizzato in ambiente offline lo ZIP [artefatto V7.22 13849074958](https://gith
 
 ---
 
+## RIPARTENZA ATTIVA — V7.28 INTEGRATA, 11 novembre 2026
+
+Verificare live `main`, [AGENTS.md](AGENTS.md) e [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md) prima di iniziare. [PR #31 V7.28](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/31) **MERGED** squash `2c1d7096c11cb212b04d16a3d2f194aac477ac28`. Native KiCad9 [CI run 43023404615 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43023404615), artefatto 13855897579 scaricato, 13 test nuovi PASS, only L100 value+footprint changed. Bourns SRP1038A-150M 15µH ±20%, Isat10A/Irms6.25A @25C, 45mΩ max, pad 4.1×3.5 centers ±4.75 (13.6 outer, 5.4 inner), native pcbnew geometry. Buck worst-case theoretical peak2.444A @Vin28V Vout5.077V 390kHz Lmin12µH, DC copper loss~0.183W, **not board thermally verified**. Main baseline V7.0 [43023649771 PASS](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43023649771).
+
+V7.26 [PR#29](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/29) and V7.27 [PR#30](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/30) both MERGED native CI pass. V7.28 root CAD `04_KiCad/Assemblaggio_RX_Power_V7.28_L100_BOURNS_REVIEW_NOT_FOR_FAB/`; original all 132 comp/100 nets unchanged electrical pin-nodes, **42 footprint remain missing**, ERC **36 errori / 221 warning** (219 offgrid, 2 links F200/Y1 UNVALIDATED). 15 RX/MCU/AUX OPEN/HOLD, SG48 HOLD. F200 fuse and Y1 TCXO manufacturer MPN and footprint pins still require vendor verification; do not pick generic to game ERC. PCB integrated NONE, thermal/EMC/DFM HOLD. [Issue #27](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/27) updated.
+
+**Next V7.29:** F200/Y1 package or high-confidence offgrid pin-attachment ECO with true KiCad netlist diff. GitHub Actions beyond monthly quota billable; use one PR-only targeted CI per revision, avoid billing changes. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
 ## RIPRESA ATTIVA — V7.27 INTEGRATA, 11 novembre 2026
 
 Leggere `main` [AGENTS.md](AGENTS.md) e [WORK_STATO_CORRENTE.md](00_Gestione_Progetto/WORK_STATO_CORRENTE.md) prima di ripartire. [PR #29 V7.26](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/29) MERGED, CI [43019926260](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43019926260) PASS 12 test, 117 `lib_symbol_issues` risolti con nuova libreria di 32 S3900E simboli/collisioni R-C isolate; ERC 36/340→36/223, tutti i 132 componenti/100 reti/ogni pin invariato.
