@@ -4,6 +4,22 @@
 
 **Prima di procedere in una nuova chat Work: LEGGERE ANCHE [AGENTS.md](../AGENTS.md)** (mandato, bootstrap, vincoli e procedura multi-revisione). Il file AGENTS è la configurazione stabile, questo è il registro da aggiornare ogni volta.
 
+## STATO CORRENTE — 11 novembre 2026 — V7.25 **MERGED**, 344 TEST PASS (consultare prima delle sezioni storiche)
+
+Ultimo `main` revisionato in questa sessione: [V7.25 PR #28 merged](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/28), commit squash **`a1924b2b525de27b4e677b992abd702741922781`**. Le precedenti sezioni su V7.25 come *prossima* e su 48 footprint mancanti sono **storiche** e non devono prevalere sul presente checkpoint. V7.22 PR #23, V7.23 PR #25 (real `pcbnew.FootprintLoad`), V7.24 PR #26 (ottimizzazione trigger CI a consumo) sono già MERGED.
+
+**Verifica live KiCad 9 e Python:** [Actions run #43012099267 — success](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43012099267) su PR #28, runner realmente eseguito, **344 Python PASS, 0 FAIL/0 SKIP, 23 gruppi** (10 nuovi V7.25 + 334 storici), controlli `kicad-cli` ERC/netlist pre/post, `pcbnew.FootprintLoad` tre vendor lib da V7.23, ngspice e regressioni. Artefatto verificato localmente: [#13850348324](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43012099267/artifacts/13850348324) con `v725.six_footprints.json`, due netlist e due ERC report nativi.
+
+**CAD integrato V7.25, 7 fogli:** `04_KiCad/Modulo_MCU_CODEC_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch` associa SOLO U6201 STM32G474RET6 LQFP64 ST, U6202 TLV320AIC3204 RHB33 TI e quattro U6203–U6206 TPS7A2033PDBVR DBV5 TI alle tre librerie review con nickname `_HOLD`; root `04_KiCad/Assemblaggio_RX_Power_V7.25_SIX_FOOTPRINTS_REVIEW_NOT_FOR_FAB/`. MPN ↔ pin simbolo ↔ pad e geometrie esempio vendor ST/TI collegate *per revisione nativa*, **non** approvate per assemblaggio/stencil/produzione. Lo schema di revisione passa da **48 a 42 footprint mancanti** (90/132 campi compilati), **senza cambiare alcun pin o nodo elettrico**, 132 componenti, 100 reti, ERC **36 errori/340 avvisi** prima/dopo. Termica, mask/paste di fabbricazione, F200/Y1, power source/return e PCB integrata rimangono HOLD.
+
+**Issue ERC da trattare prossimo:** [#27 — triage ERP nativo](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/27): 26 `label_dangling` errors (NON unire interfacce in HOLD), 6 `power_pin_not_driven` errors, 4 `pin_not_driven` errors; 219 `endpoint_off_grid` warnings, 117 `lib_symbol_issues` warnings, 4 `footprint_link_issues` warnings. Dieci pin da investigare U6203 IN/GND, AUX U200 IN/RTN, AUX U2 IN/GND, PLL U1 SYNC/SysRefReq/RampClk/RampDir. Prossima revisione sostanziale **V7.26**: qualificare libreria `S3900E` coerente con simboli embedded, controllare conflitti per pin/MPN e librerie on-disk, ridurre i warning librerie senza waiver, senza inventare connessioni elettriche. Non assegnare 42 impronte non giustificate. Lato energia, 15 interfacce OPEN/HOLD e source/return non dimostrati.
+
+**Budget:** GitHub Actions sbloccato direttamente dall'utente; ora i minuti extra sono a pagamento. CI V7.25 su **pull_request soltanto**, no doppio push+PR. Evitare test ridondanti o runner a vuoto; non modificare billing senza esplicito ordine.
+
+**NON pronto alla produzione:** 15 interfacce cross-module RX/MCU/AUX OPEN/HOLD, SG48 HOLD, 42 footprint senza assegnazione, F200/Y1 non validati, ERC 36/340, nessun layout PCB globale o DRC completo, avance globale storica ~10% stimata NON cambiata. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+---
+
 ## Verifica V7.25 — lettura nativa ERC storica e triage rigoroso, 11 novembre 2026 (nessun nuovo CAD integrato)
 
 **Artefatto del run verde V7.22** [13849074958](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/42997229515/artifacts/13849074958) estratto in ambiente di analisi senza consumo di altri minuti Actions. Il file KiCad9 originale `v722.revised.erc.rpt` (52.064 bytes) contiene esattamente **376 messaggi: 36 errori e 340 warning**. La distribuzione letta direttamente (non ricostruita da chat precedente) è: **26 `label_dangling` errors**, **6 `power_pin_not_driven` errors**, **4 `pin_not_driven` errors**, **219 `endpoint_off_grid` warnings**, **117 `lib_symbol_issues` warnings**, **4 `footprint_link_issues` warnings**.
