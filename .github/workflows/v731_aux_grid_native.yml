@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/kicad/kicad:9.0
+      options: --user 0
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
