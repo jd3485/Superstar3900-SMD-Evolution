@@ -25,6 +25,8 @@ jobs:
           kicad-cli version
       - name: Compare 4 disposable TI loop-filter pin experiments and native ref/pin netlist
         run: /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_endpoint_v719.py
+      - name: Test direct native KiCad labels on R2 R3 without changing versioned source
+        run: /usr/bin/python3 -B 03_Verifiche/V7.19/probe_loop_label_attach_v719.py
       - name: Preserve all V7.18 through V7.1 KiCad firmware DSP regressions
         run: |
           for version in V7.18 V7.17 V7.16 V7.15 V7.14 V7.13 V7.12 V7.11 V7.10 V7.9 V7.8 V7.7 V7.6 V7.5 V7.4 V7.3 V7.2 V7.1; do
