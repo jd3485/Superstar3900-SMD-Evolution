@@ -1,6 +1,6 @@
 # PROTOCOLLO CONTINUITÀ MAIN — V7.20 PLL SPICE + POWER ERC
 
-**11 novembre 2026 · V7.20 su branch/PR, controllare merge e HEAD. NO FAB / NO TX.**
+**11 novembre 2026 · V7.20 MERGED su `main` tramite [PR #20](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/20), squash commit `271cf7c84c0ceeb1e490ac44ff065147c76fbb4e`. NO FAB / NO TX.**
 
 - `03_Verifiche/V7.20/verify_pll_spice_270_v720.py`: **verifica ngspice AC nativa** file passivo `Filtro_LMX2572_V0.6_ac.cir`, 501 punti su 10Hz–1MHz, accordo modulo dell'impedenza con analisi nodale indipendente errore max **8,31e-7**. Modello ancora IDEAL, non PLLatinum Sim né banco, PLL CPG e Kvco reali non caratterizzati; valori filtro TI non approvati.
 - 270 canali esatti N3631..3900 con piano frequenze `frequency_arithmetic_only`, 2430 scenari KVCO (39/55/85) × Icp (2,3/2,5/2,7mA), **non tolleranze TI**; 270 scenari *tipici* da TI SNAS740B Table135 Eq4 (2 VCO3/268 VCO4). CPG=4 o8 corrisponde a 2,5mA ma configurazione non verificata. Solo modello: crossover **3814..4678Hz**, margine **58,63..62,87°** su Kvco tipico.
