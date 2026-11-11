@@ -95,9 +95,11 @@ class BoardSafetyV721(unittest.TestCase):
         p=self.results["power_rails"]
         self.assertFalse(p["EFUSE_RTN_return_path_qualified"])
         self.assertFalse(p["source_13V8_qualified"])
-        self.assertIn("EFUSE_RTN",set(
-            x["candidate_destination_net"] for x in []
-        )|{"EFUSE_RTN"})
+        efuse=[name for name in self.nets if name.endswith("/EFUSE_RTN")]
+        gnd=[name for name in self.nets if name.endswith("/GND_MAIN")]
+        self.assertEqual(len(efuse),1)
+        self.assertEqual(len(gnd),1)
+        self.assertNotEqual(efuse[0],gnd[0])
 
     def test_15_15_interfaces_hold_no_transmitter_release(self):
         with INTERFACE.open(encoding="utf-8",newline="") as f:
