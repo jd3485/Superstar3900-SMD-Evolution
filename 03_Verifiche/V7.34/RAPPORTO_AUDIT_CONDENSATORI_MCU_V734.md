@@ -76,3 +76,26 @@ Il simbolo `S3900E:C_DRAFT` ha pin 1 a coordinate relative (0,+5.08) KiCad e pin
 ### Gate immediato
 
 Il nuovo `test_capacitor_inventory_v734.py` vincola l'inventario e i 60 accoppiamenti pin/etichette estratti dal sorgente KiCad. Qualunque cambiamento inatteso va bloccato e riesaminato. **Non modifica lo schema, non esegue netlist/ERC nativi, non è signoff fabbricativo.** Il prossimo passaggio elettrico è confrontare questi 60 nodi con netlist esportata in KiCad9 e le specifiche dei regolatori codec, poi scegliere MPN esatti con curve DC-bias e land del produttore.
+
+
+## Verifica vendor TI TLV320AIC3204: REF, LDO e ingresso audio (12 novembre 2026)
+
+**Fonte primaria:** Texas Instruments *TLV320AIC3204 Ultra Low Power Stereo Audio Codec*, SLOS602E (rev. settembre 2019), https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf , pagine stampate 15, 16, 41 e 45 (PDF 0-index: 14, 15, 40, 44). Controllate anche le figure/tabelle originali, non solo estratti di terzi.
+
+| Elementi V7.33 | Rete su pin 1 | Valore schema | Indicazione TI | Giudizio conservativo |
+| --- | --- | --- | --- | --- |
+| C6202 | CODEC_REF | 10uF | REF verso ground 10uF per alto SNR (sez. 10.2.1.1, p41); tabella 7.10 min 1uF, tipico 10uF | **Valore nominale coerente**, MPN, capacità effettiva, ground AVSS e layout ancora HOLD |
+| C6203/C6204 | CODEC_AVDD_LDO_OUT | 100nF + 10uF | LDO AVDD: decoupling 1uF nella tabella 7.9 p15 | **Non prova di errore**: 10uF nomin. più 100nF, ma stabilità e start-up dei LDO vanno qualificati, non sostituire con 1uF senza analisi |
+| C6205/C6206 | CODEC_DVDD_LDO_OUT | 100nF + 10uF | LDO DVDD: decoupling 1uF tabella 7.9 p15 | Stesso HOLD: capacitance derating, carico, avvio, ESR |
+| C6227/C6229 | MIC_PREAMP_OUT / FM_DISCRIM_RAW | 1uF in serie | Sez. 10.2.2.1 p41: ingressi analogici AC-coupled, valore C in funzione dell'impedenza di ingresso programmata | **Topologia di principio coerente**, impedenza, f_c, livello e bias non dimostrati |
+| C6228/C6230 | MIC_CODEC_IN / FM_CODEC_IN | 4.7nF/10nF verso GND | Sez. 12.2 p45 mostra un condensatore *opzionale* vicino al pin per ridurre RF, esempio 33pF | **Non considerare 4.7nF /10nF equivalenti a 33pF**: occorrono circuito R/C, ampiezza, banda passante e verifica attesa del filtro |
+
+Per il filtro passa-alto del condensatore serie, solo nel caso di una resistenza equivalente conosciuta, `f_c = 1/(2*pi*R_eq*C_eff)`. Il datasheet TI indica inoltre che `R_eq` dipende dalle impostazioni del PGA; senza firmware/configurazione e impedenza non dare valori numerici di taglio. L'esempio TI da **33pF** è un suggerimento di layout per mitigazione RF e non giustifica i valori in nF esistenti. Il disegno TI chiede i decoupling vicino ai pin e riferimento analogico AVSS: l'etichetta generica `GND` nello schema non certifica la strategia di ritorno fisica.
+
+**Alimentazione del codec:** il documento TI *Design and Configuration Guide* SLAA404C (p9–10) distingue l'uso degli LDO interni da AVDD/DVDD esterni; il comportamento di `LDO_SELECT` e la sequenza IOVDD/LDOIN/RESET vanno confermati su schema, firmware e transitori prima di concludere sulla stabilità. Fonte: https://www.ti.com/lit/an/slaa404/slaa404.pdf .
+
+### Riesame scelta MLCC 10uF e ciclo di vita commerciale
+
+La precedente citazione del candidato `GRM21BR71A106KE51` (Murata 10uF/10V X7R 0805) **non autorizza design-in**: nel catalogo Murata SimSurfing consultato risulta *To be discontinued*. Evitare una nuova scelta di approvvigionamento senza conferma di lifecycle/stock. Murata elenca `GCM21BR71A106KE22` 10uF/10V X7R 0805 come *In Production*, ma **non è approvato**: servono curve Ceff(Vdc,T,aging), ESR/ESL e land del codice esatto, oltre al suo utilizzo su rail/REF specifico. Catalogo ufficiale: https://ds.murata.com/simsurfing/mlcc.html?oripartnumbers=%5B%22GRM21BR71A106KE51K%22%5D&partnumbers=%5B%22GRM21BR71A106KE51%22%5D&rgear=suaykx&rgearinfo=com&videoId=5970369965001 .
+
+**Esito:** i valori esistenti di C6202, C6204, C6206 sono **candidati nominalmente plausibili**, non una qualifica completa né approvazione di footprint. Nessun corto o modifica alla topologia è giustificato dalle informazioni disponibili. Restano esattamente 33 footprint non attribuiti nella baseline. Nessuna CI/DRC/ERC nuova dichiarata.
