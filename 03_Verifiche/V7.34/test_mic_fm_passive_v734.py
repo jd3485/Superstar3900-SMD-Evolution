@@ -80,5 +80,43 @@ class TestPassiveNetworks(unittest.TestCase):
             changed=passive_transfer(1000,n["cc_f"],n["rs_ohm"],n["cf_f"],20000,600)
             self.assertGreater(abs(base-changed),1e-4)
 
+
+def response_db(freq_hz, coupling_f, series_ohm, shunt_f, codec_input_ohm, source_ohm=0):
+    """Absolute passive transfer in dB. Req is a model parameter, NOT a register value."""
+    return 20 * math.log10(abs(passive_transfer(
+        freq_hz, coupling_f, series_ohm, shunt_f, codec_input_ohm, source_ohm
+    )))
+
+# Fixed independent analytic reference values; tolerance 0.02 dB, not nominal audio specification.
+REFERENCE_DB = {
+    "MIC": {10000: (-5.842, -1.246, -1.442),
+            20000: (-2.631, -0.810, -1.090),
+            40000: (-1.160, -0.600, -0.910)},
+    "FM": {10000: (-0.988, -0.914, -2.108),
+           20000: (-0.530, -0.519, -1.810),
+           40000: (-0.300, -0.309, -1.660)},
+}
+
+class TestInputImpedanceScenarios(unittest.TestCase):
+    def test_05_reference_frequency_response(self):
+        for name, n in NETWORKS.items():
+            for req, expected in REFERENCE_DB[name].items():
+                for freq, db in zip((100, 1000, 10000), expected):
+                    self.assertAlmostEqual(
+                        response_db(freq,n["cc_f"],n["rs_ohm"],n["cf_f"],req),
+                        db,delta=0.025,
+                        msg=f"{name}: {req} ohm, {freq} Hz"
+                    )
+    def test_06_response_varies_with_input_termination(self):
+        for n in NETWORKS.values():
+            vals=[response_db(1000,n["cc_f"],n["rs_ohm"],n["cf_f"],req)
+                  for req in (10000,20000,40000)]
+            self.assertTrue(vals[0] < vals[1] < vals[2])
+    def test_07_component_exceptions(self):
+        with self.assertRaises(ValueError):
+            passive_transfer(1000,0,1000,1e-9,10000)
+        with self.assertRaises(ValueError):
+            passive_transfer(1000,1e-6,1000,1e-9,10000,-5)
+
 if __name__=="__main__":
     unittest.main()
