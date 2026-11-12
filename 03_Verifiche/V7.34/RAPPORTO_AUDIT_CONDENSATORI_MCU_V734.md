@@ -101,3 +101,32 @@ La precedente citazione del candidato `GRM21BR71A106KE51` (Murata 10uF/10V X7R 0
 **Esito:** i valori esistenti di C6202, C6204, C6206 sono **candidati nominalmente plausibili**, non una qualifica completa né approvazione di footprint. Nessun corto o modifica alla topologia è giustificato dalle informazioni disponibili. Restano esattamente 33 footprint non attribuiti nella baseline. Nessuna CI/DRC/ERC nuova dichiarata.
 
 **Correzione di audit (12 novembre 2026):** il valore vero di C6227 nel file KiCad è **100nF**, NON 1uF; C6229 è **1uF**. La precedente etichetta di gruppo era errata, non lo schema. Capacità diverse implicano tagli passa-alto diversi a parità di impedenza: nessun confronto quantitativo è valido prima di verificare configurazione PGA e resistenza equivalente.
+
+## Analisi quantitativa MIC/FM da sorgente KiCad V7.33 (12 novembre 2026)
+
+Nuova ricostruzione verificata per **tutti e sei** i componenti, ciascuno con valore, pin1, pin2 e label reali (non solo posizione grafica):
+
+| Percorso | Componente | Valore | Pin1 → Pin2 |
+|---|---|---|---|
+| MIC | C6227 | 100nF | MIC_PREAMP_OUT → MIC_AC_COUPLED |
+| MIC | R6207 | 1kΩ | MIC_AC_COUPLED → MIC_CODEC_IN |
+| MIC | C6228 | 4.7nF | MIC_CODEC_IN → GND |
+| FM | C6229 | 1uF | FM_DISCRIM_RAW → FM_AC_COUPLED |
+| FM | R6208 | 1kΩ | FM_AC_COUPLED → FM_CODEC_IN |
+| FM | C6230 | 10nF | FM_CODEC_IN → GND |
+
+### Topologia e numeri verificabili
+
+Entrambi i percorsi hanno sequenza **condensatore serie Cc → resistenza serie Rs → ingresso codec**, con condensatore Cf fra ingresso e GND. Nel modello *isolato* con sorgente ideale, ingresso ad impedenza infinita e accoppiamento non limitante, il polo Rs/Cf è `1/(2πRsCf)`: **MIC ~33.86 kHz, FM ~15.92 kHz**. Questi valori **NON sono la frequenza di taglio effettiva della catena completa**; non chiamarli limiti di banda certificati.
+
+Per uno screening più realistico, `03_Verifiche/V7.34/test_mic_fm_passive_v734.py` contiene il modello lineare `H(jω) = Zload/(Rsource + 1/(jωCc) + Rs + Zload)`, con `Zload = (1/Req + jωCf)^(-1)`. **Req e Rsource sono parametri**, non valori misurati o firmware verificato. Verifica topologia contro le sei coppie pin-label originarie e include controlli numerici di passività. A titolo *meramente illustrativo*, con `Req=10 kΩ` e `Rsource=0`:
+- **MIC**: risposta `|H|` a 100 Hz ~−5.84 dB, 1 kHz ~−1.25 dB, 3 kHz ~−1.20 dB, 10 kHz ~−1.44 dB.
+- **FM**: a 100 Hz ~−0.99 dB, 1 kHz ~−0.91 dB, 3 kHz ~−1.02 dB, 10 kHz ~−2.11 dB.
+
+I due filtri possono risultare intenzionalmente diversi; **non modificare C6227/C6229 a valori uguali** e **non equiparare C6228/C6230 a un piccolo condensatore antirumore RF** senza misure.
+
+### Datasheet e blocchi
+
+TI TLV320AIC3204, SLOS602E Rev.E, sez. 10.2.2.1 p41: `Fc=1/(2πReqCc)`, con `Req` dipendente da PGA, registro dB e resistenze interne selezionate su P1_R52–R57 e P1_R59–R60. Ingresso analogico ammesso fino a **0.5 Vrms**: verificare ampiezza massima, fault e distorsione dei segnali MIC_PREAMP_OUT e FM_DISCRIM_RAW; se supera la capacità del codec occorre attenuazione qualificata. Fonte primaria: https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf . Il layout d'esempio TI p45 raccomanda separazione dai clock, ritorno su massa appropriata e menziona 33pF *opzionale* per RF, non i nostri valori nF.
+
+**Qualifica mancante:** codice/registri della configurazione PGA e routing audio, impedenze d'uscita dei circuiti precedenti, banda target audio modulazione (MIC e FM), livelli di ingresso e armoniche/EMI, impedenza e leakage dei MLCC effettivi e prove SPICE più hardware. Non è ragionevole proporre una ECO di valori CAD senza questi dati. Non eseguita CI nativa KiCad9 né full SPICE in questa revisione; screening con formula lineare e controllo sorgente. Resta tutto **REVIEW/HOLD — NO FAB / NO TX**.
