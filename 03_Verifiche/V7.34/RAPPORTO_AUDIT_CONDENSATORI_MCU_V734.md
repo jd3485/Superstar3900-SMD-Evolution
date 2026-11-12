@@ -204,3 +204,37 @@ Audit supplementare degli endpoint del simbolo `S3900E:R_DRAFT` (origine del res
 **Correzione dell'interpretazione precedente:** il pin30 `LDO_SELECT` non è lasciato privo di polarizzazione nello schema. R6206 lo porta nominalmente a `3V3_CODEC_IO` e, quando la tensione è effettivamente valida e non ci sono altri driver, il livello alto seleziona D-LDO abilitato secondo la tabella TI (pin30: high = enable, low = disable). Il pin31 RESET ha R6201 verso massa, quindi può essere mantenuto basso fino all'eventuale comando di rilascio. Non esiste però una **prova di sequenza reale**: serve ricostruire l'eventuale driver MCU di `CODEC_RESET_N`, l'andamento delle rail, la forza dei pull-up/down rispetto alle soglie CMOS (VIH/VIL), la corrente di perdita e le condizioni di brownout. Anche il pull-up del pin30 usa la rail `3V3_CODEC_IO`, non è una connessione diretta fissa a una batteria. La topologia locale va confermata nella netlist gerarchica KiCad9 prima di firmare la revisione.
 
 Questa nuova prova riduce una **incertezza di schema**, non un errore ERC dimostrato. `test_codec_vendor_pinmap_v734.py` ora include gate di regressione per R6206, R6201, R6202 e R6203. Non aggiornare la percentuale PCB per questo solo audit. **NO FAB / NO TX.**
+
+## V7.34 — Blocco startup codec quantificato con SLAA492A (12 novembre 2026)
+
+**Fonte primaria TI:** `TLV320AIC32x4 Power Supply Sequencing`, SLAA492A (https://www.ti.com/lit/an/slaa492a/slaa492a.pdf), §3 pp5–6 e tabella 3 p6; datasheet `TLV320AIC3204` SLOS602E, §7.11 p17 e §11 p44 (https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf).
+
+### Dati elettrici verificati dal sorgente KiCad V7.33
+
+- `U6202` pin6 IOVDD è `3V3_CODEC_IO`; pin26 LDOIN è `3V3_CODEC_LDOIN`.
+- Le due reti **NON sono lo stesso nodo nominale**: uscite `U6205` e `U6206` (LDO TPS7A2033 da `5V_DIGITAL_FILTERED`), rispettivamente. La presenza di una sorgente upstream 5V comune non dimostra identica rampa o precedenza temporale. Verificare startup, enable, regolatori e capacità effettive.
+- `R6206` 4.7k pull-up `CODEC_LDO_SELECT` a `3V3_CODEC_IO`: secondo TI pin30 high abilita **D-LDO**, non *automaticamente* anche A-LDO. `R6201` 47k porta `CODEC_RESET_N` a GND, ma il rilascio richiede driver e firmware verificati.
+- `C6203=100nF` e `C6204=10uF` fra `CODEC_AVDD_LDO_OUT` e GND, totale nominale **10.1uF**; C6205=100nF e C6206=10uF su `CODEC_DVDD_LDO_OUT`.
+
+### Analisi del rischio e tempi
+
+TI SLAA492A §3 riporta che, con D-LDO interno attivo e analog LDO non ancora alimentato, AVDD può essere precaricata attraverso circa **10kΩ** interni collegati a DVDD. Il tempo approssimativo a **5τ** è `5 × 10kΩ × C_AVDD`. Valori di progetto:
+
+| Ipotesi di capacità nominale C_AVDD | 5τ del solo percorso interno |
+| --- | ---: |
+| 1.1µF (1µF+100nF) | 55 ms |
+| **10.1µF (V7.33)** | **505 ms** |
+
+**Avvertenza:** il valore 505ms NON è un ritardo di reset obbligatorio né una misura: dipende da capacità effettiva DC-biased, ampiezza e tempi dei LDO, carichi e firmware. È una **segnalazione di startup lento/potenziale pop** nel caso di carica indiretta, non una prova di guasto. TI indica una possibile via con diodo Schottky DVDD→AVDD per ridurre pop, ma **non aggiungerlo al nostro schema senza analizzare carichi, uscita audio, mute, corrente di ritorno e compatibilità ALDO**. Un'alternativa supportata da TI consiste nella funzione di mute/shutdown dell'amplificatore a valle, se presente e comprovata; non attribuirla senza evidenza.
+
+SLAA492A tab.3 richiede, per alimentazione interna: `t_I-L ≥ 0` tra IOVDD e LDOIN, `t_D-R ≥ 10ns` tra DVDD/IOVDD validi e rilascio RESET, e `t_R-A ≥ 1ms` tra RESET rilasciato e abilitazione analog LDO, perché **non vanno scritti registri per 1 ms dopo reset hardware o software**. La regola reale di firmware deve attendere stabilità rail e non utilizzare tempi ricavati da valori nominali come sostituto di supervisione.
+
+SLOS602E §7.11: nel regime `IOVDD>1.6V`, `V_IH ≥ 0.7*IOVDD`, `V_IL ≤ 0.3*IOVDD`. Per IOVDD nominale 3.3V si ottengono soglie illustrative `VIH=2.31V` e `VIL=0.99V`. Le prove ipotetiche di 5µA attraverso R6206=4.7k e R6201=47k danno rispettivamente 23.5mV e 235mV: **5µA è soltanto una condizione di prova richiamata nella tabella TI e NON un massimo di leakage garantito**. Serve analisi dinamica della linea e della MCU.
+
+### Verifica eseguita e lavoro successivo
+
+- Creato `03_Verifiche/V7.34/test_codec_power_sequence_v734.py`: **5 unit test realmente eseguiti localmente, 5 PASS / 0 FAIL** per 5τ, limiti logici nominali, gate di 1ms, resistenze e controllo di valori invalidi. Questo file **non importa KiCad** e non dimostra connessioni o prestazioni reali.
+- Analizzate le connessioni locale dei pin codec e delle uscite TPS7A2033 nel file schematic V7.33 via API GitHub, ma **non esportata una nuova netlist KiCad9**.
+- Prima di ECO: definire vincoli temporali del MCU per reset/I2C, configurazione ALDO register `P1_R2`, boot da 5V e rail locali, fenomeni di power-down/brownout; analizzare con prove native/simulazioni e, più avanti, oscilloscopio su prototipo. Le correnti del codec, il carico dei regolatori e i condensatori fisici rimangono HOLD.
+- Baseline resta V7.33 su `main` (132 comp, 100 reti, ERC36/218, 33 footprint mancanti). Nessuna modifica di valori CAD o footpring, NO TX, NO GERBER, NO FAB; PR #37 resta DRAFT.
+
