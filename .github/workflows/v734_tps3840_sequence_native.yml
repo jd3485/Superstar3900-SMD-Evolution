@@ -5,7 +5,6 @@ on:
       - '03_Verifiche/V7.34/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/**'
-      - '.github/workflows/v734_tps3840_sequence_native.yml'
       - '!03_Verifiche/**/*.md'
   workflow_dispatch:
 permissions:
