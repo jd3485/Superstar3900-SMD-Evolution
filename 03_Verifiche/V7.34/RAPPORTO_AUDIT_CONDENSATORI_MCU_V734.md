@@ -130,3 +130,25 @@ I due filtri possono risultare intenzionalmente diversi; **non modificare C6227/
 TI TLV320AIC3204, SLOS602E Rev.E, sez. 10.2.2.1 p41: `Fc=1/(2πReqCc)`, con `Req` dipendente da PGA, registro dB e resistenze interne selezionate su P1_R52–R57 e P1_R59–R60. Ingresso analogico ammesso fino a **0.5 Vrms**: verificare ampiezza massima, fault e distorsione dei segnali MIC_PREAMP_OUT e FM_DISCRIM_RAW; se supera la capacità del codec occorre attenuazione qualificata. Fonte primaria: https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf . Il layout d'esempio TI p45 raccomanda separazione dai clock, ritorno su massa appropriata e menziona 33pF *opzionale* per RF, non i nostri valori nF.
 
 **Qualifica mancante:** codice/registri della configurazione PGA e routing audio, impedenze d'uscita dei circuiti precedenti, banda target audio modulazione (MIC e FM), livelli di ingresso e armoniche/EMI, impedenza e leakage dei MLCC effettivi e prove SPICE più hardware. Non è ragionevole proporre una ECO di valori CAD senza questi dati. Non eseguita CI nativa KiCad9 né full SPICE in questa revisione; screening con formula lineare e controllo sorgente. Resta tutto **REVIEW/HOLD — NO FAB / NO TX**.
+
+## V7.34 — Sweep parametrici ingresso MIC/FM, 12 novembre 2026
+
+Modello piccolo segnale esistente `H=Zload/(Rsource+Zcoupling+Rseries+Zload)`, `Zload=(1/Req+jωCf)^−1`; ipotesi a **Rsource=0 Ω**, valori C/R nominali, nessuna parassita, nessun bias e nessuna non-linearità. Le colonne 10k/20k/40k sono **Req effettiva ipotizzata**, non valori di configurazione firmware verificati né identici automaticamente a Rin. Fonte: Texas Instruments TLV320AIC3204 SLOS602E, sezione analog input e app note SLAA557, che distinguono input resistance selezionata (Rin) dalla resistenza equivalente Req, dipendente dal guadagno PGA. Datasheet https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf ; guida https://www.ti.com/lit/ml/slaa557/slaa557.pdf .
+
+| Via | Frequenza | Req=10 kΩ | Req=20 kΩ | Req=40 kΩ |
+| --- | ---: | ---: | ---: | ---: |
+| MIC | 100 Hz | −5.84 dB | −2.63 dB | −1.16 dB |
+| MIC | 1 kHz | −1.25 dB | −0.81 dB | −0.60 dB |
+| MIC | 10 kHz | −1.44 dB | −1.09 dB | −0.91 dB |
+| FM | 100 Hz | −0.99 dB | −0.53 dB | −0.30 dB |
+| FM | 1 kHz | −0.91 dB | −0.52 dB | −0.31 dB |
+| FM | 10 kHz | −2.11 dB | −1.81 dB | −1.66 dB |
+
+Dati calcolati in doppia precisione con Python locale usando la stessa equazione complessa; **non** sono simulazioni SPICE né misure del segnale vero. Il codice versionato `test_mic_fm_passive_v734.py` è stato aggiornato con riferimenti numerici di regressione e test del cambiamento della risposta al variare di Req; l'esecuzione della suite completa su file nativi GitHub **non è ancora attestata**.
+
+### Decisioni tecniche vincolanti
+
+- Non confondere `Rin` selezionata dal PGA e `Req` effettiva: TI fornisce formule diverse per modalità single-ended/differenziale. Non assegnare adesso un taglio passa-alto reale da una sola capacità e `Rin` indicata.
+- Per le vie in ricezione microfono/FM, definire configurazione PGA in firmware, ampiezza massima e impedenza della sorgente; verificare i guadagni su tutti i percorsi ADC selezionati.
+- Confermare che le etichette MIC/FM si colleghino davvero ai pin previsti del codec nella netlist nativa e che il filtro sia compatibile con le specifiche della comunicazione radio da soddisfare; la mappatura topologica locale e il modello non bastano.
+- Non modificare il CAD per ottenere semplicemente una risposta numerica apparentemente migliore. Nessuna nuova assunzione su PCB, ERC, layout e footprint; restano NO FAB / NO TX.
