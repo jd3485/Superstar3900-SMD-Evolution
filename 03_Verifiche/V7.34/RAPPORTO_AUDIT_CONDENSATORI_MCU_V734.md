@@ -152,3 +152,40 @@ Dati calcolati in doppia precisione con Python locale usando la stessa equazione
 - Per le vie in ricezione microfono/FM, definire configurazione PGA in firmware, ampiezza massima e impedenza della sorgente; verificare i guadagni su tutti i percorsi ADC selezionati.
 - Confermare che le etichette MIC/FM si colleghino davvero ai pin previsti del codec nella netlist nativa e che il filtro sia compatibile con le specifiche della comunicazione radio da soddisfare; la mappatura topologica locale e il modello non bastano.
 - Non modificare il CAD per ottenere semplicemente una risposta numerica apparentemente migliore. Nessuna nuova assunzione su PCB, ERC, layout e footprint; restano NO FAB / NO TX.
+
+## Audit indipendente pin fisici U6202 (V7.34, 12 novembre 2026)
+
+**Confronto fonte primaria:** Texas Instruments `TLV320AIC3204` SLOS602E, RHB bottom view, tabella pin funzione (pagine stampate 5–7), https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf . La variante embedded in `04_KiCad/Modulo_MCU_CODEC_V7.33_YAGEO_8R_0402_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch` utilizza simbolo `S3900E:TLV320AIC3204_RHB32_DRAFT` origin (400,160), unità 1, rotazione 0°.
+
+Il controllo sorgente individua **33 pin numerati 1–33 senza duplicati**, nomi compatibili con SLOS602E e le seguenti etichette *locali applicate agli endpoint dei pin* (non è una netlist elettrica esportata da KiCad):
+
+| Pin fisico | Pin TI | Etichetta sul terminale in schema | Risultato |
+| ---: | --- | --- | --- |
+| 4 | DIN/MFP1 | AUDIO_I2S_TX | Compatibilità direzione da verificare rispetto al MCU |
+| 5 | DOUT/MFP2 | AUDIO_I2S_RX | Compatibilità direzione da verificare rispetto al MCU |
+| 6 | IOVDD | 3V3_CODEC_IO | 3.3V nominale nel campo 1.1–3.6V TI, transitori HOLD |
+| 9 | SCL/SS | CODEC_I2C_SCL | I2C previsto |
+| 10 | SDA/MOSI | CODEC_I2C_SDA | I2C previsto |
+| 12 | SPI_SELECT | GND | Se livello effettivo 0, selezione I2C secondo TI; necessaria verifica ritorno |
+| **13** | **IN1_L** | **MIC_CODEC_IN** | Pin fisico MIC corretto; routing ADC/PGA HOLD |
+| **16** | **IN2_R** | **FM_CODEC_IN** | Pin fisico FM corretto; routing ADC/PGA HOLD |
+| 17 | AVSS | GND | Ritorno analogico fisico/layout HOLD |
+| 18 | REF | CODEC_REF | C6202 10uF alla massa locale; valore nominale compatibile, DC-bias HOLD |
+| 24 | AVDD | CODEC_AVDD_LDO_OUT | Sequencing e decoupling effettivo HOLD |
+| 26 | LDOIN | 3V3_CODEC_LDOIN | Alimentazione LDO, transitori HOLD |
+| 28 | DVSS | GND | Ritorno digitale/layout HOLD |
+| 29 | DVDD | CODEC_DVDD_LDO_OUT | Sequencing e decoupling effettivo HOLD |
+| **30** | **LDO_SELECT** | **CODEC_LDO_SELECT** | **Livello effettivo startup NON dimostrato** |
+| 31 | RESET | CODEC_RESET_N | Reset startup e firmware HOLD |
+| **33** | **EP_GND_THERMAL_PAD** | **GND** | Endpoint locale documentato; via/plane/stencil reale HOLD |
+
+Pin opzionali privi di etichetta locale nel simbolo: 8, 11, 14, 15, 20, 21, 25, 27, 32; ciò non dimostra connessione o non connessione nella netlist gerarchica. Non associare a tali pin una funzione di default inventata.
+
+### Esito e azioni necessarie
+
+1. **Nessuna evidenza di inversione pin fisici MIC/FM.** Il cablaggio locale usa IN1_L e IN2_R, compatibili con ingressi analogici TI. Attenzione: l'abilitazione del percorso ADC e la selezione ingresso/guadagno PGA sono configurazioni **software**, non provate da questo audit.
+2. **Priorità elettrica:** stabilire cosa porta `CODEC_LDO_SELECT` sul pin 30 alla prima alimentazione, prima della configurazione MCU (pullup/down, tensione, drive, reset). Il pin seleziona l'abilitazione D-LDO; stabilire anche i livelli di `CODEC_RESET_N`, `3V3_CODEC_IO` e `3V3_CODEC_LDOIN` in avvio. Non aggiungere ponti o `PWR_FLAG` artificiali.
+3. Verificare che le etichette audio MIC/FM e I2S raggiungano i pin MCU/AFE attesi nell'**intera netlist nativa** a sette fogli, senza violare 15 interfacce cross-domain OPEN/HOLD. Un match label–simbolo NON equivale a prova di rete end-to-end.
+4. Per un'eventuale ECO di sicurezza su startup occorrono documentazione TI esatta, stato programmato del MCU, soluzione circuitale qualificata, poi confronto ERC/netlist prima/dopo KiCad9. Nessuna modifica elettrica autorizzata oggi dal solo parsing.
+
+**Prova aggiunta:** `03_Verifiche/V7.34/test_codec_vendor_pinmap_v734.py`, audit sorgente fail-closed di 33 coppie pin-numero/nome rispetto a TI e di etichette terminali sulla baseline KiCad. Verifica incrociata separata effettuata sul sorgente GitHub: **33/33 pin univoci**, relazioni prioritarie 12/13/16/17/18/24/29/30/31/33 concordi. **Non dichiarare eseguita la nuova suite Python né KiCad9 ERC/DRC**. PR DRAFT, NO FAB / NO TX.
