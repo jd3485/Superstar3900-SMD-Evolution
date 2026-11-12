@@ -1,5 +1,20 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## STATO LIVE PIÙ RECENTE — 12 novembre 2026 — **V7.34 INTEGRATA / SUPERVISORE U6207 + BYPASS C6231 / KIcad9 PASS**
+
+**GitHub verificato:** [PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) **MERGED** (squash `5e744addf40040f074980323e38156ec88bba4de`). La V7.33 precedente resta nel repository come baseline storica. La nuova revisione è una **ECO CAD KiCad review/not-for-fab**, non PCB pronta per produzione.
+
+**Verifiche finali vere sull'HEAD della PR V7.34:** [KiCad9 run 43256127182](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43256127182) **SUCCESS**, **37 test Python PASS**, export native 7 sheet netlist/ERC prima/dopo; [policy cost/safety run 43256126821](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43256126821) **SUCCESS**. Risultato: **132 → 134 componenti**, **100 → 101 reti**, **ERC 36 errori invariati**, **warning 218 → 221** (+3 endpoint/geometria da riesaminare, non soppressi), delta nodi pin-rete controllato solo a seguito ECO. I 132 componenti preesistenti restano identici, inclusi footprint e valori. Non è stata eseguita verifica DRC di una PCB completa né misurazione hardware.
+
+**ECO concreta:** in MCU/CODEC V7.34 aggiunti `U6207 TPS3840PL30DBVR` supervisore 3.0V PL active-low push-pull, ingresso VDD pin2 su `3V3_CODEC_IO`, GND pin3, RESET_N pin1 su `CODEC_LDOIN_EN_SUPERVISED`, ora collegato a U6206 pin3 EN invece del 5V fisso. `C6231 100nF` decoupling tra `3V3_CODEC_IO` e GND per VDD supervisore, valore coerente con TI §7.3.1. MR/NC pin4 e CT pin5 aperti come consentito dal produttore. Nuova gerarchia `04_KiCad/Assemblaggio_RX_Power_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/`, nuova MCU `04_KiCad/Modulo_MCU_CODEC_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/`, report tecnico `03_Verifiche/V7.34/RAPPORTO_AUDIT_CONDENSATORI_MCU_V734.md`. **35 footprint mancanti** (33 baseline + U6207 + C6231); componenti vendor e land ancora HOLD.
+
+**Blocker reale V7.35:** verificare al dettaglio `TPS3840PL30DBVR` pin-pad-footprint e C6231 MPN/derating; valutare EN U6206 per `VDD<VPOR` (uscita supervisore non definita), brownout, powerdown/retroalimentazione, soglie e ritardo worst case, firmware reset/ALDO; solo successivamente realizzare una ECO CAD mirata e prova KiCad9 netlist/ERC. **15 cross-domain OPEN/HOLD, SG48 HOLD, Y1 TCXO pin10 AFC/GND HOLD**, PLL, power protection, thermal HOLD. **NO FAB / NO GERBER / NO PCBWAY / NO TX.** Progresso globale PCB storicamente ~10% stimato (non inferire progresso da test/footprint). GitHub Actions limitate a policy e revisione tecnica mirata, non usare run duplicati inutili.
+
+**Nota:** i checkpoint più vecchi sotto questo blocco riportano V7.34 OPEN/DRAFT perché sono fotografie storiche **precedenti** al merge; questo blocco sopra prevale.
+
+---
+
+
 ## V7.34 LAVORO CAD REALE — 12 novembre 2026 — PR #37, sequenziatore TPS3840PL30 / native KiCad9 PASS / POLICY PASS
 
 **Stato al checkpoint:** [PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) ancora **OPEN/DRAFT sul branch** `feature/v7.34-mcu-capacitor-inventory-hold`; `main` rimane V7.33 finché non si conferma il merge. Nuovi file: `04_KiCad/Modulo_MCU_CODEC_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/`, nuovo master seven sheets `04_KiCad/Assemblaggio_RX_Power_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/`, `03_Verifiche/V7.34/test_tps3840_native_v734.py` e workflow puntuale `.github/workflows/v734_tps3840_sequence_native.yml`.
