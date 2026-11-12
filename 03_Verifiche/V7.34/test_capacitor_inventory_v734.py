@@ -18,10 +18,10 @@ def inventory():
     output = {}
     # Reference and Value and Footprint are properties in the same symbol instance;
     # bounds prevent accidental scanning into a subsequent symbol.
-    for match in re.finditer(r'\\(property "Reference" "(C62\\d{2})"(?:(?!\\(instances ).){0,1600}?\\(property "Value" "([^"]+)"', text, re.S):
+    for match in re.finditer(r'\(property "Reference" "(C62\d{2})"(?:(?!\(instances ).){0,1600}?\(property "Value" "([^"]+)"', text, re.S):
         ref, val = match.groups()
         window = text[match.start():text.index("(instances ", match.start())]
-        fp = re.search(r'\\(property "Footprint" "([^"]*)"', window)
+        fp = re.search(r'\(property "Footprint" "([^"]*)"', window)
         assert fp is not None, f"Missing footprint property: {ref}"
         assert ref not in output, f"Duplicate reference: {ref}"
         output[ref] = (val, fp.group(1))
