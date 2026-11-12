@@ -10,4 +10,5 @@
   (lib (name "S3900E_LF451_V729_HOLD")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Footprint_V7.29_LITTELFUSE_451_HOLD/S3900E_LF451_Review.pretty")(options "")(descr "Littelfuse 045101.5MRL 451 Nano2 manufacturer land example review, NO FAB"))
   (lib (name "S3900E_SITIME_3225_V732_HOLD")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Footprint_V7.32_SITIME_X6201_HOLD/S3900E_SiTime_Review.pretty")(options "")(descr "SiTime 3225 Rev1.11 REVIEW, no FAB"))
   (lib (name "S3900E_YAGEO_0402_V733_HOLD")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Footprint_V7.33_YAGEO_0402_HOLD/S3900E_Yageo_Review.pretty")(options "")(descr "Yageo RC0402 manufacturer mounting reflow review only NO FAB"))
+  (lib (name "S3900E_TPS3840_DBV5_V735_HOLD")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Footprint_V7.35_TI_TPS3840_DBV5_HOLD/S3900E_TPS3840_Review.pretty")(options "")(descr "TI DBV0005A five-pad manufacturer land REVIEW / NO FAB"))
 )
