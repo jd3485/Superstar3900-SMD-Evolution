@@ -613,4 +613,12 @@
 (label "CODEC_LDOIN_EN_SUPERVISED" (at 1020.1600 415.0000 0) (effects (font (size 1.02 1.02)) (justify left bottom)) (uuid "b7340000-0000-4000-8000-000000000004"))
 (no_connect (at 1020.1600 404.8400) (uuid "b7340000-0000-4000-8000-000000000005"))
 (no_connect (at 1020.1600 425.1600) (uuid "b7340000-0000-4000-8000-000000000006"))
+
+(symbol (lib_id "S3900E:C_DRAFT") (at 1050.0000 415.0000 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "b7340000-0000-4000-8000-000000000007")
+    (property "Reference" "C6231" (at 1050.0000 406.0000 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 1050.0000 424.0000 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 1050.0000 415.0000 0) (effects (font (size 1 1)) (hide yes)))
+    (instances (project "S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB" (path "/b920c79d-12aa-4633-9d73-93afd0ea7fc7" (reference "C6231") (unit 1)))))
+(label "3V3_CODEC_IO" (at 1050.0000 409.9200 0) (effects (font (size 1.02 1.02)) (justify left bottom)) (uuid "b7340000-0000-4000-8000-000000000008"))
+(label "GND" (at 1050.0000 420.0800 0) (effects (font (size 1.02 1.02)) (justify left bottom)) (uuid "b7340000-0000-4000-8000-000000000009"))
 )
