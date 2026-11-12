@@ -189,3 +189,18 @@ Pin opzionali privi di etichetta locale nel simbolo: 8, 11, 14, 15, 20, 21, 25, 
 4. Per un'eventuale ECO di sicurezza su startup occorrono documentazione TI esatta, stato programmato del MCU, soluzione circuitale qualificata, poi confronto ERC/netlist prima/dopo KiCad9. Nessuna modifica elettrica autorizzata oggi dal solo parsing.
 
 **Prova aggiunta:** `03_Verifiche/V7.34/test_codec_vendor_pinmap_v734.py`, audit sorgente fail-closed di 33 coppie pin-numero/nome rispetto a TI e di etichette terminali sulla baseline KiCad. Verifica incrociata separata effettuata sul sorgente GitHub: **33/33 pin univoci**, relazioni prioritarie 12/13/16/17/18/24/29/30/31/33 concordi. **Non dichiarare eseguita la nuova suite Python né KiCad9 ERC/DRC**. PR DRAFT, NO FAB / NO TX.
+
+### Rettifica importante: bias LDO_SELECT e RESET esiste già nello schema
+
+Audit supplementare degli endpoint del simbolo `S3900E:R_DRAFT` (origine del resistore e suoi due pin a ±5.08 unità schematiche) nella stessa baseline V7.33:
+
+| Resistore | Valore effettivo | Terminale 1 (alto) | Terminale 2 (basso) | Funzione ipotizzata |
+| --- | --- | --- | --- | --- |
+| **R6206** | **4.7kΩ** | `3V3_CODEC_IO` | `CODEC_LDO_SELECT` | **Pull-up del pin30 LDO_SELECT** |
+| **R6201** | **47kΩ** | `CODEC_RESET_N` | `GND` | **Pull-down di RESET, attivo basso** |
+| R6202 | 4.7kΩ | `CODEC_I2C_SCL` | `3V3_CODEC_IO` | Pull-up I²C SCL |
+| R6203 | 4.7kΩ | `CODEC_I2C_SDA` | `3V3_CODEC_IO` | Pull-up I²C SDA |
+
+**Correzione dell'interpretazione precedente:** il pin30 `LDO_SELECT` non è lasciato privo di polarizzazione nello schema. R6206 lo porta nominalmente a `3V3_CODEC_IO` e, quando la tensione è effettivamente valida e non ci sono altri driver, il livello alto seleziona D-LDO abilitato secondo la tabella TI (pin30: high = enable, low = disable). Il pin31 RESET ha R6201 verso massa, quindi può essere mantenuto basso fino all'eventuale comando di rilascio. Non esiste però una **prova di sequenza reale**: serve ricostruire l'eventuale driver MCU di `CODEC_RESET_N`, l'andamento delle rail, la forza dei pull-up/down rispetto alle soglie CMOS (VIH/VIL), la corrente di perdita e le condizioni di brownout. Anche il pull-up del pin30 usa la rail `3V3_CODEC_IO`, non è una connessione diretta fissa a una batteria. La topologia locale va confermata nella netlist gerarchica KiCad9 prima di firmare la revisione.
+
+Questa nuova prova riduce una **incertezza di schema**, non un errore ERC dimostrato. `test_codec_vendor_pinmap_v734.py` ora include gate di regressione per R6206, R6201, R6202 e R6203. Non aggiornare la percentuale PCB per questo solo audit. **NO FAB / NO TX.**
