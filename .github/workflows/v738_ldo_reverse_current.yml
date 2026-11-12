@@ -1,0 +1,20 @@
+name: V7.38 TPS7A20 codec LDO reverse-current screening (NO FAB TX)
+on:
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.38/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  reverse_current_screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: TI reverse-current screen and true schematic cap inventory (no pip/apt)
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.38 -p 'test_*.py' -v
