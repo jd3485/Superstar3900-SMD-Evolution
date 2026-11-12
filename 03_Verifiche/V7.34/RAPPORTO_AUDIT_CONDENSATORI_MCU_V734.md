@@ -262,3 +262,28 @@ SLOS602E §7.11: nel regime `IOVDD>1.6V`, `V_IH ≥ 0.7*IOVDD`, `V_IL ≤ 0.3*IO
 - **Prima di modifiche CAD:** caratterizzazione/limiti di ramp di TPS7A2033 coi C_OUT reali sotto carico, topologia netlist gerarchica nativa, scelta del circuito fail-safe (EN default low) e simulazione startup/brownout; dopo ECO ERC+netlist KiCad9 132 comp/100 reti baseline da confrontare e nuove prove mirate.
 
 **Test aggiunto in PR:** `03_Verifiche/V7.34/test_dual_ldo_enable_topology_v734.py` protegge da regressioni nei quattro pin 1/2/3/5 di entrambe le istanze e controlla che shared EN non sia equiparato a sequenziamento; verifica indipendente su testo KiCad GitHub: U6205 e U6206 hanno i pin sui nodi esattamente indicati in tabella. **Non dichiarare il nuovo script eseguito in CI o in Python nativo**: il parsing indipendente lo ha verificato solo a livello di sorgente. La suite locale `test_codec_power_sequence.py` (5 test) è stata nuovamente eseguita in Python3 e superata, ma riguarda formule, non il CAD. Nessuna ECO circuitale autorizzata, NO FAB / NO TX.
+
+## ECO CAD V7.34 REALE — supervisore del secondo LDO e prove native
+
+**12 novembre 2026, branch PR #37.** La V7.34 ora include una vera ECO: nuova istanza `U6207 TPS3840PL30DBVR` nel modulo MCU/CODEC, con simbolo embedded DBV a **5 pin**; il pin EN di `U6206` è stato spostato da `5V_DIGITAL_FILTERED` a `CODEC_LDOIN_EN_SUPERVISED`, pilotato dall'uscita `RESET_N` del supervisore. Alimentazione del supervisore da `3V3_CODEC_IO`; GND comune locale. CT e MR/NC lasciati esplicitamente aperti come consentito da TI (CT a vuoto = minimo ritardo). Tutti i precedenti 132 componenti sono invariati e restano presenti nel master KiCad a sette fogli.
+
+| Pin supervisore U6207 | Funzione (TPS3840PL30) | Rete/collocazione V7.34 |
+|---:|---|---|
+| 1 | RESET_N, push-pull attivo basso | `CODEC_LDOIN_EN_SUPERVISED` → EN U6206 pin 3 |
+| 2 | VDD | `3V3_CODEC_IO` |
+| 3 | GND | `GND` |
+| 4 | MR/NC | No-connect intenzionale (MR internal pull-up) |
+| 5 | CT | No-connect intenzionale (minimo ritardo) |
+
+**TI datasheet primario** `TPS3840`, Rev.E SNVSB03E maggio 2026, pp4,6–7,20: https://www.ti.com/lit/ds/symlink/tps3840.pdf ; MPN `TPS3840PL30DBVR` **Active Production**, SOT-23-5 DBV, soglia nominale negativa 3.0V, isteresi nominale 100mV; output **PL** low quando VDD sotto soglia, high dopo rilascio. Non confondere con **PH** (polarità opposta) o **DL** open drain. Pin 4 MR interno pullup e pin5 CT aperto sono consentiti da TI. Il supervisory output può pilotare l'EN di TPS7A20 ma deve esserne verificata la compatibilità **VOH/VOL alle correnti di carico, EN smart pulldown, leakage, VDD/EN min/max e stato iniziale quando VDD < VPOR**. Da TI TPS7A20 SBVS338H, disabilitazione comporta scarica attiva dell'uscita; durante brownout verificare reflussi (diodi interni del codec) e nessun latch-up.
+
+**Limiti di sicurezza:** l'isteresi è nominale, non garanzia di tempistica assoluta. Le due rail rimangono distinte e durante powerdown possono attraversare regioni non valide; occorre verificare soglie worst-case e retro-alimentazione. L'istanza U6207 ha volutamente Footprint vuoto: **package, land esatto, MLCC del supervisore, assemblaggio e DFM non ancora qualificati**; è una candidata protetta dal gate, NON un design-in pronto alla fabbricazione. Il ritardo CT minimo non coincide con 1ms atteso dal codec dopo reset: la regola firmware resta separata.
+
+**Prove GitHub Actions della ECO:** native KiCad9 [run 43254688982](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254688982) **SUCCESS**, **37 unittest PASS**, vecchio 132 componenti/100 reti, nuovo **133 componenti/101 reti**; confronti nativi di nodi pin–rete mostrano esclusivamente:
+- eliminata `U6206 pin3` dal nodo `5V_DIGITAL_FILTERED`;
+- aggiunti `U6206 pin3` e `U6207 pin1` alla nuova `CODEC_LDOIN_EN_SUPERVISED`;
+- aggiunti `U6207 pin2` su `3V3_CODEC_IO`, `U6207 pin3` su `GND`;
+- **ERC 36 errori invariati**, warning **218→220** per nuova geometria/endpoint, **non soppressi**; nessun nuovo errore critico. Gli altri 132 componenti e il loro valore/footprint sono invariati. Artefatto nativo [#13959369775](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254688982/artifacts/13959369775) con JSON, due netlist, due rapporti ERC originali e nuovi.
+- Policy di controllo costo/sicurezza inizialmente **FAIL** [43254688716](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254688716) per **duplicate self-trigger** del nuovo workflow. Correzione nel commit `571075f6`: rimosso solo trigger sul proprio file. Policy [run 43254944933](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254944933) **SUCCESS**. Nessun workflow duplicato intenzionale.
+
+**Stato:** CAD V7.34 reale con ERC e pin-net gate soddisfatti, ma HOLD su simulazioni startup/thermal, MPN/land/pad supervisor, verifica AVDD/ALDO firmware e misure hardware. NO FAB / NO GERBER / NO PCBWAY / NO TX. Le 15 interfacce cross-domain rimangono OPEN/HOLD. Nessuna PCB completa, no DRC globale.
