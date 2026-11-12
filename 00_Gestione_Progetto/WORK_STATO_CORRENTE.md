@@ -1,5 +1,20 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.37 INTEGRATA / VERIFICA BROWNOUT CORNER TI / 16 UNIT TEST PASS**
+
+**Stato GitHub verificato:** [PR #40](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/40) **MERGED** squash `6d6c7f694c22fa12047c3099c9cd0dfc839b3947`; precedente V7.36 PR#39 MERGED squash `e3ea888bdac51ff7d0061c8c6b932e4edb71cbe0`. [Run mirato V7.37 **43328811949**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43328811949) **SUCCESS con 16 unit test PASS**; [run cost/safety policy **43328811690**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43328811690) **SUCCESS**. V7.37 **non modifica CAD né BOM/footprint**: solo `03_Verifiche/V7.37/test_tps3840_pl30_brownout_corners_v737.py`, rapporto `03_Verifiche/V7.37/RAPPORTO_BROWNOUT_TPS3840_TPS7A20_V737.md` e workflow Python-only minimale. Non è stato riavviato KiCad9 perché non sono cambiati schemi o PCB.
+
+**Risultato elettrico TI con limiti reali:** il TPS7A2033PDBVR 3.3V in regolazione (VIN almeno 3.6V, 1–300mA, T coperta) ha VOUT(min)=**3.2505V** (accuratezza ±1.5%). Il TPS3840PL30 ha VIT- massimo=3×1.015=**3.045V** (accuratezza ±1.5%) e isteresi massima **0.125V**, dunque VIT+(max)=**3.170V**. **Margine di rilascio statico = +80.5mV**; VOH(min) 0.8×3.2505=2.6004V > VEN(HI)=0.9V; VOL(max)=0.2V < VEN(LOW)=0.3V. Fonti primarie TI SNVSB03E May2026 e TI SBVS338H Jul2024 verificate anche nelle pagine PDF originali. Nessuna modifica arbitraria del MPN TPS3840PL30 necessaria per i soli corner **regolati**; variante PL29 sarebbe più permissiva sui brownout e non automaticamente migliore.
+
+**HOLD essenziali:** sotto `VDD<VPOR` (TPS3840 PL VPOR max0.3V con carico/slew spec) uscita RESET_N **undefined**; nello spazio isteretico circa 2.955–3.170V stato può dipendere dalla storia; TPS7A20 pull-down EN ~500kΩ tipico su floating NON prova di spegnimento contro un driver attivamente alto. U6205 fuori regolazione o in dropout, C6231 Ceff sotto DC bias/temp/aging, carichi, backfeed, transitori e firmware codec RESET/ALDO **non qualificati**. Nessun SPICE/hardware/DRC nel V7.37; CI 16 test dimostra solo envelope algebrico e costanza delle etichette del CAD V7.36. Prossimo progetto V7.38: qualificare dinamica startup/brownout, ripartizione dei carichi e Ceff con dati vendor; intervenire sul CAD **solo se rischio misurabile o nuova topologia fondata**.
+
+**Baseline CAD ancora V7.36**: **134 componenti, 101 reti, 33 footprint mancanti, ERC36 errori/221 warning**. Non esiste PCB unica completa, né vera DRC globale. 15 interfacce cross-module OPEN/HOLD, SG48 HOLD, Y1 pin10 AFC/GND HOLD, ingressi power/return, termica e PLL HOLD. **NO FAB / NO GERBER / NO PCBWAY / NO TX**. Percentuale storica ~10% stimata, senza incremento per audit/test.
+
+**Nota:** eventuali blocchi seguenti su V7.36 sono fotografie storiche e non prevalgono sullo stato LIVE presente.
+
+---
+
+
 ## STATO LIVE PIÙ RECENTE — 12 novembre 2026 — **V7.36 INTEGRATA / C6231 MURATA GRM155 0402 REVISORE / KIcad9 PASS**
 
 **GitHub verificato:** [PR #39](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/39) **MERGED**, squash `e3ea888bdac51ff7d0061c8c6b932e4edb71cbe0`. Baseline precedente V7.35 PR#38 MERGED squash `24ae2dd93fed694980dab1fe68e55fabf4ba9ebe`. **Native KiCad9 run [43274909287](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43274909287) SUCCESS**, 7 unittest PASS, pcbnew.FootprintLoad 2 pad geometria vendor, export/ERC prima-dopo 7 fogli; **cost/safety policy run [43274908894](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43274908894) SUCCESS**. Artefatto [#13968524887](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43274909287/artifacts/13968524887). Il vero esito: **134 componenti, 101 reti, 0 differenze dei nodi pin–rete**, solo `C6231` nuova proprietà Footprint e MPN, **footprint mancanti 34→33**, ERC **36 errori/221 avvisi invariati**. Non è stato eseguito un DRC PCB completo.
