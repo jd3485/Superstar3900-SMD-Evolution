@@ -1,5 +1,14 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## AGGIORNAMENTO LAVORO APERTO V7.34 — 12 novembre 2026 — doppio EN LDO / SEQUENCING HOLD
+
+[PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) resta **OPEN/DRAFT non integrata**. Verificati in sorgente KiCad V7.33 i pin fisici DBV per U6205/U6206 (TI TPS7A20 SBVS338H): entrambi hanno pin1 IN e pin3 EN su `5V_DIGITAL_FILTERED`, ma pin5 OUT su reti distinte `3V3_CODEC_IO` e `3V3_CODEC_LDOIN`. LDO con enable contemporaneo **non garantisce sequenza di uscita IOVDD prima/assieme a LDOIN** prescritta da TI SLAA492A tab3. Questo è un **rischio sequencing HOLD**, non un guasto confermato. Soluzione da scegliere con PGOOD/supervisore/abilitazione condizionata qualificata, incl. brownout e EN default, MA **nessuna ECO allo schema** ancora giustificata.
+
+Nuovo test versione `03_Verifiche/V7.34/test_dual_ldo_enable_topology_v734.py`, protezione source-only delle reti ai pin LDO: **NON attestato eseguito in suite Python/CI**, benché i dati estratti siano stati ricontrollati indipendentemente. Rieseguito localmente `python3 -m unittest discover -s /mnt/data/v734_validation -p test_*.py -v`, 5 PASS del precedente `test_codec_power_sequence` (soltanto numerico). `kicad-cli` e `ngspice` non risultano installati nel runtime corrente, perciò nessuna nuova netlist/ERC/SPICE nativa: non attribuire PASS inesistenti. Nessun GitHub Actions avviato; PR non mergiata. **Prossimo:** qualificare schema e MPN del gate PGOOD/EN senza violare 15 interfacce HOLD; poi ECO CAD, CI mirata KiCad9 e merge solo se prove sufficienti. Main V7.33 baseline invariata (132 componenti, 100 reti, 33 footprint missing, ERC36/218, NO FAB / NO GERBER / NO PCBWAY / NO TX).
+
+---
+
+
 ## LAVORO APERTO (NON INTEGRATO) — 12 novembre 2026 — V7.34 PR #37 DRAFT / CODEC STARTUP HOLD
 
 **Branch in lavorazione:** `feature/v7.34-mcu-capacitor-inventory-hold`; [PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) **OPEN/DRAFT, non merge**, non sostituisce V7.33 su `main`. Rapporto `03_Verifiche/V7.34/RAPPORTO_AUDIT_CONDENSATORI_MCU_V734.md` e quattro script Python source/numerici. Audit: 30 condensatori MCU/CODEC e 60 etichette terminali, 33 pin codec U6202, reti MIC/FM (C6227 100nF/R6207 1k/C6228 4.7nF; C6229 1uF/R6208 1k/C6230 10nF), pullup R6206 4.7k IOVDD→LDO_SELECT, pull-down R6201 47k RESET→GND. Nessuna ECO al CAD.
