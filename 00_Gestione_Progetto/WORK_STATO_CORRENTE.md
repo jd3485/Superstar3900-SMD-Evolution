@@ -1,5 +1,40 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.34 LAVORO CAD REALE — 12 novembre 2026 — PR #37, sequenziatore TPS3840PL30 / native KiCad9 PASS / POLICY PASS
+
+**Stato al checkpoint:** [PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) ancora **OPEN/DRAFT sul branch** `feature/v7.34-mcu-capacitor-inventory-hold`; `main` rimane V7.33 finché non si conferma il merge. Nuovi file: `04_KiCad/Modulo_MCU_CODEC_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/`, nuovo master seven sheets `04_KiCad/Assemblaggio_RX_Power_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/`, `03_Verifiche/V7.34/test_tps3840_native_v734.py` e workflow puntuale `.github/workflows/v734_tps3840_sequence_native.yml`.
+
+**ECO:** aggiunto `U6207 TPS3840PL30DBVR` (supervisore supply `3V3_CODEC_IO`), output RESET_N a nuovo nodo `CODEC_LDOIN_EN_SUPERVISED` su pin 3 EN del LDO U6206. Non più EN del secondo LDO direttamente da 5V; U6205 EN resta 5V; tutti i componenti precedenti e le 15 interfacce cross-module restano intatti. U6207 MR/NC e CT deliberate NC, footprint vuoto in HOLD, non per fab; pending supervisor decoupling, package/land e tempistiche di brownout/ALDO.
+
+**Prova CI nativa** [run 43254688982](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254688982) **SUCCESS**: KiCad9 export netlist/ERC before-after 7 sheets, **37 unittest PASS**, 132→133 componenti, 100→101 reti, PIN-NET delta esattamente quattro nodi aggiunti e U6206 pin3 rimosso dal 5V; ERC **36 errori invariati**, warning **218→220** (nuovi endpoint off-grid); [artefatto 13959369775](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254688982/artifacts/13959369775). **Costo/safety policy** prima FAIL [run 43254688716](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254688716) per duplicate self-trigger nel nuovo workflow; **corretto** commit `571075f6`, [policy run 43254944933](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43254944933) SUCCESS. Nuovo run tecnico sul commit di fix workflow `43254944878` in attesa al momento dell'ultimo controllo; non considerarlo passato finché non termina.
+
+**HOLD invariati:** PCB non completa, 33 missing footprint iniziali → **34** (supervisor ancora senza footprint), 15 interfacce aperte, SG48, Y1 TCXO pin10, thermal, PLL, AVDD/ALDO codec e hardware/reset. Nessuna simulazione start-up completa e nessuna scheda PCB/DRC. NO FAB / NO GERBER / NO PCBWAY / NO TX. Progresso complessivo storico prudenziale ~10%, non attribuire incremento sulla sola ECO.
+
+**Next:** completare verifica run tecnico dopo fix workflow, valutare signoff 'REVIEW/HOLD' e merge quando policy+native verdi; su `main` aggiornare nuovamente checkpoint con vero merge SHA. Qualificare footprint MPN TI TPS3840PL30DBVR, C decoupling supervisor, pin4 MR floating validato vendor, schemi sequencing al brownout e reset reale MCU prima di hardware.
+
+---
+
+
+## AGGIORNAMENTO LAVORO APERTO V7.34 — 12 novembre 2026 — doppio EN LDO / SEQUENCING HOLD
+
+[PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) resta **OPEN/DRAFT non integrata**. Verificati in sorgente KiCad V7.33 i pin fisici DBV per U6205/U6206 (TI TPS7A20 SBVS338H): entrambi hanno pin1 IN e pin3 EN su `5V_DIGITAL_FILTERED`, ma pin5 OUT su reti distinte `3V3_CODEC_IO` e `3V3_CODEC_LDOIN`. LDO con enable contemporaneo **non garantisce sequenza di uscita IOVDD prima/assieme a LDOIN** prescritta da TI SLAA492A tab3. Questo è un **rischio sequencing HOLD**, non un guasto confermato. Soluzione da scegliere con PGOOD/supervisore/abilitazione condizionata qualificata, incl. brownout e EN default, MA **nessuna ECO allo schema** ancora giustificata.
+
+Nuovo test versione `03_Verifiche/V7.34/test_dual_ldo_enable_topology_v734.py`, protezione source-only delle reti ai pin LDO: **NON attestato eseguito in suite Python/CI**, benché i dati estratti siano stati ricontrollati indipendentemente. Rieseguito localmente `python3 -m unittest discover -s /mnt/data/v734_validation -p test_*.py -v`, 5 PASS del precedente `test_codec_power_sequence` (soltanto numerico). `kicad-cli` e `ngspice` non risultano installati nel runtime corrente, perciò nessuna nuova netlist/ERC/SPICE nativa: non attribuire PASS inesistenti. Nessun GitHub Actions avviato; PR non mergiata. **Prossimo:** qualificare schema e MPN del gate PGOOD/EN senza violare 15 interfacce HOLD; poi ECO CAD, CI mirata KiCad9 e merge solo se prove sufficienti. Main V7.33 baseline invariata (132 componenti, 100 reti, 33 footprint missing, ERC36/218, NO FAB / NO GERBER / NO PCBWAY / NO TX).
+
+---
+
+
+## LAVORO APERTO (NON INTEGRATO) — 12 novembre 2026 — V7.34 PR #37 DRAFT / CODEC STARTUP HOLD
+
+**Branch in lavorazione:** `feature/v7.34-mcu-capacitor-inventory-hold`; [PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) **OPEN/DRAFT, non merge**, non sostituisce V7.33 su `main`. Rapporto `03_Verifiche/V7.34/RAPPORTO_AUDIT_CONDENSATORI_MCU_V734.md` e quattro script Python source/numerici. Audit: 30 condensatori MCU/CODEC e 60 etichette terminali, 33 pin codec U6202, reti MIC/FM (C6227 100nF/R6207 1k/C6228 4.7nF; C6229 1uF/R6208 1k/C6230 10nF), pullup R6206 4.7k IOVDD→LDO_SELECT, pull-down R6201 47k RESET→GND. Nessuna ECO al CAD.
+
+**Nuovo rischio elettrico V7.34:** confronto con TI SLAA492A §3 mostra IOVDD `3V3_CODEC_IO` e LDOIN `3V3_CODEC_LDOIN` provengono da due LDO TPS7A2033 distinti (U6205/U6206), alimentati dallo stesso 5V filtrato ma senza timing di rampa dimostrato; con LDO_SELECT high D-LDO abilita ma A-LDO richiede successiva configurazione firmware. C6203+C6204 sul nodo AVDD = 10.1uF nominali, percorso di precarica interno ~10kΩ ⇒ tempo **5τ ~505ms** condizionale, NON ritardo obbligatorio/misura. TI prescrive RESET dopo validità IOVDD/DVDD e **1ms senza scritture dopo reset**; verificare sequencing, brownout e P1_R2 ALDO, evitare Schottky o modifiche CAD speculative. Si veda dettaglio con fonte TI nel rapporto V7.34.
+
+**Test effettivamente eseguiti:** 5 test dello script `test_codec_power_sequence_v734.py` eseguiti localmente in Python `unittest` **PASS 5/5** (equazioni e limiti teorici); i tre script precedenti sono versionati ma **non dichiarati eseguiti in KiCad9 o in CI**. Parser indipendenti sul contenuto del file GitHub hanno verificato l'inventario dei condensatori e i pin nominati. Nessuna netlist/ERC nativa V7.34, nessun layout, hardware o SPICE, nessuna Actions a pagamento avviata. La baseline invariata rimane 132 comp, 100 reti, 33 footprint mancanti, ERC 36 errori/218 warning; 15 interfacce OPEN/HOLD, SG48 HOLD, Y1 pin10 HOLD, NO PCB completa/NO FAB/NO GERBER/NO TX. **Non mergiare la PR come se fosse una ECO CAD validata.**
+
+---
+
+
 ## STATO LIVE PIÙ RECENTE — 11 novembre 2026 — **V7.33 INTEGRATA / 8 YAGEO 0402 MPN/PAD / KIcad9 PASS**
 
 **GitHub reale:** [PR #36](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/36) **MERGED** squash `27d66c4ed8f23ce0a7fc0b608c052c30f25de0d0`. [CI nativa KiCad9 run 43061798023](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43061798023) **SUCCESS** con 10 unit test PASSED e `pcbnew.FootprintLoad` 2 pad geometrici + netlist/ERC prima/dopo; [policy cost/safety run 43061797916](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43061797916) **SUCCESS**. Artefatto nativo [#13872898509](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43061798023/artifacts/13872898509) ZIP scaricato e letto: `v733.yageo_native.json`, due netlist, due ERC reali. **132 componenti, 100 reti invariate, zero pin-net delta, esattamente 8 nuovi footprint**, missing **41→33**, ERC **36 errori / 218 warning** invariati (217 endpoint off-grid, 1 Y1 footprint warning).
