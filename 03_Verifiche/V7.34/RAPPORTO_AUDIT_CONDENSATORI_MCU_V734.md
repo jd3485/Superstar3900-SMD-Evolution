@@ -238,3 +238,27 @@ SLOS602E §7.11: nel regime `IOVDD>1.6V`, `V_IH ≥ 0.7*IOVDD`, `V_IL ≤ 0.3*IO
 - Prima di ECO: definire vincoli temporali del MCU per reset/I2C, configurazione ALDO register `P1_R2`, boot da 5V e rail locali, fenomeni di power-down/brownout; analizzare con prove native/simulazioni e, più avanti, oscilloscopio su prototipo. Le correnti del codec, il carico dei regolatori e i condensatori fisici rimangono HOLD.
 - Baseline resta V7.33 su `main` (132 comp, 100 reti, ERC36/218, 33 footprint mancanti). Nessuna modifica di valori CAD o footpring, NO TX, NO GERBER, NO FAB; PR #37 resta DRAFT.
 
+
+## V7.34 — Verifica completa dei due EN LDO codec, 12 novembre 2026
+
+**Dato costruttivo ricavato dal sorgente KiCad:** istanze `U6205` e `U6206` condividono esattamente la stessa linea locale `5V_DIGITAL_FILTERED` sia sul pin **1 IN** che sul pin **3 EN**; le uscite pin **5 OUT** sono però reti distinte. Lo schema non contiene in questi due EN un sequenziatore dedicato.
+
+| LDO TPS7A2033PDBVR | Pin 1 IN | Pin 3 EN | Pin 5 OUT |
+|---|---|---|---|
+| U6205 | 5V_DIGITAL_FILTERED | 5V_DIGITAL_FILTERED | **3V3_CODEC_IO** |
+| U6206 | 5V_DIGITAL_FILTERED | 5V_DIGITAL_FILTERED | **3V3_CODEC_LDOIN** |
+
+**Manufacturer pin verification:** TPS7A20 datasheet TI **SBVS338H**, pp. 3–4 e caratteristica di accensione §5.6 (https://www.ti.com/lit/ds/symlink/tps7a20.pdf): nel package DBV pin1=IN, pin2=GND, pin3=EN, pin4=N/C, pin5=OUT. EN accetta nominalmente 0–6V e la sua attivazione dipende dal superamento della soglia del regolatore. Il datasheet descrive un soft-start interno, il cui andamento dipende da V_IN, C_OUT, carico e temperatura; **due LDO distinti abilitati allo stesso tempo non garantiscono temporalmente uscite simultanee**. La connessione EN→5V non è essa stessa un errore elettrico: è usuale per regolatori sempre accesi, ma NON costituisce sequenziamento delle uscite.
+
+**Vincolo TI codec:** SLAA492A, §3, Table 3, https://www.ti.com/lit/an/slaa492a/slaa492a.pdf richiede `t_I-L ≥ 0`: IOVDD prima o contemporaneamente a LDOIN; `t_D-R ≥ 10ns` prima di rilasciare reset quando IOVDD e DVDD sono validi, e `t_R-A ≥ 1ms` prima della configurazione ALDO. Non si può dichiarare rispettato `t_I-L` semplicemente perché i due LDO condividono VIN/EN.
+
+**Conclusione di progetto:** **SEQUENCING HOLD**, non «difetto hardware dimostrato». L'ordine effettivo non è dimostrato: la rete potrebbe funzionare nelle condizioni nominali ma essere vulnerabile ad alcune tolleranze. Simulazione *di controesempio logico* (non un dato del componente): IOVDD pronta a 1.2ms, LDOIN pronta a 0.7ms con entrambe EN da t=0 ⇒ la condizione IOVDD-prima non è garantita dalla topologia. **Niente stima probabilità di guasto** da questi soli dati.
+
+### Possibili ECO da valutare, NON inserire ancora
+
+- Un abilitatore qualificato `U6206.EN` condizionato alla stabilità di `3V3_CODEC_IO` può imporre l'ordine di avvio, ma è indispensabile verificare la capacità del driver, soglia, tempi, isolamento reverse-current, comportamento power-down, selezione MPN, corrente EN e PCB. Il solo controllo firmware dal MCU è insufficiente a garantire la sequenza se il MCU stesso non è ancora stabile.
+- Usare un supervisor/PGOOD appropriato e analizzarne comportamento a temperatura, guasti 5V, brownout e rampa lenta; non aggiungere un RC arbitrario o un diodo tra domini per nascondere un problema.
+- Validare simultaneamente il rilascio `CODEC_RESET_N` e l'abilitazione ALDO, evitare registro scritto durante 1ms post-reset.
+- **Prima di modifiche CAD:** caratterizzazione/limiti di ramp di TPS7A2033 coi C_OUT reali sotto carico, topologia netlist gerarchica nativa, scelta del circuito fail-safe (EN default low) e simulazione startup/brownout; dopo ECO ERC+netlist KiCad9 132 comp/100 reti baseline da confrontare e nuove prove mirate.
+
+**Test aggiunto in PR:** `03_Verifiche/V7.34/test_dual_ldo_enable_topology_v734.py` protegge da regressioni nei quattro pin 1/2/3/5 di entrambe le istanze e controlla che shared EN non sia equiparato a sequenziamento; verifica indipendente su testo KiCad GitHub: U6205 e U6206 hanno i pin sui nodi esattamente indicati in tabella. **Non dichiarare il nuovo script eseguito in CI o in Python nativo**: il parsing indipendente lo ha verificato solo a livello di sorgente. La suite locale `test_codec_power_sequence.py` (5 test) è stata nuovamente eseguita in Python3 e superata, ma riguarda formule, non il CAD. Nessuna ECO circuitale autorizzata, NO FAB / NO TX.
