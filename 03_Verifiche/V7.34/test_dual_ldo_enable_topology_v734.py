@@ -55,8 +55,11 @@ class TestDualLdoStartup(unittest.TestCase):
         # both EN high at t=0 does not imply IOVDD ready before LDOIN.
         plausible_ramp_us = {"IOVDD": 1200, "LDOIN": 700}
         self.assertGreater(plausible_ramp_us["IOVDD"],plausible_ramp_us["LDOIN"])
-    def test_04_no_fabrication_approval_from_label_match(self):
-        self.assertFalse(False, "Timing signoff is still HOLD")
+    def test_04_shared_enable_is_not_a_sequencing_controller(self):
+        io = regulator_pins("U6205")
+        analog = regulator_pins("U6206")
+        self.assertEqual(io[3], analog[3])
+        self.assertNotEqual(io[5], analog[5])
 
 if __name__ == "__main__":
     unittest.main()
