@@ -76,9 +76,9 @@ EXPECTED_PIN_LABELS = {
 
 def pin_labels_from_sheet():
     text = SOURCE.read_text(encoding="utf-8")
-    instances = re.findall(r'\\(symbol \\(lib_id "S3900E:C_DRAFT"\\) \\(at ([\\d.]+) ([\\d.]+) 0\\)[\\s\\S]{0,360}?\\(property "Reference" "(C62\\d\\d)"', text)
+    instances = re.findall(r'\(symbol \(lib_id "S3900E:C_DRAFT"\) \(at ([\d.]+) ([\d.]+) 0\)[\s\S]{0,360}?\(property "Reference" "(C62\d\d)"', text)
     labels = {(round(float(x), 4), round(float(y), 4)): name for name,x,y in
-              re.findall(r'\\(label "([^"]+)" \\(at ([\\d.]+) ([\\d.]+)', text)}
+              re.findall(r'\(label "([^"]+)" \(at ([\d.]+) ([\d.]+)', text)}
     result = {}
     for sx,sy,ref in instances:
         x,y = float(sx),float(sy)
