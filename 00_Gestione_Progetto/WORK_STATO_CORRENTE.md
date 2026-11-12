@@ -1,5 +1,18 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## STATO LIVE PIÙ RECENTE — 12 novembre 2026 — **V7.35 INTEGRATA / U6207 TI DBV0005A 5-PAD VENDOR REVIEW / KIcad9 PASS**
+
+**GitHub verificato:** [PR #38](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/38) **MERGED**, squash `24ae2dd93fed694980dab1fe68e55fabf4ba9ebe`; V7.34 PR#37 squash `5e744addf40040f074980323e38156ec88bba4de` baseline precedente. **Native KiCad9 run V7.35** [43257574206](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43257574206) **SUCCESS**, **6 unittest PASS**, native `pcbnew.FootprintLoad` TI DBV0005A 5-pad geometria + netlist/ERC reali prima/dopo a sette fogli; [cost/safety policy run 43257573711](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43257573711) **SUCCESS**, [artifact 13962610691](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43257574206/artifacts/13962610691). Sorgenti V7.35 verificati prima del merge: 134 componenti, 101 reti identiche, **pin-net delta zero**, solo `U6207` footprint assegnato, **missing 35→34**, ERC **36 errori/221 warning** invariati. Nessuna PCB completa/DRC o hardware.
+
+**Nuovo CAD fisico V7.35:** `04_KiCad/Modulo_MCU_CODEC_V7.35_TPS3840_DBV5_VENDOR_LAND_REVIEW_NOT_FOR_FAB/` e master sette fogli `04_KiCad/Assemblaggio_RX_Power_V7.35_TPS3840_DBV5_VENDOR_LAND_REVIEW_NOT_FOR_FAB/`. `U6207 TPS3840PL30DBVR` riceve footprint reviewer `S3900E_TPS3840_DBV5_V735_HOLD:TI_DBV0005A_5PAD_REFLOW_REVIEW` in `04_KiCad/Librerie_Footprint_V7.35_TI_TPS3840_DBV5_HOLD/`. Manufacturer TI land 4214839/K, 08/2024: **cinque pad Cu 1.10×0.60mm**, x centri ±1.30mm, y −0.95/0/+0.95mm, numerazione 1/2/3 sinistra, 5/4 destra. Report `03_Verifiche/V7.35/RAPPORTO_TECNICO_TI_DBV5_V735.md`. È **review vendor geometry**, non DFM/solder-mask/layout approvato.
+
+**Prossimo blocker V7.36:** C6231 100nF bypass VDD TPS3840 resta senza footprint/MPN; selezionare condensatore MLCC reale con curva Ceff @3.3V, classe dielettrico e land manufacturer 0402/0603 e test nativi. Verificare **U6207 push-pull OUTPUT sotto VPOR indeterminato**, compatibilità EN U6206 alle condizioni startup/brownout/guasto e sequenza firmware ALDO/RESET; non attribuire zero-error signoff. **15 cross-module OPEN/HOLD, SG48 HOLD, Y1 TCXO pin10 AFC/GND HOLD**, power protection/thermal/PLL. **NO FAB / NO GERBER / NO PCBWAY / NO TX**. Avanzamento storico radio PCB ~10% stimato, non aumentare per una sola footprint.
+
+**Nota cronologica:** i checkpoint precedenti riportano V7.34 come stato più recente o PR #38 come bozza; sono storici. Questo blocco live aggiornato post-merge prevale.
+
+---
+
+
 ## STATO LIVE PIÙ RECENTE — 12 novembre 2026 — **V7.34 INTEGRATA / SUPERVISORE U6207 + BYPASS C6231 / KIcad9 PASS**
 
 **GitHub verificato:** [PR #37](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/37) **MERGED** (squash `5e744addf40040f074980323e38156ec88bba4de`). La V7.33 precedente resta nel repository come baseline storica. La nuova revisione è una **ECO CAD KiCad review/not-for-fab**, non PCB pronta per produzione.
