@@ -37,6 +37,14 @@ class TestV734SourceInventory(unittest.TestCase):
         self.assertTrue(all(fp == "" for _, fp in inventory().values()))
     def test_source_not_board(self):
         self.assertTrue(SOURCE.name.endswith(".kicad_sch"))
+    def test_series_audio_values_not_interchangeable(self):
+        data = inventory()
+        self.assertEqual(data["C6227"][0], "100nF")
+        self.assertEqual(data["C6229"][0], "1uF")
+    def test_ti_reference_ldo_nominals(self):
+        data = inventory()
+        self.assertEqual({ref:data[ref][0] for ref in ("C6202","C6204","C6206")},
+                         {"C6202":"10uF","C6204":"10uF","C6206":"10uF"})
 
 
 # Exact native schematic coordinates: capacitor symbol pins (0,+5.08) and (0,-5.08)
