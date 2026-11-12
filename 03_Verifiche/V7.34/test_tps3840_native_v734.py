@@ -1,5 +1,5 @@
 """Fail-closed KiCad9 7-sheet native comparison for V7.34 TPS3840PL30 candidate ECO.
-No PCB or production approval. Only one U6206.EN net move and new U6207 three nets.
+No PCB or production approval. One U6206.EN net move, new U6207 three nets and C6231 VDD bypass.
 """
 import json
 import sys
@@ -26,6 +26,8 @@ def gate():
     root=NEW.read_text(encoding="utf-8")
     assert root.count("../Modulo_MCU_CODEC_V7.34_TPS3840_IOVDD_SEQUENCE_REVIEW_NOT_FOR_FAB/")==1
     assert '(property "Reference" "U6207"' in src
+    assert '(property "Reference" "C6231"' in src
+    assert '(property "Value" "100nF" (at 1050.0000 424.0000 0)' in src
     assert '(property "MPN" "TPS3840PL30DBVR"' in src
     assert '(symbol "S3900E:TPS3840PL30_DBV5_REVIEW"' in src
     assert src.count('(label "CODEC_LDOIN_EN_SUPERVISED"')==2
@@ -34,11 +36,12 @@ def gate():
     assert '(no_connect (at 1020.1600 425.1600)' in src
     oldc=compmap(OUT/"v734.original.net")
     newc=compmap(OUT/"v734.revised.net")
-    assert len(oldc)==132 and len(newc)==133,(len(oldc),len(newc))
-    assert set(newc)-set(oldc)=={"U6207"}
+    assert len(oldc)==132 and len(newc)==134,(len(oldc),len(newc))
+    assert set(newc)-set(oldc)=={"U6207","C6231"}
     assert set(oldc)-set(newc)==set()
     assert all(oldc[k]==newc[k] for k in oldc),"Pre-existing 132 values/footprints must not change"
     assert newc["U6207"]==("","TPS3840PL30DBVR"),newc["U6207"]
+    assert newc["C6231"]==("","100nF"),newc["C6231"]
     n0=nets(OUT/"v734.original.net")
     n1=nets(OUT/"v734.revised.net")
     assert len(n0)==100 and len(n1)==101,(len(n0),len(n1))
@@ -50,6 +53,8 @@ def gate():
         ("U6207","1","CODEC_LDOIN_EN_SUPERVISED"),
         ("U6207","2","3V3_CODEC_IO"),
         ("U6207","3","GND"),
+        ("C6231","1","3V3_CODEC_IO"),
+        ("C6231","2","GND"),
     },added
     # Check no intermodule net changed (except intentionally local MCU pins).
     for n in n0:
@@ -64,7 +69,7 @@ def gate():
     # Geometric label warnings are not waived: retain full ERC reports, no signoff.
     assert er1["warnings"]<=er0["warnings"]+12,(er0,er1)
     evidence={"revision":"V7.34","status":"CAD_REVIEW_ONLY_NOT_FOR_FAB","components_before":132,
-      "components_after":133,"nets_before":100,"nets_after":101,
+      "components_after":134,"nets_before":100,"nets_after":101,
       "deleted_pin_net_memberships":sorted(list(deleted)),
       "added_pin_net_memberships":sorted(list(added)),
       "missing_footprints_before":sum(not x[0] for x in oldc.values()),
@@ -80,9 +85,9 @@ class TestNativeV734(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.d=gate()
-    def test_01_new_supervisor(self):self.assertEqual(self.d["components_after"],133)
+    def test_01_new_supervisor(self):self.assertEqual(self.d["components_after"],134)
     def test_02_one_new_net(self):self.assertEqual(self.d["nets_after"],101)
-    def test_03_net_moves_exact(self):self.assertEqual(len(self.d["added_pin_net_memberships"]),4)
+    def test_03_net_moves_exact(self):self.assertEqual(len(self.d["added_pin_net_memberships"]),6)
     def test_04_no_production(self):self.assertTrue(self.d["NO_FAB"] and self.d["NO_TX"] and not self.d["sequencing_signoff"])
     def test_05_no_erc_error_growth(self):self.assertLessEqual(self.d["erc_after"]["errors"],36)
 
