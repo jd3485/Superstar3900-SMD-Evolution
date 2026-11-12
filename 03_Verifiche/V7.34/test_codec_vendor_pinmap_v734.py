@@ -74,5 +74,34 @@ class TestCodecPhysicalPins(unittest.TestCase):
         self.assertEqual(actual[9][1],"CODEC_I2C_SCL")
         self.assertEqual(actual[10][1],"CODEC_I2C_SDA")
 
+
+def resistor_local_pin_labels(ref):
+    """Read exact 0-degree R symbol terminal labels on V7.33 baseline."""
+    source=SCHEMATIC.read_text(encoding="utf8")
+    pattern=r'\(symbol \(lib_id "S3900E:R_DRAFT"\) \(at ([\d.]+) ([\d.]+) 0\)[\s\S]{0,360}?\(property "Reference" "'+re.escape(ref)+r'"[\s\S]{0,160}?\(property "Value" "([^"]+)"'
+    matches=list(re.finditer(pattern,source))
+    if len(matches)!=1:
+        raise AssertionError((ref,len(matches)))
+    x,y,value=matches[0].groups()
+    x,y=float(x),float(y)
+    lab={}
+    for name,lx,ly in re.findall(r'\(label "([^"]+)" \(at ([\d.]+) ([\d.]+)',source):
+        lab[(round(float(lx),4),round(float(ly),4))]=name
+    return (value,lab.get((round(x,4),round(y-5.08,4))),
+                  lab.get((round(x,4),round(y+5.08,4))))
+
+class TestCodecStartupBias(unittest.TestCase):
+    def test_06_ldo_select_has_4k7_pullup_to_3v3_codec_io(self):
+        self.assertEqual(resistor_local_pin_labels("R6206"),
+                         ("4.7k","3V3_CODEC_IO","CODEC_LDO_SELECT"))
+    def test_07_codec_reset_has_47k_pulldown(self):
+        self.assertEqual(resistor_local_pin_labels("R6201"),
+                         ("47k","CODEC_RESET_N","GND"))
+    def test_08_i2c_pullups_have_intended_rail(self):
+        self.assertEqual(resistor_local_pin_labels("R6202"),
+                         ("4.7k","CODEC_I2C_SCL","3V3_CODEC_IO"))
+        self.assertEqual(resistor_local_pin_labels("R6203"),
+                         ("4.7k","CODEC_I2C_SDA","3V3_CODEC_IO"))
+
 if __name__=="__main__":
     unittest.main()
