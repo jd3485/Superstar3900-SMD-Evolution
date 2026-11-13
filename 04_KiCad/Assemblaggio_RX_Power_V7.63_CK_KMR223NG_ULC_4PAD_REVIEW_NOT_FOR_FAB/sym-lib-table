@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "S3900E")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Simboli_V7.63_CK_KMR223NG_ULC_4PAD_HOLD/S3900E.kicad_sym")(options "")(descr "V7.61 33 unique S3900E symbols including exact embedded TPS3840 U6207; NO FAB/TX"))
+)
