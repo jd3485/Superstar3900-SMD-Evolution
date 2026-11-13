@@ -1,5 +1,20 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## HANDOFF TECNICO V7.40 — 13 novembre 2026 — INTERFACCIA AUX→MCU POWER NON ANCORA REALIZZATA (HOLD)
+
+**Ricostruzione da sorgenti reali, non supposizione:** il master a 7 fogli `04_KiCad/Assemblaggio_RX_Power_V7.36_C6231_MURATA_GRM15_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch` è esplicitamente un **integration gate / REUSE INDEX ONLY**: sul foglio root i tre simboli di sheet AUX, MCU/CODEC, RX coupon **non hanno pin gerarchici di interfaccia**; la pagina dichiara che i domini power e ground non vanno considerati continui fra moduli. L'AUX include sottofogli `01_EFUSE_AUX.kicad_sch`, `02_BUCK_5V.kicad_sch`, `03_PLL_LDO_TCXO.kicad_sch`, con interfacce gerarchiche interne; non confondere l'assenza di pin **sul master superiore** con l'assenza di pin **nel sottosistema AUX**.
+
+**Catena destinata alla futura integrazione, NON ancora net-connected:** `U200 TPS26600PWPT` eFuse → `BUCK_VIN_PROTECTED` → `U100 TPS54202DDCR` buck → `5V_RF_PREREGULATED` sul modulo AUX; la **stessa stringa di etichetta locale** appare sul lato ingresso `FB6201 600R@100MHz_CANDIDATE` (pin1) nel modulo MCU/CODEC, mentre FB6201 pin2 è `5V_DIGITAL_FILTERED`, ingresso pin1 di U6205/U6206. **Questa uguaglianza di nome non prova una rete tra sheet isolati.** FB6201 è ancora candidata senza MPN, DC resistance, current-rating, impedance/ESR curve e footprint qualificati.
+
+**Capacità locali 5V MCU =14.1µF** (C6215/C6219/C6220/C6221/C6223/C6225) non includono capacità AUX, buck, upstream eFuse, carichi altre sheet. Quindi le costanti di tempo e la corrente inversa reale NON possono essere derivate dai soli 14.1µF/11.1µF/1.2µF del blocco MCU. Non è giustificato né unire `GND_MAIN` e `GND` né collegare arbitrariamente 5V, né introdurre diodo OUT→IN per correggere un transitorio non qualificato. **Rimangono 15 interfacce crossdomain OPEN/HOLD.**
+
+**Decisione prima della prossima ECO (V7.40):** qualificare con MPN/curve/land FB6201 (attenuazione @100MHz non equivale a DCR e rating continuo); redigere contratto di interfaccia AUX→MCU per 5V e ritorno, limiti di transitorio/ground, dropout, ripple, inrush e interazione con i rami 3V3. Soltanto con pin, ritorni e carichi dimostrati proporre ECO CAD gerarchica, native netlist/ERC e protezioni reverse-mode. Necessario modello o hardware VIN/VOUT/Ireverse, non assegnare PASS di brownout da regole statiche. Questo è un **HANDOFF/HOLD**, non una revisione V7.40 integrata.
+
+**Stato GitHub operativo:** ultima revisione integrata V7.39 [PR#42](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/42) squash `94347b21a45a618ccabdf814467dac91acf3751a`, [run 43391844669](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43391844669) 20 test PASS, [policy run 43391844470](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43391844470) PASS. **134 componenti, 101 reti, 33 footprint mancanti, ERC 36 errori+221 warning**. Nessuna nuova prova KiCad9 eseguita in questo handoff e **nessuna nuova Action a pagamento**. PCB intera incompleta, stima storica ~10%. **NO FAB / NO GERBER / NO PCBWAY / NO TX, SG48 HOLD, Y1 TCXO pin10 HOLD**.
+
+---
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.39 INTEGRATA / VIN−VOUT TPS7A20 ABS-MAX, 20 TEST PASS**
 
 **GitHub verificato:** [PR #42](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/42) **MERGED** squash `94347b21a45a618ccabdf814467dac91acf3751a`; precedente V7.38 PR#41 MERGED `91e4f9d7867bb1fdcd18d19a752460e73d38cd5d`. [Run V7.39 **43391844669**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43391844669) **SUCCESS / 20 Python unittest PASS**; [cost/safety policy run **43391844470**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43391844470) **SUCCESS**. Nessuna modifica CAD/footprint: rapporto `03_Verifiche/V7.39/RAPPORTO_ABSMAX_TPS7A20_POWERDOWN_V739.md`, script `03_Verifiche/V7.39/test_tps7a20_powerdown_absmax_v739.py`, workflow PR minimo. Non avviato KiCad9 per questa analisi perché sorgente CAD invariato.
