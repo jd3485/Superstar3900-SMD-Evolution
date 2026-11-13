@@ -76,10 +76,10 @@ def source_gate():
     # Library only changes numeric pin Y coordinates for codec; avoid silently
     # changing pin numbers/types/names or any other unified symbols.
     pstart=old_lib.index('(symbol "TLV320AIC3204_RHB32_DRAFT"')
-    pend=old_lib.index('\\n  (symbol "',pstart+15)
+    pend=old_lib.index('\n  (symbol "',pstart+15)
     assert old_lib[:pstart]==new_lib[:pstart] and old_lib[pend:]==new_lib[pend:]
     extblock=new_lib[pstart:pend]
-    extpins=re.findall(r'\\(pin [a-z_]+ line \\(at (-?48\\.2600) (-?\\d+\\.\\d+) (0|180)\\).*?\\(number "(\\d+)"',extblock)
+    extpins=re.findall(r'\(pin [a-z_]+ line \(at (-?48\.2600) (-?\d+\.\d+) (0|180)\).*?\(number "(\d+)"',extblock)
     assert len(extpins)==33
     assert [(p[0],p[1],p[3]) for p in extpins]==[(p[0],p[1],p[3]) for p in pins]
     return len(pins)
@@ -96,7 +96,7 @@ def normalized_findings(result):
     # and logical identity but move with their pins. Only coordinate changes
     # for these exact pre-existing labels are normalized in the diff.
     moved={"MICBIAS","AUDIO_LINE_L","AUDIO_LINE_R"}
-    label_re=re.compile(r'^@\\([0-9.]+ mm, [0-9.]+ mm\\): Label \\'([^\\']+)\\'
+    label_re=re.compile(r"^@\([0-9.]+ mm, [0-9.]+ mm\): Label '([^']+)'$")
     return Counter(retained), removed
 
 def gate():
