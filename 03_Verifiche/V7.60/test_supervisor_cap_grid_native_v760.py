@@ -86,21 +86,28 @@ def source_check():
     return moved_total
 
 def erc_not_target(erc):
+    """Match each native finding; only U6207 missing-library location is movable."""
     candidates=[]
     removed=[]
-    pat=re.compile(r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol (U6207|C6231) Pin (\d+) \[.+\]')
-    for finding in erc["findings"]:
-        d=dict(finding)
+    offgrid=re.compile(r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol (U6207|C6231) Pin (\d+) \[.+\]$')
+    libraryloc=re.compile(r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol U6207 \[TPS3840PL30_DBV5_REVIEW\]$')
+    for item in erc["findings"]:
+        d=dict(item)
         locations=d.get("locations",[])
-        m=pat.fullmatch(locations[0]) if len(locations)==1 else None
-        if (m and d.get("category")=="endpoint_off_grid" and
-            d.get("severity")=="warning" and d.get("sheet")=="/"):
+        m=offgrid.fullmatch(locations[0]) if len(locations)==1 else None
+        if (m is not None and d.get("category")=="endpoint_off_grid"
+            and d.get("severity")=="warning" and d.get("sheet")=="/"):
             removed.append((m.group(1),m.group(2)))
-        else:
-            # Pre-existing U6207 missing-library diagnostic retains category,
-            # severity and message. Only its physical location follows ECO.
-            library_location=re.compile(
-                r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol U6207 \[TPS3840PL30_DBV5_REVIEW\]
+            continue
+        # Pre-existing library error is the SAME warning before/after;
+        # match only its exact identity, preserving warning count, severity,
+        # message and both original complete native ERC reports.
+        if (d.get("category")=="lib_symbol_issues"
+            and d.get("severity")=="warning" and d.get("sheet")=="/"
+            and d.get("message")=="Symbol 'TPS3840PL30_DBV5_REVIEW' not found in symbol library 'S3900E'"
+            and len(locations)==1 and libraryloc.fullmatch(locations[0])):
+            d["locations"]=["U6207 same pre-existing missing-library warning, position only"]
+        candidates.append(json.dumps(d,sort_keys=True,ensure_ascii=False))
     return Counter(candidates),removed
 
 def check():
