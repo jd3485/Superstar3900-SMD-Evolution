@@ -14,6 +14,9 @@ on:
       - '03_Verifiche/V7.53/**'
       - '03_Verifiche/V7.54/**'
       - '03_Verifiche/V7.55/**'
+      - '03_Verifiche/V7.56/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.56_TDK_AECQ200_C103_C104_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.56_TDK_AECQ200_MLCC_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.55_TDK_C103_C104_VENDOR_CANDIDATE_NOT_FOR_FAB/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.55_TDK_BUCK_MLCC_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.52_EFUSE_MODE_DVDT_LATCHOFF_REVIEW_NOT_FOR_FAB/**'
@@ -52,6 +55,15 @@ jobs:
         run: |
           kicad-cli version
           mkdir -p 03_Verifiche/V7.43/output-ci
+      - name: Fail fast on syntax errors in V7.55/V7.56 native test scripts
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          for p in (Path('03_Verifiche/V7.55/test_tdk_c103_c104_native_v755.py'), Path('03_Verifiche/V7.56/test_tdk_aecq200_candidate_native_v756.py')):
+              ast.parse(p.read_text(encoding='utf8'), filename=str(p))
+              print('AST PASS',p)
+          PY
       - name: Native existing seven-sheet netlist and ERC (no CAD ECO)
         run: |
           kicad-cli sch export netlist -o 03_Verifiche/V7.43/output-ci/v743.baseline.net 04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
@@ -136,6 +148,15 @@ jobs:
           kicad-cli sch erc -o 03_Verifiche/V7.55/output-ci/v755.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.55_TDK_BUCK_MLCC_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: V7.55 TDK candidate native BOM metadata and full pin-net ERC parity
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.55 -p 'test_*.py' -v
+      - name: V7.56 native KiCad9 seven-sheet before/after TDK automotive MPN candidate
+        run: |
+          mkdir -p 03_Verifiche/V7.56/output-ci
+          kicad-cli sch export netlist -o 03_Verifiche/V7.56/output-ci/v756.original.net 04_KiCad/Assemblaggio_RX_Power_V7.55_TDK_BUCK_MLCC_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.56/output-ci/v756.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.55_TDK_BUCK_MLCC_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.56/output-ci/v756.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.56_TDK_AECQ200_MLCC_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.56/output-ci/v756.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.56_TDK_AECQ200_MLCC_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: V7.56 TDK AEC-Q200 C103/C104 native graph and ERC preservation
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.56 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -151,4 +172,5 @@ jobs:
             03_Verifiche/V7.51/output-ci/
             03_Verifiche/V7.52/output-ci/
             03_Verifiche/V7.55/output-ci/
+            03_Verifiche/V7.56/output-ci/
           if-no-files-found: warn
