@@ -12,14 +12,16 @@
       "C103": 22,
       "C104": 22
     },
-    "regulated_rail": "5V_RF_PREREGULATED"
+    "regulated_rail": "5V_RF_PREREGULATED",
+    "schematic": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/02_BUCK_5V.kicad_sch"
   },
   "efuse": {
     "reference": "U200",
     "part": "TPS26600PWPT",
     "fuse_ref": "F200",
     "fuse_input_rating_label": "1.5A 045101.5MRL CANDIDATO",
-    "fuse_input_is_not_5v_output_current_rating": true
+    "fuse_input_is_not_5v_output_current_rating": true,
+    "schematic": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/01_EFUSE_AUX.kicad_sch"
   },
   "pll": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/03_PLL_LDO_TCXO.kicad_sch",
   "mcu": "04_KiCad/Modulo_MCU_CODEC_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch",
