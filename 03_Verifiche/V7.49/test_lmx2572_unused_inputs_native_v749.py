@@ -11,10 +11,10 @@ NEWROOT=ROOT/"04_KiCad/Assemblaggio_RX_Power_V7.49_LMX_PULLDOWN_REVIEW_NOT_FOR_F
 OLDAUX=ROOT/"04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB"
 NEWAUX=ROOT/"04_KiCad/Gerarchico_Alimentazioni_V7.49_LMX_UNUSED_PULLDOWN_REVIEW_NOT_FOR_FAB"
 MAP={
- "R70":("5","PLL_SYNC_PENDING",366),
- "R71":("28","PLL_SYSREFREQ_PENDING",388),
- "R72":("30","PLL_RAMPCLK_PENDING",410),
- "R73":("32","PLL_RAMPDIR_PENDING",432),
+ "R70":("5","PLL_SYNC_PENDING",365.76),
+ "R71":("28","PLL_SYSREFREQ_PENDING",388.62),
+ "R72":("30","PLL_RAMPCLK_PENDING",411.48),
+ "R73":("32","PLL_RAMPDIR_PENDING",434.34),
 }
 sys.path.insert(0,str(ROOT/"03_Verifiche/V7.22"))
 from test_ep33_v722 import nets
@@ -41,8 +41,8 @@ def gate():
         assert additions.count('(property "Reference" "'+ref+'"')==1,ref
         assert additions.count('(property "Value" "10k 1pct"')==4
         assert additions.count('(property "Footprint" "Resistor_SMD:R_0402_1005Metric"')==4
-        assert additions.count('(label "'+signal+'" (at 594.92 '+str(y)+' 0)')==1,(ref,signal)
-        assert additions.count('(label "GND_MAIN" (at 605.08 '+str(y)+' 0)')==1,ref
+        assert additions.count('(label "'+signal+'" (at 595.63 '+str(y)+' 0)')==1,(ref,signal)
+        assert additions.count('(label "GND_MAIN" (at 605.79 '+str(y)+' 0)')==1,ref
     assert additions.count('(symbol (lib_id "S3900E:R_PLL")')==4
     assert additions.count('(label "')==8
     for file in ("S3900E_AUX_POWER_V1_5.kicad_sch","01_EFUSE_AUX.kicad_sch","02_BUCK_5V.kicad_sch"):
