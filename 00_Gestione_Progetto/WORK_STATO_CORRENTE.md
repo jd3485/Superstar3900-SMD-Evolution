@@ -1,6 +1,35 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.68 INTEGRATA / BUCK BOOT+L+FB 100MIL / 366 TEST PASS / ERC 28 ERRORI +195 WARNING**
+
+**GitHub verified:** [PR #89](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/89) **MERGED** squash `a9ba5e6ce4648aa98dcc55e7611ac85ec528dee1`; [native KiCad9 seven-sheet + Python run 43519014735](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43519014735) **SUCCESS 366 tests PASS** (346 V7.67+20 V7.68), [policy cost/safety run 43519014692](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43519014692) **SUCCESS**, [native artifact 14081547883](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43519014735/artifacts/14081547883). Existing workflow `.github/workflows/v743_six_ldo_thermal_budget.yml` extended with targeted V7.68 path/steps, no workflow creation/settings/billing modifications.
+
+**Real CAD BUCK 5V bootstrap, inductance, feedback:** AUX `04_KiCad/Gerarchico_Alimentazioni_V7.68_BUCK_BOOT_L_FB_GRID_REVIEW_NOT_FOR_FAB/02_BUCK_5V.kicad_sch` moves 6 components +12 correctly anchored endpoints to 2.54mm grid:
+- C102 100nF bootstrap (218,67)→(218.44,66.04) mm, BOOT/SW;
+- L100 15µH Bourns SRP1038A-150M (250,95)→(248.92,93.98), BUCK_SW / **hierarchical output** 5V_RF_PREREGULATED;
+- R100 49.9Ω 1% (246,190)→(246.38,190.50), 5V output / BUCK_DIV_TOP;
+- R101 100kΩ 1% (279,190)→(279.40,190.50), DIV_TOP/BUCK_FB;
+- C105 75pF 50V C0G (310,190)→(309.88,190.50), parallel R101;
+- R102 13.3kΩ 1% (279,227)→(279.40,226.06), BUCK_FB/GND_MAIN.
+36 exact source changes, all original value, symbol, MPN, footprint, net endpoint and design holds untouched. New 7sheet root `04_KiCad/Assemblaggio_RX_Power_V7.68_BUCK_BOOT_L_FB_GRID_REVIEW_NOT_FOR_FAB/` references new AUX directory and preserves all other RX/MCU/AUX sheets/libraries exact. Test `03_Verifiche/V7.68/test_buck_boot_inductor_feedback_native_v768.py` and source-based technical report `03_Verifiche/V7.68/RAPPORTO_BUCK_BOOT_L100_FEEDBACK_V768.md`.
+
+**Native security gate:** pre/post exactly **140 components/103 nets entire physical pin→net map equal**, C102 BOOT/SW, L100 SW/5V, R100 and R101∥C105 R102 correct feedback topology, U200 pin8/17 EFUSE_RTN separate from GND_MAIN pin9, SW200 pins 1/4 SHDN7, 2/3 GND_MAIN9; D200 TVS stays DNP. ERC V7.67 **28 errors/201 warnings → V7.68 28 errors/195 warnings**, only six genuine endpoint_off_grid removed, all other findings unchanged. No waiver, PWR_FLAG or short; no complete PCB/global DRC.
+
+**Additional vendor-based 5V feedback engineering:** TI [TPS54202 SLVSD26C Feb 2026 Rev C](https://www.ti.com/lit/ds/symlink/tps54202.pdf) FB nominal reference min/typ/max 0.581/0.596/0.611V. DC simplified `VOUT=VFB×[1+(R100+R101)/R102]` with R100 49.9Ω/R101100kΩ/R10213.3kΩ → ideal nominal **5.079439V**, with independent 1% R corners and TI reference extrema ideal **4.865054–5.300131V**. **NOT measured, NOT guaranteed entire PCB output**; C105=75pF dynamic compensation, L100 15µH DCR/saturation and C103/C104 effective DC-bias ESR/temp/aging need loop stability and load-step. Worst theoretical near 5.30V may matter to six TPS7A2033 thermal, still HOLD.
+
+**This session's preceding substantial revision:** [PR #87 V7.67](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/87) **MERGED** squash `a07a84bc7987cae15800b1a966f45051487e6d90`; native [run 43518092973](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43518092973) **346 PASS**, safety [43518093009](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43518093009) SUCCESS. Real input C100/C101 and EN divider R103/R104 100mil four components +8 labels, exact graph identical; ERC **28/205→28/201**. Checkpoint [PR #88](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/88) **MERGED**, squash `b3418d91003894bc063df63e462132b84074c902`. 60 hypothetical average buck input current scenarios `Iin=5Iout/(VIN×η)` from `03_Verifiche/V7.67/test_buck_four_vin_enable_grid_f200_envelope_native_v767.py`: at 5V/2A VIN13.8V η85% ⇒0.8525A < fuse derated continuous 1.125A; VIN10.2545V η75% ⇒1.3004A >. 1.463A TPS26600 R203 current limit vs 1.125A Littelfuse F200 1.5A standard 25% derated **continuous guide** are NOT directly comparable, not automatic incompatibility. Datasheet Littelfuse 451 1.5A 0.063Ω nominal cold, melting I²t nominal 0.853 A²s at 8ms characterization not guaranteed inrush; rated 1.5A min four hours, 3A ≤5sec, no automatic trip at 1.125A. No board measurements.
+
+**OPEN/HOLD genuine:** [Issue #57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) updated with PR87/89 still OPEN: 5V actual loads/6 LDO real currents and LDO power dissipation, measured TPS54202 η and 5ms softstart actual profile, inrush and fuse I²t/temp/time curve, R203 current limit/F200 coordination, eFuse SW200 low-current tactile mechanical access/ESD/EMC/recovery and U200 reverse polarity. MCU/RX/aux **15 crossmodule OPEN/HOLD**, SG48 and Y1 pin10 HOLD, D200 TVS DNP and transients unproven, C103/C104 vendor footprint candidate with Ceff/loop HOLD, 28 ERC errors and 195 warnings still unsolved, **no unified PCB, no complete DRC**. Do NOT increase PCB progress percentages based on schematic geometry. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+**NEXT V7.69:** genuine electrical verification of buck VOUT (feedback VFB corners with input leakage, actual L100 saturation and Ceff C103/C104 per manufacturer DC bias), six TPS7A2033 LDO load/thermal, actual 5V budget and F200/eFuse faults. If no actual measurement/vendor characterization, make versioned genuine CAD correction on remaining off-grid buck C103/C104 or U100, with all complete KiCad9 graph/ERC checks and no downgrading of HOLD. Prioritize engineering over repeated geometry-only microrevisions, no unqualified change to fuse/ILIM value.
+
+**Nota:** V7.67 e tutte le revisioni antecedenti sono storiche.
+
+---
+
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.67 INTEGRATA / BUCK VIN+EN 4 componenti 100mil / F200 60 SCENARI / 346 PASS / ERC 28+201**
 
 **GitHub verificato:** [PR #87](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/87) **MERGED**, squash `a07a84bc7987cae15800b1a966f45051487e6d90`; [native KiCad9 7-sheet + Python run 43518092973](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43518092973) **SUCCESS 346 tests PASS** (326 precedenti+20 V7.67), [policy cost/safety run 43518093009](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43518093009) **SUCCESS**, [native artifact 14080949195](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43518092973/artifacts/14080949195). Existing `.github/workflows/v743_six_ldo_thermal_budget.yml` reused; no new workflow/settings/billing changes. Initial CI failed for **assunzione test errata sull'orientamento pin1/2 nei simboli ruotati**; corretto con verifica della topologia reale delle tre reti VIN/EN/GND e mappa completa before/after; CI finale verde senza modifiche CAD elettriche.
