@@ -1,0 +1,81 @@
+{
+  "revision": "V7.45",
+  "status": "NATIVE_CONNECTED_LOADS_VERIFIED_SEPARATE_FROM_LOAD_BUDGET_HOLD",
+  "baseline": "V7.44",
+  "native_master": "04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch",
+  "netlist_generated_by_existing_workflow": "03_Verifiche/V7.43/output-ci/v743.baseline.net",
+  "erc_generated_by_existing_workflow": "03_Verifiche/V7.43/output-ci/v743.baseline.erc.rpt",
+  "pll_source": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/03_PLL_LDO_TCXO.kicad_sch",
+  "pll_rails": {
+    "pll_input_3v3": {
+      "ldo": "U2",
+      "ldo_out_pin": "5",
+      "series_0ohm": {
+        "R10": {
+          "device_pin": "7",
+          "device_domain": "PLL_VCCDIG"
+        },
+        "R11": {
+          "device_pin": "11",
+          "device_domain": "PLL_VCCCP"
+        },
+        "R12": {
+          "device_pin": "15",
+          "device_domain": "PLL_VCCMASH"
+        },
+        "R13": {
+          "device_pin": "21",
+          "device_domain": "PLL_VCCBUF"
+        },
+        "R14": {
+          "device_pin": "26",
+          "device_domain": "PLL_VCCVCO2"
+        },
+        "R15": {
+          "device_pin": "37",
+          "device_domain": "PLL_VCCVCO"
+        }
+      },
+      "load_device_ref": "U1",
+      "load_device_mpn": "LMX2572RHA",
+      "datasheet_current_mA_typ_at_25C": [
+        75,
+        79,
+        82,
+        86
+      ],
+      "max_all_operating_modes_mA": null
+    },
+    "reference_3v3": {
+      "ldo": "U3",
+      "ldo_out_pin": "5",
+      "tcxo_ref": "Y1",
+      "tcxo_vcc_pin": "9",
+      "tcxo_part": "7N-12.800MBP-T",
+      "tcxo_supply_max_mA_per_referenced_distributor": 10,
+      "tcxo_aFC_pin10_ground_or_AFC_unresolved": true,
+      "tcxo_ctrl_pin": "8",
+      "ctrl_pullup": "R60",
+      "pullup_value": "10k 1pct",
+      "other_load_max_mA": null
+    }
+  },
+  "known_topology_not_full_power_budget": true,
+  "all_15_top_level_interfaces_hold": true,
+  "pcb_footprints_missing": 32,
+  "erc_baseline_errors": 36,
+  "erc_baseline_warnings": 221,
+  "signoff": {
+    "six_ldo_total_worstcase_current": false,
+    "root_aux_mcu_power_connected": false,
+    "reference_rail_total_current": false,
+    "pll_rail_total_current": false,
+    "pll_noise_spur_filtering": false,
+    "tcxo_pin10_qualified": false,
+    "thermal_board_qualified": false,
+    "NO_FAB": true,
+    "NO_GERBER": true,
+    "NO_PCBWAY": true,
+    "NO_TX": true
+  }
+}
