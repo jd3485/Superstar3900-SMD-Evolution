@@ -1,6 +1,24 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.60 INTEGRATA / U6207 TPS3840+C6231 GRIGLIA / 238 TEST PASS / ERC 28 ERR +215 WARN**
+
+**GitHub verificato:** [PR #73](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/73) **MERGED**, squash `65eb7419f9d35c018e17c5756fcadfc998d3e012`. [KiCad9 native 7-sheet + Python CI 43485682961](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43485682961) **SUCCESS — 238 PASS** (225 precedenti+13 V7.60); [policy safety 43485682722](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43485682722) **SUCCESS**, [artifact native 14066803711](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43485682961/artifacts/14066803711). Workflow preesistente `.github/workflows/v743_six_ldo_thermal_budget.yml` esteso senza aggiungere job. Prime prove hanno fallito per confronto delle coordinate di warning preesistenti U6207 `lib_symbol_issues` e sintassi Python, entrambi corretti senza waiver; solo CI FINALE verde integrata.
+
+**ECO geometrica reale KiCad:** nuova MCU `04_KiCad/Modulo_MCU_CODEC_V7.60_SUPERVISOR_C6231_GRID_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch`, nuova radice `04_KiCad/Assemblaggio_RX_Power_V7.60_SUPERVISOR_C6231_GRID_REVIEW_NOT_FOR_FAB/`. Solo U6207 supervisore `TPS3840PL30DBVR` centro (1010,415)→(1010.92,414.02)mm e bypass C6231 100nF centro (1050,415)→(1049.02,414.02)mm spostati su griglia 2,54mm, con **5 label + 2 NC** riagganciate alle stesse estremità di pin. Tutti i valori/MPN/footprint, 7-sheet, RX/AUX, libreria e project tables preservati; solo link root MCU cambia. Rapporto `03_Verifiche/V7.60/RAPPORTO_U6207_C6231_100MIL_GRID_V760.md` e test `03_Verifiche/V7.60/test_supervisor_cap_grid_native_v760.py`.
+
+**Native ERC/netlist:** V7.59→V7.60 **139 componenti/102 reti, OGNI pin→net identico**, inclusi RTN TPS26600 pin8/17 distinto da GND_MAIN pin9 e SHDN pin7 NC. Due soli `endpoint_off_grid` relativi ai target rimossi, **28 errori e 217 warning prima → 28 errori e 215 warning dopo**. Un warning `lib_symbol_issues` preesistente U6207 rimane, con coordinate aggiornate; il test normalizza **solo** la posizione di questo warning per il confronto, senza rimuoverlo, falsare conteggi o modificare librerie. Non sono stati connessi nuovi pin né aggiunti PWR_FLAG.
+
+**HOLD critici:** 28 errori ERC reali residui, 215 warning, 15 interfacce crossmodule RX/MCU/AUX OPEN/HOLD, Issue [#57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) eFuse TPS26600 latchoff reset indipendente dal 5V ancora NON progettato/qualificato, mancano carico 5V e coordinamento fuse/eFuse; C103/C104 TDK AEC-Q200 land CAD V7.57 senza Ceff worst-case sotto DC bias/temperatura/aging/real transient; Issue [#63](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/63) storico ERC; supervisore U6207 elettricamente non qualificato, SG48 e Y1 pin10 HOLD, nessuna PCB unificata, niente DRC completo. **NO FAB / NO GERBER / NO PCBWAY / NO TX**, percentuale PCB invariata.
+
+**NEXT V7.61:** prioritizzare l'eliminazione del `lib_symbol_issues` preesistente U6207 SOLO dopo un corretto simbolo-lib vendor/pin5 review (non mascherare), insieme a reali correzioni `endpoint_off_grid` per bypass o componenti MCU se netlist e native ERC full parity. In parallelo architettura reset upstream eFuse, carichi e corrente reali prima di ECO elettrica. Non dichiarare fabbricabilità per 238 test verdi.
+
+**Nota:** V7.59 e precedenti restano storiche.
+
+---
+
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.59 INTEGRATA: 4 LDO TPS7A2033 100MIL / 225 TEST PASS / ERC 28 ERR +217 WARN**
 
 **GitHub verificato:** [PR #71](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/71) **MERGED**, squash `edd632033d84ce29ba62951d3bf184371824c6c5`. [KiCad9 native 7-sheet+Python run 43480518960](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43480518960) **SUCCESS, 225 unittest PASS** (212 V7.58 +13 V7.59); [policy cost/safety run 43480519153](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43480519153) **SUCCESS**; [artifact nativo 14064652715](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43480518960/artifacts/14064652715). Nessun nuovo workflow: test aggiunti al preesistente `.github/workflows/v743_six_ldo_thermal_budget.yml`, AST fail-fast, netlist/ERC KiCad9 before/after, report JSON.
