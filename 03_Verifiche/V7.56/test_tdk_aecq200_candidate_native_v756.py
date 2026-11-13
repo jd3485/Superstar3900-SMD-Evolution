@@ -91,7 +91,7 @@ def gate():
     # the count, category, severity, or any other component's findings.
     # All original native reports remain intact; no ERC waiver is added.
     import re
-    u6202=re.compile(r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol U6202 Pin [0-9]+ \[.+\]
+    u6202=re.compile(r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol U6202 Pin [0-9]+ \[.+\]')
     def fingerprint(x):
         d=dict(x)
         if (d.get("category")=="endpoint_off_grid" and d.get("sheet")=="/"
