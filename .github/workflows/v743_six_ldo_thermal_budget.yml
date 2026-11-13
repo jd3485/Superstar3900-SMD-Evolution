@@ -20,6 +20,10 @@ on:
       - '03_Verifiche/V7.59/**'
       - '03_Verifiche/V7.60/**'
       - '03_Verifiche/V7.61/**'
+      - '03_Verifiche/V7.62/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.62_EFUSE_SHDN_MANUAL_RESET_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Librerie_Simboli_V7.62_EFUSE_RESET_SW_HOLD/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.62_EFUSE_MANUAL_RESET_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Librerie_Simboli_V7.61_SUPERVISOR_U6207_HOLD/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.61_U6207_SYMBOL_LIBRARY_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.60_SUPERVISOR_C6231_GRID_REVIEW_NOT_FOR_FAB/**'
@@ -246,6 +250,22 @@ jobs:
           kicad-cli sch erc -o 03_Verifiche/V7.61/output-ci/v761.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.61_U6207_SYMBOL_LIBRARY_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: V7.61 exactly one missing U6207 library symbol warning removed, native parity
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.61 -p 'test_*.py' -v
+      - name: V7.62 native KiCad9 before/after independent TPS26600 SHDN manual reset candidate
+        run: |
+          mkdir -p 03_Verifiche/V7.62/output-ci
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          p=Path('03_Verifiche/V7.62/test_efuse_shdn_manual_reset_native_v762.py')
+          ast.parse(p.read_text(encoding='utf8'),filename=str(p))
+          print('V7.62 Python AST PASS')
+          PY
+          kicad-cli sch export netlist -o 03_Verifiche/V7.62/output-ci/v762.original.net 04_KiCad/Assemblaggio_RX_Power_V7.61_U6207_SYMBOL_LIBRARY_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.62/output-ci/v762.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.61_U6207_SYMBOL_LIBRARY_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.62/output-ci/v762.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.62_EFUSE_MANUAL_RESET_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.62/output-ci/v762.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.62_EFUSE_MANUAL_RESET_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: V7.62 no RTN GND short, independent manual reset and full native pin-net parity
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.62 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -267,4 +287,5 @@ jobs:
             03_Verifiche/V7.59/output-ci/
             03_Verifiche/V7.60/output-ci/
             03_Verifiche/V7.61/output-ci/
+            03_Verifiche/V7.62/output-ci/
           if-no-files-found: warn
