@@ -1,0 +1,20 @@
+# V7.62 — eFuse TPS26600: pulsante di reset indipendente dal 5V (CAD review, non fabbricare)
+
+13 novembre 2026. Baseline integrata **V7.61**: 139 componenti, 102 reti, ERC 28 errori/214 warning, 249 unittest PASS. Nuovo candidato circuitale **SW200** SPST normalmente aperto, accessibile manualmente, per recupero dopo *latch-off* di U200 TPS26600PWPT senza bisogno di MCU o buck a valle.
+
+## Fonte primaria e scelta elettrica
+
+Texas Instruments, [TPS2660x SLVSDG2G Rev G (2019)](https://www.ti.com/lit/ds/symlink/tps2660.pdf), §9.3.5.1.1 p22: con `MODE` collegato con resistenza **402 kΩ a RTN** il dispositivo funziona in current-limit + **latch-off** e può uscire dal latch-off mediante `VIN` sotto `V(PORF)` oppure **toggle SHDN**. §9.3.5.7 p26, Fig.48, specifica `SHDN` disabilitato sotto **0.76V**, acceso sopra **1V**, pull-down capace di assorbire almeno **10µA a 400mV**, con pull-up interno verso AVdd. Fig.48 comanda `SHDN` rispetto al **pin GND del dispositivo**; non richiede alcuna alimentazione downstream. §9.3.5.5 p26 vieta tassativamente cortocircuitare `RTN` a `GND`: questo danneggia la protezione contro l'inversione di polarità.
+
+## ECO reale di schema
+
+- Nuova AUX `04_KiCad/Gerarchico_Alimentazioni_V7.62_EFUSE_SHDN_MANUAL_RESET_REVIEW_NOT_FOR_FAB/` con **solo** `01_EFUSE_AUX.kicad_sch` modificato. Rimuove `no_connect` sul pin **U200.7 SHDN** e applica `EFUSE_SHDN_RESET_N`. Nuovo `SW200` pulsante normalmente aperto due pin: pin1 sulla medesima rete `EFUSE_SHDN_RESET_N`, pin2 su `GND_MAIN` = **U200.9 GND** (non `EFUSE_RTN`). Il pulsante cortocircuita `SHDN` a `GND_MAIN` **solo mentre premuto**, poi ritorna aperto; quindi è un reset a mano indipendente da firmware e 3V3/5V a valle. Soglia e durata effettiva del reset da misurare in prova.
+- **Conservate** U200 pin8 RTN e PowerPAD pin17 sulla rete separata `EFUSE_RTN`; U200 pin9 sulla rete `GND_MAIN`. R204 mantiene 402k tra MODE e RTN (latch-off), R203 8k2 e C201 dVdT 22nF intatti, F200 1.5A candidato intatto, tutte le linee RX/MCU/AUX esistenti invariate.
+- Nuova libreria di progetto `04_KiCad/Librerie_Simboli_V7.62_EFUSE_RESET_SW_HOLD/S3900E.kicad_sym`: aggiunge esattamente il simbolo embedded `SW_EFUSE_SHDN_RESET_NO_REVIEW` al set V7.61. Nuovo master `04_KiCad/Assemblaggio_RX_Power_V7.62_EFUSE_MANUAL_RESET_REVIEW_NOT_FOR_FAB/` aggiorna **solo** il percorso AUX e il `sym-lib-table`.
+- **SW200 NON ha MPN/footprint approvato:** il campo Footprint è volutamente vuoto, dichiarazione `Qualification=V7.62 SHDN_MANUAL_RESET_SWITCH_MPN_FOOTPRINT_ACCESS_HOLD`. È un *candidato elettrico* non un dispositivo pronto per montaggio; richiede pulsante isolato adatto a montaggio, ingressi ESD, accessibilità meccanica, compatibilità reverse-input e prove di fault. Mai riempire con footprint casuale o dichiarare pronto.
+
+## Gate fail-closed e limiti
+
+`03_Verifiche/V7.62/test_efuse_shdn_manual_reset_native_v762.py`: confronto KiCad9 *sette fogli* prima V7.61 e dopo V7.62, verifica definizione locale ed esterna identiche, nuova sola istanza SW200, **139→140 componenti, 102→103 reti attese**, zero variazioni ai vecchi componenti e pin→net esistenti, sole tre nuove connessioni (U200 pin7, SW200 pin1/2), rispetto delle etichette e U200.7=SW200.1, SW200.2=U200.9≠U200.8/17. Riconvalida MODE/R204, controlla report ERC nativi e **blocca qualsiasi nuovo errore**, senza PWR_FLAG, waiver o corto di ritorno. Se la netlist o ERC non soddisfano gli invarianti, PR **BLOCCATA**.
+
+**HOLD non risolti:** questa architettura nasce come scelta circuitale su datasheet; fino alla selezione di un pulsante MPN, layout e verifica *hardware* con carico, il fault recovery **non è qualificato**. I 28 errori ERC precedenti, 214 warning, 15 interfacce crossmodule OPEN/HOLD, capacità effettiva C103/C104/TPS54202, budget 13.8V/5V/eFuse/F200, SG48 e Y1 pin10 HOLD, assenza di PCB unificata e DRC restano. [Issue #57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) rimane aperta fino a verifica completa. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
