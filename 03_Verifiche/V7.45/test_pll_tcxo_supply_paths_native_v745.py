@@ -12,7 +12,7 @@ from audit_full_board_native_v717 import native_erc
 
 def read_source_parts(path):
     text=path.read_text(encoding="utf8")
-    matches=re.findall(r'\(property "Reference" "([^"]+)"[^\n]*\n\s*\(property "Value" "([^"]+)"',text)
+    matches=re.findall(r'\(property "Reference" "([A-Za-z]+\d+)"[^\n]*\n\s*\(property "Value" "([^"]+)"',text)
     d={}
     for ref,value in matches:
         if ref in d:raise AssertionError(("duplicate symbol",ref))
