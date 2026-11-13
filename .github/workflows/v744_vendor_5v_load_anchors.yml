@@ -1,0 +1,20 @@
+name: V7.44 conditional vendor LDO load and thermal points (NO FAB TX)
+on:
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.44/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  vendor_load_conditions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vendor modes, conditional thermal points and fail-closed hold (no pip apt or KiCad install)
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.44 -p 'test_*.py' -v
