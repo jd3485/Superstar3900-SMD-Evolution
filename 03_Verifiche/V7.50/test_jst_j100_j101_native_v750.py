@@ -92,7 +92,8 @@ def native_gate():
     for ref,d in PARTS.items():
         for pin,net in d["signals"].items():
             assert pins[(ref,pin)].endswith("/"+net),(ref,pin,pins[(ref,pin)])
-    assert pins[("J100","2")]==pins[("J101","6")],"GND_MAIN within AUX must be a common net"\n    assert pins[("J100","2")]!=pins[("U6205","2")],"AUX ground is isolated from MCU ground"
+    assert pins[("J100","2")]==pins[("J101","6")],"GND_MAIN within AUX must be a common net"
+    assert pins[("J100","2")]!=pins[("U6205","2")],"AUX ground is isolated from MCU ground"
     assert pins[("FB6201","1")]!=pins[("U2","1")],"AUX 5V and MCU supply not physically joined"
     e0,e1=native_erc(OUT/"v750.original.erc.rpt"),native_erc(OUT/"v750.revised.erc.rpt")
     assert (e0["errors"],e0["warnings"])==(28,221),e0
