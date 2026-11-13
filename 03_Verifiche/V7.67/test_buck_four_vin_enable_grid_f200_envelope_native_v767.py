@@ -145,9 +145,18 @@ def gate():
     pins1=pinmap(OUT/"v767.revised.net")
     assert pins0==pins1
     assert len(nets(OUT/"v767.original.net"))==len(nets(OUT/"v767.revised.net"))==103
-    assert pins1[("C100","1")]==pins1[("C101","1")]==pins1[("R103","1")]
-    assert pins1[("R103","2")]==pins1[("R104","1")]
-    assert pins1[("C100","2")]==pins1[("C101","2")]==pins1[("R104","2")]
+    # Check genuine physical net connectivity independent of symbol pin 1/2
+    # orientation: C100/C101 parallel VIN-to-GND, R103 VIN-to-EN,
+    # R104 EN-to-GND, and three distinct node domains.
+    nset=lambda ref:{pins1[(ref,"1")],pins1[(ref,"2")]}
+    c100,c101,r103,r104=(nset(ref) for ref in ("C100","C101","R103","R104"))
+    assert len(c100)==len(c101)==len(r103)==len(r104)==2
+    assert c100==c101,"Changed input bypass parallel connectivity"
+    assert len(c100 & r103)==1,"R103 input not on protected VIN"
+    assert len(c100 & r104)==1,"R104 bottom not on GND"
+    assert len(r103 & r104)==1,"R103/R104 not sharing EN"
+    assert not (c100 & r103 & r104),"VIN, EN and GND unexpectedly shorted"
+    assert (c100 & r103)!=(c100 & r104),"VIN and GND unexpectedly same"
     assert pins1[("U200","8")]==pins1[("U200","17")]!=pins1[("U200","9")]
     assert pins1[("U200","7")]==pins1[("SW200","1")]==pins1[("SW200","4")]
     assert pins1[("U200","9")]==pins1[("SW200","2")]==pins1[("SW200","3")]
