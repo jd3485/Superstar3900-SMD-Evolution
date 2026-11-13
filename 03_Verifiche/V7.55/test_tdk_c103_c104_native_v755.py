@@ -78,7 +78,18 @@ def gate():
     # finding MUST be tracked, not suppressed and not attributed to the BOM ECO.
     assert (er0["errors"],er0["warnings"])==(28,222),er0
     assert (er1["errors"],er1["warnings"])==(28,222),er1
-    assert er0["findings"]==er1["findings"],"ERC diagnostics changed even if totals are equal"
+    # KiCad9 can reorder ERC findings across file paths. Require identical
+    # MULTISETS of category, message, severity, sheet and exact locations.
+    # No filtering or suppression; print new/missing diagnostics on mismatch.
+    from collections import Counter
+    import json
+    fingerprint=lambda x: json.dumps(x,sort_keys=True,ensure_ascii=False)
+    old_findings=Counter(fingerprint(x) for x in er0["findings"])
+    new_findings=Counter(fingerprint(x) for x in er1["findings"])
+    if old_findings!=new_findings:
+        print("ADDED ERC FINDINGS:",list((new_findings-old_findings).elements())[:25],flush=True)
+        print("REMOVED ERC FINDINGS:",list((old_findings-new_findings).elements())[:25],flush=True)
+    assert old_findings==new_findings,"Changed native ERC finding multiset"
     assert er0["categories"]==er1["categories"],(er0,er1)
     z.update(parts=139,nets=102,erc_errors=er1["errors"],erc_warnings=er1["warnings"],
              same_native_pin_net=True,verified_vendor_land=False,
