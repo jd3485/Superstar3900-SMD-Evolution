@@ -55,6 +55,15 @@ jobs:
         run: |
           kicad-cli version
           mkdir -p 03_Verifiche/V7.43/output-ci
+      - name: Fail fast on syntax errors in V7.55/V7.56 native test scripts
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          for p in (Path('03_Verifiche/V7.55/test_tdk_c103_c104_native_v755.py'), Path('03_Verifiche/V7.56/test_tdk_aecq200_candidate_native_v756.py')):
+              ast.parse(p.read_text(encoding='utf8'), filename=str(p))
+              print('AST PASS',p)
+          PY
       - name: Native existing seven-sheet netlist and ERC (no CAD ECO)
         run: |
           kicad-cli sch export netlist -o 03_Verifiche/V7.43/output-ci/v743.baseline.net 04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
