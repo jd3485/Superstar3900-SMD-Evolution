@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "S3900E")(type "KiCad")(uri "${KIPRJMOD}/../Librerie_Simboli_V7.58_U6202_100MIL_GRID_HOLD/S3900E.kicad_sym")(options "")(descr "V7.58 U6202 pin grid correction; all other S3900E symbols preserved; NO FAB/TX"))
+)
