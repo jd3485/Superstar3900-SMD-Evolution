@@ -1,0 +1,44 @@
+name: V7.41 FB6201 TDK manufacturer 0805 land KiCad9 parity (NO FAB TX)
+on:
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.41/**'
+      - '04_KiCad/Librerie_Footprint_V7.41_TDK_MPZ2012_HOLD/**'
+      - '04_KiCad/Modulo_MCU_CODEC_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  fb6201_land:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/kicad/kicad:9.0
+      options: --user 0
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reuse KiCad9 and pcbnew (no apt/pip)
+        run: |
+          kicad-cli version
+          python3 -c 'import pcbnew; print(pcbnew.GetBuildVersion())'
+          mkdir -p 03_Verifiche/V7.41/output-ci
+      - name: Export native 7-sheet netlist/ERC before and after
+        run: |
+          kicad-cli sch export netlist -o 03_Verifiche/V7.41/output-ci/v741.original.net 04_KiCad/Assemblaggio_RX_Power_V7.40_FB6201_TDK_0805_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.41/output-ci/v741.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.40_FB6201_TDK_0805_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.41/output-ci/v741.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.41/output-ci/v741.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: Compare TDK 2-pad land, 134 parts, 101 nets and ERC
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.41 -p 'test_*.py' -v
+      - name: Archive evidence for review only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v741-fb6201-tdk-vendor-land-NO-FAB-TX
+          path: 03_Verifiche/V7.41/output-ci/
+          if-no-files-found: warn
