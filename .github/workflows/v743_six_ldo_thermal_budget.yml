@@ -30,6 +30,9 @@ on:
       - '03_Verifiche/V7.69/**'
       - '03_Verifiche/V7.70/**'
       - '03_Verifiche/V7.71/**'
+      - '03_Verifiche/V7.72/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.72_PLL_SIX_LDO_BYPASS_GRID_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.72_PLL_SIX_LDO_BYPASS_GRID_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.71_LDO_THERMAL_L100_LIMITS_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.71_LDO_THERMAL_L100_LIMITS_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.70_U100_TI_SOT23_6PIN_GRID_REVIEW_NOT_FOR_FAB/**'
@@ -440,6 +443,22 @@ jobs:
           kicad-cli sch erc -o 03_Verifiche/V7.71/output-ci/v771.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.71_LDO_THERMAL_L100_LIMITS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: V7.71 TI DBV six LDO 360 thermal and Bourns L100 12 ripple cases full native gate
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.71 -p 'test_*.py' -v
+      - name: V7.72 native KiCad9 7sheet before after 6 PLL LDO bypass capacitors ground wires 100mil
+        run: |
+          mkdir -p 03_Verifiche/V7.72/output-ci
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          p=Path('03_Verifiche/V7.72/test_pll_six_ldo_bypass_100mil_native_v772.py')
+          ast.parse(p.read_text(encoding='utf8'),filename=str(p))
+          print('V7.72 Python AST PASS')
+          PY
+          kicad-cli sch export netlist -o 03_Verifiche/V7.72/output-ci/v772.original.net 04_KiCad/Assemblaggio_RX_Power_V7.71_LDO_THERMAL_L100_LIMITS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.72/output-ci/v772.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.71_LDO_THERMAL_L100_LIMITS_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.72/output-ci/v772.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.72_PLL_SIX_LDO_BYPASS_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.72/output-ci/v772.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.72_PLL_SIX_LDO_BYPASS_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: V7.72 strict 6 PLL 5V/3V3 capacitor wire label pin-net full graph and ERC delta
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.72 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -471,4 +490,5 @@ jobs:
             03_Verifiche/V7.69/output-ci/
             03_Verifiche/V7.70/output-ci/
             03_Verifiche/V7.71/output-ci/
+            03_Verifiche/V7.72/output-ci/
           if-no-files-found: warn
