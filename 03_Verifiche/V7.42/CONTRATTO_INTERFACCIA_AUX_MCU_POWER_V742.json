@@ -1,0 +1,102 @@
+{
+  "revision": "V7.42",
+  "status": "INTERFACE_PROPOSED_HOLD_NO_NET_CONNECTION",
+  "baseline": "V7.41 merged PR #44 on main",
+  "master": "04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch",
+  "aux": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/S3900E_AUX_POWER_V1_5.kicad_sch",
+  "buck": {
+    "reference": "U100",
+    "part": "TPS54202DDCR",
+    "rated_output_current_a": 2,
+    "output_caps_nominal_uF": {
+      "C103": 22,
+      "C104": 22
+    },
+    "regulated_rail": "5V_RF_PREREGULATED",
+    "schematic": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/02_BUCK_5V.kicad_sch"
+  },
+  "efuse": {
+    "reference": "U200",
+    "part": "TPS26600PWPT",
+    "fuse_ref": "F200",
+    "fuse_input_rating_label": "1.5A 045101.5MRL CANDIDATO",
+    "fuse_input_is_not_5v_output_current_rating": true,
+    "schematic": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/01_EFUSE_AUX.kicad_sch"
+  },
+  "pll": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/03_PLL_LDO_TCXO.kicad_sch",
+  "mcu": "04_KiCad/Modulo_MCU_CODEC_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch",
+  "power_link": {
+    "source_module": "AUX_POWER",
+    "source_net": "5V_RF_PREREGULATED",
+    "sink_module": "MCU_CODEC",
+    "sink_component": "FB6201",
+    "sink_pin": "1",
+    "sink_input_local_label": "5V_RF_PREREGULATED",
+    "sink_output_pin": "2",
+    "sink_output_local_label": "5V_DIGITAL_FILTERED",
+    "approved": false
+  },
+  "return_link": {
+    "source_module": "AUX_POWER",
+    "source_net": "GND_MAIN",
+    "sink_module": "MCU_CODEC",
+    "sink_net": "GND",
+    "approved": false,
+    "requirements": [
+      "defined power return geometry and ground hierarchy",
+      "noise and RF currents segmentation",
+      "fault current and common impedance",
+      "physical grounding architecture"
+    ]
+  },
+  "filters": {
+    "FB6201": {
+      "part": "MPZ2012S601ATD25",
+      "z_100mhz_nom_ohm": 600,
+      "dcr_max_ohm": 0.1,
+      "rated_current_a": 2,
+      "footprint_review_only": true
+    }
+  },
+  "ldo_rails": {
+    "MCU": [
+      "U6203",
+      "U6204",
+      "U6205",
+      "U6206"
+    ],
+    "AUX_PLL": [
+      "U2",
+      "U3"
+    ],
+    "part": "TPS7A2033PDBVR",
+    "max_nominal_output_per_ldo_a": 0.3
+  },
+  "limits": {
+    "buck_rated_output_a": 2,
+    "sum_six_ldo_ratings_a": 1.8,
+    "headroom_if_all_six_full_load_a": 0.2,
+    "headroom_is_not_guaranteed": true
+  },
+  "unknowns": [
+    "steady_state_load_current_per_rail_and_other_5v_consumers",
+    "ripple_peak_and_transient_current",
+    "buck_input_and_efuse_voltage_drop",
+    "bead_dc_bias_and_temperature_derating",
+    "all_5v_return_paths_and_ground_joins",
+    "total_effective_rail_capacitance_and_inrush",
+    "buck_stability_44uF_out_plus_isolated_14p1uF",
+    "power_down_reverse_current_and_prebias",
+    "brownout_and_codec_RESET_ALDO_sequence"
+  ],
+  "approval": {
+    "physical_crossmodule_net_exists": false,
+    "power_budget_signed_off": false,
+    "ground_return_signed_off": false,
+    "layout_drc_signed_off": false,
+    "simulation_signed_off": false,
+    "NO_FAB": true,
+    "NO_GERBER": true,
+    "NO_TX": true
+  }
+}

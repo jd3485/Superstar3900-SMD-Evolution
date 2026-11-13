@@ -1,0 +1,20 @@
+name: V7.42 AUX-MCU 5V and GND interface contract source gate (NO FAB TX)
+on:
+  pull_request:
+    paths:
+      - '03_Verifiche/V7.42/**'
+      - '!03_Verifiche/**/*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  aux_mcu_power_contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-only interface/6-LDO current budget regression (no pip/apt, no CAD changes)
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.42 -p 'test_*.py' -v
