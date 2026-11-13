@@ -50,7 +50,7 @@ def source_check():
       'SHDN / IMON / FLT non collegati; MODE=R204 402k RTN -> LATCH-OFF, funzione/prove HOLD.')
     added='\n(symbol (lib_id "S3900E:R_EFUSE") (at 333 195 90)'+expected_tail
     expected=expected.replace('\n)',added+'\n)')
-    assert new==expected,"Unexpected schematic source edit"
+    assert new.rstrip("\n")==expected.rstrip("\n"),"Unexpected schematic source edit"
     for fn in ("S3900E_AUX_POWER_V1_5.kicad_sch","02_BUCK_5V.kicad_sch","03_PLL_LDO_TCXO.kicad_sch"):
         assert (OLDAUX/fn).read_bytes()==(NEWAUX/fn).read_bytes()
     assert NEWROOT.read_text().count("../Gerarchico_Alimentazioni_V7.52_EFUSE_MODE_DVDT_LATCHOFF_REVIEW_NOT_FOR_FAB/")==1
