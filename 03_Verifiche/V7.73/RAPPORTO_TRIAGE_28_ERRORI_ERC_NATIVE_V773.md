@@ -1,0 +1,7 @@
+# V7.73 — classificazione obbligatoria dei 28 errori ERC prima di nuovi ponti elettrici
+
+Baseline GitHub main V7.72, KiCad9 sette fogli 140 componenti, 103 reti, **28 errori e 180 warning**. Questo step NON modifica il CAD, non riduce artificialmente il numero ERC e non approva PCB.
+
+Il test `test_native_28_erc_error_inventory_v773.py` riusa il **report nativo** già generato dal workflow KiCad9 V7.72 nella stessa CI (`v772.revised.erc.rpt`), lo valida con parser ERC del progetto, impone conteggio completo 28+180 e genera un **inventario di ciascuno dei 28 errori** con ID stabile per il report, categoria, foglio, descrizione, coordinate originali, stato `OPEN_UNRESOLVED`, `waiver=false`, causa non ancora verificata. Raggruppa per categoria e foglio; stampa tutti i 28 errori nel log CI e salva JSON/Markdown nell'artifact. 15 nuovi test. Questo consente di scegliere la prossima vera correzione elettrica su dati nativi, anziché procedere per tentativi o cancellare segnali critici.
+
+**Limite importante:** i risultati sono un audit di triage; non costituiscono fix ERC, non sostituiscono datasheet/pinout, non provano l'integrità della PCB e non sbloccano l'interfaccia RX/MCU/AUX. La prossima revisione CAD deve confrontare 7-sheet netlist/ERC prima/dopo, esaminare le cause e mantenere tutti gli HOLD non qualificati. Nessuna modifica a F200, eFuse/EFUSE_RTN, SHDN, TPS54202, sei TPS7A2033, SG48/Y1, D200 DNP o 15 crossmodule. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
