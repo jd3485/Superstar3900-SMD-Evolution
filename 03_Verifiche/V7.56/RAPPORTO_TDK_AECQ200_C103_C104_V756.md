@@ -12,7 +12,7 @@ TDK [C3225X7R1E226M250AB — commerciale](https://product.tdk.com/en/search/capa
 
 - Nuovo AUX: `04_KiCad/Gerarchico_Alimentazioni_V7.56_TDK_AECQ200_C103_C104_REVIEW_NOT_FOR_FAB/`, C103/C104 `MPN=CGA6P3X7R1E226M250AB` e `Qualification=V7.56 AEC_Q200_CANDIDATE DC_BIAS_THERMAL_HOLD`. Manufacturer TDK, Value 22uF 25V X7R, `Capacitor_SMD:C_1210_3225Metric`, fili e labels invariati.
 - Nuovo master `04_KiCad/Assemblaggio_RX_Power_V7.56_TDK_AECQ200_MLCC_REVIEW_NOT_FOR_FAB/` con sola destinazione AUX aggiornata, senza collegamenti cross-module. Altri tre file AUX e gli altri tre file del master identici byte-per-byte a V7.55.
-- Gate `03_Verifiche/V7.56/test_tdk_aecq200_candidate_native_v756.py`: sorgente esatta, 139 componenti, 102 reti, pin-net identici, safety return eFuse, 28 ERC errors / 222 warnings nativi; un'unica ambiguità di report preesistente U6202 MCU pin15/16 può essere normalizzata esclusivamente nel **confronto** delle due liste, non nei report originali (Issue #63). Tutti gli altri findings devono corrispondere.
+- Gate `03_Verifiche/V7.56/test_tdk_aecq200_candidate_native_v756.py`: sorgente esatta, 139 componenti, 102 reti, pin-net identici, safety return eFuse, 28 ERC errors / 222 warnings nativi; la variabilità del pin di U6202 nel warning `endpoint_off_grid` preesistente (pin7 IOVSS oppure pin15/16 IN2_L/IN2_R osservati) può essere normalizzata solo nel confronto dei **conteggi diagnostici del medesimo U6202**, la cui sorgente MCU rimane byte-identica; ogni altro finding deve coincidere, non nei report originali (Issue #63). Tutti gli altri findings devono corrispondere.
 
 ## Bloccanti non risolti
 
