@@ -69,20 +69,30 @@ def gate():
     assert gnd==node(m,"J100","2","GND_MAIN")
     assert rtn!=node(m,"J100","2","GND_MAIN")
     assert rtn!=m[("U6205","2")],"MCU ground must remain isolated"
-    for ref,pin in (("R203","2"),("C201","2"),("R202","2")):
-        assert node(m,ref,pin,"EFUSE_RTN")==rtn,(ref,pin)
-    for ref,pin in (("R200","1"),("U200","1"),("U200","2")):
-        node(m,ref,pin,"EFUSE_VIN")
-    for ref,pin in (("R200","2"),("R201","1"),("U200","3")):
-        node(m,ref,pin,"UVLO_NODE")
-    for ref,pin in (("R201","2"),("R202","1"),("U200","5")):
-        node(m,ref,pin,"OVP_NODE")
-    node(m,"R203","1","ILIM_NODE")
+    # Passive resistors and capacitors have no electrical polarity. KiCad
+    # library pin numbering is not implied by visual top/bottom orientation.
+    def pair(ref,left,right):
+        got={m[(ref,"1")],m[(ref,"2")]}
+        expected={rtn if left=="EFUSE_RTN" else node_by_name(left),
+                  rtn if right=="EFUSE_RTN" else node_by_name(right)}
+        assert got==expected,(ref,got,expected)
+    def node_by_name(suffix):
+        matches={n for n in m.values() if n.endswith("/"+suffix)}
+        assert len(matches)==1,(suffix,matches)
+        return next(iter(matches))
+    pair("R203","ILIM_NODE","EFUSE_RTN")
+    pair("C201","DV_DT_NODE","EFUSE_RTN")
+    pair("R202","OVP_NODE","EFUSE_RTN")
+    pair("R200","EFUSE_VIN","UVLO_NODE")
+    pair("R201","UVLO_NODE","OVP_NODE")
+    pair("F200","PWR_13V8_AUX_RAW","EFUSE_VIN")
+    node(m,"U200","1","EFUSE_VIN")
+    node(m,"U200","2","EFUSE_VIN")
+    node(m,"U200","3","UVLO_NODE")
+    node(m,"U200","5","OVP_NODE")
     node(m,"U200","11","ILIM_NODE")
-    node(m,"C201","1","DV_DT_NODE")
     node(m,"U200","12","DV_DT_NODE")
-    assert node(m,"F200","1","PWR_13V8_AUX_RAW")==node(m,"J100","1","PWR_13V8_AUX_RAW")
-    node(m,"F200","2","EFUSE_VIN")
+    node(m,"J100","1","PWR_13V8_AUX_RAW")
     assert node(m,"U200","15","BUCK_VIN_PROTECTED")==node(m,"U200","16","BUCK_VIN_PROTECTED")
     assert m[("U200","15")]!=m[("U200","1")]
     assert m[("U200","9")]!=m[("U6205","2")]
