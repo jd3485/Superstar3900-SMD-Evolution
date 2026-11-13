@@ -1,5 +1,18 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.39 INTEGRATA / VIN−VOUT TPS7A20 ABS-MAX, 20 TEST PASS**
+
+**GitHub verificato:** [PR #42](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/42) **MERGED** squash `94347b21a45a618ccabdf814467dac91acf3751a`; precedente V7.38 PR#41 MERGED `91e4f9d7867bb1fdcd18d19a752460e73d38cd5d`. [Run V7.39 **43391844669**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43391844669) **SUCCESS / 20 Python unittest PASS**; [cost/safety policy run **43391844470**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43391844470) **SUCCESS**. Nessuna modifica CAD/footprint: rapporto `03_Verifiche/V7.39/RAPPORTO_ABSMAX_TPS7A20_POWERDOWN_V739.md`, script `03_Verifiche/V7.39/test_tps7a20_powerdown_absmax_v739.py`, workflow PR minimo. Non avviato KiCad9 per questa analisi perché sorgente CAD invariato.
+
+**Nuovo criterio TI SBVS338H §5.1 vincolante:** su `TPS7A2033PDBVR` U6205/U6206 `VOUT ≤ min(6.5V, VIN+0.3V)` massimo assoluto. È distinto dal limite per corrente inversa **15mA per breve periodo** (§6.3.7). Il test legge la schematic MCU V7.36 reale e accerta pin IN/EN/OUT degli LDO e **12 condensatori**: `5V_DIGITAL_FILTERED` nominali **14.1µF** (C6215 1µF, C6219 10µF, C6220 100nF, C6221 1µF, C6223 1µF, C6225 1µF), `3V3_CODEC_IO` **1.2µF** (C6201 100nF, C6224 1µF, C6231 100nF), `3V3_CODEC_LDOIN` **11.1µF** (C6207 100nF, C6208 10µF, C6226 1µF). Non sono Ceff e non sono capacità full-board. Modello di rampe indipendenti puramente illustrative `5 exp(-t/τIN)`, `3.3 exp(-t/τOUT)` produce superamento di `VIN+0.3V` in esempi di collasso rapido VIN; **non** è simulazione TPS7A20 né dimostrazione che l'hardware reale subisca stress. Il test **rifiuta signoff** senza tracce di tensione e corrente validate. Nessuna modifica diodo/RC arbitraria.
+
+**NEXT V7.40:** priorità nuova: analizzare nella netlist root 7 fogli gli upstream eFuse/buck 5V, condizioni di scarica e current sink di tutti i carichi sul `5V_DIGITAL_FILTERED`; valutare V_IN(t), V_OUT(t), I_REV(t) con modelli fisici validati o misure su prototipo e limite VOUT−VIN e 15mA; se serve ECO, specificare circuito reale con MPN e rischi reverse/backfeed, verificare nuovo ERC/netlist prima-dopo. Qualifica Ceff X7R e firmware RESET/ALDO ancora HOLD.
+
+**CAD invariato V7.36:** 134 componenti / 101 reti / **33 footprint mancanti** / ERC **36 errori+221 warning**, nessuna PCB completa e nessuna DRC globale. 15 interfacce cross-domain OPEN/HOLD, SG48 HOLD, Y1 TCXO pin10 AFC/GND HOLD, power/PLL/thermal da completare. **NO FAB / NO GERBER / NO PCBWAY / NO TX**. PCB overall storico stimato ~10%, senza incremento da test/report. Le voci storiche sotto sono fotografie delle revisioni precedenti.
+
+---
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.38 INTEGRATA / CORRENTE INVERSA TPS7A20 DA CAPACITÀ REALI — 20 TEST PASS**
 
 **GitHub verificato:** [PR #41](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/41) **MERGED**, squash `91e4f9d7867bb1fdcd18d19a752460e73d38cd5d`. Baseline precedente V7.37 PR#40 MERGED squash `6d6c7f694c22fa12047c3099c9cd0dfc839b3947`. **Workflow dedicato [run 43330419481](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43330419481) SUCCESS / 20 unit test PASS**, [cost/safety policy run 43330421407](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43330421407) SUCCESS. V7.38 **NON modifica schemi/PCB**. Test `03_Verifiche/V7.38/test_codec_ldo_reverse_current_v738.py`, rapporto `03_Verifiche/V7.38/RAPPORTO_REVERSE_CURRENT_LDO_CODEC_V738.md`; workflow Python PR piccolo, nessun KiCad9 ripetuto perché CAD immutato.
