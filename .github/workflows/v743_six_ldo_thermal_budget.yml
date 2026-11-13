@@ -7,6 +7,9 @@ on:
       - '03_Verifiche/V7.46/**'
       - '03_Verifiche/V7.47/**'
       - '03_Verifiche/V7.48/**'
+      - '03_Verifiche/V7.49/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.49_LMX_UNUSED_PULLDOWN_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.49_LMX_PULLDOWN_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Librerie_Footprint_V7.48_TDK_C0G_HOLD/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.48_TDK_2_C0G_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.48_TDK_2_C0G_REVIEW_NOT_FOR_FAB/**'
@@ -70,6 +73,15 @@ jobs:
           kicad-cli sch erc -o 03_Verifiche/V7.48/output-ci/v748.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.48_TDK_2_C0G_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: V7.48 native C0G 2-cap vendor land and 101-net parity
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.48 -p 'test_*.py' -v
+      - name: V7.49 native KiCad9 before/after 4 LMX2572 input pulldowns
+        run: |
+          mkdir -p 03_Verifiche/V7.49/output-ci
+          kicad-cli sch export netlist -o 03_Verifiche/V7.49/output-ci/v749.original.net 04_KiCad/Assemblaggio_RX_Power_V7.48_TDK_2_C0G_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.49/output-ci/v749.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.48_TDK_2_C0G_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.49/output-ci/v749.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.49_LMX_PULLDOWN_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.49/output-ci/v749.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.49_LMX_PULLDOWN_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: V7.49 four pull-downs native pin net and ERC regression
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.49 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -80,4 +92,5 @@ jobs:
             03_Verifiche/V7.46/output-ci/
             03_Verifiche/V7.47/output-ci/
             03_Verifiche/V7.48/output-ci/
+            03_Verifiche/V7.49/output-ci/
           if-no-files-found: warn
