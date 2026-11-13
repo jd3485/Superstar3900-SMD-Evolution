@@ -1,6 +1,22 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.55 CAD INTEGRATA / TDK C103 C104 CANDIDATE MPN / 175 TEST PASS**
+
+**GitHub verificato:** [PR #62](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/62) **MERGED**, squash `ab05fe035be1e206385a8a737457e3b2de149d9e`; [KiCad9+Python native 43471651390](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43471651390) **SUCCESS**, **175 unittest PASS** (163 precedenti + 12 V7.55); [policy 43471651349](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43471651349) **SUCCESS**. CI in workflow esistente `.github/workflows/v743_six_ldo_thermal_budget.yml`, nessun nuovo workflow. Artefatto di run V7.55 **14060528129** (link https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43471651390/artifacts/14060528129).
+
+**ECO KiCad REALE V7.55:** cartella AUX `04_KiCad/Gerarchico_Alimentazioni_V7.55_TDK_C103_C104_VENDOR_CANDIDATE_NOT_FOR_FAB/`, root `04_KiCad/Assemblaggio_RX_Power_V7.55_TDK_BUCK_MLCC_REVIEW_NOT_FOR_FAB/`. Solo nei simboli BUCK **C103, C104** aggiunti campi BOM nascosti Manufacturer=`TDK`, MPN=`C3225X7R1E226M250AB`, Qualification=`V7.55 CANDIDATE DC_BIAS_THERMAL_HOLD`. Valori elettrici **22µF 25V X7R** e footprint temporaneo `Capacitor_SMD:C_1210_3225Metric` INVARIATI, altri sheet AUX byte-identici, MCU/RX invariati, root riferisce solo la nuova AUX. Dati TDK da [characterization sheet](https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3225x7r1e226m250ab_220216.pdf): package 1210 3.2×2.5 mm, X7R, 25V, 22µF±20%, **non AEC-Q200**. Grafici DC-bias sono *tipici*, non guarantee worst-case; pad reali/footprint vendor, aging, temperatura, disponibilità e carico effettivo ancora HOLD. NO FAB.
+
+**Native netlist/Erc:** V7.52→V7.55 **139 componenti/102 reti** identical pin-to-net full graph, inclusi C103/C104 da 5V_RF_PREREGULATED a GND_MAIN, U200 RTN pin8+17 separato da GND pin9. Entrambi gli export nativi nello STESSO run KiCad9 restituiscono **28 errori/222 warning**, quindi **nessun nuovo errore o numero warning** per V7.55. Differiscono soltanto nell'indicazione di 1 preesistente warning `endpoint_off_grid` U6202 MCU pin15 IN2_L versus pin16 IN2_R, su MCU identico; il test fail-closed normalizza solo questa coppia specifica per confronto multiset, non sopprime warning ERC e continua a richiedere 28/222. La precedente V7.52 registrava 28/221: discrepanza storico/current tracciata in [Issue #63](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/63) da spiegare; NON dichiarare tutti gli ERC risolti. Report `03_Verifiche/V7.55/RAPPORTO_TDK_C103_C104_CAD_VENDOR_CANDIDATE_V755.md`.
+
+**NEXT V7.56:** qualificare geometria vendor reale e DC-bias/thermal/worst-case di C103/C104 (candidato commercial not AEC-Q200) e scegliere componente appropriato; recuperare carichi AUX/MCU/RX reali e provare inrush, TPS54202 load transient, F200/eFuse; architettura power-cycle o SHDN indipendente **Issue #57 OPEN** (U200 pin7 NC). Altrimenti proseguire vera ECO per 28 ERC noti con soggetti qualificati, senza PWR_FLAG fittizi. 15 interfacce OPEN/HOLD, SG48 e Y1 pin10 HOLD, nessuna PCB unica/DRC globale. **NO FAB / NO GERBER / NO PCBWAY / NO TX**. Percentuale PCB non incrementata per sola BOM candidate.
+
+**Nota:** le sezioni V7.54 e precedenti sotto sono storiche.
+
+---
+
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.54 INTEGRATA / TPS54202 OUTPUT CAP DC-BIAS & TRANSIENT ENVELOPE / 163 TEST PASS**
 
 **GitHub verificato:** [PR #60](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/60) **MERGED**, squash `033c6a12393118a03aa4b3ec0a5e5b702d36486a`. [KiCad9+Python native workflow 43469072257](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43469072257) **SUCCESS**, 163 PASS (145 precedenti + 18 V7.54), [cost/safety policy 43469072237](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43469072237) **SUCCESS**. Il workflow esistente `.github/workflows/v743_six_ldo_thermal_budget.yml` è stato esteso; nessun job/runner aggiuntivo. **Nessuna ECO CAD V7.54**, nessun aumento della percentuale PCB.
