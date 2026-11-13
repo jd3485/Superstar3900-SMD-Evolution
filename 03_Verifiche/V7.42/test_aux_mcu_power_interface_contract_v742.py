@@ -13,7 +13,8 @@ def load():
     return json.loads(CONTRACT.read_text(encoding="utf-8"))
 
 def source(c, key):
-    p = ROOT / c[key]
+    location = c[key]["schematic"] if isinstance(c[key],dict) else c[key]
+    p = ROOT / location
     if not p.is_file():
         raise FileNotFoundError(p)
     return p.read_text(encoding="utf-8")
