@@ -1,0 +1,23 @@
+# V7.63 — SW200 C&K KMR223NG ULC LFG, 4 pad di produttore (CAD review, NO FAB)
+
+13 novembre 2026. Baseline **V7.62** su `main`: eFuse TPS26600 U200 pin7 SHDN comandato da SW200 SPST-NO verso GND_MAIN/pin9, RTN pin8+17 isolato, 140 componenti/103 reti, 28 errori e 214 warning ERC. Questa revisione non modifica la scelta del circuito e non abilita TX.
+
+## Identificazione fisica del componente
+
+**MPN C&K/Littelfuse `KMR223NG ULC LFG`** (commerciale anche scritto `KMR223NGULCLFG`): 2N nominali, azione momentanea normalmente aperta, **4 terminali elettrici**, configurazione NG senza quinta massa, altezza attuatore ~1.9mm, contatto **oro**. Datasheet ufficiale aggiornato 2026-01-28: https://www.ckswitches.com/media/1479/kmr2.pdf (pagine 1–3). Versione `ULC` con **carico minimo indicato 1 µA a 1.8VDC**, contatto ≤100mΩ, bounce ≤3ms, tensione max 32VDC, corrente max gold 10mA, -40…+125 °C. Questo è un candidato ragionevole per il comando interno a bassissima corrente `TPS26600 SHDN` con pull-up AVdd TI e possibilità di sink ≥10µA; **non costituisce validazione a guasto né di resistenza di contatto dopo invecchiamento**. Disponibilità pubblica della sigla esatta [DigiKey](https://www.digikey.si/en/products/detail/c-k/KMR223NG-ULC-LFG/14648574), da riverificare prima dell'acquisto; nessun ordine effettuato.
+
+**Sicurezza meccanica:** IP40 non è un grado di tenuta stagna; il microswitch SMT alto 1.9mm NON è direttamente un pulsante montabile a pannello senza un attuatore meccanico dimensionato. Ingombro 4.6×2.8 mm esterno, corpo nominale 4.2×2.8mm, forza 2N, corsa 0.25mm. Restano HOLD posizione sul PCB finale, comando/foro e adattatore pannello, eventuale protezione antipressione accidentale, rigidità e flessione PCB, ESD/EMC verso pannello, contatto con umidità e sollecitazioni del veicolo, geometria e posizione attuatore.
+
+## ECO nativa e footprint KiCad vendor
+
+- AUX `04_KiCad/Gerarchico_Alimentazioni_V7.63_CK_KMR223NG_ULC_4PAD_REVIEW_NOT_FOR_FAB/01_EFUSE_AUX.kicad_sch`: SW200 Value `KMR223NG ULC LFG (CANDIDATE)`, MPN esatto, Footprint `S3900E_CK_KMR2_V763_HOLD:CK_KMR223NG_ULC_LFG_4PAD_VENDOR_LAND_REVIEW`, Qualification `...MECH_ESD_HOLD`. Il simbolo mantiene i pin1 SHDN/pin2 GND e aggiunge **pin4 SHDN** e **pin3 GND** secondo il vero diagramma top view del vendor.
+- Schema di terminazione secondo datasheet **4–1 (coppia superiore collegata internamente), 3–2 (coppia inferiore collegata internamente)**. Le etichette dei due pin aggiuntivi 4→`EFUSE_SHDN_RESET_N` e 3→`GND_MAIN` garantiscono un'unica rete SHDN e un'unica massa, senza corto verso `EFUSE_RTN`.
+- Libreria simboli versionata `04_KiCad/Librerie_Simboli_V7.63_CK_KMR223NG_ULC_4PAD_HOLD/S3900E.kicad_sym` con simbolo embedded corrispondente e tutte le altre definizioni precedenti intatte.
+- Footprint vero `04_KiCad/Librerie_Footprint_V7.63_CK_KMR223NG_ULC_HOLD/S3900E_CK_KMR2_Review.pretty/CK_KMR223NG_ULC_LFG_4PAD_VENDOR_LAND_REVIEW.kicad_mod`: **4 SMD pad numerati ciascuno secondo il produttore**: in top view pad4 sopra sinistra, pad1 sopra destra, pad3 sotto sinistra e pad2 sotto destra. Layout NG del produttore: inviluppo dei pad 5.0×2.6mm, distanza fra pad opposti interni 3.2mm, distanza fra pad superiori e inferiori interni 0.6mm, ricavati pad da **0.9×1.0mm** con centri X±2.05mm e Y±0.80mm. Fab outline e courtyard provvisori non progettati per un PCB reale né certificati contro attuatore o case.
+- Nuovo master `04_KiCad/Assemblaggio_RX_Power_V7.63_CK_KMR223NG_ULC_4PAD_REVIEW_NOT_FOR_FAB/`: solo percorso AUX, `sym-lib-table` alla libreria versionata e nuova registrazione `fp-lib-table`. Gli altri tre fogli AUX, i fogli RX/MCU, e i valori U200/R204/F200, non cambiano.
+
+## Gate di sicurezza e condizioni di merge
+
+Test `03_Verifiche/V7.63/test_ck_kmr223ng_ulc_switch_native_v763.py` più KiCad9 reale: prima/poi 7-sheet native `kicad-cli sch export netlist` ed `erc`, footprint fisico caricato via `pcbnew.FootprintLoad`; pad number/location/size, 140 componenti e 103 reti, tutti i pin preesistenti identici, soltanto nuovi SW200.3/.4, verificare pad1+4→SHDN7 e pad2+3→GND_MAIN U200.9, RTN8/17 separati, R204 latchoff intatto. Nessun nuovo errore ERC e nessun incremento dei warning; eventuali modifiche inattese bloccano merge, nessuna waiver.
+
+**Bloccato per fabbricazione:** non esiste prova dell'attuatore esterno né di un percorso ESD dal pannello; nessun DRC globale PCB. Restano Issue [#57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) recovery hardware OPEN, 28 errori ERC precedenti, 214 warning, 15 interfacce OPEN/HOLD, SG48 e Y1 HOLD, Ceff e budget eFuse/5V. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
