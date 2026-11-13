@@ -97,6 +97,19 @@ def normalized_findings(result):
     # for these exact pre-existing labels are normalized in the diff.
     moved={"MICBIAS","AUDIO_LINE_L","AUDIO_LINE_R"}
     label_re=re.compile(r"^@\([0-9.]+ mm, [0-9.]+ mm\): Label '([^']+)'$")
+    for x in result["findings"]:
+        if (x.get("category")=="endpoint_off_grid" and x.get("severity")=="warning"
+            and x.get("sheet")=="/" and len(x.get("locations",[]))==1
+            and family.fullmatch(x["locations"][0])):
+            removed.append(x)
+        else:
+            d=dict(x)
+            if (d.get("category")=="label_dangling" and d.get("severity")=="error"
+                and d.get("sheet")=="/" and len(d.get("locations",[]))==1):
+                m=label_re.fullmatch(d["locations"][0])
+                if m and m.group(1) in moved:
+                    d["locations"]=["Existing U6202 dangling label: "+m.group(1)]
+            retained.append(json.dumps(d,sort_keys=True,ensure_ascii=False))
     return Counter(retained), removed
 
 def gate():
