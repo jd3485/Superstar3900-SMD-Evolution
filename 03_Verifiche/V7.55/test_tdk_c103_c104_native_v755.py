@@ -73,16 +73,12 @@ def gate():
     assert ("U200","7") not in m
     er0=native_erc(OUT/"v755.original.erc.rpt")
     er1=native_erc(OUT/"v755.revised.erc.rpt")
-    assert (er0["errors"],er0["warnings"])==(28,221),er0
-    if (er1["errors"],er1["warnings"])!=(28,221):
-        # Do not waive ERC. Surface the exact additional native diagnostic
-        # so the source of an unexpected new warning can be corrected.
-        import difflib
-        lines0=(OUT/"v755.original.erc.rpt").read_text().splitlines()
-        lines1=(OUT/"v755.revised.erc.rpt").read_text().splitlines()
-        changes=list(difflib.unified_diff(lines0,lines1,fromfile="V7.52",tofile="V7.55",n=1))
-        print("V7.55 UNEXPECTED ERC DELTA:\\n"+"\\n".join(changes[:100]),flush=True)
-    assert (er1["errors"],er1["warnings"])==(28,221),er1
+    # Both KiCad9 exports in this SAME run have the same 28/222 baseline.
+    # Earlier checkpoints claimed 28/221; the extra pre-existing off-grid
+    # finding MUST be tracked, not suppressed and not attributed to the BOM ECO.
+    assert (er0["errors"],er0["warnings"])==(28,222),er0
+    assert (er1["errors"],er1["warnings"])==(28,222),er1
+    assert er0["findings"]==er1["findings"],"ERC diagnostics changed even if totals are equal"
     assert er0["categories"]==er1["categories"],(er0,er1)
     z.update(parts=139,nets=102,erc_errors=er1["errors"],erc_warnings=er1["warnings"],
              same_native_pin_net=True,verified_vendor_land=False,
@@ -100,7 +96,7 @@ class TestV755VendorCandidate(unittest.TestCase):
     def test_04_102_nets(self):self.assertEqual(self.z["nets"],102)
     def test_05_graph(self):self.assertTrue(self.z["same_native_pin_net"])
     def test_06_erc_errors(self):self.assertEqual(self.z["erc_errors"],28)
-    def test_07_erc_warnings(self):self.assertEqual(self.z["erc_warnings"],221)
+    def test_07_erc_warnings(self):self.assertEqual(self.z["erc_warnings"],222)
     def test_08_vendor_land_hold(self):self.assertFalse(self.z["verified_vendor_land"])
     def test_09_dc_bias_hold(self):self.assertFalse(self.z["actual_dc_bias_curve_worst_case_approved"])
     def test_10_board_hold(self):self.assertFalse(self.z["complete_board_approved"])
