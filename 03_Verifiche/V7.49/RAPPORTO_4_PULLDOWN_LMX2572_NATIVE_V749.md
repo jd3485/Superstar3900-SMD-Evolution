@@ -22,7 +22,7 @@ Scelti quattro **resistori di pull-down 10 kΩ ±1% in package 0402**, contro `G
 | `R72` | 30 | `PLL_RAMPCLK_PENDING` | R72.1→segnale / R72.2→`GND_MAIN` |
 | `R73` | 32 | `PLL_RAMPDIR_PENDING` | R73.1→segnale / R73.2→`GND_MAIN` |
 
-I resistori sono aggiunti nel foglio PLL locale, nelle coordinate distinte (600 mm, y366, 388, 410, 432 mm) sul formato A1 già esistente, con etichette direttamente sui terminali; nessuna geometria del dispositivo U1, delle sue piste già esistenti o dei resistori R10–R15 è stata toccata. Footprint `Resistor_SMD:R_0402_1005Metric` è una libreria KiCad standard già impiegata nel progetto, da qualificare a DFM/assembly globale. La risposta di questi ingressi a RFI e rumore e l'eventuale valore definitivo dei resistori restano REVIEW.
+I resistori sono aggiunti nel foglio PLL locale, nelle coordinate sulla griglia KiCad 1.27 mm (x=600.71 mm, y=365.76 / 388.62 / 411.48 / 434.34 mm) sul formato A1 già esistente, con etichette direttamente sui terminali; nessuna geometria del dispositivo U1, delle sue piste già esistenti o dei resistori R10–R15 è stata toccata. Footprint `Resistor_SMD:R_0402_1005Metric` è una libreria KiCad standard già impiegata nel progetto, da qualificare a DFM/assembly globale. La risposta di questi ingressi a RFI e rumore e l'eventuale valore definitivo dei resistori restano REVIEW.
 
 ## CAD e gate
 
