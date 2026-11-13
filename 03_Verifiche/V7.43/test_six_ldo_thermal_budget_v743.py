@@ -80,7 +80,15 @@ class TestSixLDOsAndThermal(unittest.TestCase):
         for row in self.d["rail_rows"]:
             actual=actual_ldo_rail(self.sources[row["sheet"]],row["ref"],row["sheet"])
             expected=[row["vin_net"],row["output_net"],row["return_net"]]
-            self.assertEqual(actual,expected,(row["ref"],actual,expected))
+            if row["ref"]=="U2":
+                # U2.IN has no point-local label but native KiCad9 netlist
+                # proves it already belongs to the same 5V as U2.EN.
+                from test_u2_pll_input_native_v743 import endpoints
+                self.assertIsNone(actual[0], "Never invent a directly attached label")
+                self.assertEqual(actual[1:],expected[1:])
+                self.assertTrue(endpoints()[("U2","1")].endswith("/"+expected[0]))
+            else:
+                self.assertEqual(actual,expected,(row["ref"],actual,expected))
     def test_04_three_domains_unchanged(self):
         self.assertEqual(self.sources["root"].count("(sheet (at "),3)
         self.assertFalse(self.d["approval"]["root_interconnect_signed_off"])
