@@ -1,6 +1,24 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.59 INTEGRATA: 4 LDO TPS7A2033 100MIL / 225 TEST PASS / ERC 28 ERR +217 WARN**
+
+**GitHub verificato:** [PR #71](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/71) **MERGED**, squash `edd632033d84ce29ba62951d3bf184371824c6c5`. [KiCad9 native 7-sheet+Python run 43480518960](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43480518960) **SUCCESS, 225 unittest PASS** (212 V7.58 +13 V7.59); [policy cost/safety run 43480519153](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43480519153) **SUCCESS**; [artifact nativo 14064652715](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43480518960/artifacts/14064652715). Nessun nuovo workflow: test aggiunti al preesistente `.github/workflows/v743_six_ldo_thermal_budget.yml`, AST fail-fast, netlist/ERC KiCad9 before/after, report JSON.
+
+**Vera correzione geometrica CAD:** MCU `04_KiCad/Modulo_MCU_CODEC_V7.59_FOUR_LDO_100MIL_GRID_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch` e root `04_KiCad/Assemblaggio_RX_Power_V7.59_FOUR_LDO_100MIL_GRID_REVIEW_NOT_FOR_FAB/`. Riposizionati solo i **quattro U6203, U6204, U6205, U6206 TPS7A2033** e le loro **16 label +4 NC**, mantenendo intatti pin/tipo/MPN/footprint, tutti i simboli originali e la libreria V7.58. Centri old→new millimetri: U6203 (710,320)→(711.20,320.04), U6204 (810,415)→(810.26,414.02), U6205 (870,415)→(871.22,414.02), U6206 (930,415)→(929.64,414.02). Nuovi terminali su griglia 2.54 mm, nessun wire preesistente scollegato, MCU U6202 geometria V7.58 preservata, AUX/RX e project table invariati. Report `03_Verifiche/V7.59/RAPPORTO_QUATTRO_LDO_GRID_100MIL_V759.md`, test `03_Verifiche/V7.59/test_four_ldo_grid_native_v759.py`.
+
+**Native KiCad9 result:** V7.58 ERC **28 errors / 221 warnings** → V7.59 **28 errors / 217 warnings**, precisamente **4 `endpoint_off_grid` eliminati realmente**. Tutti gli altri ERC findings identici, salvo coordinate dei pin U6203 power input non pilotati: **gli errori POWER_PIN_NOT_DRIVEN rimangono** e non sono risolti con PWR_FLAG fittizi. 139 componenti /102 reti, **pin→net completo identico** incl. 33 pin codec, GND/EFUSE_RTN separati, U200 SHDN NC; 0 footprint fields vuoti, che NON è qualifica DRC. LDO carichi effettivi e budget termico da qualificare. Nessuna PCB unica con DRC globale. Nel complesso V7.58→V7.59 sono stati rimossi 5 warning ERC geometrici senza altera rete.
+
+**Blocchi OPEN/HOLD:** [Issue #57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) eFuse latch-off indipendente reset ancora non risolto (MCU downstream non può resettare da 5V spento), carico reale 5V eFuse/F200 non determinato; C103/C104 automotive TDK AEC-Q200 e land CAD V7.57 non sostituiscono dati Ceff worst-case 5V DC-bias/temperatura/aging né transienti TPS54202; 15 interfacce RX/MCU/AUX OPEN/HOLD, **28 errori ERC** restanti, **217 warning** attuali, [Issue #63](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/63) audit storico del vecchio warning KiCad; SG48/Y1 pin10 HOLD, nessuna scheda completa, non incrementare la percentuale PCB. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+**NEXT V7.60:** preferire vera ECO per altri endpoint off-grid di componenti con connettività verificabile e netlist fail-closed, oppure avanzare dimensionamento elettrico eFuse/5V quando esistono dati sul percorso fisico di reset e sulle correnti di carico; mai trasformare la rimozione di warning in falso completamento del sistema. Preservare blocchi e documentare eventuali correzioni in run native.
+
+**Nota:** sezione V7.58 e precedenti sotto sono storiche.
+
+---
+
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.58 INTEGRATA: U6202 33 PIN SU GRIGLIA 100MIL / 212 TEST PASS / ERC 28 ERRORI E 221 WARNING**
 
 **Live GitHub checked:** [PR #69](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/69) **MERGED**, squash `353ff514bc1c5e3bdcbecb1230aac73bc6857c4a`. [Native KiCad9 7-sheet+Python final run 43479191293](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43479191293) **SUCCESS**, **212 PASS** (201 prima +11 nuovi), [cost/safety policy 43479191341](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43479191341) **SUCCESS**, [artifact nativo 14064880403](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43479191293/artifacts/14064880403). Nessuna nuova workflow, mantenuta suite esistente con 7-sheet netlist/ERC pre/post; test AST fail-fast. I tentativi iniziali hanno prodotto errori di confronto/libreria/test Python e furono corretti SENZA bypass; soltanto l'ultimo run verde è autorizzante.
