@@ -69,7 +69,7 @@ def source_gate():
     assert block.count("(label ")==2 and block.count("(symbol (lib_id")==1
     assert block.count('(text "V7.62 SW200 SPST-NO')==1
     assert '(at 332.74 236.22 0)' in block
-    draft=draft[:swstart]+draft[swend:]
+    draft=draft[:swstart]+draft[swend+1:]
     assert draft==old,"Unexpected change to base eFuse schematic"
     for fn in ("02_BUCK_5V.kicad_sch","03_PLL_LDO_TCXO.kicad_sch","S3900E_AUX_POWER_V1_5.kicad_sch"):
         assert (OLD_AUX/fn).read_bytes()==(NEW_AUX/fn).read_bytes(),fn
