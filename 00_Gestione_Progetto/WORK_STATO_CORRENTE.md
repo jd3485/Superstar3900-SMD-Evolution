@@ -1,6 +1,26 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
 
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.61 INTEGRATA: TPS3840 U6207 LIBRERIA FIX / 249 TEST PASS / ERC 28 ERRORI +214 WARNING**
+
+**GitHub verificato:** [PR #75](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/75) **MERGED**, squash `1a10cb84645bba1a68febb40889ad9fb6b4bf64a`; [KiCad9 native 7-sheet + Python CI 43486546306](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43486546306) **SUCCESS, 249 PASS** (238 precedenti +11 V7.61), [policy safety 43486546377](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43486546377) **SUCCESS**, [native artifact 14066953506](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43486546306/artifacts/14066953506). Nessun nuovo workflow, runner aggiuntivo o modifica ad Actions billing. PR e branch principali protetti, commit tramite merge controllato.
+
+**Vera correzione libreria CAD:** nel foglio MCU V7.60 U6207 supervisore `TPS3840PL30DBVR` ha già cinque pin 1 RESET_N,2 VDD,3 GND,4 MR_N,5 CT, con coordinate nuove su 100mil. Mancava dalla libreria esterna `S3900E`, perciò KiCad9 continuava a emettere `lib_symbol_issues`. La nuova libreria completa versionata `04_KiCad/Librerie_Simboli_V7.61_SUPERVISOR_U6207_HOLD/S3900E.kicad_sym` inserisce **esattamente il simbolo embedded originale**, senza modificare pin/attributi e senza altre differenze in 32 simboli esistenti. La nuova root `04_KiCad/Assemblaggio_RX_Power_V7.61_U6207_SYMBOL_LIBRARY_REVIEW_NOT_FOR_FAB/` differisce da V7.60 **solo per il percorso `sym-lib-table`**. Fogli MCU, AUX, RX e `.kicad_sch` root identici byte-per-byte, `fp-lib-table` e progetto invariati. Prove `03_Verifiche/V7.61/test_tps3840_u6207_library_native_v761.py`, relazione `03_Verifiche/V7.61/RAPPORTO_U6207_S3900E_SYMBOL_LIBRARY_V761.md`.
+
+**Native KiCad result:** ERC V7.60 **28 errori /215 warning** → V7.61 **28 errori /214 warning**, rimosso **solo** `lib_symbol_issues` U6207 realmente; nessun altro finding rimosso o introdotto. 139 componenti/102 reti, **mappa completa pin→rete identica**; U200 RTN pin8+17 distinto da GND_MAIN pin9, SHDN pin7 NC. Nessuna nuova connessione cross-module né segnale TX. Il nuovo simbolo U6207 non dimostra comportamento elettrico, threshold/timing MR_N/CT, supervisione reset e deriva tensione. Nessun DRC PCB globale.
+
+**Stato combinato di questa sessione V7.60→V7.61:** [PR #73](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/73) V7.60 realmente MERGED squash `65eb7419f9d35c018e17c5756fcadfc998d3e012`, 238 test PASS run 43485682961, policy 43485682722 SUCCESS, U6207+C6231 pin/label/NC allineati su griglia con ERC **217→215 warning**, 28 errori invariati. [PR #74](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/74) checkpoint V7.60 MERGED. Totale ultimo ERC V7.61 **28 errors/214 warning**, **tre warning realmente risolti** nella sessione senza cambiamenti elettrici.
+
+**HOLD critici:** [Issue #57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) eFuse TPS26600 MODE latchoff *non ha ripristino indipendente verificato* e il microcontrollore non può riavviarlo senza 5V; nessun reset manuale/upstream a schema qualificato; C103/C104 TDK CGA6 automotive e footprint reviewer-only necessitano Ceff real minima 5V/bias/temp/aging e TPS54202 transient load, F200/eFuse inrush/fuse time; 15 interfacce RX/MCU/AUX OPEN/HOLD, restanti **28 errori ERC** e **214 warning**, [Issue #63](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/63) audit storico; SG48 HOLD / Y1 pin10 HOLD, nessuna PCB unica terminata o DRC globale. **NO FAB / NO GERBER / NO PCBWAY / NO TX**, stima PCB non incrementata per miglioramenti solo schematici.
+
+**NEXT V7.62:** priorità tecnica sostanziale: architettura fault-recovery TPS26600 indipendente dal 5V con reale prova di percorso power-cycle e datasheet SHDN, e budget corrente ingresso/corrente LDO. Se ancora mancano dati fisici qualificati, continuare correzioni vere CAD di pin fuori-griglia sulla MCU/codec con netlist/ERC before/after e nessun waiver. NON chiudere 28 errori ERC per decreto.
+
+**Nota:** sezioni V7.60 e precedenti sotto sono storiche.
+
+---
+
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.60 INTEGRATA / U6207 TPS3840+C6231 GRIGLIA / 238 TEST PASS / ERC 28 ERR +215 WARN**
 
 **GitHub verificato:** [PR #73](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/73) **MERGED**, squash `65eb7419f9d35c018e17c5756fcadfc998d3e012`. [KiCad9 native 7-sheet + Python CI 43485682961](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43485682961) **SUCCESS — 238 PASS** (225 precedenti+13 V7.60); [policy safety 43485682722](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43485682722) **SUCCESS**, [artifact native 14066803711](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43485682961/artifacts/14066803711). Workflow preesistente `.github/workflows/v743_six_ldo_thermal_budget.yml` esteso senza aggiungere job. Prime prove hanno fallito per confronto delle coordinate di warning preesistenti U6207 `lib_symbol_issues` e sintassi Python, entrambi corretti senza waiver; solo CI FINALE verde integrata.
