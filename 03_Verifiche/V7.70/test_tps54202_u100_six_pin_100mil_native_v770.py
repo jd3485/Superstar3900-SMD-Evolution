@@ -148,14 +148,15 @@ def gate():
         print("Other ERC added",list((newother-oldother).elements())[:10])
         print("Other ERC removed",list((oldother-newother).elements())[:10])
     assert oldother==newother,"Unrelated ERC finding changed"
-    assert len(offgrid0)==6,("Expected 6 physical U100 terminal offgrid findings",offgrid0)
+    assert len(offgrid0)==1,("KiCad should flag exactly U100 VIN pin 3 as offgrid",offgrid0)
+    assert "Pin 3 [VIN," in offgrid0[0]["locations"][0],offgrid0
     assert not offgrid1,"U100 pin still offgrid"
-    assert erc1["warnings"]==187
+    assert erc1["warnings"]==192
     out=dict(source_atoms=atoms,components=140,nets=103,
       same_full_pin_net_graph=True,pin_numbers_TI_vendor=vendor_nets,
       corrected_u100_native_pin_offgrid=len(offgrid0),
       erc_before={"errors":28,"warnings":193},
-      erc_after={"errors":28,"warnings":187},
+      erc_after={"errors":28,"warnings":192},
       symbol_library_only_six_pin_coords_changed=True,
       full_board_drc_unavailable=True,real_buck_5v_loop_not_validated=True,
       c103_c104_effective_C_HOLD=True,
@@ -174,9 +175,9 @@ class TestV770VendorTI(unittest.TestCase):
     def test_02_parts(self):self.assertEqual(self.r["components"],140)
     def test_03_nets(self):self.assertEqual(self.r["nets"],103)
     def test_04_fullmap(self):self.assertTrue(self.r["same_full_pin_net_graph"])
-    def test_05_offgrid(self):self.assertEqual(self.r["corrected_u100_native_pin_offgrid"],6)
+    def test_05_offgrid(self):self.assertEqual(self.r["corrected_u100_native_pin_offgrid"],1)
     def test_06_errors(self):self.assertEqual(self.r["erc_after"]["errors"],28)
-    def test_07_warnings(self):self.assertEqual(self.r["erc_after"]["warnings"],187)
+    def test_07_warnings(self):self.assertEqual(self.r["erc_after"]["warnings"],192)
     def test_08_vendor_gnd(self):self.assertEqual(self.r["pin_numbers_TI_vendor"][1],"GND_MAIN")
     def test_09_vendor_sw(self):self.assertEqual(self.r["pin_numbers_TI_vendor"][2],"BUCK_SW")
     def test_10_vendor_vin(self):self.assertEqual(self.r["pin_numbers_TI_vendor"][3],"BUCK_VIN_PROTECTED")
