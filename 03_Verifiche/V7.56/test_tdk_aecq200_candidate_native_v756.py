@@ -91,7 +91,47 @@ def gate():
     # the count, category, severity, or any other component's findings.
     # All original native reports remain intact; no ERC waiver is added.
     import re
-    u6202=re.compile(r'^@\\([0-9.]+ mm, [0-9.]+ mm\\): Symbol U6202 Pin [0-9]+ \\[.+\\]$')
+    u6202=re.compile(r'^@\([0-9.]+ mm, [0-9.]+ mm\): Symbol U6202 Pin [0-9]+ \[.+\]
+    def fingerprint(x):
+        d=dict(x)
+        if (d.get("category")=="endpoint_off_grid" and d.get("sheet")=="/"
+            and d.get("severity")=="warning" and len(d.get("locations",[]))==1
+            and u6202.fullmatch(d["locations"][0])):
+            d["locations"]=["U6202 pre-existing off-grid finding on BYTE-identical MCU source"]
+        return json.dumps(d,sort_keys=True,ensure_ascii=False)
+    old_findings=Counter(fingerprint(x) for x in er0["findings"])
+    new_findings=Counter(fingerprint(x) for x in er1["findings"])
+    if old_findings!=new_findings:
+        print("ADDED ERC FINDINGS:",list((new_findings-old_findings).elements())[:25],flush=True)
+        print("REMOVED ERC FINDINGS:",list((old_findings-new_findings).elements())[:25],flush=True)
+    assert old_findings==new_findings,"Changed native ERC finding multiset"
+    assert er0["categories"]==er1["categories"],(er0,er1)
+    z.update(parts=139,nets=102,erc_errors=er1["errors"],erc_warnings=er1["warnings"],
+             same_native_pin_net=True,verified_vendor_land=False,
+             actual_dc_bias_curve_worst_case_approved=False,
+             complete_board_approved=False,independent_efuse_recovery_approved=False)
+    return z
+
+class TestV756AutomotiveCandidate(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.z=gate()
+    def test_01_source_exact(self):self.assertEqual(set(self.z["candidates"]),{"C103","C104"})
+    def test_02_mpn(self):self.assertEqual(self.z["mpn"],"CGA6P3X7R1E226M250AB")
+    def test_03_139_parts(self):self.assertEqual(self.z["parts"],139)
+    def test_04_102_nets(self):self.assertEqual(self.z["nets"],102)
+    def test_05_graph(self):self.assertTrue(self.z["same_native_pin_net"])
+    def test_06_erc_errors(self):self.assertEqual(self.z["erc_errors"],28)
+    def test_07_erc_warnings(self):self.assertEqual(self.z["erc_warnings"],222)
+    def test_08_vendor_land_hold(self):self.assertFalse(self.z["verified_vendor_land"])
+    def test_09_dc_bias_hold(self):self.assertFalse(self.z["actual_dc_bias_curve_worst_case_approved"])
+    def test_10_board_hold(self):self.assertFalse(self.z["complete_board_approved"])
+    def test_11_recovery_hold(self):self.assertFalse(self.z["independent_efuse_recovery_approved"])
+    def test_12_review_only(self):self.assertTrue(all(not self.z[k] for k in ("verified_vendor_land","complete_board_approved")))
+    def test_13_tdk_aec_q200(self):self.assertTrue(self.z["automotive_aec_q200_vendor"])
+if __name__=="__main__":
+    unittest.main()
+)
     def fingerprint(x):
         d=dict(x)
         if (d.get("category")=="endpoint_off_grid" and d.get("sheet")=="/"
