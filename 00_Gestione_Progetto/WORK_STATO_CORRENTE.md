@@ -1,6 +1,25 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
 
+## STATO LIVE PIÙ RECENTE — 14 novembre 2026 — **V7.73 INTEGRATA / 28 ERRORI ERC NATIVI CLASSIFICATI / 461 PASS / ERC 28+180 INVARIATO**
+
+**GitHub live:** [PR #99](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/99) **MERGED** squash `66282ba9d6aef00029bc4b2d39dc005eab5f8dfc`; [native KiCad9 7sheet CI run 43529843578](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43529843578) **SUCCESS, 461 Python PASS** (446 V7.72+15 V7.73); [Actions cost/safety policy 43529843646](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43529843646) **SUCCESS**, [native artifact 14086612759](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43529843578/artifacts/14086612759). Reused existing `.github/workflows/v743_six_ldo_thermal_budget.yml` and already generated V7.72 native ERC without duplicating export or adding workflow. **No CAD edit in V7.73; no ERC count reduction claimed.** `03_Verifiche/V7.73/test_native_28_erc_error_inventory_v773.py` produces full exact **28-error JSON + Markdown** (including category, sheet, original KiCad location and open/waiver=false) archived in artifact, and prints all 28 original errors in CI log. Technical rationale `03_Verifiche/V7.73/RAPPORTO_TRIAGE_28_ERRORI_ERC_NATIVE_V773.md`.
+
+**Actual newly established root triage from the 28 native error log, NOT a guess:**
+- **22 `label_dangling`**: 6 PLL/RF labels `RFOUT_BM_PENDING`, `RFOUT_BP_PENDING`, `RFOUT_AM_PENDING`, `RFOUT_AP_PENDING`, `PLL_VTUNE`, `TCXO_PIN10_AFC_OR_GND_TBD`; 13 MCU/control/audio labels `MCU_NRST`, `PTT_IN_N`, `TX_ENABLE_REQ`, `PLL_CSB`, `PLL_SCK`, `PLL_SDI`, `PLL_MUXOUT`, `PLL_CE`, `MCU_SWDIO`, `MCU_SWCLK`, `MICBIAS`, `AUDIO_LINE_L`, `AUDIO_LINE_R`; 3 external/power/audio labels `5V_RF_PREREGULATED`, `MIC_PREAMP_OUT`, `FM_DISCRIM_RAW`. These dangling labels reflect unqualified/unintegrated interfaces in many cases, not authorization to connect nets, erase labels, waive ERC or enable TX. Review individually and preserve all 15 crossmodule OPEN/HOLD.
+- **6 `power_pin_not_driven`**: MCU U6203 pin1 IN and pin2 GND; AUX eFuse U200 pin1 IN and pin8 RTN; PLL LDO U2 pin1 IN and pin2 GND. These may reflect hierarchical power sources/returns and ERC symbol pin types, but **actual power integrity/source/return must be established**, especially eFuse RTN distinct from GND_MAIN. **DO NOT add PWR_FLAG or short grounds** to silence warnings; do not change pin types to fake driver. All six remain errors.
+- Counts exactly **22+6=28**, warnings **180**; 140 components/103 nets from V7.72 unchanged. No global PCB DRC and no measured load currents.
+
+**NEXT V7.74**: attack the six `power_pin_not_driven` using genuine native 7-sheet netlist and datasheet source/return tracing (U6203 IN/GND, U200 IN/RTN, U2 IN/GND). Determine which are genuinely disconnected and which require explicit legitimate source modeling; no waiver, no fake PWR_FLAG, no EFUSE_RTN↔GND_MAIN. Then check 22 dangling interfaces for real source/destination qualification, especially TX_ENABLE_REQ/PTT_IN_N and TCXO pin10; never connect or erase solely to reduce count. If no safe electrical ECO, record fail-closed HOLD and advance actual footprint/PCB vendor qualification.
+
+**Unchanged safety:** [Issue #57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) OPEN, F200/eFuse/SHDN reset and ESD, D200 TVS DNP, C103/C104 TDK 5V Ceff and TPS54202 loop, six TPS7A2033 LDO real loads and thermal, L100 saturation/fault, 15 crossmodule OPEN/HOLD, SG48/Y1 pin10 HOLD, 28 ERC errors and 180 warnings, no complete PCB/global DRC. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+**Nota:** V7.72 and earlier sections below are historical.
+
+---
+
+
+
 ## STATO LIVE PIÙ RECENTE — 14 novembre 2026 — **V7.72 INTEGRATA / 6 BYPASS PLL U2 U3 REALE 100MIL / 446 PASS / ERC 28 ERRORI +180 WARNING**
 
 **GitHub verified:** [V7.72 PR #97](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/97) **MERGED**, squash `63bb590ac7190fd00a55910813fd01e4d8b11694`; [KiCad9 native 7-sheet and Python CI 43526787821](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43526787821) **SUCCESS 446 PASS** (428 V7.71 +18 V7.72), [cost/safety policy 43526787671](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43526787671) **SUCCESS**, [artifact 14085437181](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43526787821/artifacts/14085437181). Existing `.github/workflows/v743_six_ldo_thermal_budget.yml` reused with narrow V7.72 paths, no new workflow or billing/settings modifications. First V7.72 CI failed due test **legacy numeric text format** `118.3` vs `118.30` (not electrical); strict exact source test formatter fixed to strip trailing zeros and CI rerun **fully green**, no change in actual schematic or safety gate.
