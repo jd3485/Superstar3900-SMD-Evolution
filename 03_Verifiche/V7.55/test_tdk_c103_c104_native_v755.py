@@ -74,6 +74,14 @@ def gate():
     er0=native_erc(OUT/"v755.original.erc.rpt")
     er1=native_erc(OUT/"v755.revised.erc.rpt")
     assert (er0["errors"],er0["warnings"])==(28,221),er0
+    if (er1["errors"],er1["warnings"])!=(28,221):
+        # Do not waive ERC. Surface the exact additional native diagnostic
+        # so the source of an unexpected new warning can be corrected.
+        import difflib
+        lines0=(OUT/"v755.original.erc.rpt").read_text().splitlines()
+        lines1=(OUT/"v755.revised.erc.rpt").read_text().splitlines()
+        changes=list(difflib.unified_diff(lines0,lines1,fromfile="V7.52",tofile="V7.55",n=1))
+        print("V7.55 UNEXPECTED ERC DELTA:\\n"+"\\n".join(changes[:100]),flush=True)
     assert (er1["errors"],er1["warnings"])==(28,221),er1
     assert er0["categories"]==er1["categories"],(er0,er1)
     z.update(parts=139,nets=102,erc_errors=er1["errors"],erc_warnings=er1["warnings"],
