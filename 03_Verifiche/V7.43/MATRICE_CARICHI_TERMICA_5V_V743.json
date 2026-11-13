@@ -1,0 +1,126 @@
+{
+  "revision": "V7.43",
+  "status": "SIX_LDO_THERMAL_AND_POWER_LOAD_BUDGET_HOLD",
+  "baseline": "V7.42 merged PR45",
+  "source_paths": {
+    "mcu": "04_KiCad/Modulo_MCU_CODEC_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_MCU_CODEC_AFE_V7_12_REANNOTATED_NOT_FOR_FAB.kicad_sch",
+    "pll": "04_KiCad/Gerarchico_Alimentazioni_V7.31_AUX_CONNECTORS_ON_GRID_NOT_FOR_FAB/03_PLL_LDO_TCXO.kicad_sch",
+    "root": "04_KiCad/Assemblaggio_RX_Power_V7.41_FB6201_TDK_VENDOR_LAND_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch",
+    "interface": "03_Verifiche/V7.42/CONTRATTO_INTERFACCIA_AUX_MCU_POWER_V742.json"
+  },
+  "vendor": {
+    "part": "TPS7A2033PDBVR",
+    "datasheet": "https://www.ti.com/lit/ds/symlink/tps7a20.pdf",
+    "rev": "SBVS338H",
+    "rated_output_current_a": 0.3,
+    "r_theta_ja_c_per_w_dbv": 187.1,
+    "t_j_max_operating_c": 125,
+    "vout_nom_v": 3.3,
+    "vin_nom_v": 5,
+    "quiescent_ground_current_typ_at_300ma_a": 0.002,
+    "thermal_model_is_board_specific": true
+  },
+  "buck": {
+    "part": "TPS54202DDCR",
+    "datasheet": "https://www.ti.com/lit/ds/symlink/tps54202.pdf",
+    "max_continuous_output_a": 2
+  },
+  "bead": {
+    "ref": "FB6201",
+    "part": "MPZ2012S601ATD25",
+    "rated_current_a": 2,
+    "dcr_max_ohm": 0.1
+  },
+  "rail_rows": [
+    {
+      "sheet": "mcu",
+      "ref": "U6203",
+      "output_net": "3V3_AUDIO_CLK",
+      "vin_net": "5V_DIGITAL_FILTERED",
+      "return_net": "GND",
+      "load_max_known_a": null,
+      "transient_max_known_a": null
+    },
+    {
+      "sheet": "mcu",
+      "ref": "U6204",
+      "output_net": "3V3_MCU",
+      "vin_net": "5V_DIGITAL_FILTERED",
+      "return_net": "GND",
+      "load_max_known_a": null,
+      "transient_max_known_a": null
+    },
+    {
+      "sheet": "mcu",
+      "ref": "U6205",
+      "output_net": "3V3_CODEC_IO",
+      "vin_net": "5V_DIGITAL_FILTERED",
+      "return_net": "GND",
+      "load_max_known_a": null,
+      "transient_max_known_a": null
+    },
+    {
+      "sheet": "mcu",
+      "ref": "U6206",
+      "output_net": "3V3_CODEC_LDOIN",
+      "vin_net": "5V_DIGITAL_FILTERED",
+      "return_net": "GND",
+      "load_max_known_a": null,
+      "transient_max_known_a": null
+    },
+    {
+      "sheet": "pll",
+      "ref": "U2",
+      "output_net": "3V3_PLL_INPUT_FROM_LDO",
+      "vin_net": "5V_RF_PREREGULATED",
+      "return_net": "GND_MAIN",
+      "load_max_known_a": null,
+      "transient_max_known_a": null
+    },
+    {
+      "sheet": "pll",
+      "ref": "U3",
+      "output_net": "3V3_REF_LDO",
+      "vin_net": "5V_RF_PREREGULATED",
+      "return_net": "GND_MAIN",
+      "load_max_known_a": null,
+      "transient_max_known_a": null
+    }
+  ],
+  "unknown_direct_5v_and_other_load_a": null,
+  "ambient_design_max_c": null,
+  "thermal_board_theta_actual_c_per_w": null,
+  "allowable_junction_margin_c": null,
+  "design_scenarios": [
+    {
+      "name": "illustrative_ambient_25C",
+      "ambient_c": 25
+    },
+    {
+      "name": "illustrative_ambient_60C",
+      "ambient_c": 60
+    },
+    {
+      "name": "illustrative_ambient_85C",
+      "ambient_c": 85
+    }
+  ],
+  "approval": {
+    "all_six_ldo_loads_characterized": false,
+    "buck_total_current_verified": false,
+    "bead_current_verified": false,
+    "actual_board_theta_verified": false,
+    "ground_return_signed_off": false,
+    "root_interconnect_signed_off": false,
+    "powerdown_qualified": false,
+    "NO_FAB": true,
+    "NO_GERBER": true,
+    "NO_TX": true
+  },
+  "u2_native_diagnostic": {
+    "conclusion": "U2.1_IN_AND_U2.3_EN_ALREADY_ON_5V_RF_PREREGULATED",
+    "evidence": "native KiCad9 original seven-sheet netlist from run 43400371906 artifact 14025006632",
+    "textual_absence_of_label_not_proof_of_disconnection": true,
+    "no_cad_change_required": true
+  }
+}
