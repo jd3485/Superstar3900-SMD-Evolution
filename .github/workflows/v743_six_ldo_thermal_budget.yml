@@ -26,6 +26,9 @@ on:
       - '03_Verifiche/V7.65/**'
       - '03_Verifiche/V7.66/**'
       - '03_Verifiche/V7.67/**'
+      - '03_Verifiche/V7.68/**'
+      - '04_KiCad/Gerarchico_Alimentazioni_V7.68_BUCK_BOOT_L_FB_GRID_REVIEW_NOT_FOR_FAB/**'
+      - '04_KiCad/Assemblaggio_RX_Power_V7.68_BUCK_BOOT_L_FB_GRID_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.67_BUCK_VIN_EN_GRID_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.67_BUCK_VIN_EN_GRID_REVIEW_NOT_FOR_FAB/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.66_F200_FUSE_GRID_REVIEW_NOT_FOR_FAB/**'
@@ -363,6 +366,22 @@ jobs:
           kicad-cli sch erc -o 03_Verifiche/V7.67/output-ci/v767.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.67_BUCK_VIN_EN_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: V7.67 strict buck VIN EN pin-net/4grid and Littelfuse F200 TI TPS54202 60 scenarios gate
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.67 -p 'test_*.py' -v
+      - name: V7.68 native KiCad9 7sheet before and after six BUCK bootstrap inductor feedback 100mil ECO
+        run: |
+          mkdir -p 03_Verifiche/V7.68/output-ci
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          p=Path('03_Verifiche/V7.68/test_buck_boot_inductor_feedback_native_v768.py')
+          ast.parse(p.read_text(encoding='utf8'),filename=str(p))
+          print('V7.68 Python AST PASS')
+          PY
+          kicad-cli sch export netlist -o 03_Verifiche/V7.68/output-ci/v768.original.net 04_KiCad/Assemblaggio_RX_Power_V7.67_BUCK_VIN_EN_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.68/output-ci/v768.original.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.67_BUCK_VIN_EN_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch export netlist -o 03_Verifiche/V7.68/output-ci/v768.revised.net 04_KiCad/Assemblaggio_RX_Power_V7.68_BUCK_BOOT_L_FB_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+          kicad-cli sch erc -o 03_Verifiche/V7.68/output-ci/v768.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.68_BUCK_BOOT_L_FB_GRID_REVIEW_NOT_FOR_FAB/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
+      - name: V7.68 strict six native pin-net / six offgrid and TPS54202 VFB 1pct tolerance gate
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.68 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -390,4 +409,5 @@ jobs:
             03_Verifiche/V7.65/output-ci/
             03_Verifiche/V7.66/output-ci/
             03_Verifiche/V7.67/output-ci/
+            03_Verifiche/V7.68/output-ci/
           if-no-files-found: warn
