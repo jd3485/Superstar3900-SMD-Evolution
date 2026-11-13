@@ -25,39 +25,41 @@ def source_check():
     old=(AUX0/"01_EFUSE_AUX.kicad_sch").read_text(encoding="utf8")
     expected=old
     actual=(AUX1/"01_EFUSE_AUX.kicad_sch").read_text(encoding="utf8")
+    # Exactly twelve scoped edit atoms; no reformatting or incidental changes.
+    deltas=[
+      ('(symbol (lib_id "S3900E:C_EFUSE") (at 83 94 90)',
+       '(symbol (lib_id "S3900E:C_EFUSE") (at 83.8200 93.9800 90)'),
+      ('(property "Reference" "C200" (at 83 87 0)',
+       '(property "Reference" "C200" (at 83.8200 86.9800 0)'),
+      ('(property "Value" "100nF 100V X7R" (at 83 90.7 0)',
+       '(property "Value" "100nF 100V X7R" (at 83.8200 90.6800 0)'),
+      ('(property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 83 94 0)',
+       '(property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 83.8200 93.9800 0)'),
+      ('(label "EFUSE_VIN" (at 83 88.92 0)',
+       '(label "EFUSE_VIN" (at 83.8200 88.9000 0)'),
+      ('(hierarchical_label "GND_MAIN" (shape passive) (at 83 99.08 0)',
+       '(hierarchical_label "GND_MAIN" (shape passive) (at 83.8200 99.0600 0)'),
+      ('(symbol (lib_id "S3900E:D") (at 104 94 90)',
+       '(symbol (lib_id "S3900E:D") (at 104.1400 93.9800 90)'),
+      ('(property "Reference" "D200" (at 104 87 0)',
+       '(property "Reference" "D200" (at 104.1400 86.9800 0)'),
+      ('(property "Value" "SMBJ18CA 18V CANDIDATA / DNP" (at 104 90.7 0)',
+       '(property "Value" "SMBJ18CA 18V CANDIDATA / DNP" (at 104.1400 90.6800 0)'),
+      ('(property "Footprint" "Diode_SMD:D_SMB" (at 104 94 0)',
+       '(property "Footprint" "Diode_SMD:D_SMB" (at 104.1400 93.9800 0)'),
+      ('(label "EFUSE_VIN" (at 104 88.92 0)',
+       '(label "EFUSE_VIN" (at 104.1400 88.9000 0)'),
+      ('(label "GND_MAIN" (at 104 99.08 0)',
+       '(label "GND_MAIN" (at 104.1400 99.0600 0)'),
+    ]
+    assert len(deltas)==12
+    for before,after in deltas:
+        assert expected.count(before)==1,("Expected original source atom missing/duplicated",before)
+        assert actual.count(after)==1,("Revised source atom missing/duplicated",after)
+        expected=expected.replace(before,after,1)
     for ref,lib,x,y,nx,ny in CASES:
-        assert all(abs(v/2.54-round(v/2.54))<1e-7 for v in (nx,ny)),ref
-        at=f'(symbol (lib_id "{lib}") (at {x} {y} 90)'
-        start=expected.index(at)
-        end=expected.index("\n(symbol (lib_id",start+len(at))
-        part=expected[start:end]
-        assert f'(property "Reference" "{ref}"' in part
-        delim=part.index("\n (instances (project")
-        hdr,tail=part[:delim],part[delim:]
-        hdr=hdr.replace(f'(at {x} {y} 90)',f'(at {nx:.4f} {ny:.4f} 90)',1)
-        edits=[0]
-        def edit(m):
-            edits[0]+=1
-            return f'(at {nx:.4f} {float(m[1])+ny-y:.4f} 0)'
-        hdr=re.sub(r'\(at '+str(x)+r' ([\d.]+) 0\)',edit,hdr)
-        assert edits==[3],(ref,edits)
-        expected=expected[:start]+hdr+tail+expected[end:]
-        lines=expected.splitlines()
-        moved=0
-        for i,line in enumerate(lines):
-            if not (line.startswith("(label ") or line.startswith("(hierarchical_label ")):
-                continue
-            old_at=re.search(r'\(at '+str(x)+r' (88\.92|99\.08) 0\)',line)
-            if old_at:
-                yy=float(old_at[1])
-                lines[i]=line.replace(old_at[0],f'(at {nx:.4f} {yy+ny-y:.4f} 0)',1)
-                moved+=1
-        assert moved==2,(ref,moved)
-        expected="\n".join(lines)
-        for dx in (0,):
-            for dy in (-5.08,5.08):
-                assert abs((nx+dx)/2.54-round((nx+dx)/2.54))<1e-7
-                assert abs((ny+dy)/2.54-round((ny+dy)/2.54))<1e-7
+        assert all(abs(v/2.54-round(v/2.54))<1e-7 for v in
+                   (nx,ny,nx,ny-5.08,ny+5.08)),ref
     assert expected==actual,"Unreviewed changes to AUX eFuse schematic"
     # D200 remains DNP and not an approved installed transient protection.
     assert '(property "Value" "SMBJ18CA 18V CANDIDATA / DNP"' in actual
