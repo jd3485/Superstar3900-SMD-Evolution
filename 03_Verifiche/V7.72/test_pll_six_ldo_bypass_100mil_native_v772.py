@@ -27,7 +27,7 @@ from test_six_vendor_assignments_v725 import compmap
 sys.path.insert(0,str(ROOT/"03_Verifiche/V7.17"))
 from audit_full_board_native_v717 import native_erc
 
-def fd(v):return f"{v:.2f}".removesuffix(".00")
+def fd(v):return f"{v:.2f}".rstrip("0").rstrip(".")
 
 def expected_source():
     original=(A0/"03_PLL_LDO_TCXO.kicad_sch").read_text(encoding="utf8")
