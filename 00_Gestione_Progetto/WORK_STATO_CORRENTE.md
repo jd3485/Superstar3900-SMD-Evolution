@@ -1,5 +1,18 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## AUDIT OPERATIVO GITHUB ACTIONS — 13 novembre 2026 — **PR #48 INTEGRATA / DEDUP V7.12, TRIGGER ANTI-DUPLICATI**
+
+**GitHub verificato:** [PR #48](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/48) **MERGED**, squash `81021ef1e518de6da0e3b6f282d20fe5aa3bd9dc`. [Run policy mirato **43405331994**](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43405331994) **SUCCESS**, output conferma `49 workflow / 5 manual-only / 49 jobs / 3 trigger path shared approvati / 0 sovrapposizioni non autorizzate`. **Nessun KiCad9/DRC né Actions CAD** avviato da questa modifica di infrastruttura; nessuna modifica elettrica o PCB.
+
+**Ottimizzazione effettiva:** la diagnosi RX sperimentale V7.12 `.github/workflows/v712_rx_schematic_native_probe.yml` è adesso **manual-only** (`workflow_dispatch`). La suite maggiore `v712_kicad_native_annotation.yml` **rimane automaticamente attivata** da modifiche V7.12 e continua a controllare netlist/ERC, RX parser, DRC del coupon e regressioni. Su PR che toccano le due paths condivise non parte più il **secondo job KiCad indipendente**, evitando una installazione e un run diagnostico automatico duplicato; la diagnosi rimane invocabile manualmente. Non si può attribuire un risparmio in euro senza verificare il billing.
+
+**Regola permanente attiva:** `ci/workflow_policy/audit_workflow_costs.py` blocca future sovrapposizioni esatte fra filtri automatici `pull_request.paths` non autorizzate e richiede i 5 manual-only. Conserva **3 sovrapposizioni intenzionali** di librerie V7.22 fra `v722_codec_ep33_native.yml` (netlist/ERC EP33) e `v723_kicad9_footprint_native.yml` (reale load PCBNEW), perché i due test coprono controlli non equivalenti. Il controllo rapido `actions_policy_quick.yml` tenta di riusare PyYAML dal runner e lo installa pinned solo se assente. Fonte audit `00_Gestione_Progetto/AUDIT_GITHUB_ACTIONS_COSTI_2026_11_13.md`, `AGENTS.md` aggiornato da 34 storici a 49 rilevati. **Nessuna impostazione billing, budget o visibilità modificata.**
+
+**Sviluppo radio invariato:** ultimo step di progetto elettronico **V7.44 PR#47 MERGED**, V7.45 soltanto handoff; baseline nativa master V7.41, **134 componenti / 101 reti / 32 footprint mancanti / ERC36 errori+221 warning**, 15 interfacce OPEN/HOLD, SG48 e Y1 TCXO pin10 HOLD. Nessuna PCB radio completa, nessuna DRC globale. **NO FAB / NO GERBER / NO PCBWAY / NO TX**, progresso storico ~10% stimato. Proseguire con V7.45 sostanziale usando netlist nativa e senza aprire un workflow nuovo se un gate già disponibile è sufficiente.
+
+---
+
+
 ## HANDOFF TECNICO V7.45 — 13 novembre 2026 — **NETLIST NATIVA: LMX2572 6 SUPPLY VIA R10–R15, TXC Y1 VCC U3, 10mA MAX (NO NUOVA PR)**
 
 **Nessuna V7.45 integrata**, non aggiungere una PR di solo audit: alla fine della V7.44 si è riusato l'[artefatto originale netlist KiCad9 V7.43 run 43400371906](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43400371906/artifacts/14025006632) già disponibile, per mappare i carichi effettivi senza ulteriori GitHub Actions. Verifica sorgente: 7-sheet root V7.41 inalterato.
