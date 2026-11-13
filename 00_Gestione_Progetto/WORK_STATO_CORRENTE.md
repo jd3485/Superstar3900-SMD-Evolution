@@ -1,5 +1,19 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+
+## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.54 INTEGRATA / TPS54202 OUTPUT CAP DC-BIAS & TRANSIENT ENVELOPE / 163 TEST PASS**
+
+**GitHub verificato:** [PR #60](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/60) **MERGED**, squash `033c6a12393118a03aa4b3ec0a5e5b702d36486a`. [KiCad9+Python native workflow 43469072257](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43469072257) **SUCCESS**, 163 PASS (145 precedenti + 18 V7.54), [cost/safety policy 43469072237](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43469072237) **SUCCESS**. Il workflow esistente `.github/workflows/v743_six_ldo_thermal_budget.yml` è stato esteso; nessun job/runner aggiuntivo. **Nessuna ECO CAD V7.54**, nessun aumento della percentuale PCB.
+
+**Rischio applicativo quantificato:** TI [TPS54202 SLVSD26C Rev C febbraio 2026, §7, Tab 7-2, Eq 11](https://www.ti.com/lit/ds/symlink/tps54202.pdf) prevede **44 µF capacità d'uscita** come riferimento di partenza a 5V/15µH/500kHz. Schema corrente V7.52: C103+C104 **2×22µF 25V X7R nominali** =44µF nominali, ma **Ceff sotto bias 5V / temperatura / ageing sconosciuta** perché non esistono MPN e curve produttore qualificati. Nel solo esempio TI load-step ΔI=1.5A, ΔV=0.25V, due cicli 500kHz, Ceff minima ideale 24µF, 54.55% di retention rispetto 44µF nominali: esempio ipotetico 80%→35.2µF / 0.1705V; 50%→22µF /0.2727V (sopra 0.25V). 18 test source-anchored in `03_Verifiche/V7.54/test_tps54202_ceff_transient_native_source_v754.py`, rapporto `03_Verifiche/V7.54/RAPPORTO_BUCK_5V_CEFF_TRANSITORI_V754.md`. Nessuna di queste condizioni di retention equivale a valore o misura reale della PCB; **non è completata una validazione transient/PCB**.
+
+**NEXT V7.55:** priorità reale vendor MPN/curve DC-bias C103/C104 e C100, Ceff worst-case e carico reale AUX/MCU/RX, progetto del recovery eFuse indipendente dal 5V dopo verifica del circuito fisico upstream (Issue [#57](https://github.com/jd3485/Superstar3900-SMD-Evolution/issues/57) **OPEN**), quindi **vera ECO CAD** sul buck/eFuse con native KiCad9 7-sheet before/after netlist/ERC/DRC pertinente. Mancano ancora MPN e transienti; non aggiungere componenti casuali. Baseline KiCad root V7.52 139 componenti, 102 reti, ERC 28 errori +221 warning, 15 cross-module HOLD, nessuna PCB unica terminata. SG48/Y1 HOLD; **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+**Nota:** tutte le sezioni V7.53 e precedenti sotto sono storiche.
+
+---
+
+
 ## STATO LIVE PIÙ RECENTE — 13 novembre 2026 — **V7.53 INTEGRATA / eFUSE–BUCK–FUSE LOAD ENVELOPE / 145 TEST PASS**
 
 **GitHub verificato:** [PR #58](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/58) MERGED squash `c003911ed24a9753e2bea91445a454d89ccef568`; [KiCad9+Python run 43467793583](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43467793583) SUCCESS **145 unittest PASS** (133 precedenti + 12 V7.53); [policy cost/safety 43467793475](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43467793475) SUCCESS; [native artifact 14059716769](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43467793583/artifacts/14059716769). Nessun workflow nuovo: ampliato `.github/workflows/v743_six_ldo_thermal_budget.yml`. CAD V7.52 **immutato**, NON una ECO KiCad e NO nuova certificazione ERC/DRC. PCB unica non completata e percentuale non aumentata.
