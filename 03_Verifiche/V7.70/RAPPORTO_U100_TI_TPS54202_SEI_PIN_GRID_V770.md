@@ -20,7 +20,7 @@ Libreria symbols versionata `04_KiCad/Librerie_Simboli_V7.70_TPS54202_U100_PIN_G
 
 ## Native KiCad9 fail-closed
 
-`03_Verifiche/V7.70/test_tps54202_u100_six_pin_100mil_native_v770.py` aggiunge 20 test: esatte 16 sostituzioni di coordinate schema (6 embedded pin, 6 label, 4 istanza/proprietà), esattamente 6 variazioni coordinate libreria standalone e solo 1 cambio di percorso sym-lib-table; sette fogli KiCad9 originale V7.69 vs revisione V7.70 `kicad-cli sch export netlist` e `sch erc`, mappa COMPLETA di 140 componenti/103 reti e TUTTI i pin→net invariati; test specifico mapping vendor PIN→net; eFuse RTN8/17 separati da GND9, SW200 SHDN7 immutato. Solo sei warning U100 `endpoint_off_grid` autorizzati a sparire, **ERC atteso 28 errori /193→187 warning**; ogni altro finding diverso blocca merge, nessuna waiver. Verificare risultati effettivi CI prima del merge.
+`03_Verifiche/V7.70/test_tps54202_u100_six_pin_100mil_native_v770.py` aggiunge 20 test: esatte 16 sostituzioni di coordinate schema (6 embedded pin, 6 label, 4 istanza/proprietà), esattamente 6 variazioni coordinate libreria standalone e solo 1 cambio di percorso sym-lib-table; sette fogli KiCad9 originale V7.69 vs revisione V7.70 `kicad-cli sch export netlist` e `sch erc`, mappa COMPLETA di 140 componenti/103 reti e TUTTI i pin→net invariati; test specifico mapping vendor PIN→net; eFuse RTN8/17 separati da GND9, SW200 SHDN7 immutato. Solo **un** warning U100 `endpoint_off_grid` nativamente riportato da KiCad9 (pin3 VIN) è autorizzato a sparire, benché siano riallineati tutti e sei i terminali, **ERC atteso 28 errori /193→192 warning**; ogni altro finding diverso blocca merge, nessuna waiver. Verificare risultati effettivi CI prima del merge.
 
 ## HOLD non sbloccati
 
