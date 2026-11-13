@@ -123,7 +123,7 @@ def audit():
     assert .1015<high_current<.1017
     assert tldo(25.,5.,.3)>122.2
     assert tldo(85.,5.,.3)>182.2
-    assert .3*6==1.8 and 2-1.8>.19999
+    assert math.isclose(.3*6,1.8,rel_tol=0,abs_tol=1e-12) and 2-1.8>.19999
     l100=[bourns_l100_ripple(vin,i)
         for vin in (10.2545,13.8,17.0524) for i in (.5,1.,1.5,2.)]
     assert len(l100)==12
