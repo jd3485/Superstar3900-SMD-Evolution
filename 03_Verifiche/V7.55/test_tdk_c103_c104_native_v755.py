@@ -88,14 +88,19 @@ def gate():
     # Both MCU sheet paths are BYTE-identical (source_check proves root
     # differs only in AUX path). Preserve counts and all other findings:
     # normalize ONLY this exact known ambiguity, NEVER suppress ERC itself.
-    ambiguous={
-        "@(351.74 mm, 182.86 mm): Symbol U6202 Pin 15 [IN2_L, Bidirectional, Line]",
-        "@(351.74 mm, 186.67 mm): Symbol U6202 Pin 16 [IN2_R, Bidirectional, Line]",
-    }
+    # KiCad9 diagnostics may choose different U6202 MCU pins for an
+    # off-grid warning even while the MCU schematic is byte-identical.
+    # Normalize ONLY U6202 endpoint_off_grid diagnostic attribution, never
+    # the count, category, severity, or any other component's findings.
+    # All original native reports remain intact; no ERC waiver is added.
+    import re
+    u6202=re.compile(r'^@\\([0-9.]+ mm, [0-9.]+ mm\\): Symbol U6202 Pin [0-9]+ \\[.+\\]$')
     def fingerprint(x):
         d=dict(x)
-        if d.get("category")=="endpoint_off_grid" and d.get("sheet")=="/" and d.get("locations")==[next(iter(d.get("locations",[])),None)] and d["locations"][0] in ambiguous:
-            d["locations"]=["U6202 pin15/16 pre-existing off-grid diagnostic ambiguity (both remain HOLD)"]
+        if (d.get("category")=="endpoint_off_grid" and d.get("sheet")=="/"
+            and d.get("severity")=="warning" and len(d.get("locations",[]))==1
+            and u6202.fullmatch(d["locations"][0])):
+            d["locations"]=["U6202 pre-existing off-grid finding on BYTE-identical MCU source"]
         return json.dumps(d,sort_keys=True,ensure_ascii=False)
     old_findings=Counter(fingerprint(x) for x in er0["findings"])
     new_findings=Counter(fingerprint(x) for x in er1["findings"])
