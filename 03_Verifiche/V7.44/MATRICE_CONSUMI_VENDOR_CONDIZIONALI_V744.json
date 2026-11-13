@@ -1,0 +1,202 @@
+{
+  "revision": "V7.44",
+  "status": "CONDITIONAL_DATASHEET_LOAD_ANCHORS_HOLD",
+  "upstream": "03_Verifiche/V7.43/MATRICE_CARICHI_TERMICA_5V_V743.json",
+  "nominal_operating_point": {
+    "vin_v": 5,
+    "vout_v": 3.3,
+    "theta_ja_reference_c_per_w": 187.1,
+    "tj_operating_max_c": 125,
+    "ignd_a_unbounded": null,
+    "board_theta_measured": false,
+    "footprint_thermal_layout_approved": false
+  },
+  "source_evidence": [
+    {
+      "id": "LMX2572",
+      "vendor": "TI",
+      "part": "LMX2572RHA",
+      "pdf": "https://www.ti.com/lit/ds/symlink/lmx2572.pdf",
+      "revision": "SNAS740B",
+      "table": "6.5",
+      "page_printed": 6,
+      "rail": "3V3_PLL_INPUT_FROM_LDO",
+      "ldo": "U2",
+      "temp_data_c": 25,
+      "voltage_v": 3.3,
+      "units": "mA",
+      "scope": "IC_VCC_IN_SPECIFIED_CONFIGURATION_ONLY",
+      "examples": [
+        {
+          "mode": "direct_vco_fpd20MHz_icp1p25mA",
+          "type": "typ",
+          "value": 75
+        },
+        {
+          "mode": "direct_vco_fpd100MHz_icp2p5mA",
+          "type": "typ",
+          "value": 79
+        },
+        {
+          "mode": "rf_divided_fpd20MHz_icp1p25mA",
+          "type": "typ",
+          "value": 82
+        },
+        {
+          "mode": "rf_divided_fpd100MHz_icp2p5mA",
+          "type": "typ",
+          "value": 86
+        },
+        {
+          "mode": "power_down",
+          "type": "typ",
+          "value": 2.5
+        }
+      ],
+      "datasheet_max_for_these_examples_mA": null,
+      "not_total_rail_current": true
+    },
+    {
+      "id": "STM32G474",
+      "vendor": "ST",
+      "part": "STM32G474RET6",
+      "pdf": "https://www.st.com/resource/en/datasheet/stm32g474rb.pdf",
+      "revision": "DS12288 Rev6",
+      "table": "21",
+      "page_printed": 89,
+      "rail": "3V3_MCU",
+      "ldo": "U6204",
+      "units": "mA",
+      "scope": "CPU_FLASH_SINGLE_BANK_170MHZ_RANGE1_BOOST_ART_CACHE_ON_PREFETCH_OFF_ALL_PERIPHERALS_DISABLED",
+      "examples": [
+        {
+          "mode": "run_170MHz_25C",
+          "temperature_c": 25,
+          "type": "typ",
+          "value": 29.5
+        },
+        {
+          "mode": "run_170MHz_25C",
+          "temperature_c": 25,
+          "type": "max",
+          "value": 31
+        },
+        {
+          "mode": "run_170MHz_85C",
+          "temperature_c": 85,
+          "type": "typ",
+          "value": 31
+        },
+        {
+          "mode": "run_170MHz_85C",
+          "temperature_c": 85,
+          "type": "max",
+          "value": 42
+        }
+      ],
+      "not_total_rail_current": true,
+      "peripherals_gpio_adc_dac_dma_usb_unknown": true
+    },
+    {
+      "id": "TLV320AIC3204",
+      "vendor": "TI",
+      "part": "TLV320AIC3204",
+      "pdf": "https://www.ti.com/lit/ds/symlink/tlv320aic3204.pdf",
+      "revision": "SLOS602E",
+      "table": "7.10 and application section",
+      "rail_io": "3V3_CODEC_IO",
+      "rail_ldoin": "3V3_CODEC_LDOIN",
+      "ldos": [
+        "U6205",
+        "U6206"
+      ],
+      "scope": "DATASHEET_CONDITIONAL_POWER_AND_SOURCE_CAPABILITY_NOT_LOAD_BUDGET",
+      "examples": [],
+      "not_total_rail_current": true,
+      "source_capability_recommendation_mA": 150,
+      "source_capability_is_not_current_draw": true,
+      "dvdd_processing_peak_mA_approx": 20,
+      "dvdd_processing_peak_not_ldoin_input_current": true,
+      "available_io_rail_current_max_mA": null,
+      "available_ldoin_rail_current_max_mA": null
+    },
+    {
+      "id": "U3_REFERENCE_LOAD",
+      "vendor": "NO_APPROVED_PART_BUDGET",
+      "part": null,
+      "rail": "3V3_REF_LDO",
+      "ldo": "U3",
+      "examples": [],
+      "max_current_mA": null
+    },
+    {
+      "id": "U6203_AUDIO_CLOCK_LOAD",
+      "vendor": "NO_APPROVED_PART_BUDGET",
+      "part": null,
+      "rail": "3V3_AUDIO_CLK",
+      "ldo": "U6203",
+      "examples": [],
+      "max_current_mA": null
+    }
+  ],
+  "scenario_calculations": [
+    {
+      "ref": "U2",
+      "device": "LMX2572",
+      "condition": "RF_DIVIDED_FPD100MHZ_TYP_AT_25C",
+      "typ_device_current_mA": 86,
+      "illustrative_ambient_c": 85,
+      "permission": "SENSITIVITY_EXAMPLE_ONLY_NOT_THERMAL_SIGNOFF"
+    },
+    {
+      "ref": "U6204",
+      "device": "STM32G474",
+      "condition": "170MHZ_NO_PERIPHERALS_MAX_AT_85C",
+      "max_device_current_mA": 42,
+      "illustrative_ambient_c": 85,
+      "permission": "DATASHEET_TEST_MODE_ONLY_NOT_FIRMWARE_MAX"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "RX_ACTIVE",
+      "mcu_clock_real_hz": null,
+      "pll_fpd_hz": null,
+      "pll_vco_mode": null,
+      "codec_register_image": null,
+      "ambient_max_c": null,
+      "all_other_loads_a": null
+    },
+    {
+      "name": "RX_SCAN",
+      "mcu_clock_real_hz": null,
+      "pll_fpd_hz": null,
+      "pll_vco_mode": null,
+      "codec_register_image": null,
+      "ambient_max_c": null,
+      "all_other_loads_a": null
+    },
+    {
+      "name": "STANDBY",
+      "mcu_clock_real_hz": null,
+      "pll_fpd_hz": null,
+      "pll_vco_mode": null,
+      "codec_register_image": null,
+      "ambient_max_c": null,
+      "all_other_loads_a": null
+    }
+  ],
+  "approval": {
+    "no_effective_max_ldo_load_claim": true,
+    "full_buck_budget_approved": false,
+    "board_thermal_budget_approved": false,
+    "codec_io_and_ldoin_current_max_approved": false,
+    "pll_typ_current_not_max": true,
+    "peripherals_consumption_missing": true,
+    "cross_domain_connection_approved": false,
+    "no_cad_changes": true,
+    "NO_FAB": true,
+    "NO_GERBER": true,
+    "NO_TX": true
+  }
+}
