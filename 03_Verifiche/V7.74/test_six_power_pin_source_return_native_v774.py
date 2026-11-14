@@ -67,7 +67,13 @@ def gate():
     er1=native_erc(OUT/"v774.revised.erc.rpt")
     assert (er0["errors"],er0["warnings"])==(28,180)
     assert (er1["errors"],er1["warnings"])==(28,180)
-    assert er0["findings"]==er1["findings"],"Unrelated ERC delta"
+    from collections import Counter
+    a_findings=Counter(json.dumps(f,sort_keys=True) for f in er0["findings"])
+    b_findings=Counter(json.dumps(f,sort_keys=True) for f in er1["findings"])
+    if a_findings!=b_findings:
+        print("V7.74 new genuine ERC",list((b_findings-a_findings).elements())[:12])
+        print("V7.74 lost genuine ERC",list((a_findings-b_findings).elements())[:12])
+    assert a_findings==b_findings,"Real ERC findings changed; do not waive"
     errors=[f for f in er1["findings"] if f["severity"]=="error"]
     power=[f for f in errors if f["category"]=="power_pin_not_driven"]
     assert len(errors)==28 and len(power)==6
