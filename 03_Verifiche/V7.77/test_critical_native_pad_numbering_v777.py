@@ -51,8 +51,9 @@ def library_dirs():
     return lib
 
 def pad_list(text):
-    # KiCad U200 EP17 has one physical copper land plus several
-    # F.Paste-only stencil aperture pads sharing number 17.
+    # The KiCad9 generic TSSOP-16-1EP U200 EP17 is EIGHT repeated
+    # F.Cu + F.Paste copper islands, ALL numbered 17 (not paste-only).
+    # This is permissible electrically but NOT yet TI PWP vendor-qualified.
     found=[]
     for m in re.finditer(r'\(pad "([^"]+)" (?:smd|thru_hole|connect|np_thru_hole) ',text):
         start=m.start()
@@ -109,12 +110,17 @@ def audit():
             path=Path("/usr/share/kicad/footprints")/(nickname+".pretty")/(name+".kicad_mod")
         assert path.is_file(),(ref,str(path))
         pads=pad_list(path.read_text(encoding="utf8"))
-        assert len(pads)==len(set(pads)),(ref,"duplicate physical pad",pads)
+        repeated={p:pads.count(p) for p in set(pads) if pads.count(p)>1}
+        if ref=="U200":
+            assert repeated=={"17":8},(ref,"unexpected multi-island EP17",repeated)
+        else:
+            assert not repeated,(ref,"unexpected duplicate copper pad",repeated)
         assert set(pads)==EXPECTED[ref],(ref,fp,sorted(pads),sorted(EXPECTED[ref]))
         assert pins_by_ref[ref] <= set(pads),(ref,"connected pin missing physical pad",pins_by_ref[ref]-set(pads))
-        critical[ref]=dict(footprint=fp,pad_count=len(pads),
+        critical[ref]=dict(footprint=fp,pad_count=len(set(pads)),copper_land_primitives=len(pads),
           connected_native_netlist_pins=len(pins_by_ref[ref]),
           footprint_file=str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path),
+          repeated_copper_numbers=repeated,
           numbering_matches=True,manufacturer_geometry_qualified_for_fab=False)
     assert "33" in EXPECTED["U6202"] and "17" in EXPECTED["U200"]
     assert len(critical)==11
@@ -142,6 +148,9 @@ class TestV777Pads(unittest.TestCase):
     def test_03_missing_are_explicit(self):self.assertEqual(len(self.r["footprint_missing_refs"]),self.r["footprint_missing_count"])
     def test_04_ep(self):self.assertEqual(self.r["critical"]["U6202"]["pad_count"],33)
     def test_05_efuse_ep(self):self.assertEqual(self.r["critical"]["U200"]["pad_count"],17)
+    def test_05b_efuse_ep_multi_islands(self):
+        self.assertEqual(self.r["critical"]["U200"]["repeated_copper_numbers"],{"17":8})
+        self.assertEqual(self.r["critical"]["U200"]["copper_land_primitives"],24)
     def test_06_mcu(self):self.assertEqual(self.r["critical"]["U6201"]["pad_count"],64)
     def test_07_sw200(self):self.assertEqual(self.r["critical"]["SW200"]["pad_count"],4)
     def test_08_no_release(self):self.assertFalse(self.r["all_footprints_qualified"] or self.r["board_drc_verified"])
