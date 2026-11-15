@@ -33,6 +33,7 @@ on:
       - '03_Verifiche/V7.72/**'
       - '03_Verifiche/V7.73/**'
       - '03_Verifiche/V7.74/**'
+      - '03_Verifiche/V7.76/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.74_SIX_PWR_SOURCE_RETURN_PROVENANCE_HOLD/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.74_SIX_PWR_SOURCE_RETURN_PROVENANCE_HOLD/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.74_U6203_PWR_SOURCE_RETURN_PROVENANCE_HOLD/**'
@@ -482,6 +483,8 @@ jobs:
           kicad-cli sch erc -o 03_Verifiche/V7.74/output-ci/v774.revised.erc.rpt 04_KiCad/Assemblaggio_RX_Power_V7.74_SIX_PWR_SOURCE_RETURN_PROVENANCE_HOLD/S3900E_RX_POWER_V7_14_LIB_NOT_FOR_FAB.kicad_sch
       - name: V7.74 strict 6 real power pin source-return net paths, safety and all-ERC identical
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.74 -p 'test_*.py' -v
+      - name: V7.76 eFuse current-limit/fuse and real SHDN/RTN native net safety gate
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.76 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -516,4 +519,5 @@ jobs:
             03_Verifiche/V7.72/output-ci/
             03_Verifiche/V7.73/output-ci/
             03_Verifiche/V7.74/output-ci/
+            03_Verifiche/V7.76/output-ci/
           if-no-files-found: warn
