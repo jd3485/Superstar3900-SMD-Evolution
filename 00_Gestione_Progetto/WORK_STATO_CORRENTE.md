@@ -1,8 +1,8 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
-## LAVORO V7.75 PROPOSTO — 15 novembre 2026 — ROADMAP PCB, **NON ANCORA MERGED**
+## LAVORO V7.75 — 15 novembre 2026 — ROADMAP PCB, **PR #103; verificare merge su GitHub**
 
-Branch `planning/v7-75-prototype-gates-and-power-blockers`: aggiunta `00_Gestione_Progetto/ROADMAP_PROTOTIPO_PCB.md` con gate G1–G9, evidenza base da V7.74, blockers reali, exit criteria e prossimo backlog alimentazione/eFuse. **Questo è un aggiornamento operativo di pianificazione, non una ECO elettrica**: nessun CAD alterato, ERC non rieseguito localmente, conteggio nativo V7.74 invariato come *ultima evidenza* 28 errori/180 warning; nessuna PCB unica o DRC globale. CI/PR/merge di V7.75 ancora da confermare. Priorità successiva: circuiti fisici di ingresso 13,8V e recovery eFuse, carichi LDO effettivi e qualifiche MPN-footprint. Nessun allentamento NO FAB/NO TX e 15 HOLD.
+Branch `planning/v7-75-prototype-gates-and-power-blockers`: aggiunta `00_Gestione_Progetto/ROADMAP_PROTOTIPO_PCB.md` con gate G1–G9, evidenza base da V7.74, blockers reali, exit criteria e prossimo backlog alimentazione/eFuse. **Questo è un aggiornamento operativo di pianificazione, non una ECO elettrica**: nessun CAD alterato, ERC non rieseguito localmente, conteggio nativo V7.74 invariato come *ultima evidenza* 28 errori/180 warning; nessuna PCB unica o DRC globale. PR #103: verificare lo stato GitHub e gli eventuali check prima di assumere integrazione. Priorità successiva: circuiti fisici di ingresso 13,8V e recovery eFuse, carichi LDO effettivi e qualifiche MPN-footprint. Nessun allentamento NO FAB/NO TX e 15 HOLD.
 
 ---
 
