@@ -51,8 +51,42 @@ def library_dirs():
     return lib
 
 def pad_list(text):
-    # Kicad native .kicad_mod pad forms are quoted numbers.
-    return re.findall(r'\(pad "([^"]+)" (?:smd|thru_hole|connect|np_thru_hole) ',text)
+    # KiCad includes *multiple F.Paste-only apertures* on U200 EP17.
+    # Those are NOT duplicate copper pads. For every native (pad ...) node
+    # extract its balanced S-expression and only retain pads with copper.
+    found=[]
+    for m in re.finditer(r'\\(pad "([^"]+)" (?:smd|thru_hole|connect|np_thru_hole) ',text):
+        start=m.start()
+        depth=0
+        in_string=False
+        escaped=False
+        end=None
+        for i in range(start,len(text)):
+            c=text[i]
+            if escaped:
+                escaped=False
+            elif in_string and c=="\\\\":
+                escaped=True
+            elif c=='"':
+                in_string=not in_string
+            elif not in_string:
+                if c=="(":
+                    depth+=1
+                elif c==")":
+                    depth-=1
+                    if depth==0:
+                        end=i+1
+                        break
+        assert end is not None,(m.group(1),"unbalanced pad")
+        chunk=text[start:end]
+        layer=re.search(r'\\(layers? ([^)]*)\\)',chunk)
+        assert layer is not None,(m.group(1),"no layers")
+        layers=layer.group(1)
+        if re.search(r'(?:F|B|\\*)\\.Cu',layers):
+            found.append(m.group(1))
+        else:
+            assert "Paste" in layers or "Mask" in layers,(m.group(1),layers)
+    return found
 
 def audit():
     comps=compmap(NET)
