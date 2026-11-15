@@ -51,11 +51,10 @@ def library_dirs():
     return lib
 
 def pad_list(text):
-    # KiCad includes *multiple F.Paste-only apertures* on U200 EP17.
-    # Those are NOT duplicate copper pads. For every native (pad ...) node
-    # extract its balanced S-expression and only retain pads with copper.
+    # KiCad U200 EP17 has one physical copper land plus several
+    # F.Paste-only stencil aperture pads sharing number 17.
     found=[]
-    for m in re.finditer(r'\\(pad "([^"]+)" (?:smd|thru_hole|connect|np_thru_hole) ',text):
+    for m in re.finditer(r'\(pad "([^"]+)" (?:smd|thru_hole|connect|np_thru_hole) ',text):
         start=m.start()
         depth=0
         in_string=False
@@ -65,7 +64,7 @@ def pad_list(text):
             c=text[i]
             if escaped:
                 escaped=False
-            elif in_string and c=="\\\\":
+            elif in_string and c=="\\":
                 escaped=True
             elif c=='"':
                 in_string=not in_string
@@ -79,10 +78,10 @@ def pad_list(text):
                         break
         assert end is not None,(m.group(1),"unbalanced pad")
         chunk=text[start:end]
-        layer=re.search(r'\\(layers? ([^)]*)\\)',chunk)
+        layer=re.search(r'\(layers? ([^)]*)\)',chunk)
         assert layer is not None,(m.group(1),"no layers")
         layers=layer.group(1)
-        if re.search(r'(?:F|B|\\*)\\.Cu',layers):
+        if re.search(r'(?:F|B|\*)\.Cu',layers):
             found.append(m.group(1))
         else:
             assert "Paste" in layers or "Mask" in layers,(m.group(1),layers)
