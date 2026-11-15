@@ -1,5 +1,12 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.76 IN VERIFICA — 15 novembre 2026 — eFuse e coordinamento F200 (NON ECO CAD)
+
+Ramo `engineering/v7-76-efuse-buck-power-envelope`: aggiunto `03_Verifiche/V7.76/test_native_efuse_buck_coordination_v776.py`, rapporto vendor e gate CI tecnico KiCad9 condiviso; conferma nel sorgente `R203=8k2` e formula TI TPS2660 Eq.9 **I_LIM nominale 1,4634 A** vs F200 **1,5 A soltanto candidato**, SW200 SHDN manual reset verso GND_MAIN, D200 DNP. La netlist KiCad9 nativa prova percorso reale F200→U200→U100 e conserva **RTN≠GND**, senza ECO di alimentazioni. I valori non dimostrano coordinamento fusibile/eFuse, lode startup/thermal o sicurezza. PR/CI non ancora confermati al momento del checkpoint; no variazioni dichiarate agli ultimi **28 errori ERC+180 warning** V7.74, 15 interfacce HOLD e NO FAB/NO TX. **Prossima ECO:** qualifica indipendente recovery SHDN, F200 I²t e reale power budget 5V, quindi modificare CAD solo con prove sufficienti.
+
+---
+
+
 ## LAVORO V7.75 — 15 novembre 2026 — ROADMAP PCB, **PR #103; verificare merge su GitHub**
 
 Branch `planning/v7-75-prototype-gates-and-power-blockers`: aggiunta `00_Gestione_Progetto/ROADMAP_PROTOTIPO_PCB.md` con gate G1–G9, evidenza base da V7.74, blockers reali, exit criteria e prossimo backlog alimentazione/eFuse. **Questo è un aggiornamento operativo di pianificazione, non una ECO elettrica**: nessun CAD alterato, ERC non rieseguito localmente, conteggio nativo V7.74 invariato come *ultima evidenza* 28 errori/180 warning; nessuna PCB unica o DRC globale. PR #103: verificare lo stato GitHub e gli eventuali check prima di assumere integrazione. Priorità successiva: circuiti fisici di ingresso 13,8V e recovery eFuse, carichi LDO effettivi e qualifiche MPN-footprint. Nessun allentamento NO FAB/NO TX e 15 HOLD.
