@@ -1,5 +1,12 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.77 IN VERIFICA — inventario nativo 140 componenti e 11 impronte critiche
+
+Ramo `engineering/v7-77-critical-footprint-pad-gate`: nuovo gate eseguibile `03_Verifiche/V7.77/test_critical_native_pad_numbering_v777.py`; riusa export KiCad9 nativo sette fogli V7.74, enumera le **impronte mancanti**, verifica nei file reali `.kicad_mod` la presenza di tutti i pad per F200,U200,SW200,U100,L100,U6201,U6202,U6203–U6206 e confronta i pin netlist con i pad. Mantiene **U200 EP17 e U6202 EP33** obbligatori, senza cambiare circuiti/PCB. CI/PR da confermare prima del merge; ultima evidenza ERC **28 errori+180 warning**, non dichiarata ridotta. V7.76 [PR #104](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/104) MERGED squash `0b742755e74215bd145886bc59565f47067ddfad`, [native run 43755859782](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43755859782) **SUCCESS**, [safety run 43755859780](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/43755859780) **SUCCESS**; solo gate quantitativi, nessuna ECO elettrica. V7.75 [PR #103](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/103) MERGED squash `16052c33a1809ee097a6cf2b97b03f5c99c8b505` roadmap G1-G9. **Prossimo:** dalla lista reale di footprint assenti, selezionare una qualifica MPN↔pin↔pad↔land e poi vera PCB; eFuse/F200 e 15 interfacce OPEN/HOLD. NO FAB/NO TX.
+
+---
+
+
 ## V7.76 IN VERIFICA — 15 novembre 2026 — eFuse e coordinamento F200 (NON ECO CAD)
 
 Ramo `engineering/v7-76-efuse-buck-power-envelope`: aggiunto `03_Verifiche/V7.76/test_native_efuse_buck_coordination_v776.py`, rapporto vendor e gate CI tecnico KiCad9 condiviso; conferma nel sorgente `R203=8k2` e formula TI TPS2660 Eq.9 **I_LIM nominale 1,4634 A** vs F200 **1,5 A soltanto candidato**, SW200 SHDN manual reset verso GND_MAIN, D200 DNP. La netlist KiCad9 nativa prova percorso reale F200→U200→U100 e conserva **RTN≠GND**, senza ECO di alimentazioni. I valori non dimostrano coordinamento fusibile/eFuse, lode startup/thermal o sicurezza. PR/CI non ancora confermati al momento del checkpoint; no variazioni dichiarate agli ultimi **28 errori ERC+180 warning** V7.74, 15 interfacce HOLD e NO FAB/NO TX. **Prossima ECO:** qualifica indipendente recovery SHDN, F200 I²t e reale power budget 5V, quindi modificare CAD solo con prove sufficienti.

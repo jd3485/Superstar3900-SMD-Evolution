@@ -34,6 +34,7 @@ on:
       - '03_Verifiche/V7.73/**'
       - '03_Verifiche/V7.74/**'
       - '03_Verifiche/V7.76/**'
+      - '03_Verifiche/V7.77/**'
       - '04_KiCad/Gerarchico_Alimentazioni_V7.74_SIX_PWR_SOURCE_RETURN_PROVENANCE_HOLD/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.74_SIX_PWR_SOURCE_RETURN_PROVENANCE_HOLD/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.74_U6203_PWR_SOURCE_RETURN_PROVENANCE_HOLD/**'
@@ -485,6 +486,8 @@ jobs:
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.74 -p 'test_*.py' -v
       - name: V7.76 eFuse current-limit/fuse and real SHDN/RTN native net safety gate
         run: python3 -B -m unittest discover -s 03_Verifiche/V7.76 -p 'test_*.py' -v
+      - name: V7.77 140-part native footprint inventory and 11 critical physical pad numbers
+        run: python3 -B -m unittest discover -s 03_Verifiche/V7.77 -p 'test_*.py' -v
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -520,4 +523,5 @@ jobs:
             03_Verifiche/V7.73/output-ci/
             03_Verifiche/V7.74/output-ci/
             03_Verifiche/V7.76/output-ci/
+            03_Verifiche/V7.77/output-ci/
           if-no-files-found: warn
