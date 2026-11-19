@@ -102,6 +102,15 @@ def build():
         # footprint reference to a clear provisional field location.
         if ref=="U100":
             f.Reference().SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(113),pcbnew.FromMM(36)))
+        if ref in MCU_PLACEMENT:
+            # Real KiCad9 nonrelease DRC 44505468930 flagged 40 new
+            # library reference text fields below minimum 0.8 mm height.
+            # Correct actual F.SilkS text height, not DRC rule or waiver.
+            field=f.Reference()
+            tx=field.GetTextSize()
+            if min(tx.x,tx.y)<pcbnew.FromMM(0.8):
+                field.SetTextSize(pcbnew.VECTOR2I(pcbnew.FromMM(0.9),pcbnew.FromMM(0.9)))
+                field.SetTextThickness(pcbnew.FromMM(0.12))
         board.Add(f)
         seen=set()
         assigned={}
@@ -183,6 +192,9 @@ def build():
     reload=pcbnew.LoadBoard(str(DEST))
     assert len(reload.GetFootprints())==len(PLACEMENT)
     assert len(reload.GetFootprints())==74
+    for fp in reload.GetFootprints():
+        if fp.GetReference() in MCU_PLACEMENT:
+            assert min(fp.Reference().GetTextSize().x,fp.Reference().GetTextSize().y)>=pcbnew.FromMM(0.8),fp.GetReference()
     assert {"J6201","U6201","U6202","U6203","U6204","U6205","U6206","U6207","X6201","FB6201"}<=set(f.GetReference() for f in reload.GetFootprints())
     assert len(reload.GetTracks())==0 and len(reload.Zones())==0
     u100=next(f for f in reload.GetFootprints() if f.GetReference()=="U100")
