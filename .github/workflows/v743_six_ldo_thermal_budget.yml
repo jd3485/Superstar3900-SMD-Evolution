@@ -38,6 +38,8 @@ on:
       - '03_Verifiche/V7.78/**'
       - '03_Verifiche/V7.79/**'
       - '03_Verifiche/V7.80/**'
+      - '03_Verifiche/V7.81/**'
+      - '04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
@@ -548,6 +550,23 @@ jobs:
           print(base64.b64encode(p.read_bytes()).decode('ascii'))
           print('END_V780_PCB_BASE64')
           PY
+      - name: V7.81 physically expand single master PCB with all 49 MCU codec SWD footprints
+        run: |
+          python3 -B -m unittest discover -s 03_Verifiche/V7.81 -p 'build_master_mcu_codec_placement_v781.py' -v
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,subprocess
+          p=Path('04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/S3900E_MASTER_V781_STAGING_NO_FAB.kicad_pcb')
+          assert p.is_file()
+          d=Path('03_Verifiche/V7.81/output-ci/v781_native_drc_nonrelease.rpt')
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],capture_output=True,text=True)
+          assert d.is_file() and d.stat().st_size>100
+          print('V7.81 Native nonrelease DRC exit',run.returncode)
+          print('V7.81 Native DRC report',d.read_text()[:14000])
+          print('BEGIN_V781_PCB_BASE64')
+          print(base64.b64encode(p.read_bytes()).decode('ascii'))
+          print('END_V781_PCB_BASE64')
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -587,5 +606,7 @@ jobs:
             03_Verifiche/V7.78/output-ci/
             03_Verifiche/V7.79/output-ci/
             03_Verifiche/V7.80/output-ci/
+            03_Verifiche/V7.81/output-ci/
+            04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn
