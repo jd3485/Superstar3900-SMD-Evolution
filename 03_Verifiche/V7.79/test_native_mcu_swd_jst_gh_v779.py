@@ -28,6 +28,13 @@ PORT={
 def gate():
     a=compmap(OUT/"v779.original.net")
     z=compmap(OUT/"v779.revised.net")
+    if (len(a),len(z))!=(140,141):
+        raw=(OUT/"v779.revised.net").read_text()
+        print("DIAG missing refs",sorted(set(a)-set(z)),"new refs",sorted(set(z)-set(a)))
+        print("DIAG raw J6201",raw.count("J6201"),"old",len(a),"new",len(z))
+        print("DIAG revised netlist tail",raw[-1300:])
+        er=(OUT/"v779.revised.erc.rpt").read_text()
+        print("DIAG ERC context", "\\n".join(line for line in er.splitlines() if "J6201" in line or "SWD" in line or "library" in line.lower())[:3800])
     assert len(a)==140 and len(z)==141,(len(a),len(z))
     assert set(z)-set(a)=={"J6201"}
     assert all(a[k]==z[k] for k in a),"existing component / footprint altered"
