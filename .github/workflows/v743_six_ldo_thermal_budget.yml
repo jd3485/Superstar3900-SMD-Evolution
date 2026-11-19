@@ -581,9 +581,12 @@ jobs:
           assert '[silk_overlap]' not in report
           assert '[courtyard_overlap]' not in report
           print('V7.81 NONRELEASE DRC: exactly one missing outline and 169 unconnected pads; zero new physical rule violations')
-          print('BEGIN_V781_PCB_BASE64')
-          print(base64.b64encode(p.read_bytes()).decode('ascii'))
-          print('END_V781_PCB_BASE64')
+          # The generated KiCad9 board is now committed as a real tracked
+          # .kicad_pcb and its pins/nets/placements are checked above.
+          # Do NOT flood Actions logs with 360KB base64 every CI run.
+          import hashlib
+          print('V7.81 REAL PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.81 REAL PCB BYTES',p.stat().st_size)
           PY
       - name: Archive native proof for review only
         if: always()
