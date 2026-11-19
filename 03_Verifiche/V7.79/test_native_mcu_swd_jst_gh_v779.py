@@ -57,12 +57,20 @@ def gate():
         assert p1["J6201",number].rsplit("/",1)[-1]==name,(number,name,p1["J6201",number])
     assert p1["J6201","1"]!=p1["J6201","5"]
     assert p1["J6201","2"]!=p1["J6201","3"]
+    # STM32G474RE LQFP64 physical pins: PA13=49 SWDIO, PA14=50 SWCLK,
+    # PG10-NRST=7; VDD16 and VSS15 stay in MCU power domain.
+    assert p1["J6201","2"]==p1["U6201","49"]
+    assert p1["J6201","3"]==p1["U6201","50"]
+    assert p1["J6201","4"]==p1["U6201","7"]
+    assert p1["J6201","1"]==p1["U6201","16"]
+    assert p1["J6201","5"]==p1["U6201","15"]
     assert p1["U200","8"]==p1["U200","17"]!=p1["U200","9"]
     assert p1["U6203","2"]!=p1["U2","2"]
     assert len(new)==len(old)==103,("unexpected lost/added net",len(old),len(new))
     m=MCU.read_text()
     assert m.count('(property "Reference" "J6201"')==1
-    assert m.count('(property "Footprint" "'+FP+'"')==1
+    # KiCad schematic stores the footprint both in embedded lib symbol and instance.
+    assert m.count('(property "Footprint" "'+FP+'"')==2
     assert m.count('(property "MPN" "BM05B-GHS-TBT(LF)(SN)"')==1
     assert m.count('(property "MatingHousing" "GHR-05V-S"')==1
     assert len(re.findall(r'\(label "(3V3_MCU|MCU_SWDIO|MCU_SWCLK|MCU_NRST|GND)" \(at 998\.22 (?:543\.56|546\.10|548\.64|551\.18|553\.72)',m))==5
