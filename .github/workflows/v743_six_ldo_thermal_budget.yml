@@ -567,6 +567,20 @@ jobs:
           assert d.is_file() and d.stat().st_size>100
           print('V7.81 Native nonrelease DRC exit',run.returncode)
           print('V7.81 Native DRC report',d.read_text()[:14000])
+          import re
+          report=d.read_text()
+          finding=re.search(r'Found (\d+) DRC violations',report)
+          unconn=re.search(r'Found (\d+) unconnected pads',report)
+          # DRC is NOT clean: a mechanical outline has NOT been approved,
+          # and the entire placement remains unrouted. Fail on any added
+          # clearance/silkscreen/physical violations rather than waive them.
+          assert finding and int(finding.group(1))==1,report[:2400]
+          assert unconn and int(unconn.group(1))==169,report[:2400]
+          assert report.count('[invalid_outline]')==1
+          assert '[text_height]' not in report
+          assert '[silk_overlap]' not in report
+          assert '[courtyard_overlap]' not in report
+          print('V7.81 NONRELEASE DRC: exactly one missing outline and 169 unconnected pads; zero new physical rule violations')
           print('BEGIN_V781_PCB_BASE64')
           print(base64.b64encode(p.read_bytes()).decode('ascii'))
           print('END_V781_PCB_BASE64')
