@@ -538,8 +538,8 @@ jobs:
           # is a genuine corrected layout violation, not a waiver.
           import re
           report=d.read_text()
-          count=re.search(r'Found (\\d+) DRC violations',report)
-          unconn=re.search(r'Found (\\d+) unconnected pads',report)
+          count=re.search(r'Found (\d+) DRC violations',report)
+          unconn=re.search(r'Found (\d+) unconnected pads',report)
           assert count and int(count.group(1))==1,report[:2200]
           assert unconn and int(unconn.group(1))==50,report[:2200]
           assert '[invalid_outline]' in report and '[silk_overlap]' not in report
