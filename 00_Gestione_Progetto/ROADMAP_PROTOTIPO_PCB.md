@@ -1,5 +1,10 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## Avanzamento G6 — V7.80 (19 novembre 2026), **WIP NON RELEASE**
+
+Il generatore `03_Verifiche/V7.80/build_master_power_placement_v780.py` e il nuovo elaborato master fisico `04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/S3900E_MASTER_V780_STAGING_NO_FAB.kicad_pcb` (integrazione effettiva da verificare in PR/CI) iniziano lo **staging vero** di 25 footprint power da 141 componenti del master 7 fogli. Gate G6 **APERTO**: è solo piazzamento, nessun outline, routing, zone, stackup verificato o DRC di rilascio, 15 interfacce HOLD. Priorità: qualifica elettrica input/return/MPN e vincoli meccanici, poi espandere PCB con pin-net e DRC controllati. Non trattare il numero 25 come completamento percentuale.
+
+
 **Baseline accertata:** 15 novembre 2026, `main` HEAD `37b1f909d56f58fe8c1dfad9b9600d0e4ac456d1`; ultima revisione tecnica integrata V7.74, PR #101, squash `91588269e3ed86922db0a79728f44bf3c04665b8`. Questo documento è un piano di gate, **non** una prova di progresso PCB, una nuova ECO elettrica o un'autorizzazione FAB.
 
 ## Evidenze riproducibili della baseline
