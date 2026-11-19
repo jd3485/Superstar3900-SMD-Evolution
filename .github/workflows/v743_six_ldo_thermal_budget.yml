@@ -39,6 +39,8 @@ on:
       - '03_Verifiche/V7.79/**'
       - '03_Verifiche/V7.80/**'
       - '03_Verifiche/V7.81/**'
+      - '03_Verifiche/V7.82/**'
+      - '04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
@@ -588,6 +590,23 @@ jobs:
           print('V7.81 REAL PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('V7.81 REAL PCB BYTES',p.stat().st_size)
           PY
+      - name: V7.82 KiCad9 native physically place TI LMX2572 PLL and J101 on 124-footprint master (NO FAB)
+        run: |
+          timeout 90s python3 -u -B -m unittest discover -s 03_Verifiche/V7.82 -p 'build_master_pll_stage_v782.py' -v
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,subprocess
+          p=Path('04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/S3900E_MASTER_V782_STAGING_NO_FAB.kicad_pcb')
+          assert p.is_file()
+          d=Path('03_Verifiche/V7.82/output-ci/v782_native_drc_nonrelease.rpt')
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],capture_output=True,text=True,timeout=90)
+          assert d.is_file() and d.stat().st_size>100
+          print('V7.82 Native nonrelease DRC return',run.returncode)
+          print('V7.82 Native DRC report',d.read_text()[:14000])
+          print('BEGIN_V782_PCB_BASE64')
+          print(base64.b64encode(p.read_bytes()).decode('ascii'))
+          print('END_V782_PCB_BASE64')
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -628,6 +647,8 @@ jobs:
             03_Verifiche/V7.79/output-ci/
             03_Verifiche/V7.80/output-ci/
             03_Verifiche/V7.81/output-ci/
+            03_Verifiche/V7.82/output-ci/
+            04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn
