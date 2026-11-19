@@ -533,6 +533,17 @@ jobs:
           print('V7.80 DRC NATIVE DETAILS',d.read_text()[:6000])
           assert d.is_file(), 'DRC report must be retained (even if many real errors remain)'
           assert d.stat().st_size>30
+          # DRC remains explicitly nonrelease: the real missing board outline
+          # and 50 unconnected pads MUST stay visible. The U100 silk issue
+          # is a genuine corrected layout violation, not a waiver.
+          import re
+          report=d.read_text()
+          count=re.search(r'Found (\\d+) DRC violations',report)
+          unconn=re.search(r'Found (\\d+) unconnected pads',report)
+          assert count and int(count.group(1))==1,report[:2200]
+          assert unconn and int(unconn.group(1))==50,report[:2200]
+          assert '[invalid_outline]' in report and '[silk_overlap]' not in report
+          print('V7.80 NONRELEASE DRC EXPECTED: one invalid outline and 50 unrouted pads; no silk overlap')
           print('BEGIN_V780_PCB_BASE64')
           print(base64.b64encode(p.read_bytes()).decode('ascii'))
           print('END_V780_PCB_BASE64')
