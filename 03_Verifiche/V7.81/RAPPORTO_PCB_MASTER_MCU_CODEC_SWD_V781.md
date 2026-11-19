@@ -15,3 +15,7 @@
 **Blocchi permanenti:** sorgente 13,8V/fusibile F200/eFuse reset, TVS D200 DNP, assorbimenti 5V/3,3V e termica/DFM, 15 interfacce cross-module OPEN/HOLD, SG48/Y1 pin10 HOLD, compatibilità meccanica, filtraggio/impedenza RF, dispositivi RX/TX. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
 
 **Prossimi gate:** ispezionare DRC nativo, correggere soltanto overlap reali senza waiver, posizionare progressivamente i 67 restanti con componenti qualificati, poi stabilire outline/fori reali e layout/routing/DRC prima di ogni valutazione produttiva.
+
+## Risultato CI finale sul generatore (19 novembre 2026)
+
+[Run nativo KiCad9 44506575017](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44506575017) SUCCESS sul codice generatore: vero PCB 74 componenti, 25 invariati dal V7.80, 49 nuovi. Fallimento iniziale separato da 4 aperture paste-only non numerate su U6202 EP33, corretto controllando che **non** contengano F.Cu; non bypassate la verifica pad33 rame. DRC iniziale **41 violazioni = 1 invalid_outline +40 text_height** e 169 pad non instradati; corretti fisicamente 40 reference text height a ≥0,8mm. **DRC finale NON RELEASE: 1 invalid_outline +169 unconnected pads**, nessun altro finding; nessun routing. La CI sul file PCB generato **versionato nel branch** deve essere ancora verificata prima del merge, perché la prova CI iniziale materializzava il file sul runner.
