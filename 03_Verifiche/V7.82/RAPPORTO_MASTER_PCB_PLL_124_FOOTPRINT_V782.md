@@ -17,3 +17,7 @@ Generatore KiCad9 `03_Verifiche/V7.82/build_master_pll_stage_v782.py` estende lo
 - Nessun `Edge.Cuts`, stackup approvato, via, piste, zone o routing RF: l'assenza non è un DRC PASS né una forma di reale produzione.
 
 Ultimo ERC dello schema master: **25 errori, 180 warning** (V7.79), ancora reali. Restano sorgente 13,8V, F200/eFuse/TVS D200 DNP, 5V Ceff, LDO thermal, 15 crossmodule OPEN/HOLD, Y1 pin10, Rx/Tx, enclosure, SFDR, EMC/filtraggio, DFM/termica. **NO FAB / NO GERBER / NO PCBWAY / NO TX**. Dopo V7.82: verificare effettivi 17 componenti esclusi, completare RX *solo* con componenti/pin verificati, poi architettura fisica, piano di masse, routing con DRC e independent review prima di richiesta autorizzazione.
+
+## Esito KiCad9 nativo della prima materializzazione
+
+Run [44509226969](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44509226969) **SUCCESS**: 124 impronte salvate e ricaricate via pcbnew, pad nativi intatti, EP41 LMX2572 rame distinto dalle nove finestre F.Paste senza numero, 74 componenti precedenti invariati; **DRC 1 invalid_outline +280 unconnected pads**, nessun'altra violazione fisica. Nessuna approvazione DRC: il contorno è assente intenzionalmente, tutto il routing è ancora da realizzare. File binario PCB committato dopo prova iniziale e **nuova CI finale obbligatoria**. Resta NO FAB/TX.

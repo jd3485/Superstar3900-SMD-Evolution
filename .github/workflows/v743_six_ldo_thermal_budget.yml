@@ -603,9 +603,20 @@ jobs:
           assert d.is_file() and d.stat().st_size>100
           print('V7.82 Native nonrelease DRC return',run.returncode)
           print('V7.82 Native DRC report',d.read_text()[:14000])
-          print('BEGIN_V782_PCB_BASE64')
-          print(base64.b64encode(p.read_bytes()).decode('ascii'))
-          print('END_V782_PCB_BASE64')
+          # The real PCB is now committed; native CI validates all pad nets.
+          # Fail on actual design-rule regression; do not waive missing outline.
+          import re, hashlib
+          report=d.read_text()
+          violations=re.search(r'Found (\d+) DRC violations',report)
+          unrouted=re.search(r'Found (\d+) unconnected pads',report)
+          assert violations and int(violations.group(1))==1,report[:1200]
+          assert unrouted and int(unrouted.group(1))==280,report[:1200]
+          assert report.count('[invalid_outline]')==1
+          assert '[text_height]' not in report and '[silk_overlap]' not in report
+          assert '[courtyard_overlap]' not in report and '[clearance]' not in report
+          print('V7.82 REAL PCB SHA256', hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.82 REAL PCB BYTES', p.stat().st_size)
+          print('V7.82 NONRELEASE DRC: one missing outline +280 unrouted, zero other violations')
           PY
       - name: Archive native proof for review only
         if: always()

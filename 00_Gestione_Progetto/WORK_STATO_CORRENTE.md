@@ -1,5 +1,11 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.82 REALE PCB 124 IMPRONTE SU BRANCH — 19 novembre 2026 — PR #110 NO FAB
+
+**Evidenza tecnica CI**: [KiCad9 run 44509226969](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44509226969) **SUCCESS** e policy [44509226914](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44509226914) **SUCCESS**; PCB reale `04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/S3900E_MASTER_V782_STAGING_NO_FAB.kicad_pcb` ora presente nel branch con **124 impronte** (74 V7.81 precedenti con footprint/ref/pad/net e coordinate preservati; +49 PLL reali escluso Y1 TCXO SG48 HOLD; +J101 host). **DRC nativo NON RELEASE:** esattamente **1 invalid_outline** (Edge.Cuts assente) + **280 pad non instradati**, **0 altre violazioni geometria/silk**. **Zero tracce, vie, zone**, nessuna qualifica stackup, chassis, return-plane, thermal, RF/IF. **17 componenti del master schematico restano non posizionati**, Y1 intenzionalmente HOLD; 15 interfacce crossmodule HOLD. ERC ultimo 25 errori+180 warning (V7.79). **PR #110 da verificare merge su GitHub dopo CI del PCB versionato**; no FAB/GERBER/PCBWAY/TX. Prossimo: 17 componenti inclusi RX condizionati a footprint vero, connettori e meccanica/ground, e design elettrico delle protezioni.
+
+---
+
 ## V7.82 PCB PLL IN VERIFICA — 19 novembre 2026 — 124 footprint WIP, NO FAB
 
 Ramo `pcb/v7-82-master-pll-footprint-placement-hold`: generatore KiCad9 `03_Verifiche/V7.82/build_master_pll_stage_v782.py` per PCB unica `04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/S3900E_MASTER_V782_STAGING_NO_FAB.kicad_pcb`, **da materializzare con CI e salvare nel repository**. Conserva i 74 footprint del V7.81 e aggiunge **49 reali footprint del PLL LMX2572 U1, LDO U2/U3 e passive PLL** escludendo fisicamente **Y1 SG48 pin10 HOLD**, più J101 connector; **124/141 componenti**, ancora 17 da collocare. Staging solo fisico, tutti pad-net dalla netlist invariata (141/103), EP41 LMX su GND_PLL domain e U200 EP17 separato da GND_MAIN; 15 interfacce HOLD. Nessuna pista, zona, outline né autorizzazione DRC fab. PR/CI e file board **non ancora verificati**, non dichiarare successo finché non eseguiti. NO FAB/GERBER/PCBWAY/TX.
