@@ -162,7 +162,7 @@
   (symbol "FB_DRAFT_1_1"
      (pin passive line (at 0 5.08 270) (length 2.08) (name "~" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))
      (pin passive line (at 0 -5.08 90) (length 2.08) (name "~" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))))
-  (symbol "SWD5_JST_GH_DEBUG_3V3_SENSE_ONLY" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+  (symbol "S3900E:SWD5_JST_GH_DEBUG_3V3_SENSE_ONLY" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
     (property "Reference" "J" (at 0 12.70 0) (effects (font (size 1.27 1.27))))
     (property "Value" "SWD_JST_GH_5PIN_3V3_SENSE" (at 0 -12.70 0) (effects (font (size 1.27 1.27))))
     (property "Footprint" "Connector_JST:JST_GH_BM05B-GHS-TBT_1x05-1MP_P1.25mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
