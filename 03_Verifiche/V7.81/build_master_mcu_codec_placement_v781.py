@@ -110,6 +110,13 @@ def build():
             if n=="MP":
                 assert (ref,n) not in pins and pad.GetNetCode()==0
                 continue
+            if n=="":
+                # TI RHB-32 CODEC EP33 is ONE copper pad plus FOUR
+                # separate stencil apertures with no electrical pad ID.
+                # Permit only U6202's F.Paste-only non-copper primitives.
+                assert ref=="U6202" and not pad.GetLayerSet().Contains(pcbnew.F_Cu), (ref,"unexpected unnumbered copper")
+                assert pad.GetLayerSet().Contains(pcbnew.F_Paste) and pad.GetNetCode()==0
+                continue
             assert n and n not in seen,(ref,n,"duplicate solder pad")
             seen.add(n)
             net=pins.get((ref,n))
