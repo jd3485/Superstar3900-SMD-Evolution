@@ -72,6 +72,11 @@ def build():
         f.SetReference(ref)
         f.SetValue(value)
         f.SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(x),pcbnew.FromMM(y)))
+        # KiCad9 native nonrelease DRC identified U100 own reference
+        # overlap against U100 silkscreen at (113,42.6). Move only the
+        # footprint reference to a clear provisional field location.
+        if ref=="U100":
+            f.Reference().SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(113),pcbnew.FromMM(36)))
         board.Add(f)
         seen=set()
         assigned={}
@@ -121,6 +126,9 @@ def build():
     reload=pcbnew.LoadBoard(str(DEST))
     assert len(reload.GetFootprints())==len(PLACEMENT)
     assert len(reload.GetTracks())==0 and len(reload.Zones())==0
+    u100=next(f for f in reload.GetFootprints() if f.GetReference()=="U100")
+    pos=u100.Reference().GetPosition()
+    assert (round(pcbnew.ToMM(pos.x),3),round(pcbnew.ToMM(pos.y),3))==(113,36),"U100 silk overlap recurrence"
     assert not any(d.GetLayer()==pcbnew.Edge_Cuts for d in reload.GetDrawings())
     result=dict(revision="V7.80",schematic_components=141,schematic_nets=103,
       placed_count=len(PLACEMENT),master_board=DEST.relative_to(ROOT).as_posix(),
