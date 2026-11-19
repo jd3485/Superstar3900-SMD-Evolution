@@ -88,8 +88,11 @@ def gate():
     fp=pcbnew.FootprintLoad("/usr/share/kicad/footprints/Connector_JST.pretty",
         "JST_GH_BM05B-GHS-TBT_1x05-1MP_P1.25mm_Vertical")
     assert fp is not None,"KiCad9 JST GH official footprint absent"
-    numbered=[p.GetNumber() for p in fp.Pads() if p.GetNumber()]
-    assert Counter(numbered)==Counter(["1","2","3","4","5"]),(numbered,"pad mapping error")
+    numbered=[p.GetNumber() for p in fp.Pads() if p.GetNumber() in {"1","2","3","4","5"}]
+    mechanical=[p for p in fp.Pads() if p.GetNumber()=="MP"]
+    assert Counter(numbered)==Counter(["1","2","3","4","5"]),(numbered,"signal pad mapping error")
+    assert len(mechanical)==2,"JST GH must have two soldered SMD mounting pads MP"
+    assert len(list(fp.Pads()))==7,"Unexpected JST GH pads"
     assert all(p.GetLayerSet().Contains(pcbnew.F_Cu) for p in fp.Pads())
     er0=native_erc(OUT/"v779.original.erc.rpt")
     er1=native_erc(OUT/"v779.revised.erc.rpt")
@@ -105,7 +108,9 @@ def gate():
         assert f["category"]=="label_dangling" and any(
             token in json.dumps(f) for token in ("MCU_NRST","MCU_SWCLK","MCU_SWDIO")
         ),("unjustified ERC disappearance",f)
-    assert er1["errors"]>=25 and er1["errors"]<=28
+    assert er1["errors"]==25,("physical debug interface must remove exactly three genuine dangling label errors",er1["errors"])
+    assert er1["warnings"]==180,("no additional warnings allowed",er1["warnings"])
+    assert len(removed)==3,("only three proven labels may clear",removed)
     new_warnings=Counter(json.dumps(f,sort_keys=True) for f in er1["findings"] if f["severity"]=="warning")-Counter(
         json.dumps(f,sort_keys=True) for f in er0["findings"] if f["severity"]=="warning")
     assert not new_warnings,("new KiCad warnings",list(new_warnings.elements())[:8])
