@@ -38,6 +38,8 @@ on:
       - '03_Verifiche/V7.78/**'
       - '03_Verifiche/V7.79/**'
       - '03_Verifiche/V7.80/**'
+      - '03_Verifiche/V7.81/**'
+      - '04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
@@ -548,6 +550,44 @@ jobs:
           print(base64.b64encode(p.read_bytes()).decode('ascii'))
           print('END_V780_PCB_BASE64')
           PY
+      - name: V7.81 physically expand single master PCB with all 49 MCU codec SWD footprints
+        run: |
+          echo 'V7.81 BEGIN native 74 PCB pcbnew build and reload'
+          timeout 90s python3 -u -B -m unittest discover -s 03_Verifiche/V7.81 -p 'build_master_mcu_codec_placement_v781.py' -v
+          echo 'V7.81 END native 74 PCB pcbnew build and reload'
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,subprocess
+          p=Path('04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/S3900E_MASTER_V781_STAGING_NO_FAB.kicad_pcb')
+          assert p.is_file()
+          d=Path('03_Verifiche/V7.81/output-ci/v781_native_drc_nonrelease.rpt')
+          print('V7.81 BEGIN nonrelease DRC',flush=True)
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],capture_output=True,text=True,timeout=90)
+          print('V7.81 END nonrelease DRC',flush=True)
+          assert d.is_file() and d.stat().st_size>100
+          print('V7.81 Native nonrelease DRC exit',run.returncode)
+          print('V7.81 Native DRC report',d.read_text()[:14000])
+          import re
+          report=d.read_text()
+          finding=re.search(r'Found (\d+) DRC violations',report)
+          unconn=re.search(r'Found (\d+) unconnected pads',report)
+          # DRC is NOT clean: a mechanical outline has NOT been approved,
+          # and the entire placement remains unrouted. Fail on any added
+          # clearance/silkscreen/physical violations rather than waive them.
+          assert finding and int(finding.group(1))==1,report[:2400]
+          assert unconn and int(unconn.group(1))==169,report[:2400]
+          assert report.count('[invalid_outline]')==1
+          assert '[text_height]' not in report
+          assert '[silk_overlap]' not in report
+          assert '[courtyard_overlap]' not in report
+          print('V7.81 NONRELEASE DRC: exactly one missing outline and 169 unconnected pads; zero new physical rule violations')
+          # The generated KiCad9 board is now committed as a real tracked
+          # .kicad_pcb and its pins/nets/placements are checked above.
+          # Do NOT flood Actions logs with 360KB base64 every CI run.
+          import hashlib
+          print('V7.81 REAL PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.81 REAL PCB BYTES',p.stat().st_size)
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -587,5 +627,7 @@ jobs:
             03_Verifiche/V7.78/output-ci/
             03_Verifiche/V7.79/output-ci/
             03_Verifiche/V7.80/output-ci/
+            03_Verifiche/V7.81/output-ci/
+            04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn
