@@ -9,7 +9,7 @@ import pcbnew
 ROOT=Path(__file__).resolve().parents[2]
 MASTER=ROOT/"04_KiCad/Assemblaggio_RX_Power_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD"
 NET=ROOT/"03_Verifiche/V7.79/output-ci/v779.revised.net"
-DEST=ROOT/"04_KiCad/PCB_MASTER_V7.81_POWER_PLACEMENT_WIP/S3900E_MASTER_V781_STAGING_NO_FAB.kicad_pcb"
+DEST=ROOT/"04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/S3900E_MASTER_V781_STAGING_NO_FAB.kicad_pcb"
 EVID=ROOT/"03_Verifiche/V7.81/output-ci/v781_mcu_codec_power_placement.json"
 sys.path.insert(0,str(ROOT/"03_Verifiche/V7.22"))
 from test_ep33_v722 import nets
