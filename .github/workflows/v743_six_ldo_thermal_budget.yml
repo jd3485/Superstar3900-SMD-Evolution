@@ -38,6 +38,7 @@ on:
       - '03_Verifiche/V7.78/**'
       - '03_Verifiche/V7.79/**'
       - '03_Verifiche/V7.80/**'
+      - '04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/**'
       - '04_KiCad/Modulo_MCU_CODEC_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
       - '04_KiCad/Assemblaggio_RX_Power_V7.79_SWD_JST_GH_SERVICE_CONNECTOR_HOLD/**'
       - '04_KiCad/Librerie_Simboli_V7.79_SWD_SERVICE_JST_GH_HOLD/**'
@@ -529,6 +530,7 @@ jobs:
           print('V7.80 NATIVE DRC NON-RELEASE returncode',completed.returncode)
           print('V7.80 DRC stdout',completed.stdout[:1600])
           print('V7.80 DRC stderr',completed.stderr[:800])
+          print('V7.80 DRC NATIVE DETAILS',d.read_text()[:6000])
           assert d.is_file(), 'DRC report must be retained (even if many real errors remain)'
           assert d.stat().st_size>30
           print('BEGIN_V780_PCB_BASE64')
