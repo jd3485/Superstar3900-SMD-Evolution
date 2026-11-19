@@ -94,6 +94,27 @@ def build():
     assert pins[("F200","1")]!=pins[("F200","2")]
     assert pins[("J100","1")]!=pins[("J100","2")]
     assert len(board.GetTracks())==0 and len(board.Zones())==0
+    # The first actual .kicad_pcb must be retained, not silently replaced by
+    # an unrelated generated example in subsequent CI runs. Validate every
+    # saved electrical pad against the current native master netlist BEFORE
+    # re-emitting it; an unexpected old pad or net is a blocking regression.
+    if DEST.exists():
+        previous=pcbnew.LoadBoard(str(DEST))
+        fp_by_ref={q.GetReference():q for q in previous.GetFootprints()}
+        assert set(fp_by_ref)==set(PLACEMENT),("committed PCB reference delta",set(fp_by_ref)^set(PLACEMENT))
+        for ref,(px,py) in PLACEMENT.items():
+            fp=fp_by_ref[ref]
+            pos=fp.GetPosition()
+            assert (round(pcbnew.ToMM(pos.x),3),round(pcbnew.ToMM(pos.y),3))==(px,py),(ref,"old placement moved unexpectedly")
+            for pad in fp.Pads():
+                num=pad.GetNumber()
+                native=pins.get((ref,num))
+                if native:
+                    assert pad.GetNetname()==native,(ref,num,"committed PCB pad net differs from schematic",pad.GetNetname(),native)
+                else:
+                    assert pad.GetNetCode()==0,(ref,num,"unspecified net assigned to PCB pad")
+        assert len(previous.GetTracks())==0 and len(previous.Zones())==0
+        assert not any(d.GetLayer()==pcbnew.Edge_Cuts for d in previous.GetDrawings())
     DEST.parent.mkdir(parents=True,exist_ok=True)
     pcbnew.SaveBoard(str(DEST),board)
     assert DEST.is_file() and DEST.stat().st_size>2000
