@@ -1,5 +1,21 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.80 PCB FISICA VERIFICATA SU RAMO — 19 novembre 2026 — PR #108, NO FAB
+
+**Lavoro tecnico:** realizzata e versionata su GitHub la vera `04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/S3900E_MASTER_V780_STAGING_NO_FAB.kicad_pcb`, 25 footprint di potenza con pad→net prelevate da **141 componenti e 103 reti** schematico KiCad9 V7.79. `J100→F200→U200→U100→L100→C103/C104` e passive candidate. Gate anti-regressione verifica il board già committato prima di rigenerarlo. Correzione reale DRC: campo reference U100 spostato dalla serigrafia sovrapposta a coordinate (113,36) mm; altri componenti/pad/net invariati. **DRC diagnostico nativo su [run 44494157209](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44494157209) SUCCESS di esecuzione, NON di progettazione: 1 violazione `invalid_outline` (NO Edge.Cuts) e 50 pad non instradati; nessun altro `silk_overlap`.** Ultimo ERC master V7.79 **25 errori/180 warning**. PR #108 e nuovo commit board da confermare su `main` prima di dichiarare merge; avviare nuova CI sul commit PCB aggiornato. HOLD: D200 DNP, 13,8V/eFuse/F200, termica, 5V Ceff, MCU/RX/PLL e 15 interfacce, stackup/montaggio/masse/RF, DRC finale. **NO FAB/NO GERBER/NO PCBWAY/NO TX.** Prossimo: completare placement e connessioni qualificate, outline/meccanica e DRC.
+
+---
+
+
+## V7.80 (19 novembre 2026) — MASTER PCB KiCad 25 footprint power WIP, CI in verifica
+
+Ramo `pcb/v7-80-master-power-placement-staging-no-fab`: generatore pcbnew `03_Verifiche/V7.80/build_master_power_placement_v780.py` per **PCB unica di lavoro**, da netlist nativa KiCad9 V7.79, con 25 footprint reali della catena J100/F200/U200/U100/L100 e passive power candidate. Nuovo PCB da generare e **integrare realmente in GitHub** `04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/S3900E_MASTER_V780_STAGING_NO_FAB.kicad_pcb`; fino a conferma byte/CI NON dichiarare file finale già committato. Ogni pad su net reale, `EFUSE_RTN` separata da `GND_MAIN`; D200 TVS DNP e J6201 MCU non piazzati, SMD footprint reali/carichi non qualificati. **0 piste, 0 zone, 0 Edge.Cuts**, DRC nativo diagnostico **NON RELEASE**, nessun claim di DRC pulito o progetto completato; schema RX/PLL/MCU non ancora integrato nel layout, 15 interfacce ancora OPEN/HOLD, 25 errori ERC +180 warning come ultimo risultato nativo V7.79. **NO FAB/NO GERBER/NO PCBWAY/NO TX**. Prossimo: verificare PCB in CI e salvarla nel repo, poi layout fisico qualificato, routing e DRC progressivi senza corti.
+
+**V7.79 MERGED**: [PR #107](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/107) squash `a8d6a51612a1dc0a087b57e3dcbd656bfe84bf21`, CI nativa KiCad9 [44491745617](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44491745617) **SUCCESS**, policy [44491745777](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44491745777) **SUCCESS**, 141 componenti/103 reti, ERC **28→25 errori** (tre veri label_dangling SWDIO/SWCLK/NRST risolti) e **180 warning invariati**. Nessun ponte 3V3/GND esterno. La sottosezione MCU SWD rimane meccanica/ESD/cavo custom HOLD.
+
+---
+
+
 ## V7.79 PROPOSTA (19 novembre 2026) — reale interfaccia SWD MCU, NO FAB
 
 Ramo `cad/v7-79-mcu-swd-debug-connector-jst-gh`, PR/CI **da confermare**: nuovo connettore **SMD JST GH J6201 5 pin** (`BM05B-GHS-TBT(LF)(SN)`, `GHR-05V-S`, `Connector_JST:JST_GH_BM05B-GHS-TBT_1x05-1MP_P1.25mm_Vertical`) nello schema MCU e libreria S3900E versionati; master 7 fogli versionato (AUX V7.78 invariata). Pin1 `3V3_MCU` VTREF **senso soltanto**, pin2 `MCU_SWDIO`, pin3 `MCU_SWCLK`, pin4 `MCU_NRST`, pin5 `GND` locale MCU; **nessun ponte AUX GND_MAIN/EFUSE_RTN**, nessuna alimentazione fisica esterna, TX/PLL/PA invariati. Test V7.79 nativo KiCad9 prima/dopo 140→141 componenti, 5 nuovi pad/corrispondenza pin-rete e solo eventuale risoluzione dei `label_dangling` SWD+NRST; attesa CI, non dichiarare riduzione ERC prima dell'esito. **HOLD:** connettore/cablaggio pin1 custom, ESD, accessibilità, reale 3V3/ritorno, 15 crossmodule, eFuse e TCXO; NO FAB/NO GERBER/NO PCBWAY/NO TX.
