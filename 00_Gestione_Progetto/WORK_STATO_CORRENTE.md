@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.88 eFuse UVLO/OVP: PCB NATIVA IN VERIFICA — 21 novembre 2026 — NO FAB
+
+**Base effettiva `main`:** V7.87 PR #115 merge `66654ff213398473af109676913a6365477e6a28`, [KiCad9 CI 44899780127](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44899780127) e policy 44899780133 SUCCESS; PCB 139 footprint, 24 segmenti totali, diagnostica DRC **1 invalid_outline +308 unconnected**. ERC ultimo 25 errors/180 warning V7.79.
+
+**V7.88 ramo `pcb/v7-88-efuse-uvlo-ovp-control-traces-hold`:** vero PCB KiCad `04_KiCad/PCB_MASTER_V7.88_EFUSE_THRESHOLDS_WIP/S3900E_MASTER_V788_UVLO_OVP_NO_FAB.kicad_pcb` committato in branch, 139 footprint, **30 segmenti** (24 vecchi intatti + 6 nuovi F.Cu da 0,20 mm). Spostati solo **R200** da (59,60) a (55,39) mm e **R201** da (65,60) a (56,52) mm, tutti gli altri 137 footprint invariati. Collegati unicamente `UVLO_NODE` U200.3→R200.1 e `OVP_NODE` U200.5→R201.1 secondo pin-net master; UVLO da pin3=(66.1,44.025)→R200.1=(54.175,39); OVP pin5=(66.1,45.325)→R201.1=(55.175,52). Percorsi scelti per evitare F200, C200, MODE, ILIM e pad adiacenti, da validare con DRC KiCad9; non è ancora risultato tecnico qualificato. Test `03_Verifiche/V7.88/test_native_uvlo_ovp_v788.py` fail-closed su tutti i 139 pad-net, geometrie 6 segmenti, 24 segmenti preesistenti, NC U200.4/10/13/14 e ritorni distinti. CI obbligatoria deve confermare solo 1 invalid_outline, connessioni aperte <=306 e nessun altro errore. **Non mergiare prima di CI GREEN e checkpoint finale**.
+
+**Blocchi immutati:** rami inferiori dei partitori eFuse ancora aperti, UVLO/OVP e MODE/ILIM soglie e latch reset non qualificate, F200/13,8 V, eFuse RTN diverso da GND_MAIN/GND_RF, D200 DNP; BUCK 5 V TPS54202 corrente/return/FB a U100 non completati; sei LDO 3,3V termica, 15 interfacce OPEN/HOLD, Y1 SG48 pin10 HOLD, RX/IF/TX RF non qualificati, 25 ERC errors/180 warnings ultima prova, outline/stackup/routing quasi interamente aperti. **NO FAB, GERBER, PCBWAY, BATTERIA, VEICOLO O TX**.
+
+---
+
 ## V7.87 eFuse MODE/ILIM: PCB reale 24 segmenti, CI NATIVE GREEN — 21 novembre 2026, NO FAB
 
 **Baseline su main (inizio revisione):** V7.86 merge PR #114 `b9fe17f05cc7e01149e31450d2b9e77048b08d68`, 139 footprint /17 segmenti / DRC NON RELEASE 1 invalid_outline +310 unconnected, policy e KiCad9 verdi. **PR #115** [V7.87](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/115) ramo `pcb/v7-87-efuse-mode-ilim-local-tracks-hold`. PCB master KiCad effettivamente committata `04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/S3900E_MASTER_V787_EFUSE_CONTROL_NO_FAB.kicad_pcb` con **139 footprint, 24 segmenti** (7 nuovi) di sola F.Cu `EFUSE_MODE` U200.6→R204.2 e `ILIM_NODE` U200.11→R203.2; R203 e R204 spostati, tutti i pad/reti e i 17 segmenti V7.86 preservati; nessun rame VIN/OUT di corrente, GND_MAIN, GND_RF, EFUSE_RTN, SW o TX.
