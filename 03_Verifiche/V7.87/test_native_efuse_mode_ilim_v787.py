@@ -81,8 +81,22 @@ def check():
                 (actual.x,actual.y),(proposed.x,proposed.y))
         for i,(p,q) in enumerate(segments):
             assert p!=q and (i==0 or segments[i-1][1]==p)
-            assert (native,"F.Cu",pcbnew.FromMM(0.2),
-                    point(p).x,point(p).y,point(q).x,point(q).y) in now
+            # pcbnew may canonicalize a track's start/end direction
+            # or floating decimal mm -> integer-nm by a few nanometres.
+            # Match undirected geometry within 1 um, with exact native NET,
+            # F.Cu and 0.20 mm copper width. Never ignore unmatched tracks.
+            def close(a,b):
+                return abs(a.x-b.x)<=pcbnew.FromMM(0.001) and abs(a.y-b.y)<=pcbnew.FromMM(0.001)
+            expected_start,expected_end=point(p),point(q)
+            matches=[t for t in new.GetTracks()
+               if t.GetNetname()==native and t.GetLayer()==pcbnew.F_Cu
+               and t.GetWidth()==pcbnew.FromMM(0.2)
+               and ((close(t.GetStart(),expected_start) and close(t.GetEnd(),expected_end))
+                 or (close(t.GetStart(),expected_end) and close(t.GetEnd(),expected_start)))]
+            assert len(matches)==1,("native route segment missing/duplicated",net,p,q,
+                [(t.GetNetname(),t.GetStart().x,t.GetStart().y,
+                  t.GetEnd().x,t.GetEnd().y) for t in new.GetTracks()
+                 if t.GetNetname()==native][:10])
         first,last=starts
         dx=(first.GetPosition().x-last.GetPosition().x)/1e6
         dy=(first.GetPosition().y-last.GetPosition().y)/1e6
