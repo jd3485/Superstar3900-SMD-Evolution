@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.87 eFuse MODE/ILIM: PCB reale 24 segmenti, CI NATIVE GREEN — 21 novembre 2026, NO FAB
+
+**Baseline su main (inizio revisione):** V7.86 merge PR #114 `b9fe17f05cc7e01149e31450d2b9e77048b08d68`, 139 footprint /17 segmenti / DRC NON RELEASE 1 invalid_outline +310 unconnected, policy e KiCad9 verdi. **PR #115** [V7.87](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/115) ramo `pcb/v7-87-efuse-mode-ilim-local-tracks-hold`. PCB master KiCad effettivamente committata `04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/S3900E_MASTER_V787_EFUSE_CONTROL_NO_FAB.kicad_pcb` con **139 footprint, 24 segmenti** (7 nuovi) di sola F.Cu `EFUSE_MODE` U200.6→R204.2 e `ILIM_NODE` U200.11→R203.2; R203 e R204 spostati, tutti i pad/reti e i 17 segmenti V7.86 preservati; nessun rame VIN/OUT di corrente, GND_MAIN, GND_RF, EFUSE_RTN, SW o TX.
+
+**Prova nativa GitHub Actions:** [KiCad9 run 44899587378](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44899587378) **SUCCESS**, [policy 44899587222](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44899587222) **SUCCESS**, confronto 139 pin/pad/net, 137 posizioni immutate, conservazione 17 vecchi tratti e 7 nuovi tratti confrontati entro 1 µm (non soppressi). **DRC 1 invalid_outline +308 unconnected**, **zero altre violazioni**; SHA256 KiCad9 della PCB reale `1f0d4b118da23d93805c55be4d811094d114de0807be5180786f7697a2ab4530`, **484833 byte**. Primi run 44899236715/44899417043 avevano fallito solo per le asserzioni di coordinate/direzione del tester, poi corrette mantenendo matching severo di geometria, rame/net. La CI GREEN era sul commit precedente `c721c6214e2493d760617fa187022e64ca4c286b`; **PR non ancora mergiata al momento di questo checkpoint**, ripetere CI su commit completo con checkpoint prima del merge.
+
+**Prossimi blocchi elettronici:** eFuse RTN distinto da GND_MAIN e GND_RF, UVLO/OVP, MODE/ILIM soglie, F200 e 13.8 V/recovery; BUCK TPS54202 corrente SW/VOUT e piani ritorno/FB U100; termica/Ceff di 6 LDO; 15 interfacce OPEN; Y1 SG48 pin10 HOLD, D200 TVS DNP, 25 ERC error/180 warning ultimi V7.79; RF/IF, chassis/outline/stackup, DRC di rilascio e TX incompleti. **NO FAB / NO GERBER / NO PCBWAY / NO BATTERIA / NO TX**.
+
+---
+
 ## V7.87 eFuse MODE/ILIM RAME REALE IN VERIFICA — 21 novembre 2026 — NO FAB
 
 **Main live e baseline:** V7.86 PR #114 integrata con merge `b9fe17f05cc7e01149e31450d2b9e77048b08d68`, suite KiCad9 native [44898768619](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44898768619) e policy [44898768622](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44898768622) SUCCESS. PCB unica reale V7.86: 139 footprint, 17 tratti F.Cu, DRC **1 invalid_outline +310 unconnected** (non release). ERC ultimi 25 errori+180 warning V7.79; nessun altro circuito considerato chiuso.
