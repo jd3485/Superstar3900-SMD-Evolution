@@ -48,6 +48,16 @@ def build():
     # Existing copper must remain unmodified; no hidden electrical changes.
     assert not board.GetTracks() and not board.Zones()
     assert not any(d.GetLayer()==pcbnew.Edge_Cuts for d in board.GetDrawings())
+    # KiCad does not necessarily persist nets having zero PCB pads on the
+    # preceding 124-footprint board. Instantiate only native RX net names
+    # absent from that board, never alias or merge unrelated electrical nets.
+    needed={pins[(ref,num)] for ref in RX_REFS
+            for num in (n for rr,n in pins if rr==ref)}
+    assert None not in needed
+    for name in sorted(needed):
+        if board.FindNet(name) is None:
+            board.Add(pcbnew.NETINFO_ITEM(board,name))
+        assert board.FindNet(name) is not None, name
     added={}
     for ref,(x,y) in RX_AT.items():
         fpname,value=comps[ref]
