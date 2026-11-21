@@ -86,12 +86,18 @@ def build():
             if n=="MP":
                 assert (ref,n) not in pins and pad.GetNetCode()==0,(ref,n)
                 continue
-            assert n not in seen,(ref,n,"duplicate physical pad number")
+            # The four RX SMA vendor-review footprints have multiple
+            # physically distinct solder tabs numbered 2 (coaxial GND).
+            # All other duplicate copper numbers are a hard failure.
+            if n in seen:
+                assert ref in {"J9101","J9102","J9103","J9104"} and n=="2", (ref,n,"unexpected duplicate copper pad")
             native=pins.get((ref,n))
             if native is not None:
                 net=board.FindNet(native)
                 assert net is not None,(ref,n,native)
                 pad.SetNet(net)
+            if n in seen:
+                assert seen[n]==native,(ref,n,"SMA return pads disagree")
             seen[n]=native
         assert {number for r,number in pins if r==ref} <=set(seen),(ref,"missing footprint pads")
         board.Add(fp)
