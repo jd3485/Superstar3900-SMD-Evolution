@@ -634,8 +634,8 @@ jobs:
           report=d.read_text()
           print('Native KiCad9 DRC return (unrouted is EXPECTED):',run.returncode)
           print('DRC first 16000 characters:',report[:16000])
-          errors=re.search(r'Found (\\d+) DRC violations',report)
-          unconnected=re.search(r'Found (\\d+) unconnected pads',report)
+          errors=re.search(r'Found (\d+) DRC violations',report)
+          unconnected=re.search(r'Found (\d+) unconnected pads',report)
           assert errors and unconnected, 'native DRC summary missing'
           # No invented DRC pass: one missing mechanical outline, real unrouted pads.
           assert int(errors.group(1))==1 and report.count('[invalid_outline]')==1, 'additional real design-rule violations'
