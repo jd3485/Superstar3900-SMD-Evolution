@@ -70,8 +70,15 @@ def check():
         assert native==starts[1].GetNetname() and native.endswith("/"+net),net
         assert starts[0].GetLayerSet().Contains(pcbnew.F_Cu)
         assert starts[1].GetLayerSet().Contains(pcbnew.F_Cu)
-        assert starts[0].GetPosition()==point(segments[0][0])
-        assert starts[1].GetPosition()==point(segments[-1][1])
+        # Native pcbnew stores positions on integer-nanometre coordinates,
+        # while floating FromMM(66.1) may differ by a handful of nm.
+        # Tolerance is 1 micrometre, far below copper DRC clearance.
+        for actual,proposed,label in (
+            (starts[0].GetPosition(),point(segments[0][0]),endpoint_specs[0]),
+            (starts[1].GetPosition(),point(segments[-1][1]),endpoint_specs[1])):
+            assert abs(actual.x-proposed.x)<=pcbnew.FromMM(0.001) and abs(actual.y-proposed.y)<=pcbnew.FromMM(0.001), (
+                "real physical pad endpoint mismatch",net,label,
+                (actual.x,actual.y),(proposed.x,proposed.y))
         for i,(p,q) in enumerate(segments):
             assert p!=q and (i==0 or segments[i-1][1]==p)
             assert (native,"F.Cu",pcbnew.FromMM(0.2),
