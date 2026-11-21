@@ -41,6 +41,8 @@ on:
       - '03_Verifiche/V7.81/**'
       - '03_Verifiche/V7.82/**'
       - '03_Verifiche/V7.83/**'
+      - '03_Verifiche/V7.84/**'
+      - '04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/**'
@@ -656,6 +658,35 @@ jobs:
               print(base64.b64encode(p.read_bytes()).decode('ascii'))
               print('END_V783_PCB_BASE64')
           PY
+      - name: V7.84 KiCad9 real buck local 2-net routing and physical DRC (NON RELEASE)
+        run: |
+          timeout 100s python3 -u -B -m unittest discover -s 03_Verifiche/V7.84 -p 'build_buck_local_v784.py' -v
+          python3 - <<'PY'
+          import subprocess,re,hashlib
+          from pathlib import Path
+          p=Path('04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/S3900E_MASTER_V784_BUCK_LOCAL_NO_FAB.kicad_pcb')
+          assert p.is_file()
+          d=Path('03_Verifiche/V7.84/output-ci/v784_drc_nonrelease.rpt')
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],capture_output=True,text=True,timeout=110)
+          assert d.is_file() and d.stat().st_size>100,(run.returncode,run.stderr)
+          report=d.read_text()
+          print('BUCK V7.84 FULL native DRC (truncated display):',report[:13000])
+          x=re.search(r'Found (\d+) DRC violations',report)
+          y=re.search(r'Found (\d+) unconnected pads',report)
+          assert x and y,report[:1200]
+          assert int(x.group(1))==1 and report.count('[invalid_outline]')==1, 'FAIL: physical design error'
+          assert 0<int(y.group(1))<316, 'two local nets did not improve real unrouted count'
+          assert all(f not in report for f in ('[clearance]','[shorting_items]',
+              '[silk_overlap]','[courtyard_overlap]','[text_height]'))
+          print('V7.84 NONRELEASE: invalid_outline=1, unrouted='+y.group(1))
+          print('V7.84 PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.84 PCB BYTES',p.stat().st_size)
+          if subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True).returncode!=0:
+              import base64
+              print('BEGIN_V784_PCB_BASE64')
+              print(base64.b64encode(p.read_bytes()).decode())
+              print('END_V784_PCB_BASE64')
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -698,8 +729,10 @@ jobs:
             03_Verifiche/V7.81/output-ci/
             03_Verifiche/V7.82/output-ci/
             03_Verifiche/V7.83/output-ci/
+            03_Verifiche/V7.84/output-ci/
             04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/
+            04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/
             04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn

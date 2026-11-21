@@ -1,5 +1,13 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## V7.84 gate G6 — routing locale reale buck, NONRELEASE (21 novembre 2026)
+
+**Evidenza nativa [CI 44893786818](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44893786818)**: PCB unico KiCad9 139 footprint, 12 posizioni buck rilocalizzate, sei tratti rame F.Cu BOOT/EN (non quelli di potenza), pad-net 139 invariati, DRC **1 invalid_outline +314 unconnected**, nessun corto residuo. File board realmente salvato su PR #112, commit `69390206f1c72787bf97e52659d232469186ba30`, SHA256 `364498b0b9ede338257698c4bb35b3ac0132dea15f720b55349d4e58fb7e8bc8`. CI finale su file versionato ancora da eseguire/verificare prima di merge. G6 ancora APERTO: manca C102 SW, corrente switching, ritorni massa, piastre dissipative, DRC di rilascio, outline e stackup. Nessuna progressione G3 alimentazioni/eFuse, ERC o interfacce provata. G7/G8/G9 totalmente HOLD; nessuna fabbricazione.
+
+## V7.84 G6 — PCB buck local feedback/boot review, NON RELEASE (21 novembre 2026)
+
+Baseline: V7.83 PR #111 integrata, 139 impronte fisiche. V7.84 sul ramo `pcb/v7-84-buck-local-placement-bootstrap-enable-hold` modifica realmente 12 posizioni buck e propone quattro segmenti locali netlist-qualified su `BUCK_BOOT`/`BUCK_EN`. G6 uscita intermedia **solo dopo** file PCB native versionato, confronto pin/net delle 139 impronte, DRC KiCad9 con anomalie residue enumerate, e CI aggiornata. Nessuna qualifica corrente switching/PI termica, 13,8V/eFuse, return plane, RF, outline o fab release. G3/G4/G5/G6/G7/G8/G9 restano aperti. Y1/SG48 e D200 HOLD, 15 interfacce aperte; nessuna percentuale progettuale dedotta dal numero impronte.
+
 ## V7.83 G5/G6 PCB RX fisica versionata — 21 novembre 2026, NON RELEASE
 
 Nel [run KiCad9 44891671924](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44891671924) risultano **139 impronte KiCad9 fisiche** sul master PCB unico: 124 V7.82 preservate + 15 del coupon RX, tutte da netlist 141 componenti /103 reti, `.kicad_pcb` effettivo salvato su PR #111 commit `22dd37985b39722f3f7294d2ccdb101d35de2b5d`. DRC diagnostico **1 invalid_outline +316 unconnected**; **non equivale** a DRC PASS, circuiti integrati, layout RF o potenza qualificata. Occorre CI **finale sul file versionato** prima di merge. Due componenti D200 DNP e Y1 SG48 HOLD intenzionalmente mancanti. G1–G9 restano APERTI dove indicati; nessuna fabbricazione. La roadmap storica sottostante resta orientativa e non deve sovrascrivere questo stato.
