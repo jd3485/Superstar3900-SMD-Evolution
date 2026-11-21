@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.84 BUCK PCB LOCALE IN VERIFICA — 21 novembre 2026, NO FAB
+
+**Baseline LIVE:** V7.83 su main merge PR #111 `2359f3781b3db7506000773b0f0ef9069f0886ec`, CI KiCad9 `44892562192` + policy `44892562198` SUCCESS, 139 footprint /141 schematici, DRC NONRELEASE 1 `invalid_outline` +316 unrouted, nessuna traccia, nessun outline o zone. Schematico ultimo ERC 25 errori/180 warning; non dichiarare chiusi.
+
+**ECO PCB tecnica in branch** `pcb/v7-84-buck-local-placement-bootstrap-enable-hold`: nuovo script pcbnew `03_Verifiche/V7.84/build_buck_local_v784.py` parte da PCB V7.83 reale, sposta 12 componenti locali della sezione buck (C100–C105, L100, R100–R104) senza cambiare pin/pad/net, preserva tutti gli altri riferimenti, propone quattro segmenti **solo** sulle reti low-current `BUCK_BOOT` e `BUCK_EN` (nessuna tratta VIN, switching current, GND, RF o TX). Il file successivo `04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/S3900E_MASTER_V784_BUCK_LOCAL_NO_FAB.kicad_pcb` è da generare in KiCad9, verificare DRC diagnostico, committare come file CAD esatto e ricontrollare prima del merge. **CI NON ANCORA PROVATA, modifica NON INTEGRATA.** Staging meccanico e routing locale non sostituiscono stabilità buck, ritorno GND, loop corrente, copper width/thermal/stackup qualificati.
+
+**Bloccanti invariati:** 13,8V J100/F200 TPS26600 fuse-eFuse coordination/latch recovery, eFuse RTN diverso da GND_MAIN; buck 5V carichi/stabilità/dissipazione; sei LDO 3,3V termica; Y1 pin10 SG48 e D200 DNP, 15 interfacce HOLD, ERC 25/180, antenna RX SMA 180°, assenza outline, routing totale, DRC di rilascio, PCB non fab-ready. **NEXT:** validare V7.84 nativamente, correggere difetti fisici, versionare PCB e ripetere CI; poi sviluppo alimentazioni e collegamenti reali. NO FAB / GERBER / PCBWAY / TX.
+
+---
+
 ## V7.83 PCB FISICA 139 IMPRONTE SU PR #111 — 21 novembre 2026 — NO FAB
 
 **PROVA NATIVA E STATO INTEGRAZIONE:** [KiCad9 run 44891671924](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44891671924) **SUCCESS** sulla prima versione del generatore, con 139 impronte (124 V7.82 immutate + 15 RX), 141 componenti / 103 reti master, copia pad-net e reload pcbnew. File KiCad9 fisico `04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/S3900E_MASTER_V783_STAGING_NO_FAB.kicad_pcb` **versionato nella PR #111** nel commit `22dd37985b39722f3f7294d2ccdb101d35de2b5d` con blob GitHub `c296fd8902dabed4182f6e2aca3a55afd7f043ca`. SHA256 board nativa `59fb83f3200fbf2c2376a7e3c20526ffadd170eaae23d9c00617cfd181d3a8cf`, dimensioni 481430 byte. DRC diagnostico nativo **1 invalid_outline + 316 unconnected**, nessuna altra violazione DRC secondo gate, **NO ROUTING / NO FAB**. Revisioni correttive genuine: inizializzazione nuove reti RX già esistenti nella netlist ma non salvate nella board precedente; riconoscimento di pad GND multipli 2 di SMA CONSMA002 e di tab SOT-89 ADL5535. Non è un corto o una rimozione errore. **Attendere CI finale sul file PCB ora tracciato prima del merge**: non dichiarare PR integrata su main in anticipo.
