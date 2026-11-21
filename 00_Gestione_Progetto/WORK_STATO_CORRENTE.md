@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.89 eFuse UVLO partitore + DV/DT: PCB KIcad9 CI GREEN — 21 novembre 2026 — NO FAB
+
+**Baseline main V7.88** merge [PR #116](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/116) `dd1ace20d9aba50b98a7dbc0ea3cddb688e1c0d5` (KiCad9 run 44900638980 e policy 44900638977 SUCCESS), PCB nativa 139 footprint/30 segmenti, DRC diagnostico **1 invalid_outline +306 unconnected**.
+
+**Revisione reale V7.89 su [PR #117](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/117):** board KiCad9 `04_KiCad/PCB_MASTER_V7.89_EFUSE_DVDT_UVLO_WIP/S3900E_MASTER_V789_DVDT_UVLO_NO_FAB.kicad_pcb` fisicamente committata, 139 footprint, **36 segmenti F.Cu**: 30 originali immutati +4 nuovi su `UVLO_NODE` (branch da R200.1 a R201.2) e 2 su `DV_DT_NODE` (U200.12→C201.2), C201 avvicinato da (74,54) a (76,42) mm, 138 posizioni immutate, 139 mappe pad/net immutate, U200 pin NC/FLT non modificati, nessun rame EFUSE_RTN/GND_MAIN/GND_RF/potenza/RF. **Prova native [KiCad9 run 44901024127](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44901024127) SUCCESS e [safety policy 44901024281](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44901024281) SUCCESS:** DRC NON RELEASE **1 invalid_outline +304 unconnected, nessuna altra violazione**, SHA256 board `d92b6cb7735b9eb4adf38f2359b8a9f1fb6eba15ae8ce805aed71265c6f61b54` **486499 bytes**. **ATTENDERE CI FINALE sul commit con checkpoint prima del merge**; questo documento descrive la PR ancora aperta al momento dell'aggiornamento.
+
+**Vincoli sostanziali non eliminati:** eFuse 13,8V J100/F200/D200 DNP, TPS26600 UVLO/OVP soglie, current limit/MODE, latch e reset, power plane/return EFUSE_RTN≠GND_MAIN≠GND_RF; buck TPS54202 FB completo e SW, loop corrente e massa ancora non progettati, six LDO thermal/Ceff, 15 interfacce OPEN/HOLD, TCXO SG48 Y1 pin10 HOLD, ultimo ERC 25 errori+180 warning V7.79, RF/IF/TX/outline/stackup e DRC release incompleti. **NO FAB/GERBER/PCBWAY/BATTERIA/VEICOLO/TX**.
+
+---
+
 ## V7.89 UVLO DIVIDER / dVdt eFuse: PCB REALE E CI DA VERIFICARE — 21 novembre 2026 — NO FAB
 
 **Main live al bootstrap V7.89:** V7.88 merge [PR #116](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/116) `dd1ace20d9aba50b98a7dbc0ea3cddb688e1c0d5`, [CI KiCad9 44900638980](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900638980) e [policy 44900638977](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900638977) SUCCESS, 139 footprint, 30 tratti PCB nativi, DRC diagnostico **1 invalid_outline +306 unconnected**; corto reale UVLO↔VIN R200.2 già risolto nel ramo V7.88, nessun workaround ERC.
