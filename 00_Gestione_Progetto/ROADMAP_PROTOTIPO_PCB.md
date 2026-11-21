@@ -1,5 +1,9 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## G6 V7.85 — rete FB e partitore buck: rame reale in verifica (21 novembre 2026)
+
+**Baseline main integrata:** V7.84 PR #112, KiCad9 run 44894281465 SUCCESS, PCB 139 footprint/6 tratti BOOT+EN e DRC diagnostico 1 invalid_outline +314 non instradati. **Proposta**: V7.85 riposiziona C105/R101/R102 e crea 4 collegamenti fra componenti di feedback `BUCK_FB`/`BUCK_DIV_TOP`; nessun rame GND, 13.8V, BUCK_SW, 5V ad alta corrente, RX/TX; CI e file nativo non ancora completati. I collegamenti verso U100 e le compensazioni sono sempre tecnicamente non qualificate. G6/G7/G8/G9 restano aperti e nessun ordine PCB è autorizzato.
+
 ## V7.84 gate G6 — routing locale reale buck, NONRELEASE (21 novembre 2026)
 
 **Evidenza nativa [CI 44893786818](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44893786818)**: PCB unico KiCad9 139 footprint, 12 posizioni buck rilocalizzate, sei tratti rame F.Cu BOOT/EN (non quelli di potenza), pad-net 139 invariati, DRC **1 invalid_outline +314 unconnected**, nessun corto residuo. File board realmente salvato su PR #112, commit `69390206f1c72787bf97e52659d232469186ba30`, SHA256 `364498b0b9ede338257698c4bb35b3ac0132dea15f720b55349d4e58fb7e8bc8`. CI finale su file versionato ancora da eseguire/verificare prima di merge. G6 ancora APERTO: manca C102 SW, corrente switching, ritorni massa, piastre dissipative, DRC di rilascio, outline e stackup. Nessuna progressione G3 alimentazioni/eFuse, ERC o interfacce provata. G7/G8/G9 totalmente HOLD; nessuna fabbricazione.
