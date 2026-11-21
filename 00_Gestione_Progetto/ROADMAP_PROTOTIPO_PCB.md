@@ -1,5 +1,16 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## Stato di lavoro V7.83 — 21 novembre 2026 — RX PCB WIP, NO FAB
+
+**Baseline verificata su main:** V7.82 merge PR #110, HEAD `5d817ea0e8f717f982a4a2edfec60531b6eeaf18`; 124 footprint reali del PCB master, 141 componenti e 103 reti schematica, ultimo ERC nativo V7.79 **25 errori/180 warning**. DRC V7.82 diagnostico: **1 invalid_outline + 280 unconnected**, senza piste, zone né bordo. Questo paragrafo prevale sulle baseline storiche V7.74/V7.80 sotto riportate.
+
+**G5/G6 in progresso NON certificato:** ramo `pcb/v7-83-rx-15-footprints-native-staging-hold` introduce generatore KiCad9 di 15 footprint del coupon RX: J9101, J9102, J9103, J9104, J9105, U9101, L9101, C9101–C9105, R9201–R9203. Il generatore copia ogni connessione dalla netlist nativa e confronta *tutti* i footprint e pin/net preesistenti con V7.82, senza mutare lo schema. **139/141 è un obiettivo di placement, non ancora un risultato provato**: attendere workflow KiCad9, artefatto board e versione fisica committata. D200 TVS DNP e Y1 TCXO pin10 SG48 restano esclusi HOLD. Placement RF su griglia *provvisoria*, non impedenza 50 ohm, geometria RF, connettori/orientamento meccanico né ritorni qualificati.
+
+**Criterio di uscita G6 intermedio V7.83:** esportazione KiCad9 reale 139 riferimenti, 15 componenti RX esatti, 124 invariati, coppie pin/pad/net confrontate con netlist, nessuna pista o ponte domini, DRC nativo nonrelease con ogni violazione conservata; successivamente salvare effettivamente il `.kicad_pcb` verificato nel branch, riavviare checks e solo allora valutare merge. G6 globale rimane APERTO senza outline, routing, stackup, PCB di produzione o 15 interfacce cross-module autorizzate.
+
+**Successivi blocchi ingegneristici:** qualifica footprint SMA RX con orientamento fisico; Ceff del buck 5V e ritorno eFuse/F200 13,8V; carichi reali sei LDO; 15 interfacce; routing RF/IF e piani massa verificati; ERC 25/180 reale, DRC e revisione indipendente. **NO FAB / NO GERBER / NO PCBWAY / NO TX.**
+
+
 ## Avanzamento G6 — V7.80 (19 novembre 2026), **WIP NON RELEASE**
 
 Il generatore `03_Verifiche/V7.80/build_master_power_placement_v780.py` e il nuovo elaborato master fisico `04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/S3900E_MASTER_V780_STAGING_NO_FAB.kicad_pcb` (integrazione effettiva da verificare in PR/CI) iniziano lo **staging vero** di 25 footprint power da 141 componenti del master 7 fogli. Gate G6 **APERTO**: è solo piazzamento, nessun outline, routing, zone, stackup verificato o DRC di rilascio, 15 interfacce HOLD. Priorità: qualifica elettrica input/return/MPN e vincoli meccanici, poi espandere PCB con pin-net e DRC controllati. Non trattare il numero 25 come completamento percentuale.
