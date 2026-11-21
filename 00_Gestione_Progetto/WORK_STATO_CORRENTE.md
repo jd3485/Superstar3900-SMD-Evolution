@@ -1,5 +1,13 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.83 PCB FISICA 139 IMPRONTE SU PR #111 — 21 novembre 2026 — NO FAB
+
+**PROVA NATIVA E STATO INTEGRAZIONE:** [KiCad9 run 44891671924](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44891671924) **SUCCESS** sulla prima versione del generatore, con 139 impronte (124 V7.82 immutate + 15 RX), 141 componenti / 103 reti master, copia pad-net e reload pcbnew. File KiCad9 fisico `04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/S3900E_MASTER_V783_STAGING_NO_FAB.kicad_pcb` **versionato nella PR #111** nel commit `22dd37985b39722f3f7294d2ccdb101d35de2b5d` con blob GitHub `c296fd8902dabed4182f6e2aca3a55afd7f043ca`. SHA256 board nativa `59fb83f3200fbf2c2376a7e3c20526ffadd170eaae23d9c00617cfd181d3a8cf`, dimensioni 481430 byte. DRC diagnostico nativo **1 invalid_outline + 316 unconnected**, nessuna altra violazione DRC secondo gate, **NO ROUTING / NO FAB**. Revisioni correttive genuine: inizializzazione nuove reti RX già esistenti nella netlist ma non salvate nella board precedente; riconoscimento di pad GND multipli 2 di SMA CONSMA002 e di tab SOT-89 ADL5535. Non è un corto o una rimozione errore. **Attendere CI finale sul file PCB ora tracciato prima del merge**: non dichiarare PR integrata su main in anticipo.
+
+**Residui:** D200 TVS DNP e Y1 TCXO SG48 pin10 HOLD non piazzati; 15 interfacce crossmodule HOLD; 25 errori ERC+180 warning ultimi verificati V7.79; architettura 13,8 V, F200, TPS26600 RTN/recovery, buck 5 V e sei LDO 3,3 V ancora non qualificati; RF SMA 180°, layout 50Ω, chassis, ritorni di massa, thermal, stackup e DRC di rilascio mancanti. **Prossimo:** CI verde di conferma sulla board committata, merge PR #111 se tutte policy rispettate; poi sviluppo reale connessioni e alimentazioni, mai FAB/GERBER/PCBWAY/TX senza autorizzazione.
+
+---
+
 ## V7.83 PROPOSTA TECNICA RX SU BRANCH — 21 novembre 2026 — NON MERGED / NO FAB
 
 **Main verificato all'avvio:** V7.82 merge commit `5d817ea0e8f717f982a4a2edfec60531b6eeaf18`; nessuna PR aperta prima del ramo V7.83. PCB nativa salvata su main con **124 impronte**; DRC tecnico V7.82 **1 invalid_outline + 280 unconnected**, 0 piste/vie/zone/Edge.Cuts. Master schematico 141 componenti/103 reti; ERC ultimo KiCad V7.79 **25 errori +180 warning**, non rieseguito localmente in questa sessione.
