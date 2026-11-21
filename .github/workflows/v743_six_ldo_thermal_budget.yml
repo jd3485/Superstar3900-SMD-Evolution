@@ -649,16 +649,9 @@ jobs:
           print('NON RELEASE: 1 missing outline,',unconnected.group(1),'unconnected pads')
           print('RX staging BOARD SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('RX staging BOARD size',p.stat().st_size)
-          # One-time recoverable KiCad-generated PCB bytes, so an agent may
-          # version the exact native output on the PR before any merge.
-          # Once tracked, emit only a digest; never silently regenerate a
-          # board in main without committing its verified native bytes.
-          tracked=subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True)
-          if tracked.returncode!=0:
-              import base64
-              print('BEGIN_V783_PCB_BASE64')
-              print(base64.b64encode(p.read_bytes()).decode('ascii'))
-              print('END_V783_PCB_BASE64')
+          # V7.83 PCB is now tracked and checked by pcbnew. Never dump 650k
+          # base64 log bytes when git CLI is absent inside KiCad container.
+          assert p.stat().st_size > 480000, 'V7.83 native board missing'
           PY
       - name: V7.84 KiCad9 real buck local 2-net routing and physical DRC (NON RELEASE)
         run: |
@@ -683,11 +676,9 @@ jobs:
           print('V7.84 NONRELEASE: invalid_outline=1, unrouted='+y.group(1))
           print('V7.84 PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('V7.84 PCB BYTES',p.stat().st_size)
-          if subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True).returncode!=0:
-              import base64
-              print('BEGIN_V784_PCB_BASE64')
-              print(base64.b64encode(p.read_bytes()).decode())
-              print('END_V784_PCB_BASE64')
+          # V7.84 PCB is now tracked; sha256 + native DRC are sufficient.
+          # Avoid giant base64 log output on runners without git executable.
+          assert p.stat().st_size > 480000, 'V7.84 native board missing'
           PY
       - name: V7.85 KiCad9 genuine buck FB/DIV routing and non-release PCB DRC
         run: |
