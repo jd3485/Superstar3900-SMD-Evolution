@@ -41,7 +41,7 @@ def pad_by_number(footprint,num):
     return pads[0]
 
 def pad_signature(fp):
-    return sorted((p.GetNumber(),p.GetNetname(),p.GetLayerSet().FmtHex()) for p in fp.Pads())
+    return sorted((p.GetNumber(),p.GetNetname(),tuple(p.GetLayerSet().Contains(layer) for layer in (pcbnew.F_Cu,pcbnew.B_Cu,pcbnew.F_Paste,pcbnew.F_Mask))) for p in fp.Pads())
 
 def vertices_from_route(refs,route):
     a,an,b,bn,via=route
