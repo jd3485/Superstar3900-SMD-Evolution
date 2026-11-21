@@ -44,6 +44,8 @@ on:
       - '03_Verifiche/V7.84/**'
       - '03_Verifiche/V7.85/**'
       - '03_Verifiche/V7.86/**'
+      - '03_Verifiche/V7.87/**'
+      - '04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.86_EFUSE_CAPS_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/**'
@@ -738,6 +740,32 @@ jobs:
           print('V7.86 native PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('V7.86 PCB BYTES',p.stat().st_size)
           PY
+      - name: V7.87 KiCad9 native actual eFuse MODE ILIM two-net copper, no-return bridge DRC
+        run: |
+          timeout 90s python3 -u -B -m unittest discover -s 03_Verifiche/V7.87 -p 'test_native_efuse_mode_ilim_v787.py' -v
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,re,subprocess
+          p=Path('04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/S3900E_MASTER_V787_EFUSE_CONTROL_NO_FAB.kicad_pcb')
+          assert p.is_file() and p.stat().st_size > 480000
+          report=Path('03_Verifiche/V7.87/output-ci/v787_native_drc_nonrelease.rpt')
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(report),str(p)],
+                             capture_output=True,text=True,timeout=110)
+          assert report.is_file() and report.stat().st_size>100,(run.returncode,run.stderr)
+          drc=report.read_text()
+          print('V7.87 KiCad9 native NON RELEASE DRC:',drc[:12000])
+          a=re.search(r'Found (\d+) DRC violations',drc)
+          b=re.search(r'Found (\d+) unconnected pads',drc)
+          assert a and b,drc[:1200]
+          assert int(a.group(1))==1 and drc.count('[invalid_outline]')==1,drc[:3000]
+          assert 0<int(b.group(1))<=308,('MODE/ILIM must reduce open pad count',b.group(1))
+          for forbidden in ('[shorting_items]','[clearance]','[courtyard_overlap]',
+                            '[silk_overlap]','[text_height]','[solder_mask_bridge]'):
+              assert forbidden not in drc,forbidden
+          print('V7.87 NONRELEASE 1 invalid_outline',b.group(1),'unconnected')
+          print('V7.87 PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.87 PCB BYTES',p.stat().st_size)
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -783,11 +811,13 @@ jobs:
             03_Verifiche/V7.84/output-ci/
             03_Verifiche/V7.85/output-ci/
             03_Verifiche/V7.86/output-ci/
+            03_Verifiche/V7.87/output-ci/
             04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/
             04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/
             04_KiCad/PCB_MASTER_V7.86_EFUSE_CAPS_WIP/
+            04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/
             04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn
