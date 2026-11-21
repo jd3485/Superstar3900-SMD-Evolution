@@ -1,5 +1,24 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.83 PCB FISICA 139 IMPRONTE SU PR #111 — 21 novembre 2026 — NO FAB
+
+**PROVA NATIVA E STATO INTEGRAZIONE:** [KiCad9 run 44891671924](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44891671924) **SUCCESS** sulla prima versione del generatore, con 139 impronte (124 V7.82 immutate + 15 RX), 141 componenti / 103 reti master, copia pad-net e reload pcbnew. File KiCad9 fisico `04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/S3900E_MASTER_V783_STAGING_NO_FAB.kicad_pcb` **versionato nella PR #111** nel commit `22dd37985b39722f3f7294d2ccdb101d35de2b5d` con blob GitHub `c296fd8902dabed4182f6e2aca3a55afd7f043ca`. SHA256 board nativa `59fb83f3200fbf2c2376a7e3c20526ffadd170eaae23d9c00617cfd181d3a8cf`, dimensioni 481430 byte. DRC diagnostico nativo **1 invalid_outline + 316 unconnected**, nessuna altra violazione DRC secondo gate, **NO ROUTING / NO FAB**. Revisioni correttive genuine: inizializzazione nuove reti RX già esistenti nella netlist ma non salvate nella board precedente; riconoscimento di pad GND multipli 2 di SMA CONSMA002 e di tab SOT-89 ADL5535. Non è un corto o una rimozione errore. **Attendere CI finale sul file PCB ora tracciato prima del merge**: non dichiarare PR integrata su main in anticipo.
+
+**Residui:** D200 TVS DNP e Y1 TCXO SG48 pin10 HOLD non piazzati; 15 interfacce crossmodule HOLD; 25 errori ERC+180 warning ultimi verificati V7.79; architettura 13,8 V, F200, TPS26600 RTN/recovery, buck 5 V e sei LDO 3,3 V ancora non qualificati; RF SMA 180°, layout 50Ω, chassis, ritorni di massa, thermal, stackup e DRC di rilascio mancanti. **Prossimo:** CI verde di conferma sulla board committata, merge PR #111 se tutte policy rispettate; poi sviluppo reale connessioni e alimentazioni, mai FAB/GERBER/PCBWAY/TX senza autorizzazione.
+
+---
+
+## V7.83 PROPOSTA TECNICA RX SU BRANCH — 21 novembre 2026 — NON MERGED / NO FAB
+
+**Main verificato all'avvio:** V7.82 merge commit `5d817ea0e8f717f982a4a2edfec60531b6eeaf18`; nessuna PR aperta prima del ramo V7.83. PCB nativa salvata su main con **124 impronte**; DRC tecnico V7.82 **1 invalid_outline + 280 unconnected**, 0 piste/vie/zone/Edge.Cuts. Master schematico 141 componenti/103 reti; ERC ultimo KiCad V7.79 **25 errori +180 warning**, non rieseguito localmente in questa sessione.
+
+**Lavoro tecnico non ancora verificato da CI:** ramo `pcb/v7-83-rx-15-footprints-native-staging-hold`, `03_Verifiche/V7.83/build_master_rx_stage_v783.py` propone nuova PCB unica generata da **124→139 footprint** mediante i 15 riferimenti fisici RX del foglio V7.14, con base V7.82 immutata, copia dei pad-net dalla netlist KiCad9, controllo dei 124 originali e fail-closed sul set di componenti rimanenti `{D200,Y1}`. Salva in `04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/S3900E_MASTER_V783_STAGING_NO_FAB.kicad_pcb` **solo quando eseguito con pcbnew**. Workflow esistente `v743_six_ldo_thermal_budget.yml` esteso per prova KiCad9 e DRC nativo NON RELEASE. **Nessuna CI dichiarata superata**. File PCB V7.83 non ancora persistito su GitHub; non dichiarare 139 già integrati.
+
+**HOLD invariati:** TCXO Y1 pin10/SG48 e TVS D200 DNP non piazzati, 15 interfacce RX/MCU/AUX OPEN, RTC 13,8V/F200/eFuse e return separation, regolatori 5V/3V3 termica/startup, RX SMA vendor/orientamento, RF 50ohm non validata, outline, routing, zone e stackup da progettare. NO FAB / NO GERBER / NO PCBWAY / NO TX. **Next:** eseguire CI su PR, correggere fallimenti genuini, materializzare PCB generato *verificato* in GitHub, ripetere CI e solo allora unire. Dopo, affrontare contratto elettrico 13,8V/eFuse o connessioni RX con dati di vendor, non disegnare piste arbitrarie.
+
+---
+
+
 ## V7.82 REALE PCB 124 IMPRONTE SU BRANCH — 19 novembre 2026 — PR #110 NO FAB
 
 **Evidenza tecnica CI**: [KiCad9 run 44509226969](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44509226969) **SUCCESS** e policy [44509226914](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44509226914) **SUCCESS**; PCB reale `04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/S3900E_MASTER_V782_STAGING_NO_FAB.kicad_pcb` ora presente nel branch con **124 impronte** (74 V7.81 precedenti con footprint/ref/pad/net e coordinate preservati; +49 PLL reali escluso Y1 TCXO SG48 HOLD; +J101 host). **DRC nativo NON RELEASE:** esattamente **1 invalid_outline** (Edge.Cuts assente) + **280 pad non instradati**, **0 altre violazioni geometria/silk**. **Zero tracce, vie, zone**, nessuna qualifica stackup, chassis, return-plane, thermal, RF/IF. **17 componenti del master schematico restano non posizionati**, Y1 intenzionalmente HOLD; 15 interfacce crossmodule HOLD. ERC ultimo 25 errori+180 warning (V7.79). **PR #110 da verificare merge su GitHub dopo CI del PCB versionato**; no FAB/GERBER/PCBWAY/TX. Prossimo: 17 componenti inclusi RX condizionati a footprint vero, connettori e meccanica/ground, e design elettrico delle protezioni.
