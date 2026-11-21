@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.85 FEEDBACK BUCK LOCALE SU PR — 21 novembre 2026, NON VALIDATO / NO FAB
+
+**Live main:** V7.84 merge [PR #112](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/112) `b1769c5ce3a04acc579b7aa372004dd12ae8e4f2`, CI finale KiCad9 [44894281465](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44894281465) e policy [44894281432](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44894281432) SUCCESS. PCB `S3900E_MASTER_V784_BUCK_LOCAL_NO_FAB.kicad_pcb`: 139 footprint, 6 segmenti F.Cu già committati su BOOT/EN; DRC nativo **1 invalid_outline +314 unconnected**. Il precedente testo di checkpoint "CI ancora da provare / NON MERGIARE" è storico ed è stato superato dal merge verificato; il file canonico resta il git HEAD effettivo.
+
+**Lavoro V7.85 in corso, non ancora passato da KiCad9:** ramo `pcb/v7-85-buck-feedback-subnetwork-real-copper-hold` propone un PCB KiCad unico derivato esattamente V7.84, conserva tutti i 139 pin/pad/net e i sei segmenti esistenti. Riposiziona **C105, R101, R102** sulla zona passivi del buck e aggiunge rame locale su soli `BUCK_FB` e `BUCK_DIV_TOP`: connessioni fisiche C105.1↔R101.1↔R102.2 e C105.2↔R101.2↔R100.1. Il feedback verso U100.4, le reti GND, SW e 5V di corrente, il ritorno eFuse, e tutte le interfacce crossmodule sono **ancora aperti**. Prova CI KiCad9 DRC con fail-closed su ogni nuova violazione; output `04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/S3900E_MASTER_V785_FEEDBACK_NO_FAB.kicad_pcb` da produrre, qualificare, committare e riprovare prima di eventuale merge. Non presumere risultato o livello di qualificazione dal solo script.
+
+**Blocchi attivi:** ritorni GND e massa RF separati, ingresso 13,8V/F200/eFuse TPS26600 recovery, buck 5V/stabilità/Ceff/switch-current/feedback a U100, sei TPS7A2033 3,3V, ERC 25 errori+180 warning ultima prova V7.79, D200 DNP, Y1 SG48 pin10 HOLD, 15 interfacce OPEN, outline, routing e stackup/RF non qualificati. **NO FAB / NO GERBER / NO PCBWAY / NO TX**.
+
+---
+
 ## V7.84 PCB BUCK REALE CON 6 SEGMENTI — PR #112 — 21 novembre 2026, NO FAB
 
 **Dati verificati:** baseline `main` V7.83 PR #111 merge `2359f3781b3db7506000773b0f0ef9069f0886ec`. V7.84 su PR #112 ha generato un autentico PCB KiCad9 con **139 footprint, 12 componenti buck riposizionati**, **6 segmenti F.Cu a 0,25 mm** esclusivamente su BUCK_BOOT e BUCK_EN, senza modificare nessun pad/net e senza piste 13,8 V, GND, SW potenza, RF o TX. **Native CI [44893786818](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44893786818) SUCCESS**: DRC 1 `invalid_outline` + **314 unconnected** (316 V7.83), **zero altri errori**. Un vero corto EN↔VIN R103 rilevato da run CI iniziale 44893414135 è stato corretto fisicamente con polilinea che accede al pad1 R103 da sinistra. Questo è solo un progresso di routing locale, NON la validazione del buck.
