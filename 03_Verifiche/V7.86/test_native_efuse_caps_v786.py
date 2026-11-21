@@ -13,7 +13,7 @@ SOURCE=ROOT/"04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/S3900E_MASTER_V785_FEED
 TARGET=ROOT/"04_KiCad/PCB_MASTER_V7.86_EFUSE_CAPS_WIP/S3900E_MASTER_V786_EFUSE_CAPS_NO_FAB.kicad_pcb"
 EVID=ROOT/"03_Verifiche/V7.86/output-ci/v786_efuse_caps_review.json"
 MOVE={"C200":(61,39),"C201":(74,54),"C202":(80,42)}
-PAIRS=(("C200","2","U200","1"),("C201","2","U200","12"),("C202","2","U200","13"))
+PAIRS=(("C200","2","U200","1"),("C201","2","U200","12"),("C202","2","U200","15"))
 assert len(MOVE)==3
 
 def footprint_map(board):
@@ -51,6 +51,10 @@ def test_board():
     assert track_signature(before)==track_signature(now), "existing copper changed"
     assert not before.Zones() and not now.Zones()
     assert not any(d.GetLayer()==pcbnew.Edge_Cuts for d in now.GetDrawings())
+    # TI TPS26600 PWP: OUT=15,16; pad13 NC, pad14 FLT (may be
+    # floating if unused). Do not invent OUT nets on these pins!
+    assert pad(f1,"U200","13").GetNetCode()==0,"TI NC13 must remain unconnected"
+    assert pad(f1,"U200","14").GetNetCode()==0,"TI FLT14 remains optional HOLD"
     for ref in f0:
         p0,p1=f0[ref],f1[ref]
         assert electrical_signature(p0)==electrical_signature(p1),ref
@@ -81,6 +85,7 @@ def test_board():
             "all_other_136_positions_preserved":True,"track_geometry_unchanged":True,
             "efuse_rtn_and_gnd_main_separate":True,
             "no_schematic_edit":True,"no_new_routing":True,
+            "u200_pin13_nc_pin14_flt_preserved":True,
             "no_outline":True,"no_vias":True,"no_zones":True,
             "no_release_drc_claim":True,"no_fab":True,"no_tx":True}
     EVID.parent.mkdir(parents=True,exist_ok=True)

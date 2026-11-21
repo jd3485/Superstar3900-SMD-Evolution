@@ -1,5 +1,7 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+**Pin TI TPS26600 PWP qualificato da [datasheet](https://www.ti.com/lit/ds/symlink/tps2660.pdf)**: OUT15/16, NC13, FLT14 (opzionale/floating). La prima CI V7.86 falliva per test errato OUT13, non per PCB. Test corretto OUT15 + pin13/14 senza nets; nessuna correzione artificiosa ai circuiti; continuità di output e return-domain ancora da instradare/qualificare.
+
 ## V7.86 G3/G6 — disposizione fisica condensatori eFuse, non qualificazione (21 novembre 2026)
 
 Main V7.85 [PR #113](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/113) integrata, KiCad9 run 44897986143 SUCCESS; PCB 139 footprint, 17 segmenti, DRC nonrelease **1 invalid_outline +310 unconnected**. Proposta reale V7.86: PCB nativa dedicata 139/139 footprint, tre condensatori **C200/C201/C202** riposizionati verso le rispettive piazzole di U200; resto fisico/elettrico invariato. Verifiche obbligatorie prima del merge: distanza reale migliorata per tutti e tre, pad/net preservati, KiCad9 DRC senza nuove violazioni, sicurezza CI, file PCB committato (già versionato in branch). Non confondere distance-placement con routing o loop di corrente validati. G3/G4/G6/G7/G8/G9 APERTI, 15 interfacce e SG48 HOLD, no fab/TX.

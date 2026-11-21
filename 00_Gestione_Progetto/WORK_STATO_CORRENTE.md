@@ -1,5 +1,7 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+**V7.86 genuina diagnosi CI:** il primo run [44898508277](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44898508277) ha fermato il test per una **assunzione errata nel controllo** C202→U200.13, non per corto elettrico: il [datasheet TI TPS2660 PWP](https://www.ti.com/lit/ds/symlink/tps2660.pdf) assegna **15/16=OUT**, **13=N.C.**, **14=FLT open-drain** utilizzabile opzionalmente. La PCB V7.85/V7.86 ha correttamente il pad13 e14 senza reti, mentre C202.2 è sulla rete protetta di U200.15/16. Corretto il test a **U200.15** e aggiunte asserzioni fail-closed NC13/FLT14 liberi. Non introdurre finti collegamenti a questi pin per far passare CI. La V7.86 PCB reale è invariata e richiede nuova CI nativa DRC prima del merge.
+
 ## V7.86 INPUT/eFuse C200/C201/C202: PCB FISICA IN VERIFICA — 21 NOV 2026 — NO FAB
 
 **Main LIVE verificato:** V7.85 PR #113 [merged](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/113) `8992956ac13589a1b4bf6eff0f087dc3010257ec` con [CI KiCad9 44897986143](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44897986143) e policy `44897986146` **SUCCESS**. Master PCB unico 139 footprint, **17 segmenti rame F.Cu** BOOT/EN/FB/DIV; DRC nativo NON RELEASE **1 invalid_outline +310 unconnected**. Non fabbricabile; ERC ultimo 25 errori+180 warning da V7.79.
