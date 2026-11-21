@@ -8,7 +8,7 @@
 	)
 	(paper "A4")
 	(title_block
-		(title "S3900E V7.84 BUCK local BOOT EN routing WIP NO FAB")
+		(title "S3900E V7.85 BUCK FB DIV local copper WIP NO FAB NO TX")
 	)
 	(layers
 		(0 "F.Cu" signal)
