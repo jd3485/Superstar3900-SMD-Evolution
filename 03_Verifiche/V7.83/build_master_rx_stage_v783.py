@@ -109,16 +109,25 @@ def build():
     # If the actual V7.83 board has been committed, reject unexplained changes
     # instead of overwriting a newer manual or electrically modified PCB.
     if DEST.exists():
+        # CI must DRC the exact checked-in native bytes; saving freshly
+        # instantiated footprints here would regenerate random UUIDs and
+        # silently replace the actual reviewed artefact on the runner.
         prev=pcbnew.LoadBoard(str(DEST))
         prevrefs={f.GetReference():f for f in prev.GetFootprints()}
-        assert set(prevrefs)==set(existing)|set(RX_REFS)
+        proposed={f.GetReference():f for f in board.GetFootprints()}
+        assert set(prevrefs)==set(existing)|set(RX_REFS)==set(proposed)
         assert len(prev.GetTracks())==0 and len(prev.Zones())==0
-        for fp in board.GetFootprints():
-            prior=prevrefs[fp.GetReference()]
-            assert prior.GetPosition()==fp.GetPosition(),fp.GetReference()
-            assert prior.GetFPID().GetLibItemName()==fp.GetFPID().GetLibItemName()
-            assert sorted((p.GetNumber(),p.GetNetname()) for p in prior.Pads())==sorted((p.GetNumber(),p.GetNetname()) for p in fp.Pads()),fp.GetReference()
-    pcbnew.SaveBoard(str(DEST),board)
+        assert not any(d.GetLayer()==pcbnew.Edge_Cuts for d in prev.GetDrawings())
+        for ref,fp in proposed.items():
+            prior=prevrefs[ref]
+            assert prior.GetPosition()==fp.GetPosition(),ref
+            assert prior.GetFPID().GetLibItemName()==fp.GetFPID().GetLibItemName(),ref
+            assert sorted((p.GetNumber(),p.GetNetname()) for p in prior.Pads())==sorted((p.GetNumber(),p.GetNetname()) for p in fp.Pads()),ref
+            assert prior.Reference().GetTextSize()==fp.Reference().GetTextSize(),ref
+        # NOTE: deliberately NO pcbnew.SaveBoard when file already exists.
+    else:
+        pcbnew.SaveBoard(str(DEST),board)
+    assert DEST.is_file()
     restored=pcbnew.LoadBoard(str(DEST))
     refs={f.GetReference():f for f in restored.GetFootprints()}
     assert set(refs)==set(existing)|set(RX_REFS) and len(refs)==139
