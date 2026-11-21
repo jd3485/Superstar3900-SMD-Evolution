@@ -1,5 +1,13 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.88 UVLO/OVP: PCB reale, 139 footprint /30 segmenti e CI GREEN — 21 novembre 2026 — NO FAB
+
+**Main precedente:** V7.87 PR #115 merge `66654ff213398473af109676913a6365477e6a28`; PCB nativa 139 footprint/24 segmenti, DRC 1 invalid_outline +308 unconnected, nessuna altra violazione. **V7.88 su [PR #116](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/116)** aggiunge sei segmenti F.Cu a 0,20 mm sulle sole reti `UVLO_NODE` da U200.3 a R200.1 e `OVP_NODE` da U200.5 a R201.1, sposta R200=(55,39), R201=(56,52). Preesistenti 24 segmenti preservati e tutti 139 pin/pad/net invariati, nessuna modifica a 137 posizioni precedenti, nessuna pista di ritorno/potenza/antenna. Il primo [run KiCad9 44900248452](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900248452) rilevò **vero corto UVLO↔EFUSE_VIN** nel pad R200.2 e saldatura mask; geometria UVLO corretta con passaggio x53 mm a sinistra del resistore. [Run di verifica nativa 44900456891](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900456891) **SUCCESS** e [policy 44900456896](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900456896) **SUCCESS**: **DRC non-release 1 invalid_outline +306 unconnected, zero altri errori**. PCB reale `04_KiCad/PCB_MASTER_V7.88_EFUSE_THRESHOLDS_WIP/S3900E_MASTER_V788_UVLO_OVP_NO_FAB.kicad_pcb` **versionata nella PR**, byte 485661, SHA256 `625ca0cf2ea1603c20c2d4c8b8061a0e077fc16f0a08af98991b9c356a99ef5b`. È necessario ri-verificare i check CI su commit di checkpoint prima di merge; non considerare PR ancora unita al momento di questa scrittura.
+
+**HOLD reali aperti:** soglie UVLO/OVP da approvare ed estendere ai partitori fisici, GND_MAIN/GND_RF distinti da EFUSE_RTN eFuse, R202/R200/R201 catena non instradata integralmente; F200/fusibile 13.8V, protezione D200 DNP, TPS26600 latch/recovery e ritorni potenza; BUCK TPS54202 correnti/feedback U100; termica/Ceff dei sei LDO; 15 crossmodule OPEN, Y1 SG48 pin10 HOLD, ultimo ERC V7.79 25 errori +180 warning; outline, stackup e layout RF/IF/TX non qualificati. **NO FAB/GERBER/PCBWAY/BATTERIA/VEICOLO/TX**.
+
+---
+
 ## V7.88 eFuse UVLO/OVP: PCB NATIVA IN VERIFICA — 21 novembre 2026 — NO FAB
 
 **Base effettiva `main`:** V7.87 PR #115 merge `66654ff213398473af109676913a6365477e6a28`, [KiCad9 CI 44899780127](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44899780127) e policy 44899780133 SUCCESS; PCB 139 footprint, 24 segmenti totali, diagnostica DRC **1 invalid_outline +308 unconnected**. ERC ultimo 25 errors/180 warning V7.79.
