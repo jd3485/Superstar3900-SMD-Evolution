@@ -1,5 +1,14 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.86 INPUT/eFuse C200/C201/C202: PCB FISICA IN VERIFICA — 21 NOV 2026 — NO FAB
+
+**Main LIVE verificato:** V7.85 PR #113 [merged](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/113) `8992956ac13589a1b4bf6eff0f087dc3010257ec` con [CI KiCad9 44897986143](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44897986143) e policy `44897986146` **SUCCESS**. Master PCB unico 139 footprint, **17 segmenti rame F.Cu** BOOT/EN/FB/DIV; DRC nativo NON RELEASE **1 invalid_outline +310 unconnected**. Non fabbricabile; ERC ultimo 25 errori+180 warning da V7.79.
+
+**V7.86 su branch `pcb/v7-86-efuse-three-cap-placement-no-fab` ancora senza CI:** creato vero `04_KiCad/PCB_MASTER_V7.86_EFUSE_CAPS_WIP/S3900E_MASTER_V786_EFUSE_CAPS_NO_FAB.kicad_pcb`, derivato rigorosamente V7.85, **tre soli componenti spostati**, C200 da (59,29)→(61,39) mm eFuse VIN/GND_MAIN, C201 da (80,29)→(74,54) mm DV_DT/EFUSE_RTN, C202 da (86,29)→(80,42) mm BUCK_VIN_PROTECTED/GND_MAIN; zero nuove piste, mantenuti 17 segmenti e pin/pad/net identici dei 139 footprint. Generato `03_Verifiche/V7.86/test_native_efuse_caps_v786.py`: verifica distanza condensatore↔pad U200, continuità del netname identico, invarianza 136 posizioni, netlist/pin/pad e rame, nessun collegamento EFUSE_RTN↔GND_MAIN/GND_RF; DRC KiCad9 atteso **solo 1 invalid_outline +310 unconnected**. È un posizionamento eFuse preliminare, **non una qualificazione EMI, startup, correnti, return-plane o stabilità**. Attendere PR, test CI verde e conferma native board prima di merge.
+
+**Bloccanti tecnici invariati:** alimentazione 13,8V J100/F200/TVS D200 DNP/eFuse TPS26600 con RTN distinto da GND_MAIN; reali percorsi di corrente e dissipazione, reset/latch e controlli soglia; buck TPS54202 loop completo e GND; 6 TPS7A2033 termica/Ceff, 15 interfacce OPEN/HOLD, TCXO Y1 SG48 pin10 HOLD, mancanza outline/stackup/RF/IF e routing generale, ERC 25/180. **NO FAB / NO GERBER / NO PCBWAY / NO BATTERIA / NO TX.**
+
+---
 ## V7.85 BOARD FISICO PR #113 — 21 NOV 2026 — CI FINALE DA VERIFICARE / NO FAB
 
 **Baseline main verificata:** V7.84 merge PR #112 commit `b1769c5ce3a04acc579b7aa372004dd12ae8e4f2`, KiCad9 finale [44894281465](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44894281465) SUCCESS, 139 footprint, 6 segmenti BUCK_BOOT/BUCK_EN, DRC nonrelease 1 invalid_outline +314 unconnected.
