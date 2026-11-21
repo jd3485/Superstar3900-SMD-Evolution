@@ -40,6 +40,8 @@ on:
       - '03_Verifiche/V7.80/**'
       - '03_Verifiche/V7.81/**'
       - '03_Verifiche/V7.82/**'
+      - '03_Verifiche/V7.83/**'
+      - '04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/**'
@@ -618,6 +620,32 @@ jobs:
           print('V7.82 REAL PCB BYTES', p.stat().st_size)
           print('V7.82 NONRELEASE DRC: one missing outline +280 unrouted, zero other violations')
           PY
+      - name: V7.83 KiCad9 physical RX 15-component staging and native NON RELEASE DRC
+        run: |
+          timeout 120s python3 -u -B -m unittest discover -s 03_Verifiche/V7.83 -p 'build_master_rx_stage_v783.py' -v
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, re, subprocess
+          p=Path('04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/S3900E_MASTER_V783_STAGING_NO_FAB.kicad_pcb')
+          assert p.is_file()
+          d=Path('03_Verifiche/V7.83/output-ci/v783_native_drc_nonrelease.rpt')
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],capture_output=True,text=True,timeout=120)
+          assert d.is_file() and d.stat().st_size>100, (run.returncode,run.stderr)
+          report=d.read_text()
+          print('Native KiCad9 DRC return (unrouted is EXPECTED):',run.returncode)
+          print('DRC first 16000 characters:',report[:16000])
+          errors=re.search(r'Found (\\d+) DRC violations',report)
+          unconnected=re.search(r'Found (\\d+) unconnected pads',report)
+          assert errors and unconnected, 'native DRC summary missing'
+          # No invented DRC pass: one missing mechanical outline, real unrouted pads.
+          assert int(errors.group(1))==1 and report.count('[invalid_outline]')==1, 'additional real design-rule violations'
+          assert int(unconnected.group(1))>280, 'RX nets did not add expected unrouted endpoints'
+          for forbidden in ('[courtyard_overlap]','[silk_overlap]','[text_height]','[clearance]'):
+              assert forbidden not in report,forbidden
+          print('NON RELEASE: 1 missing outline,',unconnected.group(1),'unconnected pads')
+          print('RX staging BOARD SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('RX staging BOARD size',p.stat().st_size)
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -659,7 +687,9 @@ jobs:
             03_Verifiche/V7.80/output-ci/
             03_Verifiche/V7.81/output-ci/
             03_Verifiche/V7.82/output-ci/
+            03_Verifiche/V7.83/output-ci/
             04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/
+            04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn
