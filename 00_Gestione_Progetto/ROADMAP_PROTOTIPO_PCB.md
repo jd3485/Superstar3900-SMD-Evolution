@@ -1,5 +1,9 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## V7.85: sottorete FB/DIV copper reale su PR #113, NON RELEASE (21 novembre 2026)
+
+Nuova revisione PCB unico, 139 footprint, +11 segmenti F.Cu su BUCK_FB/BUCK_DIV_TOP e tre passivi riposizionati; conserva sei segmenti BOOT/EN V7.84. Run KiCad9 [44896371938](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44896371938) ha mostrato DRC diagnostico **1 invalid_outline +310 unconnected** prima della conclusione del workflow; non dichiarare CI finale superata fino al controllo del run successivo dopo correzione log e file versionato. G6 ancora APERTO: feedback U100, power loops, 5V currents, GND returns, input fuse/eFuse, Ceff, stackup, outline e RX. Y1/SG48, D200 e 15 interfacce in HOLD. NO FAB/GERBER/PCBWAY/TX.
+
 ## G6 V7.85 — rete FB e partitore buck: rame reale in verifica (21 novembre 2026)
 
 **Baseline main integrata:** V7.84 PR #112, KiCad9 run 44894281465 SUCCESS, PCB 139 footprint/6 tratti BOOT+EN e DRC diagnostico 1 invalid_outline +314 non instradati. **Proposta**: V7.85 riposiziona C105/R101/R102 e crea 4 collegamenti fra componenti di feedback `BUCK_FB`/`BUCK_DIV_TOP`; nessun rame GND, 13.8V, BUCK_SW, 5V ad alta corrente, RX/TX; CI e file nativo non ancora completati. I collegamenti verso U100 e le compensazioni sono sempre tecnicamente non qualificate. G6/G7/G8/G9 restano aperti e nessun ordine PCB è autorizzato.

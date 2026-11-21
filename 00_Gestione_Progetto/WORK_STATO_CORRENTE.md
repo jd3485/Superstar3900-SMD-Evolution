@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.85 BOARD FISICO PR #113 — 21 NOV 2026 — CI FINALE DA VERIFICARE / NO FAB
+
+**Baseline main verificata:** V7.84 merge PR #112 commit `b1769c5ce3a04acc579b7aa372004dd12ae8e4f2`, KiCad9 finale [44894281465](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44894281465) SUCCESS, 139 footprint, 6 segmenti BUCK_BOOT/BUCK_EN, DRC nonrelease 1 invalid_outline +314 unconnected.
+
+**PR #113 sul ramo `pcb/v7-85-buck-feedback-subnetwork-real-copper-hold`:** vero file KiCad9 master `04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/S3900E_MASTER_V785_FEEDBACK_NO_FAB.kicad_pcb` **versionato nel ramo**, 139 footprint immutati elettricamente, 3 riposizionati (C105/R101/R102), 17 segmenti F.Cu totali di cui 11 nuovi sulla sola BUCK_FB/BUCK_DIV_TOP, 6 BOOT/EN precedenti preservati. La generazione statica iniziale differiva da un tracciato FB duplicato nello script: corretto prima della CI finale. La prova KiCad9 **sullo stesso ramo** durante [run 44896371938](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44896371938) ha mostrato **1 invalid_outline +310 unconnected, zero altre violazioni**, native PCB SHA256 `73c2224dc54a5a2cecce224dcc11f8d43126e260716d36aadd6cd9e8a822c148`, file 483843 bytes, ma **il run completo era ancora in corso / non concluso alla rilevazione**, e una nuova revisione del workflow ha eliminato la serializzazione inutile di 650KB base64 dai log. **NON dichiarare PR #113 integrata, non unire fino a nuova CI conclusa SUCCESS e policy verde**. Non inferire la validità RF o dell'alimentazione da questo solo DRC.
+
+**HOLD invariati:** componente Y1 SG48 pin10, D200 TVS DNP; 15 interfacce OPEN; pin feedback U100.4 ancora non instradato, buck SW/VIN/5V corrente e piani di ritorno GND non instradati/qualificati, F200/eFuse 13,8V/EFUSE_RTN vs GND_MAIN separati, termica e Ceff e 6 LDO, 25 errori ERC +180 warning ultimi V7.79; assenza outline, stackup, routing RF/IF, TX. Nessun ordine, Gerber o fabbricazione autorizzati. **Prossimo: completare CI finale sul commit corrente; correggere DRC reali e integrare solo dopo success; quindi lavorare sui percorsi elettrici veri vincolati a datasheet, NO FAB/NO TX.**
+
+---
+
 ## V7.85 FEEDBACK BUCK LOCALE SU PR — 21 novembre 2026, NON VALIDATO / NO FAB
 
 **Live main:** V7.84 merge [PR #112](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/112) `b1769c5ce3a04acc579b7aa372004dd12ae8e4f2`, CI finale KiCad9 [44894281465](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44894281465) e policy [44894281432](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44894281432) SUCCESS. PCB `S3900E_MASTER_V784_BUCK_LOCAL_NO_FAB.kicad_pcb`: 139 footprint, 6 segmenti F.Cu già committati su BOOT/EN; DRC nativo **1 invalid_outline +314 unconnected**. Il precedente testo di checkpoint "CI ancora da provare / NON MERGIARE" è storico ed è stato superato dal merge verificato; il file canonico resta il git HEAD effettivo.
