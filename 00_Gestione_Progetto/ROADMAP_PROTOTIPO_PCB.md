@@ -1,5 +1,13 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## V7.88: eFuse UVLO+OVP due segnali fisici, DRC native (21 novembre 2026)
+
+[PR #116](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/116) versiona PCB nativa V7.88: 139 footprint e 30 segmenti (6 nuovi UVLO/OVP); due posizioni passive modificate. Prima CI ha fermato un reale corto R200.2/UVLO; circuito riposizionato sullo stesso ramo, [KiCad9 44900456891](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900456891) e [policy 44900456896](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900456896) SUCCESS, DRC solo **1 invalid_outline +306 unconnected**. SHA256 board `625ca0cf2ea1603c20c2d4c8b8061a0e077fc16f0a08af98991b9c356a99ef5b`. Gate merge: nuova CI sul commit checkpoint (non ancora lanciata). G3 eFuse, G6 power/layout, G7–G9 ancora HOLD: pinout 15 interfacce, recupero 13.8V, ritorni, RF, ERC, outline e test reali rimangono aperti, NO FAB/TX.
+
+## V7.88 — G3 eFuse UVLO/OVP rame reale proposto, DRC NO FAB (21 novembre 2026)
+
+Baseline main V7.87 PR #115 [CI 44899780127](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44899780127) SUCCESS, 139 footprint e 24 segmenti, DRC 1 invalid_outline +308 unconnected. V7.88 branch `pcb/v7-88-efuse-uvlo-ovp-control-traces-hold` PCB reale versionato: riposizionati R200/R201, aggiunti sei segmenti locali F.Cu esclusivamente da U200.3 a R200.1 UVLO e da U200.5 a R201.1 OVP, **30 segmenti /139 footprint**, reti e resto pad invariati. Da verificare DRC native e CI e merge; le soglie effettive, interfacce, regolatori, ritorni, outline e fab-ready non sono provati; G3/G6–G9 HOLD, NO FAB/TX.
+
 ## V7.87: MODE/ILIM eFuse, PCB reale e CI prima di merge (21 novembre 2026)
 
 [PR #115](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/115) propone master PCB KiCad9 139 impronte e **24 segmenti F.Cu** (17 baseline V7.86 + 7 su due reti eFuse); spostati R203/R204 senza alterare 139 mappe pin-net o disunire i domini. [CI nativa 44899587378](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44899587378) SUCCESS: solo **1 invalid_outline +308 unconnected**; PCB SHA256 `1f0d4b118da23d93805c55be4d811094d114de0807be5180786f7697a2ab4530`. Non è un test di circuiti funzionanti, eFuse fault recovery o idoneità a fabbricazione. Verificare CI finale sul commit checkpoint prima di merge. G3 alimentazione/eFuse, G6 power PCB, G7–G9 restano APERTI; Y1 pin10 SG48, D200, 15 interfacce HOLD, eFuse RTN≠GND_MAIN, mai FAB/TX senza consenso.
