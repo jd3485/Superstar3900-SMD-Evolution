@@ -645,6 +645,16 @@ jobs:
           print('NON RELEASE: 1 missing outline,',unconnected.group(1),'unconnected pads')
           print('RX staging BOARD SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('RX staging BOARD size',p.stat().st_size)
+          # One-time recoverable KiCad-generated PCB bytes, so an agent may
+          # version the exact native output on the PR before any merge.
+          # Once tracked, emit only a digest; never silently regenerate a
+          # board in main without committing its verified native bytes.
+          tracked=subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True)
+          if tracked.returncode!=0:
+              import base64
+              print('BEGIN_V783_PCB_BASE64')
+              print(base64.b64encode(p.read_bytes()).decode('ascii'))
+              print('END_V783_PCB_BASE64')
           PY
       - name: Archive native proof for review only
         if: always()
