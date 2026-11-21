@@ -33,7 +33,7 @@ EXPECTED={
 # switching power trace, RF or eFuse recovery connected.
 ROUTES=[
  ("U100","6","C102","1",[]),
- ("U100","5","R103","1",[(118,45),(118,51)]),
+ ("U100","5","R103","1",[(119,45),(119,48),(114.5,48),(114.5,51)]),
 ]
 def pad_by_number(footprint,num):
     pads=[p for p in footprint.Pads() if p.GetNumber()==num]
@@ -89,7 +89,7 @@ def build():
             board.Add(t)
     board.GetTitleBlock().SetTitle("S3900E V7.84 BUCK local BOOT EN routing WIP NO FAB")
     assert len(board.GetFootprints())==139
-    assert len(board.GetTracks())==4 and len(board.Zones())==0
+    assert len(board.GetTracks())==6 and len(board.Zones())==0
     for ref,fp in refs.items():
         assert pad_signature(fp)==before_sig[ref],ref
         if ref not in RELOCATE:
@@ -99,7 +99,7 @@ def build():
         saved=pcbnew.LoadBoard(str(DEST))
         existing={f.GetReference():f for f in saved.GetFootprints()}
         assert set(existing)==set(before)
-        assert len(saved.GetTracks())==len(board.GetTracks())==4
+        assert len(saved.GetTracks())==len(board.GetTracks())==6
         assert not saved.Zones()
         for ref,fp in refs.items():
             q=existing[ref]
@@ -115,7 +115,7 @@ def build():
         pcbnew.SaveBoard(str(DEST),board)
     assert DEST.is_file()
     final=pcbnew.LoadBoard(str(DEST))
-    assert len(final.GetFootprints())==139 and len(final.GetTracks())==4
+    assert len(final.GetFootprints())==139 and len(final.GetTracks())==6
     assert not final.Zones()
     assert not any(d.GetLayer()==pcbnew.Edge_Cuts for d in final.GetDrawings())
     fref={f.GetReference():f for f in final.GetFootprints()}
@@ -138,7 +138,7 @@ def build():
     assert improvement["bootstrap_after_mm"]<improvement["bootstrap_before_mm"]
     assert improvement["enable_after_mm"]<improvement["enable_before_mm"]
     result={"revision":"V7.84","physical_footprints":139,"relocated":RELOCATE,
-      "new_copper_segments":4,"new_track_nets":["BUCK_BOOT","BUCK_EN"],
+      "new_copper_segments":6,"new_track_nets":["BUCK_BOOT","BUCK_EN"],
       "all_139_pad_nets_conserved":True,"all_unmodified_positions_conserved":True,
       "distance":improvement,"no_power_tracks":True,"no_rf_tracks":True,
       "no_outline":True,"no_ground_zones":True,"source_13v8_unqualified":True,
@@ -151,7 +151,7 @@ def build():
 class TestV784(unittest.TestCase):
     @classmethod
     def setUpClass(cls):cls.data=build()
-    def test_real_tracks(self):self.assertEqual(self.data["new_copper_segments"],4)
+    def test_real_tracks(self):self.assertEqual(self.data["new_copper_segments"],6)
     def test_relocation(self):self.assertEqual(len(self.data["relocated"]),12)
     def test_no_power_or_rf(self):self.assertTrue(self.data["no_power_tracks"] and self.data["no_rf_tracks"])
     def test_pin_net_parity(self):self.assertTrue(self.data["all_139_pad_nets_conserved"])
