@@ -42,6 +42,8 @@ on:
       - '03_Verifiche/V7.82/**'
       - '03_Verifiche/V7.83/**'
       - '03_Verifiche/V7.84/**'
+      - '03_Verifiche/V7.85/**'
+      - '04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/**'
@@ -647,16 +649,9 @@ jobs:
           print('NON RELEASE: 1 missing outline,',unconnected.group(1),'unconnected pads')
           print('RX staging BOARD SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('RX staging BOARD size',p.stat().st_size)
-          # One-time recoverable KiCad-generated PCB bytes, so an agent may
-          # version the exact native output on the PR before any merge.
-          # Once tracked, emit only a digest; never silently regenerate a
-          # board in main without committing its verified native bytes.
-          tracked=subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True)
-          if tracked.returncode!=0:
-              import base64
-              print('BEGIN_V783_PCB_BASE64')
-              print(base64.b64encode(p.read_bytes()).decode('ascii'))
-              print('END_V783_PCB_BASE64')
+          # V7.83 PCB is now tracked and checked by pcbnew. Never dump 650k
+          # base64 log bytes when git CLI is absent inside KiCad container.
+          assert p.stat().st_size > 480000, 'V7.83 native board missing'
           PY
       - name: V7.84 KiCad9 real buck local 2-net routing and physical DRC (NON RELEASE)
         run: |
@@ -681,11 +676,40 @@ jobs:
           print('V7.84 NONRELEASE: invalid_outline=1, unrouted='+y.group(1))
           print('V7.84 PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('V7.84 PCB BYTES',p.stat().st_size)
-          if subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True).returncode!=0:
-              import base64
-              print('BEGIN_V784_PCB_BASE64')
-              print(base64.b64encode(p.read_bytes()).decode())
-              print('END_V784_PCB_BASE64')
+          # V7.84 PCB is now tracked; sha256 + native DRC are sufficient.
+          # Avoid giant base64 log output on runners without git executable.
+          assert p.stat().st_size > 480000, 'V7.84 native board missing'
+          PY
+      - name: V7.85 KiCad9 genuine buck FB/DIV routing and non-release PCB DRC
+        run: |
+          timeout 100s python3 -u -B -m unittest discover -s 03_Verifiche/V7.85 -p 'build_buck_feedback_v785.py' -v
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, subprocess, re
+          p=Path('04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/S3900E_MASTER_V785_FEEDBACK_NO_FAB.kicad_pcb')
+          assert p.is_file()
+          d=Path('03_Verifiche/V7.85/output-ci/v785_drc_nonrelease.rpt')
+          run=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],capture_output=True,text=True,timeout=120)
+          assert d.is_file() and d.stat().st_size>100,(run.returncode,run.stderr)
+          report=d.read_text()
+          print('V7.85 native KiCad9 non-release DRC:',report[:17000])
+          rule=re.search(r'Found (\d+) DRC violations',report)
+          unrouted=re.search(r'Found (\d+) unconnected pads',report)
+          assert rule and unrouted,report[:1200]
+          # Never conceal new electrical or mechanical errors.
+          assert int(rule.group(1))==1 and report.count('[invalid_outline]')==1,report[:5000]
+          assert 0<int(unrouted.group(1))<314,'feedback island did not reduce open nets'
+          for forbidden in ('[shorting_items]','[clearance]','[courtyard_overlap]',
+                            '[silk_overlap]','[text_height]','[solder_mask_bridge]'):
+              assert forbidden not in report,forbidden
+          print('V7.85 NONRELEASE: 1 invalid_outline;',unrouted.group(1),'unrouted pads')
+          print('V7.85 native PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.85 native PCB BYTES',p.stat().st_size)
+          # The native V7.85 board is already tracked on this PR.
+          # Do not dump ~650k base64 bytes into the CI log (git may be absent
+          # from the KiCad container, causing a false untracked result).
+          assert p.stat().st_size > 480000, 'native KiCad master PCB missing'
+          assert b'(kicad_pcb' in p.read_bytes()[:100]
           PY
       - name: Archive native proof for review only
         if: always()
@@ -730,9 +754,11 @@ jobs:
             03_Verifiche/V7.82/output-ci/
             03_Verifiche/V7.83/output-ci/
             03_Verifiche/V7.84/output-ci/
+            03_Verifiche/V7.85/output-ci/
             04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/
+            04_KiCad/PCB_MASTER_V7.85_BUCK_FEEDBACK_WIP/
             04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn
