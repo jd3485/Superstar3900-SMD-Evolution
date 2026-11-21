@@ -88,9 +88,9 @@ def build():
                 continue
             # The four RX SMA vendor-review footprints have multiple
             # physically distinct solder tabs numbered 2 (coaxial GND).
-            # All other duplicate copper numbers are a hard failure.
+            # U9101 ADL5535 SOT-89 likewise repeats pad 2 at thermal tab.\n            # All other duplicate copper numbers are a hard failure.
             if n in seen:
-                assert ref in {"J9101","J9102","J9103","J9104"} and n=="2", (ref,n,"unexpected duplicate copper pad")
+                assert ref in {"J9101","J9102","J9103","J9104","U9101"} and n=="2", (ref,n,"unexpected duplicate copper pad")
             native=pins.get((ref,n))
             if native is not None:
                 net=board.FindNet(native)
