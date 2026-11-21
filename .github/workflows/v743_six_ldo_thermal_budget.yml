@@ -714,11 +714,11 @@ jobs:
           print('V7.85 NONRELEASE: 1 invalid_outline;',unrouted.group(1),'unrouted pads')
           print('V7.85 native PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('V7.85 native PCB BYTES',p.stat().st_size)
-          if subprocess.run(['git','ls-files','--error-unmatch',str(p)],capture_output=True).returncode!=0:
-              import base64
-              print('BEGIN_V785_PCB_BASE64')
-              print(base64.b64encode(p.read_bytes()).decode('ascii'))
-              print('END_V785_PCB_BASE64')
+          # The native V7.85 board is already tracked on this PR.
+          # Do not dump ~650k base64 bytes into the CI log (git may be absent
+          # from the KiCad container, causing a false untracked result).
+          assert p.stat().st_size > 480000, 'native KiCad master PCB missing'
+          assert b'(kicad_pcb' in p.read_bytes()[:100]
           PY
       - name: Archive native proof for review only
         if: always()
