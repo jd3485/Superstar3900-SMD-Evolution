@@ -46,6 +46,8 @@ on:
       - '03_Verifiche/V7.86/**'
       - '03_Verifiche/V7.87/**'
       - '03_Verifiche/V7.88/**'
+      - '03_Verifiche/V7.89/**'
+      - '04_KiCad/PCB_MASTER_V7.89_EFUSE_DVDT_UVLO_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.88_EFUSE_THRESHOLDS_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/**'
       - '04_KiCad/PCB_MASTER_V7.86_EFUSE_CAPS_WIP/**'
@@ -794,6 +796,32 @@ jobs:
           print('V7.88 PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
           print('V7.88 PCB BYTES',p.stat().st_size)
           PY
+      - name: V7.89 native 2-net eFuse UVLO divider and DV_DT physical PCB DRC NON RELEASE
+        run: |
+          timeout 95s python3 -u -B -m unittest discover -s 03_Verifiche/V7.89 -p 'test_native_uvlo_divider_dvdt_v789.py' -v
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,subprocess,hashlib
+          p=Path('04_KiCad/PCB_MASTER_V7.89_EFUSE_DVDT_UVLO_WIP/S3900E_MASTER_V789_DVDT_UVLO_NO_FAB.kicad_pcb')
+          assert p.is_file() and p.stat().st_size>480000
+          d=Path('03_Verifiche/V7.89/output-ci/v789_native_drc_nonrelease.rpt')
+          proc=subprocess.run(['kicad-cli','pcb','drc','-o',str(d),str(p)],
+                               capture_output=True,text=True,timeout=115)
+          assert d.is_file() and d.stat().st_size>100,(proc.returncode,proc.stderr)
+          t=d.read_text()
+          print('V7.89 KiCad9 native DRC:',t[:14500])
+          a=re.search(r'Found (\d+) DRC violations',t)
+          b=re.search(r'Found (\d+) unconnected pads',t)
+          assert a and b,t[:1300]
+          assert int(a.group(1))==1 and t.count('[invalid_outline]')==1,t[:5000]
+          assert 0<int(b.group(1))<=304,('UVLO divider + DV_DT must close two native nets',b.group(1))
+          for forbidden in ('[shorting_items]','[clearance]','[courtyard_overlap]',
+                            '[silk_overlap]','[text_height]','[solder_mask_bridge]'):
+              assert forbidden not in t,forbidden
+          print('V7.89 NONRELEASE 1 invalid_outline',b.group(1),'unconnected')
+          print('V7.89 PCB SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('V7.89 PCB BYTES',p.stat().st_size)
+          PY
       - name: Archive native proof for review only
         if: always()
         uses: actions/upload-artifact@v4
@@ -841,6 +869,7 @@ jobs:
             03_Verifiche/V7.86/output-ci/
             03_Verifiche/V7.87/output-ci/
             03_Verifiche/V7.88/output-ci/
+            03_Verifiche/V7.89/output-ci/
             04_KiCad/PCB_MASTER_V7.82_PLL_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.83_RX_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/
@@ -848,6 +877,7 @@ jobs:
             04_KiCad/PCB_MASTER_V7.86_EFUSE_CAPS_WIP/
             04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/
             04_KiCad/PCB_MASTER_V7.88_EFUSE_THRESHOLDS_WIP/
+            04_KiCad/PCB_MASTER_V7.89_EFUSE_DVDT_UVLO_WIP/
             04_KiCad/PCB_MASTER_V7.81_MCU_CODEC_SWD_PLACEMENT_WIP/
             04_KiCad/PCB_MASTER_V7.80_POWER_PLACEMENT_WIP/
           if-no-files-found: warn

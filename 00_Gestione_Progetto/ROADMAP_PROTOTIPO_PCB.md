@@ -1,5 +1,13 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## V7.89 reale eFuse UVLO + DV_DT, CI native green (21 novembre 2026)
+
+[PR #117](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/117) master V7.89 139 footprint e **36 segmenti**, UVLO_NODE branch R200.1↔R201.2 e DV_DT_NODE U200.12↔C201.2, C201 avvicinato, 30 tratti precedente preservati. [KiCad9 run 44901024127](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44901024127) e policy 44901024281 GREEN; DRC diagnostico **1 invalid_outline +304 unconnected**, SHA256 PCB `d92b6cb7735b9eb4adf38f2359b8a9f1fb6eba15ae8ce805aed71265c6f61b54`. Verificare ancora CI su commit checkpoint prima di merge. Soglie eFuse, power current loops, EFUSE_RTN, D200, Y1 pin10 e 15 interfacce restano HOLD, nessun fab/TX.
+
+## V7.89 — G3 eFuse UVLO divider e dV/dt pin12: ramo reale, non-release (21 novembre 2026)
+
+Main V7.88 integrata PR #116 e CI 44900638980/44900638977 SUCCESS, PCB 139 footprint e 30 segmenti, DRC non-release 1 invalid_outline +306 unconnected. V7.89 in ramo reale `pcb/v7-89-efuse-uvlo-divider-dvdt-local-routes-hold`: 6 nuovi tratti 0.20mm F.Cu `UVLO_NODE` (R200.1 ↔ R201.2) e `DV_DT_NODE` (U200.12 ↔ C201.2), C201 spostato a 76,42 mm e 30 segmenti precedenti preservati, 139/139 pin-net identici. PCB, test nativo e DRC richiesto prima di merge. D200 DNP, SG48 pin10 e 15 interfacce HOLD, circuito ritorni eFuse non qualificato; G3/G6/G7/G8/G9 APERTI. Nessun ordine o TX autorizzato.
+
 ## V7.88: eFuse UVLO+OVP due segnali fisici, DRC native (21 novembre 2026)
 
 [PR #116](https://github.com/jd3485/Superstar3900-SMD-Evolution/pull/116) versiona PCB nativa V7.88: 139 footprint e 30 segmenti (6 nuovi UVLO/OVP); due posizioni passive modificate. Prima CI ha fermato un reale corto R200.2/UVLO; circuito riposizionato sullo stesso ramo, [KiCad9 44900456891](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900456891) e [policy 44900456896](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44900456896) SUCCESS, DRC solo **1 invalid_outline +306 unconnected**. SHA256 board `625ca0cf2ea1603c20c2d4c8b8061a0e077fc16f0a08af98991b9c356a99ef5b`. Gate merge: nuova CI sul commit checkpoint (non ancora lanciata). G3 eFuse, G6 power/layout, G7–G9 ancora HOLD: pinout 15 interfacce, recupero 13.8V, ritorni, RF, ERC, outline e test reali rimangono aperti, NO FAB/TX.
