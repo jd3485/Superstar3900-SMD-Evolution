@@ -1,5 +1,9 @@
 # Roadmap operativa verificabile — Superstar 3900 SMD Evolution
 
+## V7.87 — G3 eFuse MODE/ILIM: rame reale proposto, NON RELEASE (21 novembre 2026)
+
+**Baseline V7.86 verificata su main**, 139 footprint / 17 piste / KiCad9 DRC 1 invalid_outline +310 unconnected, PR #114 merge `b9fe17f05cc7e01149e31450d2b9e77048b08d68`. Nuovo ramo V7.87: 2 resistori fisicamente riposizionati R203/R204, sette tratti reali su `ILIM_NODE`/`EFUSE_MODE` per U200.11/R203.2 e U200.6/R204.2, pin e reti 139 conservati, altro rame invariato. G3 ancora APERTO: serve verificare pin11 e pin6 con TI, numeri R203/R204, eFuse recovery e tutte correnti/ground ritorni. DRC native, CI e merge ancora da provare. Nessuna connessione tra EFUSE_RTN e GND_MAIN; nessuna autorizzazione a fabbricazione, batterie o TX.
+
 **Pin TI TPS26600 PWP qualificato da [datasheet](https://www.ti.com/lit/ds/symlink/tps2660.pdf)**: OUT15/16, NC13, FLT14 (opzionale/floating). La prima CI V7.86 falliva per test errato OUT13, non per PCB. Test corretto OUT15 + pin13/14 senza nets; nessuna correzione artificiosa ai circuiti; continuità di output e return-domain ancora da instradare/qualificare.
 
 ## V7.86 G3/G6 — disposizione fisica condensatori eFuse, non qualificazione (21 novembre 2026)

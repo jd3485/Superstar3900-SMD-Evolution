@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.87 eFuse MODE/ILIM RAME REALE IN VERIFICA — 21 novembre 2026 — NO FAB
+
+**Main live e baseline:** V7.86 PR #114 integrata con merge `b9fe17f05cc7e01149e31450d2b9e77048b08d68`, suite KiCad9 native [44898768619](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44898768619) e policy [44898768622](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44898768622) SUCCESS. PCB unica reale V7.86: 139 footprint, 17 tratti F.Cu, DRC **1 invalid_outline +310 unconnected** (non release). ERC ultimi 25 errori+180 warning V7.79; nessun altro circuito considerato chiuso.
+
+**V7.87 modifica ingegneristica non ancora qualificata da CI:** branch `pcb/v7-87-efuse-mode-ilim-local-tracks-hold`. Creato e versionato reale KiCad PCB `04_KiCad/PCB_MASTER_V7.87_EFUSE_CONTROL_WIP/S3900E_MASTER_V787_EFUSE_CONTROL_NO_FAB.kicad_pcb`, derivato byte strutturali V7.86. R203 ILIM spostato (77,60)→(79,50) mm, R204 MODE (83,60)→(59,49) mm; **7 nuovi segmenti rame 0,20 mm F.Cu** per collegare solo U200 pin11↔R203.2 `ILIM_NODE` e U200 pin6↔R204.2 `EFUSE_MODE`, con i 17 segmenti preesistenti invariati, PCB 139 footprint e 24 segmenti in tutto. **NO FILI VIN/OUT, EFUSE_RTN, GND_MAIN, GND_RF, SW, RF o TX aggiunti.** U200 pin10,13 NC e14 FLT non collegati. Test pcbnew `03_Verifiche/V7.87/test_native_efuse_mode_ilim_v787.py` confronta riferimenti, pin e pad-net per tutti i 139, 137 posizioni invariate, vecchi segmenti, geometria e domini; workflow KiCad9 DRC diagnostico deve confermare nessun corto e riduzione pad aperti da 310 a non più di 308, massimo il solo `invalid_outline`. Test e CI NON ANCORA PROVATI, e non equivalgono a design fabbricabile.
+
+**BLOCCANTI INVARIATI:** EFUSE_RTN distinto da GND_MAIN/GND_RF, D200 TVS DNP, F200 e 13,8V fuse/eFuse coord, MODE/ILIM valori soglia e reset, circuito 5V TPS54202 power loops/return/feedback U100, 6 LDO termici, 15 interfacce OPEN/HOLD, Y1 SG48 pin10 HOLD, 25 ERC errors/180 warnings, incomplete PCB routing, 50Ω RF e chassis/outline/stackup. NO FAB / NO GERBER / NO PCBWAY / NO BATTERIA / NO TX. **NEXT:** PR/CI native completa, DRC fix se necessario e merge solo con checks verdi; dopo affrontare i circuiti realmente ancora aperti.
+
+---
+
 **V7.86 genuina diagnosi CI:** il primo run [44898508277](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44898508277) ha fermato il test per una **assunzione errata nel controllo** C202→U200.13, non per corto elettrico: il [datasheet TI TPS2660 PWP](https://www.ti.com/lit/ds/symlink/tps2660.pdf) assegna **15/16=OUT**, **13=N.C.**, **14=FLT open-drain** utilizzabile opzionalmente. La PCB V7.85/V7.86 ha correttamente il pad13 e14 senza reti, mentre C202.2 è sulla rete protetta di U200.15/16. Corretto il test a **U200.15** e aggiunte asserzioni fail-closed NC13/FLT14 liberi. Non introdurre finti collegamenti a questi pin per far passare CI. La V7.86 PCB reale è invariata e richiede nuova CI nativa DRC prima del merge.
 
 ## V7.86 INPUT/eFuse C200/C201/C202: PCB FISICA IN VERIFICA — 21 NOV 2026 — NO FAB
