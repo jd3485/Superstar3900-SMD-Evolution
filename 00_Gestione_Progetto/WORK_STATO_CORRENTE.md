@@ -1,5 +1,15 @@
 # WORK_STATO_CORRENTE.md — checkpoint canonico di ripartenza da GitHub
 
+## V7.84 PCB BUCK REALE CON 6 SEGMENTI — PR #112 — 21 novembre 2026, NO FAB
+
+**Dati verificati:** baseline `main` V7.83 PR #111 merge `2359f3781b3db7506000773b0f0ef9069f0886ec`. V7.84 su PR #112 ha generato un autentico PCB KiCad9 con **139 footprint, 12 componenti buck riposizionati**, **6 segmenti F.Cu a 0,25 mm** esclusivamente su BUCK_BOOT e BUCK_EN, senza modificare nessun pad/net e senza piste 13,8 V, GND, SW potenza, RF o TX. **Native CI [44893786818](https://github.com/jd3485/Superstar3900-SMD-Evolution/actions/runs/44893786818) SUCCESS**: DRC 1 `invalid_outline` + **314 unconnected** (316 V7.83), **zero altri errori**. Un vero corto EN↔VIN R103 rilevato da run CI iniziale 44893414135 è stato corretto fisicamente con polilinea che accede al pad1 R103 da sinistra. Questo è solo un progresso di routing locale, NON la validazione del buck.
+
+Il vero `04_KiCad/PCB_MASTER_V7.84_BUCK_LOCAL_WIP/S3900E_MASTER_V784_BUCK_LOCAL_NO_FAB.kicad_pcb` è versionato su branch PR #112, commit `69390206f1c72787bf97e52659d232469186ba30`, blob Git `0111694036a3173db3062f49f0604a311a77b5b9`, dimensione **482278 bytes**, SHA256 nativo `364498b0b9ede338257698c4bb35b3ac0132dea15f720b55349d4e58fb7e8bc8`. **Ancora da confermare CI sul PCB file committato; NON MERGIARE finché non passa**. Monitorare eventuali rigenerazioni che modificano UUID: V7.84 guarda il file tracciato senza riscriverlo.
+
+**Blocchi reali:** C102 lato SW non instradato, power current loops, GND e piano ritorno, dissipazione, L100/C103/C104 reali e Ceff, input 13,8V/F200/TPS26600 recovery, sei LDO 3,3V, Y1 SG48, D200 DNP, 15 interfacce, 25 ERC/180 warning ultime prove, outline/chassis e stackup, SMA RX/IF e TX HOLD. Prossimo: CI finale e merge se verde; poi progettare loop corrente power/return e connettere interfacce solo su pinout qualificato. **NO FAB / GERBER / PCBWAY / TX.**
+
+---
+
 ## V7.84 BUCK PCB LOCALE IN VERIFICA — 21 novembre 2026, NO FAB
 
 **Baseline LIVE:** V7.83 su main merge PR #111 `2359f3781b3db7506000773b0f0ef9069f0886ec`, CI KiCad9 `44892562192` + policy `44892562198` SUCCESS, 139 footprint /141 schematici, DRC NONRELEASE 1 `invalid_outline` +316 unrouted, nessuna traccia, nessun outline o zone. Schematico ultimo ERC 25 errori/180 warning; non dichiarare chiusi.
